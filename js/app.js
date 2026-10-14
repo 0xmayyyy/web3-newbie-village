@@ -59,7 +59,7 @@
         var st = Math.max(0, r.hit.p - 24), raw = r.it.text.substr(st, 80);
         snip = (st ? '…' : '') + hl(raw, terms) + '…';
       } else snip = esc(r.it.text.substr(0, 60)) + '…';
-      return { href: '#/c/' + r.it.c.id + (r.it.s >= 0 ? '/' + r.it.s : ''), label: r.it.c.id + ' ' + r.it.c.title + (r.it.s >= 0 ? ' › ' + r.it.title : ''), snip: snip };
+      return { href: r.it.c.id === '12' ? '#/c/12?q=' + encodeURIComponent(q.trim()) : '#/c/' + r.it.c.id + (r.it.s >= 0 ? '/' + r.it.s : ''), label: r.it.c.id + ' ' + r.it.c.title + (r.it.s >= 0 ? ' › ' + r.it.title : ''), snip: snip };
     });
   }
   function hl(s, terms) {
@@ -132,7 +132,7 @@
     var n = doneCount();
     main.innerHTML =
       '<section class="hero-full" aria-labelledby="h-hero"><div class="hero-inner">' +
-      '<img class="hero-bear" src="assets/img/panda.jpg?v=20261015013155" alt="戴眼镜挥手的小熊猫" width="220" height="214">' +
+      '<img class="hero-bear" src="assets/img/panda.jpg?v=20261015015220" alt="戴眼镜挥手的小熊猫" width="220" height="214">' +
       '<h1 id="h-hero">Web3 新手村 <span aria-hidden="true">🧸</span></h1>' +
       '<p class="lead">币圈名词太多，看不懂也没关系。</p>' +
       '<p class="intro">从「什么是币圈」开始，慢慢学会买币、看懂交易、使用钱包和保护资产。这里把绕口的名词翻译成人话，也把容易踩的坑提前摆出来。</p>' +
@@ -153,7 +153,7 @@
       '<ol class="toc">' + CH.map(chapterCard).join('') + '</ol>' +
       '<p class="note">学习进度只保存在你当前的浏览器里，本站不收集任何个人信息。</p></section>' +
 
-      '<section class="block safety" aria-labelledby="h-safe"><img src="assets/img/panda-teacher.png?v=20261015013155" alt="熊猫老师在黑板前讲课" width="200" height="169">' +
+      '<section class="block safety" aria-labelledby="h-safe"><img src="assets/img/panda-teacher.png?v=20261015015220" alt="熊猫老师在黑板前讲课" width="200" height="169">' +
       '<div><h2 id="h-safe"><span aria-hidden="true">⚠️</span> 操作前先记住</h2><ul class="checks">' +
       ['不把助记词和私钥交给任何人。', '不因为「稳赚」「翻倍」「名额有限」就急着转钱。', '转账前检查资产、网络、地址和 Memo / Tag。', '收录的平台和工具不等于安全担保。', '不懂签名内容，就先停下来。']
         .map(function (t) { return '<li><span class="ico" aria-hidden="true">🛡️</span>' + esc(t) + '</li>'; }).join('') +
@@ -164,7 +164,7 @@
       '<a class="qcard pink" href="#/c/05"><span class="qi" aria-hidden="true">🏦</span><strong>CEX 交易所导航</strong><span>常用交易所注册入口与选择要点</span></a>' +
       '<a class="qcard lilac" href="#/c/12"><span class="qi" aria-hidden="true">💬</span><strong>币圈话术翻译器</strong><span>正经术语与社区玩梗分开看</span></a>' +
       '<a class="qcard mint" href="#/c/15"><span class="qi" aria-hidden="true">✅</span><strong>练习与自测</strong><span>安全自测、盈亏计算器、转账清单</span></a>' +
-      '</div><img class="quick-img" src="assets/img/panda-phone.png?v=20261015013155" alt="拿着手机的小熊猫" width="140" height="137"></section>';
+      '</div><img class="quick-img" src="assets/img/panda-phone.png?v=20261015015220" alt="拿着手机的小熊猫" width="140" height="137"></section>';
     bindSearch($('#q-home'), $('.hero-full .search-results'));
     var sh = $('.scroll-hint'); sh.addEventListener('click', function (e) { e.preventDefault(); $('#h-toc').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); });
     var cp = $('#clear-p');
@@ -178,7 +178,7 @@
     var c = chap(id); if (!c) return renderHome();
     var idx = CH.indexOf(c), prev = CH[idx - 1], next = CH[idx + 1];
     document.title = c.id + '｜' + c.title + ' - Web3 新手村';
-    var secNav = c.sections.map(function (s, i) { return '<li><a href="#/c/' + c.id + '/' + i + '">' + esc(s.title) + '</a></li>'; }).join('');
+    var secNav = c.id === '12' ? '' : c.sections.map(function (s, i) { return '<li><a href="#/c/' + c.id + '/' + i + '">' + esc(s.title) + '</a></li>'; }).join('');
     var allNav = CH.map(function (x) { return '<li><a href="#/c/' + x.id + '"' + (x === c ? ' aria-current="page"' : '') + '><span class="n">' + x.id + '</span> ' + esc(x.title) + (isDone(x.id) ? ' <span class="ok" title="已学完">✓</span>' : '') + '</a>' + (x === c ? '<ol class="secnav">' + secNav + '</ol>' : '') + '</li>'; }).join('');
     main.innerHTML =
       '<div class="layout">' +
@@ -191,7 +191,7 @@
       c.sections.map(function (s, i) {
         return '<details class="sec" id="s' + i + '" open><summary><h2>' + esc(s.title) + '</h2></summary><div class="sec-body">' + s.html + '</div></details>';
       }).join('') +
-      (c.tip ? '<aside class="tip"><img src="assets/img/panda.jpg?v=20261015013155" alt="" width="64" height="62"><p>' + esc(c.tip) + '</p></aside>' : '') +
+      (c.tip ? '<aside class="tip"><img src="assets/img/panda.jpg?v=20261015015220" alt="" width="64" height="62"><p>' + esc(c.tip) + '</p></aside>' : '') +
       '<div class="done-box"><button class="btn ' + (isDone(c.id) ? 'btn-ghost' : '') + '" id="done-btn" aria-pressed="' + isDone(c.id) + '">' + (isDone(c.id) ? '✓ 已学完（点击取消）' : '🎉 标记本章为已学完') + '</button></div>' +
       '<nav class="pager" aria-label="翻页">' +
       (prev ? '<a class="pg prev" href="#/c/' + prev.id + '"><small>← 上一章</small>' + prev.id + ' ' + esc(prev.title) + '</a>' : '<span></span>') +
@@ -308,26 +308,38 @@
     return $$('tbody tr', d).map(function (tr) { var td = $$('td', tr); return [td[0].textContent, td[1].textContent]; });
   }
   W.slang = function (el) {
-    var serious = slangRows(0), meme = slangRows(1), mode = 'serious';
+    var rows = slangRows(0).map(function (r) { return r.concat('serious'); }).concat(slangRows(1).map(function (r) { return r.concat('meme'); }));
+    var mode = 'all';
     el.className = 'widget slang';
-    el.innerHTML = '<div class="slang-top"><label class="sr" for="slang-q">查一个词</label><input id="slang-q" type="search" placeholder="查一个词，例如 FOMO、梭哈、接盘"><div class="seg" role="tablist" aria-label="切换">' +
-      '<button role="tab" aria-selected="true" data-m="serious">📘 正经解释</button><button role="tab" aria-selected="false" data-m="meme">😜 社区玩梗</button></div></div><div class="slang-list" aria-live="polite"></div>';
+    el.innerHTML = '<div class="slang-top"><label class="sr" for="slang-q">查一个词</label><input id="slang-q" type="search" placeholder="查一个词，例如 爆仓、FOMO、梭哈、土狗"><div class="seg" role="tablist" aria-label="切换分类">' +
+      '<button role="tab" aria-selected="true" data-m="all">全部</button><button role="tab" aria-selected="false" data-m="serious">📘 正经术语</button><button role="tab" aria-selected="false" data-m="meme">😜 社区玩梗</button></div></div>' +
+      '<p class="w-note slang-meme-note">「社区调侃」条目是玩笑话，不是对所有人的真实意图判断，也不是交易建议。</p><div class="slang-list" aria-live="polite"></div>';
     var list = $('.slang-list', el), q = $('#slang-q', el);
     function draw() {
-      var k = q.value.trim().toLowerCase(), rows = mode === 'serious' ? serious : meme;
-      var f = rows.filter(function (r) { return !k || (r[0] + r[1]).toLowerCase().indexOf(k) >= 0; });
-      var other = mode === 'serious' ? meme : serious;
-      var otherHit = k && other.some(function (r) { return (r[0] + r[1]).toLowerCase().indexOf(k) >= 0; });
-      list.innerHTML = (mode === 'meme' ? '<p class="w-note">以下是调侃，不是对所有人的真实意图判断，也不是交易建议。</p>' : '') +
-        (f.length ? '<dl>' + f.map(function (r) {
-          return '<div class="term ' + mode + '"><dt>' + esc(r[0]) + (mode === 'meme' ? ' <span class="badge-meme">😜 社区调侃</span>' : ' <span class="badge-serious">📘 正经术语</span>') + '</dt><dd>' + esc(r[1]) + '</dd></div>';
-        }).join('') + '</dl>' : '<p class="empty">没找到这个词，换个说法试试？' + (otherHit ? '「' + (mode === 'serious' ? '社区玩梗' : '正经解释') + '」里有结果。' : '') + '</p>');
+      var k = q.value.trim(), terms = k ? expand(k) : [];
+      var f = rows.filter(function (r) {
+        if (mode !== 'all' && r[2] !== mode) return false;
+        if (!terms.length) return true;
+        var t = (r[0] + ' ' + r[1]).toLowerCase();
+        return terms.some(function (x) { return x && t.indexOf(x) >= 0; });
+      });
+      list.innerHTML = f.length ? '<p class="w-note">共 ' + f.length + ' 条</p><dl>' + f.map(function (r) {
+        return '<div class="term ' + r[2] + '"><dt>' + hl(r[0], terms) + (r[2] === 'meme' ? ' <span class="badge-meme">😜 社区调侃</span>' : ' <span class="badge-serious">📘 正经术语</span>') + '</dt><dd>' + hl(r[1], terms) + '</dd></div>';
+      }).join('') + '</dl>' : '<p class="empty">没找到这个词，换个说法试试？也可以用页面顶部的搜索查全站内容。</p>';
     }
     q.addEventListener('input', draw);
     $$('[data-m]', el).forEach(function (b) {
       b.addEventListener('click', function () { mode = b.dataset.m; $$('[data-m]', el).forEach(function (x) { x.setAttribute('aria-selected', x === b); }); draw(); });
     });
+    var qs = (location.hash.split('?')[1] || '').match(/q=([^&]+)/); if (qs) q.value = decodeURIComponent(qs[1]);
     draw();
+  };
+  W.binancewallet = function (el) {
+    el.className = 'btn-row';
+    var reg = C.exchanges.filter(function (x) { return x.name === 'Binance'; })[0].url, wal = 'https://web3.binance.com/referral?ref=BFSADLNM';
+    el.innerHTML = [['注册币安', reg], ['币安钱包', wal]].map(function (b) {
+      return '<a class="btn btn-sm" href="' + esc(b[1]) + '" target="_blank" rel="noopener noreferrer nofollow">' + b[0] + ' ↗<span class="btn-domain">' + esc(host(b[1])) + '</span></a>';
+    }).join('');
   };
   function mountWidgets(root) {
     $$('[data-widget]', root).forEach(function (el) { var f = W[el.dataset.widget]; if (f) f(el); });
@@ -335,10 +347,8 @@
     if (location.hash.indexOf('#/c/12') === 0) {
       var w = document.createElement('div'); w.dataset.widget = 'slang';
       var first = $('details.sec', root); first.parentNode.insertBefore(w, first);
-      var h = document.createElement('h2'); h.className = 'wtitle'; h.textContent = '🔎 查一个词'; w.parentNode.insertBefore(h, w);
+      $$('details.sec, .ch-tools, .mtoc', root).forEach(function (d) { d.remove(); });
       W.slang(w);
-      $$('#s1 tbody tr td:first-child', root).forEach(function (td) { td.insertAdjacentHTML('beforeend', ' <span class="badge-meme">社区调侃</span>'); });
-      $$('#s0 tbody tr td:first-child', root).forEach(function (td) { td.insertAdjacentHTML('beforeend', ' <span class="badge-serious">正经术语</span>'); });
     }
   }
 
@@ -348,7 +358,7 @@
   }
   function renderFooter() {
     var fb = C.feedback || {}, link = fb.url || (fb.email ? 'mailto:' + fb.email : '');
-    $('#footer').innerHTML = '<div class="footer-in"><img src="assets/img/panda-phone.png?v=20261015013155" alt="" width="72" height="70">' +
+    $('#footer').innerHTML = '<div class="footer-in"><img src="assets/img/panda-phone.png?v=20261015015220" alt="" width="72" height="70">' +
       '<div><p class="f-title"><strong>慢慢学，不用急着上车。🧸</strong></p>' +
       '<p class="contacts">联系站长：' + contactLinks() + '</p>' +
       (link ? '<p>发现错误或失效链接？欢迎反馈，帮助新手村一起变得更好。</p><a class="btn btn-sm" href="' + esc(link) + '"' + (fb.url ? ' target="_blank" rel="noopener noreferrer"' : '') + '>📮 反馈问题</a>' : '') +
@@ -360,10 +370,10 @@
     var d = C.donate, dlg = $('#donate');
     if (!dlg) {
       dlg = document.createElement('dialog'); dlg.id = 'donate'; dlg.setAttribute('aria-labelledby', 'donate-h');
-      dlg.innerHTML = '<button class="dlg-x" aria-label="关闭">×</button><img class="dlg-bear" src="assets/img/bear.jpg?v=20261015013155" alt="" width="72" height="70">' +
+      dlg.innerHTML = '<button class="dlg-x" aria-label="关闭">×</button><img class="dlg-bear" src="assets/img/bear.jpg?v=20261015015220" alt="" width="72" height="70">' +
         '<h2 id="donate-h">请小熊喝杯奶茶 🧋</h2><p class="w-note">觉得新手村有帮助，可以随意打赏，完全自愿～</p>' +
         '<p class="chain">网络：<b>' + esc(d.chain) + '</b></p>' +
-        '<img class="qr" src="assets/img/donate-qr.svg?v=20261015013155" alt="打赏地址二维码" width="180" height="180">' +
+        '<img class="qr" src="assets/img/donate-qr.svg?v=20261015015220" alt="打赏地址二维码" width="180" height="180">' +
         '<code class="addr">' + esc(d.address) + '</code>' +
         '<button class="btn btn-sm" id="copy-addr">📋 复制地址</button><p class="copied" role="status" aria-live="polite"></p>' +
         '<p class="dlg-warn"><span aria-hidden="true">⚠️</span> 仅支持 BNB Chain（BEP-20）网络，转账前请核对完整地址与网络。</p>';

@@ -48,6 +48,8 @@ def convert(body, cid, stitle):
             out.append(tok(tool_html(m.group(1), m.group(2), desc, '打开官网' if cid == '13' else '前往'))); i += 1; continue
         if ln.startswith('按钮：阅读原文'):
             out.append(tok('<div data-widget="wpbuttons"></div>')); i += 1; continue
+        if ln.startswith('按钮：注册币安'):
+            out.append(tok('<div data-widget="binancewallet"></div>')); i += 1; continue
         if ln.startswith('按钮：查一个词'):
             i += 1; continue  # 由翻译器组件实现
         out.append(ln); i += 1
