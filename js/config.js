@@ -2,11 +2,50 @@
 window.SITE_CONFIG = {
   /* 反馈入口：填写真实联系方式后页脚才显示反馈按钮；留空则隐藏。
      例：url: 'https://github.com/xxx/issues/new' 或 email: 'hi@example.com' */
-  feedback: { url: '', email: '' },
+  feedback: { url: 'https://t.me/Mayyy00x', email: '' },
+
+  /* 站长联系方式 */
+  contacts: [
+    { name: 'X', label: '@0xMayyy', url: 'https://x.com/0xMayyy' },
+    { name: 'Telegram', label: '@Mayyy00x', url: 'https://t.me/Mayyy00x' }
+  ],
+
+  /* 打赏地址（BNB Chain / BEP-20）。二维码图片 assets/img/donate-qr.svg 由同一地址生成并已解码核对 */
+  donate: { chain: 'BNB Chain（BEP-20）', address: '0x496d22b39777f25fd6ef4999dc0def5d21ade8a0' },
 
   /* 链接核验记录：只有在浏览器中真实打开并通过官方渠道确认后，才按 '网址': 'YYYY-MM-DD' 填写。
      未填写的链接在页面上一律显示「待核验」。不要编造日期。 */
   verified: {
+    'https://academy.binance.com/': '2026-10-15',
+    'https://accounts.binance.info/zh-CN/register?ref=I1GN6RMJ': '2026-10-15',
+    'https://arbiscan.io/': '2026-10-15',
+    'https://basescan.org/': '2026-10-15',
+    'https://bitcoin.org/bitcoin.pdf': '2026-10-15',
+    'https://bitcoin.org/en/bitcoin-paper': '2026-10-15',
+    'https://bitcoin.org/en/faq': '2026-10-15',
+    'https://bscscan.com/': '2026-10-15',
+    'https://coinmarketcap.com/': '2026-10-15',
+    'https://debot.ai/r/0xMay': '2026-10-15',
+    'https://defillama.com/': '2026-10-15',
+    'https://dexscreener.com/': '2026-10-15',
+    'https://ethereum.org/learn/': '2026-10-15',
+    'https://ethereum.org/security/': '2026-10-15',
+    'https://etherscan.io/': '2026-10-15',
+    'https://gopluslabs.io/en': '2026-10-15',
+    'https://mempool.space/': '2026-10-15',
+    'https://partner.bybit.com/b/0xmay': '2026-10-15',
+    'https://revoke.cash/': '2026-10-15',
+    'https://solscan.io/': '2026-10-15',
+    'https://t.me/Mayyy00x': '2026-10-15',
+    'https://tronscan.org/': '2026-10-15',
+    'https://web3.binance.com/referral?ref=BFSADLNM': '2026-10-15',
+    'https://www.coinbase.com/learn': '2026-10-15',
+    'https://www.coingecko.com/': '2026-10-15',
+    'https://www.gate.com/zh/signup?ref_type=103&ref=U1dGB10J': '2026-10-15',
+    'https://www.htx.com/invite/zh-cn/1h?invite_code=jdz98223': '2026-10-15',
+    'https://www.tradingkey.com/zh-hans/news/cryptocurrencies': '2026-10-15',
+    'https://www.tradingview.com/': '2026-10-15',
+    'https://x.com/0xMayyy': '2026-10-15'
   },
 
   /* CEX 邀请注册入口（用户提供的邀请链接，保留参数，勿改成官网首页）。
@@ -15,7 +54,7 @@ window.SITE_CONFIG = {
     { name: 'Binance', intro: '了解币安的交易、账户服务与注册规则', url: 'https://accounts.binance.info/zh-CN/register?ref=I1GN6RMJ', enabled: true },
     { name: 'Bybit', intro: '了解 Bybit 的交易产品与注册规则', url: 'https://partner.bybit.com/b/0xmay', enabled: true },
     { name: 'Gate', intro: '了解 Gate 的交易服务与注册规则', url: 'https://www.gate.com/zh/signup?ref_type=103&ref=U1dGB10J', enabled: true },
-    { name: 'HTX', intro: '了解 HTX 的交易服务与注册规则', url: 'https://www.htx.net.in/invite/zh-cn/1h?invite_code=jdz98223', enabled: true }
+    { name: 'HTX', intro: '了解 HTX 的交易服务与注册规则', url: 'https://www.htx.com/invite/zh-cn/1h?invite_code=jdz98223', enabled: true }
   ],
 
   /* 搜索别名：同一组里的词互相等价 */

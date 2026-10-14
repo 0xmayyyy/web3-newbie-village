@@ -13,11 +13,11 @@ def link_html(u):
     return (f'<a class="ext" href="{esc(u)}" target="_blank" rel="noopener noreferrer nofollow" data-url="{esc(u)}">{esc(u)}</a>'
             f'<span class="ext-meta"><span class="domain">🌐 {esc(domain(u))}</span><span class="verify" data-url="{esc(u)}">⏳ 待核验</span></span>')
 
-def tool_html(name, u, desc):
+def tool_html(name, u, desc, btn='打开官网'):
     return (f'<div class="tool-card"><div class="tool-head"><strong>{esc(name)}</strong>'
             f'<span class="verify" data-url="{esc(u)}">⏳ 待核验</span></div>'
-            f'<p>{esc(desc)}</p><p class="domain">官方域名：<b>{esc(domain(u))}</b></p>'
-            f'<a class="btn btn-sm ext" href="{esc(u)}" target="_blank" rel="noopener noreferrer nofollow" data-url="{esc(u)}">打开官网 ↗ <span class="sr">（新窗口，{esc(domain(u))}）</span></a></div>')
+            f'<p>{esc(desc)}</p><p class="domain">域名：<b>{esc(domain(u))}</b></p>'
+            f'<a class="btn btn-sm ext" href="{esc(u)}" target="_blank" rel="noopener noreferrer nofollow" data-url="{esc(u)}">{btn} ↗ <span class="sr">（新窗口，{esc(domain(u))}）</span></a></div>')
 
 WIDGETS = {
   ('05','邀请注册导航'): 'exchanges',
@@ -40,12 +40,12 @@ def convert(body, cid, stitle):
     lines = body.split('\n'); out = []; i = 0
     while i < len(lines):
         ln = lines[i]
-        m = re.match(r'^([A-Za-z][\w .]*?)：(https?://\S+)(?:\s+—\s+(.+))?$', ln.strip())
-        if cid == '13' and m:
+        m = re.match(r'^([^：\s-][^：]{0,30})：(https?://\S+)(?:\s+—\s+(.+))?$', ln.strip())
+        if cid in ('11', '13') and m:
             desc = m.group(3) or ''
             if not desc and i+1 < len(lines) and lines[i+1].startswith('用途：'):
                 desc = lines[i+1]; i += 1
-            out.append(tok(tool_html(m.group(1), m.group(2), desc))); i += 1; continue
+            out.append(tok(tool_html(m.group(1), m.group(2), desc, '打开官网' if cid == '13' else '前往'))); i += 1; continue
         if ln.startswith('按钮：阅读原文'):
             out.append(tok('<div data-widget="wpbuttons"></div>')); i += 1; continue
         if ln.startswith('按钮：查一个词'):
@@ -56,6 +56,7 @@ def convert(body, cid, stitle):
     h = markdown.markdown(text, extensions=['tables', 'nl2br', 'sane_lists'])
     for k, v in tokens.items():
         h = h.replace(f'<p>{k}</p>', v).replace(k, v)
+    h = re.sub(r'((?:<div class="tool-card">.*?</a></div>\s*)+)', lambda m: '<div class="tool-grid">' + m.group(1) + '</div>', h, flags=re.S)
     h = h.replace('<table>', '<div class="table-wrap" tabindex="0"><table>').replace('</table>', '</table></div>')
     return h
 

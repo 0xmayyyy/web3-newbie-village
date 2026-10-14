@@ -147,7 +147,7 @@
 
       '<section class="block" aria-labelledby="h-quick"><h2 id="h-quick">🚀 快捷入口</h2><div class="quick">' +
       '<a class="qcard yellow" href="#/c/13"><span class="qi" aria-hidden="true">🧰</span><strong>常用工具导航</strong><span>查行情、查交易、查链上数据</span></a>' +
-      '<a class="qcard pink" href="#/c/05"><span class="qi" aria-hidden="true">🏦</span><strong>CEX 交易所导航</strong><span>邀请注册入口与选择要点（含推广披露）</span></a>' +
+      '<a class="qcard pink" href="#/c/05"><span class="qi" aria-hidden="true">🏦</span><strong>CEX 交易所导航</strong><span>常用交易所注册入口与选择要点</span></a>' +
       '<a class="qcard lilac" href="#/c/12"><span class="qi" aria-hidden="true">💬</span><strong>币圈话术翻译器</strong><span>正经术语与社区玩梗分开看</span></a>' +
       '<a class="qcard mint" href="#/c/15"><span class="qi" aria-hidden="true">✅</span><strong>练习与自测</strong><span>安全自测、盈亏计算器、转账清单</span></a>' +
       '</div><img class="quick-img" src="assets/img/panda-phone.png" alt="拿着手机的小熊猫" width="140" height="137"></section>';
@@ -198,7 +198,7 @@
   function applyVerify(root) {
     $$('.verify[data-url]', root).forEach(function (v) {
       var d = C.verified[v.dataset.url];
-      if (d) { v.textContent = '✅ 最近核验：' + d; v.classList.add('ok'); }
+      if (d) { v.textContent = '✓ 已核验 ' + d; v.classList.add('ok'); v.title = '最近核验日期：' + d; }
       else { v.textContent = '⏳ 待核验'; v.title = '尚未完成真实核验，使用前请自行确认域名与跳转目的地'; }
     });
   }
@@ -211,15 +211,13 @@
       .map(function (b) { return '<a class="btn btn-sm" href="' + b[1] + '" target="_blank" rel="noopener noreferrer nofollow">' + b[0] + ' ↗<span class="btn-domain">' + host(b[1]) + '</span></a>'; }).join('');
   };
   W.exchanges = function (el) {
-    el.innerHTML = '<div class="disclosure" role="note"><span class="ico" aria-hidden="true">📣</span><p><strong>推广披露：</strong>通过这些链接注册，网站运营者可能获得返佣或其他奖励；实际权益、资格与费用以平台说明为准。</p></div>' +
-      '<div class="ex-grid">' + C.exchanges.map(function (x) {
-        return '<div class="ex-card"><div class="ex-head"><h3>' + esc(x.name) + '</h3><span class="promo">邀请 / 推广链接</span></div>' +
-          '<p>' + esc(x.intro) + '</p>' +
-          '<p class="domain">链接真实域名：<b>' + esc(host(x.url)) + '</b></p>' +
-          '<p class="vline"><span class="verify" data-url="' + esc(x.url) + '">⏳ 待核验</span></p>' +
-          (x.enabled ? '<a class="btn btn-sm" href="' + esc(x.url) + '" target="_blank" rel="noopener noreferrer nofollow sponsored">通过邀请链接注册 ↗<span class="sr">（新窗口，' + esc(host(x.url)) + '）</span></a>' : '<span class="btn btn-sm disabled" aria-disabled="true">入口暂停使用</span>') +
-          '<p class="ex-warn"><span aria-hidden="true">⚠️</span> 注册前核对真实域名、跳转目的地、地区要求、账户条款与安全设置。邀请入口不代表安全担保。</p></div>';
-      }).join('') + '</div>';
+    el.innerHTML = '<div class="ex-grid">' + C.exchanges.map(function (x) {
+      return '<div class="ex-card"><div class="ex-head"><h3>' + esc(x.name) + '</h3><span class="verify" data-url="' + esc(x.url) + '"></span></div>' +
+        '<p>' + esc(x.intro) + '</p>' +
+        '<p class="domain">域名：<b>' + esc(host(x.url)) + '</b></p>' +
+        (x.enabled ? '<a class="btn btn-sm" href="' + esc(x.url) + '" target="_blank" rel="noopener noreferrer nofollow">注册 ↗<span class="sr">（新窗口，' + esc(host(x.url)) + '）</span></a>' : '<span class="btn btn-sm disabled" aria-disabled="true">入口暂停使用</span>') +
+        '<p class="ex-warn"><span aria-hidden="true">⚠️</span> 注册前核对真实域名、地区要求、账户条款与安全设置。</p></div>';
+    }).join('') + '</div>';
   };
   var QUIZ = [
     { q: '「官方客服」要助记词帮你修复钱包，给吗？', o: ['给', '不给'], a: 1, ans: '不给。停止沟通并核验渠道。', ch: '08' },
@@ -257,25 +255,25 @@
   };
   W.calculator = function (el) {
     el.className = 'widget calc';
-    el.innerHTML = '<p>输入：买入价、卖出价、数量、总费用。仅支持同一报价币下的一次买入和一次卖出的简化现货示例。</p>' +
+    el.innerHTML = '<p>输入买入价、卖出价和买入成本（你花了多少钱买入）。仅支持同一报价币下一次买入、一次卖出的简化现货示例。</p>' +
       '<form novalidate><div class="fgrid">' +
-      [['buy', '买入价'], ['sell', '卖出价'], ['qty', '数量'], ['fee', '总费用']].map(function (f) {
-        return '<label>' + f[1] + '<input name="' + f[0] + '" inputmode="decimal" autocomplete="off" placeholder="' + { buy: '例如 100', sell: '例如 110', qty: '例如 1', fee: '例如 0.2' }[f[0]] + '"></label>';
+      [['buy', '买入价', '例如 100'], ['sell', '卖出价', '例如 110'], ['cost', '买入成本（金额）', '例如 1000']].map(function (f) {
+        return '<label>' + f[1] + '<input name="' + f[0] + '" inputmode="decimal" autocomplete="off" placeholder="' + f[2] + '"></label>';
       }).join('') + '</div><button class="btn btn-sm" type="submit">计算</button></form>' +
       '<div class="calc-out" role="status" aria-live="polite"></div>' +
-      '<details class="formula"><summary>计算公式</summary><p>买入金额 = 买入价 × 数量。<br>净盈亏 =（卖出价 − 买入价）× 数量 − 总费用。<br>简化收益率 = 净盈亏 ÷ 买入金额 × 100%。</p></details>';
+      '<details class="formula"><summary>计算公式</summary><p>买到数量 = 买入成本 ÷ 买入价。<br>卖出所得 = 买到数量 × 卖出价。<br>净盈亏 = 卖出所得 − 买入成本。<br>简化收益率 = 净盈亏 ÷ 买入成本 × 100%（= 卖出价 ÷ 买入价 − 1）。<br>未计入交易手续费、滑点等费用。</p></details>';
     var f = $('form', el), out = $('.calc-out', el);
     function num(v) { v = String(v).trim().replace(/,/g, ''); return /^[+-]?(\d+\.?\d*|\.\d+)(e[+-]?\d+)?$/i.test(v) ? Number(v) : NaN; }
     function fmt(n) { return (Math.round(n * 1e8) / 1e8).toLocaleString('zh-CN', { maximumFractionDigits: 8 }); }
     f.addEventListener('submit', function (e) {
       e.preventDefault();
-      var b = num(f.buy.value), s = num(f.sell.value), q = num(f.qty.value), fe = num(f.fee.value === '' ? '0' : f.fee.value);
-      if (![b, s, q, fe].every(isFinite) || b <= 0 || q <= 0 || fe < 0 || s < 0) {
-        out.innerHTML = '<p class="err"><span aria-hidden="true">⚠️</span> 请填写有效数字，买入价与数量需要大于 0，费用不能为负。</p>'; return;
+      var b = num(f.buy.value), s = num(f.sell.value), c = num(f.cost.value);
+      if (![b, s, c].every(isFinite) || b <= 0 || c <= 0 || s < 0) {
+        out.innerHTML = '<p class="err"><span aria-hidden="true">⚠️</span> 请填写有效数字，买入价与买入成本需要大于 0，卖出价不能为负。</p>'; return;
       }
-      var cost = b * q, pnl = (s - b) * q - fe, r = pnl / cost * 100;
-      out.innerHTML = '<dl><div><dt>买入金额</dt><dd>' + fmt(cost) + '</dd></div><div><dt>净盈亏</dt><dd class="' + (pnl >= 0 ? 'pos' : 'neg') + '">' + (pnl >= 0 ? '▲ +' : '▼ ') + fmt(pnl) + '</dd></div><div><dt>简化收益率</dt><dd>' + (r >= 0 ? '+' : '') + fmt(r) + '%</dd></div></dl>' +
-        '<p class="w-note">这是简化学习结果，不适用于合约、借贷、分批交易或多币种费用。完整账务可能不同。</p>';
+      var q = c / b, got = q * s, pnl = got - c, r = pnl / c * 100;
+      out.innerHTML = '<dl><div><dt>买到数量</dt><dd>' + fmt(q) + '</dd></div><div><dt>卖出所得</dt><dd>' + fmt(got) + '</dd></div><div><dt>净盈亏</dt><dd class="' + (pnl >= 0 ? 'pos' : 'neg') + '">' + (pnl >= 0 ? '▲ +' : '▼ ') + fmt(pnl) + '</dd></div><div><dt>简化收益率</dt><dd>' + (r >= 0 ? '+' : '') + fmt(r) + '%</dd></div></dl>' +
+        '<p class="w-note">这是简化学习结果，未计入手续费，不适用于合约、借贷、分批交易或多币种费用。完整账务可能不同。</p>';
     });
   };
   W.checklist = function (el) {
@@ -330,16 +328,44 @@
   }
 
   /* ---------- 页脚 ---------- */
+  function contactLinks() {
+    return (C.contacts || []).map(function (c) { return '<a class="contact" href="' + esc(c.url) + '" target="_blank" rel="noopener noreferrer">' + (c.name === 'X' ? '𝕏' : '✈️') + ' ' + esc(c.name) + ' ' + esc(c.label) + '</a>'; }).join('');
+  }
   function renderFooter() {
     var fb = C.feedback || {}, link = fb.url || (fb.email ? 'mailto:' + fb.email : '');
     $('#footer').innerHTML = '<div class="footer-in"><img src="assets/img/panda-phone.png" alt="" width="72" height="70">' +
       '<div><p class="f-title"><strong>慢慢学，不用急着上车。🧸</strong></p>' +
-      '<p>本站提供入门教育与官方入口导航，不提供个性化投资建议，不承诺收益，也不替收录项目、平台或工具担保。加密资产、链上操作和衍生品都可能造成损失。</p>' +
-      '<p>服务可用性、费用、政策与链接可能变化，使用前以官方最新说明为准。遵守所在地法律、税务与平台要求。</p>' +
-      '<p>交易所入口为邀请 / 推广链接，详见第 05 章披露。标注「待核验」的链接尚未完成人工核验。</p>' +
+      '<p class="contacts">联系站长：' + contactLinks() + '</p>' +
       (link ? '<p>发现错误或失效链接？欢迎反馈，帮助新手村一起变得更好。</p><a class="btn btn-sm" href="' + esc(link) + '"' + (fb.url ? ' target="_blank" rel="noopener noreferrer"' : '') + '>📮 反馈问题</a>' : '') +
       '</div></div>';
   }
+
+  /* ---------- 打赏 ---------- */
+  function openDonate() {
+    var d = C.donate, dlg = $('#donate');
+    if (!dlg) {
+      dlg = document.createElement('dialog'); dlg.id = 'donate'; dlg.setAttribute('aria-labelledby', 'donate-h');
+      dlg.innerHTML = '<button class="dlg-x" aria-label="关闭">×</button><img class="dlg-bear" src="assets/img/bear.jpg" alt="" width="72" height="70">' +
+        '<h2 id="donate-h">请小熊喝杯奶茶 🧋</h2><p class="w-note">觉得新手村有帮助，可以随意打赏，完全自愿～</p>' +
+        '<p class="chain">网络：<b>' + esc(d.chain) + '</b></p>' +
+        '<img class="qr" src="assets/img/donate-qr.svg" alt="打赏地址二维码" width="180" height="180">' +
+        '<code class="addr">' + esc(d.address) + '</code>' +
+        '<button class="btn btn-sm" id="copy-addr">📋 复制地址</button><p class="copied" role="status" aria-live="polite"></p>' +
+        '<p class="dlg-warn"><span aria-hidden="true">⚠️</span> 仅支持 BNB Chain（BEP-20）网络，转账前请核对完整地址与网络。</p>';
+      document.body.appendChild(dlg);
+      $('.dlg-x', dlg).addEventListener('click', function () { dlg.close(); });
+      dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+      $('#copy-addr', dlg).addEventListener('click', function () {
+        var msg = $('.copied', dlg);
+        function ok() { msg.textContent = '已复制 ✓ 粘贴后请再核对一次地址'; }
+        if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(d.address).then(ok, fallback); else fallback();
+        function fallback() { var t = document.createElement('textarea'); t.value = d.address; document.body.appendChild(t); t.select(); try { document.execCommand('copy'); ok(); } catch (e) { msg.textContent = '复制失败，请长按地址手动复制'; } t.remove(); }
+      });
+    }
+    $('.copied', dlg).textContent = '';
+    dlg.showModal();
+  }
+  $('#donate-btn').addEventListener('click', openDonate);
 
   /* ---------- 路由 ---------- */
   function route() {

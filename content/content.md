@@ -84,17 +84,11 @@ BTC 是比特币网络的原生资产。ETH 是以太坊网络的原生资产，
 
 按现行共识规则，BTC 的发行总量上限约为 2,100 万枚。它不由某家公司按需发行，而是按网络规则逐步产生。稀缺性是它的一个特点，但不保证价格只涨不跌。
 
-## 比特币白皮书导航 📄
+📄 想读白皮书原文？从 bitcoin.org 官方入口开始：
 
-**英文原文 PDF：** https://bitcoin.org/bitcoin.pdf
-**多语言版本入口：** https://bitcoin.org/en/bitcoin-paper
-**基础问答：** https://bitcoin.org/en/faq
-
-建议先读摘要，弄清楚「点对点付款」「双花」「工作量证明」这三个问题。第一次不需要理解全部公式，也不用把白皮书当成价格预测。
-
-白皮书描述最初的方案，不包含后来所有协议与应用发展；继续学习时结合当前技术文档。
-
-按钮：阅读原文 / 查找中文版本 / 先看基础问答。
+- 英文原文 PDF：https://bitcoin.org/bitcoin.pdf
+- 多语言版本：https://bitcoin.org/en/bitcoin-paper
+- 基础问答：https://bitcoin.org/en/faq
 
 ## 币与代币有什么区别？
 
@@ -702,6 +696,9 @@ TVL 是按特定规则统计的锁定资产价值，可能受币价和重复计�
 
 DeFi 指利用智能合约提供兑换、借贷等金融功能的应用。常通过钱包交互，成本包括网络费、协议费等。风险可能来自代码、抵押资产、预言机、治理权限与经济机制。
 
+币安 Web3 钱包：https://web3.binance.com/referral?ref=BFSADLNM
+用途：币安推出的 Web3 钱包，可用于体验链上兑换与 DApp。使用前了解它的密钥与恢复方案，和交易所账户不是一回事。
+
 ## 借贷
 
 存入资产可能获得收益；借入资产通常需要抵押并支付利息。抵押品价格变化可能触发清算。存款端也存在坏账、流动性与合约风险，不能只看收益率。
@@ -738,6 +735,9 @@ Meme 币常围绕文化、社区和传播发展。它可能出现惊人的涨幅
 很多人会把买 Meme 比作「买彩票」，因为结果高度不确定，还容易只看到暴富案例。但它并不具有彩票那样固定、透明的中奖机制；持仓集中、内幕优势、机器人抢跑、恶意合约与流动性还会影响结果。
 
 所以可以理解它的暴涨潜力，也要把归零、卖不出去和信息不对称一起考虑，不把暴富故事当成普通人的预期收益。
+
+Meme 币导航（DeBot）：https://debot.ai/r/0xMay
+用途：查看链上 Meme 币动态与交易数据的工具。收录不代表代币安全，参与前先想清楚可能归零。
 
 ## RWA 与代币化股票
 
@@ -830,12 +830,14 @@ CoinMarketCap：https://coinmarketcap.com/
 TradingView：https://www.tradingview.com/
 用途：查看图表与技术指标。核对交易所、交易对与周期，社区观点不等于事实。
 
-## 查交易与地址
+## 各链区块浏览器
 
-Etherscan：https://etherscan.io/ — 以太坊交易与合约查询。
-TRONSCAN：https://tronscan.org/ — TRON 交易、账户与资源查询。
+Etherscan：https://etherscan.io/ — Ethereum 以太坊交易、地址与合约查询。
 BscScan：https://bscscan.com/ — BNB Smart Chain 交易与合约查询。
 Solscan：https://solscan.io/ — Solana 交易与账户查询。
+mempool.space：https://mempool.space/ — Bitcoin 比特币交易、区块与手续费查询。
+TRONSCAN：https://tronscan.org/ — TRON 交易、账户与资源查询。
+Arbiscan：https://arbiscan.io/ — Arbitrum One 交易与合约查询。
 BaseScan：https://basescan.org/ — Base 网络交易与合约查询。
 
 使用提示：浏览器与网络必须匹配；合约代码验证不等于安全审计，标签也不能代替身份核验。
@@ -848,13 +850,10 @@ DefiLlama：https://defillama.com/
 DEX Screener：https://dexscreener.com/
 用途：查看链上交易对、价格与池子活动。工具收录不代表代币能安全买卖。
 
-## BTC 起源与白皮书
+## 看新闻
 
-比特币白皮书原文：https://bitcoin.org/bitcoin.pdf
-多语言版本入口：https://bitcoin.org/en/bitcoin-paper
-基础问答：https://bitcoin.org/en/faq
-
-用途：了解比特币最初想解决的问题、早期设计与基础概念。
+TradingKey：https://www.tradingkey.com/zh-hans/news/cryptocurrencies
+用途：浏览加密货币相关新闻资讯。新闻与观点不等于投资建议，重要消息以项目或机构官方公告为准。
 
 ## 签名与交易安全辅助
 
