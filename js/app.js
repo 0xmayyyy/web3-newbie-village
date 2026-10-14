@@ -3,7 +3,21 @@
   var D = window.SITE_DATA, C = window.SITE_CONFIG;
   var CH = D.chapters;
   var main = document.getElementById('main');
-  var KEY = 'w3nv-progress-v1';
+  var KEY = 'w3nv-progress-v2';
+  (function migrate() {  // v1 用旧章节编号（15 章）；v2 把旧 06 拆成 06 + 07，之后的章节编号 +1
+    try {
+      var old = localStorage.getItem('w3nv-progress-v1');
+      if (old && !localStorage.getItem(KEY)) {
+        var o = JSON.parse(old) || {}, n = {};
+        Object.keys(o).forEach(function (k) {
+          var i = parseInt(k, 10); if (!o[k] || !i) return;
+          if (i <= 5) n[k] = 1; else if (i === 6) { n['06'] = 1; n['07'] = 1; } else n[('0' + (i + 1)).slice(-2)] = 1;
+        });
+        localStorage.setItem(KEY, JSON.stringify(n));
+      }
+      localStorage.removeItem('w3nv-progress-v1');
+    } catch (e) { }
+  })();
 
   /* ---------- 工具函数 ---------- */
   function $(s, r) { return (r || document).querySelector(s); }
@@ -14,9 +28,9 @@
   function tagClass(t) { return { '基础': 't-basic', '进阶': 't-adv', '必读': 't-must', '导航': 't-nav', '操作': 't-op', '词典': 't-dict', '故障处理': 't-help', '复习': 't-rev' }[t] || ''; }
   function tags(c) { return c.tags.map(function (t) { return '<span class="tag ' + tagClass(t) + '">' + esc(t) + '</span>'; }).join(''); }
   var ROUTES = [
-    { key: 'new', icon: '🧸', name: '我完全不懂', ids: ['01', '02', '03', '07', '08', '05'], desc: '先了解这个世界怎么运转，再认识常用 CEX 和注册入口，不需要马上买币。', cls: 'pink' },
-    { key: 'buy', intro: true, icon: '🛒', name: '我想第一次买币', ids: ['03', '08', '04', '05', '06'], desc: '先掌握安全与交易基础，再用自己能承受损失的小额资金练习。', cls: 'mint' },
-    { key: 'protect', icon: '🛡️', name: '我已经有币，想保护资产', ids: ['07', '08', '09', '14'], desc: '重点了解资产保管、助记词、授权和转账检查。', cls: 'lilac' }
+    { key: 'new', icon: '🧸', name: '我完全不懂', ids: ['01', '02', '03', '08', '09', '05'], desc: '先了解这个世界怎么运转，再认识常用 CEX 和注册入口，不需要马上买币。', cls: 'pink' },
+    { key: 'buy', intro: true, icon: '🛒', name: '我想第一次买币', ids: ['03', '09', '04', '05', '06'], desc: '先掌握安全与交易基础，再用自己能承受损失的小额资金练习。', cls: 'mint' },
+    { key: 'protect', icon: '🛡️', name: '我已经有币，想保护资产', ids: ['08', '09', '10', '15'], desc: '重点了解资产保管、助记词、授权和转账检查。', cls: 'lilac' }
   ];
 
   /* ---------- 学习进度（仅存于本浏览器） ---------- */
@@ -59,7 +73,7 @@
         var st = Math.max(0, r.hit.p - 24), raw = r.it.text.substr(st, 80);
         snip = (st ? '…' : '') + hl(raw, terms) + '…';
       } else snip = esc(r.it.text.substr(0, 60)) + '…';
-      return { href: r.it.c.id === '12' ? '#/c/12?q=' + encodeURIComponent(q.trim()) : '#/c/' + r.it.c.id + (r.it.s >= 0 ? '/' + r.it.s : ''), label: r.it.c.id + ' ' + r.it.c.title + (r.it.s >= 0 ? ' › ' + r.it.title : ''), snip: snip };
+      return { href: r.it.c.id === '13' ? '#/c/13?q=' + encodeURIComponent(q.trim()) : '#/c/' + r.it.c.id + (r.it.s >= 0 ? '/' + r.it.s : ''), label: r.it.c.id + ' ' + r.it.c.title + (r.it.s >= 0 ? ' › ' + r.it.title : ''), snip: snip };
     });
   }
   function hl(s, terms) {
@@ -78,7 +92,7 @@
       var r = search(q);
       box.hidden = false;
       if (!r.length) {
-        box.innerHTML = '<p class="empty" role="status">🧸 没找到这个词，换个说法试试？也可以看看<a href="#/c/12">话术翻译器</a>。</p>';
+        box.innerHTML = '<p class="empty" role="status">🧸 没找到这个词，换个说法试试？也可以看看<a href="#/c/13">话术翻译器</a>。</p>';
         return;
       }
       box.innerHTML = '<p class="sr" role="status">找到 ' + r.length + ' 条结果</p><ul>' + r.map(function (x) {
@@ -132,7 +146,7 @@
     var n = doneCount();
     main.innerHTML =
       '<section class="hero-full" aria-labelledby="h-hero"><div class="hero-inner">' +
-      '<img class="hero-bear" src="assets/img/panda.jpg?v=20261015034240" alt="戴眼镜挥手的小熊猫" width="220" height="214">' +
+      '<img class="hero-bear" src="assets/img/panda.jpg?v=20261015035116" alt="戴眼镜挥手的小熊猫" width="220" height="214">' +
       '<h1 id="h-hero">Web3 新手村 <span aria-hidden="true">🧸</span></h1>' +
       '<p class="lead">币圈名词太多，看不懂也没关系。</p>' +
       '<p class="intro">从「什么是币圈」开始，慢慢学会买币、看懂交易、使用钱包和保护资产。这里把绕口的名词翻译成人话，也把容易踩的坑提前摆出来。</p>' +
@@ -153,18 +167,18 @@
       '<ol class="toc">' + CH.map(chapterCard).join('') + '</ol>' +
       '<p class="note">学习进度只保存在你当前的浏览器里，本站不收集任何个人信息。</p></section>' +
 
-      '<section class="block safety" aria-labelledby="h-safe"><img src="assets/img/panda-teacher.png?v=20261015034240" alt="熊猫老师在黑板前讲课" width="200" height="169">' +
+      '<section class="block safety" aria-labelledby="h-safe"><img src="assets/img/panda-teacher.png?v=20261015035116" alt="熊猫老师在黑板前讲课" width="200" height="169">' +
       '<div><h2 id="h-safe"><span aria-hidden="true">⚠️</span> 操作前先记住</h2><ul class="checks">' +
       ['不把助记词和私钥交给任何人。', '不因为「稳赚」「翻倍」「名额有限」就急着转钱。', '转账前检查资产、网络、地址和 Memo / Tag。', '收录的平台和工具不等于安全担保。', '不懂签名内容，就先停下来。']
         .map(function (t) { return '<li><span class="ico" aria-hidden="true">🛡️</span>' + esc(t) + '</li>'; }).join('') +
-      '</ul><a class="btn btn-sm" href="#/c/08">看安全与防骗指南 →</a></div></section>' +
+      '</ul><a class="btn btn-sm" href="#/c/09">看安全与防骗指南 →</a></div></section>' +
 
       '<section class="block" aria-labelledby="h-quick"><h2 id="h-quick">🚀 快捷入口</h2><div class="quick">' +
-      '<a class="qcard yellow" href="#/c/13"><span class="qi" aria-hidden="true">🧰</span><strong>常用工具导航</strong><span>查行情、查交易、查链上数据</span></a>' +
+      '<a class="qcard yellow" href="#/c/14"><span class="qi" aria-hidden="true">🧰</span><strong>常用工具导航</strong><span>查行情、查交易、查链上数据</span></a>' +
       '<a class="qcard pink" href="#/c/05"><span class="qi" aria-hidden="true">🏦</span><strong>CEX 交易所导航</strong><span>常用交易所注册入口与选择要点</span></a>' +
-      '<a class="qcard lilac" href="#/c/12"><span class="qi" aria-hidden="true">💬</span><strong>币圈话术翻译器</strong><span>正经术语与社区玩梗分开看</span></a>' +
-      '<a class="qcard mint" href="#/c/15"><span class="qi" aria-hidden="true">✅</span><strong>练习与自测</strong><span>安全自测、盈亏计算器、转账清单</span></a>' +
-      '</div><img class="quick-img" src="assets/img/panda-phone.png?v=20261015034240" alt="拿着手机的小熊猫" width="140" height="137"></section>';
+      '<a class="qcard lilac" href="#/c/13"><span class="qi" aria-hidden="true">💬</span><strong>币圈话术翻译器</strong><span>正经术语与社区玩梗分开看</span></a>' +
+      '<a class="qcard mint" href="#/c/16"><span class="qi" aria-hidden="true">✅</span><strong>练习与自测</strong><span>安全自测、盈亏计算器、转账清单</span></a>' +
+      '</div><img class="quick-img" src="assets/img/panda-phone.png?v=20261015035116" alt="拿着手机的小熊猫" width="140" height="137"></section>';
     bindSearch($('#q-home'), $('.hero-full .search-results'));
     var sh = $('.scroll-hint'); sh.addEventListener('click', function (e) { e.preventDefault(); $('#h-toc').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); });
     var cp = $('#clear-p');
@@ -178,7 +192,7 @@
     var c = chap(id); if (!c) return renderHome();
     var idx = CH.indexOf(c), prev = CH[idx - 1], next = CH[idx + 1];
     document.title = c.id + '｜' + c.title + ' - Web3 新手村';
-    var secNav = c.id === '12' ? '' : c.sections.map(function (s, i) { return '<li><a href="#/c/' + c.id + '/' + i + '">' + esc(s.title) + '</a></li>'; }).join('');
+    var secNav = c.id === '13' ? '' : c.sections.map(function (s, i) { return '<li><a href="#/c/' + c.id + '/' + i + '">' + esc(s.title) + '</a></li>'; }).join('');
     var allNav = CH.map(function (x) { return '<li><a href="#/c/' + x.id + '"' + (x === c ? ' aria-current="page"' : '') + '><span class="n">' + x.id + '</span> ' + esc(x.title) + (isDone(x.id) ? ' <span class="ok" title="已学完">✓</span>' : '') + '</a>' + (x === c ? '<ol class="secnav">' + secNav + '</ol>' : '') + '</li>'; }).join('');
     main.innerHTML =
       '<div class="layout">' +
@@ -191,7 +205,7 @@
       c.sections.map(function (s, i) {
         return '<details class="sec" id="s' + i + '" open><summary><h2>' + esc(s.title) + '</h2></summary><div class="sec-body">' + s.html + '</div></details>';
       }).join('') +
-      (c.tip ? '<aside class="tip"><img src="assets/img/panda.jpg?v=20261015034240" alt="" width="64" height="62"><p>' + esc(c.tip) + '</p></aside>' : '') +
+      (c.tip ? '<aside class="tip"><img src="assets/img/panda.jpg?v=20261015035116" alt="" width="64" height="62"><p>' + esc(c.tip) + '</p></aside>' : '') +
       '<div class="done-box"><button class="btn ' + (isDone(c.id) ? 'btn-ghost' : '') + '" id="done-btn" aria-pressed="' + isDone(c.id) + '">' + (isDone(c.id) ? '✓ 已学完（点击取消）' : '🎉 标记本章为已学完') + '</button></div>' +
       '<nav class="pager" aria-label="翻页">' +
       (prev ? '<a class="pg prev" href="#/c/' + prev.id + '"><small>← 上一章</small>' + prev.id + ' ' + esc(prev.title) + '</a>' : '<span></span>') +
@@ -251,12 +265,12 @@
     }).join('') + '</div>';
   };
   var QUIZ = [
-    { q: '「官方客服」要助记词帮你修复钱包，给吗？', o: ['给', '不给'], a: 1, ans: '不给。停止沟通并核验渠道。', ch: '08' },
-    { q: 'Ethereum 和 Base 地址看起来一样，可以随意选网络吗？', o: ['可以', '不可以'], a: 1, ans: '不可以。收款方必须支持对应网络和资产。', ch: '09' },
-    { q: '断开网站连接，之前的代币授权就撤销了吗？', o: ['撤销了', '通常没有'], a: 1, ans: '通常没有，需要单独检查。', ch: '08' },
+    { q: '「官方客服」要助记词帮你修复钱包，给吗？', o: ['给', '不给'], a: 1, ans: '不给。停止沟通并核验渠道。', ch: '09' },
+    { q: 'Ethereum 和 Base 地址看起来一样，可以随意选网络吗？', o: ['可以', '不可以'], a: 1, ans: '不可以。收款方必须支持对应网络和资产。', ch: '10' },
+    { q: '断开网站连接，之前的代币授权就撤销了吗？', o: ['撤销了', '通常没有'], a: 1, ans: '通常没有，需要单独检查。', ch: '09' },
     { q: '币价 0.001 美元，是否一定比价格 100 美元的币便宜？', o: ['一定更便宜', '不能这样判断'], a: 1, ans: '不能这样判断，还要看供应、估值和资产本身。', ch: '03' },
-    { q: '止损设置好了，实际损失是否一定不超过预设金额？', o: ['一定不超过', '不能保证'], a: 1, ans: '不能保证。滑点、跳价、订单机制与执行问题都可能影响结果。', ch: '06' },
-    { q: '稳定币显示年化 20%，是否说明一年后保证多 20%？', o: ['是，保证多 20%', '不是'], a: 1, ans: '不是。显示年化是按当前条件估算的，不是未来一年的保证收益。很多产品的年化会随着参与资金、借款需求、奖励数量或市场条件变化，产品风险也要定期检查。不同产品机制不同，不能只用参与资金解释所有收益变化。', ch: '11' }
+    { q: '止损设置好了，实际损失是否一定不超过预设金额？', o: ['一定不超过', '不能保证'], a: 1, ans: '不能保证。滑点、跳价、订单机制与执行问题都可能影响结果。', ch: '07' },
+    { q: '稳定币显示年化 20%，是否说明一年后保证多 20%？', o: ['是，保证多 20%', '不是'], a: 1, ans: '不是。年化是按当前条件估算的，会随市场变化，不是保证收益。', ch: '12' }
   ];
   W.quiz = function (el) {
     var picked = {};
@@ -320,7 +334,7 @@
     $('button', el).addEventListener('click', function () { $$('input', el).forEach(function (x) { x.checked = false; }); upd(); });
   };
   function slangRows(i) {
-    var d = document.createElement('div'); d.innerHTML = chap('12').sections[i].html;
+    var d = document.createElement('div'); d.innerHTML = chap('13').sections[i].html;
     return $$('tbody tr', d).map(function (tr) { var td = $$('td', tr); return [td[0].textContent, td[1].textContent]; });
   }
   W.slang = function (el) {
@@ -353,14 +367,14 @@
   W.binancewallet = function (el) {
     el.className = 'btn-row';
     var reg = C.exchanges.filter(function (x) { return x.name === 'Binance'; })[0].url, wal = 'https://web3.binance.com/referral?ref=BFSADLNM';
-    el.innerHTML = [['注册币安', reg], ['币安钱包', wal]].map(function (b) {
+    el.innerHTML = [['注册币安', reg], ['币安钱包（无私钥）', wal]].map(function (b) {
       return '<span class="ref-btn"><a class="btn btn-sm" href="' + esc(b[1]) + '" target="_blank" rel="noopener noreferrer nofollow">' + b[0] + ' ↗<span class="btn-domain">' + esc(host(b[1])) + '</span></a>' + refTag(b[1]) + '</span>';
     }).join('');
   };
   function mountWidgets(root) {
     $$('[data-widget]', root).forEach(function (el) { var f = W[el.dataset.widget]; if (f) f(el); });
     // 话术翻译器挂在第 12 章开头；表格里的玩梗行加「社区调侃」标记
-    if (location.hash.indexOf('#/c/12') === 0) {
+    if (location.hash.indexOf('#/c/13') === 0) {
       var w = document.createElement('div'); w.dataset.widget = 'slang';
       var first = $('details.sec', root); first.parentNode.insertBefore(w, first);
       $$('details.sec, .ch-tools, .mtoc', root).forEach(function (d) { d.remove(); });
@@ -374,8 +388,9 @@
   }
   function renderFooter() {
     var fb = C.feedback || {}, link = fb.url || (fb.email ? 'mailto:' + fb.email : '');
-    $('#footer').innerHTML = '<div class="footer-in"><img src="assets/img/panda-phone.png?v=20261015034240" alt="" width="72" height="70">' +
+    $('#footer').innerHTML = '<div class="footer-in"><img src="assets/img/panda-phone.png?v=20261015035116" alt="" width="72" height="70">' +
       '<div><p class="f-title"><strong>慢慢学，不用急着上车。🧸</strong></p>' +
+      '<p class="disclaimer">本站内容仅供学习参考，不构成投资建议。加密资产波动大，请只用自己能承受损失的钱参与。</p>' +
       '<p class="contacts">联系站长：' + contactLinks() + '</p>' +
       (link ? '<p>发现错误或失效链接？欢迎反馈，帮助新手村一起变得更好。</p><a class="btn btn-sm" href="' + esc(link) + '"' + (fb.url ? ' target="_blank" rel="noopener noreferrer"' : '') + '>📮 反馈问题</a>' : '') +
       '</div></div>';
@@ -386,10 +401,10 @@
     var d = C.donate, dlg = $('#donate');
     if (!dlg) {
       dlg = document.createElement('dialog'); dlg.id = 'donate'; dlg.setAttribute('aria-labelledby', 'donate-h');
-      dlg.innerHTML = '<button class="dlg-x" aria-label="关闭">×</button><img class="dlg-bear" src="assets/img/bear.jpg?v=20261015034240" alt="" width="72" height="70">' +
+      dlg.innerHTML = '<button class="dlg-x" aria-label="关闭">×</button><img class="dlg-bear" src="assets/img/bear.jpg?v=20261015035116" alt="" width="72" height="70">' +
         '<h2 id="donate-h">请小熊喝杯奶茶 🧋</h2><p class="w-note">觉得新手村有帮助，可以随意打赏，完全自愿～</p>' +
         '<p class="chain">网络：<b>' + esc(d.chain) + '</b></p>' +
-        '<img class="qr" src="assets/img/donate-qr.svg?v=20261015034240" alt="打赏地址二维码" width="180" height="180">' +
+        '<img class="qr" src="assets/img/donate-qr.svg?v=20261015035116" alt="打赏地址二维码" width="180" height="180">' +
         '<code class="addr">' + esc(d.address) + '</code>' +
         '<button class="btn btn-sm" id="copy-addr">📋 复制地址</button><p class="copied" role="status" aria-live="polite"></p>' +
         '<p class="dlg-warn"><span aria-hidden="true">⚠️</span> 仅支持 BNB Chain（BEP-20）网络，转账前请核对完整地址与网络。</p>';

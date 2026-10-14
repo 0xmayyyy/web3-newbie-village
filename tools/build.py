@@ -21,10 +21,9 @@ def tool_html(name, u, desc, btn='打开官网'):
 
 WIDGETS = {
   ('05','邀请注册导航'): 'exchanges',
-  ('12','社区玩梗翻译'): None,
-  ('15','安全自测'): 'quiz',
-  ('15','模拟现货盈亏计算器'): 'calculator',
-  ('15','转账前检查清单'): 'checklist',
+  ('16','安全自测'): 'quiz',
+  ('16','模拟现货盈亏计算器'): 'calculator',
+  ('16','转账前检查清单'): 'checklist',
 }
 
 def convert(body, cid, stitle):
@@ -41,11 +40,11 @@ def convert(body, cid, stitle):
     while i < len(lines):
         ln = lines[i]
         m = re.match(r'^([^：\s-][^：]{0,30})：(https?://\S+)(?:\s+—\s+(.+))?$', ln.strip())
-        if cid in ('11', '13') and m:
+        if cid in ('12', '14') and m:
             desc = m.group(3) or ''
             if not desc and i+1 < len(lines) and lines[i+1].startswith('用途：'):
                 desc = lines[i+1]; i += 1
-            out.append(tok(tool_html(m.group(1), m.group(2), desc, '打开官网' if cid == '13' else '前往'))); i += 1; continue
+            out.append(tok(tool_html(m.group(1), m.group(2), desc, '打开官网' if cid == '14' else '前往'))); i += 1; continue
         if ln.startswith('按钮：阅读原文'):
             out.append(tok('<div data-widget="wpbuttons"></div>')); i += 1; continue
         if ln.startswith('按钮：注册币安'):
@@ -54,6 +53,12 @@ def convert(body, cid, stitle):
             i += 1; continue  # 由翻译器组件实现
         out.append(ln); i += 1
     text = '\n'.join(out)
+    def mdlink(m):
+        u = m.group(2)
+        if u.startswith('#'):
+            return tok(f'<a href="{esc(u)}">{esc(m.group(1))}</a>').strip()
+        return tok(f'<a class="src" href="{esc(u)}" target="_blank" rel="noopener noreferrer nofollow" data-url="{esc(u)}">{esc(m.group(1))} ↗</a>').strip()
+    text = re.sub(r'\[([^\]]+)\]\(((?:https?://|#)[^)\s]+)\)', mdlink, text)
     text = URL_RE.sub(lambda m: tok(link_html(m.group(0))).strip(), text)
     h = markdown.markdown(text, extensions=['tables', 'nl2br', 'sane_lists'])
     for k, v in tokens.items():
@@ -86,7 +91,7 @@ for t in toc:
         st, sb = s.split('\n', 1)
         h = convert(sb.strip(), t['id'], st.strip())
         # 末尾的“小提醒”单独成为提示框
-        sections.append(dict(title=st.strip(), html=h, text=plain(h) if 'data-widget' not in h else plain(sb)))
+        sections.append(dict(title=st.strip(), html=h, text=plain(h) if 'data-widget' not in h else plain(sb).replace('**', '')))
     # 每章最后一个小节里的“小提醒”
     last = sections[-1]
     m = re.search(r'<p>(小提醒：.+?)</p>', last['html'])
