@@ -41,7 +41,6 @@ window.SITE_CONFIG = {
     'https://web3.binance.com/referral?ref=BFSADLNM': '2026-10-15',
     'https://www.coinbase.com/learn': '2026-10-15',
     'https://www.coingecko.com/': '2026-10-15',
-    'https://www.gate.com/zh/signup?ref_type=103&ref=U1dGB10J': '2026-10-15',
     'https://www.htx.com/invite/zh-cn/1h?invite_code=jdz98223': '2026-10-15',
     'https://www.tradingkey.com/zh-hans/news/cryptocurrencies': '2026-10-15',
     'https://www.tradingview.com/': '2026-10-15',
@@ -53,7 +52,7 @@ window.SITE_CONFIG = {
   exchanges: [
     { name: 'Binance', intro: '了解币安的交易、账户服务与注册规则', url: 'https://accounts.binance.info/zh-CN/register?ref=I1GN6RMJ', enabled: true },
     { name: 'Bybit', intro: '了解 Bybit 的交易产品与注册规则', url: 'https://partner.bybit.com/b/0xmay', enabled: true },
-    { name: 'Gate', intro: '了解 Gate 的交易服务与注册规则', url: 'https://www.gate.com/zh/signup?ref_type=103&ref=U1dGB10J', enabled: true },
+    { name: 'Gate', intro: '了解 Gate 的交易服务与注册规则', url: 'https://www.gatewebsite.app/share/u1dgb10j', enabled: true },
     { name: 'HTX', intro: '了解 HTX 的交易服务与注册规则', url: 'https://www.htx.com/invite/zh-cn/1h?invite_code=jdz98223', enabled: true }
   ],
 

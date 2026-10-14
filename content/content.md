@@ -303,7 +303,7 @@ CEX 通常提供账户、充提币与交易服务，部分平台还有法币渠�
 |---|---|---|
 | Binance | 了解币安的交易、账户服务与注册规则 | https://accounts.binance.info/zh-CN/register?ref=I1GN6RMJ |
 | Bybit | 了解 Bybit 的交易产品与注册规则 | https://partner.bybit.com/b/0xmay |
-| Gate | 了解 Gate 的交易服务与注册规则 | https://www.gate.com/zh/signup?ref_type=103&ref=U1dGB10J |
+| Gate | 了解 Gate 的交易服务与注册规则 | https://www.gatewebsite.app/share/u1dgb10j |
 | HTX | 了解 HTX 的交易服务与注册规则 | https://www.htx.net.in/invite/zh-cn/1h?invite_code=jdz98223 |
 
 卡片按钮：通过邀请链接注册。

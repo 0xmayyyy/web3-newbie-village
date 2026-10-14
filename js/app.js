@@ -14,9 +14,9 @@
   function tagClass(t) { return { '基础': 't-basic', '进阶': 't-adv', '必读': 't-must', '导航': 't-nav', '操作': 't-op', '词典': 't-dict', '故障处理': 't-help', '复习': 't-rev' }[t] || ''; }
   function tags(c) { return c.tags.map(function (t) { return '<span class="tag ' + tagClass(t) + '">' + esc(t) + '</span>'; }).join(''); }
   var ROUTES = [
-    { icon: '🧸', name: '我完全不懂', ids: ['01', '02', '03', '07', '08', '05'], desc: '先了解这个世界怎么运转，再认识常用 CEX 和注册入口，不需要马上买币。', cls: 'pink' },
-    { icon: '🛒', name: '我想第一次买币', ids: ['03', '08', '04', '05', '06'], desc: '先掌握安全与交易基础，再用自己能承受损失的小额资金练习。', cls: 'mint' },
-    { icon: '🛡️', name: '我已经有币，想保护资产', ids: ['07', '08', '09', '14'], desc: '重点了解资产保管、助记词、授权和转账检查。', cls: 'lilac' }
+    { key: 'new', icon: '🧸', name: '我完全不懂', ids: ['01', '02', '03', '07', '08', '05'], desc: '先了解这个世界怎么运转，再认识常用 CEX 和注册入口，不需要马上买币。', cls: 'pink' },
+    { key: 'buy', intro: true, icon: '🛒', name: '我想第一次买币', ids: ['03', '08', '04', '05', '06'], desc: '先掌握安全与交易基础，再用自己能承受损失的小额资金练习。', cls: 'mint' },
+    { key: 'protect', icon: '🛡️', name: '我已经有币，想保护资产', ids: ['07', '08', '09', '14'], desc: '重点了解资产保管、助记词、授权和转账检查。', cls: 'lilac' }
   ];
 
   /* ---------- 学习进度（仅存于本浏览器） ---------- */
@@ -112,32 +112,46 @@
       '<span class="cbody"><strong>' + esc(c.title) + '</strong><span class="cintro">' + esc(c.intro) + '</span><span class="tags">' + tags(c) + '</span></span>' +
       (d ? '<span class="donemark" title="已学完">✓<span class="sr">已学完</span></span>' : '') + '</a></li>';
   }
+  function routeHref(r) {
+    if (r.intro) return '#/r/' + r.key;
+    return '#/c/' + (r.ids.filter(function (i) { return !isDone(i); })[0] || r.ids[0]);
+  }
+  function renderRoute(key) {
+    var r = ROUTES.filter(function (x) { return x.key === key; })[0]; if (!r) return renderHome();
+    document.title = r.name + ' - Web3 新手村';
+    var next = r.ids.filter(function (i) { return !isDone(i); })[0] || r.ids[0];
+    main.innerHTML = '<div class="route-page"><nav class="crumbs" aria-label="位置"><a href="#/">首页</a> › <span>路线</span></nav>' +
+      '<header class="ch-head"><span class="ch-num" aria-hidden="true">' + r.icon + '</span><div><h1>' + esc(r.name) + '</h1><p>' + esc(r.desc) + '</p></div></header>' +
+      '<ol class="steps"><li class="cur"><b>第 1 步</b> 注册交易所</li>' + r.ids.map(function (i, k) { return '<li' + (isDone(i) ? ' class="ok"' : '') + '><a href="#/c/' + i + '"><b>第 ' + (k + 2) + ' 步</b> ' + i + ' ' + esc(chap(i).title) + (isDone(i) ? ' ✓' : '') + '</a></li>'; }).join('') + '</ol>' +
+      '<section class="sec-plain"><h2>第 1 步：选一家交易所注册账户 🏦</h2><p>先确认所在地可以使用，再从下面的入口注册。注册后不用急着买币，先把安全设置做好，再按顺序学习后面的章节。</p><div data-widget="exchanges"></div></section>' +
+      '<div class="route-next"><a class="btn" href="#/c/' + next + '">下一步：' + next + ' ' + esc(chap(next).title) + ' →</a><a class="btn btn-ghost" href="#/c/05">了解怎么选择交易所</a></div></div>';
+    mountWidgets(main); applyVerify(main); window.scrollTo(0, 0);
+  }
   function renderHome() {
     document.title = 'Web3 新手村 🧸｜币圈入门导航';
     var n = doneCount();
     main.innerHTML =
-      '<section class="hero">' +
-      '<div class="hero-text"><h1>Web3 新手村 <span aria-hidden="true">🧸</span></h1>' +
+      '<section class="hero-full" aria-labelledby="h-hero"><div class="hero-inner">' +
+      '<img class="hero-bear" src="assets/img/bear.jpg" alt="戴眼镜的小熊在看书" width="220" height="214">' +
+      '<h1 id="h-hero">Web3 新手村 <span aria-hidden="true">🧸</span></h1>' +
       '<p class="lead">币圈名词太多，看不懂也没关系。</p>' +
-      '<p>从「什么是币圈」开始，慢慢学会买币、看懂交易、使用钱包和保护资产。这里把绕口的名词翻译成人话，也把容易踩的坑提前摆出来。</p>' +
+      '<p class="intro">从「什么是币圈」开始，慢慢学会买币、看懂交易、使用钱包和保护资产。这里把绕口的名词翻译成人话，也把容易踩的坑提前摆出来。</p>' +
       '<p class="motto"><strong>先看懂，再动手。学会一件，解锁一件。</strong></p>' +
+      '<p class="pick">选一条适合你的路线 👇</p>' +
+      '<div class="route-btns">' + ROUTES.map(function (r) {
+        var dn = doneCount(r.ids);
+        return '<a class="route-btn ' + r.cls + '" href="' + routeHref(r) + '"><span class="rb-ico" aria-hidden="true">' + r.icon + '</span><span class="rb-t">' + esc(r.name) + '</span><span class="rb-d">' + esc(r.desc) + '</span>' +
+          (dn ? '<span class="rb-p">已学 ' + dn + ' / ' + r.ids.length + ' · 继续 →</span>' : '') + '</a>';
+      }).join('') + '</div>' +
       '<div class="search big" role="search"><label class="sr" for="q-home">搜索章节、术语、工具</label><span class="sicon" aria-hidden="true">🔍</span>' +
-      '<input id="q-home" type="search" placeholder="想了解什么？试试「钱包」「一级市场」「爆仓」……" autocomplete="off"><div class="search-results" hidden></div></div>' +
-      '</div><img class="hero-img" src="assets/img/bear.jpg" alt="戴眼镜的小熊在看书" width="300" height="291"></section>' +
+      '<input id="q-home" type="search" placeholder="想了解什么？试试「钱包」「爆仓」……" autocomplete="off"><div class="search-results" hidden></div></div>' +
+      '</div><a class="scroll-hint" href="#h-toc" aria-label="往下看学习目录"><span>学习目录</span><i aria-hidden="true">⌄</i></a></section>' +
 
       '<section class="block" aria-labelledby="h-toc"><div class="block-head"><h2 id="h-toc">📚 学习目录</h2>' +
       '<div class="progress" aria-live="polite"><span>已学完 <b>' + n + '</b> / ' + CH.length + '</span><span class="bar" aria-hidden="true"><i style="width:' + (n / CH.length * 100) + '%"></i></span>' +
       (n ? '<button class="btn btn-ghost btn-sm" id="clear-p">清除进度</button>' : '') + '</div></div>' +
       '<ol class="toc">' + CH.map(chapterCard).join('') + '</ol>' +
       '<p class="note">学习进度只保存在你当前的浏览器里，本站不收集任何个人信息。</p></section>' +
-
-      '<section class="block" aria-labelledby="h-routes"><h2 id="h-routes">🧭 选一条适合你的路线</h2><div class="routes">' +
-      ROUTES.map(function (r) {
-        var dn = doneCount(r.ids);
-        return '<article class="route ' + r.cls + '"><h3><span aria-hidden="true">' + r.icon + '</span> ' + esc(r.name) + '</h3>' +
-          '<p class="route-desc">' + esc(r.desc) + '</p><p class="route-p">进度 ' + dn + ' / ' + r.ids.length + '</p>' +
-          '<a class="btn btn-sm" href="#/c/' + (r.ids.filter(function (i) { return !isDone(i); })[0] || r.ids[0]) + '">' + (dn ? '继续学习' : '从这里开始') + ' →</a></article>';
-      }).join('') + '</div></section>' +
 
       '<section class="block safety" aria-labelledby="h-safe"><img src="assets/img/panda-teacher.png" alt="熊猫老师在黑板前讲课" width="200" height="169">' +
       '<div><h2 id="h-safe"><span aria-hidden="true">⚠️</span> 操作前先记住</h2><ul class="checks">' +
@@ -151,7 +165,8 @@
       '<a class="qcard lilac" href="#/c/12"><span class="qi" aria-hidden="true">💬</span><strong>币圈话术翻译器</strong><span>正经术语与社区玩梗分开看</span></a>' +
       '<a class="qcard mint" href="#/c/15"><span class="qi" aria-hidden="true">✅</span><strong>练习与自测</strong><span>安全自测、盈亏计算器、转账清单</span></a>' +
       '</div><img class="quick-img" src="assets/img/panda-phone.png" alt="拿着手机的小熊猫" width="140" height="137"></section>';
-    bindSearch($('#q-home'), $('.hero .search-results'));
+    bindSearch($('#q-home'), $('.hero-full .search-results'));
+    var sh = $('.scroll-hint'); sh.addEventListener('click', function (e) { e.preventDefault(); $('#h-toc').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); });
     var cp = $('#clear-p');
     if (cp) cp.addEventListener('click', function () {
       if (confirm('确定清除本浏览器里保存的学习进度吗？')) { try { localStorage.removeItem(KEY); } catch (e) { } renderHome(); $('#h-toc').focus && $('#h-toc').scrollIntoView(); }
@@ -371,11 +386,17 @@
   function route() {
     var h = location.hash, m = h.match(/^#\/c\/(\d\d)(?:\/(\d+))?/);
     $$('.topbar .search-results').forEach(function (b) { b.hidden = true; });
-    if (m) renderChapter(m[1], m[2] != null ? +m[2] : null);
+    var rm = h.match(/^#\/r\/(\w+)/);
+    document.body.classList.toggle('is-home', !m && !rm);
+    if (rm) renderRoute(rm[1]);
+    else if (m) renderChapter(m[1], m[2] != null ? +m[2] : null);
     else { renderHome(); window.scrollTo(0, 0); }
+    setHdr();
     $$('.topnav a').forEach(function (a) { a.toggleAttribute('aria-current', a.getAttribute('href') === (m ? '#/c/' + m[1] : '#/')); });
     if (h && h !== '#/' && !(m && m[2])) main.focus({ preventScroll: true });
   }
+  function setHdr() { document.documentElement.style.setProperty('--hdr', $('.topbar').offsetHeight + 'px'); }
+  window.addEventListener('resize', setHdr);
   window.addEventListener('hashchange', route);
   renderFooter();
   route();
