@@ -16,6 +16,11 @@ window.SITE_CONFIG = {
   /* 链接核验记录：只有在浏览器中真实打开并通过官方渠道确认后，才按 '网址': 'YYYY-MM-DD' 填写。
      未填写的链接在页面上一律显示「待核验」。不要编造日期。 */
   verified: {
+    'https://www.panewslab.com/zh': '2026-10-15',
+    'https://www.odaily.news/zh-CN': '2026-10-15',
+    'https://www.theblockbeats.info/': '2026-10-15',
+    'https://www.coindesk.com/': '2026-10-15',
+    'https://www.theblock.co/': '2026-10-15',
     'https://academy.binance.com/': '2026-10-15',
     'https://accounts.binance.info/zh-CN/register?ref=I1GN6RMJ': '2026-10-15',
     'https://arbiscan.io/': '2026-10-15',
@@ -47,13 +52,25 @@ window.SITE_CONFIG = {
     'https://x.com/0xMayyy': '2026-10-15'
   },
 
+  /* 专属邀请链接：页面上显示「专属邀请链接」小标签。
+     只有在确认该邀请链接注册后确实享有手续费减免时，才把 feeDiscount 改为 true，
+     标签会变成「专属邀请链接 · 注册享手续费减免」。 */
+  referrals: {
+    'https://accounts.binance.info/zh-CN/register?ref=I1GN6RMJ': { feeDiscount: false },
+    'https://partner.bybit.com/b/0xmay': { feeDiscount: false },
+    'https://www.gatewebsite.app/share/u1dgb10j': { feeDiscount: false },
+    'https://www.htx.com/invite/zh-cn/1h?invite_code=jdz98223': { feeDiscount: false },
+    'https://web3.binance.com/referral?ref=BFSADLNM': { feeDiscount: false },
+    'https://debot.ai/r/0xMay': { feeDiscount: false }
+  },
+
   /* CEX 邀请注册入口（用户提供的邀请链接，保留参数，勿改成官网首页）。
      enabled: false 可临时停用某个按钮。 */
   exchanges: [
-    { name: 'Binance', intro: '了解币安的交易、账户服务与注册规则', url: 'https://accounts.binance.info/zh-CN/register?ref=I1GN6RMJ', enabled: true },
-    { name: 'Bybit', intro: '了解 Bybit 的交易产品与注册规则', url: 'https://partner.bybit.com/b/0xmay', enabled: true },
-    { name: 'Gate', intro: '了解 Gate 的交易服务与注册规则', url: 'https://www.gatewebsite.app/share/u1dgb10j', enabled: true },
-    { name: 'HTX', intro: '了解 HTX 的交易服务与注册规则', url: 'https://www.htx.com/invite/zh-cn/1h?invite_code=jdz98223', enabled: true }
+    { name: 'Binance', mainDomain: 'binance.com', intro: '了解币安的交易、账户服务与注册规则', url: 'https://accounts.binance.info/zh-CN/register?ref=I1GN6RMJ', enabled: true },
+    { name: 'Bybit', mainDomain: 'bybit.com', intro: '了解 Bybit 的交易产品与注册规则', url: 'https://partner.bybit.com/b/0xmay', enabled: true },
+    { name: 'Gate', mainDomain: 'gate.com', intro: '了解 Gate 的交易服务与注册规则', url: 'https://www.gatewebsite.app/share/u1dgb10j', enabled: true },
+    { name: 'HTX', mainDomain: 'htx.com', intro: '了解 HTX 的交易服务与注册规则', url: 'https://www.htx.com/invite/zh-cn/1h?invite_code=jdz98223', enabled: true }
   ],
 
   /* 搜索别名：同一组里的词互相等价 */

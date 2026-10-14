@@ -132,7 +132,7 @@
     var n = doneCount();
     main.innerHTML =
       '<section class="hero-full" aria-labelledby="h-hero"><div class="hero-inner">' +
-      '<img class="hero-bear" src="assets/img/panda.jpg?v=20261015015220" alt="戴眼镜挥手的小熊猫" width="220" height="214">' +
+      '<img class="hero-bear" src="assets/img/panda.jpg?v=20261015034240" alt="戴眼镜挥手的小熊猫" width="220" height="214">' +
       '<h1 id="h-hero">Web3 新手村 <span aria-hidden="true">🧸</span></h1>' +
       '<p class="lead">币圈名词太多，看不懂也没关系。</p>' +
       '<p class="intro">从「什么是币圈」开始，慢慢学会买币、看懂交易、使用钱包和保护资产。这里把绕口的名词翻译成人话，也把容易踩的坑提前摆出来。</p>' +
@@ -153,7 +153,7 @@
       '<ol class="toc">' + CH.map(chapterCard).join('') + '</ol>' +
       '<p class="note">学习进度只保存在你当前的浏览器里，本站不收集任何个人信息。</p></section>' +
 
-      '<section class="block safety" aria-labelledby="h-safe"><img src="assets/img/panda-teacher.png?v=20261015015220" alt="熊猫老师在黑板前讲课" width="200" height="169">' +
+      '<section class="block safety" aria-labelledby="h-safe"><img src="assets/img/panda-teacher.png?v=20261015034240" alt="熊猫老师在黑板前讲课" width="200" height="169">' +
       '<div><h2 id="h-safe"><span aria-hidden="true">⚠️</span> 操作前先记住</h2><ul class="checks">' +
       ['不把助记词和私钥交给任何人。', '不因为「稳赚」「翻倍」「名额有限」就急着转钱。', '转账前检查资产、网络、地址和 Memo / Tag。', '收录的平台和工具不等于安全担保。', '不懂签名内容，就先停下来。']
         .map(function (t) { return '<li><span class="ico" aria-hidden="true">🛡️</span>' + esc(t) + '</li>'; }).join('') +
@@ -164,7 +164,7 @@
       '<a class="qcard pink" href="#/c/05"><span class="qi" aria-hidden="true">🏦</span><strong>CEX 交易所导航</strong><span>常用交易所注册入口与选择要点</span></a>' +
       '<a class="qcard lilac" href="#/c/12"><span class="qi" aria-hidden="true">💬</span><strong>币圈话术翻译器</strong><span>正经术语与社区玩梗分开看</span></a>' +
       '<a class="qcard mint" href="#/c/15"><span class="qi" aria-hidden="true">✅</span><strong>练习与自测</strong><span>安全自测、盈亏计算器、转账清单</span></a>' +
-      '</div><img class="quick-img" src="assets/img/panda-phone.png?v=20261015015220" alt="拿着手机的小熊猫" width="140" height="137"></section>';
+      '</div><img class="quick-img" src="assets/img/panda-phone.png?v=20261015034240" alt="拿着手机的小熊猫" width="140" height="137"></section>';
     bindSearch($('#q-home'), $('.hero-full .search-results'));
     var sh = $('.scroll-hint'); sh.addEventListener('click', function (e) { e.preventDefault(); $('#h-toc').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); });
     var cp = $('#clear-p');
@@ -191,7 +191,7 @@
       c.sections.map(function (s, i) {
         return '<details class="sec" id="s' + i + '" open><summary><h2>' + esc(s.title) + '</h2></summary><div class="sec-body">' + s.html + '</div></details>';
       }).join('') +
-      (c.tip ? '<aside class="tip"><img src="assets/img/panda.jpg?v=20261015015220" alt="" width="64" height="62"><p>' + esc(c.tip) + '</p></aside>' : '') +
+      (c.tip ? '<aside class="tip"><img src="assets/img/panda.jpg?v=20261015034240" alt="" width="64" height="62"><p>' + esc(c.tip) + '</p></aside>' : '') +
       '<div class="done-box"><button class="btn ' + (isDone(c.id) ? 'btn-ghost' : '') + '" id="done-btn" aria-pressed="' + isDone(c.id) + '">' + (isDone(c.id) ? '✓ 已学完（点击取消）' : '🎉 标记本章为已学完') + '</button></div>' +
       '<nav class="pager" aria-label="翻页">' +
       (prev ? '<a class="pg prev" href="#/c/' + prev.id + '"><small>← 上一章</small>' + prev.id + ' ' + esc(prev.title) + '</a>' : '<span></span>') +
@@ -209,8 +209,22 @@
     } else { window.scrollTo(0, 0); }
   }
 
+  /* ---------- 专属邀请链接标签 ---------- */
+  function refTag(u) {
+    var r = (C.referrals || {})[u];
+    if (!r) return '';
+    return '<span class="ref-tag">专属邀请链接' + (r.feeDiscount ? ' · 注册享手续费减免' : '') + '</span>';
+  }
+  function applyRef(root) {
+    $$('.tool-card', root).forEach(function (card) {
+      var v = $('.verify[data-url]', card); if (!v || $('.ref-tag', card)) return;
+      var t = refTag(v.dataset.url); if (t) $('.tool-head strong', card).insertAdjacentHTML('afterend', t);
+    });
+  }
+
   /* ---------- 核验状态 ---------- */
   function applyVerify(root) {
+    applyRef(root);
     $$('.verify[data-url]', root).forEach(function (v) {
       var d = C.verified[v.dataset.url];
       if (d) { v.textContent = '✓ 已核验 ' + d; v.classList.add('ok'); v.title = '最近核验日期：' + d; }
@@ -229,7 +243,9 @@
     el.innerHTML = '<div class="ex-grid">' + C.exchanges.map(function (x) {
       return '<div class="ex-card"><div class="ex-head"><h3>' + esc(x.name) + '</h3><span class="verify" data-url="' + esc(x.url) + '"></span></div>' +
         '<p>' + esc(x.intro) + '</p>' +
+        refTag(x.url) +
         '<p class="domain">域名：<b>' + esc(host(x.url)) + '</b></p>' +
+        (x.mainDomain && !(host(x.url) === x.mainDomain || host(x.url).slice(-x.mainDomain.length - 1) === '.' + x.mainDomain) ? '<p class="promo-domain">这是平台的推广注册域名，注册后请在官方 App 里核对账户。</p>' : '') +
         (x.enabled ? '<a class="btn btn-sm" href="' + esc(x.url) + '" target="_blank" rel="noopener noreferrer nofollow">注册 ↗<span class="sr">（新窗口，' + esc(host(x.url)) + '）</span></a>' : '<span class="btn btn-sm disabled" aria-disabled="true">入口暂停使用</span>') +
         '<p class="ex-warn"><span aria-hidden="true">⚠️</span> 注册前核对真实域名、地区要求、账户条款与安全设置。</p></div>';
     }).join('') + '</div>';
@@ -338,7 +354,7 @@
     el.className = 'btn-row';
     var reg = C.exchanges.filter(function (x) { return x.name === 'Binance'; })[0].url, wal = 'https://web3.binance.com/referral?ref=BFSADLNM';
     el.innerHTML = [['注册币安', reg], ['币安钱包', wal]].map(function (b) {
-      return '<a class="btn btn-sm" href="' + esc(b[1]) + '" target="_blank" rel="noopener noreferrer nofollow">' + b[0] + ' ↗<span class="btn-domain">' + esc(host(b[1])) + '</span></a>';
+      return '<span class="ref-btn"><a class="btn btn-sm" href="' + esc(b[1]) + '" target="_blank" rel="noopener noreferrer nofollow">' + b[0] + ' ↗<span class="btn-domain">' + esc(host(b[1])) + '</span></a>' + refTag(b[1]) + '</span>';
     }).join('');
   };
   function mountWidgets(root) {
@@ -358,7 +374,7 @@
   }
   function renderFooter() {
     var fb = C.feedback || {}, link = fb.url || (fb.email ? 'mailto:' + fb.email : '');
-    $('#footer').innerHTML = '<div class="footer-in"><img src="assets/img/panda-phone.png?v=20261015015220" alt="" width="72" height="70">' +
+    $('#footer').innerHTML = '<div class="footer-in"><img src="assets/img/panda-phone.png?v=20261015034240" alt="" width="72" height="70">' +
       '<div><p class="f-title"><strong>慢慢学，不用急着上车。🧸</strong></p>' +
       '<p class="contacts">联系站长：' + contactLinks() + '</p>' +
       (link ? '<p>发现错误或失效链接？欢迎反馈，帮助新手村一起变得更好。</p><a class="btn btn-sm" href="' + esc(link) + '"' + (fb.url ? ' target="_blank" rel="noopener noreferrer"' : '') + '>📮 反馈问题</a>' : '') +
@@ -370,10 +386,10 @@
     var d = C.donate, dlg = $('#donate');
     if (!dlg) {
       dlg = document.createElement('dialog'); dlg.id = 'donate'; dlg.setAttribute('aria-labelledby', 'donate-h');
-      dlg.innerHTML = '<button class="dlg-x" aria-label="关闭">×</button><img class="dlg-bear" src="assets/img/bear.jpg?v=20261015015220" alt="" width="72" height="70">' +
+      dlg.innerHTML = '<button class="dlg-x" aria-label="关闭">×</button><img class="dlg-bear" src="assets/img/bear.jpg?v=20261015034240" alt="" width="72" height="70">' +
         '<h2 id="donate-h">请小熊喝杯奶茶 🧋</h2><p class="w-note">觉得新手村有帮助，可以随意打赏，完全自愿～</p>' +
         '<p class="chain">网络：<b>' + esc(d.chain) + '</b></p>' +
-        '<img class="qr" src="assets/img/donate-qr.svg?v=20261015015220" alt="打赏地址二维码" width="180" height="180">' +
+        '<img class="qr" src="assets/img/donate-qr.svg?v=20261015034240" alt="打赏地址二维码" width="180" height="180">' +
         '<code class="addr">' + esc(d.address) + '</code>' +
         '<button class="btn btn-sm" id="copy-addr">📋 复制地址</button><p class="copied" role="status" aria-live="polite"></p>' +
         '<p class="dlg-warn"><span aria-hidden="true">⚠️</span> 仅支持 BNB Chain（BEP-20）网络，转账前请核对完整地址与网络。</p>';

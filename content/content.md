@@ -878,7 +878,24 @@ DEX Screener：https://dexscreener.com/
 ## 看新闻
 
 TradingKey：https://www.tradingkey.com/zh-hans/news/cryptocurrencies
-用途：浏览加密货币相关新闻资讯。新闻与观点不等于投资建议，重要消息以项目或机构官方公告为准。
+用途：浏览加密货币相关新闻资讯（中文）。
+
+PANews：https://www.panewslab.com/zh
+用途：中文区块链与加密市场资讯、快讯。
+
+Odaily 星球日报：https://www.odaily.news/zh-CN
+用途：中文区块链与加密货币资讯、快讯与深度文章。
+
+BlockBeats 律动：https://www.theblockbeats.info/
+用途：中文加密行业快讯与深度报道。
+
+CoinDesk：https://www.coindesk.com/
+用途：英文加密货币新闻与行情资讯。
+
+The Block：https://www.theblock.co/
+用途：英文加密行业新闻、数据与研究。
+
+使用提示：新闻与观点不等于投资建议，媒体也可能刊登赞助内容；重要消息以项目或机构官方公告为准。
 
 ## 签名与交易安全辅助
 
