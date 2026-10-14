@@ -399,7 +399,6 @@ DEX 也有中心化环节。前端、管理员、预言机和其他组件同样�
 > 📰 **真实案例：FTX 爆雷（2022 年）**
 > FTX 当时是全球交易量第三的交易所。2022 年 11 月 2 日被曝出资产负债表问题，6 天后（11 月 8 日）就停止了所有加密资产提现，前 72 小时用户已提走约 60 亿美元。创始人 SBF 后来被判 25 年。
 > **教训：大平台也会出事：平时多留意交易所的新闻和公告，看到提现变慢、负面消息变多，就先把资产转出来。**
-> 来源：[CoinDesk 11/2 报道](https://www.coindesk.com/business/2022/11/02/divisions-in-sam-bankman-frieds-crypto-empire-blur-on-his-trading-titan-alamedas-balance-sheet)、[CNBC](https://www.cnbc.com/2022/11/08/cryptocurrencies-slide-as-worries-about-ftx-fester-in-latest-crypto-liquidity-scare.html)、[CoinDesk 停提报道](https://www.coindesk.com/business/2022/11/08/ftx-exchange-halts-all-crypto-withdrawals)、[Reuters](https://www.reuters.com/business/finance/crypto-exchange-ftx-saw-6-bln-withdrawals-72-hours-ceo-message-staff-2022-11-08/)、[美国司法部](https://www.justice.gov/archives/opa/pr/samuel-bankman-fried-sentenced-25-years-his-orchestration-multiple-fraudulent-schemes)
 
 小提醒：点击之前看域名，开户之前看规则，存钱之前想清楚平台风险。
 
@@ -672,7 +671,6 @@ Stoch RSI：对 RSI 再做随机指标处理，通常更敏感。
 > 📰 **真实案例：一个签名，约 139 万美元没了（2024 年 10 月）**
 > 一位 PEPE 持有人在钓鱼网站上签了一个 Uniswap Permit2 链下签名（不花 Gas），大约一小时后，钱包里的 PEPE 等代币价值约 139 万美元就被转走。同月还有人因 Permit 钓鱼签名损失 15,079 枚 fwdETH（约 3600 万美元）。
 > **教训：「不收 Gas」的签名也能把币转走，看不懂就别签。**
-> 来源：[Decrypt](https://decrypt.co/286076/pepe-uniswap-permit2-phishing-attack)
 
 ## 用什么工具辅助检查签名？
 
@@ -727,8 +725,7 @@ P2P 买卖时收到来源不干净的钱，银行卡可能被冻结，甚至被�
 先和你聊感情，或拉你进「带单群」，再引导你到假平台充值。前期让你小赚，等你加大投入后就提不了现。网上认识的人带你投资，一律当骗局。
 
 **3. 高价收 U 和跑分**
-有人高价收你的 U，或让你出借银行卡、账户帮忙收款转账，其实是借你的账户洗钱。帮人跑分、出借银行卡收 U，轻则构成帮助信息网络犯罪活动罪（帮信罪），重则构成掩饰、隐瞒犯罪所得罪，最高检有公开判例。
-来源：[最高检：以买卖虚拟货币、「跑分」掩饰隐瞒犯罪所得](https://www.spp.gov.cn/spp/llyj/202209/t20220913_577138.shtml)、[「两高」掩饰、隐瞒犯罪所得典型案例](https://www.spp.gov.cn/spp/xwfbh/dxal/202508/t20250825_704588.shtml)
+有人高价收你的 U，或让你出借银行卡、账户帮忙收款转账，其实是借你的账户洗钱。帮人跑分、出借银行卡收 U，可能构成帮信罪，情节严重的还可能构成掩饰、隐瞒犯罪所得罪。
 
 ## 防止剪贴板泄露
 
@@ -781,7 +778,6 @@ API 密钥也是秘密。未来需要自动化时，使用最小权限；交易�
 > 📰 **真实案例：地址投毒，一次转错 6800 万美元（2024 年 5 月）**
 > 骗子先给受害人转一笔小额交易，让一个**前 6 位和后 6 位都和真地址一样**的假地址混进转账记录。受害人复制了这个假地址，把 1,155 枚 WBTC（约 6800 万美元）转了过去。后来经过谈判，骗子退回了大部分资金——这是极少见的幸运，绝大多数情况追不回来。
 > **教训：不要从转账记录里复制地址，每次都核对完整地址。**
-> 来源：[CoinDesk](https://www.coindesk.com/business/2024/05/03/exploiter-steals-68m-worth-of-crypto-through-address-poisoning)、[Cointelegraph](https://cointelegraph.com/news/wbtc-address-poisoner-all-funds-negotiations)
 
 同时检查最低充值额、费用、网络暂停与确认要求。小额试转需高于相关最低要求，到账后再处理剩余金额。
 
