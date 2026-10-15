@@ -146,7 +146,7 @@
     var n = doneCount();
     main.innerHTML =
       '<section class="hero-full" aria-labelledby="h-hero"><div class="hero-inner">' +
-      '<img class="hero-bear" src="assets/img/panda.jpg?v=20261015150120" alt="戴眼镜挥手的小熊猫" width="220" height="214">' +
+      '<img class="hero-bear" src="assets/img/panda.jpg?v=20261015151408" alt="戴眼镜挥手的小熊猫" width="220" height="214">' +
       '<h1 id="h-hero">Web3 新手村 <span aria-hidden="true">🧸</span></h1>' +
       '<p class="lead">币圈名词太多，看不懂也没关系。</p>' +
       '<p class="intro">从「什么是币圈」开始，慢慢学会买币、看懂交易、使用钱包和保护资产。这里把绕口的名词翻译成人话，也把容易踩的坑提前摆出来。</p>' +
@@ -167,7 +167,7 @@
       '<ol class="toc">' + CH.map(chapterCard).join('') + '</ol>' +
       '<p class="note">学习进度只保存在你当前的浏览器里，本站不收集任何个人信息。</p></section>' +
 
-      '<section class="block safety" aria-labelledby="h-safe"><img src="assets/img/panda-teacher.png?v=20261015150120" alt="熊猫老师在黑板前讲课" width="200" height="169">' +
+      '<section class="block safety" aria-labelledby="h-safe"><img src="assets/img/panda-teacher.png?v=20261015151408" alt="熊猫老师在黑板前讲课" width="200" height="169">' +
       '<div><h2 id="h-safe"><span aria-hidden="true">⚠️</span> 操作前先记住</h2><ul class="checks">' +
       ['不把助记词和私钥交给任何人。', '不因为「稳赚」「翻倍」「名额有限」就急着转钱。', '转账前检查资产、网络、地址和 Memo / Tag。', '收录的平台和工具不等于安全担保。', '不懂签名内容，就先停下来。']
         .map(function (t) { return '<li><span class="ico" aria-hidden="true">🛡️</span>' + esc(t) + '</li>'; }).join('') +
@@ -178,7 +178,7 @@
       '<a class="qcard pink" href="#/c/05"><span class="qi" aria-hidden="true">🏦</span><strong>CEX 交易所导航</strong><span>常用交易所注册入口与选择要点</span></a>' +
       '<a class="qcard lilac" href="#/c/13"><span class="qi" aria-hidden="true">💬</span><strong>币圈话术翻译器</strong><span>正经术语与社区玩梗分开看</span></a>' +
       '<a class="qcard mint" href="#/c/16"><span class="qi" aria-hidden="true">✅</span><strong>练习与自测</strong><span>安全自测、盈亏计算器、转账清单</span></a>' +
-      '</div><img class="quick-img" src="assets/img/panda-phone.png?v=20261015150120" alt="拿着手机的小熊猫" width="140" height="137"></section>';
+      '</div><img class="quick-img" src="assets/img/panda-phone.png?v=20261015151408" alt="拿着手机的小熊猫" width="140" height="137"></section>';
     bindSearch($('#q-home'), $('.hero-full .search-results'));
     var sh = $('.scroll-hint'); sh.addEventListener('click', function (e) { e.preventDefault(); $('#h-toc').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); });
     var cp = $('#clear-p');
@@ -205,7 +205,7 @@
       c.sections.map(function (s, i) {
         return '<details class="sec" id="s' + i + '" open><summary><h2>' + esc(s.title) + '</h2></summary><div class="sec-body">' + s.html + '</div></details>';
       }).join('') +
-      (c.tip ? '<aside class="tip"><img src="assets/img/panda.jpg?v=20261015150120" alt="" width="64" height="62"><p>' + esc(c.tip) + '</p></aside>' : '') +
+      (c.tip ? '<aside class="tip"><img src="assets/img/panda.jpg?v=20261015151408" alt="" width="64" height="62"><p>' + esc(c.tip) + '</p></aside>' : '') +
       '<div class="done-box"><button class="btn ' + (isDone(c.id) ? 'btn-ghost' : '') + '" id="done-btn" aria-pressed="' + isDone(c.id) + '">' + (isDone(c.id) ? '✓ 已学完（点击取消）' : '🎉 标记本章为已学完') + '</button></div>' +
       '<nav class="pager" aria-label="翻页">' +
       (prev ? '<a class="pg prev" href="#/c/' + prev.id + '"><small>← 上一章</small>' + prev.id + ' ' + esc(prev.title) + '</a>' : '<span></span>') +
@@ -274,17 +274,18 @@
   };
   /* CEX 储备排行：DefiLlama 公开接口 https://api.llama.fi/cexs（无需 key，CORS 开放）。每次打开页面重新拉取，本地缓存最多 10 分钟，失败时回退缓存 */
   function renderCex() {
-    var KEY = 'cexrank-v2', TTL = 10 * 60 * 1000, mine = ['Binance', 'Bybit', 'Gate', 'HTX'];
+    var CLEAN_LABEL = '净资产', TOP_N = 20;
+    var KEY = 'cexrank-v3', TTL = 10 * 60 * 1000, mine = ['Binance', 'Bybit', 'Gate', 'HTX'];
     var COLS = [
-      ['name', '交易所', 's'], ['currentTvl', '链上储备', 'u'], ['cleanAssetsTvl', '去除平台币后', 'u'],
+      ['name', '交易所', 's'], ['currentTvl', '链上储备', 'u'], ['cleanAssetsTvl', CLEAN_LABEL, 'u'],
       ['inflows_24h', '24h 净流入', 'f'], ['inflows_1w', '7 天净流入', 'f'], ['inflows_1m', '30 天净流入', 'f'],
       ['spotVolume', '现货 24h 成交量', 'u'], ['derivVolume', '永续 24h 成交量', 'u'], ['oi', '永续持仓量 OI', 'u'],
       ['leverage', '平均杠杆', 'x'], ['auditor', '审计机构', 's'], ['lastAuditDate', '最近审计', 'd']
     ];
-    var st = { k: 'cleanAssetsTvl', dir: -1, q: '' }, rows = [], meta = {};
+    var st = { k: 'currentTvl', dir: -1, q: '' }, rows = [], meta = {};
     document.title = 'CEX 储备排行｜Web3 新手村';
     main.innerHTML = '<div class="cex-page"><nav class="crumbs" aria-label="位置"><a href="#/">首页</a> › <span>CEX 储备排行</span></nav>' +
-      '<h1>📊 CEX 储备排行</h1><p class="lead">各家中心化交易所公开链上钱包里的资产、净流入与成交数据。</p>' +
+      '<h1>📊 CEX 储备排行</h1><p class="lead">链上储备前 20 的中心化交易所：公开链上钱包里的资产、净流入与成交数据。</p>' +
       '<div class="cex-tools"><label class="sr" for="cex-q">搜索交易所</label><input id="cex-q" type="search" placeholder="搜索交易所…" autocomplete="off"><span id="cex-count" class="w-note"></span></div>' +
       '<div class="widget cexboard"><div id="cex-body"><p class="w-note">加载中…</p></div></div>' +
       '<p class="w-note" id="cex-src">数据来源：<a href="https://defillama.com/cexs" target="_blank" rel="noopener noreferrer">DefiLlama（约每小时更新）↗</a><span id="cex-time"></span></p></div>';
@@ -295,8 +296,7 @@
     }
     function cell(x, c) {
       var v = x[c[0]];
-      if (c[0] === 'name') return '<td class="nm">' + (x.url ? '<a href="' + esc(x.url) + '" target="_blank" rel="noopener noreferrer nofollow">' + esc(v) + '</a>' : esc(v)) +
-        (x.slug ? ' <a class="cex-stats" href="https://defillama.com/cex/' + encodeURIComponent(x.slug) + '" target="_blank" rel="noopener noreferrer" title="DefiLlama 详情">详情</a>' : '') + '</td>';
+      if (c[0] === 'name') return '<td class="nm">' + esc(v) + '</td>';
       if (v == null || v === '') return '<td class="na">–</td>';
       if (c[2] === 'u') return '<td>' + money(v) + '</td>';
       if (c[2] === 'f') return '<td class="' + (v >= 0 ? 'pos' : 'neg') + '">' + (v > 0 ? '+' : '') + money(v) + '</td>';
@@ -332,8 +332,8 @@
     if (c && Date.now() - c.t < TTL) { show(c.rows, c.t); return; }
     if (c && c.rows) show(c.rows, c.t);
     fetch('https://api.llama.fi/cexs').then(function (r) { if (!r.ok) throw r.status; return r.json(); }).then(function (d) {
-      var keep = COLS.map(function (x) { return x[0]; }).concat(['slug', 'url', 'auditLink']);
-      var list = (d.cexs || []).filter(function (x) { return x.name; }).map(function (x) { var o = {}; keep.forEach(function (k) { if (x[k] != null) o[k] = x[k]; }); return o; });
+      var keep = COLS.map(function (x) { return x[0]; }).concat(['auditLink']);
+      var list = (d.cexs || []).filter(function (x) { return x.name; }).map(function (x) { var o = {}; keep.forEach(function (k) { if (x[k] != null) o[k] = x[k]; }); return o; }).sort(function (a, b) { return (b.currentTvl || 0) - (a.currentTvl || 0); }).slice(0, TOP_N);
       if (!list.length) throw 'empty';
       var t = Date.now(); try { localStorage.setItem(KEY, JSON.stringify({ t: t, rows: list })); } catch (e) {}
       if ($('#cex-body')) show(list, t);
@@ -467,7 +467,7 @@
   }
   function renderFooter() {
     var fb = C.feedback || {}, link = fb.url || (fb.email ? 'mailto:' + fb.email : '');
-    $('#footer').innerHTML = '<div class="footer-in"><img src="assets/img/panda-phone.png?v=20261015150120" alt="" width="72" height="70">' +
+    $('#footer').innerHTML = '<div class="footer-in"><img src="assets/img/panda-phone.png?v=20261015151408" alt="" width="72" height="70">' +
       '<div><p class="disclaimer">本站内容仅供学习参考，不构成投资建议。加密资产波动大，请只用自己能承受损失的钱参与。</p>' +
       '<p class="contacts">联系站长：' + contactLinks() + '</p>' +
       '</div></div>';
@@ -478,12 +478,12 @@
     var dlg = $('#donate');
     if (!dlg) {
       dlg = document.createElement('dialog'); dlg.id = 'donate'; dlg.setAttribute('aria-labelledby', 'donate-h');
-      dlg.innerHTML = '<button class="dlg-x" aria-label="关闭">×</button><img class="dlg-bear" src="assets/img/bear-milktea.jpg?v=20261015150120" alt="" width="80" height="80">' +
+      dlg.innerHTML = '<button class="dlg-x" aria-label="关闭">×</button><img class="dlg-bear" src="assets/img/bear-milktea.jpg?v=20261015151408" alt="" width="80" height="80">' +
         '<h2 id="donate-h">请小熊喝杯奶茶 🧋</h2><p class="w-note">觉得新手村有帮助，可以随意打赏，完全自愿～</p>' +
         '<div class="seg don-tabs" role="tablist" aria-label="选择网络">' + C.donate.map(function (d, i) { return '<button role="tab" aria-selected="' + (i === 0) + '" data-d="' + i + '">' + esc(d.chain) + '</button>'; }).join('') + '</div>' +
         C.donate.map(function (d, i) {
           return '<div class="don-pane" data-p="' + i + '"' + (i ? ' hidden' : '') + '><p class="chain">网络：<b>' + esc(d.chain) + '</b></p>' +
-            '<img class="qr" src="assets/img/donate-qr-?v=20261015150120' + d.key + '.svg?v=20261015142528" alt="' + esc(d.chain) + ' 打赏地址二维码" width="180" height="180">' +
+            '<img class="qr" src="assets/img/donate-qr-?v=20261015151408' + d.key + '.svg?v=20261015142528" alt="' + esc(d.chain) + ' 打赏地址二维码" width="180" height="180">' +
             '<code class="addr" data-addr="' + esc(d.key) + '">' + esc(d.address) + '</code>' +
             '<button class="btn btn-sm copy-addr" data-i="' + i + '">📋 复制地址</button>' +
             '<p class="dlg-warn"><span aria-hidden="true">⚠️</span> 仅支持 ' + esc(d.chain) + ' 网络，转账前请核对完整地址与网络。</p></div>';

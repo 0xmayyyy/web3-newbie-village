@@ -364,3 +364,14 @@ details.more-tools>summary{cursor:pointer;font-weight:600;color:#7a5c3a;padding:
 .cexboard td.na{color:#b8aca0}
 .th-sort{font:inherit;font-weight:700;background:none;border:0;color:var(--ink);cursor:pointer;padding:0}
 .cex-stats{font-size:12px;color:var(--muted)}
+/* CEX 表格网格样式 */
+.cexboard table{border-collapse:collapse;border:1px solid #e6d6c2;background:#fff;font-variant-numeric:tabular-nums}
+.cexboard th,.cexboard td{border:1px solid #eadcca;padding:8px 12px}
+.cexboard thead th{background:var(--lilac);color:var(--lilac-d);position:sticky;top:0}
+.cexboard thead .th-sort{color:var(--lilac-d)}
+.cexboard tbody tr:nth-child(even) td{background:#fffaf3}
+.cexboard tbody tr:hover td{background:var(--yellow)}
+.cexboard tbody tr.hl td{background:#fff1c9}
+.cexboard td:first-child,.cexboard th:first-child{text-align:center;color:var(--muted)}
+.cexboard td.nm{font-weight:700}
+@media (max-width:600px){.cexboard th,.cexboard td{padding:6px 9px;font-size:13px}}
