@@ -418,3 +418,7 @@ details.more-tools>summary{cursor:pointer;font-weight:600;color:#7a5c3a;padding:
   .chalk-mascot{left:-4px;width:84px}
   .d-heart,.d-star2,.d-heart2,.d-swirl{display:none}
 }
+.cex-notes{margin:18px 0 8px;padding:14px 18px;border:1px solid var(--line,#e5dccb);border-radius:14px;background:var(--card,#fffaf0)}
+.cex-notes h2{font-size:1.05rem;margin:0 0 8px}
+.cex-notes ul{margin:0;padding-left:1.2em;line-height:1.75}
+.cex-notes li{margin:4px 0}
