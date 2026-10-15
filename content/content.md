@@ -377,15 +377,27 @@ DEX 也有中心化环节。前端、管理员、预言机和其他组件同样�
 
 这里只展示 Binance、Bybit、Gate 与 HTX。排序不代表安全性或推荐程度，使用前确认所在地是否支持注册及相关服务。
 
-| 平台 | 卡片介绍 | 邀请注册链接 |
-|---|---|---|
-| Binance | 了解币安的交易、账户服务与注册规则 | https://accounts.binance.info/zh-CN/register?ref=I1GN6RMJ |
-| Bybit | 了解 Bybit 的交易产品与注册规则 | https://partner.bybit.com/b/0xmay |
-| Gate | 了解 Gate 的交易服务与注册规则 | https://www.gatewebsite.app/share/u1dgb10j |
-| HTX | 了解 HTX 的交易服务与注册规则 | https://www.htx.com/invite/zh-cn/1h?invite_code=jdz98223 |
+| 平台 | 邀请注册链接 |
+|---|---|
+| Binance | https://accounts.binance.info/zh-CN/register?ref=I1GN6RMJ |
+| Bybit | https://partner.bybit.com/b/0xmay |
+| Gate | https://www.gatewebsite.app/share/u1dgb10j |
+| HTX | https://www.htx.com/invite/zh-cn/1h?invite_code=jdz98223 |
 
 卡片标记：专属邀请链接。
 卡片提示：这是平台的推广注册域名，注册后请在官方 App 里核对账户。
+
+## 链上交易工具
+
+**想直接在链上买卖代币，可以用这两个工具。**
+
+DeBot 与币安 Web3 钱包都用于在链上买卖已经发行的代币（二级市场），不是一级市场认购。链上新币风险很高，先读第 09 章再动手。
+
+## 交易所储备看板
+
+**看看各家交易所链上公开的储备有多少。**
+
+数据来自 DefiLlama 的 CEX 透明度数据，只统计交易所公开的链上钱包，不含负债，也不代表平台安全或推荐排序。
 
 ## 怎么选择？
 
@@ -1092,13 +1104,18 @@ DePIN 常指通过网络与激励组织现实基础设施，如算力、通信�
 
 ## 查价格与基础资料
 
-**查价格和市值，用这几个常用网站。**
+**查价格和市值，先用标了「新手首选」的那个。**
 
-CoinGecko：https://www.coingecko.com/
+★ CoinGecko：https://www.coingecko.com/
 用途：查看价格、市值、资产与市场资料。收录不代表项目安全，数据需要核对。
+
+@@MORE@@
 
 CoinMarketCap：https://coinmarketcap.com/
 用途：查看行情、供应量与交易市场。注意不同平台的供应量口径可能不同。
+
+DefiLlama：https://defillama.com/
+用途：查看 DeFi、TVL、交易所储备等数据。比较前看口径、时间和是否包含重复统计。
 
 TradingView：https://www.tradingview.com/
 用途：查看图表与技术指标。核对交易所、交易对与周期，社区观点不等于事实。
@@ -1107,41 +1124,45 @@ TradingView：https://www.tradingview.com/
 
 **查转账和地址，用对应链的区块浏览器。**
 
-Etherscan：https://etherscan.io/ — Ethereum 以太坊交易、地址与合约查询。
+★ Etherscan：https://etherscan.io/ — Ethereum 以太坊交易、地址与合约查询。
+
+@@MORE@@
+
 BscScan：https://bscscan.com/ — BNB Smart Chain 交易与合约查询。
 Solscan：https://solscan.io/ — Solana 交易与账户查询。
 mempool.space：https://mempool.space/ — Bitcoin 比特币交易、区块与手续费查询。
 TRONSCAN：https://tronscan.org/ — TRON 交易、账户与资源查询。
 Arbiscan：https://arbiscan.io/ — Arbitrum One 交易与合约查询。
 BaseScan：https://basescan.org/ — Base 网络交易与合约查询。
+Robinhood Chain（Blockscout）：https://robinhoodchain.blockscout.com/ — Robinhood Chain 主网交易、地址与合约查询（官方文档列出的浏览器）。
+Robinhood Chain（Etherscan）：https://robin.etherscan.io/ — Robinhood Chain 主网的 Etherscan 版浏览器。
 
 使用提示：浏览器与网络必须匹配；合约代码验证不等于安全审计，标签也不能代替身份核验。
 
-## 查 DeFi 与链上市场
+## 查链上交易对
 
-**查 DeFi 数据和链上交易对，用这两个工具。**
+**查链上新币和池子，用这个。**
 
-DefiLlama：https://defillama.com/
-用途：查看 DeFi、TVL 等数据。比较前看口径、时间和是否包含重复统计。
-
-DEX Screener：https://dexscreener.com/
+★ DEX Screener：https://dexscreener.com/
 用途：查看链上交易对、价格与池子活动。工具收录不代表代币能安全买卖。
 
 ## 看新闻
 
 **看新闻了解行业动态，重要消息以官方公告为准。**
 
-TradingKey：https://www.tradingkey.com/zh-hans/news/cryptocurrencies
-用途：浏览加密货币相关新闻资讯（中文）。
-
-PANews：https://www.panewslab.com/zh
+★ PANews：https://www.panewslab.com/zh
 用途：中文区块链与加密市场资讯、快讯。
+
+@@MORE@@
 
 Odaily 星球日报：https://www.odaily.news/zh-CN
 用途：中文区块链与加密货币资讯、快讯与深度文章。
 
 BlockBeats 律动：https://www.theblockbeats.info/
 用途：中文加密行业快讯与深度报道。
+
+TradingKey：https://www.tradingkey.com/zh-hans/news/cryptocurrencies
+用途：浏览加密货币相关新闻资讯（中文）。
 
 CoinDesk：https://www.coindesk.com/
 用途：英文加密货币新闻与行情资讯。
@@ -1151,26 +1172,29 @@ The Block：https://www.theblock.co/
 
 使用提示：新闻与观点不是投资建议，媒体也会刊登赞助内容；重要消息以项目或机构官方公告为准。
 
-## 签名与交易安全辅助
+## 签名与授权安全辅助
 
-**签名前可以用安全插件帮你把把关。**
+**签名前请插件把关，平时定期检查并撤销不用的授权。**
+
+★ Revoke.cash：https://revoke.cash/
+用途：检查支持网络上的部分资产授权，并按需要撤销。网络与权限类型覆盖有限；使用前核验域名与签名。私钥泄露时不能只靠撤销授权。
+
+@@MORE@@
 
 GoPlus：https://gopluslabs.io/en
 用途：从官网了解浏览器安全扩展和相关安全服务。检查当前覆盖范围，风险提示不能替代自己的核对。
-
-## 检查授权
-
-**定期检查并撤销不用的授权。**
-
-Revoke.cash：https://revoke.cash/
-用途：检查支持网络上的部分资产授权，并按需要撤销。网络与权限类型覆盖有限；使用前核验域名与签名。私钥泄露时不能只靠撤销授权。
 
 ## 学习资料
 
 **想深入学习，看这些官方资料。**
 
+★ Binance Academy：https://academy.binance.com/
+用途：中文友好的加密入门百科。
+
+@@MORE@@
+
 Ethereum 安全资料：https://ethereum.org/security/
-Binance Academy：https://academy.binance.com/
+用途：以太坊官方的安全与防骗指南。
 
 使用提示：官方资料适合核验概念与产品规则；平台自身的商业介绍仍需要辨别。
 

@@ -14,13 +14,17 @@ def link_html(u):
             f'<span class="ext-meta"><span class="domain">🌐 {esc(domain(u))}</span><span class="verify" data-url="{esc(u)}">⏳ 待核验</span></span>')
 
 def tool_html(name, u, desc, btn='打开官网'):
-    return (f'<div class="tool-card"><div class="tool-head"><strong>{esc(name)}</strong>'
+    pick = name.startswith('★ ')
+    if pick: name = name[2:]
+    return (f'<div class="tool-card"><div class="tool-head"><strong>{esc(name)}</strong>' + ('<span class="pick-tag">⭐ 新手首选</span>' if pick else '') +
             f'<span class="verify" data-url="{esc(u)}">⏳ 待核验</span></div>'
             f'<p>{esc(desc)}</p><p class="domain">域名：<b>{esc(domain(u))}</b></p>'
             f'<a class="btn btn-sm ext" href="{esc(u)}" target="_blank" rel="noopener noreferrer nofollow" data-url="{esc(u)}">{btn} ↗ <span class="sr">（新窗口，{esc(domain(u))}）</span></a></div>')
 
 WIDGETS = {
   ('05','邀请注册导航'): 'exchanges',
+  ('05','链上交易工具'): 'onchain',
+  ('05','交易所储备看板'): 'cexboard',
   ('16','安全自测'): 'quiz',
   ('16','模拟现货盈亏计算器'): 'calculator',
   ('16','转账前检查清单'): 'checklist',
@@ -32,11 +36,11 @@ def convert(body, cid, stitle):
         k = f'@@T{len(tokens)}@@'; tokens[k] = h; return '\n\n' + k + '\n\n'
     w = WIDGETS.get((cid, stitle))
     if w:  # 交互组件替换原文（组件内部完整使用原文文案）
-        if w == 'exchanges':
+        if w in ('exchanges', 'onchain', 'cexboard'):
             intro = body.split('|')[0].strip()
-            return markdown.markdown(intro) + '<div data-widget="exchanges"></div>'
+            return markdown.markdown(intro) + f'<div data-widget="{w}"></div>'
         return f'<div data-widget="{w}"></div>'
-    lines = body.split('\n'); out = []; i = 0
+    lines = body.split('\n'); out = []; i = 0; more = False
     while i < len(lines):
         ln = lines[i]
         m = re.match(r'^([^：\s-][^：]{0,30})：(https?://\S+)(?:\s+—\s+(.+))?$', ln.strip())
@@ -45,6 +49,8 @@ def convert(body, cid, stitle):
             if not desc and i+1 < len(lines) and lines[i+1].startswith('用途：'):
                 desc = lines[i+1]; i += 1
             out.append(tok(tool_html(m.group(1), m.group(2), desc, '打开官网' if cid == '14' else '前往'))); i += 1; continue
+        if ln.strip() == '@@MORE@@':
+            out.append(tok('@@MOREOPEN@@')); more = True; i += 1; continue
         if ln.startswith('按钮：阅读原文'):
             out.append(tok('<div data-widget="wpbuttons"></div>')); i += 1; continue
         if ln.startswith('按钮：注册币安'):
@@ -64,6 +70,11 @@ def convert(body, cid, stitle):
     for k, v in tokens.items():
         h = h.replace(f'<p>{k}</p>', v).replace(k, v)
     h = re.sub(r'((?:<div class="tool-card">.*?</a></div>\s*)+)', lambda m: '<div class="tool-grid">' + m.group(1) + '</div>', h, flags=re.S)
+    if more:
+        h = h.replace('@@MOREOPEN@@', '<details class="more-tools"><summary>更多工具（展开）</summary>', 1)
+        # 收起区在使用提示前结束
+        k = h.find('<p>使用提示', h.find('more-tools'))
+        h = h[:k] + '</details>' + h[k:] if k >= 0 else h + '</details>'
     h = h.replace('<table>', '<div class="table-wrap" tabindex="0"><table>').replace('</table>', '</table></div>')
     return h
 

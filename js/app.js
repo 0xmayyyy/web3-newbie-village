@@ -30,7 +30,7 @@
   var ROUTES = [
     { key: 'new', icon: '🧸', name: '我完全不懂', ids: ['01', '02', '03', '08', '09', '05'], desc: '先了解这个世界怎么运转，再认识常用 CEX 和注册入口，不需要马上买币。', cls: 'pink' },
     { key: 'buy', intro: true, icon: '🛒', name: '我想第一次买币', ids: ['05', '03', '09', '04', '06'], desc: '先掌握安全与交易基础，再用自己能承受损失的小额资金练习。', cls: 'mint' },
-    { key: 'protect', icon: '🛡️', name: '我已经有币，想保护资产', ids: ['08', '09', '10', '15'], desc: '重点了解资产保管、助记词、授权和转账检查。', cls: 'lilac' }
+    { key: 'protect', icon: '🛡️', name: '我已经有币，想保护资产', ids: ['08', '09', '10', '15'], desc: '重点了解资产保管、助记词、授权和转账检查，以及出了问题怎么处理。', cls: 'lilac' }
   ];
 
   /* ---------- 学习进度（仅存于本浏览器） ---------- */
@@ -146,7 +146,7 @@
     var n = doneCount();
     main.innerHTML =
       '<section class="hero-full" aria-labelledby="h-hero"><div class="hero-inner">' +
-      '<img class="hero-bear" src="assets/img/panda.jpg?v=20261015142528" alt="戴眼镜挥手的小熊猫" width="220" height="214">' +
+      '<img class="hero-bear" src="assets/img/panda.jpg?v=20261015145103" alt="戴眼镜挥手的小熊猫" width="220" height="214">' +
       '<h1 id="h-hero">Web3 新手村 <span aria-hidden="true">🧸</span></h1>' +
       '<p class="lead">币圈名词太多，看不懂也没关系。</p>' +
       '<p class="intro">从「什么是币圈」开始，慢慢学会买币、看懂交易、使用钱包和保护资产。这里把绕口的名词翻译成人话，也把容易踩的坑提前摆出来。</p>' +
@@ -167,7 +167,7 @@
       '<ol class="toc">' + CH.map(chapterCard).join('') + '</ol>' +
       '<p class="note">学习进度只保存在你当前的浏览器里，本站不收集任何个人信息。</p></section>' +
 
-      '<section class="block safety" aria-labelledby="h-safe"><img src="assets/img/panda-teacher.png?v=20261015142528" alt="熊猫老师在黑板前讲课" width="200" height="169">' +
+      '<section class="block safety" aria-labelledby="h-safe"><img src="assets/img/panda-teacher.png?v=20261015145103" alt="熊猫老师在黑板前讲课" width="200" height="169">' +
       '<div><h2 id="h-safe"><span aria-hidden="true">⚠️</span> 操作前先记住</h2><ul class="checks">' +
       ['不把助记词和私钥交给任何人。', '不因为「稳赚」「翻倍」「名额有限」就急着转钱。', '转账前检查资产、网络、地址和 Memo / Tag。', '收录的平台和工具不等于安全担保。', '不懂签名内容，就先停下来。']
         .map(function (t) { return '<li><span class="ico" aria-hidden="true">🛡️</span>' + esc(t) + '</li>'; }).join('') +
@@ -178,7 +178,7 @@
       '<a class="qcard pink" href="#/c/05"><span class="qi" aria-hidden="true">🏦</span><strong>CEX 交易所导航</strong><span>常用交易所注册入口与选择要点</span></a>' +
       '<a class="qcard lilac" href="#/c/13"><span class="qi" aria-hidden="true">💬</span><strong>币圈话术翻译器</strong><span>正经术语与社区玩梗分开看</span></a>' +
       '<a class="qcard mint" href="#/c/16"><span class="qi" aria-hidden="true">✅</span><strong>练习与自测</strong><span>安全自测、盈亏计算器、转账清单</span></a>' +
-      '</div><img class="quick-img" src="assets/img/panda-phone.png?v=20261015142528" alt="拿着手机的小熊猫" width="140" height="137"></section>';
+      '</div><img class="quick-img" src="assets/img/panda-phone.png?v=20261015145103" alt="拿着手机的小熊猫" width="140" height="137"></section>';
     bindSearch($('#q-home'), $('.hero-full .search-results'));
     var sh = $('.scroll-hint'); sh.addEventListener('click', function (e) { e.preventDefault(); $('#h-toc').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); });
     var cp = $('#clear-p');
@@ -205,7 +205,7 @@
       c.sections.map(function (s, i) {
         return '<details class="sec" id="s' + i + '" open><summary><h2>' + esc(s.title) + '</h2></summary><div class="sec-body">' + s.html + '</div></details>';
       }).join('') +
-      (c.tip ? '<aside class="tip"><img src="assets/img/panda.jpg?v=20261015142528" alt="" width="64" height="62"><p>' + esc(c.tip) + '</p></aside>' : '') +
+      (c.tip ? '<aside class="tip"><img src="assets/img/panda.jpg?v=20261015145103" alt="" width="64" height="62"><p>' + esc(c.tip) + '</p></aside>' : '') +
       '<div class="done-box"><button class="btn ' + (isDone(c.id) ? 'btn-ghost' : '') + '" id="done-btn" aria-pressed="' + isDone(c.id) + '">' + (isDone(c.id) ? '✓ 已学完（点击取消）' : '🎉 标记本章为已学完') + '</button></div>' +
       '<nav class="pager" aria-label="翻页">' +
       (prev ? '<a class="pg prev" href="#/c/' + prev.id + '"><small>← 上一章</small>' + prev.id + ' ' + esc(prev.title) + '</a>' : '<span></span>') +
@@ -256,13 +256,48 @@
   W.exchanges = function (el) {
     el.innerHTML = '<div class="ex-grid">' + C.exchanges.map(function (x) {
       return '<div class="ex-card"><div class="ex-head"><h3>' + esc(x.name) + '</h3><span class="verify" data-url="' + esc(x.url) + '"></span></div>' +
-        '<p>' + esc(x.intro) + '</p>' +
         refTag(x.url) +
         '<p class="domain">域名：<b>' + esc(host(x.url)) + '</b></p>' +
         (x.mainDomain && !(host(x.url) === x.mainDomain || host(x.url).slice(-x.mainDomain.length - 1) === '.' + x.mainDomain) ? '<p class="promo-domain">这是平台的推广注册域名，注册后请在官方 App 里核对账户。</p>' : '') +
         (x.enabled ? '<a class="btn btn-sm" href="' + esc(x.url) + '" target="_blank" rel="noopener noreferrer nofollow">注册 ↗<span class="sr">（新窗口，' + esc(host(x.url)) + '）</span></a>' : '<span class="btn btn-sm disabled" aria-disabled="true">入口暂停使用</span>') +
         '<p class="ex-warn"><span aria-hidden="true">⚠️</span> 注册前核对真实域名、地区要求、账户条款与安全设置。</p></div>';
     }).join('') + '</div>';
+  };
+  W.onchain = function (el) {
+    el.innerHTML = '<div class="ex-grid">' + (C.onchain || []).map(function (x) {
+      return '<div class="ex-card"><div class="ex-head"><h3>' + esc(x.name) + '</h3><span class="verify" data-url="' + esc(x.url) + '"></span></div>' +
+        '<p>' + esc(x.desc) + '</p>' + refTag(x.url) +
+        '<p class="domain">域名：<b>' + esc(host(x.url)) + '</b></p>' +
+        '<a class="btn btn-sm" href="' + esc(x.url) + '" target="_blank" rel="noopener noreferrer nofollow">打开 ↗<span class="sr">（新窗口，' + esc(host(x.url)) + '）</span></a>' +
+        '<p class="ex-warn"><span aria-hidden="true">⚠️</span> 链上买卖不可撤销，签名前看清合约地址与授权内容。</p></div>';
+    }).join('') + '</div>';
+  };
+  /* 交易所储备看板：DefiLlama 免费公开接口 https://api.llama.fi/cexs（无需 key，CORS 开放），本地缓存 6 小时 */
+  W.cexboard = function (el) {
+    var KEY = 'cexboard-v1', TTL = 6 * 3600 * 1000, mine = ['Binance', 'Bybit', 'Gate', 'HTX'];
+    el.className = 'widget cexboard';
+    el.innerHTML = '<p class="w-note">加载中…</p>';
+    function fmt(n) { return n >= 1e9 ? (n / 1e9).toFixed(1) + 'B' : (n / 1e6).toFixed(0) + 'M'; }
+    function draw(rows, t, stale) {
+      el.innerHTML = '<div class="table-wrap" tabindex="0"><table><thead><tr><th>#</th><th>交易所</th><th>链上储备（美元，去除平台币）</th><th>近 7 天净流入</th></tr></thead><tbody>' +
+        rows.map(function (x, i) {
+          var f = x.inflows_1w || 0;
+          return '<tr' + (mine.indexOf(x.name) >= 0 ? ' class="hl"' : '') + '><td>' + (i + 1) + '</td><td>' + esc(x.name) + '</td><td>$' + fmt(x.cleanAssetsTvl) + '</td><td class="' + (f >= 0 ? 'pos' : 'neg') + '">' + (f >= 0 ? '+' : '−') + '$' + fmt(Math.abs(f)) + '</td></tr>';
+        }).join('') + '</tbody></table></div>' +
+        '<p class="w-note">数据来源：<a href="https://defillama.com/cexs" target="_blank" rel="noopener noreferrer">DefiLlama CEX Transparency ↗</a> · 更新于 ' + new Date(t).toLocaleString('zh-CN', { hour12: false }) + (stale ? '（网络异常，显示的是缓存数据）' : '') + '。只统计公开链上钱包，不含负债，不代表安全或推荐排序。</p>';
+    }
+    var c = null; try { c = JSON.parse(localStorage.getItem(KEY)); } catch (e) {}
+    if (c && Date.now() - c.t < TTL) { draw(c.rows, c.t); return; }
+    fetch('https://api.llama.fi/cexs').then(function (r) { if (!r.ok) throw r.status; return r.json(); }).then(function (d) {
+      var rows = (d.cexs || []).filter(function (x) { return x.cleanAssetsTvl > 0; }).sort(function (a, b) { return b.cleanAssetsTvl - a.cleanAssetsTvl; }).slice(0, 15)
+        .map(function (x) { return { name: x.name, cleanAssetsTvl: x.cleanAssetsTvl, inflows_1w: x.inflows_1w }; });
+      if (!rows.length) throw 'empty';
+      var t = Date.now(); try { localStorage.setItem(KEY, JSON.stringify({ t: t, rows: rows })); } catch (e) {}
+      draw(rows, t);
+    }).catch(function () {
+      if (c && c.rows) draw(c.rows, c.t, true);
+      else el.innerHTML = '<p class="w-note">储备数据暂时加载不出来，可以直接打开 <a href="https://defillama.com/cexs" target="_blank" rel="noopener noreferrer">DefiLlama 交易所透明度页面 ↗</a> 查看。</p>';
+    });
   };
   var QUIZ = [
     { q: '「官方客服」要助记词帮你修复钱包，给吗？', o: ['给', '不给'], a: 1, ans: '不给。停止沟通并核验渠道。', ch: '09' },
@@ -388,7 +423,7 @@
   }
   function renderFooter() {
     var fb = C.feedback || {}, link = fb.url || (fb.email ? 'mailto:' + fb.email : '');
-    $('#footer').innerHTML = '<div class="footer-in"><img src="assets/img/panda-phone.png?v=20261015142528" alt="" width="72" height="70">' +
+    $('#footer').innerHTML = '<div class="footer-in"><img src="assets/img/panda-phone.png?v=20261015145103" alt="" width="72" height="70">' +
       '<div><p class="disclaimer">本站内容仅供学习参考，不构成投资建议。加密资产波动大，请只用自己能承受损失的钱参与。</p>' +
       '<p class="contacts">联系站长：' + contactLinks() + '</p>' +
       '</div></div>';
@@ -396,24 +431,30 @@
 
   /* ---------- 打赏 ---------- */
   function openDonate() {
-    var d = C.donate, dlg = $('#donate');
+    var dlg = $('#donate');
     if (!dlg) {
       dlg = document.createElement('dialog'); dlg.id = 'donate'; dlg.setAttribute('aria-labelledby', 'donate-h');
-      dlg.innerHTML = '<button class="dlg-x" aria-label="关闭">×</button><img class="dlg-bear" src="assets/img/bear.jpg?v=20261015142528" alt="" width="72" height="70">' +
+      dlg.innerHTML = '<button class="dlg-x" aria-label="关闭">×</button><img class="dlg-bear" src="assets/img/bear-milktea.jpg?v=20261015145103" alt="" width="80" height="80">' +
         '<h2 id="donate-h">请小熊喝杯奶茶 🧋</h2><p class="w-note">觉得新手村有帮助，可以随意打赏，完全自愿～</p>' +
-        '<p class="chain">网络：<b>' + esc(d.chain) + '</b></p>' +
-        '<img class="qr" src="assets/img/donate-qr.svg?v=20261015142528" alt="打赏地址二维码" width="180" height="180">' +
-        '<code class="addr">' + esc(d.address) + '</code>' +
-        '<button class="btn btn-sm" id="copy-addr">📋 复制地址</button><p class="copied" role="status" aria-live="polite"></p>' +
-        '<p class="dlg-warn"><span aria-hidden="true">⚠️</span> 仅支持 BNB Chain（BEP-20）网络，转账前请核对完整地址与网络。</p>';
+        '<div class="seg don-tabs" role="tablist" aria-label="选择网络">' + C.donate.map(function (d, i) { return '<button role="tab" aria-selected="' + (i === 0) + '" data-d="' + i + '">' + esc(d.chain) + '</button>'; }).join('') + '</div>' +
+        C.donate.map(function (d, i) {
+          return '<div class="don-pane" data-p="' + i + '"' + (i ? ' hidden' : '') + '><p class="chain">网络：<b>' + esc(d.chain) + '</b></p>' +
+            '<img class="qr" src="assets/img/donate-qr-?v=20261015145103' + d.key + '.svg?v=20261015142528" alt="' + esc(d.chain) + ' 打赏地址二维码" width="180" height="180">' +
+            '<code class="addr" data-addr="' + esc(d.key) + '">' + esc(d.address) + '</code>' +
+            '<button class="btn btn-sm copy-addr" data-i="' + i + '">📋 复制地址</button>' +
+            '<p class="dlg-warn"><span aria-hidden="true">⚠️</span> 仅支持 ' + esc(d.chain) + ' 网络，转账前请核对完整地址与网络。</p></div>';
+        }).join('') + '<p class="copied" role="status" aria-live="polite"></p>';
       document.body.appendChild(dlg);
       $('.dlg-x', dlg).addEventListener('click', function () { dlg.close(); });
-      dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
-      $('#copy-addr', dlg).addEventListener('click', function () {
-        var msg = $('.copied', dlg);
+      dlg.addEventListener('click', function (e) {
+        if (e.target === dlg) { dlg.close(); return; }
+        var tb = e.target.closest('[data-d]');
+        if (tb) { $$('[data-d]', dlg).forEach(function (x) { x.setAttribute('aria-selected', x === tb); }); $$('.don-pane', dlg).forEach(function (p) { p.hidden = p.dataset.p !== tb.dataset.d; }); $('.copied', dlg).textContent = ''; }
+        var cb = e.target.closest('.copy-addr'); if (!cb) return;
+        var addr = C.donate[+cb.dataset.i].address, msg = $('.copied', dlg);
         function ok() { msg.textContent = '已复制 ✓ 粘贴后请再核对一次地址'; }
-        if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(d.address).then(ok, fallback); else fallback();
-        function fallback() { var t = document.createElement('textarea'); t.value = d.address; document.body.appendChild(t); t.select(); try { document.execCommand('copy'); ok(); } catch (e) { msg.textContent = '复制失败，请长按地址手动复制'; } t.remove(); }
+        function fallback() { var t = document.createElement('textarea'); t.value = addr; document.body.appendChild(t); t.select(); try { document.execCommand('copy'); ok(); } catch (e) { msg.textContent = '复制失败，请长按地址手动复制'; } t.remove(); }
+        if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(addr).then(ok, fallback); else fallback();
       });
     }
     $('.copied', dlg).textContent = '';

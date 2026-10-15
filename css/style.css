@@ -345,3 +345,14 @@ body.is-home main{padding-top:0}
 .sec-body blockquote{margin:12px 0;padding:12px 14px;background:#fff6f0;border:1px solid #f6d4c2;border-left:5px solid var(--accent);border-radius:14px;font-size:15px}
 .sec-body blockquote p{margin:0}
 a.src{font-size:13px}
+
+/* 新手首选 / 更多工具 / 链上工具 / 储备看板 / 多链打赏 */
+.pick-tag{display:inline-block;margin-left:.4em;padding:.05em .5em;border-radius:999px;background:#fff1b8;color:#8a5a00;font-size:.75em;font-weight:700}
+details.more-tools{margin:.8em 0;border:1px dashed #d9cbb5;border-radius:12px;padding:.4em .8em}
+details.more-tools>summary{cursor:pointer;font-weight:600;color:#7a5c3a;padding:.3em 0}
+.cexboard table{width:100%;font-size:.92em}
+.cexboard tr.hl td{background:#fff7e0;font-weight:600}
+.cexboard td.pos{color:#1a7f4b}.cexboard td.neg{color:#c0392b}
+.don-tabs{display:flex;flex-wrap:wrap;gap:.3em;justify-content:center;margin:.6em 0}
+.don-tabs button{font-size:.8em}
+.dlg-bear{border-radius:50%;object-fit:cover}

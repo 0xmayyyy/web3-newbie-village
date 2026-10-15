@@ -10,8 +10,14 @@ window.SITE_CONFIG = {
     { name: 'Telegram', label: '@Mayyy00x', url: 'https://t.me/Mayyy00x' }
   ],
 
-  /* 打赏地址（BNB Chain / BEP-20）。二维码图片 assets/img/donate-qr.svg 由同一地址生成并已解码核对 */
-  donate: { chain: 'BNB Chain（BEP-20）', address: '0x496d22b39777f25fd6ef4999dc0def5d21ade8a0' },
+  /* 打赏地址：逐字复制自站长消息，二维码 assets/img/donate-qr-*.svg 由同一字符串生成并已解码核对。
+     修改后请运行 python3 tools/check_addresses.py */
+  donate: [
+    { key: 'bnb', chain: 'BNB Chain（BEP-20）', address: '0x496d22b39777f25fd6ef4999dc0def5d21ade8a0' },
+    { key: 'eth', chain: 'Ethereum（ERC-20）', address: '0x496d22b39777f25fd6ef4999dc0def5d21ade8a0' },
+    { key: 'tron', chain: 'TRON（TRC-20）', address: 'TEYeM3B58MTtpR4kAgrM6zEYZAnoPJdXUU' },
+    { key: 'sol', chain: 'Solana', address: '38CPbiomk2C9A4DqKyHkv4kndekwp7mftnydD7DmRJAJ' }
+  ],
 
   /* 链接核验记录：只有在浏览器中真实打开并通过官方渠道确认后，才按 '网址': 'YYYY-MM-DD' 填写。
      未填写的链接在页面上一律显示「待核验」。不要编造日期。 */
@@ -50,7 +56,9 @@ window.SITE_CONFIG = {
     'https://www.htx.com/invite/zh-cn/1h?invite_code=jdz98223': '2026-10-15',
     'https://www.tradingkey.com/zh-hans/news/cryptocurrencies': '2026-10-15',
     'https://www.tradingview.com/': '2026-10-15',
-    'https://x.com/0xMayyy': '2026-10-15'
+    'https://x.com/0xMayyy': '2026-10-15',
+    'https://robinhoodchain.blockscout.com/': '2026-10-15',
+    'https://robin.etherscan.io/': '2026-10-15'
   },
 
   /* 专属邀请链接：页面上显示「专属邀请链接」小标签。
@@ -68,10 +76,16 @@ window.SITE_CONFIG = {
   /* CEX 邀请注册入口（用户提供的邀请链接，保留参数，勿改成官网首页）。
      enabled: false 可临时停用某个按钮。 */
   exchanges: [
-    { name: 'Binance', mainDomain: 'binance.com', intro: '了解币安的交易、账户服务与注册规则', url: 'https://accounts.binance.info/zh-CN/register?ref=I1GN6RMJ', enabled: true },
-    { name: 'Bybit', mainDomain: 'bybit.com', intro: '了解 Bybit 的交易产品与注册规则', url: 'https://partner.bybit.com/b/0xmay', enabled: true },
-    { name: 'Gate', mainDomain: 'gate.com', intro: '了解 Gate 的交易服务与注册规则', url: 'https://www.gatewebsite.app/share/u1dgb10j', enabled: true },
-    { name: 'HTX', mainDomain: 'htx.com', intro: '了解 HTX 的交易服务与注册规则', url: 'https://www.htx.com/invite/zh-cn/1h?invite_code=jdz98223', enabled: true }
+    { name: 'Binance', mainDomain: 'binance.com', url: 'https://accounts.binance.info/zh-CN/register?ref=I1GN6RMJ', enabled: true },
+    { name: 'Bybit', mainDomain: 'bybit.com', url: 'https://partner.bybit.com/b/0xmay', enabled: true },
+    { name: 'Gate', mainDomain: 'gate.com', url: 'https://www.gatewebsite.app/share/u1dgb10j', enabled: true },
+    { name: 'HTX', mainDomain: 'htx.com', url: 'https://www.htx.com/invite/zh-cn/1h?invite_code=jdz98223', enabled: true }
+  ],
+
+  /* 链上交易工具（二级市场链上买卖，不是一级市场） */
+  onchain: [
+    { name: 'DeBot', desc: '链上 Meme 币交易与跟踪工具', url: 'https://debot.ai/r/0xMay' },
+    { name: '币安 Web3 钱包', desc: '无私钥（MPC）钱包，内置链上兑换', url: 'https://web3.binance.com/referral?ref=BFSADLNM' }
   ],
 
   /* 搜索别名：同一组里的词互相等价 */
@@ -90,7 +104,7 @@ window.SITE_CONFIG = {
     ['合约', '永续', 'perp', '杠杆', '期货', '资金费率', 'funding rate'],
     ['kyc', '实名', '身份验证'],
     ['白皮书', 'whitepaper', '中本聪', 'satoshi', '比特币', 'btc'],
-    ['区块浏览器', 'etherscan', 'tronscan', 'bscscan', 'solscan', 'basescan', 'txid', '交易哈希', 'hash'],
+    ['区块浏览器', 'robinhood', 'blockscout', 'etherscan', 'tronscan', 'bscscan', 'solscan', 'basescan', 'txid', '交易哈希', 'hash'],
     ['memo', 'tag', '备注', '标签'],
     ['跨链', '跨链桥', 'bridge', '桥'],
     ['质押', 'staking', 'earn', '理财', 'apr', 'apy', '年化'],
