@@ -353,8 +353,8 @@ details.more-tools>summary{cursor:pointer;font-weight:600;color:#7a5c3a;padding:
 .cexboard table{width:100%;font-size:.92em}
 .cexboard tr.hl td{background:#fff7e0;font-weight:600}
 .cexboard td.pos{color:#1a7f4b}.cexboard td.neg{color:#c0392b}
-.don-tabs{display:flex;flex-wrap:wrap;gap:.3em;justify-content:center;margin:.6em 0}
-.don-tabs button{font-size:.8em}
+.seg.don-tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;justify-content:stretch;margin:.6em 0;border-radius:16px;padding:6px;width:100%}
+.seg.don-tabs button{font-size:.8em;width:100%;margin:0;white-space:nowrap;text-align:center;padding:6px 4px}
 .dlg-bear{border-radius:50%;object-fit:cover}
 .cex-tools{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:8px 0}
 .cex-tools input{font:inherit;border:2px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;flex:0 1 280px}

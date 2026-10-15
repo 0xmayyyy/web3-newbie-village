@@ -14,9 +14,9 @@ window.SITE_CONFIG = {
      修改后请运行 python3 tools/check_addresses.py */
   donate: [
     { key: 'bnb', chain: 'BNB Chain（BEP-20）', address: '0x496d22b39777f25fd6ef4999dc0def5d21ade8a0' },
+    { key: 'sol', chain: 'Solana', address: '38CPbiomk2C9A4DqKyHkv4kndekwp7mftnydD7DmRJAJ' },
     { key: 'eth', chain: 'Ethereum（ERC-20）', address: '0x496d22b39777f25fd6ef4999dc0def5d21ade8a0' },
-    { key: 'tron', chain: 'TRON（TRC-20）', address: 'TEYeM3B58MTtpR4kAgrM6zEYZAnoPJdXUU' },
-    { key: 'sol', chain: 'Solana', address: '38CPbiomk2C9A4DqKyHkv4kndekwp7mftnydD7DmRJAJ' }
+    { key: 'tron', chain: 'TRON（TRC-20）', address: 'TEYeM3B58MTtpR4kAgrM6zEYZAnoPJdXUU' }
   ],
 
   /* 链接核验记录：只有在浏览器中真实打开并通过官方渠道确认后，才按 '网址': 'YYYY-MM-DD' 填写。
