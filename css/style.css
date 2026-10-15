@@ -375,3 +375,6 @@ details.more-tools>summary{cursor:pointer;font-weight:600;color:#7a5c3a;padding:
 .cexboard td:first-child,.cexboard th:first-child{text-align:center;color:var(--muted)}
 .cexboard td.nm{font-weight:700}
 @media (max-width:600px){.cexboard th,.cexboard td{padding:6px 9px;font-size:13px}}
+.route-body{outline:none;scroll-margin-top:calc(var(--hdr,64px) + 8px)}
+.route-body .h1like{margin:0;font-size:1.5em}
+.steps li a{display:inline-block}
