@@ -39,6 +39,7 @@ window.SITE_CONFIG = {
     'https://gopluslabs.io/en': '2026-10-15',
     'https://mempool.space/': '2026-10-15',
     'https://partner.bybit.com/b/0xmay': '2026-10-15',
+    'https://www.gatewebsite.app/share/u1dgb10j': '2026-10-15',
     'https://revoke.cash/': '2026-10-15',
     'https://solscan.io/': '2026-10-15',
     'https://t.me/Mayyy00x': '2026-10-15',
@@ -107,7 +108,7 @@ window.SITE_CONFIG = {
     ['报单', '喊单', '带单', 'kol', '推荐', '返佣', '推广'],
     ['换汇', '兑换', 'swap', '闪兑', '快捷兑换', '换币'],
     ['黑u', '黑 u', '冻卡', '银行卡冻结', '杀猪盘', '跑分', '收u', '高价收u', '帮信罪', '掩隐罪', '洗钱', '带单群'],
-    ['无私钥', '无私钥钱包', 'mpc', '多方计算', '币安钱包', 'binance wallet', '币安 web3 钱包', '币安钱包（无私钥）', '无助记词', '密钥分片'],
+    ['无私钥', '无私钥钱包', 'mpc', '多方计算', '币安钱包', 'binance wallet', '币安 web3 钱包', '币安钱包（无私钥）', '无助记词', '密钥分片', '链上钱包', '钱包推荐', '新手钱包', '用什么钱包', 'web3钱包', 'web3 钱包'],
     ['跑路', 'rug pull', 'rug', '貔貅', 'honeypot', '卷款', '归零']
   ]
 };

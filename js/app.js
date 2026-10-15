@@ -29,7 +29,7 @@
   function tags(c) { return c.tags.map(function (t) { return '<span class="tag ' + tagClass(t) + '">' + esc(t) + '</span>'; }).join(''); }
   var ROUTES = [
     { key: 'new', icon: '🧸', name: '我完全不懂', ids: ['01', '02', '03', '08', '09', '05'], desc: '先了解这个世界怎么运转，再认识常用 CEX 和注册入口，不需要马上买币。', cls: 'pink' },
-    { key: 'buy', intro: true, icon: '🛒', name: '我想第一次买币', ids: ['03', '09', '04', '05', '06'], desc: '先掌握安全与交易基础，再用自己能承受损失的小额资金练习。', cls: 'mint' },
+    { key: 'buy', intro: true, icon: '🛒', name: '我想第一次买币', ids: ['05', '03', '09', '04', '06'], desc: '先掌握安全与交易基础，再用自己能承受损失的小额资金练习。', cls: 'mint' },
     { key: 'protect', icon: '🛡️', name: '我已经有币，想保护资产', ids: ['08', '09', '10', '15'], desc: '重点了解资产保管、助记词、授权和转账检查。', cls: 'lilac' }
   ];
 
@@ -136,9 +136,9 @@
     var next = r.ids.filter(function (i) { return !isDone(i); })[0] || r.ids[0];
     main.innerHTML = '<div class="route-page"><nav class="crumbs" aria-label="位置"><a href="#/">首页</a> › <span>路线</span></nav>' +
       '<header class="ch-head"><span class="ch-num" aria-hidden="true">' + r.icon + '</span><div><h1>' + esc(r.name) + '</h1><p>' + esc(r.desc) + '</p></div></header>' +
-      '<ol class="steps"><li class="cur"><b>第 1 步</b> 注册交易所</li>' + r.ids.map(function (i, k) { return '<li' + (isDone(i) ? ' class="ok"' : '') + '><a href="#/c/' + i + '"><b>第 ' + (k + 2) + ' 步</b> ' + i + ' ' + esc(chap(i).title) + (isDone(i) ? ' ✓' : '') + '</a></li>'; }).join('') + '</ol>' +
-      '<section class="sec-plain"><h2>第 1 步：选一家交易所注册账户 🏦</h2><p>先确认所在地可以使用，再从下面的入口注册。注册后不用急着买币，先把安全设置做好，再按顺序学习后面的章节。</p><div data-widget="exchanges"></div></section>' +
-      '<div class="route-next"><a class="btn" href="#/c/' + next + '">下一步：' + next + ' ' + esc(chap(next).title) + ' →</a><a class="btn btn-ghost" href="#/c/05">了解怎么选择交易所</a></div></div>';
+      '<ol class="steps">' + r.ids.map(function (i, k) { return '<li' + (isDone(i) ? ' class="ok"' : (k === 0 ? ' class="cur"' : '')) + '><a href="#/c/' + i + '"><b>第 ' + (k + 1) + ' 步</b> ' + (i === '05' && k === 0 ? '注册交易所账户' : i + ' ' + esc(chap(i).title)) + (isDone(i) ? ' ✓' : '') + '</a></li>'; }).join('') + '</ol>' +
+      '<section class="sec-plain"><h2>第 1 步：注册交易所账户 🏦</h2><p>注册时留意平台对你所在地区是否开放服务，注册页一般会有提示。注册后不用急着买币，先把安全设置做好，再按顺序学习后面的章节。</p><div data-widget="exchanges"></div></section>' +
+      '<div class="route-next"><a class="btn" href="#/c/' + next + '">下一步：' + next + ' ' + esc(chap(next).title) + ' →</a><a class="btn btn-ghost" href="#/c/05">看第 05 章：怎么选择交易所</a></div></div>';
     mountWidgets(main); applyVerify(main); window.scrollTo(0, 0);
   }
   function renderHome() {
@@ -146,7 +146,7 @@
     var n = doneCount();
     main.innerHTML =
       '<section class="hero-full" aria-labelledby="h-hero"><div class="hero-inner">' +
-      '<img class="hero-bear" src="assets/img/panda.jpg?v=20261015035649" alt="戴眼镜挥手的小熊猫" width="220" height="214">' +
+      '<img class="hero-bear" src="assets/img/panda.jpg?v=20261015125018" alt="戴眼镜挥手的小熊猫" width="220" height="214">' +
       '<h1 id="h-hero">Web3 新手村 <span aria-hidden="true">🧸</span></h1>' +
       '<p class="lead">币圈名词太多，看不懂也没关系。</p>' +
       '<p class="intro">从「什么是币圈」开始，慢慢学会买币、看懂交易、使用钱包和保护资产。这里把绕口的名词翻译成人话，也把容易踩的坑提前摆出来。</p>' +
@@ -167,7 +167,7 @@
       '<ol class="toc">' + CH.map(chapterCard).join('') + '</ol>' +
       '<p class="note">学习进度只保存在你当前的浏览器里，本站不收集任何个人信息。</p></section>' +
 
-      '<section class="block safety" aria-labelledby="h-safe"><img src="assets/img/panda-teacher.png?v=20261015035649" alt="熊猫老师在黑板前讲课" width="200" height="169">' +
+      '<section class="block safety" aria-labelledby="h-safe"><img src="assets/img/panda-teacher.png?v=20261015125018" alt="熊猫老师在黑板前讲课" width="200" height="169">' +
       '<div><h2 id="h-safe"><span aria-hidden="true">⚠️</span> 操作前先记住</h2><ul class="checks">' +
       ['不把助记词和私钥交给任何人。', '不因为「稳赚」「翻倍」「名额有限」就急着转钱。', '转账前检查资产、网络、地址和 Memo / Tag。', '收录的平台和工具不等于安全担保。', '不懂签名内容，就先停下来。']
         .map(function (t) { return '<li><span class="ico" aria-hidden="true">🛡️</span>' + esc(t) + '</li>'; }).join('') +
@@ -178,7 +178,7 @@
       '<a class="qcard pink" href="#/c/05"><span class="qi" aria-hidden="true">🏦</span><strong>CEX 交易所导航</strong><span>常用交易所注册入口与选择要点</span></a>' +
       '<a class="qcard lilac" href="#/c/13"><span class="qi" aria-hidden="true">💬</span><strong>币圈话术翻译器</strong><span>正经术语与社区玩梗分开看</span></a>' +
       '<a class="qcard mint" href="#/c/16"><span class="qi" aria-hidden="true">✅</span><strong>练习与自测</strong><span>安全自测、盈亏计算器、转账清单</span></a>' +
-      '</div><img class="quick-img" src="assets/img/panda-phone.png?v=20261015035649" alt="拿着手机的小熊猫" width="140" height="137"></section>';
+      '</div><img class="quick-img" src="assets/img/panda-phone.png?v=20261015125018" alt="拿着手机的小熊猫" width="140" height="137"></section>';
     bindSearch($('#q-home'), $('.hero-full .search-results'));
     var sh = $('.scroll-hint'); sh.addEventListener('click', function (e) { e.preventDefault(); $('#h-toc').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); });
     var cp = $('#clear-p');
@@ -205,7 +205,7 @@
       c.sections.map(function (s, i) {
         return '<details class="sec" id="s' + i + '" open><summary><h2>' + esc(s.title) + '</h2></summary><div class="sec-body">' + s.html + '</div></details>';
       }).join('') +
-      (c.tip ? '<aside class="tip"><img src="assets/img/panda.jpg?v=20261015035649" alt="" width="64" height="62"><p>' + esc(c.tip) + '</p></aside>' : '') +
+      (c.tip ? '<aside class="tip"><img src="assets/img/panda.jpg?v=20261015125018" alt="" width="64" height="62"><p>' + esc(c.tip) + '</p></aside>' : '') +
       '<div class="done-box"><button class="btn ' + (isDone(c.id) ? 'btn-ghost' : '') + '" id="done-btn" aria-pressed="' + isDone(c.id) + '">' + (isDone(c.id) ? '✓ 已学完（点击取消）' : '🎉 标记本章为已学完') + '</button></div>' +
       '<nav class="pager" aria-label="翻页">' +
       (prev ? '<a class="pg prev" href="#/c/' + prev.id + '"><small>← 上一章</small>' + prev.id + ' ' + esc(prev.title) + '</a>' : '<span></span>') +
@@ -388,7 +388,7 @@
   }
   function renderFooter() {
     var fb = C.feedback || {}, link = fb.url || (fb.email ? 'mailto:' + fb.email : '');
-    $('#footer').innerHTML = '<div class="footer-in"><img src="assets/img/panda-phone.png?v=20261015035649" alt="" width="72" height="70">' +
+    $('#footer').innerHTML = '<div class="footer-in"><img src="assets/img/panda-phone.png?v=20261015125018" alt="" width="72" height="70">' +
       '<div><p class="disclaimer">本站内容仅供学习参考，不构成投资建议。加密资产波动大，请只用自己能承受损失的钱参与。</p>' +
       '<p class="contacts">联系站长：' + contactLinks() + '</p>' +
       '</div></div>';
@@ -399,10 +399,10 @@
     var d = C.donate, dlg = $('#donate');
     if (!dlg) {
       dlg = document.createElement('dialog'); dlg.id = 'donate'; dlg.setAttribute('aria-labelledby', 'donate-h');
-      dlg.innerHTML = '<button class="dlg-x" aria-label="关闭">×</button><img class="dlg-bear" src="assets/img/bear.jpg?v=20261015035649" alt="" width="72" height="70">' +
+      dlg.innerHTML = '<button class="dlg-x" aria-label="关闭">×</button><img class="dlg-bear" src="assets/img/bear.jpg?v=20261015125018" alt="" width="72" height="70">' +
         '<h2 id="donate-h">请小熊喝杯奶茶 🧋</h2><p class="w-note">觉得新手村有帮助，可以随意打赏，完全自愿～</p>' +
         '<p class="chain">网络：<b>' + esc(d.chain) + '</b></p>' +
-        '<img class="qr" src="assets/img/donate-qr.svg?v=20261015035649" alt="打赏地址二维码" width="180" height="180">' +
+        '<img class="qr" src="assets/img/donate-qr.svg?v=20261015125018" alt="打赏地址二维码" width="180" height="180">' +
         '<code class="addr">' + esc(d.address) + '</code>' +
         '<button class="btn btn-sm" id="copy-addr">📋 复制地址</button><p class="copied" role="status" aria-live="polite"></p>' +
         '<p class="dlg-warn"><span aria-hidden="true">⚠️</span> 仅支持 BNB Chain（BEP-20）网络，转账前请核对完整地址与网络。</p>';
