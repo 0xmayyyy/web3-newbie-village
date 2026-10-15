@@ -393,12 +393,6 @@ DEX 也有中心化环节。前端、管理员、预言机和其他组件同样�
 
 DeBot 与币安 Web3 钱包都用于在链上买卖已经发行的代币（二级市场），不是一级市场认购。链上新币风险很高，先读第 09 章再动手。
 
-## 交易所储备看板
-
-**看看各家交易所链上公开的储备有多少。**
-
-数据来自 DefiLlama 的 CEX 透明度数据，只统计交易所公开的链上钱包，不含负债，也不代表平台安全或推荐排序。
-
 ## 怎么选择？
 
 **先看能不能用，再看安全、费用和提现，别只看注册奖励。**
@@ -1104,12 +1098,10 @@ DePIN 常指通过网络与激励组织现实基础设施，如算力、通信�
 
 ## 查价格与基础资料
 
-**查价格和市值，先用标了「新手首选」的那个。**
+**查价格、市值和链上数据，用这些网站。**
 
-★ CoinGecko：https://www.coingecko.com/
+CoinGecko：https://www.coingecko.com/
 用途：查看价格、市值、资产与市场资料。收录不代表项目安全，数据需要核对。
-
-@@MORE@@
 
 CoinMarketCap：https://coinmarketcap.com/
 用途：查看行情、供应量与交易市场。注意不同平台的供应量口径可能不同。
@@ -1124,9 +1116,7 @@ TradingView：https://www.tradingview.com/
 
 **查转账和地址，用对应链的区块浏览器。**
 
-★ Etherscan：https://etherscan.io/ — Ethereum 以太坊交易、地址与合约查询。
-
-@@MORE@@
+Etherscan：https://etherscan.io/ — Ethereum 以太坊交易、地址与合约查询。
 
 BscScan：https://bscscan.com/ — BNB Smart Chain 交易与合约查询。
 Solscan：https://solscan.io/ — Solana 交易与账户查询。
@@ -1134,8 +1124,7 @@ mempool.space：https://mempool.space/ — Bitcoin 比特币交易、区块与�
 TRONSCAN：https://tronscan.org/ — TRON 交易、账户与资源查询。
 Arbiscan：https://arbiscan.io/ — Arbitrum One 交易与合约查询。
 BaseScan：https://basescan.org/ — Base 网络交易与合约查询。
-Robinhood Chain（Blockscout）：https://robinhoodchain.blockscout.com/ — Robinhood Chain 主网交易、地址与合约查询（官方文档列出的浏览器）。
-Robinhood Chain（Etherscan）：https://robin.etherscan.io/ — Robinhood Chain 主网的 Etherscan 版浏览器。
+Robinhood Chain：https://robin.etherscan.io/ — Robinhood Chain 主网的 Etherscan 版浏览器。
 
 使用提示：浏览器与网络必须匹配；合约代码验证不等于安全审计，标签也不能代替身份核验。
 
@@ -1143,17 +1132,15 @@ Robinhood Chain（Etherscan）：https://robin.etherscan.io/ — Robinhood Chain
 
 **查链上新币和池子，用这个。**
 
-★ DEX Screener：https://dexscreener.com/
+DEX Screener：https://dexscreener.com/
 用途：查看链上交易对、价格与池子活动。工具收录不代表代币能安全买卖。
 
 ## 看新闻
 
 **看新闻了解行业动态，重要消息以官方公告为准。**
 
-★ PANews：https://www.panewslab.com/zh
+PANews：https://www.panewslab.com/zh
 用途：中文区块链与加密市场资讯、快讯。
-
-@@MORE@@
 
 Odaily 星球日报：https://www.odaily.news/zh-CN
 用途：中文区块链与加密货币资讯、快讯与深度文章。
@@ -1176,10 +1163,8 @@ The Block：https://www.theblock.co/
 
 **签名前请插件把关，平时定期检查并撤销不用的授权。**
 
-★ Revoke.cash：https://revoke.cash/
+Revoke.cash：https://revoke.cash/
 用途：检查支持网络上的部分资产授权，并按需要撤销。网络与权限类型覆盖有限；使用前核验域名与签名。私钥泄露时不能只靠撤销授权。
-
-@@MORE@@
 
 GoPlus：https://gopluslabs.io/en
 用途：从官网了解浏览器安全扩展和相关安全服务。检查当前覆盖范围，风险提示不能替代自己的核对。
@@ -1188,10 +1173,8 @@ GoPlus：https://gopluslabs.io/en
 
 **想深入学习，看这些官方资料。**
 
-★ Binance Academy：https://academy.binance.com/
+Binance Academy：https://academy.binance.com/
 用途：中文友好的加密入门百科。
-
-@@MORE@@
 
 Ethereum 安全资料：https://ethereum.org/security/
 用途：以太坊官方的安全与防骗指南。

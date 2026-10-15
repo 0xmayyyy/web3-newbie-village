@@ -24,7 +24,6 @@ def tool_html(name, u, desc, btn='打开官网'):
 WIDGETS = {
   ('05','邀请注册导航'): 'exchanges',
   ('05','链上交易工具'): 'onchain',
-  ('05','交易所储备看板'): 'cexboard',
   ('16','安全自测'): 'quiz',
   ('16','模拟现货盈亏计算器'): 'calculator',
   ('16','转账前检查清单'): 'checklist',

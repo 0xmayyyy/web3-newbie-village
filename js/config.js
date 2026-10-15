@@ -57,7 +57,6 @@ window.SITE_CONFIG = {
     'https://www.tradingkey.com/zh-hans/news/cryptocurrencies': '2026-10-15',
     'https://www.tradingview.com/': '2026-10-15',
     'https://x.com/0xMayyy': '2026-10-15',
-    'https://robinhoodchain.blockscout.com/': '2026-10-15',
     'https://robin.etherscan.io/': '2026-10-15'
   },
 
@@ -104,7 +103,7 @@ window.SITE_CONFIG = {
     ['合约', '永续', 'perp', '杠杆', '期货', '资金费率', 'funding rate'],
     ['kyc', '实名', '身份验证'],
     ['白皮书', 'whitepaper', '中本聪', 'satoshi', '比特币', 'btc'],
-    ['区块浏览器', 'robinhood', 'blockscout', 'etherscan', 'tronscan', 'bscscan', 'solscan', 'basescan', 'txid', '交易哈希', 'hash'],
+    ['区块浏览器', 'robinhood', 'etherscan', 'tronscan', 'bscscan', 'solscan', 'basescan', 'txid', '交易哈希', 'hash'],
     ['memo', 'tag', '备注', '标签'],
     ['跨链', '跨链桥', 'bridge', '桥'],
     ['质押', 'staking', 'earn', '理财', 'apr', 'apy', '年化'],

@@ -356,3 +356,11 @@ details.more-tools>summary{cursor:pointer;font-weight:600;color:#7a5c3a;padding:
 .don-tabs{display:flex;flex-wrap:wrap;gap:.3em;justify-content:center;margin:.6em 0}
 .don-tabs button{font-size:.8em}
 .dlg-bear{border-radius:50%;object-fit:cover}
+.cex-tools{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:8px 0}
+.cex-tools input{font:inherit;border:2px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;flex:0 1 280px}
+.cexboard .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.cexboard th,.cexboard td{white-space:nowrap;text-align:right}
+.cexboard th:nth-child(-n+2),.cexboard td:nth-child(-n+2){text-align:left}
+.cexboard td.na{color:#b8aca0}
+.th-sort{font:inherit;font-weight:700;background:none;border:0;color:var(--ink);cursor:pointer;padding:0}
+.cex-stats{font-size:12px;color:var(--muted)}
