@@ -10,7 +10,7 @@
 - css/style.css         样式（手机优先，含减少动画、焦点样式）
 - js/config.js          ★ 维护配置：反馈联系方式、链接核验日期、交易所邀请链接、搜索别名
 - js/data.js            由 content/content.md 自动生成的章节数据（勿手改）
-- js/app.js             路由、搜索、进度、计算器、清单、自测、话术翻译器
+- js/app.js             路由、搜索、进度、计算器、清单、自测、话术翻译器、Punycode 转换（`#/punycode`，只在浏览器本地计算）
 - content/content.md    访客可见的全部文案（原稿 B 部分）
 - tools/build.py        改了 content.md 后运行：pip install markdown && python3 tools/build.py
 - tools/screenshots.py  Playwright 截图 + 冒烟测试
