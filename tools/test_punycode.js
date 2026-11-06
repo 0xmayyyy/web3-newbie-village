@@ -177,7 +177,7 @@ check('源码不把输入送走，也不 innerHTML 用户内容', function () {
   var lib = fs.readFileSync(path.join(dir, 'punycode.js'), 'utf8');
   var app = fs.readFileSync(path.join(dir, 'app.js'), 'utf8');
   eq(/fetch\s*\(|XMLHttpRequest|sendBeacon|new\s+Image|new\s+WebSocket|document\.write|eval\s*\(/.test(lib), false);
-  var body = app.slice(app.indexOf('function renderPuny'), app.indexOf('function route()'));
+  var body = app.slice(app.indexOf('function renderPuny'), app.indexOf('function route('));
   eq(/\.outerHTML|document\.write|eval\s*\(/.test(body), false);
   eq(/fetch\s*\(|XMLHttpRequest|sendBeacon/.test(body), false);
   eq(body.indexOf('textContent') > 0, true);

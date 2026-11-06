@@ -231,16 +231,16 @@
     /* 只去掉两端的普通空白。零宽字符和 BOM 不在这里吞掉，后面会拒绝。 */
     var s = String(raw).replace(/^[ \t\n\r\f\v]+|[ \t\n\r\f\v]+$/g, '');
     if (!s) return { empty: true };
-    if (s.length > 2048) return { error: '太长了，缩短一点再试。' };
+    if (s.length > 2048) return { error: 'too-long' };
     var bad = forbidden(s);
-    if (bad === 'backslash') return { error: '地址里有反斜杠。浏览器可能把它当成另一个地址，这次不转换。' };
-    if (bad) return { error: '里面有看不见的字符（零宽字符或方向控制符），这次不转换。' };
-    if (/\s/.test(s)) return { error: '中间有空格或换行，去掉后再试。' };
+    if (bad === 'backslash') return { error: 'backslash' };
+    if (bad) return { error: 'invisible' };
+    if (/\s/.test(s)) return { error: 'space' };
     /* 只把「没有点的那一段 + 冒号」当成协议，避免把 binance.com:8080 误判成协议。 */
     var scheme = s.match(/^([a-zA-Z][a-zA-Z0-9+.-]*):(.*)$/);
     if (scheme && scheme[1].indexOf('.') < 0) {
       if (scheme[2].slice(0, 2) !== '//' || !/^https?$/i.test(scheme[1])) {
-        return { error: '只转换 http 和 https 网址。javascript:、data:、file: 这类协议不处理。' };
+        return { error: 'scheme' };
       }
     }
     var prefix = '', rest = s, isUrl = false, abs = s.match(/^([a-zA-Z][a-zA-Z0-9+.-]*):\/\/([\s\S]*)$/);
@@ -249,13 +249,13 @@
     var cut = rest.search(/[/?#]/), auth, suffix;
     if (cut >= 0) { auth = rest.slice(0, cut); suffix = rest.slice(cut); isUrl = true; }
     else { auth = rest; suffix = ''; }
-    if (!auth) return { error: '没看到域名。' };
+    if (!auth) return { error: 'no-host' };
     var userinfo = '', hp = auth, at = auth.lastIndexOf('@');
     if (at >= 0) { userinfo = auth.slice(0, at + 1); hp = auth.slice(at + 1); }
     var host = hp, port = '', ip = false;
     if (hp.charAt(0) === '[') {
       var br = hp.indexOf(']');
-      if (br < 1 || hp.charAt(br) !== ']') return { error: '地址括号不完整。' };
+      if (br < 1 || hp.charAt(br) !== ']') return { error: 'brackets' };
       host = hp.slice(0, br + 1);
       port = hp.slice(br + 1);
       ip = true;
@@ -264,11 +264,11 @@
       if (colon >= 0) { host = hp.slice(0, colon); port = hp.slice(colon); }
     }
     if (port) {
-      if (!/^:\d+$/.test(port)) return { error: '冒号后面不是端口。' };
+      if (!/^:\d+$/.test(port)) return { error: 'port' };
       var pn = parseInt(port.slice(1), 10);
-      if (pn > 65535) return { error: '端口要在 0 到 65535 之间。' };
+      if (pn > 65535) return { error: 'port-range' };
     }
-    if (!host) return { error: '没看到域名。' };
+    if (!host) return { error: 'no-host' };
     if (!ip && /^\d{1,3}(\.\d{1,3}){3}$/.test(host)) {
       var octets = host.split('.'), v4 = true, oi;
       for (oi = 0; oi < octets.length; oi++) if (!/^\d{1,3}$/.test(octets[oi]) || +octets[oi] > 255) v4 = false;
@@ -292,10 +292,10 @@
     if (parsed.ip) {
       if (typeof URL !== 'undefined') {
         try { new URL('http://' + parsed.host + (parsed.port || '')); }
-        catch (e) { return { error: '这个 IP 地址格式不对。' }; }
+        catch (e) { return { error: 'bad-ip' }; }
       }
       if (parsed.isUrl && parsed.prefix && !browserAgrees(parsed, { ascii: parsed.host, unicode: parsed.host })) {
-        return { error: '这个地址和浏览器的理解不一致，这次不转换。' };
+        return { error: 'disagree' };
       }
       var rebuiltIp = (parsed.isUrl || parsed.port || parsed.userinfo) ? parsed.prefix + parsed.userinfo + parsed.host + parsed.port + parsed.suffix : '';
       return {
@@ -304,9 +304,9 @@
       };
     }
     var forms = idna(parsed.host);
-    if (!forms) return { error: '这个域名格式不对，检查一下再试。' };
-    if (forms.disagree) return { error: '浏览器和备用算法的结果不一致，为避免显示错误结果，这次不转换。' };
-    if (!browserAgrees(parsed, forms)) return { error: '这个地址和浏览器的理解不一致，这次不转换。' };
+    if (!forms) return { error: 'bad-domain' };
+    if (forms.disagree) return { error: 'disagree-algo' };
+    if (!browserAgrees(parsed, forms)) return { error: 'disagree' };
     var nonAscii = /[^\u0000-\u007F]/.test(parsed.host);
     var hasPuny = /(^|\.)xn--/i.test(parsed.host);
     var outHost, kind;
@@ -328,29 +328,44 @@
       kind: kind
     };
   }
-  function kindName(cp) {
-    if (cp >= 0x0400 && cp <= 0x052F) return '西里尔字母';
-    if (cp >= 0x0370 && cp <= 0x03FF) return '希腊字母';
-    if (cp >= 0xFF01 && cp <= 0xFF5E) return '全角字符';
-    if (cp >= 0x4E00 && cp <= 0x9FFF) return '汉字';
-    return '非英文字符';
+  function scriptKind(cp) {
+    if (cp >= 0x0400 && cp <= 0x052F) return 'cyrillic';
+    if (cp >= 0x0370 && cp <= 0x03FF) return 'greek';
+    if (cp >= 0xFF01 && cp <= 0xFF5E) return 'fullwidth';
+    if (cp >= 0x4E00 && cp <= 0x9FFF) return 'han';
+    return 'other';
   }
-  function markNote(text) {
-    var cps = codePoints(text), seen = {}, parts = [], han = 0, other = 0, i, cp;
+  function kindName(cp, lang) {
+    var en = lang === 'en';
+    var key = scriptKind(cp);
+    if (key === 'cyrillic') return en ? 'Cyrillic' : '西里尔字母';
+    if (key === 'greek') return en ? 'Greek' : '希腊字母';
+    if (key === 'fullwidth') return en ? 'fullwidth' : '全角字符';
+    if (key === 'han') return en ? 'Han' : '汉字';
+    return en ? 'non-English' : '非英文字符';
+  }
+  function markNote(text, lang) {
+    var en = lang === 'en';
+    var cps = codePoints(text), seen = {}, parts = [], han = 0, other = 0, i, cp, hex;
     for (i = 0; i < cps.length; i++) {
       cp = cps[i];
       if (cp <= 127 || seen[cp]) continue;
       seen[cp] = 1;
-      if (kindName(cp) === '汉字') han++;
+      if (scriptKind(cp) === 'han') han++;
       else {
         other++;
-        parts.push('「' + fromCodePoint(cp) + '」是' + kindName(cp) + ' U+' + ('0000' + cp.toString(16).toUpperCase()).slice(-4));
+        hex = ('0000' + cp.toString(16).toUpperCase()).slice(-4);
+        parts.push(en
+          ? '"' + fromCodePoint(cp) + '" is ' + kindName(cp, 'en') + ' U+' + hex
+          : '「' + fromCodePoint(cp) + '」是' + kindName(cp) + ' U+' + hex);
       }
     }
     if (!han && !other) return '';
-    if (!other) return '标出的字符是汉字，不是英文字母。';
-    if (han) parts.push('另外还有汉字');
-    return '标出的字符：' + parts.join('，') + '。不是普通英文字母。';
+    if (!other) return en ? 'The highlighted characters are Han, not English letters.' : '标出的字符是汉字，不是英文字母。';
+    if (han) parts.push(en ? 'there are also Han characters' : '另外还有汉字');
+    return en
+      ? 'Highlighted: ' + parts.join('; ') + '. Not ordinary English letters.'
+      : '标出的字符：' + parts.join('，') + '。不是普通英文字母。';
   }
   return {
     convert: convert,
