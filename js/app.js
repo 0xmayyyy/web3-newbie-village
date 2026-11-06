@@ -696,15 +696,27 @@
   }
 
   /* ---------- 页脚 ---------- */
-  function contactLinks() {
-    return (C.contacts || []).map(function (c) { return '<a class="contact" href="' + esc(c.url) + '" target="_blank" rel="noopener noreferrer">' + (c.name === 'X' ? '𝕏' : '✈️') + ' ' + esc(c.name) + ' ' + esc(c.label) + '</a>'; }).join('');
+  function footerIcon(name) {
+    if (name === 'X') return '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M4 3.5h3.4l4 5.5L16.4 3.5H20l-6.6 7.6L20.6 20.5h-3.4l-4.4-6.1-5.2 6.1H3.4l7-8.1L4 3.5Z"/></svg>';
+    return '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M21.5 4.4 2.7 11.6c-1.2.5-1.2 1.1-.2 1.4l4.8 1.5 1.9 5.6c.2.7.1 1 .7.9.4 0 .6-.2.9-.4l2.4-2.3 4.9 3.6c.9.5 1.5.2 1.8-.8l3.1-14.7c.3-1.3-.5-1.9-1.5-1.4ZM8.7 14.2l8.9-5.6c.4-.2.8 0 .4.3l-7.4 6.7-.3 3.1-1.6-4.5Z"/></svg>';
+  }
+  function disclaimerParts() {
+    var s = t('foot.disclaimer');
+    var cut = LANG === 'en' ? s.indexOf('. ') : s.indexOf('。');
+    if (cut < 0) return { a: s, b: '' };
+    return { a: s.slice(0, cut + 1).trim(), b: s.slice(cut + 1).trim() };
   }
   function renderFooter() {
-    var fb = C.feedback || {}, link = fb.url || (fb.email ? 'mailto:' + fb.email : '');
-    $('#footer').innerHTML = '<div class="footer-in"><img src="assets/img/panda-phone.png?v=20261015171108" alt="" width="72" height="70">' +
-      '<div><p class="disclaimer">' + esc(t('foot.disclaimer')) + '</p>' +
-      '<p class="contacts">' + esc(t('foot.contact')) + ' ' + contactLinks() + '</p>' +
-      '</div></div>';
+    var lines = disclaimerParts();
+    var pills = (C.contacts || []).map(function (c) {
+      return '<a class="footer-pill" href="' + esc(c.url) + '" target="_blank" rel="noopener noreferrer">' + footerIcon(c.name) + '<span>' + esc(c.name + ' ' + c.label) + '</span></a>';
+    }).join('');
+    $('#footer').innerHTML = '<div class="footer-orb" aria-hidden="true"></div><div class="footer-orb-sm" aria-hidden="true"></div><div class="footer-streak" aria-hidden="true"></div>' +
+      '<div class="footer-in"><img class="footer-avatar" src="assets/img/footer-character.webp?v=20261107370000" alt="" width="706" height="668">' +
+      '<div class="footer-copy"><p class="footer-d1">' + (LANG === 'en' ? esc(lines.a) : esc(lines.a).replace('，', '，<br>')) + '</p><p class="footer-d2">' + esc(lines.b) + '</p></div>' +
+      '<div class="footer-contact"><p>' + esc(t('foot.contact')) + '</p>' + pills + '</div></div>' +
+      '<div class="footer-base"><p class="footer-brand"><svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true"><circle cx="14" cy="16" r="7" fill="#AE8CCF"/><ellipse cx="14" cy="16" rx="13" ry="4.2" fill="none" stroke="#FFDFA8" stroke-width="1.4" transform="rotate(-24 14 16)"/></svg><span>Web3 新手村</span></p>' +
+      '<p class="footer-sign">May<span class="footer-heart" aria-hidden="true">♥</span><span class="footer-spark" aria-hidden="true">✦</span></p></div>';
   }
 
   /* ---------- 顶栏「交易所」快捷入口 ---------- */
