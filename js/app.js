@@ -211,8 +211,8 @@
     { id: 'safety', file: 'safety', chapters: [{ id: '09' }, { id: '15' }] },
     { id: 'trade', file: 'trade', chapters: [{ id: '03' }, { id: '04' }, { id: '05' }, { id: '06' }, { id: '07' }] },
     { id: 'wallet', file: 'wallet', chapters: [{ id: '08' }, { id: '10' }] },
-    { id: 'world', file: 'world', chapters: [{ id: '12', label: 'atlas.world.ch12' }] },
-    { id: 'chance', file: 'chance', chapters: [{ id: '11' }, { id: '12', label: 'atlas.chance.ch12' }] },
+    { id: 'world', file: 'world', sections12: [0, 1, 2, 3, 4, 6, 7], chapters: [{ id: '12', label: 'atlas.world.ch12' }] },
+    { id: 'chance', file: 'chance', sections12: [5, 8, 9, 10, 11], chapters: [{ id: '11' }, { id: '12', label: 'atlas.chance.ch12' }] },
     { id: 'advanced', file: 'advanced', locked: true, chapters: [] }
   ];
   var atlasCurrent = 0;
@@ -267,7 +267,8 @@
     title.textContent = t('atlas.' + p.id + '.name');
     if (sub) sub.textContent = t('atlas.' + p.id + '.sub');
     list.innerHTML = p.chapters.map(function (item) {
-      return '<li><a href="#/c/' + item.id + '">' + esc(planetLabel(item)) + '</a></li>';
+      var href = item.label === 'atlas.world.ch12' ? '#/c/12/0' : item.label === 'atlas.chance.ch12' ? '#/c/12/5' : '#/c/' + item.id;
+      return '<li><a href="' + href + '">' + esc(planetLabel(item)) + '</a></li>';
     }).join('');
     overlay.classList.add('open');
   }
@@ -293,40 +294,140 @@
   }
 
   /* ---------- 章节页 ---------- */
+  function planetIndexFor(id, secIndex) {
+    if (id === '12') {
+      if (secIndex != null && [5, 8, 9, 10, 11].indexOf(secIndex) >= 0) return 5;
+      return 4;
+    }
+    for (var i = 0; i < PLANETS.length; i++) {
+      if (PLANETS[i].locked) continue;
+      if (PLANETS[i].chapters.some(function (item) { return item.id === id; })) return i;
+    }
+    return -1;
+  }
+  function visibleSections(planetIndex, id) {
+    var c = chap(id);
+    if (!c) return [];
+    var p = planetIndex >= 0 ? PLANETS[planetIndex] : null;
+    var idx = null;
+    if (id === '12' && p && p.sections12) idx = p.sections12;
+    if (!idx) return c.sections.map(function (s, i) { return { s: s, i: i }; });
+    return idx.filter(function (i) { return c.sections[i]; }).map(function (i) { return { s: c.sections[i], i: i }; });
+  }
+  function readerChapterIds(planetIndex, fallbackId) {
+    if (planetIndex < 0) return [fallbackId];
+    var seen = [];
+    PLANETS[planetIndex].chapters.forEach(function (item) {
+      if (seen.indexOf(item.id) < 0) seen.push(item.id);
+    });
+    return seen;
+  }
+  function readerChapterLabel(planetIndex, id) {
+    var p = planetIndex >= 0 ? PLANETS[planetIndex] : null;
+    if (id === '12' && p) {
+      if (p.id === 'world') return t('atlas.world.ch12');
+      if (p.id === 'chance') return t('atlas.chance.ch12');
+    }
+    var c = chap(id);
+    return c ? c.id + ' · ' + c.title : id;
+  }
   function renderChapter(id, sec, keep) {
     var c = chap(id); if (!c) return renderHome();
-    var idx = CH.indexOf(c), prev = CH[idx - 1], next = CH[idx + 1];
+    var planetIndex = planetIndexFor(id, sec);
+    var planet = planetIndex >= 0 ? PLANETS[planetIndex] : null;
+    var visible = visibleSections(planetIndex, id);
+    var pos = 0;
+    if (sec != null) {
+      for (var vi = 0; vi < visible.length; vi++) if (visible[vi].i === sec) pos = vi;
+    }
+    if (!visible.length) return renderHome();
+    var cur = visible[pos];
+    var ids = readerChapterIds(planetIndex, id);
+    var text = cur.s.text || '';
+    var sentence = text.split(/[。！？.!?]/)[0];
+    var highlight = sentence ? sentence + (LANG === 'zh' ? '。' : '.') : '';
     document.title = t('title.ch', { id: c.id, title: c.title });
-    var secNav = c.id === '13' ? '' : c.sections.map(function (s, i) { return '<li><a href="#/c/' + c.id + '/' + i + '">' + esc(s.title) + '</a></li>'; }).join('');
-    var allNav = CH.map(function (x) { return '<li><a href="#/c/' + x.id + '"' + (x === c ? ' aria-current="page"' : '') + '><span class="n">' + x.id + '</span> ' + esc(x.title) + (isDone(x.id) ? ' <span class="ok" title="' + esc(t('done')) + '">✓</span>' : '') + '</a>' + (x === c ? '<ol class="secnav">' + secNav + '</ol>' : '') + '</li>'; }).join('');
+    var code = planet ? t(planetIndex === 0 ? 'reader.begin' : 'reader.explore', { n: ('0' + (planetIndex + 1)).slice(-2) }) : 'CHAPTER ' + c.id;
     main.innerHTML =
-      '<div class="layout">' +
-      '<aside class="side" aria-label="' + esc(t('side.aria')) + '"><nav><p class="side-h"><a href="#/">' + esc(t('side.back')) + '</a></p><ol class="allnav">' + allNav + '</ol></nav></aside>' +
-      '<article class="chapter">' +
-      '<nav class="crumbs" aria-label="' + esc(t('crumb.where')) + '"><a href="#/">' + esc(t('crumb.home')) + '</a> › <span>' + esc(t('ch.crumb', { id: c.id })) + '</span></nav>' +
-      '<header class="ch-head"><span class="ch-num">' + c.id + '</span><div><h1>' + esc(c.title) + ' <span aria-hidden="true">' + c.emoji + '</span></h1><p>' + esc(c.intro) + '</p><span class="tags">' + tags(c) + '</span></div></header>' +
-      '<details class="mtoc"><summary>' + esc(t('ch.toc', { n: c.sections.length })) + '</summary><ol>' + secNav + '</ol><p><a href="#/">' + esc(t('ch.all')) + '</a></p></details>' +
-      '<div class="ch-tools"><button class="btn btn-ghost btn-sm" data-act="expand">' + esc(t('ch.expand')) + '</button><button class="btn btn-ghost btn-sm" data-act="collapse">' + esc(t('ch.collapse')) + '</button></div>' +
-      c.sections.map(function (s, i) {
-        return '<details class="sec" id="s' + i + '" open><summary><h2>' + esc(s.title) + '</h2></summary><div class="sec-body">' + s.html + '</div></details>';
-      }).join('') +
-      (c.tip ? '<aside class="tip"><img src="assets/img/panda.jpg?v=20261015171108" alt="" width="64" height="62"><p>' + esc(c.tip) + '</p></aside>' : '') +
-      '<div class="done-box"><button class="btn ' + (isDone(c.id) ? 'btn-ghost' : '') + '" id="done-btn" aria-pressed="' + isDone(c.id) + '">' + (isDone(c.id) ? esc(t('ch.done')) : esc(t('ch.done.set'))) + '</button></div>' +
-      '<nav class="pager" aria-label="' + esc(t('pager.aria')) + '">' +
-      (prev ? '<a class="pg prev" href="#/c/' + prev.id + '"><small>' + esc(t('pager.prev')) + '</small>' + prev.id + ' ' + esc(prev.title) + '</a>' : '<span></span>') +
-      '<a class="pg mid" href="#/">' + esc(t('pager.mid')) + '</a>' +
-      (next ? '<a class="pg next" href="#/c/' + next.id + '"><small>' + esc(t('pager.next')) + '</small>' + next.id + ' ' + esc(next.title) + '</a>' : '<span></span>') +
-      '</nav></article></div>';
-
-    $$('[data-act]').forEach(function (b) { b.addEventListener('click', function () { var o = b.dataset.act === 'expand'; $$('details.sec').forEach(function (d) { d.open = o; }); }); });
-    $('#done-btn').addEventListener('click', function () { toggleDone(c.id); renderChapter(c.id); $('#done-btn').focus(); });
+      '<div class="course-reader" style="--accent:' + (planet ? planet.color : '#bfa6ee') + '"><div class="shell">' +
+      '<div class="crumb"><a href="#/">' + esc(t('crumb.home')) + '</a> / ' + esc(planet ? t('reader.crumb', { planet: t('atlas.' + planet.id + '.name'), title: c.title }) : c.id + ' ' + c.title) + '</div>' +
+      '<section class="hero"><div><div class="eyebrow">' + esc(code) + '</div><h1>' + esc(planet ? t('atlas.' + planet.id + '.name') : c.title) + '</h1><p>' + esc(planet ? t('reader.' + planet.id + '.desc') : c.intro) + '</p></div>' +
+      (planet ? '<div class="hero-planet" aria-hidden="true"><img alt="" src="assets/planets/' + planet.file + '.png?v=20261107290000"></div>' : '') +
+      '</section><div class="layout">' +
+      '<aside class="side"><h2>' + esc(t('reader.planets')) + '</h2><div class="planet-menu">' + PLANETS.filter(function (p) { return !p.locked; }).map(function (p) {
+        var real = PLANETS.indexOf(p);
+        return '<button type="button" class="planet-btn' + (real === planetIndex ? ' active' : '') + '" data-planet="' + real + '"><span class="dot" style="--dot:' + p.dot + '"></span>' + ('0' + (real + 1)).slice(-2) + ' · ' + esc(t('atlas.' + p.id + '.name')) + '</button>';
+      }).join('') + '</div><div class="side-note">' + esc(t('reader.note')) + '</div></aside>' +
+      '<section class="center"><div class="course-head"><h2>' + esc(t('reader.list')) + '</h2><span>' + esc(t('reader.count', { n: ids.length })) + '</span></div>' +
+      '<div class="chapter-list">' + (ids.indexOf(id) < 0 ? '<div class="side-note">' + esc(t('reader.sharedTag')) + '</div>' : '') + ids.map(function (cid) {
+        return '<button type="button" class="chapter' + (cid === id ? ' active' : '') + '" data-chapter="' + cid + '"><small>CHAPTER ' + cid + '</small><strong>' + esc(readerChapterLabel(planetIndex, cid)) + '</strong></button>';
+      }).join('') + '</div>' +
+      '<div class="mobile-toc"><select id="section-select" aria-label="' + esc(t('reader.map')) + '">' + visible.map(function (item, i) {
+        return '<option value="' + item.i + '"' + (i === pos ? ' selected' : '') + '>' + (i + 1) + '. ' + esc(item.s.title) + '</option>';
+      }).join('') + '</select></div>' +
+      '<article class="reading"><div class="meta"><span>CHAPTER ' + c.id + ' / LESSON ' + ('0' + (cur.i + 1)).slice(-2) + '</span><span>' + (pos + 1) + ' / ' + visible.length + '</span></div>' +
+      '<h2>' + esc(cur.s.title) + '</h2>' + (highlight ? '<div class="summary">' + esc(highlight) + '</div>' : '') +
+      '<div class="prose" id="reader-prose">' + cur.s.html + '</div>' +
+      '<div class="reading-footer"><button type="button" class="navbtn" id="reader-prev"' + (pos === 0 && ids.indexOf(id) <= 0 ? ' disabled' : '') + '>' + esc(t('reader.prev')) + '</button>' +
+      '<button type="button" class="done-link" id="done-btn" aria-pressed="' + isDone(c.id) + '">' + esc(isDone(c.id) ? t('ch.done') : t('ch.done.set')) + '</button>' +
+      '<button type="button" class="navbtn primary" id="reader-next"' + (pos === visible.length - 1 && ids.indexOf(id) === ids.length - 1 ? ' disabled' : '') + '>' + esc(t('reader.next')) + '</button></div></article></section>' +
+      '<aside class="toc"><h2>' + esc(t('reader.map')) + '</h2><div>' + visible.map(function (item, i) {
+        return '<button type="button" class="toc-btn' + (i === pos ? ' active' : '') + '" data-sec="' + item.i + '"><span class="idx">' + ('0' + (i + 1)).slice(-2) + '</span><span>' + esc(item.s.title) + '</span></button>';
+      }).join('') + '</div><div class="progress"><div id="reader-bar" style="width:' + ((pos + 1) / visible.length * 100) + '%"></div></div><div class="progress-label">' + esc(t('reader.reading', { n: pos + 1, m: visible.length })) + '</div>' +
+      '<div class="tools"><h2>' + esc(t('reader.shared')) + '</h2><button type="button" data-tool="14">' + esc(t('reader.tool14')) + '</button><button type="button" data-tool="16">' + esc(t('reader.tool16')) + '</button></div></aside></div></div></div>';
+    var prose = $('#reader-prose');
+    if (highlight && prose) {
+      var opening = prose.querySelector('p');
+      if (opening) {
+        var norm = function (s) { return s.replace(/\s+/g, '').replace(/[。.!！?？]+$/, ''); };
+        if (norm(opening.textContent) === norm(highlight)) opening.remove();
+      }
+    }
+    function goHash(nextId, nextSec) { location.hash = '#/c/' + nextId + (nextSec != null ? '/' + nextSec : ''); }
+    $$('.course-reader [data-planet]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var p = PLANETS[+b.getAttribute('data-planet')];
+        if (!p || p.locked) return;
+        var first = p.chapters[0];
+        goHash(first.id, first.label === 'atlas.world.ch12' ? 0 : first.label === 'atlas.chance.ch12' ? 5 : null);
+      });
+    });
+    $$('.course-reader [data-chapter]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var cid = b.getAttribute('data-chapter');
+        goHash(cid, cid === '12' && planet && planet.sections12 ? planet.sections12[0] : null);
+      });
+    });
+    $$('.course-reader [data-sec]').forEach(function (b) {
+      b.addEventListener('click', function () { goHash(id, +b.getAttribute('data-sec')); });
+    });
+    var select = $('#section-select');
+    if (select) select.addEventListener('change', function () { goHash(id, +select.value); });
+    function step(dir) {
+      var nextPos = pos + dir;
+      if (nextPos >= 0 && nextPos < visible.length) { goHash(id, visible[nextPos].i); return; }
+      var at = ids.indexOf(id) + dir;
+      if (at < 0 || at >= ids.length) return;
+      var nid = ids[at];
+      var nvis = visibleSections(planetIndex, nid);
+      var target = dir > 0 ? nvis[0] : nvis[nvis.length - 1];
+      goHash(nid, target.i);
+    }
+    var prevBtn = $('#reader-prev'), nextBtn = $('#reader-next');
+    if (prevBtn) prevBtn.addEventListener('click', function () { step(-1); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { step(1); });
+    $$('.course-reader [data-tool]').forEach(function (b) {
+      b.addEventListener('click', function () { goHash(b.getAttribute('data-tool'), null); });
+    });
+    var done = $('#done-btn');
+    if (done) done.addEventListener('click', function () { toggleDone(c.id); renderChapter(c.id, cur.i, true); var again = $('#done-btn'); if (again) again.focus(); });
     mountWidgets(main);
     applyVerify(main);
     if (keep) return;
-    if (sec != null && $('#s' + sec)) {
-      var el = $('#s' + sec); el.open = true;
-      setTimeout(function () { el.scrollIntoView({ block: 'start' }); var s = $('summary', el); s.focus({ preventScroll: true }); }, 0);
-    } else { window.scrollTo(0, 0); }
+    if (sec != null) {
+      var article = $('.course-reader .reading');
+      if (article) setTimeout(function () { article.scrollIntoView({ block: 'start' }); }, 0);
+    } else window.scrollTo(0, 0);
   }
 
   /* ---------- 专属邀请链接标签 ---------- */
@@ -567,11 +668,17 @@
   function mountWidgets(root) {
     $$('[data-widget]', root).forEach(function (el) { var f = W[el.dataset.widget]; if (f) f(el); });
     // 话术翻译器挂在第 13 章开头；表格里的玩梗行加「社区调侃」标记
-    if (location.hash.indexOf('#/c/13') === 0) {
+    if (location.hash.indexOf('#/c/13') === 0 && !$('.slang', root)) {
       var w = document.createElement('div'); w.dataset.widget = 'slang';
-      var first = $('details.sec', root); first.parentNode.insertBefore(w, first);
-      $$('details.sec, .ch-tools, .mtoc', root).forEach(function (d) { d.remove(); });
-      W.slang(w);
+      var first = $('details.sec', root);
+      if (first) {
+        first.parentNode.insertBefore(w, first);
+        $$('details.sec, .ch-tools, .mtoc', root).forEach(function (d) { d.remove(); });
+      } else {
+        var reading = $('.course-reader .reading', root);
+        if (reading) reading.parentNode.insertBefore(w, reading);
+      }
+      if (w.parentNode) W.slang(w);
     }
   }
 
