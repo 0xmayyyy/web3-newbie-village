@@ -187,21 +187,31 @@
   var HERO_POSTER = 'assets/hero/hero-poster.jpg?v=20261106231500';
   var HERO_VIDEO = 'assets/hero/hero-desktop.mp4?v=20261106231500';
   var HERO_PORTRAIT = 'assets/hero/hero-portrait.webp?v=20261107133000';
+  var HERO_MOBILE = 'assets/hero/hero-mobile.mp4?v=20261107510000';
+  var HERO_MOBILE_POSTER = 'assets/hero/hero-mobile-poster.jpg?v=20261107510000';
+  function heroClip(cls, src, poster, media) {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return '<video class="' + cls + ' is-still" poster="' + poster + '" preload="none" muted playsinline aria-hidden="true"></video>';
+    }
+    return '<video class="' + cls + '" poster="' + poster + '" muted autoplay loop playsinline preload="metadata" aria-hidden="true"><source src="' + src + '" type="video/mp4" media="' + media + '"></video>';
+  }
   function renderHome() {
     document.title = t('title.home');
-    var reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var narrow = matchMedia('(max-width: 700px)').matches;
-    var video = narrow ? '' : (reduceMotion
-      ? '<video class="hero-video is-still" poster="' + HERO_POSTER + '" preload="none" muted playsinline aria-hidden="true"></video>'
-      : '<video class="hero-video" src="' + HERO_VIDEO + '" poster="' + HERO_POSTER + '" muted autoplay loop playsinline preload="metadata" aria-hidden="true"></video>');
+    var video = heroClip('hero-video', HERO_VIDEO, HERO_POSTER, '(min-width:700px)');
+    var mobileVideo = heroClip('hero-video-m', HERO_MOBILE, HERO_MOBILE_POSTER, '(max-width:699px)');
     main.innerHTML =
       '<section class="hero-screen" aria-labelledby="h-hero">' +
-      '<div class="hero-media"><div class="hero-frame">' + video +
+      '<div class="hero-media"><div class="hero-frame">' + video + mobileVideo +
       '<img class="hero-portrait" src="' + HERO_PORTRAIT + '" alt="" width="860" height="1528"></div><div class="hero-shade" aria-hidden="true"></div></div>' +
       '<div class="hero-copy"><h1 id="h-hero">' + esc(t('hero.h1')) + '</h1>' +
       '<p class="hero-sub">' + esc(t('hero.lead')) + '</p>' +
       '<div class="hero-cta"><a class="hero-btn hero-btn-primary" href="#/c/01">' + esc(t('hero.cta')) + '</a>' +
-      '<a class="hero-btn hero-btn-secondary" href="#/" data-scroll="h-toc">' + esc(t('hero.cta2')) + '</a></div></div></section>' +
+      '<a class="hero-btn hero-btn-secondary" href="#/" data-scroll="h-toc">' + esc(t('hero.cta2')) + '</a></div></div>' +
+      '<div class="m-hero"><div class="eyebrow">' + esc(t('hero.m.eyebrow')) + '</div>' +
+      '<h1>' + esc(t('hero.m.h1')) + '</h1><p>' + esc(t('hero.m.lead')) + '</p>' +
+      '<div class="buttons"><a class="primary" href="#/" data-scroll="h-toc">' + esc(t('hero.m.cta')) + '</a>' +
+      '<a class="secondary" href="#/" data-scroll="h-toc">' + esc(t('hero.m.cta2')) + '</a></div>' +
+      '<span class="scrollhint">' + esc(t('hero.m.scroll')) + '</span></div></section>' +
       planetAtlas() + '';
     mountHero();
     mountAtlas();
@@ -244,7 +254,22 @@
           '<small>' + noLoneChar(t('atlas.' + p.id + '.sub')) + '</small>' +
           (p.locked ? '<em>' + esc(t('atlas.locked')) + '</em>' : '') + '</button>';
       }).join('') + '</div>' +
-      '<p class="footnote">' + esc(t('atlas.note')) + '</p></section></div>';
+      '<p class="footnote">' + esc(t('atlas.note')) + '</p>' +
+      mobilePlanets() + '</section></div>';
+  }
+  var MOBILE_AURA = ['#a98ee8', '#67aee8', '#e9b26b', '#c38bbd', '#67d7c5', '#ec9976'];
+  var MOBILE_DUR = [5.3, 6.2, 5.8, 6.6, 5.6, 6.1];
+  var MOBILE_DELAY = [-0.4, -2.3, -1.8, -3.1, -2.7, -0.8];
+  function mobilePlanets() {
+    return '<div class="m-atlas-head"><div class="kicker">' + esc(t('atlas.m.kicker')) + '</div>' +
+      '<h2>' + esc(t('atlas.m.h')) + '</h2><p>' + esc(t('atlas.m.lead')) + '</p></div>' +
+      '<div class="m-planets">' + PLANETS.slice(0, 6).map(function (p, i) {
+        return '<button type="button" class="m-planet planet-card" data-i="' + i + '" aria-label="' + esc(t('atlas.m.' + p.id + '.name')) + '" style="--aura:' + MOBILE_AURA[i] + ';--duration:' + MOBILE_DUR[i] + 's;--delay:' + MOBILE_DELAY[i] + 's">' +
+          '<span class="orb"><img src="assets/planets/mobile/0' + (i + 1) + '.png?v=20261107510000" alt=""></span>' +
+          '<span class="number">0' + (i + 1) + ' / 06</span>' +
+          '<strong>' + esc(t('atlas.m.' + p.id + '.name')) + '</strong>' +
+          '<span class="desc">' + esc(t('atlas.m.' + p.id + '.desc')) + '</span></button>';
+      }).join('') + '</div>';
   }
   function planetEntryHash(i) {
     var p = PLANETS[i];
@@ -943,8 +968,8 @@
     $('.copied', dlg).textContent = '';
     dlg.showModal();
   }
-  $('#donate-btn').addEventListener('click', openDonate);
-  $('#nav-ex').addEventListener('click', function () { openExchangeShortcuts(); });
+  $('#donate-btn').addEventListener('click', function () { setNavOpen(false); openDonate(); });
+  $('#nav-ex').addEventListener('click', function () { setNavOpen(false); openExchangeShortcuts(); });
 
   /* ---------- Punycode 页面。计算在 js/punycode.js，这里只渲染，用户输入只用 textContent。 ---------- */
   function punyFillMarked(el, text) {
@@ -1071,11 +1096,14 @@
 
   /* ---------- 首页开场视频 ---------- */
   function mountHero() {
-    var vid = $('.hero-video');
-    if (!vid || vid.classList.contains('is-still')) return;
-    vid.addEventListener('error', function () { vid.classList.add('is-broken'); });
-    var p = vid.play();
-    if (p && p.catch) p.catch(function () {});
+    $$('.hero-video, .hero-video-m').forEach(function (vid) {
+      if (vid.classList.contains('is-still')) return;
+      vid.muted = true;
+      vid.defaultMuted = true;
+      vid.addEventListener('error', function () { vid.classList.add('is-broken'); });
+      var p = vid.play();
+      if (p && p.catch) p.catch(function () {});
+    });
   }
   function prefersReduce() { return matchMedia('(prefers-reduced-motion: reduce)').matches; }
   function onHomeHash() {
@@ -1143,6 +1171,7 @@
     var nav = $('#site-nav'), btn = $('#nav-menu');
     if (!nav || !btn) return;
     nav.classList.toggle('is-open', open);
+    document.body.classList.toggle('nav-drawer', open);
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     var ico = $('.nav-menu-ico', btn);
     if (ico) ico.textContent = open ? '×' : '☰';
