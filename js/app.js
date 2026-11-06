@@ -269,7 +269,8 @@
           '<span class="number">0' + (i + 1) + ' / 06</span>' +
           '<strong>' + esc(t('atlas.m.' + p.id + '.name')) + '</strong>' +
           '<span class="desc">' + esc(t('atlas.m.' + p.id + '.desc')) + '</span></button>';
-      }).join('') + '</div>';
+      }).join('') + '</div>' +
+      '<p class="m-foot">' + esc(t('atlas.m.sign')) + '<br><span>' + esc(t('atlas.m.note')) + '</span></p>';
   }
   function planetEntryHash(i) {
     var p = PLANETS[i];
