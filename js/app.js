@@ -197,7 +197,7 @@
   }
   function heroSlot() {
     if (matchMedia('(max-width:699px)').matches) return 'phone';
-    if (matchMedia('(min-width:701px)').matches) return 'desktop';
+    if (matchMedia('(min-width:700px)').matches) return 'desktop';
     return '';
   }
   function releaseVideo(video) {
@@ -242,7 +242,7 @@
       if (!document.body.classList.contains('is-home') || !document.querySelector('.hero-frame')) return;
       placeHero();
     };
-    ['(max-width:699px)', '(min-width:701px)'].forEach(function (query) {
+    ['(max-width:699px)', '(min-width:700px)'].forEach(function (query) {
       var mq = matchMedia(query);
       if (mq.addEventListener) mq.addEventListener('change', sync);
       else if (mq.addListener) mq.addListener(sync);
