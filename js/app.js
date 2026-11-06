@@ -195,13 +195,80 @@
     }
     return '<video id="' + id + '" class="' + cls + '" src="' + src + '" poster="' + poster + '" autoplay muted loop playsinline webkit-playsinline preload="' + preload + '" disablepictureinpicture aria-hidden="true"></video>';
   }
+  function heroSlot() {
+    if (matchMedia('(max-width:699px)').matches) return 'phone';
+    if (matchMedia('(min-width:700px)').matches) return 'desktop';
+    return '';
+  }
+  function releaseVideo(video) {
+    if (!video) return;
+    try { if (video.webkitExitFullscreen) video.webkitExitFullscreen(); } catch (err) {}
+    try {
+      if (document.fullscreenElement === video && document.exitFullscreen) {
+        var leaving = document.exitFullscreen();
+        if (leaving && leaving.catch) leaving.catch(function () {});
+      }
+    } catch (err) {}
+    try { video.pause(); } catch (err) {}
+    video.removeAttribute('src');
+    Array.prototype.forEach.call(video.querySelectorAll('source'), function (source) { source.remove(); });
+    try { video.load(); } catch (err) {}
+    if (video.parentNode) video.parentNode.removeChild(video);
+  }
+  function releaseHeroVideos() {
+    if (heroVisHandler) {
+      document.removeEventListener('visibilitychange', heroVisHandler);
+      heroVisHandler = null;
+    }
+    if (heroGestureHandler) {
+      window.removeEventListener('touchstart', heroGestureHandler);
+      window.removeEventListener('click', heroGestureHandler);
+      window.removeEventListener('scroll', heroGestureHandler);
+      heroGestureHandler = null;
+    }
+    releaseVideo(document.getElementById('heroVideo'));
+    releaseVideo(document.getElementById('heroVideoMobile'));
+  }
+  function heroMarkup(slot) {
+    if (slot === 'phone') return heroClip('heroVideoMobile', 'hero-video-m', HERO_MOBILE, HERO_MOBILE_POSTER, 'auto');
+    if (slot === 'desktop') return heroClip('heroVideo', 'hero-video', HERO_VIDEO, HERO_POSTER, 'metadata');
+    return '';
+  }
+  var heroMediaBound = false;
+  function bindHeroMedia() {
+    if (heroMediaBound) return;
+    heroMediaBound = true;
+    var sync = function () {
+      if (!document.body.classList.contains('is-home') || !document.querySelector('.hero-frame')) return;
+      placeHero();
+    };
+    ['(max-width:699px)', '(min-width:700px)'].forEach(function (query) {
+      var mq = matchMedia(query);
+      if (mq.addEventListener) mq.addEventListener('change', sync);
+      else if (mq.addListener) mq.addListener(sync);
+    });
+  }
+  function placeHero() {
+    var frame = document.querySelector('.hero-frame');
+    if (!frame) return;
+    var slot = heroSlot();
+    var wantId = slot === 'phone' ? 'heroVideoMobile' : slot === 'desktop' ? 'heroVideo' : '';
+    var current = frame.querySelector('video');
+    if (current && current.id === wantId) return;
+    releaseHeroVideos();
+    var markup = heroMarkup(slot);
+    if (!markup) return;
+    var portrait = frame.querySelector('.hero-portrait');
+    if (portrait) portrait.insertAdjacentHTML('beforebegin', markup);
+    else frame.insertAdjacentHTML('afterbegin', markup);
+    mountHero();
+  }
   function renderHome() {
     document.title = t('title.home');
-    var video = heroClip('heroVideo', 'hero-video', HERO_VIDEO, HERO_POSTER, 'metadata');
-    var mobileVideo = heroClip('heroVideoMobile', 'hero-video-m', HERO_MOBILE, HERO_MOBILE_POSTER, 'auto');
+    releaseHeroVideos();
     main.innerHTML =
       '<section class="hero-screen" aria-labelledby="h-hero">' +
-      '<div class="hero-media"><div class="hero-frame">' + video + mobileVideo +
+      '<div class="hero-media"><div class="hero-frame">' +
       '<img class="hero-portrait" src="' + HERO_PORTRAIT + '" alt="" width="860" height="1528"></div><div class="hero-shade" aria-hidden="true"></div></div>' +
       '<div class="hero-copy"><h1 id="h-hero">' + esc(t('hero.h1')) + '</h1>' +
       '<p class="hero-sub">' + esc(t('hero.lead')) + '</p>' +
@@ -213,7 +280,8 @@
       '<a class="secondary" href="#/" data-scroll="h-toc">' + esc(t('hero.m.cta2')) + '</a></div>' +
       '<span class="scrollhint">' + esc(t('hero.m.scroll')) + '</span></div></section>' +
       planetAtlas() + '';
-    mountHero();
+    bindHeroMedia();
+    placeHero();
     mountAtlas();
   }
   var PLANETS = [
@@ -1113,8 +1181,28 @@
       video.muted = true;
       video.defaultMuted = true;
       video.playsInline = true;
+      video.controls = false;
+      video.disablePictureInPicture = true;
+      var exitNative = function () {
+        try { if (video.webkitExitFullscreen) video.webkitExitFullscreen(); } catch (err) {}
+        try {
+          if (document.fullscreenElement === video && document.exitFullscreen) {
+            var leaving = document.exitFullscreen();
+            if (leaving && leaving.catch) leaving.catch(function () {});
+          }
+        } catch (err) {}
+      };
+      video.addEventListener('webkitbeginfullscreen', exitNative);
+      video.addEventListener('fullscreenchange', function () {
+        if (document.fullscreenElement === video) exitNative();
+      });
       video.addEventListener('error', function () { video.classList.add('is-broken'); });
+      if (!video.isConnected || window.getComputedStyle(video).display === 'none') {
+        releaseVideo(video);
+        return;
+      }
       var tryAutoplay = function () {
+        if (!video.isConnected || window.getComputedStyle(video).display === 'none') return;
         var pending = video.play();
         if (pending && pending.catch) pending.catch(function () {});
       };
@@ -1129,9 +1217,13 @@
       window.removeEventListener('scroll', heroGestureHandler);
       heroGestureHandler = null;
       bound.forEach(function (item) {
-        if (item.video.paused) item.tryAutoplay();
+        if (item.video.paused && item.video.isConnected) item.tryAutoplay();
       });
     };
+    if (!bound.length) {
+      heroGestureHandler = null;
+      return;
+    }
     window.addEventListener('touchstart', heroGestureHandler, { passive: true });
     window.addEventListener('click', heroGestureHandler, { passive: true });
     window.addEventListener('scroll', heroGestureHandler, { passive: true });
@@ -1164,6 +1256,7 @@
 
   /* ---------- 路由 ---------- */
   function route(keep) {
+    releaseHeroVideos();
     var h = location.hash, m = h.match(/^#\/c\/(\d\d)(?:\/(\d+))?/);
     $$('.topbar .search-results').forEach(function (b) { b.hidden = true; });
     var rm = h.match(/^#\/r\/(\w+)(?:\/(\d+))?/), cx = /^#\/cex/.test(h), py = /^#\/punycode/.test(h);

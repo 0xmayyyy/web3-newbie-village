@@ -35,7 +35,7 @@
   body.is-home .hero-frame{position:absolute;inset:0;width:100%;height:100%;max-width:none;aspect-ratio:auto;background:#0d0a21}
   body.is-home .hero-frame::before,body.is-home .hero-portrait{display:none}
   body.is-home .hero-video{display:none}
-  body.is-home .hero-video-m{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover;object-position:center 42%;background:transparent;-webkit-mask-image:none;mask-image:none}
+  body.is-home .hero-video-m{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover;object-position:center 42%;background:transparent;pointer-events:none;-webkit-mask-image:none;mask-image:none}
   body.is-home .hero-video-m.is-still,body.is-home .hero-video-m.is-broken{opacity:0}
   body.is-home .hero-frame::after{inset:0;z-index:2;background:linear-gradient(180deg,rgba(8,7,26,.48),transparent 18%,transparent 48%,rgba(13,8,32,.14) 60%,rgba(13,8,32,.76) 83%,#120c2a 100%)}
   body.is-home .hero-shade{display:block;position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(90deg,rgba(15,10,33,.12),transparent 40%,rgba(15,10,33,.12))}
