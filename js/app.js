@@ -543,234 +543,30 @@
   }
   $('#donate-btn').addEventListener('click', openDonate);
 
-  /* ---------- Punycode / 域名编码（只在浏览器本地算，不上传） ---------- */
-  /* 浏览器优先用 URL.domainToASCII / domainToUnicode（UTS #46）。没有这两个方法时，用 URL 的 href 序列化（域名会变成 xn--），再不行就用下面的 RFC 3492。
-     「例子」的正确编码是 xn--fsqu00a，不是只含「例」的 xn--fsq。例子.中国 ↔ xn--fsqu00a.xn--fiqs8s。 */
-  var PUNY_BASE = 36, PUNY_TMIN = 1, PUNY_TMAX = 26, PUNY_SKEW = 38, PUNY_DAMP = 700, PUNY_BIAS0 = 72, PUNY_N0 = 128;
-  function punyAdapt(delta, numPoints, firstTime) {
-    delta = firstTime ? Math.floor(delta / PUNY_DAMP) : Math.floor(delta / 2);
-    delta += Math.floor(delta / numPoints);
-    var k = 0;
-    while (delta > Math.floor(((PUNY_BASE - PUNY_TMIN) * PUNY_TMAX) / 2)) {
-      delta = Math.floor(delta / (PUNY_BASE - PUNY_TMIN));
-      k += PUNY_BASE;
+  /* ---------- Punycode 页面。计算在 js/punycode.js，这里只渲染，用户输入只用 textContent。 ---------- */
+  function punyFillMarked(el, text) {
+    el.textContent = '';
+    var cps = PUNY.codePoints(text), any = false, i, cp, ch, m;
+    for (i = 0; i < cps.length; i++) {
+      cp = cps[i]; ch = PUNY.fromCodePoint(cp);
+      if (cp > 127) {
+        any = true;
+        m = document.createElement('mark');
+        m.className = 'puny-odd';
+        m.textContent = ch;
+        m.title = PUNY.kindName(cp) + ' U+' + ('0000' + cp.toString(16).toUpperCase()).slice(-4);
+        el.appendChild(m);
+      } else el.appendChild(document.createTextNode(ch));
     }
-    return k + Math.floor(((PUNY_BASE - PUNY_TMIN + 1) * delta) / (delta + PUNY_SKEW));
-  }
-  function punyCodePoints(str) {
-    var out = [], i = 0;
-    while (i < str.length) {
-      var c = str.charCodeAt(i);
-      if (c >= 0xD800 && c <= 0xDBFF && i + 1 < str.length) {
-        var c2 = str.charCodeAt(i + 1);
-        if (c2 >= 0xDC00 && c2 <= 0xDFFF) { out.push(((c - 0xD800) << 10) + (c2 - 0xDC00) + 0x10000); i += 2; continue; }
-      }
-      out.push(c); i++;
-    }
-    return out;
-  }
-  function punyFromCodePoint(cp) {
-    if (cp <= 0xFFFF) return String.fromCharCode(cp);
-    cp -= 0x10000;
-    return String.fromCharCode(0xD800 + (cp >> 10), 0xDC00 + (cp & 0x3FF));
-  }
-  function punyEncodeDigit(d) { return d + (d < 26 ? 97 : 22); }
-  function punyDecodeDigit(cp) {
-    if (cp >= 48 && cp <= 57) return cp - 22;
-    if (cp >= 65 && cp <= 90) return cp - 65;
-    if (cp >= 97 && cp <= 122) return cp - 97;
-    return PUNY_BASE;
-  }
-  function punyEncodeLabel(input) {
-    var cps = punyCodePoints(input), n = PUNY_N0, delta = 0, bias = PUNY_BIAS0, out = [], b = 0, i;
-    for (i = 0; i < cps.length; i++) if (cps[i] < 128) { out.push(punyFromCodePoint(cps[i])); b++; }
-    var h = b;
-    if (b) out.push('-');
-    while (h < cps.length) {
-      var m = 0x110000;
-      for (i = 0; i < cps.length; i++) if (cps[i] >= n && cps[i] < m) m = cps[i];
-      if (m === 0x110000 || m - n > Math.floor((0x7FFFFFFF - delta) / (h + 1))) return null;
-      delta += (m - n) * (h + 1); n = m;
-      for (i = 0; i < cps.length; i++) {
-        var cp = cps[i];
-        if (cp < n) { delta++; if (delta > 0x7FFFFFFF) return null; }
-        if (cp === n) {
-          var q = delta, k = PUNY_BASE;
-          for (;;) {
-            var t = k <= bias ? PUNY_TMIN : (k >= bias + PUNY_TMAX ? PUNY_TMAX : k - bias);
-            if (q < t) break;
-            out.push(punyFromCodePoint(punyEncodeDigit(t + ((q - t) % (PUNY_BASE - t)))));
-            q = Math.floor((q - t) / (PUNY_BASE - t));
-            k += PUNY_BASE;
-          }
-          out.push(punyFromCodePoint(punyEncodeDigit(q)));
-          bias = punyAdapt(delta, h + 1, h === b);
-          delta = 0; h++;
-        }
-      }
-      delta++; n++;
-    }
-    return out.join('');
-  }
-  function punyDecodeLabel(input) {
-    var n = PUNY_N0, i = 0, bias = PUNY_BIAS0, output = [], b = input.lastIndexOf('-'), j;
-    if (b < 0) b = 0;
-    for (j = 0; j < b; j++) {
-      var c = input.charCodeAt(j);
-      if (c >= 128) return null;
-      output.push(c);
-    }
-    var idx = b > 0 ? b + 1 : 0;
-    while (idx < input.length) {
-      var oldi = i, w = 1, k = PUNY_BASE;
-      for (;;) {
-        if (idx >= input.length) return null;
-        var digit = punyDecodeDigit(input.charCodeAt(idx++));
-        if (digit >= PUNY_BASE || digit > Math.floor((0x7FFFFFFF - i) / w)) return null;
-        i += digit * w;
-        var t = k <= bias ? PUNY_TMIN : (k >= bias + PUNY_TMAX ? PUNY_TMAX : k - bias);
-        if (digit < t) break;
-        if (w > Math.floor(0x7FFFFFFF / (PUNY_BASE - t))) return null;
-        w *= (PUNY_BASE - t);
-        k += PUNY_BASE;
-      }
-      var len = output.length + 1;
-      bias = punyAdapt(i - oldi, len, oldi === 0);
-      if (Math.floor(i / len) > 0x10FFFF - n) return null;
-      n += Math.floor(i / len);
-      i %= len;
-      output.splice(i, 0, n);
-      i++;
-    }
-    var s = '';
-    for (j = 0; j < output.length; j++) s += punyFromCodePoint(output[j]);
-    return s;
-  }
-  function punySplitTrail(host) {
-    if (host.charAt(host.length - 1) === '.') return { body: host.slice(0, -1), trail: '.' };
-    return { body: host, trail: '' };
-  }
-  function punyEmptyLabel(host) {
-    var s = host.charAt(host.length - 1) === '.' ? host.slice(0, -1) : host;
-    if (!s) return true;
-    var parts = s.split('.'), i;
-    for (i = 0; i < parts.length; i++) if (!parts[i]) return true;
-    return false;
-  }
-  function punyEncodeDomain(raw) {
-    var sp = punySplitTrail(raw), parts = (sp.body.normalize ? sp.body.normalize('NFC') : sp.body).split('.'), out = [], i;
-    if (!sp.body) return null;
-    for (i = 0; i < parts.length; i++) {
-      var lab = parts[i];
-      if (!lab) return null;
-      if (/[^\u0000-\u007F]/.test(lab)) {
-        var enc = punyEncodeLabel(lab);
-        if (enc == null) return null;
-        var ace = 'xn--' + enc;
-        if (ace.length > 63) return null;
-        out.push(ace);
-      } else {
-        if (lab.length > 63) return null;
-        out.push(lab.toLowerCase());
-      }
-    }
-    return out.join('.') + sp.trail;
-  }
-  function punyDecodeDomain(ascii) {
-    var sp = punySplitTrail(ascii), parts = sp.body.split('.'), out = [], i;
-    for (i = 0; i < parts.length; i++) {
-      var lab = parts[i];
-      if (/^xn--/i.test(lab)) {
-        var dec = punyDecodeLabel(lab.slice(4).toLowerCase());
-        if (dec == null || !dec) return null;
-        out.push(dec);
-      } else out.push(lab.toLowerCase());
-    }
-    return out.join('.') + sp.trail;
-  }
-  function punyIdna(host) {
-    var ascii = '', unicode = '';
-    if (typeof URL !== 'undefined' && typeof URL.domainToASCII === 'function') {
-      try { ascii = URL.domainToASCII(host) || ''; } catch (e) { ascii = ''; }
-      if (!ascii || punyEmptyLabel(ascii)) return null;
-      if (typeof URL.domainToUnicode === 'function') {
-        try { unicode = URL.domainToUnicode(host) || ''; } catch (e2) { unicode = ''; }
-      }
-      if (!unicode) unicode = punyDecodeDomain(ascii);
-      if (!unicode || punyEmptyLabel(unicode)) return null;
-      return { ascii: ascii, unicode: unicode };
-    }
-    if (typeof URL !== 'undefined') {
-      try {
-        var u = new URL('http://' + host);
-        var href = u.href, schemeEnd = href.indexOf('://');
-        var hrefHost = schemeEnd >= 0 ? href.slice(schemeEnd + 3) : href;
-        var slash = hrefHost.indexOf('/');
-        if (slash >= 0) hrefHost = hrefHost.slice(0, slash);
-        if (hrefHost && !/[^\u0000-\u007F]/.test(hrefHost)) ascii = hrefHost;
-        else ascii = punyEncodeDomain(host) || '';
-        if (u.hostname && /[^\u0000-\u007F]/.test(u.hostname)) unicode = u.hostname;
-        if (!unicode && ascii) unicode = punyDecodeDomain(ascii) || '';
-      } catch (e3) { return null; }
-      if (!ascii || !unicode || punyEmptyLabel(ascii)) return null;
-      return { ascii: ascii, unicode: unicode };
-    }
-    ascii = punyEncodeDomain(host) || '';
-    if (!ascii || punyEmptyLabel(ascii)) return null;
-    unicode = punyDecodeDomain(ascii) || '';
-    if (!unicode || punyEmptyLabel(unicode)) return null;
-    return { ascii: ascii, unicode: unicode };
-  }
-  function punyParse(raw) {
-    var s = String(raw).replace(/^\s+|\s+$/g, '');
-    if (!s) return { empty: true };
-    if (s.length > 2048) return { error: '太长了，缩短一点再试。' };
-    if (/\s/.test(s)) return { error: '中间有空格或换行，去掉后再试。' };
-    var prefix = '', rest = s, isUrl = false, sm = s.match(/^([a-zA-Z][a-zA-Z0-9+.-]*:\/\/)([\s\S]*)$/);
-    if (sm) { prefix = sm[1]; rest = sm[2]; isUrl = true; }
-    else if (s.slice(0, 2) === '//') { prefix = '//'; rest = s.slice(2); isUrl = true; }
-    var cut = rest.search(/[/?#]/), auth, suffix;
-    if (cut >= 0) { auth = rest.slice(0, cut); suffix = rest.slice(cut); isUrl = true; }
-    else { auth = rest; suffix = ''; }
-    if (!auth) return { error: '没看到域名。' };
-    var userinfo = '', hp = auth, at = auth.lastIndexOf('@');
-    if (at >= 0) { userinfo = auth.slice(0, at + 1); hp = auth.slice(at + 1); }
-    var host = hp, port = '', ip = false;
-    if (hp.charAt(0) === '[') {
-      var br = hp.indexOf(']');
-      if (br < 1) return { error: '地址括号不完整。' };
-      host = hp.slice(0, br + 1);
-      port = hp.slice(br + 1);
-      ip = true;
-    } else {
-      var colon = hp.lastIndexOf(':');
-      if (colon >= 0) {
-        host = hp.slice(0, colon);
-        port = hp.slice(colon);
-      }
-    }
-    if (port) {
-      if (!/^:\d+$/.test(port)) return { error: '冒号后面不是端口。' };
-      var pn = parseInt(port.slice(1), 10);
-      if (pn > 65535) return { error: '端口要在 0 到 65535 之间。' };
-    }
-    if (!host) return { error: '没看到域名。' };
-    if (!ip && /^\d{1,3}(\.\d{1,3}){3}$/.test(host)) {
-      var octets = host.split('.'), v4 = true, oi;
-      for (oi = 0; oi < octets.length; oi++) if (!/^\d{1,3}$/.test(octets[oi]) || +octets[oi] > 255) v4 = false;
-      if (v4) ip = true;
-    }
-    if (ip) {
-      try { if (typeof URL !== 'undefined') new URL('http://' + host + (port || '')); }
-      catch (e) { return { error: '这个 IP 地址格式不对。' }; }
-    }
-    return { isUrl: isUrl, prefix: prefix, userinfo: userinfo, host: host, port: port, suffix: suffix, ip: ip };
+    return any;
   }
   function punyCopy(text, statusEl, okText) {
     function ok() { statusEl.textContent = okText; }
     function fallback() {
       var t = document.createElement('textarea');
-      t.value = text; document.body.appendChild(t); t.select();
+      t.value = text; t.setAttribute('readonly', '');
+      t.style.position = 'fixed'; t.style.left = '-9999px';
+      document.body.appendChild(t); t.select();
       try { document.execCommand('copy'); ok(); } catch (e) { statusEl.textContent = '复制失败，请长按文字手动复制'; }
       t.remove();
     }
@@ -781,66 +577,91 @@
     document.title = 'Punycode 转换 - Web3 新手村';
     main.innerHTML = '<div class="puny-page"><nav class="crumbs" aria-label="位置"><a href="#/">首页</a> › <span>Punycode 转换</span></nav>' +
       '<h1>🔤 Punycode 转换</h1>' +
-      '<p class="lead">把中文域名转成 xn-- 开头的 Punycode，或把 Punycode 转回能读的域名。例如「例子.中国」就是「xn--fsqu00a.xn--fiqs8s」。只在你的浏览器里计算，不会上传。</p>' +
-      '<div class="widget puny"><label class="puny-field" for="puny-in">域名或完整网址' +
+      '<p class="lead">把域名在 Unicode 和 xn-- 之间转换。计算只在这台设备的浏览器里完成，输入不会上传，也不会自动打开你贴进来的网址。</p>' +
+      '<div class="widget puny">' +
+      '<div class="puny-examples"><p class="puny-ex-h">点一下，看拉丁字母 a 和西里尔字母 а</p><div class="puny-ex-row">' +
+      '<button type="button" class="puny-ex" id="puny-ex-latin" aria-pressed="false"><b>正常英文</b><span class="puny-ex-host">binance.com</span><small>字母 a 是拉丁文，结果仍是 binance.com</small></button>' +
+      '<button type="button" class="puny-ex" id="puny-ex-cyr" aria-pressed="false"><b>长得像的写法</b><span class="puny-ex-host">bin<mark class="puny-odd" title="西里尔字母 а（U+0430）">\u0430</mark>nce.com</span><small>标出的 a 是西里尔字母，会变成 xn--binnce-5nf.com</small></button>' +
+      '</div></div>' +
+      '<label class="puny-field" for="puny-in">域名或完整网址' +
       '<input id="puny-in" type="text" inputmode="url" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" placeholder="例如 例子.中国 或 https://例子.中国"></label>' +
-      '<p class="puny-tip">长得像的域名可能是钓鱼网站，这个工具只转换编码，不判断网站安不安全。</p>' +
+      '<p class="puny-tip">这不是安全扫描，也不能告诉你网站是不是真的、安不安全。形似字、不同文字混在一起，以及普通的英文仿写（比如把 binance 写成 binonce）都可能被用来钓鱼。这里只做编码转换。</p>' +
       '<p class="puny-dir" id="puny-dir" role="status" aria-live="polite"></p>' +
+      '<p class="puny-warn" id="puny-warn" hidden></p>' +
+      '<p class="puny-user" id="puny-user" hidden></p>' +
       '<div class="puny-out" id="puny-out" hidden>' +
-      '<div class="puny-row"><span class="puny-k" id="puny-host-k">转换后的域名</span><code id="puny-host"></code><button type="button" class="btn btn-ghost btn-sm" id="puny-copy-host">复制域名</button></div>' +
-      '<div class="puny-row" id="puny-url-row" hidden><span class="puny-k" id="puny-url-k">转换后的网址</span><code id="puny-url"></code><button type="button" class="btn btn-ghost btn-sm" id="puny-copy-url">复制网址</button></div>' +
+      '<div class="puny-row"><span class="puny-k">你输入的原文</span><code id="puny-raw"></code></div>' +
+      '<div class="puny-row"><span class="puny-k">Unicode 域名</span><p class="puny-odd-host" id="puny-uni"></p><p class="puny-odd-note" id="puny-odd-note" hidden></p><button type="button" class="btn btn-ghost btn-sm" id="puny-copy-uni">复制 Unicode</button></div>' +
+      '<div class="puny-row"><span class="puny-k">Punycode / ASCII</span><code id="puny-host"></code><button type="button" class="btn btn-ghost btn-sm" id="puny-copy-host">复制 Punycode</button></div>' +
+      '<div class="puny-row" id="puny-url-row" hidden><span class="puny-k" id="puny-url-k">只替换了域名的网址</span><code id="puny-url"></code><button type="button" class="btn btn-ghost btn-sm" id="puny-copy-url">复制网址</button></div>' +
       '</div><p class="copied" id="puny-copied" role="status" aria-live="polite"></p></div></div>';
-    var input = $('#puny-in'), dir = $('#puny-dir'), out = $('#puny-out'), hostEl = $('#puny-host'), urlEl = $('#puny-url'), urlRow = $('#puny-url-row'), hostK = $('#puny-host-k'), urlK = $('#puny-url-k'), copyUrlBtn = $('#puny-copy-url'), copied = $('#puny-copied');
-    var state = { host: '', url: '' }, composing = false;
+    var input = $('#puny-in'), dir = $('#puny-dir'), warn = $('#puny-warn'), userNote = $('#puny-user'), out = $('#puny-out');
+    var rawEl = $('#puny-raw'), uniEl = $('#puny-uni'), noteEl = $('#puny-odd-note'), hostEl = $('#puny-host'), urlEl = $('#puny-url'), urlRow = $('#puny-url-row'), copied = $('#puny-copied');
+    var exLatin = $('#puny-ex-latin'), exCyr = $('#puny-ex-cyr');
+    var state = { ascii: '', unicode: '', url: '' }, composing = false;
+    function setPressed() {
+      var v = input.value.replace(/^\s+|\s+$/g, '');
+      exLatin.setAttribute('aria-pressed', v === PUNY.EX_LATIN ? 'true' : 'false');
+      exCyr.setAttribute('aria-pressed', v === PUNY.EX_CYR ? 'true' : 'false');
+    }
+    function clearOut() {
+      warn.hidden = true; warn.textContent = '';
+      userNote.hidden = true; userNote.textContent = '';
+      rawEl.textContent = ''; uniEl.textContent = ''; hostEl.textContent = ''; urlEl.textContent = '';
+      noteEl.hidden = true; noteEl.textContent = '';
+      urlRow.hidden = true; out.hidden = true;
+      state.ascii = ''; state.unicode = ''; state.url = '';
+    }
     function showEmpty() {
       dir.className = 'puny-dir';
-      dir.textContent = '贴上域名或完整网址，会自动转换。';
-      out.hidden = true; urlRow.hidden = true; hostEl.textContent = ''; urlEl.textContent = '';
-      copied.textContent = ''; state.host = ''; state.url = '';
+      dir.textContent = '贴上域名或完整网址，会自动转换。也可以点上面的例子。';
+      clearOut(); setPressed();
     }
     function showError(msg) {
-      dir.className = 'puny-dir err'; dir.textContent = msg;
-      out.hidden = true; urlRow.hidden = true; hostEl.textContent = ''; urlEl.textContent = '';
-      state.host = ''; state.url = '';
+      dir.className = 'puny-dir err';
+      dir.textContent = msg;
+      clearOut(); setPressed();
     }
     function run() {
-      var parsed = punyParse(input.value);
-      if (parsed.empty) return showEmpty();
-      if (parsed.error) return showError(parsed.error);
-      var outHost, kind, forms = null;
-      if (parsed.ip) { outHost = parsed.host; kind = 'ip'; }
-      else {
-        forms = punyIdna(parsed.host);
-        if (!forms) return showError('这个域名格式不对，检查一下再试。');
-        var nonAscii = /[^\u0000-\u007F]/.test(parsed.host);
-        var hasPuny = /(^|\.)xn--/i.test(parsed.host);
-        if (nonAscii) { outHost = forms.ascii; kind = 'ascii'; }
-        else if (hasPuny || (forms.unicode !== parsed.host && /[^\u0000-\u007F]/.test(forms.unicode))) { outHost = forms.unicode; kind = 'unicode'; }
-        else { outHost = forms.ascii; kind = outHost === parsed.host ? 'same' : 'mapped'; }
-      }
-      var msg = '已转成 Punycode（xn--）。', hostLabel = '转换后的域名';
-      if (kind === 'ascii' && !/(^|\.)xn--/i.test(outHost)) { msg = '已转成浏览器使用的英文写法。'; }
-      else if (kind === 'unicode') { msg = '已转成可读域名。'; hostLabel = '转换后的域名'; }
-      else if (kind === 'same') { msg = '这是英文域名，不用转成 xn--。'; hostLabel = '域名'; }
-      else if (kind === 'mapped') { msg = '英文域名会按规则写成小写，没有 xn--。'; hostLabel = '域名'; }
-      else if (kind === 'ip') { msg = '这是 IP 地址，没有 Punycode 这一层。'; hostLabel = '地址'; }
-      var rebuilt = parsed.prefix + parsed.userinfo + outHost + parsed.port + parsed.suffix;
+      setPressed();
+      var res = PUNY.convert(input.value);
+      if (res.empty) return showEmpty();
+      if (res.error) return showError(res.error);
+      var msg = '已转成 Punycode（xn--）。';
+      if (res.kind === 'to-ascii' && !/(^|\.)xn--/i.test(res.ascii)) msg = '已转成浏览器使用的英文写法。';
+      else if (res.kind === 'to-unicode') msg = '已转成可读的 Unicode 域名。';
+      else if (res.kind === 'same') msg = '这是英文域名，不用转成 xn--。';
+      else if (res.kind === 'mapped') msg = '英文域名会按规则写成小写，没有 xn--。';
+      else if (res.kind === 'ip') msg = '这是 IP 地址，没有 Punycode 这一层。';
       dir.className = 'puny-dir';
       dir.textContent = msg;
-      hostK.textContent = hostLabel;
-      hostEl.textContent = outHost;
-      state.host = outHost;
-      if ((parsed.isUrl || parsed.port || parsed.userinfo) && rebuilt !== outHost) {
-        urlK.textContent = parsed.isUrl ? '转换后的网址' : '转换后的主机';
-        copyUrlBtn.textContent = parsed.isUrl ? '复制网址' : '复制主机';
-        urlEl.textContent = rebuilt; urlRow.hidden = false; state.url = rebuilt;
-      } else { urlEl.textContent = ''; urlRow.hidden = true; state.url = ''; }
+      if (res.warn) {
+        warn.hidden = false;
+        warn.textContent = '这条里面有非英文字符，或结果带 xn--。有的字符和普通英文字母长得几乎一样。上面只是编码转换，不是在说这个网站安全或不安全。';
+      } else { warn.hidden = true; warn.textContent = ''; }
+      if (res.userinfo) {
+        userNote.hidden = false;
+        userNote.textContent = '@ 前面不是域名。真正的域名是 @ 后面、下面标出来的那一个。';
+      } else { userNote.hidden = true; userNote.textContent = ''; }
+      rawEl.textContent = res.input;
+      punyFillMarked(uniEl, res.unicode);
+      var note = PUNY.markNote(res.unicode);
+      if (note) { noteEl.hidden = false; noteEl.textContent = note; }
+      else { noteEl.hidden = true; noteEl.textContent = ''; }
+      hostEl.textContent = res.ascii;
+      state.ascii = res.ascii; state.unicode = res.unicode;
+      if (res.rebuilt) { urlEl.textContent = res.rebuilt; urlRow.hidden = false; state.url = res.rebuilt; }
+      else { urlEl.textContent = ''; urlRow.hidden = true; state.url = ''; }
       out.hidden = false;
     }
     input.addEventListener('compositionstart', function () { composing = true; });
     input.addEventListener('compositionend', function () { composing = false; run(); });
     input.addEventListener('input', function () { copied.textContent = ''; if (!composing) run(); });
-    $('#puny-copy-host').addEventListener('click', function () { if (state.host) punyCopy(state.host, copied, '已复制域名'); });
+    function loadEx(value) { input.value = value; copied.textContent = ''; run(); input.focus(); }
+    exLatin.addEventListener('click', function () { loadEx(PUNY.EX_LATIN); });
+    exCyr.addEventListener('click', function () { loadEx(PUNY.EX_CYR); });
+    $('#puny-copy-host').addEventListener('click', function () { if (state.ascii) punyCopy(state.ascii, copied, '已复制 Punycode'); });
+    $('#puny-copy-uni').addEventListener('click', function () { if (state.unicode) punyCopy(state.unicode, copied, '已复制 Unicode'); });
     $('#puny-copy-url').addEventListener('click', function () { if (state.url) punyCopy(state.url, copied, '已复制网址'); });
     showEmpty();
   }
