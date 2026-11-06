@@ -682,7 +682,7 @@ dialog#donate{position:relative;border:1px solid rgba(174,140,207,.45);border-ra
 dialog#donate::backdrop{background:rgba(16,10,32,.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 dialog#donate h2{margin:2px 0 4px;font-size:22px;line-height:1.3;color:#F5F3FF}
 dialog#donate .w-note{color:#C9B6E6}
-dialog#donate .dlg-avatar{display:block;width:min(196px,70%);height:auto;margin:2px auto 8px;border-radius:22px;object-fit:contain;background:transparent;box-shadow:0 0 26px rgba(255,223,168,.32)}
+dialog#donate .dlg-avatar{display:block;width:min(228px,68%);height:auto;margin:2px auto 8px;border:0;border-radius:0;object-fit:contain;background:transparent;box-shadow:none;filter:none;image-rendering:auto}
 dialog#donate .dlg-x{background:transparent;color:#FFDFA8;border:1px solid rgba(255,223,168,.55)}
 dialog#donate .dlg-x:hover{background:rgba(255,223,168,.16)}
 dialog#donate .seg.don-tabs{background:#34264F;border:1px solid rgba(174,140,207,.35)}
@@ -698,5 +698,5 @@ dialog#donate .dlg-warn{color:#FFF2D9;background:rgba(52,38,79,.85);border:1px s
 dialog#donate .copied{color:#FFDFA8}
 @media (max-width:700px){
   dialog#donate{padding:18px 14px 14px}
-  dialog#donate .dlg-avatar{width:min(168px,64%)}
+  dialog#donate .dlg-avatar{width:min(200px,72%)}
 }

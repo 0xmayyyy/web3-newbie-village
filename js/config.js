@@ -89,7 +89,7 @@ window.SITE_CONFIG = {
 
   /* 顶栏「交易所」弹层顺序。URL 仍用上面 exchanges / onchain 里已有的邀请链接，邀请码从这些 URL 读取。
      不含币安 Web3 钱包（钱包邀请，不是这个入口）。 */
-  exchangeNav: ['Binance', 'Bybit', 'Gate', 'HTX', 'DeBot'],
+  exchangeNav: ['Binance', 'Bybit', 'Gate', 'DeBot'],
 
   /* 搜索别名：同一组里的词互相等价 */
   aliases: [
