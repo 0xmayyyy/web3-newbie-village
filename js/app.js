@@ -215,7 +215,6 @@
     { id: 'chance', file: 'chance', color: '#eea36d', dot: '#ffb17b', soft: 'rgba(238,163,109,.28)', sections12: [5, 8, 9, 10, 11], chapters: [{ id: '11' }, { id: '12', label: 'atlas.chance.ch12' }] },
     { id: 'advanced', file: 'advanced', color: '#a28bf0', dot: '#b4a0f5', soft: 'rgba(162,139,240,.28)', locked: true, chapters: [] }
   ];
-  var atlasCurrent = 0;
   var readerJumpTop = false;
   try { localStorage.removeItem('web3-reader-theme'); } catch (eTheme) {}
   function planetLabel(item) {
@@ -240,9 +239,6 @@
           '<small>' + esc(t('atlas.' + p.id + '.sub')) + '</small>' +
           (p.locked ? '<em>' + esc(t('atlas.locked')) + '</em>' : '') + '</button>';
       }).join('') + '</div>' +
-      '<div class="info"><div><strong id="info-title">' + esc(planetInfo(0)) + '</strong>' +
-      '<p id="info-sub">' + esc(t('atlas.entry.sub')) + '</p></div>' +
-      '<button type="button" id="atlas-view">' + esc(t('atlas.view')) + '</button></div>' +
       '<p class="footnote">' + esc(t('atlas.note')) + '</p></section></div>';
   }
   function planetEntryHash(i) {
@@ -257,19 +253,7 @@
     var hash = planetEntryHash(i);
     if (hash) location.hash = hash;
   }
-  function choosePlanet(i) {
-    if (i === 6 || !PLANETS[i] || PLANETS[i].locked) return;
-    atlasCurrent = i;
-    var p = PLANETS[i];
-    $$('.planet-scene .planet-card').forEach(function (card, j) {
-      card.setAttribute('aria-pressed', j === i ? 'true' : 'false');
-    });
-    var title = $('#info-title'), sub = $('#info-sub');
-    if (title) title.textContent = planetInfo(i);
-    if (sub) sub.textContent = t('atlas.' + p.id + '.sub');
-  }
   function mountAtlas() {
-    atlasCurrent = 0;
     $$('.planet-scene .planet-card').forEach(function (card) {
       card.addEventListener('click', function () {
         var i = Number(card.getAttribute('data-i'));
@@ -277,8 +261,6 @@
         enterPlanet(i);
       });
     });
-    var view = $('#atlas-view');
-    if (view) view.addEventListener('click', function () { enterPlanet(atlasCurrent); });
   }
 
   /* ---------- 章节页 ---------- */
@@ -368,7 +350,8 @@
       '<aside class="toc"><h2>' + esc(t('reader.map')) + '</h2><div>' + visible.map(function (item, i) {
         return '<button type="button" class="toc-btn' + (i === pos ? ' active' : '') + '" data-sec="' + item.i + '"><span class="idx">' + ('0' + (i + 1)).slice(-2) + '</span><span>' + esc(item.s.title) + '</span></button>';
       }).join('') + '</div><div class="progress"><div id="reader-bar" style="width:' + ((pos + 1) / visible.length * 100) + '%"></div></div><div class="progress-label">' + esc(t('reader.reading', { n: pos + 1, m: visible.length })) + '</div>' +
-      '<div class="tools"><h2>' + esc(t('reader.shared')) + '</h2><button type="button" data-tool="14">' + esc(t('reader.tool14')) + '</button><button type="button" data-tool="16">' + esc(t('reader.tool16')) + '</button></div></aside></div></div></div>';
+      '<div class="tools"><h2>' + esc(t('reader.shared')) + '</h2><button type="button" data-tool="14">' + esc(t('reader.tool14')) + '</button><button type="button" data-tool="16">' + esc(t('reader.tool16')) + '</button></div></aside></div></div>' +
+      '<p class="reader-home"><a href="#/">' + esc(t('reader.home')) + '</a></p></div>';
     var prose = $('#reader-prose');
     if (highlight && prose) {
       var opening = prose.querySelector('p');

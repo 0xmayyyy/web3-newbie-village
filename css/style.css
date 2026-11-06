@@ -521,14 +521,14 @@ body.nav-on-dark .lang-switch{background:rgba(247,245,241,.08)}
 body.nav-on-dark .lang-switch button{color:rgba(247,245,241,.75)}
 .lang-switch button[aria-pressed="true"]{background:#DCC39B;color:#0D1022;box-shadow:none}
 .topbar .search.mini{flex:0 1 168px;width:168px;max-width:190px;min-width:112px;margin-left:auto}
-.topbar .search input{font-family:Inter,"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;font-size:16px;background:rgba(255,255,255,.72);border-color:rgba(37,32,64,.12);color:#252040;padding:6px 12px;transition:border-color .2s,background-color .2s}
-body.nav-on-dark .topbar .search input{background:rgba(13,16,34,.35);border-color:rgba(220,195,155,.35);color:#F7F5F1}
-body.nav-on-dark .topbar .search input::placeholder{color:rgba(247,245,241,.62)}
+.topbar .search input{font-family:Inter,"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;font-size:16px;background:rgba(13,16,34,.92);border-color:rgba(220,195,155,.46);color:#F7F5F1;padding:10px 17px;transition:border-color .2s,background-color .2s}
+.topbar .search input::placeholder{color:rgba(247,245,241,.62)}
+body.nav-on-dark .topbar .search input{background:rgba(8,8,24,.25);border-color:rgba(220,195,155,.46);color:#F7F5F1}
 .topbar .search input:focus{border-color:#DCC39B;box-shadow:0 0 0 3px rgba(220,195,155,.35)}
-body.nav-on-dark .topbar .search-results{background:rgba(13,16,34,.96);border-color:rgba(220,195,155,.28);color:#F7F5F1}
-body.nav-on-dark .topbar .search-results a{color:#F7F5F1}
-body.nav-on-dark .topbar .search-results span,body.nav-on-dark .topbar .empty{color:rgba(247,245,241,.72)}
-body.nav-on-dark .topbar .search-results a:hover,body.nav-on-dark .topbar .search-results a:focus{background:rgba(220,195,155,.16)}
+.topbar .search-results,body.nav-on-dark .topbar .search-results{background:rgba(13,16,34,.96);border-color:rgba(220,195,155,.28);color:#F7F5F1}
+.topbar .search-results a,body.nav-on-dark .topbar .search-results a{color:#F7F5F1}
+.topbar .search-results span,.topbar .empty,body.nav-on-dark .topbar .search-results span,body.nav-on-dark .topbar .empty{color:rgba(247,245,241,.72)}
+.topbar .search-results a:hover,.topbar .search-results a:focus,body.nav-on-dark .topbar .search-results a:hover,body.nav-on-dark .topbar .search-results a:focus{background:rgba(220,195,155,.16)}
 .nav-overflow{display:none;flex-direction:column;align-items:stretch;gap:2px;min-width:210px}
 .nav-overflow-label{display:none;margin:0}
 .nav-overflow a{display:block;width:100%;color:#F7F5F1;background:transparent}

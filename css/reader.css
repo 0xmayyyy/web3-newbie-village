@@ -2,7 +2,7 @@
 .course-reader{--bg:#120e21;--panel:#21192e;--gold:#e6c79e;--ink:#f5efff;--muted:#b7aac8;--line:#e6c79e30;--accent:#bfa6ee;--theme-border:#4c3a5b;color:var(--ink);color-scheme:dark;font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
 .course-reader button{font:inherit;cursor:pointer}
 .course-reader button:focus-visible,.course-reader select:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-.course-reader .shell{max-width:1320px;margin:auto;padding:28px clamp(16px,3vw,48px) 90px}
+.course-reader .shell{max-width:1320px;margin:auto;padding:28px clamp(16px,3vw,48px) 0}
 .course-reader .crumb-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:1190px;margin:0 auto;flex-wrap:wrap}
 .course-reader .crumb{font-size:12px;color:var(--muted);letter-spacing:.5px;line-height:1.6}
 .course-reader .crumb a{color:var(--gold);text-decoration:none}
@@ -86,5 +86,8 @@
 }
 body.is-reader{background:radial-gradient(ellipse 85% 520px at 52% -130px,#4a2d55 0%,#21162f 50%,transparent 100%),#120e21}
 body.is-reader main{max-width:none;margin:0;padding:0;background:transparent}
+.course-reader .reader-home{min-height:90px;margin:0;display:flex;align-items:center;justify-content:center}
+.course-reader .reader-home a{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:8px 18px;border-radius:999px;border:1px solid rgba(220,195,155,.55);background:rgba(52,38,79,.55);color:#F5F3FF;text-decoration:none;font-size:14px;font-weight:600}
+.course-reader .reader-home a:hover{border-color:#FFDFA8;color:#FFF2D9;background:rgba(255,223,168,.12)}
 .course-reader .layout>.side{display:none!important}
 .course-reader .toc{top:calc(var(--hdr, 72px) + 16px)}

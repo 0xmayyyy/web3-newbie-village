@@ -20,11 +20,6 @@
 .planet-scene .planet-card em{font-style:normal;font-size:11px;color:#e9cda2;margin-top:8px;border:1px solid #e9cda24d;border-radius:20px;padding:3px 9px}
 .planet-scene .p1,.planet-scene .p3,.planet-scene .p5{margin-top:36px}
 .planet-scene .p6{margin-top:11px;cursor:default;opacity:.86}
-.planet-scene .info{position:relative;z-index:1;margin:36px auto 0;max-width:760px;min-height:90px;padding:21px 26px;border:1px solid #d9c0d544;border-radius:20px;background:#ffffff0b;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:space-between;gap:16px}
-.planet-scene .info strong{font-size:17px}
-.planet-scene .info p{color:#cfc1d8;font-size:13px;margin:8px 0 0}
-.planet-scene .info button{border:1px solid #d5b68d;background:#e5cba5;color:#261b32;border-radius:40px;padding:12px 22px;font-weight:700;cursor:pointer;white-space:nowrap;font:inherit}
-.planet-scene .info button:disabled{opacity:.5;cursor:not-allowed}
 .planet-scene .overlay{position:fixed;inset:0;z-index:80;background:#090614c9;display:none;place-items:center;padding:18px}
 .planet-scene .overlay.open{display:grid}
 .planet-scene .dialog{position:relative;width:min(550px,100%);background:linear-gradient(145deg,#362541,#171327);border:1px solid #d4b3b055;border-radius:24px;padding:30px;box-shadow:0 24px 80px #000a;color:#f9f3ff}
@@ -48,8 +43,6 @@
   .planet-scene .planet-wrap{width:min(100%,145px)}
   .planet-scene .planet-card strong{font-size:15px}
   .planet-scene .planet-card small{font-size:11px}
-  .planet-scene .info{flex-direction:column;align-items:stretch}
-  .planet-scene .info button{width:100%}
 }
 @media(prefers-reduced-motion:reduce){
   .planet-scene .planet-card{transition:none}
