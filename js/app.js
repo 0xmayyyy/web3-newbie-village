@@ -186,16 +186,19 @@
   }
   var HERO_POSTER = 'assets/hero/hero-poster.jpg?v=20261106231500';
   var HERO_VIDEO = 'assets/hero/hero-desktop.mp4?v=20261106231500';
+  var HERO_PORTRAIT = 'assets/hero/hero-portrait.webp?v=20261107133000';
   function renderHome() {
     document.title = t('title.home');
     var n = doneCount();
     var reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var video = reduceMotion
+    var narrow = matchMedia('(max-width: 700px)').matches;
+    var video = narrow ? '' : (reduceMotion
       ? '<video class="hero-video is-still" poster="' + HERO_POSTER + '" preload="none" muted playsinline aria-hidden="true"></video>'
-      : '<video class="hero-video" src="' + HERO_VIDEO + '" poster="' + HERO_POSTER + '" muted autoplay loop playsinline preload="metadata" aria-hidden="true"></video>';
+      : '<video class="hero-video" src="' + HERO_VIDEO + '" poster="' + HERO_POSTER + '" muted autoplay loop playsinline preload="metadata" aria-hidden="true"></video>');
     main.innerHTML =
       '<section class="hero-screen" aria-labelledby="h-hero">' +
-      '<div class="hero-media"><div class="hero-frame">' + video + '</div><div class="hero-shade" aria-hidden="true"></div></div>' +
+      '<div class="hero-media"><div class="hero-frame">' + video +
+      '<img class="hero-portrait" src="' + HERO_PORTRAIT + '" alt="" width="860" height="1528"></div><div class="hero-shade" aria-hidden="true"></div></div>' +
       '<div class="hero-copy"><h1 id="h-hero">' + esc(t('hero.h1')) + '</h1>' +
       '<p class="hero-sub">' + esc(t('hero.lead')) + '</p>' +
       '<div class="hero-cta"><a class="hero-btn hero-btn-primary" href="#/c/01">' + esc(t('hero.cta')) + '</a>' +
