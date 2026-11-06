@@ -207,54 +207,89 @@
     mountAtlas();
   }
   var PLANETS = [
-    { id: 'entry', ids: ['01', '02', '16'], deco: '<span class="spark">✧</span>' },
-    { id: 'safety', ids: ['09', '15'], deco: '<span class="shield"></span>' },
-    { id: 'trade', ids: ['03', '04', '05', '06', '07'], deco: '<span class="ring"></span>' },
-    { id: 'wallet', ids: ['08'], deco: '<span class="key">⚿</span>' },
-    { id: 'chain', ids: ['10', '11', '12'], deco: '<span class="network"></span>' }
+    { id: 'entry', file: 'entry', chapters: [{ id: '01' }, { id: '02' }, { id: '13' }] },
+    { id: 'safety', file: 'safety', chapters: [{ id: '09' }, { id: '15' }] },
+    { id: 'trade', file: 'trade', chapters: [{ id: '03' }, { id: '04' }, { id: '05' }, { id: '06' }, { id: '07' }] },
+    { id: 'wallet', file: 'wallet', chapters: [{ id: '08' }, { id: '10' }] },
+    { id: 'world', file: 'world', chapters: [{ id: '12', label: 'atlas.world.ch12' }] },
+    { id: 'chance', file: 'chance', chapters: [{ id: '11' }, { id: '12', label: 'atlas.chance.ch12' }] },
+    { id: 'advanced', file: 'advanced', locked: true, chapters: [] }
   ];
-  function planetById(id) { for (var i = 0; i < PLANETS.length; i++) if (PLANETS[i].id === id) return PLANETS[i]; }
-  function planetLinks(ids) {
-    return '<div class="planet-links" id="atlas-links">' + ids.map(function (id) {
-      var c = chap(id);
-      return '<a href="#/c/' + id + '">' + esc((c ? c.id + ' ' + c.title : id)) + '</a>';
-    }).join('') + '</div>';
+  var atlasCurrent = 0;
+  var atlasKeysBound = false;
+  function planetLabel(item) {
+    if (item.label) return t(item.label);
+    var c = chap(item.id);
+    return c ? c.id + ' · ' + c.title : item.id;
+  }
+  function planetInfo(i) {
+    var p = PLANETS[i];
+    return ('0' + (i + 1)).slice(-2) + ' · ' + t('atlas.' + p.id + '.name');
   }
   function planetAtlas() {
-      return '<div class="planet-scene"><section class="scene" id="h-toc" aria-labelledby="atlas-heading">' +
-      '<div class="glow a"></div><div class="glow b"></div>' +
+    return '<div class="planet-scene"><section class="scene" id="h-toc" aria-labelledby="atlas-heading">' +
       '<div class="heading"><div class="eyebrow">' + esc(t('atlas.eyebrow')) + '</div>' +
       '<h1 id="atlas-heading">' + esc(t('atlas.h')) + '</h1><p>' + esc(t('atlas.lead')) + '</p></div>' +
-      '<div class="atlas"><div class="orbit"></div>' + PLANETS.map(function (p) {
-        return '<button type="button" class="planet-option ' + p.id + '" data-planet="' + p.id + '" aria-pressed="' + (p.id === 'entry' ? 'true' : 'false') + '">' +
-          '<span class="planet-holder"><span class="planet"><img alt="" src="assets/planets/' + p.id + '.png?v=20261107270000"></span>' + p.deco + '</span>' +
-          '<span class="num">' + esc(t('atlas.' + p.id + '.num')) + '</span>' +
-          '<span class="name">' + esc(t('atlas.' + p.id + '.name')) + '</span>' +
-          '<span class="desc">' + esc(t('atlas.' + p.id + '.desc')) + '</span></button>';
+      '<div class="galaxy">' + PLANETS.map(function (p, i) {
+        return '<button type="button" class="planet-card p' + i + '" data-i="' + i + '" aria-pressed="' + (i === 0 ? 'true' : 'false') + '"' +
+          (p.locked ? ' disabled' : '') + ' aria-label="' + esc(t('atlas.' + p.id + '.name')) + '">' +
+          '<div class="planet-wrap"><img src="assets/planets/' + p.file + '.png?v=20261107290000" alt=""></div>' +
+          '<span class="num">' + ('0' + (i + 1)).slice(-2) + '</span>' +
+          '<strong>' + esc(t('atlas.' + p.id + '.name')) + '</strong>' +
+          '<small>' + esc(t('atlas.' + p.id + '.sub')) + '</small>' +
+          (p.locked ? '<em>' + esc(t('atlas.locked')) + '</em>' : '') + '</button>';
       }).join('') + '</div>' +
-      '<article class="panel" aria-live="polite"><div><div class="over" id="atlas-over">' + esc(t('atlas.entry.over')) + '</div>' +
-      '<h2 id="atlas-title">' + esc(t('atlas.entry.title')) + '</h2>' +
-      '<p id="atlas-text">' + esc(t('atlas.entry.text')) + '</p>' + planetLinks(PLANETS[0].ids) + '</div>' +
-      '<a class="go" id="atlas-go" href="#/c/01">' + esc(t('atlas.go')) + '</a></article>' +
-      '<div class="foot"><div class="footerline"></div>' + esc(t('atlas.foot')) + '</div></section></div>';
+      '<div class="info"><div><strong id="info-title">' + esc(planetInfo(0)) + '</strong>' +
+      '<p id="info-sub">' + esc(t('atlas.entry.sub')) + '</p></div>' +
+      '<button type="button" id="atlas-view">' + esc(t('atlas.view')) + '</button></div>' +
+      '<p class="footnote">' + esc(t('atlas.note')) + '</p></section>' +
+      '<div class="overlay" id="atlas-overlay"><div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title">' +
+      '<button type="button" class="close" id="atlas-close" aria-label="' + esc(t('atlas.close')) + '">×</button>' +
+      '<div class="eyebrow">' + esc(t('atlas.dialog.kicker')) + '</div>' +
+      '<h2 id="dialog-title"></h2><p id="dialog-sub"></p><ul id="dialog-list"></ul></div></div></div>';
   }
-  function showPlanet(id) {
-    var p = planetById(id); if (!p) return;
-    $$('.planet-scene .planet-option').forEach(function (b) {
-      b.setAttribute('aria-pressed', b.getAttribute('data-planet') === id ? 'true' : 'false');
+  function choosePlanet(i) {
+    if (i === 6 || !PLANETS[i] || PLANETS[i].locked) return;
+    atlasCurrent = i;
+    var p = PLANETS[i];
+    $$('.planet-scene .planet-card').forEach(function (card, j) {
+      card.setAttribute('aria-pressed', j === i ? 'true' : 'false');
     });
-    var over = $('#atlas-over'), title = $('#atlas-title'), text = $('#atlas-text'), go = $('#atlas-go');
-    if (over) over.textContent = t('atlas.' + id + '.over');
-    if (title) title.textContent = t('atlas.' + id + '.title');
-    if (text) text.textContent = t('atlas.' + id + '.text');
-    var links = $('#atlas-links');
-    if (links) links.outerHTML = planetLinks(p.ids);
-    if (go) go.setAttribute('href', '#/c/' + p.ids[0]);
+    var title = $('#info-title'), sub = $('#info-sub');
+    if (title) title.textContent = planetInfo(i);
+    if (sub) sub.textContent = t('atlas.' + p.id + '.sub');
+  }
+  function openAtlasDialog() {
+    var p = PLANETS[atlasCurrent];
+    if (!p || p.locked) return;
+    var title = $('#dialog-title'), sub = $('#dialog-sub'), list = $('#dialog-list'), overlay = $('#atlas-overlay');
+    if (!title || !list || !overlay) return;
+    title.textContent = t('atlas.' + p.id + '.name');
+    if (sub) sub.textContent = t('atlas.' + p.id + '.sub');
+    list.innerHTML = p.chapters.map(function (item) {
+      return '<li><a href="#/c/' + item.id + '">' + esc(planetLabel(item)) + '</a></li>';
+    }).join('');
+    overlay.classList.add('open');
+  }
+  function closeAtlasDialog() {
+    var overlay = $('#atlas-overlay');
+    if (overlay) overlay.classList.remove('open');
   }
   function mountAtlas() {
-    $$('.planet-scene .planet-option').forEach(function (btn) {
-      btn.addEventListener('click', function () { showPlanet(btn.getAttribute('data-planet')); });
+    atlasCurrent = 0;
+    $$('.planet-scene .planet-card').forEach(function (card) {
+      card.addEventListener('click', function () { choosePlanet(Number(card.getAttribute('data-i'))); });
     });
+    var view = $('#atlas-view');
+    if (view) view.addEventListener('click', openAtlasDialog);
+    var closeBtn = $('#atlas-close');
+    if (closeBtn) closeBtn.addEventListener('click', closeAtlasDialog);
+    var overlay = $('#atlas-overlay');
+    if (overlay) overlay.addEventListener('click', function (e) { if (e.target === overlay) closeAtlasDialog(); });
+    if (!atlasKeysBound) {
+      atlasKeysBound = true;
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAtlasDialog(); });
+    }
   }
 
   /* ---------- 章节页 ---------- */
