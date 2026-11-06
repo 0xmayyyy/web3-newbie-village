@@ -92,10 +92,12 @@ for s in banned:
         fail('stale phrase still present: ' + s)
 if "e.g. münchen.de or https://münchen.de" not in i18n:
     fail('English Punycode example was not updated')
-if "'hero.h1': 'Web3 Newbie Village'" not in i18n or "'hero.h1': 'Web3 新手村'" not in i18n:
+if "'hero.h1': 'Explore the Web3 Universe'" not in i18n or "'hero.h1': '探索 Web3 宇宙'" not in i18n:
     fail('hero titles')
-if "'hero.lead': 'New to Web3? Start here.'" not in i18n:
+if "'hero.lead': 'Start from zero. Understand the on-chain world.'" not in i18n:
     fail('English opening headline')
+if "'hero.cta': '开始探索'" not in i18n or "'hero.cta2': 'Learning Map'" not in i18n:
+    fail('hero buttons')
 if 'w3nv-progress-v2' not in app:
     fail('progress key changed')
 if "esc(x.label)" not in app or "function hl" not in app:

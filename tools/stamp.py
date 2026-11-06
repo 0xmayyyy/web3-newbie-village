@@ -4,7 +4,7 @@
 import re, time, pathlib
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 V = time.strftime('%Y%m%d%H%M%S')
-pat = re.compile(r"""((?:assets/img|css|js)/[\w.-]+\.(?:jpe?g|png|svg|webp|gif|css|js))(\?v=\w*)?(?=["'])""")
+pat = re.compile(r"""((?:assets/(?:img|hero|fonts)|css|js)/[\w.-]+\.(?:jpe?g|png|svg|webp|gif|mp4|woff2|css|js))(\?v=\w*)?(?=["'])""")
 for f in ['index.html', 'js/app.js']:
     p = ROOT / f; s = p.read_text(encoding='utf-8')
     s = pat.sub(lambda m: m.group(1) + '?v=' + V, s)

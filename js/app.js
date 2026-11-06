@@ -184,25 +184,31 @@
     if (step) { var rb = $('#route-body'); setTimeout(function () { rb.scrollIntoView({ block: 'start' }); rb.focus({ preventScroll: true }); }, 0); }
     else window.scrollTo(0, 0);
   }
+  var HERO_POSTER = 'assets/hero/hero-poster.jpg?v=20261106231500';
+  var HERO_VIDEO = 'assets/hero/hero-desktop.mp4?v=20261106231500';
   function renderHome() {
     document.title = t('title.home');
     var n = doneCount();
+    var reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var video = reduceMotion
+      ? '<video class="hero-video is-still" poster="' + HERO_POSTER + '" preload="none" muted playsinline aria-hidden="true"></video>'
+      : '<video class="hero-video" src="' + HERO_VIDEO + '" poster="' + HERO_POSTER + '" muted autoplay loop playsinline preload="metadata" aria-hidden="true"></video>';
     main.innerHTML =
-      '<section class="hero-full" aria-labelledby="h-hero"><div class="hero-inner">' +
-      '<img class="hero-bear" src="assets/img/panda.jpg?v=20261015171108" alt="' + esc(t('hero.alt')) + '" width="220" height="214">' +
-      '<h1 id="h-hero">' + esc(t('hero.h1')) + ' <span aria-hidden="true">🧸</span></h1>' +
-      '<p class="lead">' + esc(t('hero.lead')) + '</p>' +
-      '<p class="intro">' + esc(t('hero.intro')) + '</p>' +
-      '<p class="motto"><strong>' + esc(t('hero.motto')) + '</strong></p>' +
-      '<p class="pick">' + esc(t('hero.pick')) + '</p>' +
+      '<section class="hero-screen" aria-labelledby="h-hero">' +
+      '<div class="hero-media">' + video + '<div class="hero-shade" aria-hidden="true"></div></div>' +
+      '<div class="hero-copy"><h1 id="h-hero">' + esc(t('hero.h1')) + '</h1>' +
+      '<p class="hero-sub">' + esc(t('hero.lead')) + '</p>' +
+      '<div class="hero-cta"><a class="hero-btn hero-btn-primary" href="#/c/01">' + esc(t('hero.cta')) + '</a>' +
+      '<a class="hero-btn hero-btn-secondary" href="#/" data-scroll="h-toc">' + esc(t('hero.cta2')) + '</a></div></div></section>' +
+      '<div class="home-rest">' +
+      '<section class="block paths-block"><p class="pick">' + esc(t('hero.pick')) + '</p>' +
       '<div class="route-btns">' + routes().map(function (r) {
         var dn = doneCount(r.ids);
         return '<a class="route-btn ' + r.cls + '" href="' + routeHref(r) + '"><span class="rb-ico" aria-hidden="true">' + r.icon + '</span><span class="rb-t">' + esc(r.name) + '</span><span class="rb-d">' + esc(r.desc) + '</span>' +
           (dn ? '<span class="rb-p">' + esc(t('route.progress', { n: dn, m: r.ids.length })) + '</span>' : '') + '</a>';
       }).join('') + '</div>' +
       '<div class="search big" role="search"><label class="sr" for="q-home">' + esc(t('home.search.label')) + '</label><span class="sicon" aria-hidden="true">🔍</span>' +
-      '<input id="q-home" type="search" placeholder="' + esc(t('home.search.ph')) + '" autocomplete="off"><div class="search-results" hidden></div></div>' +
-      '</div><a class="scroll-hint" href="#h-toc" aria-label="' + esc(t('scroll.aria')) + '"><span>' + esc(t('scroll')) + '</span><i aria-hidden="true">⌄</i></a></section>' +
+      '<input id="q-home" type="search" placeholder="' + esc(t('home.search.ph')) + '" autocomplete="off"><div class="search-results" hidden></div></div></section>' +
 
       '<section class="block" aria-labelledby="h-toc"><div class="block-head"><h2 id="h-toc">' + esc(t('toc.h')) + '</h2>' +
       '<div class="progress" aria-live="polite"><span>' + t('progress', { n: n, m: CH.length }) + '</span><span class="bar" aria-hidden="true"><i style="width:' + (n / CH.length * 100) + '%"></i></span>' +
@@ -227,9 +233,9 @@
       '<a class="qcard lilac" href="#/c/13"><span class="qi" aria-hidden="true">💬</span><strong>' + esc(t('q.slang')) + '</strong><span>' + esc(t('q.slang.d')) + '</span></a>' +
       '<a class="qcard sky" href="#/punycode"><span class="qi" aria-hidden="true">🔤</span><strong>' + esc(t('q.puny')) + '</strong><span>' + esc(t('q.puny.d')) + '</span></a>' +
       '<a class="qcard mint" href="#/c/16"><span class="qi" aria-hidden="true">✅</span><strong>' + esc(t('q.practice')) + '</strong><span>' + esc(t('q.practice.d')) + '</span></a>' +
-      '</div><img class="quick-img" src="assets/img/panda-phone.png?v=20261015171108" alt="' + esc(t('quick.alt')) + '" width="140" height="137"></section>';
-    bindSearch($('#q-home'), $('.hero-full .search-results'));
-    var sh = $('.scroll-hint'); sh.addEventListener('click', function (e) { e.preventDefault(); $('#h-toc').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); });
+      '</div><img class="quick-img" src="assets/img/panda-phone.png?v=20261015171108" alt="' + esc(t('quick.alt')) + '" width="140" height="137"></section></div>';
+    bindSearch($('#q-home'), $('.paths-block .search-results'));
+    mountHero();
     var cp = $('#clear-p');
     if (cp) cp.addEventListener('click', function () {
       if (confirm(t('progress.confirm'))) { try { localStorage.removeItem(KEY); } catch (e) { } renderHome(); $('#h-toc').focus && $('#h-toc').scrollIntoView(); }
@@ -341,6 +347,7 @@
     document.title = t('cex.title');
     main.innerHTML = '<div class="cex-page"><nav class="crumbs" aria-label="' + esc(t('crumb.where')) + '"><a href="#/">' + esc(t('crumb.home')) + '</a> › <span>' + esc(t('cex.crumb')) + '</span></nav>' +
       '<h1>' + esc(t('cex.h')) + '</h1><p class="lead">' + esc(t('cex.lead')) + '</p>' +
+      '<p class="cex-audit-note">' + esc(t('cex.auditNote')) + '</p>' +
       '<div class="cex-tools"><label class="sr" for="cex-q">' + esc(t('cex.search')) + '</label><input id="cex-q" type="search" placeholder="' + esc(t('cex.search.ph')) + '" autocomplete="off"><span id="cex-count" class="w-note"></span></div>' +
       '<div class="widget cexboard"><div id="cex-body"><p class="w-note">' + esc(t('cex.loading')) + '</p></div></div>' +
       '<p class="w-note" id="cex-src">' + t('cex.src') + '<span id="cex-time"></span></p>' +
@@ -688,6 +695,33 @@
     showEmpty();
   }
 
+  /* ---------- 首页开场视频 ---------- */
+  function mountHero() {
+    var vid = $('.hero-video');
+    if (!vid || vid.classList.contains('is-still')) return;
+    vid.addEventListener('error', function () { vid.classList.add('is-broken'); });
+    var p = vid.play();
+    if (p && p.catch) p.catch(function () {});
+  }
+  function prefersReduce() { return matchMedia('(prefers-reduced-motion: reduce)').matches; }
+  function onHomeHash() {
+    var h = location.hash;
+    return document.body.classList.contains('is-home') && (!h || h === '#' || h === '#/');
+  }
+  var pendingAnchor = '';
+  function goToAnchor(id) {
+    function scroll() {
+      var el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: prefersReduce() ? 'auto' : 'smooth', block: 'start' });
+    }
+    if (onHomeHash()) scroll();
+    else {
+      pendingAnchor = id;
+      if (!location.hash || location.hash === '#' || location.hash === '#/') route();
+      else location.hash = '#/';
+    }
+  }
+
   /* ---------- 路由 ---------- */
   function route(keep) {
     var h = location.hash, m = h.match(/^#\/c\/(\d\d)(?:\/(\d+))?/);
@@ -698,12 +732,18 @@
     else if (py) { renderPuny(); if (!keep) window.scrollTo(0, 0); }
     else if (rm) renderRoute(rm[1], rm[2] ? +rm[2] : 0, keep);
     else if (m) renderChapter(m[1], m[2] != null ? +m[2] : null, keep);
-    else { renderHome(); if (!keep) window.scrollTo(0, 0); }
+    else { renderHome(); if (!keep && !pendingAnchor) window.scrollTo(0, 0); }
     setHdr();
-    var cur = cx ? '#/cex' : py ? '#/punycode' : m ? '#/c/' + m[1] : '#/';
-    $$('.topnav a').forEach(function (a) { a.toggleAttribute('aria-current', !!cur && a.getAttribute('href') === cur); });
     if (!keep && h && h !== '#/' && !(m && m[2])) main.focus({ preventScroll: true });
     setNavOpen(false);
+    setMoreOpen(false);
+    if (pendingAnchor) {
+      var id = pendingAnchor;
+      pendingAnchor = '';
+      var el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: prefersReduce() ? 'auto' : 'smooth', block: 'start' });
+    }
+    syncNavTone();
   }
   function applyChrome() {
     document.documentElement.lang = LANG === 'en' ? 'en' : 'zh-CN';
@@ -732,6 +772,47 @@
     var ico = $('.nav-menu-ico', btn);
     if (ico) ico.textContent = open ? '×' : '☰';
     applyChrome();
+  }
+  function setMoreOpen(open) {
+    var panel = $('#more-menu'), btn = $('#nav-more');
+    if (!panel || !btn) return;
+    panel.classList.toggle('is-open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  function markNav() {
+    var h = location.hash;
+    var m = h.match(/^#\/c\/(\d\d)/);
+    var id = m ? m[1] : '';
+    var key = 'explore';
+    if (/^#\/cex/.test(h)) key = 'cex';
+    else if (/^#\/punycode/.test(h)) key = 'puny';
+    else if (/^#\/r\//.test(h)) key = 'courses';
+    else if (id === '05') key = 'ex';
+    else if (id === '14') key = 'tools';
+    else if (id === '13') key = 'slang';
+    else if (m) key = 'courses';
+    else if (document.body.classList.contains('is-home')) {
+      var toc = document.getElementById('h-toc');
+      key = (toc && toc.getBoundingClientRect().top < Math.min(220, window.innerHeight * 0.35)) ? 'courses' : 'explore';
+    }
+    $$('#site-nav a[data-nav]').forEach(function (a) {
+      if (a.getAttribute('data-nav') === key) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+    var more = $('#nav-more');
+    if (more) more.classList.toggle('is-current', key === 'cex' || key === 'slang' || key === 'puny');
+  }
+  function syncNavTone() {
+    var dark = false;
+    if (document.body.classList.contains('is-home')) {
+      var hero = $('.hero-screen');
+      var hdr = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--hdr')) || 72;
+      if (hero) dark = hero.getBoundingClientRect().bottom > hdr + 12;
+    }
+    document.body.classList.toggle('nav-on-dark', dark);
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', dark ? '#0D1022' : '#fff8ef');
+    markNav();
   }
   function snapshotInputs() {
     function val(id) { var el = document.getElementById(id); return el ? el.value : null; }
@@ -773,26 +854,59 @@
     restoreInputs(snap);
     if (donateOpen) openDonate();
     setHdr();
+    syncNavTone();
   }
   function setHdr() { document.documentElement.style.setProperty('--hdr', $('.topbar').offsetHeight + 'px'); }
-  window.addEventListener('resize', setHdr);
+  window.addEventListener('resize', function () {
+    setHdr();
+    if (window.innerWidth >= 980) setNavOpen(false);
+    syncNavTone();
+  });
+  var navTick = false;
+  window.addEventListener('scroll', function () {
+    if (navTick) return;
+    navTick = true;
+    requestAnimationFrame(function () { navTick = false; syncNavTone(); });
+  }, { passive: true });
   window.addEventListener('hashchange', function () { route(); });
   $('#lang-zh').addEventListener('click', function () { setLang('zh'); });
   $('#lang-en').addEventListener('click', function () { setLang('en'); });
   $('#nav-menu').addEventListener('click', function (e) {
     e.stopPropagation();
+    setMoreOpen(false);
     setNavOpen($('#nav-menu').getAttribute('aria-expanded') !== 'true');
   });
-  document.addEventListener('click', function (e) {
-    if (!$('#site-nav') || !$('#site-nav').classList.contains('is-open')) return;
-    if (e.target.closest('#site-nav') || e.target.closest('#nav-menu')) return;
+  $('#nav-more').addEventListener('click', function (e) {
+    e.stopPropagation();
     setNavOpen(false);
+    setMoreOpen($('#nav-more').getAttribute('aria-expanded') !== 'true');
+  });
+  $('#q-top').addEventListener('focus', function () { setMoreOpen(false); });
+  document.addEventListener('click', function (e) {
+    var scrollA = e.target.closest('[data-scroll]');
+    if (scrollA) {
+      e.preventDefault();
+      goToAnchor(scrollA.getAttribute('data-scroll'));
+      setNavOpen(false);
+      setMoreOpen(false);
+      return;
+    }
+    var ex = e.target.closest('a[data-nav="explore"]');
+    if (ex && onHomeHash()) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: prefersReduce() ? 'auto' : 'smooth' });
+      setNavOpen(false);
+      setMoreOpen(false);
+      return;
+    }
+    if ($('#site-nav') && $('#site-nav').classList.contains('is-open') && !e.target.closest('#site-nav') && !e.target.closest('#nav-menu')) setNavOpen(false);
+    if ($('#more-menu') && $('#more-menu').classList.contains('is-open') && !e.target.closest('#more-menu') && !e.target.closest('#nav-more')) setMoreOpen(false);
   });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') setNavOpen(false);
+    if (e.key === 'Escape') { setNavOpen(false); setMoreOpen(false); }
   });
   $('#site-nav').addEventListener('click', function (e) {
-    if (e.target.closest('a, button')) setNavOpen(false);
+    if (e.target.closest('a, button')) { setNavOpen(false); setMoreOpen(false); }
   });
   applyCourse();
   applyChrome();

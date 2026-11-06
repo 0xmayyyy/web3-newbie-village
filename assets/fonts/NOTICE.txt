@@ -1,0 +1,6 @@
+Font files in this directory
+Inter — Copyright 2016 The Inter Project Authors. https://github.com/rsms/inter
+Space Grotesk — Copyright 2020 Florian Karsten. https://github.com/floriankarsten/space-grotesk
+Noto Sans SC — Copyright 2014-2021 Adobe (http://www.adobe.com/), with Reserved Font Name "Source".
+Noto Sans is a trademark of Google LLC.
+These subsets are used under the SIL Open Font License 1.1. See OFL.txt.
