@@ -10,7 +10,7 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="icon" href="assets/img/nav-compass.svg?v=20261107120000" type="image/svg+xml">
 <link rel="preload" as="image" href="assets/hero/hero-poster.jpg?v=20261106231500">
-<link rel="stylesheet" href="css/style.css?v=20261107253000">
+<link rel="stylesheet" href="css/style.css?v=20261107260000">
 <script>
 (function () {
   var h = location.hash;
@@ -32,11 +32,12 @@
       <a href="#/" data-nav="courses" data-scroll="h-toc" data-i18n="nav.courses">课程</a>
       <a href="#/c/05" data-nav="ex" data-i18n="nav.ex">交易所</a>
       <a href="#/c/14" data-nav="tools" data-i18n="nav.tools">工具</a>
+      <button type="button" id="donate-btn" class="nav-donate" data-i18n="nav.donate">打赏</button>
       <div class="nav-overflow" id="more-menu">
-        <a href="#/cex" data-nav="cex" data-i18n="nav.cex">CEX 储备排行</a>
+        <p class="nav-overflow-label" data-i18n="nav.more">其他</p>
+        <a href="#/cex" data-nav="cex" data-i18n="nav.cex">CEX 排行</a>
         <a href="#/c/13" data-nav="slang" data-i18n="nav.slang">话术翻译</a>
-        <a href="#/punycode" data-nav="puny" data-i18n="nav.puny">域名编码</a>
-        <button type="button" id="donate-btn" class="nav-donate" data-i18n="nav.donate">🧋 打赏</button>
+        <a href="#/punycode" data-nav="puny" data-i18n="nav.puny">Punycode 转换器</a>
       </div>
     </nav>
     <div class="search mini" role="search">
@@ -48,7 +49,7 @@
       <button type="button" id="lang-zh" aria-pressed="true" aria-label="中文">中</button>
       <button type="button" id="lang-en" aria-pressed="false" aria-label="English">EN</button>
     </div>
-    <button type="button" class="nav-more-btn" id="nav-more" aria-expanded="false" aria-controls="more-menu" aria-haspopup="true" data-i18n="nav.more">更多</button>
+    <button type="button" class="nav-more-btn" id="nav-more" aria-expanded="false" aria-controls="more-menu" aria-haspopup="true" data-i18n="nav.more">其他</button>
     <button type="button" class="nav-menu" id="nav-menu" aria-expanded="false" aria-controls="site-nav"><span class="nav-menu-ico" aria-hidden="true">☰</span><span class="sr" id="nav-menu-label" data-i18n="nav.menu">菜单</span></button>
   </div>
 </header>
@@ -58,7 +59,7 @@
 <script src="js/config.js?v=20261015171108"></script>
 <script src="js/data.js?v=20261106231500"></script>
 <script src="js/data-en.js?v=20261106231500"></script>
-<script src="js/i18n.js?v=20261106231500"></script>
+<script src="js/i18n.js?v=20261107260000"></script>
 <script src="js/punycode.js?v=20261106153000"></script>
 <script src="js/app.js?v=20261107133000"></script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "12f50d684faf4e4287f9cb7f1a503e34"}'></script><!-- End Cloudflare Web Analytics -->
