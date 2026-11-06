@@ -306,6 +306,26 @@
     var c = chap(id);
     return c ? c.id + ' · ' + c.title : id;
   }
+  function firstExcerpt(text) {
+    text = String(text || '').replace(/^\s+/, '');
+    text = text.replace(/^\d{1,2}[.)]\s+/, '');
+    var i, ch, j;
+    for (i = 0; i < text.length; i++) {
+      ch = text.charAt(i);
+      if (ch === '。' || ch === '！' || ch === '？') return text.slice(0, i + 1).trim();
+      if (ch !== '.' && ch !== '!' && ch !== '?') continue;
+      if (ch === '.' && i + 1 < text.length && text.charAt(i + 1) === '.') continue;
+      if (ch === '.' && i > 0 && i + 1 < text.length && /\d/.test(text.charAt(i - 1)) && /\d/.test(text.charAt(i + 1))) continue;
+      if (ch === '.' && i + 1 < text.length && /\s/.test(text.charAt(i + 1))) {
+        j = i - 1;
+        while (j >= 0 && /\d/.test(text.charAt(j))) j--;
+        if (j < i - 1 && (j < 0 || /\s/.test(text.charAt(j)))) continue;
+      }
+      if (LANG === 'zh') continue;
+      return text.slice(0, i + 1).trim();
+    }
+    return text.trim();
+  }
   function renderChapter(id, sec, keep) {
     try { localStorage.removeItem('web3-reader-theme'); } catch (eTheme) {}
     var c = chap(id); if (!c) return renderHome();
@@ -319,9 +339,7 @@
     if (!visible.length) return renderHome();
     var cur = visible[pos];
     var ids = readerChapterIds(planetIndex, id);
-    var text = cur.s.text || '';
-    var sentence = text.split(/[。！？.!?]/)[0];
-    var highlight = sentence ? sentence + (LANG === 'zh' ? '。' : '.') : '';
+    var highlight = firstExcerpt(cur.s.text || '');
     document.title = t('title.ch', { id: c.id, title: c.title });
     var code = planet ? t(planetIndex === 0 ? 'reader.begin' : 'reader.explore', { n: ('0' + (planetIndex + 1)).slice(-2) }) : 'CHAPTER ' + c.id;
     var planetOptions = PLANETS.map(function (p, i) {
@@ -346,7 +364,7 @@
       '<div class="mobile-toc"><select id="section-select" aria-label="' + esc(t('reader.map')) + '">' + visible.map(function (item, i) {
         return '<option value="' + item.i + '"' + (i === pos ? ' selected' : '') + '>' + (i + 1) + '. ' + esc(item.s.title) + '</option>';
       }).join('') + '</select></div>' +
-      '<article class="reading"><div class="meta"><span>CHAPTER ' + c.id + ' / LESSON ' + ('0' + (cur.i + 1)).slice(-2) + '</span><span>' + (pos + 1) + ' / ' + visible.length + '</span></div>' +
+      '<article class="reading"><div class="meta"><span>CHAPTER ' + c.id + ' / LESSON ' + ('0' + (pos + 1)).slice(-2) + '</span><span>' + (pos + 1) + ' / ' + visible.length + '</span></div>' +
       '<h2>' + esc(cur.s.title) + '</h2>' + (highlight ? '<div class="summary">' + esc(highlight) + '</div>' : '') +
       '<div class="prose" id="reader-prose">' + cur.s.html + '</div>' +
       '<div class="reading-footer"><button type="button" class="navbtn" id="reader-prev"' + (pos === 0 && ids.indexOf(id) <= 0 ? ' disabled' : '') + '>' + esc(t('reader.prev')) + '</button>' +
