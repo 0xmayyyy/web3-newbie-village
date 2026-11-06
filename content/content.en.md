@@ -1,0 +1,1458 @@
+<!-- Parallel English course. Chinese in content.md stays the source of truth.
+     Build tokens, not shown as-is: fullwidth colon before a URL, and a following line starting with 用途：
+     A last-section line starting with "Note: " becomes the chapter tip. -->
+
+# Home
+
+## Web3 Newbie Village 🧸
+
+New to Web3? Start here.
+
+Learn the basics of crypto, trading, wallets, and security — one step at a time.
+
+**Understand it first, then act. Learn one thing, unlock the next.**
+
+Search placeholder: What do you want to know? Try "wallet", "primary market", or "liquidation".
+
+## Contents
+
+| ID | Title | One line | Tags |
+|---|---|---|---|
+| 01 | What is the crypto scene? 🌍 | Meet chains, coins, wallets, and exchanges | Basics |
+| 02 | Primary and secondary markets 🌱 | Are you joining an issuance, or trading coins already out? | Basics |
+| 03 | What to know before you buy 📚 | Price, market cap, liquidity, and fees | Basics |
+| 04 | A first buy, and moving money in and out 🛒 | From sign-up to buying, then selling and withdrawing | Basics |
+| 05 | CEX exchange guide 🏦 | Official entrances, and how to choose | Guide |
+| 06 | Spot orders for beginners 🧾 | Place an order, read a candle, and keep your nerve | Basics |
+| 07 | Going further: leverage and risk ⚖️ | Leverage, contracts, liquidation, and position size | Advanced |
+| 08 | Wallets, cold wallets, and CEX 👛 | Where the coins sit, and who holds the keys | Basics |
+| 09 | Safety and scam guide 🛡️ | Protect your account, seed phrase, and approvals | Must-read |
+| 10 | Your first on-chain actions 🔗 | Receive, send, gas, swaps, and bridges | How-to |
+| 11 | How to research a project 🔍 | Use, token, data, and risk | Advanced |
+| 12 | A map of Web3 activities 🎮 | DeFi, airdrops, NFTs, memes, and RWAs | Advanced |
+| 13 | Crypto slang translator 💬 | Serious terms and community jokes, kept apart | Glossary |
+| 14 | Tool guide 🧰 | Prices, trades, and on-chain data | Guide |
+| 15 | Something went wrong 🆘 | Deposits, withdrawals, transfers, and suspected theft | Troubleshooting |
+| 16 | Common questions and practice ✅ | Check that the key ideas stuck | Review |
+
+## Pick a path
+
+**🧸 I am brand new**
+Suggested order: 01 → 02 → 03 → 08 → 09 → 05.
+See how this world works, then meet common CEXs and sign-up links. You do not have to buy anything yet.
+
+**🛒 I want to buy for the first time**
+Suggested order: 05 (create an exchange account) → 03 → 09 → 04 → 06.
+Learn safety and the basics of trading, then practice with a small amount you can afford to lose.
+
+**🛡️ I already hold coins and want to protect them**
+Suggested order: 08 → 09 → 10 → 15.
+Focus on custody, seed phrases, approvals, and transfer checks.
+
+## Before you act, remember
+
+- Never give your seed phrase or private key to anyone.
+- Do not send money because someone says "guaranteed profit", "it will double", or "spots are limited".
+- Before a transfer, check the asset, network, address, and Memo / Tag.
+- A platform or tool listed here is not a safety guarantee.
+- If you do not understand what you are signing, stop.
+
+# 01｜What is the crypto scene? 🌍
+
+## What is the crypto scene?
+
+**The crypto scene is the market and community around cryptocurrency. Buying coins is only one way to take part.**
+
+"Crypto scene" is a plain way to talk about the market and community around cryptocurrency, blockchains, and related apps. Some people trade. Some build apps. Others study the technology, payments, games, digital collectibles, or on-chain finance.
+
+Buying coins is only one way in. You can also learn, watch projects, and try test networks without putting in real money.
+
+## What is a blockchain?
+
+**A blockchain is a shared ledger that many parties keep, and that is hard for any one person to quietly rewrite.**
+
+Think of a blockchain as a record system maintained by more than one party. Transactions are confirmed by the rules and written into the record. Participants agree on the record through a consensus mechanism.
+
+One important property is that it resists tampering: when the network is operating normally and its consensus and security assumptions hold, a record that is already well confirmed cannot be changed on a whim by one person.
+
+A tamper-resistant record does not mean the information someone typed in, a project's marketing, or the other side of a trade is true.
+
+## What is a cryptocurrency?
+
+**A cryptocurrency is a digital asset on a chain. There are many kinds, and the risks are not the same.**
+
+Cryptocurrencies are digital assets managed with cryptography and the rules of a network. Uses, how they are issued, and risks differ a lot. Do not treat them all as the same kind of investment.
+
+BTC is the native asset of the Bitcoin network. ETH is the native asset of the Ethereum network and can be used to pay network fees, among other things. Many tokens are issued by contracts on a chain that already exists.
+
+## Where BTC came from
+
+**Bitcoin was the first cryptocurrency. The network started in 2009. The supply cap is about 21 million.**
+
+On 31 October 2008, an author using the name Satoshi Nakamoto (中本聪) published the Bitcoin white paper, *Bitcoin: A Peer-to-Peer Electronic Cash System*. In Chinese it is usually called 《比特币：一种点对点的电子现金系统》.
+
+The question in the paper is direct: can two people pay each other online without a financial institution standing between them to stop the same money being spent twice? It combines digital signatures, proof of work, and network consensus into a peer-to-peer electronic cash design.
+
+On 3 January 2009 the Bitcoin genesis block was created and the network started running. Satoshi's real identity has never been publicly confirmed.
+
+Under the current consensus rules, the issuance cap for BTC is about 21 million. No company issues more on demand. New coins come out gradually under the network's rules. Scarcity is one of its features. It does not guarantee that the price only goes up.
+
+📄 Want the white paper itself? Start at the official bitcoin.org pages:
+
+- English PDF: https://bitcoin.org/bitcoin.pdf
+- Versions in other languages: https://bitcoin.org/en/bitcoin-paper
+- Basic FAQ: https://bitcoin.org/en/faq
+
+## Coin or token?
+
+**A native coin belongs to a chain itself. A token is issued on someone else's chain.**
+
+A common distinction: a native coin belongs to a given network; a token is issued on a network that already exists. ETH and an ERC-20 token on Ethereum are the usual example. In everyday talk, people often call all of them "coins".
+
+## What is a public chain?
+
+**A public chain is a blockchain anyone can use. You cannot send between chains at random.**
+
+A public chain is usually an open blockchain network, for example Bitcoin, Ethereum, TRON, BNB Chain, or Solana. Fees, speed, apps, and security assumptions differ.
+
+Think of different networks as different transport systems. Addresses that look alike do not mean the destination or the asset is compatible. The recipient has to support that network explicitly.
+
+## What is Web3?
+
+**Web3 is internet apps you open with a wallet and use on a chain.**
+
+Web3 is often used for internet apps built with blockchains, wallets, and smart contracts. A wallet can hold digital assets, sign actions, and use on-chain apps.
+
+A "Web3" label does not mean a project is actually decentralized, usable, or safe.
+
+## What is a smart contract?
+
+**A smart contract is a program that runs on a chain. If the code has a bug, things break.**
+
+A smart contract is a program deployed on a blockchain that executes by its code. Swaps, lending, and token issuance are often done this way. Code can have bugs, and it can also give an admin special powers. The word "smart" does not make it reliable.
+
+## What is a stablecoin?
+
+**A stablecoin tries to stay near 1:1 with the dollar. It is not a bank deposit, and it can lose that peg.**
+
+A stablecoin aims to track a reference value, often 1 US dollar. USDT and USDC are examples. Different stablecoins may use fiat reserves, crypto collateral, or other mechanisms.
+
+Stablecoins are used for pricing, transfers, and settlement. They are not bank deposits, and they are not guaranteed to redeem at 1 dollar forever. You need to understand reserves, redemption terms, freeze powers, and depeg risk.
+
+## One table of how the pieces fit
+
+**One table: what the chain, the coin, the wallet, the exchange, and the app each do.**
+
+| Term | Main job | Simple examples |
+|---|---|---|
+| Blockchain | Record and carry out network activity | Ethereum, TRON |
+| Coin / token | A digital asset on a network | BTC, ETH, USDT |
+| Wallet | Manage an account and sign actions | Software wallet, hardware wallet |
+| Exchange | Buy, sell, or swap assets | CEX, DEX |
+| DApp | An application on a blockchain | Swap, lending, game |
+
+## Why do prices move?
+
+**Price is set by buyers and sellers. Up does not mean it is "worth more". Down does not mean it is "cheap".**
+
+The traded price is formed by buying and selling. It can move with demand, liquidity, expectations, supply changes, leverage, the macro environment, and news. A rising price does not by itself mean the project is more valuable. A falling price does not by itself prove it is cheap.
+
+Note: Look at what it is and why it exists before you decide to take part.
+
+# 02｜Primary and secondary markets 🌱
+
+## Primary market: issuance and early funding
+
+**The primary market is when a coin is first offered. Early does not mean easier money.**
+
+The primary market usually means the first issuance, fundraising, or subscription. In crypto that often includes private sales, public sales, token launches, and some launchpad events. The right label depends on what the buyer is getting, who the seller is, and how the deal is structured.
+
+Example: a project issues a token for the first time and opens a subscription. Buyers receive tokens from the issuer. That is usually a primary issuance.
+
+Early participation can mean a longer lockup, less public information, and a harder exit. "Early" only means earlier in time. It does not mean it is easier to make money.
+
+## Secondary market: trading coins already issued
+
+**The secondary market is buying and selling coins that someone else already holds.**
+
+The secondary market usually means assets that have already been issued, moving from one holder to another. Buying BTC that someone else is selling on an exchange, or swapping an already issued token on a DEX, is generally secondary trading.
+
+So primary / secondary describes issuance versus later trading. CEX / DEX describes the venue and the mechanism. They are not the same pair of categories.
+
+## Common ways to take part early
+
+**Private sales, IDOs, airdrops, and testnets are all early paths, and each has its own traps.**
+
+| Path | Meaning | Check carefully |
+|---|---|---|
+| Private sale | Fundraising from specific participants | Eligibility, contract, price, lockup, and delivery |
+| Public sale | Open to people who qualify | Region limits, subscription rules, and how issuance is arranged |
+| IDO | Issuance organized through a decentralized platform | Whether it is real, the contract, liquidity, and allocation rules |
+| Launchpad | A platform-run token sale | Platform rules, cost to join, allocation, and unlocks |
+| Airdrop | Assets sent to addresses or users who qualify | Conditions, claim cost, and approval risk |
+| Testnet | Trying a product on a test network | Test assets are usually not real assets |
+| Points campaign | Points that record activity | Whether they can be redeemed, and whether the rules can change |
+
+Airdrops, points, and testnets are not automatically a primary investment. They do not guarantee a future token or a reward.
+
+## What are lockups and unlocks?
+
+**A lockup means you cannot sell yet. After an unlock, more coins can be sold.**
+
+A lockup means an asset cannot be transferred or withdrawn for a while, under stated conditions. An unlock means those limits lift on a schedule. An early purchase may be delivered in batches. You cannot always sell the moment the sale ends.
+
+Unlocks change the supply that can circulate. The price effect still depends on what holders do, on demand, and on market liquidity.
+
+## CEX and DEX
+
+**CEX / DEX is about where you trade. It is not the same thing as primary / secondary.**
+
+CEX and DEX classify the venue. They are not the primary / secondary distinction. The difference is in [Chapter 05, "How is a CEX different from a DEX?"](#/c/05).
+
+Note: First be able to say "I am buying this asset, issued by this party." Then talk about primary or secondary.
+
+# 03｜What to know before you buy 📚
+
+## Trading pairs
+
+**BTC/USDT means you buy BTC with USDT. You do not have to buy a whole coin.**
+
+BTC/USDT means BTC is priced in USDT. If the price is 60,000, 1 BTC corresponds to about 60,000 USDT. Buying BTC/USDT usually means spending USDT to buy BTC. Selling is the reverse.
+
+You do not need a whole BTC. Many assets can be bought in fractions, but platforms have a minimum order size.
+
+## Price, market cap, and FDV
+
+**A low unit price is not "cheap". Look at market cap and total supply.**
+
+Price: the market price of one unit.
+Circulating market cap: commonly price × circulating supply.
+FDV: fully diluted valuation, commonly price × total supply or max supply. Data sites do not all use the same definition.
+
+Suppose a coin is priced at 0.01 dollar and 10 billion are circulating. Circulating market cap is about 100 million dollars. Another coin is 100 dollars each, with 100,000 circulating. Market cap is about 10 million dollars.
+
+So a low unit price is not a low valuation. Market cap is also not the total cash everyone actually put in.
+
+## Supply
+
+**Before you stare at the number, ask whether more can be issued, and when unlocks happen.**
+
+Circulating supply is the amount already in circulation under a given definition. Total supply is usually what has been issued, minus some burned amount. Max supply is the ceiling the rules allow. Not every asset has a fixed ceiling.
+
+Whether supply can increase, who has that power, and when the team and investors unlock is more useful than one number on its own.
+
+## Liquidity and volume
+
+**When liquidity is good, your own trade is less likely to shove the price around.**
+
+Liquidity is how easily you can buy or sell without moving the price much. Volume is how much traded over a period of time, in amount or in value.
+
+High volume does not mean every moment has deep liquidity. Volume can also be faked.
+
+## Spread, price impact, and slippage
+
+**The price on the screen is not always the price you get.**
+
+The spread is the gap between the best ask and the best bid.
+Price impact is how much your own order moves the fill price. It shows up when the book is thin or the pool is small.
+Slippage is the gap between the price you expected and the price you got. It can come from the market moving, from depth, and from other factors.
+
+Example: the screen says about 1 dollar. That does not mean a very large market order will all fill at 1 dollar.
+
+## Trading fees and network fees
+
+**To know the cost, add the trading fee, the spread, slippage, and the withdrawal fee.**
+
+A trading fee is charged by the platform or the protocol. An on-chain network fee usually pays for executing the transaction and for network resources. An exchange withdrawal fee is not necessarily the chain's real cost at that moment.
+
+Look at them together: trading fee, spread, slippage, withdrawal fee, network fee, exchange rate, and payment-channel fees.
+
+### What one round trip actually costs
+
+| Cost | What beginners skip |
+|---|---|
+| Buying the coin | The payment channel's quote, the exchange rate, and the spread |
+| The trade | Fees and slippage |
+| Withdrawing the coin | The platform withdrawal fee |
+| On-chain actions | Network fees for approvals, swaps, and similar steps |
+| A contract position | Funding fees and similar costs |
+
+**Example (round numbers chosen so the arithmetic is easy, not any platform's real fees):**
+
+| Step | Assumed cost | Left |
+|---|---|---|
+| Ready to buy 100 USDT of a coin | — | 100 USDT |
+| Quote and spread when buying | about 1 USDT | 99 USDT |
+| Trading fee and slippage | about 0.5 USDT | 98.5 USDT |
+| Withdraw to your own wallet | withdrawal fee about 1 USDT | 97.5 USDT |
+| Approve and swap on-chain | network fee about 1.5 USDT | 96 USDT |
+
+The coin price barely moved, and the balance is down about 4%. That is why "the price hardly moved, but I have less": every step takes a little. If you also open a contract, funding while you hold keeps changing the balance. The smaller the amount and the more steps you take, the larger the cost as a share of the money.
+
+## How do profit and loss work?
+
+**After a 50% drop, you need a 100% rise to get back to the start.**
+
+A simple spot example: you put in 100 USDT and sell for 110 USDT. Ignoring fees, profit is 10 USDT, a 10% return.
+
+After a 50% drop you need a 100% rise to get back to the old price: 100 → 50 → 100.
+
+Several buys, partial sells, contracts, and prices quoted in more than one coin need a fuller calculation. The last price alone is not enough.
+
+## Before you trade, you should be able to answer
+
+**If you cannot say what you are buying, or how much you can lose, do not buy yet.**
+
+- What am I buying? What coin is the price quoted in?
+- Which fees do I pay? Can I sell or withdraw normally?
+- Is there a lockup, extra issuance, an unlock, or admin power in the contract?
+- What is the worst loss? Can I afford to lose this money entirely?
+
+# 04｜A first buy, and moving money in and out 🛒
+
+## What are deposits and withdrawals?
+
+**A deposit puts money onto the platform. A withdrawal takes it out. The rules are not the same.**
+
+A deposit moves fiat or a digital asset onto the platform. A withdrawal moves funds out: withdrawing coins to a wallet, or selling coins and sending fiat to a bank.
+
+"The coin withdrawal succeeded" does not mean "the fiat is already in the bank". The rules, fees, and risks are different.
+
+## Step 1: platform and region
+
+**When you sign up, check whether the platform serves your region. The sign-up page usually says.**
+
+One brand may be operated by different legal entities in different places. The products are not identical.
+
+**How to choose an exchange:**
+
+- Look at the size of funds on the platform. That stock of user funds is one common reference.
+- Look at proof of reserves. It can be a reference, but it is a snapshot at one moment. It does not guarantee the platform will not fail (see chapter 05).
+
+If you cannot use a platform, do not get around the limit with a fake identity or a false place of residence.
+
+## Step 2: sign up and lock the account down
+
+**The first thing after sign-up: a strong password, plus two-factor authentication.**
+
+Use a strong password you do not reuse. Protect the sign-up email. Where the platform supports it, turn on a passkey, an authenticator, or another second factor. Keep the recovery method safe. Check devices and login history. Turn on withdrawal protection if it is available.
+
+KYC is identity verification. Submit documents only in the official app or on the official site after you have confirmed it. Do not send an ID card to a "support agent" who messaged you first.
+
+## Step 3: how you will deposit
+
+**Before you deposit, read which banks are supported, the fees, and how long it takes.**
+
+Card or bank transfer: check supported banks, currency, who must be the payer, arrival time, and fees.
+A third-party buy channel: check who the provider is, the quote, and the fees.
+P2P: you trade with another user. Fiat and the digital asset settle through the platform's process.
+Depositing crypto you already hold: pick an asset and a network both sides support, and fill in Memo / Tag if it is required.
+
+## P2P, in particular
+
+**In P2P, only your own account and a real arrival count. Do not trust a screenshot.**
+
+- Use an account in your own name, as the platform requires. Check the order and the payment details.
+- Do not send funds to an off-platform address or a chat link the other person just sent.
+- When you sell coins, the record that matters is the real arrival in your own bank. Do not rely only on a payment screenshot or a text message.
+- If a third party pays, or someone asks you to split the order or change the process, pause and follow the platform's rules.
+- If there is a dispute, use the platform's appeal and keep the chat, the order, and the payment proof.
+- Platform custody does not remove the risk of fraud, chargebacks, a frozen bank account, or tainted funds.
+
+## Step 4: buy a little spot
+
+**The first time, buy spot with a small amount. Learn the path.**
+
+Look at the pair and the order type. Check the asset you pay, the amount you expect to receive, and the fees. Afterward, check that the order filled and that the asset is in the right account.
+
+"Instant convert" and "spot order" may be quoted differently. Compare how much you actually receive, not only the advertised fee.
+
+## Step 5: selling and withdrawing
+
+**What you receive after a sale depends on the pair. Getting fiat back into a bank also depends on the cash-out channel.**
+
+A sale usually pays you the quote asset of the pair first. If you need fiat, use a fiat trade and withdrawal channel that your location allows. Check the receiving account, the fees, and the platform's limits.
+
+Keep trade records and records of where the funds came from. For local regulation, reporting, and tax, check official regulators, the tax authority, or a suitable professional.
+
+Note: The goal of a first try is to understand the process, not to prove you can catch a rally.
+
+## The accounts inside an exchange
+
+**Moving funds between accounts on the platform is not the same as an on-chain transfer.**
+
+Many exchanges split assets across accounts. Common ones:
+
+| Account / action | What it is for | Watch out |
+|---|---|---|
+| Funding account | Deposits landing, P2P buys and sells, and withdrawals often use this | On most platforms, coins kept here cannot be used directly for a spot or contract order |
+| Spot account | Spot trades and instant convert | To withdraw, you may need to move funds back to the funding account first |
+| Contract account | Margin for contract trading | Open positions can limit transfers out. Losses are taken from this balance |
+| Transfer between accounts | Moving assets between accounts on the same platform | Internal bookkeeping. It does not go on-chain, usually has no network fee, and arrives almost at once |
+| On-chain withdrawal | Sending coins from the exchange to an external wallet or another platform's address | This really goes on-chain. You choose a network, enter an address, pay a withdrawal fee, and cannot undo it after it arrives |
+
+If "the balance disappeared", check whether it is sitting in another account. If an order says "insufficient balance", you may need to move the asset into the account that order uses.
+
+Names and transfer rules differ by platform. Some platforms merge spot and contracts into a "unified account". Follow the app screen and the official explanation of the platform you use.
+
+# 05｜CEX exchange guide 🏦
+
+## What can a CEX do for you?
+
+**Coins in an exchange account are held by the platform. That account is not your own wallet.**
+
+A CEX usually offers accounts, deposits, withdrawals, and trading. Some also offer fiat channels, derivatives, or other products. Whether it is open to you depends on region, identity, and the rules of the specific product.
+
+A balance in a platform account is usually the platform's internal record. You rely on the operator to hold the assets and to process withdrawals. Do not treat it as a wallet whose private key you control.
+
+## How is a CEX different from a DEX?
+
+**A CEX is a company keeping the books for you. A DEX is you trading on-chain from your wallet.**
+
+A CEX is a centralized exchange. The operator usually manages accounts, orders, and the platform's internal asset records. You trade through the platform.
+
+A DEX is a decentralized trading protocol or venue. Many DEXs swap on-chain through smart contracts. You sign from your wallet. Matching and settlement can still work in different ways.
+
+A DEX still has centralized pieces. The front end, admins, oracles, and other components can add risk.
+
+## Referral sign-up links
+
+**When you sign up, check whether the platform serves your region, then use the entrances below.**
+
+Only Binance, Bybit, Gate, and HTX are shown here. The order is not a safety ranking or a recommendation. Before you use one, confirm that registration and the related services are available where you are.
+
+| Platform | Referral sign-up link |
+|---|---|
+| Binance | https://accounts.binance.info/zh-CN/register?ref=I1GN6RMJ |
+| Bybit | https://partner.bybit.com/b/0xmay |
+| Gate | https://www.gatewebsite.app/share/u1dgb10j |
+| HTX | https://www.htx.com/invite/zh-cn/1h?invite_code=jdz98223 |
+
+Card label: referral link.
+Card note: this is the platform's promotional sign-up domain. After you register, check the account in the official app.
+
+## On-chain trading tools
+
+**If you want to buy and sell tokens directly on-chain, these two tools are the ones shown here.**
+
+DeBot and Binance Web3 Wallet are both for buying and selling tokens that have already been issued (the secondary market). They are not a primary-market subscription. New on-chain coins are very risky. Read chapter 09 before you touch them.
+
+## How do you choose?
+
+**First check that you can use it. Then look at safety, fees, and withdrawals. Do not choose only for a sign-up bonus.**
+
+Check whether your location can use it. Then look at what you need to trade, how you will deposit, depth in the markets you care about, fees, security settings, withdrawal rules, and support channels. Do not decide only because of a sign-up reward or because a KOL recommended it.
+
+## What does proof of reserves mean?
+
+**Proof of reserves is a snapshot at one moment. It does not mean the platform is safe forever.**
+
+Proof of reserves can show assets or liabilities checked at a specific time and within a specific scope. How much that is worth depends on the method and what it covers. It is not automatically a full financial audit. It cannot guarantee that nothing will go wrong later, or that you can withdraw whenever you want.
+
+> 📰 **A real case: the FTX collapse (2022)**
+> Before its 2022 bankruptcy, FTX ranked third in the world by trading volume (according to a November report that year by The Verge). On 2 November 2022, problems in its balance sheet were reported. Six days later (8 November) it stopped all crypto withdrawals. In the first 72 hours, users had already withdrawn about 6 billion dollars. On 11 November it filed for bankruptcy protection. Founder SBF was later sentenced to 25 years.
+> **The lesson: a large platform can still fail. Watch an exchange's news and announcements. If withdrawals slow down or bad news piles up, consider moving assets out while you still can. That is not always possible, and moving them is not a guarantee of safety.**
+
+Note: Look at the domain before you click, the rules before you open an account, and platform risk before you deposit.
+
+# 06｜Spot orders for beginners 🧾
+
+## What is spot?
+
+**Spot means you buy the coin outright. You are not borrowing, and you are not using leverage.**
+
+Spot is buying and selling the asset itself. An ordinary spot position with no borrowing is not liquidated just because the price falls. The asset's price can still go close to zero.
+
+For leverage and contracts, see [Chapter 07, "Going further: leverage and risk"](#/c/07).
+
+## Order types
+
+**A market order fills quickly, at an uncertain price. A limit order sets the price, and may not fill.**
+
+| Type | What it does | Easy to misunderstand |
+|---|---|---|
+| Market | Fills as soon as it can, at the available quote | It does not guarantee one fixed price |
+| Limit | Sets the highest buy price or the lowest sell price | It may not fill, or it may fill only in part |
+| Stop-market | After the trigger, it submits a market order | In a violent move, slippage can be large |
+| Stop-limit | After the trigger, it submits a limit order | It can trigger and still fail to fill |
+
+Platforms differ in which orders they offer and which price triggers them. Read the description before you submit.
+
+## Candle basics
+
+**One candle records four prices for a stretch of time: open, high, low, and close.**
+
+A candle usually records the open, high, low, and close of that interval. 1 minute, 15 minutes, 1 hour, and 1 day are different scales.
+
+The same asset can look like a different trend on a different timeframe. Up and down colors are a platform setting. Do not judge only by red and green.
+
+## A trade log
+
+**Write the reason before the order, and the review after. That beats staring at one more indicator.**
+
+Before the order, write: why you are buying, what would show the idea was wrong, where you plan to exit, the size, the fees, and the loss you might take.
+After the trade, write: whether you followed the plan, where it drifted, and whether the result came from the plan or from luck.
+
+Practice with a paper trade first. Paper profits are not real-trading results. Real money brings emotion, depth, and execution cost.
+
+## Three moments when people lose their head
+
+**Fear of missing out, rushing to get back to even, and a winning streak are when impulses show up.**
+
+Fear of missing out: other people are making money, and you chase.
+Rushing to get back to even: after a loss, you size up or add leverage.
+A winning streak: you treat a short run of luck as a stable skill.
+
+When you notice one of these, pause and reread the plan. That helps more than hunting for another indicator.
+
+# 07｜Going further: leverage and risk ⚖️
+
+## Leverage and contracts
+
+**Leverage magnifies both gains and losses. Beginners should leave it alone.**
+
+Leveraged trading uses borrowing or margin to make the exposure larger. Gains and losses both get bigger. There is also a borrowing cost and liquidation risk.
+
+Contract trading is a bet on a derivative exposure. You do not necessarily hold the underlying spot asset. A perpetual contract has no traditional fixed expiry. Funding rates and similar mechanisms are commonly used to keep its price near a reference price.
+
+## Long and short
+
+**Long bets on a rise. Short bets on a fall. A short often means borrowing the coin or using a contract.**
+
+A long position hopes to profit if the price rises. A short hopes to profit if it falls. Shorting is not as simple as selling spot you already hold. It often involves borrowing or a derivative.
+
+## Margin, cross, and isolated
+
+**Cross margin can drag in the rest of the account. Isolated margin loses only the margin on that position.**
+
+Margin is the funds backing a position. Isolated margin limits that backing to one position. Cross margin lets more of the account's available funds support the position. The exact rules depend on the platform and the account mode.
+
+Cross margin can put more of the account at risk. Isolated margin is not risk-free either.
+
+## Liquidation
+
+**When margin is not enough, the platform closes the position for you. That is liquidation.**
+
+When margin or other conditions fall below what the platform requires, the system may shrink or close the position. The trigger often uses a mark price and other rules, not the last traded price you are looking at.
+
+Do not treat "10x leverage means it liquidates only after a 10% drop" as an exact formula. Maintenance margin, fees, position size, and the platform's rules all change the result.
+
+## Funding rate
+
+**Hold a perpetual for a long time, and funding can keep eating the profit (sometimes you are the one getting paid).**
+
+A perpetual periodically settles a funding payment between long and short holders. Direction, interval, and rules differ by platform. On a position you hold for a long time, that fee changes the result in a real way.
+
+## Position size and a risk budget
+
+**Decide the most this idea is allowed to lose. Then work out how much to buy.**
+
+First decide "if this idea is wrong, how much am I prepared to lose?" Then work out the size. That risk amount is not the money you put in, and it is not the margin.
+
+**A learning example of a risk rule: plan to risk 1% of account funds on one idea. If you want to be more aggressive, treat 2% as the ceiling.** This is not a safety standard that fits everyone. If you are unsure, use a lower share, or do not trade.
+
+Suppose the account has **10,000 USDT (often written 10,000 U)**, and the planned risk on this idea is 1%. Three steps:
+
+**Step 1: how much are you allowed to lose?**
+10,000 × 1% = **100 USDT**. If the stop is hit as planned, you want the loss on this idea kept near 100 USDT.
+
+**Step 2: if you buy a whole BTC, how much do you lose at the stop?**
+Plan to buy at 60,000 USDT and stop at 59,000 USDT.
+The gap per BTC is 60,000 − 59,000 = **1,000 USDT**.
+So 1 BTC, bought and sold at those two prices, loses 1,000 USDT. 0.1 BTC loses 100 USDT.
+
+**Step 3: so how much do you buy?**
+You can lose 100 USDT. Each coin might lose 1,000 USDT.
+100 ÷ 1,000 = **0.1 BTC**.
+At entry, the notional value of that position is 0.1 × 60,000 = **6,000 USDT**.
+
+**Formula: position size = (account funds × planned risk share) ÷ |entry price − stop price|.**
+The result is a quantity of the asset, for example a number of BTC. Multiply by the entry price to get the notional value. The absolute value keeps the gap positive for both a buy and a short. This fits a simplified spot trade or a linear contract. An inverse contract has to be calculated under its own rules.
+
+**What does leverage change here?**
+The same 0.1 BTC position, simplified: about 3,000 USDT of initial margin at 2x, and about 600 USDT at 10x. The quantity and the buy and sell prices are the same, so the profit or loss from the price move is still the same. Using only 600 USDT of margin does not make this loss smaller.
+
+But higher leverage pulls liquidation closer. The planned risk above holds only if the position stays the same, you are not liquidated early, and the stop fills as expected. Fees, funding, slippage, and a failed execution also change the real loss. Leave room in the budget for costs, and check where liquidation sits. Do not treat "100 U" as a guaranteed ceiling you cannot go past.
+
+Diversifying still depends on correlation. Holding several coins that move together may not actually spread the risk.
+
+## Indicators
+
+**Indicators only describe past data. They do not predict tomorrow.**
+
+Volume helps you see how much participation there was. Support and resistance are areas where buying or selling has shown up, or might. They are not a wall that guarantees a turn.
+
+One breakout, one big green candle, or one bounce cannot by itself confirm what comes next.
+
+EMA: exponential moving average. A weighted way to watch the price trend.
+RSI: relative strength index. It looks at the relative strength of price changes over a period.
+MACD: watches trend and momentum through moving-average relationships and related calculations.
+Stoch RSI: a stochastic calculation applied to RSI. It is usually more sensitive.
+
+Bollinger Bands: often a middle band plus upper and lower bands, used to see where price sits and how volatility is changing. A narrow band means recent volatility shrank. It does not by itself say the next move is up or down. Touching the upper band does not mean the price is about to fall.
+
+Fibonacci retracement / extension: pick the high and low of a move, then mark possible pullback zones or extension targets by ratio. Common retracement ratios include 38.2% and 61.8%. Tools often also show 50%. A different start point gives a different result. The line is not a price the market must reach.
+
+Divergence: price and an indicator do not make a new high or a new low together. For example, price makes a new high and RSI does not, which suggests upside momentum is weakening. Price makes a new low and RSI does not, which suggests downside momentum is weakening. Divergence is an observation, not a standalone indicator, and it does not guarantee an immediate reversal.
+
+An indicator is a processing of historical data. A high RSI does not mean the price is about to fall. A golden cross is not a sure profit. Being able to say when it fails, in which conditions, is more useful than memorizing a slogan.
+
+# 08｜Wallets, cold wallets, and CEX 👛
+
+## What is a wallet?
+
+**A wallet does not hold the coins. It holds the keys that can move them.**
+
+A wallet helps you manage an account, see assets, and sign actions. The asset record lives on the relevant chain. What the wallet usually manages is the credential that accesses and signs for those assets, not a pile of coins stored inside the phone.
+
+Different wallets may use a seed phrase, a smart account, multi-party computation, or another recovery method. You need to understand the specific scheme you are using.
+
+## Address, private key, seed phrase
+
+**You can give someone an address. You cannot give anyone a private key or a seed phrase.**
+
+Address: used to receive funds or to identify an on-chain account. You can share it, but that creates a privacy link.
+Private key: the secret that authorizes actions on the account. Do not share it.
+Seed phrase: on some wallets, the word list that generates and restores a set of keys. If it leaks, it can affect several accounts under that phrase.
+
+A wallet password only protects the local app or file. It is not control of the chain. Changing the app password does not invalidate a seed phrase that has already leaked.
+
+## Two different ways to classify wallets
+
+**Custody is about who holds the keys. Hot and cold are about whether those keys are online.**
+
+Custodial / self-custody: the question is who controls the keys and the actions on the assets.
+Hot / cold wallet: the question is whether the keys are in an environment that is online.
+
+A hardware wallet is a common cold-storage and signing tool. Do not treat "any hardware device" as automatically a trustworthy cold wallet.
+
+## CEX, software wallet, hardware wallet
+
+**A platform account is convenient, and you depend on the platform. Self-custody is freer, and the responsibility is yours.**
+
+| Item | CEX account | Self-custody software wallet | Self-custody hardware wallet |
+|---|---|---|---|
+| Who is in control | Usually the platform holds the assets | You manage the keys under that wallet's scheme | You manage them; the device helps you sign |
+| Day to day | Trading inside the platform is relatively convenient | On-chain use is relatively convenient | Signing has an extra check on the device |
+| How you recover | The platform's account recovery and review | A seed phrase, or that wallet's own recovery | A backup, plus recovery that is specific to the device |
+| Main risks | The platform, the account, withdrawal limits, and similar | Malware, phishing, the backup, and signing the wrong thing | Supply chain, the backup, a bad signature, and using the device wrong |
+| What you are responsible for | Account security and choosing the platform | Keys, backup, and safe interaction | Keys, backup, the device, and safe interaction |
+
+## A keyless wallet beginners can start with 🧸
+
+**Don't want to write down a seed phrase? A keyless wallet splits the key into three shares. That can be easier for a beginner.**
+
+Worried you will mishandle a private key, or lose a seed phrase? Look at Binance Wallet (keyless).
+
+It uses MPC (multi-party computation). The key is split into 3 shares: one on your device, one in a personal cloud backup, and one held by Binance. Any two shares together can use the wallet. Two of them are in your hands, so **Binance alone cannot move your money**. You do not write down a traditional seed phrase when you create it.
+
+Creating Binance Wallet (keyless) requires a Binance account that has already passed identity checks. It can also import an existing seed phrase or private-key wallet, and you can convert the keyless wallet into a private-key wallet and hold that yourself.
+
+### How is it different from a Binance exchange account?
+
+The exchange account is for buying, selling, and managing funds inside the platform. Binance Wallet (keyless) is for holding on-chain assets, transferring them, and using Web3 apps. You can reach both from the Binance app. They are different ways of holding assets.
+
+### How do you start?
+
+1. Open the official Binance app and go to Wallet.
+2. Choose Create wallet, and follow the prompts to create a keyless wallet.
+3. Finish the backup. Binance officially offers quick backup, cloud backup, and QR backup. Finish the one you chose as the app instructs. Confirm which accounts, passwords, or materials recovery needs. Then deposit assets.
+4. Practice receiving, sending, and on-chain actions with a small amount first.
+
+Note: an encrypted backup in the wallet's official flow is not the same as screenshotting a seed phrase and uploading it to a cloud drive. Still do not photograph, screenshot, or upload a seed phrase or a private key.
+
+Sources: [Binance FAQ: What is Binance Wallet](https://www.binance.com/en/support/faq/detail/048ee79532494c03918dc4004214ad11), [Binance blog: self-custody Web3 wallet](https://www.binance.com/en/blog/ecosystem/7898832595548730429)
+
+Buttons: binance-wallet
+
+## Do you need a hardware wallet?
+
+**You do not have to buy a hardware wallet on day one. Learn to back up, and learn to read what you are signing.**
+
+**You do not need to buy one the moment you arrive. Protecting the account, backing up correctly, and understanding signatures matter more at the start.**
+
+If you are only learning with a small amount, and you trade fairly often, you may not need a hardware wallet immediately. You can start with a platform account or a software wallet that fits the job, and understand the custody and device risks of each.
+
+Whether you need one should not be decided by a single line like "only if you are worth hundreds of millions". If an amount already matters a lot to you, and you plan to self-custody it for a long time, it is worth studying a hardware wallet even when the amount is far below that.
+
+A hardware wallet can reduce some of the risk of keys touching an online environment. It is not a magic safe. A leaked backup, a swapped device, or you actively signing a malicious action can still lose the assets.
+
+**What decides it is how much that sum matters to you, how long you will hold it, and whether you can operate the setup. Not one universal money threshold.**
+
+## How do you separate funds?
+
+**Practice, trading, and long-term storage belong in different wallets. Do not keep them together.**
+
+Learning / interaction wallet: a small amount you can afford to lose, for trying apps.
+Everyday trading funds: kept where you trade, with the custody risk understood.
+Long-term savings wallet: fewer interactions, and a storage setup that fits you.
+
+Creating several accounts under the same seed phrase does not isolate you from a leaked phrase. To separate that risk, you need an independent key or recovery scheme.
+
+## What if the device is lost?
+
+**A lost phone is not the scary part. Having no backup is.**
+
+Losing the device does not automatically mean the assets are gone. Whether you can recover depends on the backup and the wallet's scheme. **So finish the backup when you create the wallet, and confirm by the official method that the backup can actually restore it. Do not wait until the phone breaks or the device is gone.** For a seed-phrase wallet, the words, the order, and the related recovery details all have to be exact. Restore in a trusted environment, following the official instructions. If you suspect someone else has the device or the backup, consider moving what remains to an account that uses a brand-new key.
+
+# 09｜Safety and scam guide 🛡️
+
+## Seed phrase and private key: do not share, do not upload
+
+**Whoever asks for the seed phrase, the answer is no. Support will not ask for it either.**
+
+Do not send it to support, a friend, a project, an AI, or any form. Do not photograph it and upload it to a cloud drive. Do not paste it into a chat or an online note. Use the offline backup method the wallet officially supports, and think about fire, water, loss, and other people getting near it.
+
+Real support does not need your seed phrase to look up a transaction. If anyone asks for it, stop talking to them.
+
+## Fake sites and fake apps
+
+**Links in search results and ads can be fake. Use an official entrance you have already saved.**
+
+Search results, ad slots, social accounts, and pinned group messages can all carry lookalike links. Check the full domain. Cross-check it from an official channel you trust. Bookmark the entrance after you have checked it.
+
+When you download an app, check the developer and the source. Do not install a package a stranger sent you. Buy a hardware wallet from the official shop or a channel you can verify. Do not use a seed phrase that someone else set up for you in advance.
+
+## Connecting, signing, and approving are not the same thing
+
+**Connecting a wallet, by itself, usually does not lose the coins. Signing blindly, and approving blindly, can.**
+
+Connecting a wallet usually lets an app see the address and request permissions. It does not automatically mean assets have been sent away.
+A signature confirms a message or an action. Some off-chain signatures can also authorize a later transfer. "It costs no gas" is not the same as "it has no risk".
+An approval lets a contract use an asset under stated conditions, for example an ERC-20 allowance. Different networks and assets use different permission mechanisms.
+
+If you do not understand the request, do not confirm it. Do not blind-sign. Do not trust a page titled "Log in" to be only a login.
+
+> 📰 **A real case: one signature, about 1.39 million dollars gone (October 2024)**
+> A PEPE holder signed an off-chain Uniswap Permit2 signature on a phishing site (no gas). About an hour later, PEPE and other tokens in the wallet, worth about 1.39 million dollars, were taken. Around the 10th of that same month, someone else lost 15,079 fwDETH (worth about 35 to 36 million dollars at the time) to a Permit phishing signature.
+> **The lesson: a signature that charges no gas can still move the coins. If you do not understand it, do not sign.**
+
+## What can help you inspect a signature?
+
+**A safety extension can warn you. You still have to understand the request yourself.**
+
+GoPlus can help you check tokens, approvals, and some on-chain safety risks, but the results are for reference only and cannot guarantee that assets are absolutely safe. It also offers a browser extension that, where supported, can flag suspicious requests. A wallet's own transaction simulation and risk warnings are also worth reading.
+
+**GoPlus site:** https://gopluslabs.io/en
+
+From the official site, open the browser-extension page. Check the publisher, which wallets it works with, the networks, the permissions, and what it supports right now. The signature-decoding API and the browser extension are not the same feature. Do not assume the extension supports every chain and every kind of signature.
+
+A tool's warning is only a helper. No warning does not mean it is safe. You still check the counterparty, the change in assets, and the scope of the approval. No check requires you to hand the tool your seed phrase.
+
+## Disconnecting is not the same as revoking
+
+**After you disconnect, the approval is still there. Revoke it separately.**
+
+Disconnecting a site only changes the connection. An on-chain approval that already exists is still valid. You have to check and revoke it by the method for that chain and that wallet.
+
+Revoking may cost a network fee. It does not guarantee you get back assets that were already moved. If the seed phrase or private key has leaked, revoking approvals is not enough.
+
+## Unlimited approval
+
+**An unlimited approval is convenient. If something goes wrong, that coin may be transferred away in full.**
+
+An unlimited approval lets the approved party use a very large token allowance, so you do not approve again each time. It is more convenient. It can also widen the loss from a contract bug or a malicious permission. Understand the scope, and approve what you actually need.
+
+## Common scams
+
+**If a stranger, or an activity you cannot trace, first asks you to sign, pay, or hand over a seed phrase, it is usually a scam.**
+
+- Fake airdrop: it asks you to sign, approve, or pay a fee first.
+- Fake support: they message you first and ask you to install remote-control software or hand over recovery information.
+- Fake investment group: profit screenshots, then a request to deposit on a named platform.
+- Cannot withdraw: you are told to pay more tax, an unfreeze fee, or a deposit before you can withdraw.
+- Fake recovery: they promise stolen funds can definitely be traced, and they charge you first.
+- Address poisoning: a lookalike address is planted in your history so you copy it.
+- Malicious tokens and NFTs: the name or the memo contains a claim URL, to get you to visit it.
+- Clipboard hijacking (often also called paste interception): malware replaces a receiving address you just copied with the attacker's address.
+- Another app reading the clipboard: an app or extension can read what you copied. If that includes recovery information, a password, or a key, it leaks. Permission prompts differ by system.
+
+A strange asset showing up in the wallet does not mean you have to do anything with it. Do not visit a link inside it just because it displays a high "value".
+
+## Three traps that show up constantly in Chinese-language circles
+
+**Tainted USDT and a frozen bank card, the pig-butchering scam, and letting someone use your account to move money are three of the most common traps in Chinese-language circles.**
+
+**1. Tainted USDT (黑 U) and a frozen card**
+In a P2P trade you may receive money with a dirty source. The bank card can be frozen, and you can be pulled into a case. Trade only with merchants the platform has verified. Do not accept a third party's payment. Do not collect money on someone else's behalf.
+
+**2. Pig-butchering (杀猪盘)**
+They start with a relationship, or pull you into a "signals group", then steer you to deposit on a fake platform. Early on they let you make a little. After you put in more, you cannot withdraw. If someone you met online wants to invest with you, treat it as a scam.
+
+**3. Buying your USDT at a premium, and "running points" (跑分)**
+Someone offers to buy your USDT above the market, or asks to borrow your bank card or account to receive and forward money. They are using your account to launder money. Helping someone move funds this way, or lending a bank card to receive USDT, may constitute the offense of assisting information-network criminal activity (帮信罪). In serious cases it may also constitute concealing or disguising criminal proceeds (掩饰、隐瞒犯罪所得罪).
+
+## Stop the clipboard from leaking
+
+**Never copy and paste a seed phrase or a private key.**
+
+Do not put a seed phrase, a private key, an API key, or similar secrets on the clipboard. Do not paste them into chat, an AI, an online note, or a web page. For passwords, prefer autofill from a password manager you trust.
+
+Remove apps, keyboards, and browser extensions you do not need or cannot trace. Check clipboard, accessibility, and device permissions where the system lets you. Turn off clipboard history, cloud sync, or sharing across devices if you do not need them. Keep the system updated.
+
+Clearing the clipboard can reduce later reads. It cannot un-read something that was already read. If you suspect a secret leaked, rotate that credential. If a seed phrase or private key leaked, follow chapter 15.
+
+The steps that reduce a swapped address are in chapter 10, "Four checks before you send".
+
+## Protect the account and the device
+
+**Protect the email and the phone, and you have protected most of the account.**
+
+Protect the email. Use a unique password and a solid second factor. Update the system and the wallet. Do not install unknown extensions. Do not share recovery information that is on the screen. On an exchange, turn on a withdrawal allowlist and login alerts if they exist.
+
+An API key is a secret too. If you later need automation, use the smallest permission. A trading bot usually does not need withdrawal permission. Do not send a key to a stranger's bot, or commit it to a code repository.
+
+## Privacy needs protecting too
+
+**On-chain transfers are visible. A wallet with no real name on it can still be traced.**
+
+On many public chains, transactions can be looked up by anyone. A public address can be linked to balances, behavior, and identity. A wallet that does not display a legal name is not the same as "cannot be traced".
+
+Note: Safety is not one cold wallet. It is a set of habits you keep.
+
+# 10｜Your first on-chain actions 🔗
+
+## Receiving
+
+**To receive, you give an address and a network. You do not give a seed phrase.**
+
+Open a wallet or platform you trust. Select the correct asset and network. Copy the receiving address. If a Memo / Tag is required, give that too. Confirm the sender supports that asset and that network.
+
+Do not give anyone a seed phrase in order to receive funds. Receiving usually needs only the public receiving details.
+
+## Four checks before you send
+
+**Before you send, check four things: asset, network, address, and Memo.**
+
+1. Asset: the name matches the real contract or the real native asset.
+2. Network: the recipient explicitly supports the network you selected.
+3. Address: check the full address against a source you trust, so a swapped clipboard does not win. After you paste, check the pasted result, and check again on the wallet or exchange confirmation screen. The first and last few characters are not enough. A lookalike address can copy those on purpose.
+   If you are unsure, you can scan a receiving QR code from a channel the recipient actually controls, which skips some copy-and-paste. After the scan, still check the full address, the network, and whether the code prefilled an amount or some other action. Scanning does not rule out a fake or malicious QR code.
+4. Memo / Tag: if the receiving platform requires it, it has to be correct.
+
+> 📰 **A real case: address poisoning, one wrong send of 68 million dollars (May 2024)**
+> The scammer first sent the victim a tiny transfer, so a fake address with **the same first 6 and last 6 characters as the real one** landed in the transfer history. The victim copied that fake address and sent 1,155 WBTC (about 68 million dollars). After negotiation the scammer returned most of it. That outcome is extremely rare. In almost every other case the funds are not recovered.
+> **The lesson: do not copy an address out of your transfer history. Check the full address every time.**
+
+Also check the minimum deposit, the fees, whether the network is paused, and how many confirmations are required. A small test transfer has to be above the relevant minimum. Move the rest only after it arrives.
+
+## Why does the same coin have different networks?
+
+**USDT with the same name on a different network is a different thing. Do not pick the wrong one.**
+
+The name can be USDT,  
+and the network can still differ.
+
+Whichever network the recipient chose,  
+that is the network you choose.
+
+Do not pick one  
+only because the fee looks cheaper.
+
+An asset with the same name can be issued on different chains, and there are bridged or wrapped versions. The same name does not mean the same contract, the same issuer, or the same redemption path.
+
+TRON's TRC-20 and Ethereum's ERC-20 are token standards on different networks.
+
+## Address and contract address
+
+**A contract address is the token's identity. It is not your receiving address.**
+
+A receiving address is the account that receives funds. A contract address identifies a token or a contract. When you buy a token you may use the contract address to check identity. For an ordinary transfer, do not paste the token's contract address in as if it were your own receiving address.
+
+## Gas and network resources
+
+**Sending costs a network fee. Tokens with no gas beside them still cannot move.**
+
+### Why does the wallet show coins, and still refuse to send?
+
+Sending also pays a "fare",  
+which is the network fee.
+
+To send USDT on Ethereum,  
+you usually also need a little ETH for that fare.
+
+Some wallets can pay it for you.  
+Read the prompt in the wallet.
+
+A network fee is the cost of executing the transaction. Many chains pay it in the native asset: Ethereum commonly uses ETH, Solana commonly uses SOL, BNB Chain commonly uses BNB. TRON involves bandwidth, energy, and possibly TRX.
+
+Some wallets or apps support sponsored gas, resource rental, or another way to pay. The rules depend on that service.
+
+## How do you see whether a transaction went through?
+
+**Take the TxID to a block explorer. That tells you whether it succeeded.**
+
+A transaction hash / TxID is the identifier you use to look up one transaction. On the explorer for that network, check whether it succeeded, the receiving address, the asset, the fee, and the confirmations.
+
+Success on-chain and a credit on an exchange are two different events. The platform may also require a number of confirmations, a minimum amount, or manual processing.
+
+## Swap: exchanging on-chain
+
+**Before a swap, read how much you will receive and the slippage. Then sign.**
+
+A swap exchanges one asset for another. Confirm the token contract, the route, the amount you expect to receive, the price impact, the slippage, and the network fee before you decide to sign.
+
+On some protocols, approving and then swapping are two separate transactions. A successful approval is not a completed swap. Raising slippage does not make the trade safe. Set it too high and you accept a very bad fill.
+
+## Bridges
+
+**A bridge is riskier than an ordinary transfer. Do not rush one on your first try.**
+
+A bridge moves assets or messages between networks. After the bridge, the asset may be a wrapped or mapped version. You need to understand who you are trusting and how redemption works.
+
+Check the source chain, the destination chain, the bridge protocol, the asset version, the fees, the wait, and gas on the destination chain. A bridge can involve contract risk, the verification mechanism, custody, liquidity, or the front end.
+
+Note: For a first on-chain practice, one correct small receive and one correct small send matter more than rushing to bridge.
+
+# 11｜How to research a project 🔍
+
+## Question 1: what does it do?
+
+**If you cannot say what the project does in one sentence, do not buy it yet.**
+
+Say, in one sentence, the problem it works on, who it is for, and what the product is. If all you can repeat is "revolutionary" and "empowering the ecosystem", and you cannot say how anyone uses it, keep researching.
+
+## Question 2: what is the coin for?
+
+**A good project is not the same as a useful coin. Ask what the coin actually does.**
+
+A good product does not mean the token captures value. Check what the token is for, how supply and demand work, what rights holders actually have, where fees go, and who governs.
+
+"Platform revenue is growing" does not automatically mean that revenue is paid to token holders. A buyback plan also has to be checked: is it actually carried out, and can it continue?
+
+## Question 3: who holds the coins, and when can they sell?
+
+**See who holds the coins and when they unlock, so you are not the one left under a dump.**
+
+Look at allocations to the team, investors, the community, and the treasury, the share already circulating, and the unlock schedule. Concentration of holdings has to be read with who the address is: an exchange's pooled address is not necessarily one whale.
+
+## Extra check: which exchanges already list it?
+
+**Whether it is listed is decided by the exchange's own announcement.**
+
+Check the exchange's official asset page and announcements. Do not stop at the project's poster. Check the contract, the network, the pair, and whether trading, deposits, and withdrawals are actually open.
+
+Separate a spot listing, a contract listing, pre-market trading, and a token that some wallet's DEX aggregator happens to show. A token searchable in a brand's wallet is not the same as that brand's CEX having officially listed the spot market. Also check for recent delistings, pauses, or restriction notices.
+
+## If it is new: who led the round, and which institutions are in?
+
+**An institutional investment can be checked. It does not mean the price will rise.**
+
+Look up the round, the date, the amount that was made public, the lead, and the other investors. Cross-check announcements from the project and from the institution itself. Equity investment, a token investment, a grant, a technical partnership, and simply showing up at an event are not the same relationship.
+
+"Institutional backing" is best written as a fact you can verify, for example "this institution joined this round". Do not treat logos on a website as proof of a partnership. Do not treat an investor's name as a promise about the future price.
+
+## Question 4: what do the numbers say?
+
+**Before you trust a number, ask how it was counted. A marketing screenshot needs its original source.**
+
+TVL is the value of locked assets under a specific set of rules. The coin price and double counting can move it.
+Active addresses are not the same as distinct real people.
+Volume is not revenue.
+Protocol fees, protocol revenue, and net profit are not the same metric.
+
+Before you compare, check the date, the unit, the time range, and the definition. For a screenshot in a pitch, try to find the original source.
+
+## Question 5: what powers exist, and how do you get out?
+
+**Check who can mint, freeze, or change the rules before you consider buying.**
+
+Who can upgrade the contract, pause it, mint more, freeze, or change fees? Can you sell normally? Is there a transfer tax, a blacklist, or a transfer restriction? Who controls the pool's liquidity?
+
+A safety scanner can only offer some clues. It cannot guarantee there is no malicious logic. A small test buy and sell also cannot prove you will be able to exit later.
+
+## What does an audit mean?
+
+**An audit means someone reviewed a specific version of the code. It is not a promise of no bugs.**
+
+An audit inspects specific code and a specific scope. It may find problems. It is not proof that there are no bugs. Read what was audited, the version, the date, the issues still open, and whether the code that shipped matches the version that was audited.
+
+## Sources, and who is being paid to talk
+
+**Official docs and on-chain data come first. KOLs come after, and notice whether they are paid.**
+
+Read official docs, on-chain records, and independent data before community chatter. Fundraising, listings, celebrity attention, and partnership announcements all need checking. None of them is a promise of profit.
+
+When you read a KOL, notice whether they hold the asset, whether they are paid to promote it, or whether they use a referral link. Those interests change what they emphasize.
+
+## A one-page research note
+
+**Write the research on one page. If you cannot, you have not thought it through.**
+
+Project name and official entrance:
+Product and users:
+What the token is for:
+Circulation, valuation, and unlocks:
+Contract and admin powers:
+Data you can verify, and the date:
+Main risks and how you would exit:
+What I still do not understand:
+
+Note: Not understanding it is a reason to keep reading. It is not a reason to buy because you are afraid of missing it.
+
+# 12｜A map of Web3 activities 🎮
+
+## First you need a wallet: the start of every activity 👛
+
+**DeFi, airdrops, NFTs, memes: the first step for all of them is an on-chain wallet.**
+
+Every activity below needs an on-chain wallet to connect to an app, to sign, and to hold the assets. An exchange account cannot stand in for it.
+
+Beginners can start with Binance Wallet (keyless). It is easier at the start:
+
+- You do not write down a traditional seed phrase.
+- It uses MPC. The key is split into 3 shares. Any two are enough to use it, and Binance alone cannot move your money.
+- Before a transfer it can show a risk reminder, which is one more check.
+
+> 💬 From the person who runs this site: I once nearly sent money to a contract address. Binance Wallet popped up a warning and stopped me. For a beginner, that kind of reminder really helps.
+
+For how it works and how to back it up, see [Chapter 08, "A keyless wallet beginners can start with"](#/c/08/4).
+
+Binance Wallet (keyless)：https://web3.binance.com/referral?ref=BFSADLNM
+用途：A self-custody on-chain wallet that suits a beginner. You can connect DApps, sign, and hold on-chain assets. It is not the same thing as the exchange account.
+
+## DeFi: financial apps on a chain
+
+**DeFi is banking and exchange functions on a chain. There is no support desk to catch you.**
+
+DeFi means apps that use smart contracts for swaps, lending, and similar financial functions. You usually interact with a wallet. Costs include network fees and protocol fees. Risk can come from the code, the collateral, oracles, governance powers, and the economic design.
+
+## Lending
+
+**Lending is about collateral and liquidation. Do not look only at the yield.**
+
+Depositing an asset may earn a return. Borrowing an asset requires collateral and interest. If the collateral price falls, you can be liquidated. The deposit side also has bad-debt, liquidity, and contract risk. Do not look only at the yield.
+
+## Liquidity pools
+
+**Providing liquidity earns fees, and you also take impermanent loss.**
+
+You put assets into a pool and may earn trading fees or rewards. Besides the assets' own price moves, there is impermanent loss, rewards that lose value, and contract risk. Impermanent loss describes the value difference versus simply holding the assets. It is not guaranteed to "come back".
+
+## Staking and yield products
+
+**If a product is called "earn", first ask what the money is actually doing.**
+
+Native staking on a proof-of-stake network supports validation and pays rewards. There can be an exit wait, validator risk, or a penalty mechanism.
+
+A product a platform labels "staking" or "Earn" may actually be lending or some other yield strategy. You have to read what the funds are used for, the redemption rules, and who bears the risk. The product name is not enough.
+
+APR is an annualized rate without compounding. APY includes a compounding assumption. An annualized number on the screen is not a guaranteed return for the next year.
+
+## Airdrops, points, and testnets
+
+**Airdrops and points do not guarantee a payoff. Do not approve things blindly for them.**
+
+You may get a chance at a future distribution by using a product or joining an activity. The cost includes time, network fees, and interaction risk. Points do not guarantee a token redemption. Test assets usually have no mainnet value, and there may be no reward.
+
+## NFTs
+
+**Buying an NFT does not mean you bought the copyright to the picture.**
+
+An NFT is a token used to represent a unique identifier and related information. Buying an NFT does not automatically give you copyright in an image or other legal rights. The actual rights depend on the license and the terms. Price, liquidity, metadata, and whether the project continues are all risks.
+
+## On-chain games and DAOs
+
+**A game lasts if it is fun to play. Holding a governance token is not the same as being a shareholder.**
+
+An on-chain game puts some game assets or mechanics on a chain. Whether the game is fun, and whether the token economics can last, are separate questions.
+A DAO is a way of organizing people with rules and a governance mechanism. Holding a governance token does not mean you own equity in a company. Governance power can also be highly concentrated.
+
+## Meme coins
+
+**A meme coin can surge, and it can go to zero. Only use money you can afford to lose.**
+
+Meme coins often grow around a culture, a community, and how the story spreads. They can rise by astonishing amounts, and a few participants make a lot. They can also go to zero quickly, or become impossible to sell, and participants lose most or all of the principal.
+
+People often compare buying a meme coin to "buying a lottery ticket", because the outcome is highly uncertain and it is easy to see only the get-rich stories. It does not have a lottery's fixed, transparent prize mechanism. Concentrated holdings, insider advantage, bots front-running, malicious contracts, and liquidity also change the result.
+
+So you can understand the upside, and you also have to hold the chance of going to zero, of being unable to sell, and of uneven information in the same picture. Do not treat a get-rich story as the expected result for an ordinary participant.
+
+Meme guide (DeBot)：https://debot.ai/r/0xMay
+用途：A tool for on-chain meme-coin activity and trading data. Being listed in the tool does not mean the token is safe. Before you join, accept that it may go to zero.
+
+## What is a prediction market? 🔮
+
+**A prediction market is trading on the outcome of a question.**
+
+For example:  
+"Will this team win?"  
+"Will this product ship before the end of the year?"
+
+You can buy "yes" or "no". If you are right, you are paid under the platform's rules. If you are wrong, the share you bought can go to zero.
+
+Believing the event will happen does not mean buying in is guaranteed to make money. The price you pay, the fees, and the rules that decide the outcome all change the result.
+
+Before you join, read:  
+when it closes, what counts as "it happened", and who decides.
+
+> ⚠️ These products can lose money. In some places they may fall under gambling or financial rules. Check the rules where you are before you use one.
+
+## RWAs and tokenized stocks
+
+**A tokenized stock is not the same as you actually holding the stock.**
+
+RWA means an on-chain representation of a claim related to a real-world asset. A tokenized stock gives some exposure to a stock's price, or some related right. It is not the same as being the registered holder of the stock.
+
+Check the issuing entity, custody, the legal right, redemption, dividends, who is allowed to participate, and trading hours. A name that looks like a stock does not mean the rights are the same.
+
+## DePIN and AI
+
+**For DePIN and AI projects, first look for real demand and real revenue.**
+
+DePIN usually means using a network and incentives to organize real-world infrastructure, such as compute, communications, or sensors. An AI and Web3 project may involve compute, data, or automated agents.
+
+Check real demand, hardware cost, where revenue comes from, and how permissions are set. If an AI agent can operate a wallet, be explicit about how much it may spend, what it can call, and how you revoke that permission.
+
+Note: For every activity, ask four things: what it is, how you take part, what it costs, and how you can lose.
+
+# 13｜Crypto slang translator 💬
+
+## Serious terms
+
+| Term | Plain explanation |
+|---|---|
+| DYOR | Do your own research and check it yourself. Do not treat someone else's opinion as the conclusion. |
+| FOMO | Fear of missing out, which pushes you to jump in on impulse. |
+| FUD | Fear, uncertainty, and doubt. The word cannot be used to dismiss every criticism. |
+| HODL | Community slang for holding for a long time. |
+| ATH / ATL | All-time high / all-time low. Pay attention to the range of the data. |
+| Bull / Bear | Bullish / bearish. Also used for a bull market / a bear market. |
+| Whale | A participant with a large holding or a large trade. |
+| Degen | Someone aggressive about high-risk plays. Often said with self-mockery. |
+| Rug Pull | The project side abandons participants by pulling funds or by some other exit. |
+| Honeypot | A trap that looks buyable but may block selling or transferring. |
+| Airdrop | Assets allocated to users or addresses that qualify. |
+| Snapshot | A record of state at one moment in time. |
+| Vesting | Assets released gradually over time or under conditions. |
+| TGE | Token generation event. Whether it circulates immediately depends on the rules. |
+| Whitepaper | The project's write-up of its design and plan. It is not a promise that any of it will happen. |
+| Tokenomics | The token's economics: issuance, allocation, use, and incentives. |
+| TVL | Total value locked. You need the scope and the definition behind the number. |
+| FDV | Fully diluted valuation. You need the supply definition behind it. |
+| Gas | The usual name for the network resources or the fee a transaction needs. |
+| TxID | The transaction id / hash, used to look the transaction up. |
+| Approve | An approval that lets a named party use an asset under the rules. |
+| Revoke | Cancel that approval. It cannot recover assets already lost. |
+| Slippage | The difference between the price you expected and the price you got. |
+| LP | Liquidity provider. Also often used for the liquidity position itself. |
+| MEV | Maximal extractable value: opportunities from ordering, including, or excluding transactions. |
+| CEX / DEX | Centralized exchange / decentralized trading protocol or venue. |
+| KYC | The identity-verification process. |
+| P2P | A user-to-user trade. In crypto it often means buying and selling with fiat. |
+| Long / Short | Betting on a rise / betting on a fall. |
+| Funding Rate | The funding rate on a perpetual contract. |
+| Liquidation | Forced close-out. The exact meaning depends on the setting. |
+| GM / GN | Community greetings: good morning / good night. |
+| 庄家 / 市场操纵 (market maker in the slang sense / manipulation) | Casually called 狗庄. A person or group holding enough of a coin to move its price or its volume in an obvious way, for example by concentrated buying and selling, wash trading, or pumping and then distributing. Small-cap, illiquid coins are easier to push around. |
+| Meme coin | A token built around a culture, a community, and how it spreads. The small, high-risk ones are often called 土狗. They can surge, and they can go to zero or become impossible to sell. |
+| Swap | Exchange one asset for another. Watch price impact, slippage, and the network fee. |
+| Private Key | The secret that authorizes actions on an account. Like a seed phrase, never give it to anyone. |
+| MPC wallet | A multi-party computation wallet. The key is split into shares kept apart. Creating one usually does not mean writing down a traditional seed phrase (Binance Wallet (keyless) is an example). You still have to finish the backup and confirm how recovery works. |
+| WAGMI | A community slogan, "we're all gonna make it". It is not a promise of a return. |
+
+## Community jokes
+
+These lines are jokes about how people talk. They are not a judgment of anyone's real intent, and they are not trading advice. The Chinese phrase is the thing being translated.
+
+| Phrase | The joke, in plain words |
+|---|---|
+| 长期看好 (long-term bullish) | Don't ask me about the short term. |
+| 健康回调 (healthy pullback) | It dropped. I just want a nicer way to say that. |
+| 钻石手 (diamond hands) | You can hold. You also may not be able to sell for now. |
+| 纸手 (paper hands) | Sold, and it rose. Bought, and panicked. |
+| 交学费 (paying tuition) | The money is smaller. Hopefully the experience is larger. |
+| 格局打开 (open up your mindset) | Hold on. Don't sell yet. |
+| 价值投资 (value investing) | This was supposed to be a short-term trade. Now it is long-term. |
+| 最后一跌 (the last drop) | That is what was said last time too. |
+| 抄底成功 (caught the bottom) | So far, all that succeeded is the buy. |
+| 回本就走 (I'll leave when I'm back to even) | The goal just changed from getting rich to getting back to even. |
+| 社区很强 (the community is strong) | The group chat is certainly lively. The product still needs another look. |
+| 财富自由 (financial freedom) | For now, the freedom is not looking at the account. |
+| 梭哈 (all-in) | Risk control is temporarily offline. |
+| 上车 / 下车 (get on / get off) | Buy / sell. Don't chase just because of the metaphor. |
+| 报单 / 喊单 (calling a trade) | Someone tells you what to buy. If it rises, it was their eye. If it loses, it is yours. |
+| 接盘 (catching the bag) | Buying what someone else is selling. Often a joke about buying the top. |
+
+Buttons: slang
+
+# 14｜Tool guide 🧰
+
+## Prices and basic facts
+
+**For price, market cap, and on-chain data, use these sites.**
+
+CoinGecko：https://www.coingecko.com/
+用途：Prices, market cap, assets, and market data. Being listed does not mean the project is safe. Check the data.
+
+CoinMarketCap：https://coinmarketcap.com/
+用途：Market data, supply, and trading venues. Supply definitions can differ across sites.
+
+DefiLlama：https://defillama.com/
+用途：DeFi, TVL, exchange reserves, and related data. Before you compare, check the definition, the time, and whether anything is counted twice.
+
+TradingView：https://www.tradingview.com/
+用途：Charts and technical indicators. Check the exchange, the pair, and the timeframe. A community opinion is not a fact.
+
+## Block explorers, one per chain
+
+**To look up a transfer or an address, use the explorer for that chain.**
+
+Etherscan：https://etherscan.io/ — Ethereum transactions, addresses, and contracts.
+
+BscScan：https://bscscan.com/ — BNB Smart Chain transactions and contracts.
+Solscan：https://solscan.io/ — Solana transactions and accounts.
+mempool.space：https://mempool.space/ — Bitcoin transactions, blocks, and fees.
+TRONSCAN：https://tronscan.org/ — TRON transactions, accounts, and resources.
+Arbiscan：https://arbiscan.io/ — Arbitrum One transactions and contracts.
+BaseScan：https://basescan.org/ — Base network transactions and contracts.
+Robinhood Chain：https://robin.etherscan.io/ — The Etherscan-style explorer for Robinhood Chain mainnet.
+
+Before you use them: the explorer and the network have to match. Verified contract code is not a security audit. A label is not a substitute for checking identity.
+
+## On-chain pairs
+
+**For new on-chain coins and pools, use this.**
+
+DEX Screener：https://dexscreener.com/
+用途：On-chain pairs, prices, and pool activity. Being listed in the tool does not mean the token can be bought and sold safely.
+
+## News
+
+**Read the news to follow the industry. For anything important, the official announcement wins.**
+
+PANews：https://www.panewslab.com/zh
+用途：Chinese-language blockchain and crypto-market news and briefs.
+
+Odaily：https://www.odaily.news/zh-CN
+用途：Chinese-language blockchain and crypto news, briefs, and longer pieces.
+
+BlockBeats：https://www.theblockbeats.info/
+用途：Chinese-language crypto-industry briefs and longer reporting.
+
+TradingKey：https://www.tradingkey.com/zh-hans/news/cryptocurrencies
+用途：Crypto-related news, in Chinese.
+
+CoinDesk：https://www.coindesk.com/
+用途：Crypto news and market coverage, in English.
+
+The Block：https://www.theblock.co/
+用途：Crypto-industry news, data, and research, in English.
+
+Before you use them: news and opinion are not investment advice, and outlets also run sponsored content. For anything important, the project's or the institution's own announcement is the source that counts.
+
+## Checking and revoking approvals
+
+**Check approvals now and then, and revoke the ones you no longer use. These tools can help you check and revoke approvals, but they cannot guarantee the assets will not be stolen.**
+
+Revoke.cash：https://revoke.cash/
+用途：Check approvals and revoke them. It can inspect some asset approvals on supported networks, and revoke them when you choose. Network and permission coverage is limited. Check the domain and the signature before you use it. If a private key has leaked, revoking approvals is not enough on its own.
+
+GoPlus：https://gopluslabs.io/en
+用途：Check approvals and revoke them, and it also offers a browser extension and similar risk prompts. Coverage is limited. A risk prompt is not a substitute for checking it yourself.
+
+## Learning material
+
+**To go deeper, read these official sources.**
+
+Binance Academy：https://academy.binance.com/
+用途：A beginner crypto encyclopedia, friendly to Chinese readers.
+
+Ethereum security：https://ethereum.org/security/
+用途：Ethereum's own safety and anti-scam guide.
+
+Before you use them: official material is good for checking concepts and product rules. A platform's own commercial description still needs to be read as marketing.
+
+## Unlocks and official information
+
+**For an unlock schedule, read the project's own docs first, then compare third-party data.**
+
+Start with the project's official documents for allocation, lockups, and unlock rules, then compare them with third-party data. Plans can change. A label that says "estimated" is not the same thing as tokens actually released on-chain.
+
+Every tool answers only part of the question. After you find a number, you still need to know what it is, how it was counted, and what is missing.
+
+# 15｜Something went wrong 🆘
+
+## A deposit has not arrived
+
+**If a deposit has not landed, take the TxID to a block explorer first.**
+
+Check whether the sender finished the withdrawal and whether there is a TxID. Then use the explorer for the correct network and look at the on-chain status. Check the asset, the network, the address, the Memo, the minimum deposit, the confirmations, and whether the platform has paused deposits.
+
+If it succeeded on-chain and the platform has not credited it, submit the TxID, network, amount, address, and order details through the official help center. Do not provide a seed phrase or an account verification code.
+
+## A withdrawal stays on "processing"
+
+**No TxID means the platform has not sent it yet. Use official support. Do not trust a private message.**
+
+No TxID: it may still be in the platform's review, queue, or processing. Read the order notes and contact official support.
+There is a TxID: then check the on-chain status. Do not pay a so-called speed-up fee to a support agent who messaged you privately, just because you are in a hurry.
+
+## Sent to the wrong address or the wrong network
+
+**Most wrong sends cannot be pulled back. Whether anything comes back depends on the other side.**
+
+An on-chain transaction cannot be reversed the way a bank transfer sometimes can. Whether it can be recovered depends on who controls the receiving address, which network was used, and whether a platform offers a recovery service. Nothing is guaranteed.
+
+If you sent on a network the exchange does not support, contact that platform's official support. If you sent to a self-custody address, you also have to judge it against the wallet and the key scheme. Do not casually export a private key into a tool you do not know.
+
+## You forgot the Memo / Tag
+
+**If you forgot the Memo, take the TxID to the platform's official support and ask about recovery.**
+
+The receiving platform may not be able to tell which account the transfer belongs to. Keep the transaction record and apply through the official process. Whether it can be recovered, and whether there is a fee, follows the platform's rules.
+
+## The wallet does not show the asset
+
+**If you cannot see the coin, first check that you picked the right network and the right account.**
+
+Check whether you selected the wrong account or network, whether a block explorer shows the asset, and whether the wallet needs the correct token contract added. Do not type a seed phrase into a web page in order to "display the balance".
+
+## A transaction failed or is stuck
+
+**A failed transaction can still charge gas. Do not keep clicking at random.**
+
+Check whether it is already on-chain, whether the network fee was enough, and whether the transaction reverted or is still waiting. A failed transaction can still cost a network fee.
+
+Some wallets and networks let you speed up or cancel a pending transaction. The rules differ, and it can still fail. Follow the official instructions. Do not resubmit blindly over and over.
+
+## You suspect a bad approval or a bad signature
+
+**If you think you signed the wrong thing, revoke the approval or move the coins now.**
+
+Stop interacting with the suspicious site. Save the records. In an environment you trust, check the permissions. Depending on the case, revoke them, or move what remains to a new account that is safe.
+
+A malicious signature is not always an ordinary approval, and a revoke tool may not cover it. If the situation is unclear, get specific help from the wallet's official support or from a security channel you trust.
+
+## The seed phrase or private key leaked
+
+**If the seed phrase leaked, that wallet is finished. Move to a new one now.**
+
+Treat the related accounts as no longer safe. On a trusted device, create a wallet that uses a brand-new key, and move what remains as the situation allows. Changing a password, uninstalling the app, or revoking approvals does not invalidate the old private key.
+
+If an automated drainer is watching, blindly sending gas to the old address can be stolen too. Do not send more funds to the leaked address. Get a trustworthy professional to help you assess it.
+
+## The exchange account may have been taken over
+
+**If the account was taken over, freeze it through an official channel first.**
+
+Freeze or restrict the account through an official channel. Protect the email. Check login sessions, devices, API keys, and withdrawal history. Update the related credentials. If funds were lost, keep the evidence and report it through the channels where you live.
+
+## A second scam, after the first
+
+**Anyone who says they can get the coins back, and asks to be paid first, is usually a second scam.**
+
+No stranger can guarantee recovery of on-chain assets because they "have an inside connection". Be especially wary of a so-called recovery service that charges first, tells you to deposit again, asks for the seed phrase, or wants remote control of your device.
+
+## What to have ready when you ask for help
+
+**Bring the order id and the TxID. Never send a password or a seed phrase.**
+
+The platform order id, the asset, the network, the time and the time zone, the amount, the TxID, the public address, the error text, and screenshots you actually need. Hide identity documents, bank details, passwords, verification codes, API keys, and recovery information.
+
+# 16｜Common questions and practice ✅
+
+## Do I have to buy a coin before I can learn Web3?
+
+**You can learn without buying.**
+
+No. You can read, watch the market, use a paper trade, or use a test network. Learning and investing are two different things.
+
+## Is USDT the same as the US dollar?
+
+**USDT is not the dollar. It tries to stay near 1:1 with the dollar.**
+
+No. It is a stablecoin that aims to track the dollar's value. Issuance, redemption, reserves, and risks are not the same as dollar cash or a bank deposit.
+
+## BTC is too expensive. What if I cannot buy a whole one?
+
+**You can buy 0.001. You do not have to buy a whole coin.**
+
+You can usually buy a fraction. You do not have to buy one whole coin. You still have to meet the platform's minimum order, and you still have to understand the asset's risk.
+
+## If it is in a cold wallet, can it never be stolen?
+
+**A cold wallet can still be stolen. The usual causes are the seed phrase and signing the wrong thing.**
+
+There is no guarantee. A leaked seed phrase, a device problem, a malicious signature, and a mistaken action can all cause a loss.
+
+## Is an exchange wallet the same as that brand's Web3 wallet?
+
+**Same brand, and the exchange account and the on-chain wallet are still two different things.**
+
+Not necessarily. The same brand does not mean the same custody. Read, for the specific product, who controls the keys, how recovery works, and how withdrawals work.
+
+## Is an airdrop always free?
+
+**An airdrop is not always free. A "claim it free" page can also be a scam.**
+
+Not always. It can cost time, network fees, or even funds, and there may be no reward at the end. A "claim it free" page can also be a scam.
+
+## If a project was audited and listed, is it safe?
+
+**An audit and a listing are not a safety guarantee.**
+
+They can be part of the research. They do not replace a full judgment of risk, and they do not guarantee a return or that the assets are safe.
+
+## If I learn the indicators, can I make money steadily?
+
+**Learning the indicators does not mean steady profits.**
+
+You cannot infer that. Indicators have to be read against the market and against how you execute. Fees, risk management, and emotion also change the result.
+
+## Does crypto have no weekends?
+
+**Crypto trades 24 hours. You do not have to watch it for 24 hours.**
+
+Many crypto markets trade continuously. Bank deposits, some assets, and platform maintenance can still have hours. The market being open does not mean a person has to stare at it.
+
+## Safety quiz
+
+1. "Official support" asks for your seed phrase to repair the wallet. Do you give it?
+Answer: No. Stop the conversation and check the channel.
+
+2. An Ethereum address and a Base address can look the same. Can you pick the network at random?
+Answer: No. The recipient has to support that network and that asset.
+
+3. If you disconnect a site, are previous token approvals revoked?
+Answer: Usually not. You have to check them separately.
+
+4. A coin priced at 0.001 dollar is always cheaper than a coin priced at 100 dollars. True?
+Answer: You cannot judge it that way. You also have to look at supply, valuation, and the asset itself.
+
+5. You set a stop. Is the real loss guaranteed to stay within the amount you planned?
+Answer: No. Slippage, a price jump, how the order works, and execution problems can all change the result.
+
+6. A stablecoin shows 20% annualized. Does that mean you are guaranteed 20% more after one year?
+Answer: No. The annualized figure is an estimate under current conditions. It changes with the market. It is not a guaranteed return.
+
+Result copy:
+All correct: "Basic shield unlocked 🛡️ Keep it up. Still check before you act."
+Any wrong: "A few spots are worth another look 🧸 Follow the answer back to the chapter."
+
+## Practice spot P&L calculator
+
+Inputs: buy price, sell price, quantity, and total fees. A simplified spot example only: one buy and one sell, in the same quote coin.
+
+Amount spent = buy price × quantity.
+Net profit or loss = (sell price − buy price) × quantity − total fees.
+Simplified return = net profit or loss ÷ amount spent × 100%.
+
+Invalid input: "Enter valid numbers. Buy price and quantity must be greater than 0. Fees cannot be negative."
+Result note: "This is a simplified learning result. It does not apply to contracts, lending, trades in several fills, or fees in more than one coin. A full account can look different."
+
+## Checklist before a transfer
+
+- I know which asset I am sending.
+- The recipient explicitly supports this network.
+- I checked the full address against a source I trust, and I checked the paste or the scan and the final confirmation screen.
+- I checked the Memo / Tag requirement.
+- I checked the minimum amount, the fees, and whether anything is paused.
+- I confirmed I have enough network resources, or a way for someone to pay the fee for me.
+- The first time I use a path, I send a small test that meets the minimum.
+
+Done message: "Check finished. Check once more on the final confirmation screen. A ticked list cannot guarantee there is no risk."
+
+# Footer
+
+This site is for learning only and is not investment advice. Crypto assets are highly volatile. Only use money you can afford to lose.

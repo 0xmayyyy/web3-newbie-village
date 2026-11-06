@@ -5,6 +5,20 @@
   var CH = D.chapters;
   var main = document.getElementById('main');
   var KEY = 'w3nv-progress-v2';
+  var LANG_KEY = 'w3nv-lang';
+  var LANG = 'zh';
+  try {
+    var savedLang = localStorage.getItem(LANG_KEY);
+    if (savedLang === 'en' || savedLang === 'zh') LANG = savedLang;
+  } catch (eLang) { }
+  function t(k, vars) {
+    var pack = window.I18N && (I18N[LANG] || I18N.zh);
+    var s = pack && pack[k] != null ? pack[k] : (window.I18N && I18N.zh && I18N.zh[k] != null ? I18N.zh[k] : k);
+    if (vars) Object.keys(vars).forEach(function (name) { s = String(s).split('{' + name + '}').join(String(vars[name])); });
+    return s;
+  }
+  function quizBank() { return (window.I18N_QUIZ && I18N_QUIZ[LANG]) || I18N_QUIZ.zh; }
+  function checkItems() { return (window.I18N_CHECK && I18N_CHECK[LANG]) || I18N_CHECK.zh; }
   (function migrate() {  // v1 用旧章节编号（15 章）；v2 把旧 06 拆成 06 + 07，之后的章节编号 +1
     try {
       var old = localStorage.getItem('w3nv-progress-v1');
@@ -26,13 +40,15 @@
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function host(u) { try { return new URL(u).host; } catch (e) { return u; } }
   function chap(id) { for (var i = 0; i < CH.length; i++) if (CH[i].id === id) return CH[i]; }
-  function tagClass(t) { return { '基础': 't-basic', '进阶': 't-adv', '必读': 't-must', '导航': 't-nav', '操作': 't-op', '词典': 't-dict', '故障处理': 't-help', '复习': 't-rev' }[t] || ''; }
-  function tags(c) { return c.tags.map(function (t) { return '<span class="tag ' + tagClass(t) + '">' + esc(t) + '</span>'; }).join(''); }
-  var ROUTES = [
-    { key: 'new', icon: '🧸', name: '我完全不懂', ids: ['01', '02', '03', '08', '09', '05'], desc: '先了解这个世界怎么运转，再认识常用 CEX 和注册入口，不需要马上买币。', cls: 'pink' },
-    { key: 'buy', icon: '🛒', name: '我想第一次买币', ids: ['05', '03', '09', '04', '06'], desc: '先掌握安全与交易基础，再用自己能承受损失的小额资金练习。', cls: 'mint' },
-    { key: 'protect', icon: '🛡️', name: '我已经有币，想保护资产', ids: ['08', '09', '10', '15'], desc: '重点了解资产保管、助记词、授权和转账检查，以及出了问题怎么处理。', cls: 'lilac' }
-  ];
+  function tagClass(name) { return { '基础': 't-basic', '进阶': 't-adv', '必读': 't-must', '导航': 't-nav', '操作': 't-op', '词典': 't-dict', '故障处理': 't-help', '复习': 't-rev', 'Basics': 't-basic', 'Advanced': 't-adv', 'Must-read': 't-must', 'Guide': 't-nav', 'How-to': 't-op', 'Glossary': 't-dict', 'Troubleshooting': 't-help', 'Review': 't-rev' }[name] || ''; }
+  function tags(c) { return c.tags.map(function (name) { return '<span class="tag ' + tagClass(name) + '">' + esc(name) + '</span>'; }).join(''); }
+  function routes() {
+    return [
+      { key: 'new', icon: '🧸', name: t('route.new'), ids: ['01', '02', '03', '08', '09', '05'], desc: t('route.new.d'), cls: 'pink' },
+      { key: 'buy', icon: '🛒', name: t('route.buy'), ids: ['05', '03', '09', '04', '06'], desc: t('route.buy.d'), cls: 'mint' },
+      { key: 'protect', icon: '🛡️', name: t('route.protect'), ids: ['08', '09', '10', '15'], desc: t('route.protect.d'), cls: 'lilac' }
+    ];
+  }
 
   /* ---------- 学习进度（仅存于本浏览器） ---------- */
   function loadP() { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } }
@@ -44,10 +60,15 @@
 
   /* ---------- 搜索 ---------- */
   var INDEX = [];
-  CH.forEach(function (c) {
-    INDEX.push({ c: c, s: -1, title: c.title, text: c.intro + ' ' + c.tags.join(' ') });
-    c.sections.forEach(function (s, i) { INDEX.push({ c: c, s: i, title: s.title, text: s.text }); });
-  });
+  function applyCourse() {
+    var pack = (LANG === 'en' && window.SITE_DATA_EN && SITE_DATA_EN.chapters && SITE_DATA_EN.chapters.length) ? SITE_DATA_EN : D;
+    CH = pack.chapters;
+    INDEX = [];
+    CH.forEach(function (c) {
+      INDEX.push({ c: c, s: -1, title: c.title, text: c.intro + ' ' + c.tags.join(' ') });
+      c.sections.forEach(function (s, i) { INDEX.push({ c: c, s: i, title: s.title, text: s.text }); });
+    });
+  }
   function expand(q) {
     var lq = q.toLowerCase().trim(), terms = [lq];
     C.aliases.forEach(function (g) {
@@ -94,10 +115,10 @@
       var r = search(q);
       box.hidden = false;
       if (!r.length) {
-        box.innerHTML = '<p class="empty" role="status">🧸 没找到这个词，换个说法试试？也可以看看<a href="#/c/13">话术翻译器</a>。</p>';
+        box.innerHTML = '<p class="empty" role="status">' + t('search.empty') + '</p>';
         return;
       }
-      box.innerHTML = '<p class="sr" role="status">找到 ' + r.length + ' 条结果</p><ul>' + r.map(function (x) {
+      box.innerHTML = '<p class="sr" role="status">' + t('search.count', { n: r.length }) + '</p><ul>' + r.map(function (x) {
         return '<li><a href="' + x.href + '"><strong>' + esc(x.label) + '</strong><span>' + x.snip + '</span></a></li>';
       }).join('') + '</ul>';
     }
@@ -126,7 +147,7 @@
     return '<li><a class="ccard' + (d ? ' done' : '') + '" href="#/c/' + c.id + '">' +
       '<span class="num">' + c.id + '</span><span class="cemoji" aria-hidden="true">' + c.emoji + '</span>' +
       '<span class="cbody"><strong>' + esc(c.title) + '</strong><span class="cintro">' + esc(c.intro) + '</span><span class="tags">' + tags(c) + '</span></span>' +
-      (d ? '<span class="donemark" title="已学完">✓<span class="sr">已学完</span></span>' : '') + '</a></li>';
+      (d ? '<span class="donemark" title="' + esc(t('done')) + '">✓<span class="sr">' + esc(t('done')) + '</span></span>' : '') + '</a></li>';
   }
   function routeHref(r) {
     return '#/r/' + r.key;
@@ -138,55 +159,56 @@
       }).join('') +
       (c.tip ? '<aside class="tip"><img src="assets/img/panda.jpg?v=20261015171108" alt="" width="64" height="62"><p>' + esc(c.tip) + '</p></aside>' : '');
   }
-  function renderRoute(key, step) {
-    var r = ROUTES.filter(function (x) { return x.key === key; })[0]; if (!r) return renderHome();
+  function renderRoute(key, step, keep) {
+    var r = routes().filter(function (x) { return x.key === key; })[0]; if (!r) return renderHome(keep);
     var buy = r.key === 'buy', n = r.ids.length;
     var k = Math.min(Math.max((step || 1) - 1, 0), n - 1);
-    function label(j) { return buy && j === 0 ? '注册交易所账户' : r.ids[j] + ' ' + chap(r.ids[j]).title; }
+    function label(j) { return buy && j === 0 ? t('route.signup') : r.ids[j] + ' ' + chap(r.ids[j]).title; }
     function href(j) { return '#/r/' + r.key + '/' + (j + 1); }
-    document.title = r.name + ' · 第 ' + (k + 1) + ' 步 - Web3 新手村';
+    document.title = t('route.title', { name: r.name, n: k + 1 });
     var isCh = !(buy && k === 0), cid = r.ids[k], mk = isCh ? ' data-mark="' + cid + '"' : '';
-    var body = isCh ? chapterBody(chap(cid)) + '<div class="done-box"><button type="button" class="btn btn-sm ' + (isDone(cid) ? '' : 'btn-ghost') + '" id="route-done" aria-pressed="' + isDone(cid) + '">' + (isDone(cid) ? '✅ 本章已学完（点击取消）' : '✅ 标记本章已学完') + '</button></div>' : '<section class="sec-plain"><h2>注册交易所账户 🏦</h2><p>注册时留意平台对你所在地区是否开放服务，注册页一般会有提示。注册后不用急着买币，先把安全设置做好，再按顺序学习后面的章节。</p><div data-widget="exchanges"></div></section>';
-    main.innerHTML = '<div class="route-page"><nav class="crumbs" aria-label="位置"><a href="#/">首页</a> › <span>路线</span></nav>' +
+    var body = isCh ? chapterBody(chap(cid)) + '<div class="done-box"><button type="button" class="btn btn-sm ' + (isDone(cid) ? '' : 'btn-ghost') + '" id="route-done" aria-pressed="' + isDone(cid) + '">' + (isDone(cid) ? t('done.mark') : t('done.mark2')) + '</button></div>' : '<section class="sec-plain"><h2>' + esc(t('route.signup.h')) + '</h2><p>' + esc(t('route.signup.p')) + '</p><div data-widget="exchanges"></div></section>';
+    main.innerHTML = '<div class="route-page"><nav class="crumbs" aria-label="' + esc(t('crumb.where')) + '"><a href="#/">' + esc(t('crumb.home')) + '</a> › <span>' + esc(t('route.crumb')) + '</span></nav>' +
       '<header class="ch-head"><span class="ch-num" aria-hidden="true">' + r.icon + '</span><div><h1>' + esc(r.name) + '</h1><p>' + esc(r.desc) + '</p></div></header>' +
-      '<ol class="steps">' + r.ids.map(function (i, j) { return '<li class="' + (j === k ? 'cur' : '') + (isDone(i) ? ' ok' : '') + '"><a href="' + href(j) + '"' + (j === k ? ' aria-current="step"' : '') + '><b>第 ' + (j + 1) + ' 步</b> ' + esc(label(j)) + (isDone(i) ? ' ✓' : '') + '</a></li>'; }).join('') + '</ol>' +
+      '<ol class="steps">' + r.ids.map(function (i, j) { return '<li class="' + (j === k ? 'cur' : '') + (isDone(i) ? ' ok' : '') + '"><a href="' + href(j) + '"' + (j === k ? ' aria-current="step"' : '') + '><b>' + esc(t('route.step', { n: j + 1 })) + '</b> ' + esc(label(j)) + (isDone(i) ? ' ✓' : '') + '</a></li>'; }).join('') + '</ol>' +
       '<div class="route-body" id="route-body" tabindex="-1">' + body + '</div>' +
-      '<nav class="route-next" aria-label="路线翻页">' +
-      (k > 0 ? '<a class="btn btn-ghost" href="' + href(k - 1) + '">← 上一步</a>' : '') +
-      (k < n - 1 ? '<a class="btn"' + mk + ' href="' + href(k + 1) + '">下一步：' + esc(label(k + 1)) + ' →</a>' : '<a class="btn"' + mk + ' href="#/">🎉 完成路线，回到首页</a>') +
-      (buy && k === 0 ? '<a class="btn btn-ghost" href="#/c/05">看第 05 章：怎么选择交易所</a>' : '') +
+      '<nav class="route-next" aria-label="' + esc(t('route.nav')) + '">' +
+      (k > 0 ? '<a class="btn btn-ghost" href="' + href(k - 1) + '">' + esc(t('route.prev')) + '</a>' : '') +
+      (k < n - 1 ? '<a class="btn"' + mk + ' href="' + href(k + 1) + '">' + t('route.next', { label: esc(label(k + 1)) }) + '</a>' : '<a class="btn"' + mk + ' href="#/">' + esc(t('route.done')) + '</a>') +
+      (buy && k === 0 ? '<a class="btn btn-ghost" href="#/c/05">' + esc(t('route.read05', { title: chap('05').title })) + '</a>' : '') +
       '</nav></div>';
     $$('[data-mark]', main).forEach(function (a) { a.addEventListener('click', function () { setDone(a.getAttribute('data-mark')); }); });
     var db = $('#route-done'); if (db) db.addEventListener('click', function () { toggleDone(cid); var y = window.scrollY; renderRoute(key, step); window.scrollTo(0, y); setTimeout(function () { window.scrollTo(0, y); var b = $('#route-done'); if (b) b.focus({ preventScroll: true }); }, 10); });
     mountWidgets(main); applyVerify(main);
+    if (keep) return;
     if (step) { var rb = $('#route-body'); setTimeout(function () { rb.scrollIntoView({ block: 'start' }); rb.focus({ preventScroll: true }); }, 0); }
     else window.scrollTo(0, 0);
   }
   function renderHome() {
-    document.title = 'Web3 新手村 🧸｜币圈入门导航';
+    document.title = t('title.home');
     var n = doneCount();
     main.innerHTML =
       '<section class="hero-full" aria-labelledby="h-hero"><div class="hero-inner">' +
-      '<img class="hero-bear" src="assets/img/panda.jpg?v=20261015171108" alt="戴眼镜挥手的小熊猫" width="220" height="214">' +
-      '<h1 id="h-hero">Web3 新手村 <span aria-hidden="true">🧸</span></h1>' +
-      '<p class="lead">币圈名词太多，看不懂也没关系。</p>' +
-      '<p class="intro">从「什么是币圈」开始，慢慢学会买币、看懂交易、使用钱包和保护资产。这里把绕口的名词翻译成人话，也把容易踩的坑提前摆出来。</p>' +
-      '<p class="motto"><strong>先看懂，再动手。学会一件，解锁一件。</strong></p>' +
-      '<p class="pick">选一条适合你的路线 👇</p>' +
-      '<div class="route-btns">' + ROUTES.map(function (r) {
+      '<img class="hero-bear" src="assets/img/panda.jpg?v=20261015171108" alt="' + esc(t('hero.alt')) + '" width="220" height="214">' +
+      '<h1 id="h-hero">' + esc(t('hero.h1')) + ' <span aria-hidden="true">🧸</span></h1>' +
+      '<p class="lead">' + esc(t('hero.lead')) + '</p>' +
+      '<p class="intro">' + esc(t('hero.intro')) + '</p>' +
+      '<p class="motto"><strong>' + esc(t('hero.motto')) + '</strong></p>' +
+      '<p class="pick">' + esc(t('hero.pick')) + '</p>' +
+      '<div class="route-btns">' + routes().map(function (r) {
         var dn = doneCount(r.ids);
         return '<a class="route-btn ' + r.cls + '" href="' + routeHref(r) + '"><span class="rb-ico" aria-hidden="true">' + r.icon + '</span><span class="rb-t">' + esc(r.name) + '</span><span class="rb-d">' + esc(r.desc) + '</span>' +
-          (dn ? '<span class="rb-p">已学 ' + dn + ' / ' + r.ids.length + ' · 继续 →</span>' : '') + '</a>';
+          (dn ? '<span class="rb-p">' + esc(t('route.progress', { n: dn, m: r.ids.length })) + '</span>' : '') + '</a>';
       }).join('') + '</div>' +
-      '<div class="search big" role="search"><label class="sr" for="q-home">搜索章节、术语、工具</label><span class="sicon" aria-hidden="true">🔍</span>' +
-      '<input id="q-home" type="search" placeholder="想了解什么？试试「钱包」「爆仓」……" autocomplete="off"><div class="search-results" hidden></div></div>' +
-      '</div><a class="scroll-hint" href="#h-toc" aria-label="往下看学习目录"><span>学习目录</span><i aria-hidden="true">⌄</i></a></section>' +
+      '<div class="search big" role="search"><label class="sr" for="q-home">' + esc(t('home.search.label')) + '</label><span class="sicon" aria-hidden="true">🔍</span>' +
+      '<input id="q-home" type="search" placeholder="' + esc(t('home.search.ph')) + '" autocomplete="off"><div class="search-results" hidden></div></div>' +
+      '</div><a class="scroll-hint" href="#h-toc" aria-label="' + esc(t('scroll.aria')) + '"><span>' + esc(t('scroll')) + '</span><i aria-hidden="true">⌄</i></a></section>' +
 
-      '<section class="block" aria-labelledby="h-toc"><div class="block-head"><h2 id="h-toc">📚 学习目录</h2>' +
-      '<div class="progress" aria-live="polite"><span>已学完 <b>' + n + '</b> / ' + CH.length + '</span><span class="bar" aria-hidden="true"><i style="width:' + (n / CH.length * 100) + '%"></i></span>' +
-      (n ? '<button class="btn btn-ghost btn-sm" id="clear-p">清除进度</button>' : '') + '</div><p class="p-note">进度只保存在当前浏览器，换设备或清理缓存会重置。</p></div>' +
+      '<section class="block" aria-labelledby="h-toc"><div class="block-head"><h2 id="h-toc">' + esc(t('toc.h')) + '</h2>' +
+      '<div class="progress" aria-live="polite"><span>' + t('progress', { n: n, m: CH.length }) + '</span><span class="bar" aria-hidden="true"><i style="width:' + (n / CH.length * 100) + '%"></i></span>' +
+      (n ? '<button class="btn btn-ghost btn-sm" id="clear-p">' + esc(t('progress.clear')) + '</button>' : '') + '</div><p class="p-note">' + esc(t('progress.note')) + '</p></div>' +
       '<ol class="toc">' + CH.map(chapterCard).join('') + '</ol>' +
-      '<p class="note">学习进度只保存在你当前的浏览器里，本站不收集任何个人信息。</p></section>' +
+      '<p class="note">' + esc(t('privacy')) + '</p></section>' +
 
       '<section class="block safety-wrap" aria-labelledby="h-safe"><div class="chalkboard">' +
       '<span class="doodle d-star" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.5l2.6 6 6.4.6-4.9 4.2 1.5 6.3L12 16.4 6.4 19.6l1.5-6.3L3 9.1l6.4-.6z" fill="none" stroke="#f6d77a" stroke-width="1.6" stroke-linejoin="round"/></svg></span>' +
@@ -194,57 +216,57 @@
       '<span class="doodle d-swirl" aria-hidden="true"><svg viewBox="0 0 40 24"><path d="M3 18c4-10 10-12 13-8s-2 8-4 4 4-10 10-9 9 7 15 3" fill="none" stroke="#fbf6e9" stroke-width="1.6" stroke-linecap="round"/></svg></span>' +
       '<span class="doodle d-star2" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18M6 6l12 12M18 6L6 18" stroke="#fbf6e9" stroke-width="1.6" stroke-linecap="round"/></svg></span>' +
       '<span class="doodle d-heart2" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" fill="none" stroke="#f6d77a" stroke-width="1.7" stroke-linejoin="round"/></svg></span>' +
-      '<h2 id="h-safe"><span aria-hidden="true">⚠️</span> 操作前先记住</h2><ul class="chalk-list">' +
-      ['不把助记词和私钥交给任何人。', '不因为「稳赚」「翻倍」「名额有限」就急着转钱。', '转账前检查资产、网络、地址和 Memo / Tag。', '收录的平台和工具不等于安全担保。', '不懂签名内容，就先停下来。']
-        .map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') +
-      '</ul><div class="chalk-foot"><a class="chalk-btn" href="#/c/09">看安全与防骗指南 →</a></div><span class="chalk-tray" aria-hidden="true"></span></div>' +
-      '<img class="chalk-mascot" src="assets/img/panda-teacher-cut3.png?v=20261015171108" alt="熊猫老师拿着教鞭站在黑板旁" width="148" height="173"></section>' +
+      '<h2 id="h-safe"><span aria-hidden="true">⚠️</span> ' + esc(t('safe.h')) + '</h2><ul class="chalk-list">' +
+      ['safe.1', 'safe.2', 'safe.3', 'safe.4', 'safe.5'].map(function (key) { return '<li>' + esc(t(key)) + '</li>'; }).join('') +
+      '</ul><div class="chalk-foot"><a class="chalk-btn" href="#/c/09">' + esc(t('safe.more')) + '</a></div><span class="chalk-tray" aria-hidden="true"></span></div>' +
+      '<img class="chalk-mascot" src="assets/img/panda-teacher-cut3.png?v=20261015171108" alt="' + esc(t('safe.alt')) + '" width="148" height="173"></section>' +
 
-      '<section class="block" aria-labelledby="h-quick"><h2 id="h-quick">🚀 快捷入口</h2><div class="quick">' +
-      '<a class="qcard yellow" href="#/c/14"><span class="qi" aria-hidden="true">🧰</span><strong>常用工具导航</strong><span>查行情、查交易、查链上数据</span></a>' +
-      '<a class="qcard pink" href="#/c/05"><span class="qi" aria-hidden="true">🏦</span><strong>CEX 交易所导航</strong><span>常用交易所注册入口与选择要点</span></a>' +
-      '<a class="qcard lilac" href="#/c/13"><span class="qi" aria-hidden="true">💬</span><strong>币圈话术翻译器</strong><span>正经术语与社区玩梗分开看</span></a>' +
-      '<a class="qcard sky" href="#/punycode"><span class="qi" aria-hidden="true">🔤</span><strong>Punycode 转换</strong><span>中文域名和 xn-- 编码互转</span></a>' +
-      '<a class="qcard mint" href="#/c/16"><span class="qi" aria-hidden="true">✅</span><strong>练习与自测</strong><span>安全自测、盈亏计算器、转账清单</span></a>' +
-      '</div><img class="quick-img" src="assets/img/panda-phone.png?v=20261015171108" alt="拿着手机的小熊猫" width="140" height="137"></section>';
+      '<section class="block" aria-labelledby="h-quick"><h2 id="h-quick">' + esc(t('quick.h')) + '</h2><div class="quick">' +
+      '<a class="qcard yellow" href="#/c/14"><span class="qi" aria-hidden="true">🧰</span><strong>' + esc(t('q.tools')) + '</strong><span>' + esc(t('q.tools.d')) + '</span></a>' +
+      '<a class="qcard pink" href="#/c/05"><span class="qi" aria-hidden="true">🏦</span><strong>' + esc(t('q.ex')) + '</strong><span>' + esc(t('q.ex.d')) + '</span></a>' +
+      '<a class="qcard lilac" href="#/c/13"><span class="qi" aria-hidden="true">💬</span><strong>' + esc(t('q.slang')) + '</strong><span>' + esc(t('q.slang.d')) + '</span></a>' +
+      '<a class="qcard sky" href="#/punycode"><span class="qi" aria-hidden="true">🔤</span><strong>' + esc(t('q.puny')) + '</strong><span>' + esc(t('q.puny.d')) + '</span></a>' +
+      '<a class="qcard mint" href="#/c/16"><span class="qi" aria-hidden="true">✅</span><strong>' + esc(t('q.practice')) + '</strong><span>' + esc(t('q.practice.d')) + '</span></a>' +
+      '</div><img class="quick-img" src="assets/img/panda-phone.png?v=20261015171108" alt="' + esc(t('quick.alt')) + '" width="140" height="137"></section>';
     bindSearch($('#q-home'), $('.hero-full .search-results'));
     var sh = $('.scroll-hint'); sh.addEventListener('click', function (e) { e.preventDefault(); $('#h-toc').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); });
     var cp = $('#clear-p');
     if (cp) cp.addEventListener('click', function () {
-      if (confirm('确定清除本浏览器里保存的学习进度吗？')) { try { localStorage.removeItem(KEY); } catch (e) { } renderHome(); $('#h-toc').focus && $('#h-toc').scrollIntoView(); }
+      if (confirm(t('progress.confirm'))) { try { localStorage.removeItem(KEY); } catch (e) { } renderHome(); $('#h-toc').focus && $('#h-toc').scrollIntoView(); }
     });
   }
 
   /* ---------- 章节页 ---------- */
-  function renderChapter(id, sec) {
+  function renderChapter(id, sec, keep) {
     var c = chap(id); if (!c) return renderHome();
     var idx = CH.indexOf(c), prev = CH[idx - 1], next = CH[idx + 1];
-    document.title = c.id + '｜' + c.title + ' - Web3 新手村';
+    document.title = t('title.ch', { id: c.id, title: c.title });
     var secNav = c.id === '13' ? '' : c.sections.map(function (s, i) { return '<li><a href="#/c/' + c.id + '/' + i + '">' + esc(s.title) + '</a></li>'; }).join('');
-    var allNav = CH.map(function (x) { return '<li><a href="#/c/' + x.id + '"' + (x === c ? ' aria-current="page"' : '') + '><span class="n">' + x.id + '</span> ' + esc(x.title) + (isDone(x.id) ? ' <span class="ok" title="已学完">✓</span>' : '') + '</a>' + (x === c ? '<ol class="secnav">' + secNav + '</ol>' : '') + '</li>'; }).join('');
+    var allNav = CH.map(function (x) { return '<li><a href="#/c/' + x.id + '"' + (x === c ? ' aria-current="page"' : '') + '><span class="n">' + x.id + '</span> ' + esc(x.title) + (isDone(x.id) ? ' <span class="ok" title="' + esc(t('done')) + '">✓</span>' : '') + '</a>' + (x === c ? '<ol class="secnav">' + secNav + '</ol>' : '') + '</li>'; }).join('');
     main.innerHTML =
       '<div class="layout">' +
-      '<aside class="side" aria-label="章节目录"><nav><p class="side-h"><a href="#/">← 回到目录</a></p><ol class="allnav">' + allNav + '</ol></nav></aside>' +
+      '<aside class="side" aria-label="' + esc(t('side.aria')) + '"><nav><p class="side-h"><a href="#/">' + esc(t('side.back')) + '</a></p><ol class="allnav">' + allNav + '</ol></nav></aside>' +
       '<article class="chapter">' +
-      '<nav class="crumbs" aria-label="位置"><a href="#/">首页</a> › <span>第 ' + c.id + ' 章</span></nav>' +
+      '<nav class="crumbs" aria-label="' + esc(t('crumb.where')) + '"><a href="#/">' + esc(t('crumb.home')) + '</a> › <span>' + esc(t('ch.crumb', { id: c.id })) + '</span></nav>' +
       '<header class="ch-head"><span class="ch-num">' + c.id + '</span><div><h1>' + esc(c.title) + ' <span aria-hidden="true">' + c.emoji + '</span></h1><p>' + esc(c.intro) + '</p><span class="tags">' + tags(c) + '</span></div></header>' +
-      '<details class="mtoc"><summary>📑 本章目录（' + c.sections.length + ' 节）</summary><ol>' + secNav + '</ol><p><a href="#/">← 回到全部目录</a></p></details>' +
-      '<div class="ch-tools"><button class="btn btn-ghost btn-sm" data-act="expand">全部展开</button><button class="btn btn-ghost btn-sm" data-act="collapse">全部折叠</button></div>' +
+      '<details class="mtoc"><summary>' + esc(t('ch.toc', { n: c.sections.length })) + '</summary><ol>' + secNav + '</ol><p><a href="#/">' + esc(t('ch.all')) + '</a></p></details>' +
+      '<div class="ch-tools"><button class="btn btn-ghost btn-sm" data-act="expand">' + esc(t('ch.expand')) + '</button><button class="btn btn-ghost btn-sm" data-act="collapse">' + esc(t('ch.collapse')) + '</button></div>' +
       c.sections.map(function (s, i) {
         return '<details class="sec" id="s' + i + '" open><summary><h2>' + esc(s.title) + '</h2></summary><div class="sec-body">' + s.html + '</div></details>';
       }).join('') +
       (c.tip ? '<aside class="tip"><img src="assets/img/panda.jpg?v=20261015171108" alt="" width="64" height="62"><p>' + esc(c.tip) + '</p></aside>' : '') +
-      '<div class="done-box"><button class="btn ' + (isDone(c.id) ? 'btn-ghost' : '') + '" id="done-btn" aria-pressed="' + isDone(c.id) + '">' + (isDone(c.id) ? '✓ 已学完（点击取消）' : '🎉 标记本章为已学完') + '</button></div>' +
-      '<nav class="pager" aria-label="翻页">' +
-      (prev ? '<a class="pg prev" href="#/c/' + prev.id + '"><small>← 上一章</small>' + prev.id + ' ' + esc(prev.title) + '</a>' : '<span></span>') +
-      '<a class="pg mid" href="#/">回到目录</a>' +
-      (next ? '<a class="pg next" href="#/c/' + next.id + '"><small>下一章 →</small>' + next.id + ' ' + esc(next.title) + '</a>' : '<span></span>') +
+      '<div class="done-box"><button class="btn ' + (isDone(c.id) ? 'btn-ghost' : '') + '" id="done-btn" aria-pressed="' + isDone(c.id) + '">' + (isDone(c.id) ? esc(t('ch.done')) : esc(t('ch.done.set'))) + '</button></div>' +
+      '<nav class="pager" aria-label="' + esc(t('pager.aria')) + '">' +
+      (prev ? '<a class="pg prev" href="#/c/' + prev.id + '"><small>' + esc(t('pager.prev')) + '</small>' + prev.id + ' ' + esc(prev.title) + '</a>' : '<span></span>') +
+      '<a class="pg mid" href="#/">' + esc(t('pager.mid')) + '</a>' +
+      (next ? '<a class="pg next" href="#/c/' + next.id + '"><small>' + esc(t('pager.next')) + '</small>' + next.id + ' ' + esc(next.title) + '</a>' : '<span></span>') +
       '</nav></article></div>';
 
     $$('[data-act]').forEach(function (b) { b.addEventListener('click', function () { var o = b.dataset.act === 'expand'; $$('details.sec').forEach(function (d) { d.open = o; }); }); });
     $('#done-btn').addEventListener('click', function () { toggleDone(c.id); renderChapter(c.id); $('#done-btn').focus(); });
     mountWidgets(main);
     applyVerify(main);
+    if (keep) return;
     if (sec != null && $('#s' + sec)) {
       var el = $('#s' + sec); el.open = true;
       setTimeout(function () { el.scrollIntoView({ block: 'start' }); var s = $('summary', el); s.focus({ preventScroll: true }); }, 0);
@@ -255,7 +277,7 @@
   function refTag(u) {
     var r = (C.referrals || {})[u];
     if (!r) return '';
-    return '<span class="ref-tag">专属邀请链接' + (r.feeDiscount ? ' · 注册享手续费减免' : '') + '</span>';
+    return '<span class="ref-tag">' + esc(t('ref')) + (r.feeDiscount ? esc(t('ref.fee')) : '') + '</span>';
   }
   function applyRef(root) {
     $$('.tool-card', root).forEach(function (card) {
@@ -269,8 +291,8 @@
     applyRef(root);
     $$('.verify[data-url]', root).forEach(function (v) {
       var d = C.verified[v.dataset.url];
-      if (d) { v.textContent = '✓ 已核验 ' + d; v.classList.add('ok'); v.title = '最近核验日期：' + d; }
-      else { v.textContent = '⏳ 待核验'; v.title = '尚未完成真实核验，使用前请自行确认域名与跳转目的地'; }
+      if (d) { v.textContent = t('verify.ok', { d: d }); v.classList.add('ok'); v.title = t('verify.ok.title', { d: d }); }
+      else { v.textContent = t('verify.no'); v.title = t('verify.no.title'); }
     });
   }
 
@@ -278,53 +300,58 @@
   var W = {};
   W.wpbuttons = function (el) {
     el.className = 'btn-row';
-    el.innerHTML = [['阅读原文', 'https://bitcoin.org/bitcoin.pdf'], ['查找中文版本', 'https://bitcoin.org/en/bitcoin-paper'], ['先看基础问答', 'https://bitcoin.org/en/faq']]
+    el.innerHTML = [[t('wp.read'), 'https://bitcoin.org/bitcoin.pdf'], [t('wp.zh'), 'https://bitcoin.org/en/bitcoin-paper'], [t('wp.faq'), 'https://bitcoin.org/en/faq']]
       .map(function (b) { return '<a class="btn btn-sm" href="' + b[1] + '" target="_blank" rel="noopener noreferrer nofollow">' + b[0] + ' ↗<span class="btn-domain">' + host(b[1]) + '</span></a>'; }).join('');
   };
   W.exchanges = function (el) {
     el.innerHTML = '<div class="ex-grid">' + C.exchanges.map(function (x) {
       return '<div class="ex-card"><div class="ex-head"><h3>' + esc(x.name) + '</h3><span class="verify" data-url="' + esc(x.url) + '"></span></div>' +
         refTag(x.url) +
-        '<p class="domain">域名：<b>' + esc(host(x.url)) + '</b></p>' +
-        (x.mainDomain && !(host(x.url) === x.mainDomain || host(x.url).slice(-x.mainDomain.length - 1) === '.' + x.mainDomain) ? '<p class="promo-domain">这是平台的推广注册域名，注册后请在官方 App 里核对账户。</p>' : '') +
-        (x.enabled ? '<a class="btn btn-sm" href="' + esc(x.url) + '" target="_blank" rel="noopener noreferrer nofollow">注册 ↗<span class="sr">（新窗口，' + esc(host(x.url)) + '）</span></a>' : '<span class="btn btn-sm disabled" aria-disabled="true">入口暂停使用</span>') +
-        '<p class="ex-warn"><span aria-hidden="true">⚠️</span> 注册前核对真实域名、地区要求、账户条款与安全设置。</p></div>';
+        '<p class="domain">' + esc(t('ex.domain')) + '<b>' + esc(host(x.url)) + '</b></p>' +
+        (x.mainDomain && !(host(x.url) === x.mainDomain || host(x.url).slice(-x.mainDomain.length - 1) === '.' + x.mainDomain) ? '<p class="promo-domain">' + esc(t('ex.promo')) + '</p>' : '') +
+        (x.enabled ? '<a class="btn btn-sm" href="' + esc(x.url) + '" target="_blank" rel="noopener noreferrer nofollow">' + esc(t('ex.register')) + ' ↗<span class="sr">' + esc(t('ex.new', { host: host(x.url) })) + '</span></a>' : '<span class="btn btn-sm disabled" aria-disabled="true">' + esc(t('ex.paused')) + '</span>') +
+        '<p class="ex-warn"><span aria-hidden="true">⚠️</span> ' + esc(t('ex.warn')) + '</p></div>';
     }).join('') + '</div>';
   };
   W.onchain = function (el) {
     el.innerHTML = '<div class="ex-grid">' + (C.onchain || []).map(function (x) {
+      var desc = x.desc;
+      if (LANG === 'en') {
+        if (x.url.indexOf('debot.ai') >= 0) desc = t('oc.debot');
+        else if (x.url.indexOf('web3.binance.com') >= 0) desc = t('oc.binance');
+      }
       return '<div class="ex-card"><div class="ex-head"><h3>' + esc(x.name) + '</h3><span class="verify" data-url="' + esc(x.url) + '"></span></div>' +
-        '<p>' + esc(x.desc) + '</p>' + refTag(x.url) +
-        '<p class="domain">域名：<b>' + esc(host(x.url)) + '</b></p>' +
-        '<a class="btn btn-sm" href="' + esc(x.url) + '" target="_blank" rel="noopener noreferrer nofollow">打开 ↗<span class="sr">（新窗口，' + esc(host(x.url)) + '）</span></a>' +
-        '<p class="ex-warn"><span aria-hidden="true">⚠️</span> 链上买卖不可撤销，签名前看清合约地址与授权内容。</p></div>';
+        '<p>' + esc(desc) + '</p>' + refTag(x.url) +
+        '<p class="domain">' + esc(t('ex.domain')) + '<b>' + esc(host(x.url)) + '</b></p>' +
+        '<a class="btn btn-sm" href="' + esc(x.url) + '" target="_blank" rel="noopener noreferrer nofollow">' + esc(t('oc.open')) + ' ↗<span class="sr">' + esc(t('ex.new', { host: host(x.url) })) + '</span></a>' +
+        '<p class="ex-warn"><span aria-hidden="true">⚠️</span> ' + esc(t('oc.warn')) + '</p></div>';
     }).join('') + '</div>';
   };
   /* CEX 储备排行：DefiLlama 公开接口 https://api.llama.fi/cexs（无需 key，CORS 开放）。每次打开页面重新拉取，本地缓存最多 10 分钟，失败时回退缓存 */
   function renderCex() {
-    var CLEAN_LABEL = '去平台币储备', TOP_N = 20;
+    var CLEAN_LABEL = t('cex.clean'), TOP_N = 20;
     var KEY = 'cexrank-v3', TTL = 10 * 60 * 1000, mine = ['Binance', 'Bybit', 'Gate', 'HTX'];
     var COLS = [
-      ['name', '交易所', 's'], ['currentTvl', '链上储备', 'u'], ['cleanAssetsTvl', CLEAN_LABEL, 'u'],
-      ['inflows_24h', '24h 净流入', 'f'], ['inflows_1w', '7 天净流入', 'f'], ['inflows_1m', '30 天净流入', 'f'],
-      ['spotVolume', '现货 24h 成交量', 'u'], ['derivVolume', '永续 24h 成交量', 'u'], ['oi', '永续持仓量 OI', 'u'],
-      ['leverage', '平均杠杆', 'x'], ['auditor', '审计机构', 's'], ['lastAuditDate', '最近审计', 'd']
+      ['name', t('col.name'), 's'], ['currentTvl', t('col.tvl'), 'u'], ['cleanAssetsTvl', CLEAN_LABEL, 'u'],
+      ['inflows_24h', t('col.in24'), 'f'], ['inflows_1w', t('col.in7'), 'f'], ['inflows_1m', t('col.in30'), 'f'],
+      ['spotVolume', t('col.spot'), 'u'], ['derivVolume', t('col.deriv'), 'u'], ['oi', t('col.oi'), 'u'],
+      ['leverage', t('col.lev'), 'x'], ['auditor', t('col.auditor'), 's'], ['lastAuditDate', t('col.audit'), 'd']
     ];
-    var st = { k: 'currentTvl', dir: -1, q: '' }, rows = [], meta = {};
-    document.title = 'CEX 储备排行｜Web3 新手村';
-    main.innerHTML = '<div class="cex-page"><nav class="crumbs" aria-label="位置"><a href="#/">首页</a> › <span>CEX 储备排行</span></nav>' +
-      '<h1>📊 CEX 储备排行</h1><p class="lead">链上储备前 20 的中心化交易所：公开链上钱包里的资产、净流入与成交数据。</p>' +
-      '<div class="cex-tools"><label class="sr" for="cex-q">搜索交易所</label><input id="cex-q" type="search" placeholder="搜索交易所…" autocomplete="off"><span id="cex-count" class="w-note"></span></div>' +
-      '<div class="widget cexboard"><div id="cex-body"><p class="w-note">加载中…</p></div></div>' +
-      '<p class="w-note" id="cex-src">数据来源：<a href="https://defillama.com/cexs" target="_blank" rel="noopener noreferrer">DefiLlama（约每小时更新）↗</a><span id="cex-time"></span></p>' +
-      '<div class="callout cex-notes"><h2>📖 读表说明</h2><ul>' +
-      '<li><b>' + CLEAN_LABEL + '</b>：对应 DefiLlama 的 Clean Assets，是链上储备扣掉该交易所自家平台币（如 BNB、OKB）后的金额。它<b>不是</b>财务报表里的「净资产（资产减负债）」，DefiLlama 看不到交易所的负债。</li>' +
-      '<li><b>储备规模不等于平台自有资金</b>：这些钱包里的资产大部分是用户存进来的。</li>' +
-      '<li><b>储备变化要分两部分看</b>：币价涨跌会让储备金额变动；「净流入」才是资金实际流进或流出。</li>' +
-      '<li><b>平均杠杆 = 永续持仓量 OI ÷ ' + CLEAN_LABEL + '</b>。它只是平台层面的粗略比例，<b>不是</b>用户平均开了多少倍杠杆。</li>' +
-      '<li><b>审计栏「–」</b>表示暂无该字段数据，不直接代表没有审计。</li>' +
-      '<li><b>储备排名不等于安全排名</b>：排名靠前不代表一定安全，选平台还要看合规、风控与自己的情况。</li>' +
-      '<li>更新时间按北京时间（UTC+8）显示；数据加载失败时，会继续显示上次成功获取的数据并标明日期。</li>' +
+    var st = { k: 'currentTvl', dir: -1, q: '' }, rows = [];
+    document.title = t('cex.title');
+    main.innerHTML = '<div class="cex-page"><nav class="crumbs" aria-label="' + esc(t('crumb.where')) + '"><a href="#/">' + esc(t('crumb.home')) + '</a> › <span>' + esc(t('cex.crumb')) + '</span></nav>' +
+      '<h1>' + esc(t('cex.h')) + '</h1><p class="lead">' + esc(t('cex.lead')) + '</p>' +
+      '<div class="cex-tools"><label class="sr" for="cex-q">' + esc(t('cex.search')) + '</label><input id="cex-q" type="search" placeholder="' + esc(t('cex.search.ph')) + '" autocomplete="off"><span id="cex-count" class="w-note"></span></div>' +
+      '<div class="widget cexboard"><div id="cex-body"><p class="w-note">' + esc(t('cex.loading')) + '</p></div></div>' +
+      '<p class="w-note" id="cex-src">' + t('cex.src') + '<span id="cex-time"></span></p>' +
+      '<div class="callout cex-notes"><h2>' + esc(t('cex.notes')) + '</h2><ul>' +
+      '<li>' + t('cex.n1', { clean: esc(CLEAN_LABEL) }) + '</li>' +
+      '<li>' + t('cex.n2') + '</li>' +
+      '<li>' + t('cex.n3') + '</li>' +
+      '<li>' + t('cex.n4', { clean: esc(CLEAN_LABEL) }) + '</li>' +
+      '<li>' + t('cex.n5') + '</li>' +
+      '<li>' + t('cex.n6') + '</li>' +
+      '<li>' + t('cex.n7') + '</li>' +
       '</ul></div></div>';
     function money(n) {
       if (n == null || isNaN(n)) return '';
@@ -349,7 +376,7 @@
         if (va == null || va === '') return 1; if (vb == null || vb === '') return -1;
         return (typeof va === 'string' ? va.localeCompare(vb) : va - vb) * st.dir;
       });
-      $('#cex-count').textContent = '共 ' + list.length + ' 家';
+      $('#cex-count').textContent = t('cex.count', { n: list.length });
       $('#cex-body').innerHTML = '<div class="table-wrap" tabindex="0"><table><thead><tr><th>#</th>' + COLS.map(function (c) {
         var on = st.k === c[0];
         return '<th' + (on ? ' aria-sort="' + (st.dir > 0 ? 'ascending' : 'descending') + '"' : '') + '><button type="button" class="th-sort" data-k="' + c[0] + '">' + c[1] + (on ? (st.dir > 0 ? ' ▲' : ' ▼') : '') + '</button></th>';
@@ -361,8 +388,8 @@
         var nb = $('.th-sort[data-k="' + k + '"]', main); if (nb) nb.focus();
       }); });
     }
-    function show(d, t, stale) {
-      rows = d; $('#cex-time').textContent = ' · 更新于 ' + new Date(t).toLocaleString('zh-CN', { hour12: false, timeZone: 'Asia/Shanghai' }) + '（UTC+8）' + (stale ? '｜⚠️ 最新数据加载失败，显示的是上次获取的数据' : ''); draw();
+    function show(d, when, stale) {
+      rows = d; $('#cex-time').textContent = t('cex.time', { t: new Date(when).toLocaleString(LANG === 'en' ? 'en-US' : 'zh-CN', { hour12: false, timeZone: 'Asia/Shanghai' }) }) + (stale ? t('cex.stale') : ''); draw();
     }
     $('#cex-q').addEventListener('input', function (e) { st.q = e.target.value; if (rows.length) draw(); });
     var c = null; try { c = JSON.parse(localStorage.getItem(KEY)); } catch (e) {}
@@ -377,25 +404,18 @@
     }).catch(function () {
       if (!$('#cex-body')) return;
       if (c && c.rows) show(c.rows, c.t, true);
-      else $('#cex-body').innerHTML = '<p class="w-note">数据暂时加载不出来，可以直接打开 <a href="https://defillama.com/cexs" target="_blank" rel="noopener noreferrer">DefiLlama ↗</a> 查看。</p>';
+      else $('#cex-body').innerHTML = '<p class="w-note">' + t('cex.fail') + '</p>';
     });
   }
-  var QUIZ = [
-    { q: '「官方客服」要助记词帮你修复钱包，给吗？', o: ['给', '不给'], a: 1, ans: '不给。停止沟通并核验渠道。', ch: '09' },
-    { q: 'Ethereum 和 Base 地址看起来一样，可以随意选网络吗？', o: ['可以', '不可以'], a: 1, ans: '不可以。收款方必须支持对应网络和资产。', ch: '10' },
-    { q: '断开网站连接，之前的代币授权就撤销了吗？', o: ['撤销了', '通常没有'], a: 1, ans: '通常没有，需要单独检查。', ch: '09' },
-    { q: '币价 0.001 美元，是否一定比价格 100 美元的币便宜？', o: ['一定更便宜', '不能这样判断'], a: 1, ans: '不能这样判断，还要看供应、估值和资产本身。', ch: '03' },
-    { q: '止损设置好了，实际损失是否一定不超过预设金额？', o: ['一定不超过', '不能保证'], a: 1, ans: '不能保证。滑点、跳价、订单机制与执行问题都可能影响结果。', ch: '07' },
-    { q: '稳定币显示年化 20%，是否说明一年后保证多 20%？', o: ['是，保证多 20%', '不是'], a: 1, ans: '不是。年化是按当前条件估算的，会随市场变化，不是保证收益。', ch: '12' }
-  ];
   W.quiz = function (el) {
+    var QUIZ = quizBank();
     var picked = {};
     el.className = 'widget quiz';
-    el.innerHTML = '<p class="w-note">学习用途，答案不会上传。</p><ol>' + QUIZ.map(function (x, i) {
+    el.innerHTML = '<p class="w-note">' + esc(t('quiz.note')) + '</p><ol>' + QUIZ.map(function (x, i) {
       return '<li><fieldset><legend>' + esc(x.q) + '</legend><div class="opts">' + x.o.map(function (o, j) {
         return '<button type="button" class="opt" data-q="' + i + '" data-o="' + j + '">' + esc(o) + '</button>';
       }).join('') + '</div><div class="qa" hidden></div></fieldset></li>';
-    }).join('') + '</ol><div class="qresult" role="status" aria-live="polite"></div><button type="button" class="btn btn-ghost btn-sm" id="q-reset">重新作答</button>';
+    }).join('') + '</ol><div class="qresult" role="status" aria-live="polite"></div><button type="button" class="btn btn-ghost btn-sm" id="q-reset">' + esc(t('quiz.reset')) + '</button>';
     el.addEventListener('click', function (e) {
       var b = e.target.closest('.opt');
       if (b) {
@@ -405,10 +425,10 @@
         $$('.opt', fs).forEach(function (o) { o.disabled = true; o.classList.toggle('sel', o === b); });
         var qa = $('.qa', fs); qa.hidden = false;
         qa.className = 'qa ' + (ok ? 'right' : 'wrong');
-        qa.innerHTML = (ok ? '<b>✅ 答对了</b> ' : '<b>❌ 再想想</b> ') + '答案：' + esc(x.ans) + ' <a href="#/c/' + x.ch + '">回到第 ' + x.ch + ' 章复习 →</a>';
+        qa.innerHTML = (ok ? '<b>' + esc(t('quiz.ok')) + '</b> ' : '<b>' + esc(t('quiz.bad')) + '</b> ') + esc(t('quiz.ans')) + ' ' + esc(x.ans) + ' <a href="#/c/' + x.ch + '">' + esc(t('quiz.back', { ch: x.ch })) + '</a>';
         if (Object.keys(picked).length === QUIZ.length) {
           var all = QUIZ.every(function (_, k) { return picked[k]; });
-          $('.qresult', el).innerHTML = all ? '<p class="res good">基础盾牌已解锁 🛡️ 继续保持，操作前还是要检查。</p>' : '<p class="res">发现了几个值得补课的小地方 🧸 点击答案回到相关章节。</p>';
+          $('.qresult', el).innerHTML = all ? '<p class="res good">' + esc(t('quiz.all')) + '</p>' : '<p class="res">' + esc(t('quiz.some')) + '</p>';
         }
       }
       if (e.target.id === 'q-reset') W.quiz(el);
@@ -416,35 +436,35 @@
   };
   W.calculator = function (el) {
     el.className = 'widget calc';
-    el.innerHTML = '<p>输入买入价、卖出价和买入成本（你花了多少钱买入）。仅支持同一报价币下一次买入、一次卖出的简化现货示例。</p>' +
+    el.innerHTML = '<p>' + esc(t('calc.intro')) + '</p>' +
       '<form novalidate><div class="fgrid">' +
-      [['buy', '买入价', '例如 100'], ['sell', '卖出价', '例如 110'], ['cost', '买入成本（金额）', '例如 1000']].map(function (f) {
-        return '<label>' + f[1] + '<input name="' + f[0] + '" inputmode="decimal" autocomplete="off" placeholder="' + f[2] + '"></label>';
-      }).join('') + '</div><button class="btn btn-sm" type="submit">计算</button></form>' +
+      [['buy', t('calc.buy'), t('calc.buy.ph')], ['sell', t('calc.sell'), t('calc.sell.ph')], ['cost', t('calc.cost'), t('calc.cost.ph')]].map(function (f) {
+        return '<label>' + esc(f[1]) + '<input name="' + f[0] + '" inputmode="decimal" autocomplete="off" placeholder="' + esc(f[2]) + '"></label>';
+      }).join('') + '</div><button class="btn btn-sm" type="submit">' + esc(t('calc.go')) + '</button></form>' +
       '<div class="calc-out" role="status" aria-live="polite"></div>' +
-      '<details class="formula"><summary>计算公式</summary><p>买到数量 = 买入成本 ÷ 买入价。<br>卖出所得 = 买到数量 × 卖出价。<br>净盈亏 = 卖出所得 − 买入成本。<br>简化收益率 = 净盈亏 ÷ 买入成本 × 100%（= 卖出价 ÷ 买入价 − 1）。<br>未计入交易手续费、滑点等费用。</p></details>';
+      '<details class="formula"><summary>' + esc(t('calc.formula')) + '</summary><p>' + t('calc.formula.p') + '</p></details>';
     var f = $('form', el), out = $('.calc-out', el);
     function num(v) { v = String(v).trim().replace(/,/g, ''); return /^[+-]?(\d+\.?\d*|\.\d+)(e[+-]?\d+)?$/i.test(v) ? Number(v) : NaN; }
-    function fmt(n) { return (Math.round(n * 1e8) / 1e8).toLocaleString('zh-CN', { maximumFractionDigits: 8 }); }
+    function fmt(n) { return (Math.round(n * 1e8) / 1e8).toLocaleString(LANG === 'en' ? 'en-US' : 'zh-CN', { maximumFractionDigits: 8 }); }
     f.addEventListener('submit', function (e) {
       e.preventDefault();
       var b = num(f.buy.value), s = num(f.sell.value), c = num(f.cost.value);
       if (![b, s, c].every(isFinite) || b <= 0 || c <= 0 || s < 0) {
-        out.innerHTML = '<p class="err"><span aria-hidden="true">⚠️</span> 请填写有效数字，买入价与买入成本需要大于 0，卖出价不能为负。</p>'; return;
+        out.innerHTML = '<p class="err"><span aria-hidden="true">⚠️</span> ' + esc(t('calc.err')) + '</p>'; return;
       }
       var q = c / b, got = q * s, pnl = got - c, r = pnl / c * 100;
-      out.innerHTML = '<dl><div><dt>买到数量</dt><dd>' + fmt(q) + '</dd></div><div><dt>卖出所得</dt><dd>' + fmt(got) + '</dd></div><div><dt>净盈亏</dt><dd class="' + (pnl >= 0 ? 'pos' : 'neg') + '">' + (pnl >= 0 ? '▲ +' : '▼ ') + fmt(pnl) + '</dd></div><div><dt>简化收益率</dt><dd>' + (r >= 0 ? '+' : '') + fmt(r) + '%</dd></div></dl>' +
-        '<p class="w-note">这是简化学习结果，未计入手续费，不适用于合约、借贷、分批交易或多币种费用。完整账务可能不同。</p>';
+      out.innerHTML = '<dl><div><dt>' + esc(t('calc.qty')) + '</dt><dd>' + fmt(q) + '</dd></div><div><dt>' + esc(t('calc.got')) + '</dt><dd>' + fmt(got) + '</dd></div><div><dt>' + esc(t('calc.pnl')) + '</dt><dd class="' + (pnl >= 0 ? 'pos' : 'neg') + '">' + (pnl >= 0 ? '▲ +' : '▼ ') + fmt(pnl) + '</dd></div><div><dt>' + esc(t('calc.ret')) + '</dt><dd>' + (r >= 0 ? '+' : '') + fmt(r) + '%</dd></div></dl>' +
+        '<p class="w-note">' + esc(t('calc.out')) + '</p>';
     });
   };
   W.checklist = function (el) {
-    var items = ['我知道转的是什么资产。', '收款方明确支持这个网络。', '我从可信来源核对了完整地址，也检查了粘贴 / 扫码结果和最终确认页。', '我检查了 Memo / Tag 要求。', '我检查了最低金额、费用与暂停状态。', '我确认有足够的网络资源或可用代付方式。', '第一次使用时，我会先做符合最低要求的小额测试。'];
+    var items = checkItems();
     el.className = 'widget checklist';
-    el.innerHTML = '<ul>' + items.map(function (t, i) { return '<li><label><input type="checkbox" data-i="' + i + '"> <span>' + esc(t) + '</span></label></li>'; }).join('') + '</ul>' +
-      '<div class="ck-out" role="status" aria-live="polite"></div><button type="button" class="btn btn-ghost btn-sm">清空勾选</button>';
+    el.innerHTML = '<ul>' + items.map(function (item, i) { return '<li><label><input type="checkbox" data-i="' + i + '"> <span>' + esc(item) + '</span></label></li>'; }).join('') + '</ul>' +
+      '<div class="ck-out" role="status" aria-live="polite"></div><button type="button" class="btn btn-ghost btn-sm">' + esc(t('ck.clear')) + '</button>';
     function upd() {
       var all = $$('input', el).every(function (x) { return x.checked; });
-      $('.ck-out', el).innerHTML = all ? '<p class="res good">✅ 检查完成。请在最终确认页再核对一次，勾选清单不能保证没有风险。</p>' : '';
+      $('.ck-out', el).innerHTML = all ? '<p class="res good">' + esc(t('ck.done')) + '</p>' : '';
     }
     el.addEventListener('change', upd);
     $('button', el).addEventListener('click', function () { $$('input', el).forEach(function (x) { x.checked = false; }); upd(); });
@@ -457,9 +477,9 @@
     var rows = slangRows(0).map(function (r) { return r.concat('serious'); }).concat(slangRows(1).map(function (r) { return r.concat('meme'); }));
     var mode = 'all';
     el.className = 'widget slang';
-    el.innerHTML = '<div class="slang-top"><label class="sr" for="slang-q">查一个词</label><input id="slang-q" type="search" placeholder="查一个词，例如 爆仓、FOMO、梭哈、土狗"><div class="seg" role="tablist" aria-label="切换分类">' +
-      '<button role="tab" aria-selected="true" data-m="all">全部</button><button role="tab" aria-selected="false" data-m="serious">📘 正经术语</button><button role="tab" aria-selected="false" data-m="meme">😜 社区玩梗</button></div></div>' +
-      '<p class="w-note slang-meme-note">「社区调侃」条目是玩笑话，不是对所有人的真实意图判断，也不是交易建议。</p><div class="slang-list" aria-live="polite"></div>';
+    el.innerHTML = '<div class="slang-top"><label class="sr" for="slang-q">' + esc(t('slang.label')) + '</label><input id="slang-q" type="search" placeholder="' + esc(t('slang.ph')) + '"><div class="seg" role="tablist" aria-label="' + esc(t('slang.tabs')) + '">' +
+      '<button role="tab" aria-selected="true" data-m="all">' + esc(t('slang.all')) + '</button><button role="tab" aria-selected="false" data-m="serious">' + esc(t('slang.serious')) + '</button><button role="tab" aria-selected="false" data-m="meme">' + esc(t('slang.meme')) + '</button></div></div>' +
+      '<p class="w-note slang-meme-note">' + esc(t('slang.note')) + '</p><div class="slang-list" aria-live="polite"></div>';
     var list = $('.slang-list', el), q = $('#slang-q', el);
     function draw() {
       var k = q.value.trim(), terms = k ? expand(k) : [];
@@ -469,9 +489,9 @@
         var t = (r[0] + ' ' + r[1]).toLowerCase();
         return terms.some(function (x) { return x && t.indexOf(x) >= 0; });
       });
-      list.innerHTML = f.length ? '<p class="w-note">共 ' + f.length + ' 条</p><dl>' + f.map(function (r) {
-        return '<div class="term ' + r[2] + '"><dt>' + hl(r[0], terms) + (r[2] === 'meme' ? ' <span class="badge-meme">😜 社区调侃</span>' : ' <span class="badge-serious">📘 正经术语</span>') + '</dt><dd>' + hl(r[1], terms) + '</dd></div>';
-      }).join('') + '</dl>' : '<p class="empty">没找到这个词，换个说法试试？也可以用页面顶部的搜索查全站内容。</p>';
+      list.innerHTML = f.length ? '<p class="w-note">' + esc(t('slang.count', { n: f.length })) + '</p><dl>' + f.map(function (r) {
+        return '<div class="term ' + r[2] + '"><dt>' + hl(r[0], terms) + (r[2] === 'meme' ? ' <span class="badge-meme">' + esc(t('slang.badge.m')) + '</span>' : ' <span class="badge-serious">' + esc(t('slang.badge.s')) + '</span>') + '</dt><dd>' + hl(r[1], terms) + '</dd></div>';
+      }).join('') + '</dl>' : '<p class="empty">' + esc(t('slang.empty')) + '</p>';
     }
     q.addEventListener('input', draw);
     $$('[data-m]', el).forEach(function (b) {
@@ -483,7 +503,7 @@
   W.binancewallet = function (el) {
     el.className = 'btn-row';
     var reg = C.exchanges.filter(function (x) { return x.name === 'Binance'; })[0].url, wal = 'https://web3.binance.com/referral?ref=BFSADLNM';
-    el.innerHTML = [['注册币安', reg], ['币安钱包（无私钥）', wal]].map(function (b) {
+    el.innerHTML = [[t('bw.reg'), reg], [t('bw.wal'), wal]].map(function (b) {
       return '<span class="ref-btn"><a class="btn btn-sm" href="' + esc(b[1]) + '" target="_blank" rel="noopener noreferrer nofollow">' + b[0] + ' ↗<span class="btn-domain">' + esc(host(b[1])) + '</span></a>' + refTag(b[1]) + '</span>';
     }).join('');
   };
@@ -505,25 +525,27 @@
   function renderFooter() {
     var fb = C.feedback || {}, link = fb.url || (fb.email ? 'mailto:' + fb.email : '');
     $('#footer').innerHTML = '<div class="footer-in"><img src="assets/img/panda-phone.png?v=20261015171108" alt="" width="72" height="70">' +
-      '<div><p class="disclaimer">本站内容仅供学习参考，不构成投资建议。加密资产波动大，请只用自己能承受损失的钱参与。</p>' +
-      '<p class="contacts">联系站长：' + contactLinks() + '</p>' +
+      '<div><p class="disclaimer">' + esc(t('foot.disclaimer')) + '</p>' +
+      '<p class="contacts">' + esc(t('foot.contact')) + ' ' + contactLinks() + '</p>' +
       '</div></div>';
   }
 
   /* ---------- 打赏 ---------- */
+  function chainName(d) { return LANG === 'en' ? t('chain.' + d.key) : d.chain; }
   function openDonate() {
     var dlg = $('#donate');
     if (!dlg) {
       dlg = document.createElement('dialog'); dlg.id = 'donate'; dlg.setAttribute('aria-labelledby', 'donate-h');
-      dlg.innerHTML = '<button class="dlg-x" aria-label="关闭">×</button><img class="dlg-bear" src="assets/img/bear-milktea.jpg?v=20261015171108" alt="" width="80" height="80">' +
-        '<h2 id="donate-h">请小熊喝杯奶茶 🧋</h2><p class="w-note">觉得新手村有帮助，可以随意打赏，完全自愿～</p>' +
-        '<div class="seg don-tabs" role="tablist" aria-label="选择网络">' + C.donate.map(function (d, i) { return '<button role="tab" aria-selected="' + (i === 0) + '" data-d="' + i + '">' + esc(d.chain) + '</button>'; }).join('') + '</div>' +
+      dlg.innerHTML = '<button class="dlg-x" aria-label="' + esc(t('don.close')) + '">×</button><img class="dlg-bear" src="assets/img/bear-milktea.jpg?v=20261015171108" alt="" width="80" height="80">' +
+        '<h2 id="donate-h">' + esc(t('don.h')) + '</h2><p class="w-note">' + esc(t('don.p')) + '</p>' +
+        '<div class="seg don-tabs" role="tablist" aria-label="' + esc(t('don.tabs')) + '">' + C.donate.map(function (d, i) { return '<button role="tab" aria-selected="' + (i === 0) + '" data-d="' + i + '">' + esc(chainName(d)) + '</button>'; }).join('') + '</div>' +
         C.donate.map(function (d, i) {
-          return '<div class="don-pane" data-p="' + i + '"' + (i ? ' hidden' : '') + '><p class="chain">网络：<b>' + esc(d.chain) + '</b></p>' +
-            '<img class="qr" src="assets/img/donate-qr-' + d.key + '.svg?v=' + ASSET_V + '" alt="' + esc(d.chain) + ' 打赏地址二维码" width="180" height="180">' +
+          var chain = chainName(d);
+          return '<div class="don-pane" data-p="' + i + '"' + (i ? ' hidden' : '') + '><p class="chain">' + esc(t('don.net')) + '<b>' + esc(chain) + '</b></p>' +
+            '<img class="qr" src="assets/img/donate-qr-' + d.key + '.svg?v=' + ASSET_V + '" alt="' + esc(t('don.alt', { chain: chain })) + '" width="180" height="180">' +
             '<code class="addr" data-addr="' + esc(d.key) + '">' + esc(d.address) + '</code>' +
-            '<button class="btn btn-sm copy-addr" data-i="' + i + '">📋 复制地址</button>' +
-            '<p class="dlg-warn"><span aria-hidden="true">⚠️</span> 仅支持 ' + esc(d.chain) + ' 网络，转账前请核对完整地址与网络。</p></div>';
+            '<button class="btn btn-sm copy-addr" data-i="' + i + '">' + esc(t('don.copy')) + '</button>' +
+            '<p class="dlg-warn"><span aria-hidden="true">⚠️</span> ' + esc(t('don.warn', { chain: chain })) + '</p></div>';
         }).join('') + '<p class="copied" role="status" aria-live="polite"></p>';
       document.body.appendChild(dlg);
       $('.dlg-x', dlg).addEventListener('click', function () { dlg.close(); });
@@ -533,8 +555,8 @@
         if (tb) { $$('[data-d]', dlg).forEach(function (x) { x.setAttribute('aria-selected', x === tb); }); $$('.don-pane', dlg).forEach(function (p) { p.hidden = p.dataset.p !== tb.dataset.d; }); $('.copied', dlg).textContent = ''; }
         var cb = e.target.closest('.copy-addr'); if (!cb) return;
         var addr = C.donate[+cb.dataset.i].address, msg = $('.copied', dlg);
-        function ok() { msg.textContent = '已复制 ✓ 粘贴后请再核对一次地址'; }
-        function fallback() { var t = document.createElement('textarea'); t.value = addr; document.body.appendChild(t); t.select(); try { document.execCommand('copy'); ok(); } catch (e) { msg.textContent = '复制失败，请长按地址手动复制'; } t.remove(); }
+        function ok() { msg.textContent = t('don.ok'); }
+        function fallback() { var ta = document.createElement('textarea'); ta.value = addr; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); ok(); } catch (e) { msg.textContent = t('don.fail'); } ta.remove(); }
         if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(addr).then(ok, fallback); else fallback();
       });
     }
@@ -554,7 +576,7 @@
         m = document.createElement('mark');
         m.className = 'puny-odd';
         m.textContent = ch;
-        m.title = PUNY.kindName(cp) + ' U+' + ('0000' + cp.toString(16).toUpperCase()).slice(-4);
+        m.title = PUNY.kindName(cp, LANG) + ' U+' + ('0000' + cp.toString(16).toUpperCase()).slice(-4);
         el.appendChild(m);
       } else el.appendChild(document.createTextNode(ch));
     }
@@ -563,37 +585,37 @@
   function punyCopy(text, statusEl, okText) {
     function ok() { statusEl.textContent = okText; }
     function fallback() {
-      var t = document.createElement('textarea');
-      t.value = text; t.setAttribute('readonly', '');
-      t.style.position = 'fixed'; t.style.left = '-9999px';
-      document.body.appendChild(t); t.select();
-      try { document.execCommand('copy'); ok(); } catch (e) { statusEl.textContent = '复制失败，请长按文字手动复制'; }
-      t.remove();
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed'; ta.style.left = '-9999px';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); ok(); } catch (e) { statusEl.textContent = t('puny.copyfail'); }
+      ta.remove();
     }
     if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(ok, fallback);
     else fallback();
   }
   function renderPuny() {
-    document.title = 'Punycode 转换 - Web3 新手村';
-    main.innerHTML = '<div class="puny-page"><nav class="crumbs" aria-label="位置"><a href="#/">首页</a> › <span>Punycode 转换</span></nav>' +
-      '<h1>🔤 Punycode 转换</h1>' +
-      '<p class="lead">把域名在 Unicode 和 xn-- 之间转换。计算只在这台设备的浏览器里完成，输入不会上传，也不会自动打开你贴进来的网址。</p>' +
+    document.title = t('puny.title');
+    main.innerHTML = '<div class="puny-page"><nav class="crumbs" aria-label="' + esc(t('crumb.where')) + '"><a href="#/">' + esc(t('crumb.home')) + '</a> › <span>' + esc(t('puny.crumb')) + '</span></nav>' +
+      '<h1>' + esc(t('puny.h')) + '</h1>' +
+      '<p class="lead">' + esc(t('puny.lead')) + '</p>' +
       '<div class="widget puny">' +
-      '<div class="puny-examples"><p class="puny-ex-h">点一下，看拉丁字母 a 和西里尔字母 а</p><div class="puny-ex-row">' +
-      '<button type="button" class="puny-ex" id="puny-ex-latin" aria-pressed="false"><b>正常英文</b><span class="puny-ex-host">binance.com</span><small>字母 a 是拉丁文，结果仍是 binance.com</small></button>' +
-      '<button type="button" class="puny-ex" id="puny-ex-cyr" aria-pressed="false"><b>长得像的写法</b><span class="puny-ex-host">bin<mark class="puny-odd" title="西里尔字母 а（U+0430）">\u0430</mark>nce.com</span><small>标出的 a 是西里尔字母，会变成 xn--binnce-5nf.com</small></button>' +
+      '<div class="puny-examples"><p class="puny-ex-h">' + esc(t('puny.ex.h')) + '</p><div class="puny-ex-row">' +
+      '<button type="button" class="puny-ex" id="puny-ex-latin" aria-pressed="false"><b>' + esc(t('puny.ex.latin')) + '</b><span class="puny-ex-host">binance.com</span><small>' + esc(t('puny.ex.latin.s')) + '</small></button>' +
+      '<button type="button" class="puny-ex" id="puny-ex-cyr" aria-pressed="false"><b>' + esc(t('puny.ex.cyr')) + '</b><span class="puny-ex-host">bin<mark class="puny-odd" title="' + esc(t('puny.ex.cyr.mark')) + '">\u0430</mark>nce.com</span><small>' + esc(t('puny.ex.cyr.s')) + '</small></button>' +
       '</div></div>' +
-      '<label class="puny-field" for="puny-in">域名或完整网址' +
-      '<input id="puny-in" type="text" inputmode="url" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" placeholder="例如 例子.中国 或 https://例子.中国"></label>' +
-      '<p class="puny-tip">这不是安全扫描，也不能告诉你网站是不是真的、安不安全。形似字、不同文字混在一起，以及普通的英文仿写（比如把 binance 写成 binonce）都可能被用来钓鱼。这里只做编码转换。</p>' +
+      '<label class="puny-field" for="puny-in">' + esc(t('puny.label')) +
+      '<input id="puny-in" type="text" inputmode="url" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" placeholder="' + esc(t('puny.ph')) + '"></label>' +
+      '<p class="puny-tip">' + esc(t('puny.tip')) + '</p>' +
       '<p class="puny-dir" id="puny-dir" role="status" aria-live="polite"></p>' +
       '<p class="puny-warn" id="puny-warn" hidden></p>' +
       '<p class="puny-user" id="puny-user" hidden></p>' +
       '<div class="puny-out" id="puny-out" hidden>' +
-      '<div class="puny-row"><span class="puny-k">你输入的原文</span><code id="puny-raw"></code></div>' +
-      '<div class="puny-row"><span class="puny-k">Unicode 域名</span><p class="puny-odd-host" id="puny-uni"></p><p class="puny-odd-note" id="puny-odd-note" hidden></p><button type="button" class="btn btn-ghost btn-sm" id="puny-copy-uni">复制 Unicode</button></div>' +
-      '<div class="puny-row"><span class="puny-k">Punycode / ASCII</span><code id="puny-host"></code><button type="button" class="btn btn-ghost btn-sm" id="puny-copy-host">复制 Punycode</button></div>' +
-      '<div class="puny-row" id="puny-url-row" hidden><span class="puny-k" id="puny-url-k">只替换了域名的网址</span><code id="puny-url"></code><button type="button" class="btn btn-ghost btn-sm" id="puny-copy-url">复制网址</button></div>' +
+      '<div class="puny-row"><span class="puny-k">' + esc(t('puny.raw')) + '</span><code id="puny-raw"></code></div>' +
+      '<div class="puny-row"><span class="puny-k">' + esc(t('puny.uni')) + '</span><p class="puny-odd-host" id="puny-uni"></p><p class="puny-odd-note" id="puny-odd-note" hidden></p><button type="button" class="btn btn-ghost btn-sm" id="puny-copy-uni">' + esc(t('puny.copy.uni')) + '</button></div>' +
+      '<div class="puny-row"><span class="puny-k">' + esc(t('puny.ascii')) + '</span><code id="puny-host"></code><button type="button" class="btn btn-ghost btn-sm" id="puny-copy-host">' + esc(t('puny.copy.ascii')) + '</button></div>' +
+      '<div class="puny-row" id="puny-url-row" hidden><span class="puny-k" id="puny-url-k">' + esc(t('puny.url')) + '</span><code id="puny-url"></code><button type="button" class="btn btn-ghost btn-sm" id="puny-copy-url">' + esc(t('puny.copy.url')) + '</button></div>' +
       '</div><p class="copied" id="puny-copied" role="status" aria-live="polite"></p></div></div>';
     var input = $('#puny-in'), dir = $('#puny-dir'), warn = $('#puny-warn'), userNote = $('#puny-user'), out = $('#puny-out');
     var rawEl = $('#puny-raw'), uniEl = $('#puny-uni'), noteEl = $('#puny-odd-note'), hostEl = $('#puny-host'), urlEl = $('#puny-url'), urlRow = $('#puny-url-row'), copied = $('#puny-copied');
@@ -614,7 +636,7 @@
     }
     function showEmpty() {
       dir.className = 'puny-dir';
-      dir.textContent = '贴上域名或完整网址，会自动转换。也可以点上面的例子。';
+      dir.textContent = t('puny.empty');
       clearOut(); setPressed();
     }
     function showError(msg) {
@@ -626,26 +648,26 @@
       setPressed();
       var res = PUNY.convert(input.value);
       if (res.empty) return showEmpty();
-      if (res.error) return showError(res.error);
-      var msg = '已转成 Punycode（xn--）。';
-      if (res.kind === 'to-ascii' && !/(^|\.)xn--/i.test(res.ascii)) msg = '已转成浏览器使用的英文写法。';
-      else if (res.kind === 'to-unicode') msg = '已转成可读的 Unicode 域名。';
-      else if (res.kind === 'same') msg = '这是英文域名，不用转成 xn--。';
-      else if (res.kind === 'mapped') msg = '英文域名会按规则写成小写，没有 xn--。';
-      else if (res.kind === 'ip') msg = '这是 IP 地址，没有 Punycode 这一层。';
+      if (res.error) return showError(t('perr.' + res.error));
+      var msg = t('puny.k.ascii');
+      if (res.kind === 'to-ascii' && !/(^|\.)xn--/i.test(res.ascii)) msg = t('puny.k.asciiPlain');
+      else if (res.kind === 'to-unicode') msg = t('puny.k.uni');
+      else if (res.kind === 'same') msg = t('puny.k.same');
+      else if (res.kind === 'mapped') msg = t('puny.k.mapped');
+      else if (res.kind === 'ip') msg = t('puny.k.ip');
       dir.className = 'puny-dir';
       dir.textContent = msg;
       if (res.warn) {
         warn.hidden = false;
-        warn.textContent = '这条里面有非英文字符，或结果带 xn--。有的字符和普通英文字母长得几乎一样。上面只是编码转换，不是在说这个网站安全或不安全。';
+        warn.textContent = t('puny.warn');
       } else { warn.hidden = true; warn.textContent = ''; }
       if (res.userinfo) {
         userNote.hidden = false;
-        userNote.textContent = '@ 前面不是域名。真正的域名是 @ 后面、下面标出来的那一个。';
+        userNote.textContent = t('puny.user');
       } else { userNote.hidden = true; userNote.textContent = ''; }
       rawEl.textContent = res.input;
       punyFillMarked(uniEl, res.unicode);
-      var note = PUNY.markNote(res.unicode);
+      var note = PUNY.markNote(res.unicode, LANG);
       if (note) { noteEl.hidden = false; noteEl.textContent = note; }
       else { noteEl.hidden = true; noteEl.textContent = ''; }
       hostEl.textContent = res.ascii;
@@ -660,31 +682,120 @@
     function loadEx(value) { input.value = value; copied.textContent = ''; run(); input.focus(); }
     exLatin.addEventListener('click', function () { loadEx(PUNY.EX_LATIN); });
     exCyr.addEventListener('click', function () { loadEx(PUNY.EX_CYR); });
-    $('#puny-copy-host').addEventListener('click', function () { if (state.ascii) punyCopy(state.ascii, copied, '已复制 Punycode'); });
-    $('#puny-copy-uni').addEventListener('click', function () { if (state.unicode) punyCopy(state.unicode, copied, '已复制 Unicode'); });
-    $('#puny-copy-url').addEventListener('click', function () { if (state.url) punyCopy(state.url, copied, '已复制网址'); });
+    $('#puny-copy-host').addEventListener('click', function () { if (state.ascii) punyCopy(state.ascii, copied, t('puny.copied.ascii')); });
+    $('#puny-copy-uni').addEventListener('click', function () { if (state.unicode) punyCopy(state.unicode, copied, t('puny.copied.uni')); });
+    $('#puny-copy-url').addEventListener('click', function () { if (state.url) punyCopy(state.url, copied, t('puny.copied.url')); });
     showEmpty();
   }
 
   /* ---------- 路由 ---------- */
-  function route() {
+  function route(keep) {
     var h = location.hash, m = h.match(/^#\/c\/(\d\d)(?:\/(\d+))?/);
     $$('.topbar .search-results').forEach(function (b) { b.hidden = true; });
     var rm = h.match(/^#\/r\/(\w+)(?:\/(\d+))?/), cx = /^#\/cex/.test(h), py = /^#\/punycode/.test(h);
     document.body.classList.toggle('is-home', !m && !rm && !cx && !py);
-    if (cx) { renderCex(); window.scrollTo(0, 0); }
-    else if (py) { renderPuny(); window.scrollTo(0, 0); }
-    else if (rm) renderRoute(rm[1], rm[2] ? +rm[2] : 0);
-    else if (m) renderChapter(m[1], m[2] != null ? +m[2] : null);
-    else { renderHome(); window.scrollTo(0, 0); }
+    if (cx) { renderCex(); if (!keep) window.scrollTo(0, 0); }
+    else if (py) { renderPuny(); if (!keep) window.scrollTo(0, 0); }
+    else if (rm) renderRoute(rm[1], rm[2] ? +rm[2] : 0, keep);
+    else if (m) renderChapter(m[1], m[2] != null ? +m[2] : null, keep);
+    else { renderHome(); if (!keep) window.scrollTo(0, 0); }
     setHdr();
     var cur = cx ? '#/cex' : py ? '#/punycode' : m ? '#/c/' + m[1] : '#/';
     $$('.topnav a').forEach(function (a) { a.toggleAttribute('aria-current', !!cur && a.getAttribute('href') === cur); });
-    if (h && h !== '#/' && !(m && m[2])) main.focus({ preventScroll: true });
+    if (!keep && h && h !== '#/' && !(m && m[2])) main.focus({ preventScroll: true });
+    setNavOpen(false);
+  }
+  function applyChrome() {
+    document.documentElement.lang = LANG === 'en' ? 'en' : 'zh-CN';
+    var meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute('content', t('meta.desc'));
+    $$('[data-i18n]').forEach(function (el) { el.textContent = t(el.getAttribute('data-i18n')); });
+    $$('[data-i18n-aria]').forEach(function (el) { el.setAttribute('aria-label', t(el.getAttribute('data-i18n-aria'))); });
+    $$('[data-i18n-ph]').forEach(function (el) { el.setAttribute('placeholder', t(el.getAttribute('data-i18n-ph'))); });
+    var zhB = $('#lang-zh'), enB = $('#lang-en'), group = $('.lang-switch');
+    if (zhB) zhB.setAttribute('aria-pressed', LANG === 'zh' ? 'true' : 'false');
+    if (enB) enB.setAttribute('aria-pressed', LANG === 'en' ? 'true' : 'false');
+    if (group) group.setAttribute('aria-label', t('lang.group'));
+    var menuBtn = $('#nav-menu');
+    if (menuBtn) {
+      var open = menuBtn.getAttribute('aria-expanded') === 'true';
+      var label = $('#nav-menu-label');
+      if (label) label.textContent = t(open ? 'nav.menu.close' : 'nav.menu');
+      menuBtn.setAttribute('aria-label', t(open ? 'nav.menu.close' : 'nav.menu'));
+    }
+  }
+  function setNavOpen(open) {
+    var nav = $('#site-nav'), btn = $('#nav-menu');
+    if (!nav || !btn) return;
+    nav.classList.toggle('is-open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    var ico = $('.nav-menu-ico', btn);
+    if (ico) ico.textContent = open ? '×' : '☰';
+    applyChrome();
+  }
+  function snapshotInputs() {
+    function val(id) { var el = document.getElementById(id); return el ? el.value : null; }
+    var modeBtn = document.querySelector('.slang [data-m][aria-selected="true"]');
+    return { qTop: val('q-top'), qHome: val('q-home'), slang: val('slang-q'), slangMode: modeBtn ? modeBtn.getAttribute('data-m') : null, cex: val('cex-q'), puny: val('puny-in'), y: window.scrollY };
+  }
+  function restoreInputs(s) {
+    function setv(id, v) {
+      if (v == null) return;
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.value = v;
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+    setv('q-top', s.qTop);
+    setv('q-home', s.qHome);
+    setv('cex-q', s.cex);
+    setv('puny-in', s.puny);
+    if (s.slang != null && $('#slang-q')) {
+      $('#slang-q').value = s.slang;
+      if (s.slangMode && s.slangMode !== 'all') {
+        var b = document.querySelector('.slang [data-m="' + s.slangMode + '"]');
+        if (b) b.click(); else $('#slang-q').dispatchEvent(new Event('input', { bubbles: true }));
+      } else $('#slang-q').dispatchEvent(new Event('input', { bubbles: true }));
+    }
+    window.scrollTo(0, s.y);
+  }
+  function setLang(next) {
+    if ((next !== 'zh' && next !== 'en') || next === LANG) return;
+    var snap = snapshotInputs();
+    var dlg = $('#donate'), donateOpen = !!(dlg && dlg.open);
+    LANG = next;
+    try { localStorage.setItem(LANG_KEY, LANG); } catch (e) { }
+    applyCourse();
+    applyChrome();
+    if (dlg) dlg.remove();
+    renderFooter();
+    route(true);
+    restoreInputs(snap);
+    if (donateOpen) openDonate();
+    setHdr();
   }
   function setHdr() { document.documentElement.style.setProperty('--hdr', $('.topbar').offsetHeight + 'px'); }
   window.addEventListener('resize', setHdr);
-  window.addEventListener('hashchange', route);
+  window.addEventListener('hashchange', function () { route(); });
+  $('#lang-zh').addEventListener('click', function () { setLang('zh'); });
+  $('#lang-en').addEventListener('click', function () { setLang('en'); });
+  $('#nav-menu').addEventListener('click', function (e) {
+    e.stopPropagation();
+    setNavOpen($('#nav-menu').getAttribute('aria-expanded') !== 'true');
+  });
+  document.addEventListener('click', function (e) {
+    if (!$('#site-nav') || !$('#site-nav').classList.contains('is-open')) return;
+    if (e.target.closest('#site-nav') || e.target.closest('#nav-menu')) return;
+    setNavOpen(false);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') setNavOpen(false);
+  });
+  $('#site-nav').addEventListener('click', function (e) {
+    if (e.target.closest('a, button')) setNavOpen(false);
+  });
+  applyCourse();
+  applyChrome();
   renderFooter();
   route();
 })();
