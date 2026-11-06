@@ -187,12 +187,10 @@
   function renderHome() {
     document.title = t('title.home');
     var n = doneCount();
-    var brand = t('hero.brand');
     main.innerHTML =
       '<section class="hero-full" aria-labelledby="h-hero"><div class="hero-inner">' +
       '<img class="hero-bear" src="assets/img/panda.jpg?v=20261015171108" alt="' + esc(t('hero.alt')) + '" width="220" height="214">' +
-      '<h1 id="h-hero">Web3 新手村 <span aria-hidden="true">🧸</span></h1>' +
-      (brand ? '<p class="brand-en">' + esc(brand) + '</p>' : '') +
+      '<h1 id="h-hero">' + esc(t('hero.h1')) + ' <span aria-hidden="true">🧸</span></h1>' +
       '<p class="lead">' + esc(t('hero.lead')) + '</p>' +
       '<p class="intro">' + esc(t('hero.intro')) + '</p>' +
       '<p class="motto"><strong>' + esc(t('hero.motto')) + '</strong></p>' +
@@ -705,6 +703,7 @@
     var cur = cx ? '#/cex' : py ? '#/punycode' : m ? '#/c/' + m[1] : '#/';
     $$('.topnav a').forEach(function (a) { a.toggleAttribute('aria-current', !!cur && a.getAttribute('href') === cur); });
     if (!keep && h && h !== '#/' && !(m && m[2])) main.focus({ preventScroll: true });
+    setNavOpen(false);
   }
   function applyChrome() {
     document.documentElement.lang = LANG === 'en' ? 'en' : 'zh-CN';
@@ -717,6 +716,22 @@
     if (zhB) zhB.setAttribute('aria-pressed', LANG === 'zh' ? 'true' : 'false');
     if (enB) enB.setAttribute('aria-pressed', LANG === 'en' ? 'true' : 'false');
     if (group) group.setAttribute('aria-label', t('lang.group'));
+    var menuBtn = $('#nav-menu');
+    if (menuBtn) {
+      var open = menuBtn.getAttribute('aria-expanded') === 'true';
+      var label = $('#nav-menu-label');
+      if (label) label.textContent = t(open ? 'nav.menu.close' : 'nav.menu');
+      menuBtn.setAttribute('aria-label', t(open ? 'nav.menu.close' : 'nav.menu'));
+    }
+  }
+  function setNavOpen(open) {
+    var nav = $('#site-nav'), btn = $('#nav-menu');
+    if (!nav || !btn) return;
+    nav.classList.toggle('is-open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    var ico = $('.nav-menu-ico', btn);
+    if (ico) ico.textContent = open ? '×' : '☰';
+    applyChrome();
   }
   function snapshotInputs() {
     function val(id) { var el = document.getElementById(id); return el ? el.value : null; }
@@ -764,6 +779,21 @@
   window.addEventListener('hashchange', function () { route(); });
   $('#lang-zh').addEventListener('click', function () { setLang('zh'); });
   $('#lang-en').addEventListener('click', function () { setLang('en'); });
+  $('#nav-menu').addEventListener('click', function (e) {
+    e.stopPropagation();
+    setNavOpen($('#nav-menu').getAttribute('aria-expanded') !== 'true');
+  });
+  document.addEventListener('click', function (e) {
+    if (!$('#site-nav') || !$('#site-nav').classList.contains('is-open')) return;
+    if (e.target.closest('#site-nav') || e.target.closest('#nav-menu')) return;
+    setNavOpen(false);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') setNavOpen(false);
+  });
+  $('#site-nav').addEventListener('click', function (e) {
+    if (e.target.closest('a, button')) setNavOpen(false);
+  });
   applyCourse();
   applyChrome();
   renderFooter();

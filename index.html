@@ -9,18 +9,19 @@
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="icon" href="assets/img/panda.jpg?v=20261015171108">
-<link rel="stylesheet" href="css/style.css?v=20261106153000">
+<link rel="stylesheet" href="css/style.css?v=20261106203000">
 </head>
 <body>
 <a class="skip" href="#main" data-i18n="skip">跳到正文</a>
 <header class="topbar">
   <div class="topbar-in">
     <a class="logo" href="#/" data-i18n-aria="logo.aria" aria-label="Web3 新手村 首页"><img src="assets/img/panda.jpg?v=20261015171108" alt="" width="36" height="36"><span>Web3 新手村</span></a>
-    <nav class="topnav" data-i18n-aria="nav.aria" aria-label="主导航">
-      <div class="lang-switch" role="group" aria-label="界面语言">
-        <button type="button" id="lang-zh" aria-pressed="true">中文</button>
-        <button type="button" id="lang-en" aria-pressed="false">EN</button>
-      </div>
+    <div class="lang-switch" role="group" aria-label="界面语言">
+      <button type="button" id="lang-zh" aria-pressed="true">中文</button>
+      <button type="button" id="lang-en" aria-pressed="false">EN</button>
+    </div>
+    <button type="button" class="nav-menu" id="nav-menu" aria-expanded="false" aria-controls="site-nav"><span class="nav-menu-ico" aria-hidden="true">☰</span><span class="sr" id="nav-menu-label" data-i18n="nav.menu">菜单</span></button>
+    <nav class="topnav" id="site-nav" data-i18n-aria="nav.aria" aria-label="主导航">
       <a href="#/" data-nav="home" data-i18n="nav.home">目录</a>
       <a href="#/c/05" data-i18n="nav.ex">交易所导航</a>
       <a href="#/c/14" data-i18n="nav.tools">查资料工具大全</a>
@@ -41,10 +42,10 @@
 <noscript><p style="padding:1rem">本站需要启用 JavaScript 才能显示目录与章节内容。 This site needs JavaScript to show the contents and chapters.</p></noscript>
 <script src="js/config.js?v=20261015171108"></script>
 <script src="js/data.js?v=20261106153000"></script>
-<script src="js/data-en.js?v=20261106153000"></script>
-<script src="js/i18n.js?v=20261106153000"></script>
+<script src="js/data-en.js?v=20261106203000"></script>
+<script src="js/i18n.js?v=20261106203000"></script>
 <script src="js/punycode.js?v=20261106153000"></script>
-<script src="js/app.js?v=20261106153000"></script>
+<script src="js/app.js?v=20261106203000"></script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "12f50d684faf4e4287f9cb7f1a503e34"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

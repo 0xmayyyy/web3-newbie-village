@@ -4,11 +4,11 @@
 
 # Home
 
-## Web3 新手村 🧸
+## Web3 Newbie Village 🧸
 
-Too many crypto terms? That is fine.
+New to Web3? Start here.
 
-Start with what this world is, then learn how to buy, read a trade, use a wallet, and protect assets. Plain words for the jargon, and the common traps up front.
+Learn the basics of crypto, trading, wallets, and security — one step at a time.
 
 **Understand it first, then act. Learn one thing, unlock the next.**
 
@@ -451,7 +451,7 @@ Proof of reserves can show assets or liabilities checked at a specific time and 
 
 > 📰 **A real case: the FTX collapse (2022)**
 > Before its 2022 bankruptcy, FTX ranked third in the world by trading volume (according to a November report that year by The Verge). On 2 November 2022, problems in its balance sheet were reported. Six days later (8 November) it stopped all crypto withdrawals. In the first 72 hours, users had already withdrawn about 6 billion dollars. On 11 November it filed for bankruptcy protection. Founder SBF was later sentenced to 25 years.
-> **The lesson: a large platform can still fail. Watch an exchange's news and announcements. If withdrawals slow down or bad news piles up, move assets out first.**
+> **The lesson: a large platform can still fail. Watch an exchange's news and announcements. If withdrawals slow down or bad news piles up, consider moving assets out while you still can. That is not always possible, and moving them is not a guarantee of safety.**
 
 Note: Look at the domain before you click, the rules before you open an account, and platform risk before you deposit.
 

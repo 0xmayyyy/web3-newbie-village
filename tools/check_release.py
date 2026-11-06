@@ -76,6 +76,7 @@ need_en = [
     'Depositing an asset may earn a return',
     'may earn trading fees or rewards',
     'These tools can help you check and revoke approvals, but they cannot guarantee the assets will not be stolen',
+    'consider moving assets out while you still can',
     '#/c/08/4',
 ]
 for s in need_zh:
@@ -84,11 +85,17 @@ for s in need_zh:
 for s in need_en:
     if s not in en_src or s not in en_data:
         fail('missing English phrase: ' + s)
-banned = ['fwdETH', '#/c/08/5', '不收集任何个人信息', 'does not collect any personal information', 'FTX 当时是全球交易量第三', "world's third-largest"]
+banned = ['fwdETH', '#/c/08/5', '不收集任何个人信息', 'does not collect any personal information', 'FTX 当时是全球交易量第三', "world's third-largest", 'move assets out first', 'Too many crypto terms', 'e.g. 例子.中国']
 blob = zh_src + en_src + zh_data + en_data + i18n
 for s in banned:
     if s in blob:
         fail('stale phrase still present: ' + s)
+if "e.g. münchen.de or https://münchen.de" not in i18n:
+    fail('English Punycode example was not updated')
+if "'hero.h1': 'Web3 Newbie Village'" not in i18n or "'hero.h1': 'Web3 新手村'" not in i18n:
+    fail('hero titles')
+if "'hero.lead': 'New to Web3? Start here.'" not in i18n:
+    fail('English opening headline')
 if 'w3nv-progress-v2' not in app:
     fail('progress key changed')
 if "esc(x.label)" not in app or "function hl" not in app:
