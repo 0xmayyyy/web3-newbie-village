@@ -385,7 +385,7 @@ Many exchanges split assets across accounts. Common ones:
 
 | Account / action | What it is for | Watch out |
 |---|---|---|
-| Funding account | Deposits landing, P2P buys and sells, and withdrawals often use this | Coins sitting here usually cannot place a spot or contract order directly |
+| Funding account | Deposits landing, P2P buys and sells, and withdrawals often use this | On most platforms, coins kept here cannot be used directly for a spot or contract order |
 | Spot account | Spot trades and instant convert | To withdraw, you may need to move funds back to the funding account first |
 | Contract account | Margin for contract trading | Open positions can limit transfers out. Losses are taken from this balance |
 | Transfer between accounts | Moving assets between accounts on the same platform | Internal bookkeeping. It does not go on-chain, usually has no network fee, and arrives almost at once |
@@ -450,7 +450,7 @@ Check whether your location can use it. Then look at what you need to trade, how
 Proof of reserves can show assets or liabilities checked at a specific time and within a specific scope. How much that is worth depends on the method and what it covers. It is not automatically a full financial audit. It cannot guarantee that nothing will go wrong later, or that you can withdraw whenever you want.
 
 > 📰 **A real case: the FTX collapse (2022)**
-> FTX was then the world's third-largest exchange by trading volume. On 2 November 2022, problems in its balance sheet were reported. Six days later (8 November) it stopped all crypto withdrawals. In the first 72 hours, users had already withdrawn about 6 billion dollars. On 11 November it filed for bankruptcy protection. Founder SBF was later sentenced to 25 years.
+> Before its 2022 bankruptcy, FTX ranked third in the world by trading volume (according to a November report that year by The Verge). On 2 November 2022, problems in its balance sheet were reported. Six days later (8 November) it stopped all crypto withdrawals. In the first 72 hours, users had already withdrawn about 6 billion dollars. On 11 November it filed for bankruptcy protection. Founder SBF was later sentenced to 25 years.
 > **The lesson: a large platform can still fail. Watch an exchange's news and announcements. If withdrawals slow down or bad news piles up, move assets out first.**
 
 Note: Look at the domain before you click, the rules before you open an account, and platform risk before you deposit.
@@ -539,7 +539,7 @@ Do not treat "10x leverage means it liquidates only after a 10% drop" as an exac
 
 ## Funding rate
 
-**Hold a perpetual for long, and funding keeps eating the result.**
+**Hold a perpetual for a long time, and funding can keep eating the profit (sometimes you are the one getting paid).**
 
 A perpetual periodically settles a funding payment between long and short holders. Direction, interval, and rules differ by platform. On a position you hold for a long time, that fee changes the result in a real way.
 
@@ -715,7 +715,7 @@ When you download an app, check the developer and the source. Do not install a p
 
 ## Connecting, signing, and approving are not the same thing
 
-**Connecting a wallet does not by itself take the coins. Signing blindly, and approving blindly, can.**
+**Connecting a wallet, by itself, usually does not lose the coins. Signing blindly, and approving blindly, can.**
 
 Connecting a wallet usually lets an app see the address and request permissions. It does not automatically mean assets have been sent away.
 A signature confirms a message or an action. Some off-chain signatures can also authorize a later transfer. "It costs no gas" is not the same as "it has no risk".
@@ -724,14 +724,14 @@ An approval lets a contract use an asset under stated conditions, for example an
 If you do not understand the request, do not confirm it. Do not blind-sign. Do not trust a page titled "Log in" to be only a login.
 
 > 📰 **A real case: one signature, about 1.39 million dollars gone (October 2024)**
-> A PEPE holder signed an off-chain Uniswap Permit2 signature on a phishing site (no gas). About an hour later, PEPE and other tokens in the wallet, worth about 1.39 million dollars, were taken. The same month, someone else lost 15,079 fwdETH (about 36 million dollars) to a Permit phishing signature.
+> A PEPE holder signed an off-chain Uniswap Permit2 signature on a phishing site (no gas). About an hour later, PEPE and other tokens in the wallet, worth about 1.39 million dollars, were taken. Around the 10th of that same month, someone else lost 15,079 fwDETH (worth about 35 to 36 million dollars at the time) to a Permit phishing signature.
 > **The lesson: a signature that charges no gas can still move the coins. If you do not understand it, do not sign.**
 
 ## What can help you inspect a signature?
 
 **A safety extension can warn you. You still have to understand the request yourself.**
 
-GoPlus can be used to check approvals and to revoke them. It also offers a browser extension that, where supported, can flag suspicious requests. It can only check approvals, revoke approvals, and give that kind of helper warning. It cannot guarantee that assets will not be stolen. A wallet's own transaction simulation and risk warnings are also worth reading.
+GoPlus can help you check tokens, approvals, and some on-chain safety risks, but the results are for reference only and cannot guarantee that assets are absolutely safe. It also offers a browser extension that, where supported, can flag suspicious requests. A wallet's own transaction simulation and risk warnings are also worth reading.
 
 **GoPlus site:** https://gopluslabs.io/en
 
@@ -749,13 +749,13 @@ Revoking may cost a network fee. It does not guarantee you get back assets that 
 
 ## Unlimited approval
 
-**An unlimited approval is convenient. If something goes wrong, the loss can be unlimited too.**
+**An unlimited approval is convenient. If something goes wrong, that coin may be transferred away in full.**
 
 An unlimited approval lets the approved party use a very large token allowance, so you do not approve again each time. It is more convenient. It can also widen the loss from a contract bug or a malicious permission. Understand the scope, and approve what you actually need.
 
 ## Common scams
 
-**If the first step is "sign this", "pay this", or "give me the seed phrase", it is usually a scam.**
+**If a stranger, or an activity you cannot trace, first asks you to sign, pay, or hand over a seed phrase, it is usually a scam.**
 
 - Fake airdrop: it asks you to sign, approve, or pay a fee first.
 - Fake support: they message you first and ask you to install remote-control software or hand over recovery information.
@@ -1021,13 +1021,13 @@ DeFi means apps that use smart contracts for swaps, lending, and similar financi
 
 **Lending is about collateral and liquidation. Do not look only at the yield.**
 
-Depositing an asset can earn a return. Borrowing an asset requires collateral and interest. If the collateral price falls, you can be liquidated. The deposit side also has bad-debt, liquidity, and contract risk. Do not look only at the yield.
+Depositing an asset may earn a return. Borrowing an asset requires collateral and interest. If the collateral price falls, you can be liquidated. The deposit side also has bad-debt, liquidity, and contract risk. Do not look only at the yield.
 
 ## Liquidity pools
 
 **Providing liquidity earns fees, and you also take impermanent loss.**
 
-You put assets into a pool and can earn trading fees or rewards. Besides the assets' own price moves, there is impermanent loss, rewards that lose value, and contract risk. Impermanent loss describes the value difference versus simply holding the assets. It is not guaranteed to "come back".
+You put assets into a pool and may earn trading fees or rewards. Besides the assets' own price moves, there is impermanent loss, rewards that lose value, and contract risk. Impermanent loss describes the value difference versus simply holding the assets. It is not guaranteed to "come back".
 
 ## Staking and yield products
 
@@ -1243,13 +1243,13 @@ Before you use them: news and opinion are not investment advice, and outlets als
 
 ## Checking and revoking approvals
 
-**Check approvals now and then, and revoke the ones you no longer use. These tools can only check and revoke approvals. They cannot guarantee the assets will not be stolen.**
+**Check approvals now and then, and revoke the ones you no longer use. These tools can help you check and revoke approvals, but they cannot guarantee the assets will not be stolen.**
 
 Revoke.cash：https://revoke.cash/
-用途：Check approvals and revoke them. It can inspect some asset approvals on supported networks, and revoke them when you choose. It can only check and revoke approvals. It cannot guarantee assets will not be stolen. Network and permission coverage is limited. Check the domain and the signature before you use it. If a private key has leaked, revoking approvals is not enough on its own.
+用途：Check approvals and revoke them. It can inspect some asset approvals on supported networks, and revoke them when you choose. Network and permission coverage is limited. Check the domain and the signature before you use it. If a private key has leaked, revoking approvals is not enough on its own.
 
 GoPlus：https://gopluslabs.io/en
-用途：Check approvals and revoke them, and it also offers a browser extension and similar risk prompts. It can only check approvals, revoke approvals, and give helper warnings. It cannot guarantee assets will not be stolen. Coverage is limited. A risk prompt is not a substitute for checking it yourself.
+用途：Check approvals and revoke them, and it also offers a browser extension and similar risk prompts. Coverage is limited. A risk prompt is not a substitute for checking it yourself.
 
 ## Learning material
 
