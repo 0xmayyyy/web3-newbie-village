@@ -216,9 +216,8 @@
     { id: 'advanced', file: 'advanced', color: '#a28bf0', dot: '#b4a0f5', soft: 'rgba(162,139,240,.28)', locked: true, chapters: [] }
   ];
   var atlasCurrent = 0;
-  function readerTheme() {
-    try { return localStorage.getItem('web3-reader-theme') === 'light' ? 'light' : 'dark'; } catch (eTheme) { return 'dark'; }
-  }
+  var readerJumpTop = false;
+  try { localStorage.removeItem('web3-reader-theme'); } catch (eTheme) {}
   function planetLabel(item) {
     if (item.label) return t(item.label);
     var c = chap(item.id);
@@ -321,6 +320,7 @@
     return c ? c.id + ' · ' + c.title : id;
   }
   function renderChapter(id, sec, keep) {
+    try { localStorage.removeItem('web3-reader-theme'); } catch (eTheme) {}
     var c = chap(id); if (!c) return renderHome();
     var planetIndex = planetIndexFor(id, sec);
     var planet = planetIndex >= 0 ? PLANETS[planetIndex] : null;
@@ -337,10 +337,14 @@
     var highlight = sentence ? sentence + (LANG === 'zh' ? '。' : '.') : '';
     document.title = t('title.ch', { id: c.id, title: c.title });
     var code = planet ? t(planetIndex === 0 ? 'reader.begin' : 'reader.explore', { n: ('0' + (planetIndex + 1)).slice(-2) }) : 'CHAPTER ' + c.id;
+    var planetOptions = PLANETS.map(function (p, i) {
+      if (p.locked) return '';
+      return '<option value="' + i + '"' + (i === planetIndex ? ' selected' : '') + '>' + esc(planetInfo(i)) + '</option>';
+    }).join('');
     main.innerHTML =
-      '<div class="course-reader" data-theme="' + readerTheme() + '" style="--accent:' + (planet ? planet.color : '#bfa6ee') + ';--planet-halo:' + (planet ? planet.color : '#bfa6ee') + ';--planet-soft:' + (planet ? planet.soft : 'rgba(191,166,238,.28)') + '"><div class="shell">' +
-      '<div class="crumb"><a href="#/">' + esc(t('crumb.home')) + '</a> / ' + esc(planet ? t('reader.crumb', { planet: t('atlas.' + planet.id + '.name'), title: c.title }) : c.id + ' ' + c.title) +
-      '<button type="button" class="theme-switch" id="reader-theme" aria-label="' + esc(t('reader.theme.aria')) + '">' + esc(readerTheme() === 'light' ? t('reader.theme.dark') : t('reader.theme.light')) + '</button></div>' +
+      '<div class="course-reader" data-theme="dark" style="--accent:' + (planet ? planet.color : '#bfa6ee') + ';--planet-halo:' + (planet ? planet.color : '#bfa6ee') + ';--planet-soft:' + (planet ? planet.soft : 'rgba(191,166,238,.28)') + '"><div class="shell">' +
+      '<div class="crumb-bar"><div class="crumb"><a href="#/">' + esc(t('crumb.home')) + '</a> / ' + esc(planet ? t('reader.crumb', { planet: t('atlas.' + planet.id + '.name'), title: c.title }) : c.id + ' ' + c.title) + '</div>' +
+      '<div class="planet-return"><label for="planet-jump">' + esc(t('reader.jump')) + '</label><select id="planet-jump" aria-label="' + esc(t('reader.jump')) + '">' + planetOptions + '</select></div></div>' +
       '<section class="hero"><div><div class="eyebrow">' + esc(code) + '</div><h1>' + esc(planet ? t('atlas.' + planet.id + '.name') : c.title) + '</h1><p>' + esc(planet ? t('reader.' + planet.id + '.desc') : c.intro) + '</p></div>' +
       (planet ? '<div class="hero-planet" aria-hidden="true"><img alt="" src="assets/planets/' + planet.file + '.png?v=20261107290000"></div>' : '') +
       '</section><div class="layout">' +
@@ -409,21 +413,31 @@
     $$('.course-reader [data-tool]').forEach(function (b) {
       b.addEventListener('click', function () { goHash(b.getAttribute('data-tool'), null); });
     });
-    var themeBtn = $('#reader-theme');
-    if (themeBtn) themeBtn.addEventListener('click', function () {
-      var next = readerTheme() === 'light' ? 'dark' : 'light';
-      try { localStorage.setItem('web3-reader-theme', next); } catch (eTheme) { }
-      var root = $('.course-reader');
-      if (root) root.setAttribute('data-theme', next);
-      themeBtn.textContent = next === 'light' ? t('reader.theme.dark') : t('reader.theme.light');
-      themeBtn.setAttribute('aria-pressed', next === 'light' ? 'true' : 'false');
-    });
+    var jump = $('#planet-jump');
+    if (jump) {
+      if (planetIndex < 0) jump.selectedIndex = -1;
+      jump.addEventListener('change', function () {
+        var nextPlanet = +jump.value;
+        var hash = planetEntryHash(nextPlanet);
+        if (!hash) return;
+        readerJumpTop = true;
+        if (location.hash === hash) {
+          readerJumpTop = false;
+          window.scrollTo({ top: 0, behavior: prefersReduce() ? 'auto' : 'smooth' });
+          return;
+        }
+        location.hash = hash;
+      });
+    }
     var done = $('#done-btn');
     if (done) done.addEventListener('click', function () { toggleDone(c.id); renderChapter(c.id, cur.i, true); var again = $('#done-btn'); if (again) again.focus(); });
     mountWidgets(main);
     applyVerify(main);
     if (keep) return;
-    if (sec != null) {
+    if (readerJumpTop) {
+      readerJumpTop = false;
+      window.scrollTo({ top: 0, behavior: prefersReduce() ? 'auto' : 'smooth' });
+    } else if (sec != null) {
       var article = $('.course-reader .reading');
       if (article) setTimeout(function () { article.scrollIntoView({ block: 'start' }); }, 0);
     } else window.scrollTo(0, 0);
@@ -1057,6 +1071,7 @@
     $$('.topbar .search-results').forEach(function (b) { b.hidden = true; });
     var rm = h.match(/^#\/r\/(\w+)(?:\/(\d+))?/), cx = /^#\/cex/.test(h), py = /^#\/punycode/.test(h);
     document.body.classList.toggle('is-home', !m && !rm && !cx && !py);
+    document.body.classList.toggle('is-reader', !!m);
     if (cx) { renderCex(); if (!keep) window.scrollTo(0, 0); }
     else if (py) { renderPuny(); if (!keep) window.scrollTo(0, 0); }
     else if (rm) renderRoute(rm[1], rm[2] ? +rm[2] : 0, keep);
