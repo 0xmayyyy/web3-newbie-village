@@ -507,7 +507,7 @@ html.boot-home body:not(.is-home){background:#0D1022}
 .topbar{font-family:"Space Grotesk","Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;font-weight:500}
 .topbar-in{min-height:60px;border-radius:999px;border:1px solid transparent;transition:background-color .2s,border-color .2s,box-shadow .2s,color .2s}
 body.nav-on-dark .topbar-in,html.boot-home body:not(.is-home) .topbar-in{background:rgba(37,32,64,.72);border-color:rgba(220,195,155,.42);color:#F7F5F1;box-shadow:0 10px 28px rgba(13,16,34,.28),inset 0 1px 0 rgba(247,245,241,.08);backdrop-filter:blur(18px) saturate(1.25);-webkit-backdrop-filter:blur(18px) saturate(1.25)}
-body:not(.nav-on-dark) .topbar-in{background:rgba(247,245,241,.92);border-color:rgba(220,195,155,.7);color:#252040;box-shadow:0 10px 28px rgba(13,16,34,.1),inset 0 1px 0 rgba(255,255,255,.65);backdrop-filter:blur(18px) saturate(1.15);-webkit-backdrop-filter:blur(18px) saturate(1.15)}
+body:not(.nav-on-dark) .topbar-in{background:rgba(37,32,64,.72);border-color:rgba(220,195,155,.42);color:#F7F5F1;box-shadow:0 10px 28px rgba(13,16,34,.28),inset 0 1px 0 rgba(247,245,241,.08);backdrop-filter:blur(18px) saturate(1.25);-webkit-backdrop-filter:blur(18px) saturate(1.25)}
 .logo img{width:36px;height:36px;border-radius:0;object-fit:contain;border:0;box-shadow:none;background:transparent}
 .logo span{white-space:nowrap;font-size:16px;letter-spacing:.01em}
 .topnav>a,.topnav>.nav-donate,.topnav>.nav-ex{flex:none}
@@ -515,8 +515,9 @@ body:not(.nav-on-dark) .topbar-in{background:rgba(247,245,241,.92);border-color:
 .nav-more-btn,.nav-menu{display:inline-flex;align-items:center;justify-content:center;flex:none}
 .nav-menu{width:40px;height:40px;padding:0;font-size:20px}
 body.nav-on-dark .topnav a:hover,body.nav-on-dark .topnav a[aria-current],body.nav-on-dark .nav-more-btn:hover,body.nav-on-dark .nav-more-btn.is-current,body.nav-on-dark .nav-more-btn[aria-expanded="true"],body.nav-on-dark .nav-menu:hover,body.nav-on-dark .nav-menu[aria-expanded="true"],body.nav-on-dark .nav-donate:hover,body.nav-on-dark .nav-ex:hover,body.nav-on-dark .nav-ex[aria-expanded="true"]{background:rgba(220,195,155,.18);color:#DCC39B}
-body:not(.nav-on-dark) .topnav a:hover,body:not(.nav-on-dark) .topnav a[aria-current],body:not(.nav-on-dark) .nav-more-btn:hover,body:not(.nav-on-dark) .nav-more-btn.is-current,body:not(.nav-on-dark) .nav-more-btn[aria-expanded="true"],body:not(.nav-on-dark) .nav-menu:hover,body:not(.nav-on-dark) .nav-menu[aria-expanded="true"],body:not(.nav-on-dark) .nav-donate:hover,body:not(.nav-on-dark) .nav-ex:hover,body:not(.nav-on-dark) .nav-ex[aria-expanded="true"]{background:rgba(220,195,155,.55);color:#252040}
-.lang-switch{background:rgba(37,32,64,.06)}
+body:not(.nav-on-dark) .topnav a:hover,body:not(.nav-on-dark) .topnav a[aria-current],body:not(.nav-on-dark) .nav-more-btn:hover,body:not(.nav-on-dark) .nav-more-btn.is-current,body:not(.nav-on-dark) .nav-more-btn[aria-expanded="true"],body:not(.nav-on-dark) .nav-menu:hover,body:not(.nav-on-dark) .nav-menu[aria-expanded="true"],body:not(.nav-on-dark) .nav-donate:hover,body:not(.nav-on-dark) .nav-ex:hover,body:not(.nav-on-dark) .nav-ex[aria-expanded="true"]{background:rgba(220,195,155,.18);color:#DCC39B}
+.lang-switch{background:rgba(247,245,241,.08)}
+.lang-switch button{color:rgba(247,245,241,.75)}
 body.nav-on-dark .lang-switch{background:rgba(247,245,241,.08)}
 body.nav-on-dark .lang-switch button{color:rgba(247,245,241,.75)}
 .lang-switch button[aria-pressed="true"]{background:#DCC39B;color:#0D1022;box-shadow:none}
@@ -589,7 +590,7 @@ body.is-home .hero-screen{margin-top:calc(-1 * var(--hdr));height:100svh;min-hei
 @media (min-width:980px){
   body.is-home .topbar{padding:10px 24px 0}
   body.is-home .topbar-in{max-width:1340px;min-height:70px;gap:16px;padding:8px 17px}
-  body.is-home.nav-on-dark .topbar-in{background:rgba(31,27,53,.70);border-color:rgba(220,195,155,.43);box-shadow:0 10px 28px rgba(0,0,0,.16);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+  body.nav-on-dark .topbar-in,body.is-home.nav-on-dark .topbar-in{background:rgba(31,27,53,.70);border-color:rgba(220,195,155,.43);box-shadow:0 10px 28px rgba(0,0,0,.16);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
   body.is-home .logo img{width:43px;height:43px}
   body.is-home .logo span{font-size:19px;font-weight:700}
   body.is-home .topnav{margin-left:20px;gap:8px}

@@ -1141,15 +1141,9 @@
     if (more) more.classList.toggle('is-current', key === 'cex' || key === 'slang' || key === 'puny');
   }
   function syncNavTone() {
-    var dark = false;
-    if (document.body.classList.contains('is-home')) {
-      var hero = $('.hero-screen');
-      var hdr = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--hdr')) || 72;
-      if (hero) dark = hero.getBoundingClientRect().bottom > hdr + 12;
-    }
-    document.body.classList.toggle('nav-on-dark', dark);
+    document.body.classList.add('nav-on-dark');
     var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', dark ? '#0D1022' : '#fff8ef');
+    if (meta) meta.setAttribute('content', '#0D1022');
     markNav();
   }
   function snapshotInputs() {
