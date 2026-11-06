@@ -90,4 +90,24 @@ body.is-reader main{max-width:none;margin:0;padding:0;background:transparent}
 .course-reader .reader-home a{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:8px 18px;border-radius:999px;border:1px solid rgba(220,195,155,.55);background:rgba(52,38,79,.55);color:#F5F3FF;text-decoration:none;font-size:14px;font-weight:600}
 .course-reader .reader-home a:hover{border-color:#FFDFA8;color:#FFF2D9;background:rgba(255,223,168,.12)}
 .course-reader .layout>.side{display:none!important}
+
+/* 课程正文里的邀请卡片和工具气泡，跟夜间阅读器同一套紫金。 */
+.course-reader .widget{background:transparent;border:0;padding:0;margin:12px 0;color:#F5F3FF;box-shadow:none}
+.course-reader .tool-card,.course-reader .ex-card{background:#34264F;border:1px solid rgba(174,140,207,.4);border-radius:16px;color:#F5F3FF;box-shadow:none}
+.course-reader .tool-head strong,.course-reader .ex-head h3,.course-reader .tool-card strong{color:#F5F3FF}
+.course-reader .tool-card p,.course-reader .ex-card p,.course-reader .domain,.course-reader .promo-domain,.course-reader .w-note{color:#C9B6E6}
+.course-reader .ref-tag{color:#FFF2D9;background:rgba(255,223,168,.14);border:1px solid rgba(255,223,168,.42)}
+.course-reader .verify{background:rgba(174,140,207,.16);color:#C9B6E6;border-color:rgba(174,140,207,.4)}
+.course-reader .verify.ok{background:transparent;border:0;color:#FFDFA8}
+.course-reader .ex-warn{color:#FFF2D9;background:rgba(26,18,54,.55);border:1px solid rgba(174,140,207,.28)}
+.course-reader .promo{background:rgba(174,140,207,.22);color:#F5F3FF}
+.course-reader .ext-meta .domain{background:rgba(26,18,54,.55);color:#C9B6E6}
+.course-reader .btn{background:#FFDFA8;color:#1A1236;border-color:#FFDFA8}
+.course-reader .btn:hover{background:#FFF2D9;color:#1A1236}
+.course-reader .btn-ghost{background:transparent;color:#FFDFA8;border-color:rgba(255,223,168,.55)}
+.course-reader .btn-domain{color:#1A1236}
+.course-reader .table-wrap{border-color:rgba(174,140,207,.35)}
+.course-reader table{background:#34264F;color:#F5F3FF}
+.course-reader th{background:#2B1D5B;color:#FFF2D9;border-bottom-color:rgba(174,140,207,.35)}
+.course-reader td{color:#F5F3FF;border-bottom-color:rgba(174,140,207,.28)}
 .course-reader .toc{top:calc(var(--hdr, 72px) + 16px)}
