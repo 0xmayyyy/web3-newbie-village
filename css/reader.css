@@ -151,3 +151,17 @@ body.is-reader main{max-width:none;margin:0;padding:0;background:transparent}
 .course-reader .qa a{color:#FFDFA8}
 .course-reader .res{background:#2B1D5B;color:#FFF2D9;border:1px solid rgba(174,140,207,.45)}
 .course-reader .res.good{background:#34264F;color:#FFDFA8;border-color:rgba(255,223,168,.55)}
+.course-reader.is-glossary .layout{grid-template-columns:minmax(0,1fr)}
+.course-reader.is-glossary .reading,
+.course-reader.is-glossary .toc,
+.course-reader.is-glossary .mobile-toc{display:none}
+.course-reader .slang-top input{background:#2B1D5B;color:#F5F3FF;border:1px solid rgba(174,140,207,.45)}
+.course-reader .slang-top input::placeholder{color:#9A89B4}
+.course-reader .slang .seg{background:#2B1D5B;border:1px solid rgba(174,140,207,.4)}
+.course-reader .slang .seg button{color:#C9B6E6}
+.course-reader .slang .seg button[aria-selected=true]{background:#FFDFA8;color:#1A1236;box-shadow:none}
+.course-reader .slang .term{border-bottom:1px solid rgba(174,140,207,.28)}
+.course-reader .slang .term dt{color:#F5F3FF}
+.course-reader .slang .term dd{color:#C9B6E6}
+.course-reader .slang .badge-serious{background:rgba(174,140,207,.22);color:#FFF2D9}
+.course-reader .slang .badge-meme{background:rgba(255,223,168,.16);color:#FFF2D9}

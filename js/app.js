@@ -324,7 +324,7 @@
       if (LANG === 'zh') continue;
       return text.slice(0, i + 1).trim();
     }
-    return text.trim();
+    return '';
   }
   function renderChapter(id, sec, keep) {
     try { localStorage.removeItem('web3-reader-theme'); } catch (eTheme) {}
@@ -339,7 +339,9 @@
     if (!visible.length) return renderHome();
     var cur = visible[pos];
     var ids = readerChapterIds(planetIndex, id);
-    var highlight = firstExcerpt(cur.s.text || '');
+    var glossary = id === '13';
+    var cardIds = ids.filter(function (cid) { return cid !== '13'; });
+    var highlight = glossary ? '' : firstExcerpt(cur.s.text || '');
     document.title = t('title.ch', { id: c.id, title: c.title });
     var code = planet ? t(planetIndex === 0 ? 'reader.begin' : 'reader.explore', { n: ('0' + (planetIndex + 1)).slice(-2) }) : 'CHAPTER ' + c.id;
     var planetOptions = PLANETS.map(function (p, i) {
@@ -347,7 +349,7 @@
       return '<option value="' + i + '"' + (i === planetIndex ? ' selected' : '') + '>' + esc(planetInfo(i)) + '</option>';
     }).join('');
     main.innerHTML =
-      '<div class="course-reader" data-theme="dark" style="--accent:' + (planet ? planet.color : '#bfa6ee') + ';--planet-halo:' + (planet ? planet.color : '#bfa6ee') + ';--planet-soft:' + (planet ? planet.soft : 'rgba(191,166,238,.28)') + '"><div class="shell">' +
+      '<div class="course-reader' + (glossary ? ' is-glossary' : '') + '" data-theme="dark" style="--accent:' + (planet ? planet.color : '#bfa6ee') + ';--planet-halo:' + (planet ? planet.color : '#bfa6ee') + ';--planet-soft:' + (planet ? planet.soft : 'rgba(191,166,238,.28)') + '"><div class="shell">' +
       '<div class="crumb-bar"><div class="crumb"><a href="#/">' + esc(t('crumb.home')) + '</a> / ' + esc(planet ? t('reader.crumb', { planet: t('atlas.' + planet.id + '.name'), title: c.title }) : c.id + ' ' + c.title) + '</div>' +
       '<div class="planet-return"><label for="planet-jump">' + esc(t('reader.jump')) + '</label><select id="planet-jump" aria-label="' + esc(t('reader.jump')) + '">' + planetOptions + '</select></div></div>' +
       '<section class="hero"><div><div class="eyebrow">' + esc(code) + '</div><h1>' + esc(planet ? t('atlas.' + planet.id + '.name') : c.title) + '</h1><p>' + esc(planet ? t('reader.' + planet.id + '.desc') : c.intro) + '</p></div>' +
@@ -357,20 +359,20 @@
         var real = PLANETS.indexOf(p);
         return '<button type="button" class="planet-btn' + (real === planetIndex ? ' active' : '') + '" data-planet="' + real + '"><span class="dot" style="--dot:' + p.dot + '"></span>' + ('0' + (real + 1)).slice(-2) + ' · ' + esc(t('atlas.' + p.id + '.name')) + '</button>';
       }).join('') + '</div><div class="side-note">' + esc(t('reader.note')) + '</div></aside>' +
-      '<section class="center"><div class="course-head"><h2>' + esc(t('reader.list')) + '</h2><span>' + esc(t('reader.count', { n: ids.length })) + '</span></div>' +
-      '<div class="chapter-list">' + (ids.indexOf(id) < 0 ? '<div class="side-note">' + esc(t('reader.sharedTag')) + '</div>' : '') + ids.map(function (cid) {
+      '<section class="center"><div class="course-head"><h2>' + esc(t('reader.list')) + '</h2><span>' + esc(t('reader.count', { n: cardIds.length })) + '</span></div>' +
+      '<div class="chapter-list">' + (cardIds.indexOf(id) < 0 && !glossary ? '<div class="side-note">' + esc(t('reader.sharedTag')) + '</div>' : '') + cardIds.map(function (cid) {
         return '<button type="button" class="chapter' + (cid === id ? ' active' : '') + '" data-chapter="' + cid + '"><small>CHAPTER ' + cid + '</small><strong>' + esc(readerChapterLabel(planetIndex, cid)) + '</strong></button>';
       }).join('') + '</div>' +
-      '<div class="mobile-toc"><select id="section-select" aria-label="' + esc(t('reader.map')) + '">' + visible.map(function (item, i) {
+      '<div class="mobile-toc"' + (glossary ? ' hidden' : '') + '><select id="section-select" aria-label="' + esc(t('reader.map')) + '">' + visible.map(function (item, i) {
         return '<option value="' + item.i + '"' + (i === pos ? ' selected' : '') + '>' + (i + 1) + '. ' + esc(item.s.title) + '</option>';
       }).join('') + '</select></div>' +
-      '<article class="reading"><div class="meta"><span>CHAPTER ' + c.id + ' / LESSON ' + ('0' + (pos + 1)).slice(-2) + '</span><span>' + (pos + 1) + ' / ' + visible.length + '</span></div>' +
+      '<article class="reading"' + (glossary ? ' hidden' : '') + '><div class="meta"><span>CHAPTER ' + c.id + ' / LESSON ' + ('0' + (pos + 1)).slice(-2) + '</span><span>' + (pos + 1) + ' / ' + visible.length + '</span></div>' +
       '<h2>' + esc(cur.s.title) + '</h2>' + (highlight ? '<div class="summary">' + esc(highlight) + '</div>' : '') +
       '<div class="prose" id="reader-prose">' + cur.s.html + '</div>' +
       '<div class="reading-footer"><button type="button" class="navbtn" id="reader-prev"' + (pos === 0 && ids.indexOf(id) <= 0 ? ' disabled' : '') + '>' + esc(t('reader.prev')) + '</button>' +
       '<button type="button" class="done-link" id="done-btn" aria-pressed="' + isDone(c.id) + '">' + esc(isDone(c.id) ? t('ch.done') : t('ch.done.set')) + '</button>' +
       '<button type="button" class="navbtn primary" id="reader-next"' + (pos === visible.length - 1 && ids.indexOf(id) === ids.length - 1 ? ' disabled' : '') + '>' + esc(t('reader.next')) + '</button></div></article></section>' +
-      '<aside class="toc"><h2>' + esc(t('reader.map')) + '</h2><div>' + visible.map(function (item, i) {
+      '<aside class="toc"' + (glossary ? ' hidden' : '') + '><h2>' + esc(t('reader.map')) + '</h2><div>' + visible.map(function (item, i) {
         return '<button type="button" class="toc-btn' + (i === pos ? ' active' : '') + '" data-sec="' + item.i + '"><span class="idx">' + ('0' + (i + 1)).slice(-2) + '</span><span>' + esc(item.s.title) + '</span></button>';
       }).join('') + '</div><div class="progress"><div id="reader-bar" style="width:' + ((pos + 1) / visible.length * 100) + '%"></div></div><div class="progress-label">' + esc(t('reader.reading', { n: pos + 1, m: visible.length })) + '</div>' +
       '<div class="tools"><h2>' + esc(t('reader.shared')) + '</h2><button type="button" data-tool="14">' + esc(t('reader.tool14')) + '</button><button type="button" data-tool="16">' + esc(t('reader.tool16')) + '</button></div></aside></div></div>' +
