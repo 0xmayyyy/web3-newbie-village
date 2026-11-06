@@ -207,16 +207,18 @@
     mountAtlas();
   }
   var PLANETS = [
-    { id: 'entry', file: 'entry', chapters: [{ id: '01' }, { id: '02' }, { id: '13' }] },
-    { id: 'safety', file: 'safety', chapters: [{ id: '09' }, { id: '15' }] },
-    { id: 'trade', file: 'trade', chapters: [{ id: '03' }, { id: '04' }, { id: '05' }, { id: '06' }, { id: '07' }] },
-    { id: 'wallet', file: 'wallet', chapters: [{ id: '08' }, { id: '10' }] },
-    { id: 'world', file: 'world', sections12: [0, 1, 2, 3, 4, 6, 7], chapters: [{ id: '12', label: 'atlas.world.ch12' }] },
-    { id: 'chance', file: 'chance', sections12: [5, 8, 9, 10, 11], chapters: [{ id: '11' }, { id: '12', label: 'atlas.chance.ch12' }] },
-    { id: 'advanced', file: 'advanced', locked: true, chapters: [] }
+    { id: 'entry', file: 'entry', color: '#bba1e9', dot: '#c9a8f3', soft: 'rgba(187,161,233,.28)', chapters: [{ id: '01' }, { id: '02' }, { id: '13' }] },
+    { id: 'safety', file: 'safety', color: '#83b9e8', dot: '#8cc8f1', soft: 'rgba(131,185,232,.28)', chapters: [{ id: '09' }, { id: '15' }] },
+    { id: 'trade', file: 'trade', color: '#e7b46f', dot: '#e5b373', soft: 'rgba(231,180,111,.28)', chapters: [{ id: '03' }, { id: '04' }, { id: '05' }, { id: '06' }, { id: '07' }] },
+    { id: 'wallet', file: 'wallet', color: '#d69ac4', dot: '#e3a6cf', soft: 'rgba(214,154,196,.28)', chapters: [{ id: '08' }, { id: '10' }] },
+    { id: 'world', file: 'world', color: '#79c8c6', dot: '#83e0d4', soft: 'rgba(121,200,198,.28)', sections12: [0, 1, 2, 3, 4, 6, 7], chapters: [{ id: '12', label: 'atlas.world.ch12' }] },
+    { id: 'chance', file: 'chance', color: '#eea36d', dot: '#ffb17b', soft: 'rgba(238,163,109,.28)', sections12: [5, 8, 9, 10, 11], chapters: [{ id: '11' }, { id: '12', label: 'atlas.chance.ch12' }] },
+    { id: 'advanced', file: 'advanced', color: '#a28bf0', dot: '#b4a0f5', soft: 'rgba(162,139,240,.28)', locked: true, chapters: [] }
   ];
   var atlasCurrent = 0;
-  var atlasKeysBound = false;
+  function readerTheme() {
+    try { return localStorage.getItem('web3-reader-theme') === 'light' ? 'light' : 'dark'; } catch (eTheme) { return 'dark'; }
+  }
   function planetLabel(item) {
     if (item.label) return t(item.label);
     var c = chap(item.id);
@@ -242,11 +244,19 @@
       '<div class="info"><div><strong id="info-title">' + esc(planetInfo(0)) + '</strong>' +
       '<p id="info-sub">' + esc(t('atlas.entry.sub')) + '</p></div>' +
       '<button type="button" id="atlas-view">' + esc(t('atlas.view')) + '</button></div>' +
-      '<p class="footnote">' + esc(t('atlas.note')) + '</p></section>' +
-      '<div class="overlay" id="atlas-overlay"><div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title">' +
-      '<button type="button" class="close" id="atlas-close" aria-label="' + esc(t('atlas.close')) + '">×</button>' +
-      '<div class="eyebrow">' + esc(t('atlas.dialog.kicker')) + '</div>' +
-      '<h2 id="dialog-title"></h2><p id="dialog-sub"></p><ul id="dialog-list"></ul></div></div></div>';
+      '<p class="footnote">' + esc(t('atlas.note')) + '</p></section></div>';
+  }
+  function planetEntryHash(i) {
+    var p = PLANETS[i];
+    if (!p || p.locked) return '';
+    if (p.id === 'world') return '#/c/12/0';
+    var first = p.chapters[0];
+    if (first.label === 'atlas.chance.ch12') return '#/c/12/5';
+    return '#/c/' + first.id;
+  }
+  function enterPlanet(i) {
+    var hash = planetEntryHash(i);
+    if (hash) location.hash = hash;
   }
   function choosePlanet(i) {
     if (i === 6 || !PLANETS[i] || PLANETS[i].locked) return;
@@ -259,38 +269,17 @@
     if (title) title.textContent = planetInfo(i);
     if (sub) sub.textContent = t('atlas.' + p.id + '.sub');
   }
-  function openAtlasDialog() {
-    var p = PLANETS[atlasCurrent];
-    if (!p || p.locked) return;
-    var title = $('#dialog-title'), sub = $('#dialog-sub'), list = $('#dialog-list'), overlay = $('#atlas-overlay');
-    if (!title || !list || !overlay) return;
-    title.textContent = t('atlas.' + p.id + '.name');
-    if (sub) sub.textContent = t('atlas.' + p.id + '.sub');
-    list.innerHTML = p.chapters.map(function (item) {
-      var href = item.label === 'atlas.world.ch12' ? '#/c/12/0' : item.label === 'atlas.chance.ch12' ? '#/c/12/5' : '#/c/' + item.id;
-      return '<li><a href="' + href + '">' + esc(planetLabel(item)) + '</a></li>';
-    }).join('');
-    overlay.classList.add('open');
-  }
-  function closeAtlasDialog() {
-    var overlay = $('#atlas-overlay');
-    if (overlay) overlay.classList.remove('open');
-  }
   function mountAtlas() {
     atlasCurrent = 0;
     $$('.planet-scene .planet-card').forEach(function (card) {
-      card.addEventListener('click', function () { choosePlanet(Number(card.getAttribute('data-i'))); });
+      card.addEventListener('click', function () {
+        var i = Number(card.getAttribute('data-i'));
+        if (!PLANETS[i] || PLANETS[i].locked) return;
+        enterPlanet(i);
+      });
     });
     var view = $('#atlas-view');
-    if (view) view.addEventListener('click', openAtlasDialog);
-    var closeBtn = $('#atlas-close');
-    if (closeBtn) closeBtn.addEventListener('click', closeAtlasDialog);
-    var overlay = $('#atlas-overlay');
-    if (overlay) overlay.addEventListener('click', function (e) { if (e.target === overlay) closeAtlasDialog(); });
-    if (!atlasKeysBound) {
-      atlasKeysBound = true;
-      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAtlasDialog(); });
-    }
+    if (view) view.addEventListener('click', function () { enterPlanet(atlasCurrent); });
   }
 
   /* ---------- 章节页 ---------- */
@@ -349,8 +338,9 @@
     document.title = t('title.ch', { id: c.id, title: c.title });
     var code = planet ? t(planetIndex === 0 ? 'reader.begin' : 'reader.explore', { n: ('0' + (planetIndex + 1)).slice(-2) }) : 'CHAPTER ' + c.id;
     main.innerHTML =
-      '<div class="course-reader" style="--accent:' + (planet ? planet.color : '#bfa6ee') + '"><div class="shell">' +
-      '<div class="crumb"><a href="#/">' + esc(t('crumb.home')) + '</a> / ' + esc(planet ? t('reader.crumb', { planet: t('atlas.' + planet.id + '.name'), title: c.title }) : c.id + ' ' + c.title) + '</div>' +
+      '<div class="course-reader" data-theme="' + readerTheme() + '" style="--accent:' + (planet ? planet.color : '#bfa6ee') + ';--planet-halo:' + (planet ? planet.color : '#bfa6ee') + ';--planet-soft:' + (planet ? planet.soft : 'rgba(191,166,238,.28)') + '"><div class="shell">' +
+      '<div class="crumb"><a href="#/">' + esc(t('crumb.home')) + '</a> / ' + esc(planet ? t('reader.crumb', { planet: t('atlas.' + planet.id + '.name'), title: c.title }) : c.id + ' ' + c.title) +
+      '<button type="button" class="theme-switch" id="reader-theme" aria-label="' + esc(t('reader.theme.aria')) + '">' + esc(readerTheme() === 'light' ? t('reader.theme.dark') : t('reader.theme.light')) + '</button></div>' +
       '<section class="hero"><div><div class="eyebrow">' + esc(code) + '</div><h1>' + esc(planet ? t('atlas.' + planet.id + '.name') : c.title) + '</h1><p>' + esc(planet ? t('reader.' + planet.id + '.desc') : c.intro) + '</p></div>' +
       (planet ? '<div class="hero-planet" aria-hidden="true"><img alt="" src="assets/planets/' + planet.file + '.png?v=20261107290000"></div>' : '') +
       '</section><div class="layout">' +
@@ -418,6 +408,15 @@
     if (nextBtn) nextBtn.addEventListener('click', function () { step(1); });
     $$('.course-reader [data-tool]').forEach(function (b) {
       b.addEventListener('click', function () { goHash(b.getAttribute('data-tool'), null); });
+    });
+    var themeBtn = $('#reader-theme');
+    if (themeBtn) themeBtn.addEventListener('click', function () {
+      var next = readerTheme() === 'light' ? 'dark' : 'light';
+      try { localStorage.setItem('web3-reader-theme', next); } catch (eTheme) { }
+      var root = $('.course-reader');
+      if (root) root.setAttribute('data-theme', next);
+      themeBtn.textContent = next === 'light' ? t('reader.theme.dark') : t('reader.theme.light');
+      themeBtn.setAttribute('aria-pressed', next === 'light' ? 'true' : 'false');
     });
     var done = $('#done-btn');
     if (done) done.addEventListener('click', function () { toggleDone(c.id); renderChapter(c.id, cur.i, true); var again = $('#done-btn'); if (again) again.focus(); });
