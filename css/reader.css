@@ -131,3 +131,12 @@ body.is-reader main{max-width:none;margin:0;padding:0;background:transparent}
 .course-reader .prose a.btn .btn-domain,
 .course-reader .btn-domain{color:#1A1236}
 .course-reader .toc{top:calc(var(--hdr, 72px) + 16px)}
+.course-reader .invite-pair{display:grid;gap:12px;margin:16px 0}
+.course-reader .invite-pair .ex-card{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:16px 16px 14px}
+.course-reader .prose .invite-pair h3{margin:0;font-size:16px;line-height:1.4;color:#F5F3FF}
+.course-reader .invite-pair .domain{margin:0}
+.course-reader .invite-pair .ref-tag{margin:0}
+.course-reader .invite-pair .btn{margin-top:4px}
+@media (min-width:640px){
+  .course-reader .invite-pair{grid-template-columns:1fr 1fr}
+}

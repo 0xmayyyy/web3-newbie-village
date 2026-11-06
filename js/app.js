@@ -660,10 +660,18 @@
     draw();
   };
   W.binancewallet = function (el) {
-    el.className = 'btn-row';
-    var reg = C.exchanges.filter(function (x) { return x.name === 'Binance'; })[0].url, wal = 'https://web3.binance.com/referral?ref=BFSADLNM';
-    el.innerHTML = [[t('bw.reg'), reg], [t('bw.wal'), wal]].map(function (b) {
-      return '<span class="ref-btn"><a class="btn btn-sm" href="' + esc(b[1]) + '" target="_blank" rel="noopener noreferrer nofollow">' + b[0] + ' ↗<span class="btn-domain">' + esc(host(b[1])) + '</span></a>' + refTag(b[1]) + '</span>';
+    var reg = C.exchanges.filter(function (x) { return x.name === 'Binance'; })[0].url;
+    var wal = 'https://web3.binance.com/referral?ref=BFSADLNM';
+    var items = [
+      { title: t('bw.reg'), url: reg, action: t('ex.register') },
+      { title: t('bw.wal'), url: wal, action: t('oc.open') }
+    ];
+    el.className = 'invite-pair';
+    el.innerHTML = items.map(function (b) {
+      return '<article class="ex-card"><div class="ex-head"><h3>' + esc(b.title) + '</h3></div>' +
+        refTag(b.url) +
+        '<p class="domain">' + esc(t('ex.domain')) + '<b>' + esc(host(b.url)) + '</b></p>' +
+        '<a class="btn btn-sm" href="' + esc(b.url) + '" target="_blank" rel="noopener noreferrer nofollow">' + esc(b.action) + ' ↗<span class="sr">' + esc(t('ex.new', { host: host(b.url) })) + '</span></a></article>';
     }).join('');
   };
   function mountWidgets(root) {
