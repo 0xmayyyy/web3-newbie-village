@@ -363,19 +363,20 @@
       '<div class="chapter-list">' + (cardIds.indexOf(id) < 0 && !glossary ? '<div class="side-note">' + esc(t('reader.sharedTag')) + '</div>' : '') + cardIds.map(function (cid) {
         return '<button type="button" class="chapter' + (cid === id ? ' active' : '') + '" data-chapter="' + cid + '"><small>CHAPTER ' + cid + '</small><strong>' + esc(readerChapterLabel(planetIndex, cid)) + '</strong></button>';
       }).join('') + '</div>' +
-      '<div class="mobile-toc"' + (glossary ? ' hidden' : '') + '><select id="section-select" aria-label="' + esc(t('reader.map')) + '">' + visible.map(function (item, i) {
+      (glossary ? '' : '<div class="mobile-toc"><select id="section-select" aria-label="' + esc(t('reader.map')) + '">' + visible.map(function (item, i) {
         return '<option value="' + item.i + '"' + (i === pos ? ' selected' : '') + '>' + (i + 1) + '. ' + esc(item.s.title) + '</option>';
       }).join('') + '</select></div>' +
-      '<article class="reading"' + (glossary ? ' hidden' : '') + '><div class="meta"><span>CHAPTER ' + c.id + ' / LESSON ' + ('0' + (pos + 1)).slice(-2) + '</span><span>' + (pos + 1) + ' / ' + visible.length + '</span></div>' +
+      '<article class="reading"><div class="meta"><span>CHAPTER ' + c.id + ' / LESSON ' + ('0' + (pos + 1)).slice(-2) + '</span><span>' + (pos + 1) + ' / ' + visible.length + '</span></div>' +
       '<h2>' + esc(cur.s.title) + '</h2>' + (highlight ? '<div class="summary">' + esc(highlight) + '</div>' : '') +
       '<div class="prose" id="reader-prose">' + cur.s.html + '</div>' +
       '<div class="reading-footer"><button type="button" class="navbtn" id="reader-prev"' + (pos === 0 && ids.indexOf(id) <= 0 ? ' disabled' : '') + '>' + esc(t('reader.prev')) + '</button>' +
       '<button type="button" class="done-link" id="done-btn" aria-pressed="' + isDone(c.id) + '">' + esc(isDone(c.id) ? t('ch.done') : t('ch.done.set')) + '</button>' +
-      '<button type="button" class="navbtn primary" id="reader-next"' + (pos === visible.length - 1 && ids.indexOf(id) === ids.length - 1 ? ' disabled' : '') + '>' + esc(t('reader.next')) + '</button></div></article></section>' +
-      '<aside class="toc"' + (glossary ? ' hidden' : '') + '><h2>' + esc(t('reader.map')) + '</h2><div>' + visible.map(function (item, i) {
+      '<button type="button" class="navbtn primary" id="reader-next"' + (pos === visible.length - 1 && ids.indexOf(id) === ids.length - 1 ? ' disabled' : '') + '>' + esc(t('reader.next')) + '</button></div></article>') +
+      '</section>' +
+      (glossary ? '' : '<aside class="toc"><h2>' + esc(t('reader.map')) + '</h2><div>' + visible.map(function (item, i) {
         return '<button type="button" class="toc-btn' + (i === pos ? ' active' : '') + '" data-sec="' + item.i + '"><span class="idx">' + ('0' + (i + 1)).slice(-2) + '</span><span>' + esc(item.s.title) + '</span></button>';
       }).join('') + '</div><div class="progress"><div id="reader-bar" style="width:' + ((pos + 1) / visible.length * 100) + '%"></div></div><div class="progress-label">' + esc(t('reader.reading', { n: pos + 1, m: visible.length })) + '</div>' +
-      '<div class="tools"><h2>' + esc(t('reader.shared')) + '</h2><button type="button" data-tool="14">' + esc(t('reader.tool14')) + '</button><button type="button" data-tool="16">' + esc(t('reader.tool16')) + '</button></div></aside></div></div>' +
+      '<div class="tools"><h2>' + esc(t('reader.shared')) + '</h2><button type="button" data-tool="14">' + esc(t('reader.tool14')) + '</button><button type="button" data-tool="16">' + esc(t('reader.tool16')) + '</button></div></aside>') + '</div></div>' +
       '<p class="reader-home"><a href="#/">' + esc(t('reader.home')) + '</a></p></div>';
     var prose = $('#reader-prose');
     if (highlight && prose) {
@@ -705,7 +706,9 @@
         $$('details.sec, .ch-tools, .mtoc', root).forEach(function (d) { d.remove(); });
       } else {
         var reading = $('.course-reader .reading', root);
+        var center = $('.course-reader .center', root);
         if (reading) reading.parentNode.insertBefore(w, reading);
+        else if (center) center.appendChild(w);
       }
       if (w.parentNode) W.slang(w);
     }
