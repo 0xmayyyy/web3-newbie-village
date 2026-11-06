@@ -189,7 +189,6 @@
   var HERO_PORTRAIT = 'assets/hero/hero-portrait.webp?v=20261107133000';
   function renderHome() {
     document.title = t('title.home');
-    var n = doneCount();
     var reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
     var narrow = matchMedia('(max-width: 700px)').matches;
     var video = narrow ? '' : (reduceMotion
@@ -203,45 +202,58 @@
       '<p class="hero-sub">' + esc(t('hero.lead')) + '</p>' +
       '<div class="hero-cta"><a class="hero-btn hero-btn-primary" href="#/c/01">' + esc(t('hero.cta')) + '</a>' +
       '<a class="hero-btn hero-btn-secondary" href="#/" data-scroll="h-toc">' + esc(t('hero.cta2')) + '</a></div></div></section>' +
-      '<div class="home-rest">' +
-      '<section class="block paths-block"><p class="pick">' + esc(t('hero.pick')) + '</p>' +
-      '<div class="route-btns">' + routes().map(function (r) {
-        var dn = doneCount(r.ids);
-        return '<a class="route-btn ' + r.cls + '" href="' + routeHref(r) + '"><span class="rb-ico" aria-hidden="true">' + r.icon + '</span><span class="rb-t">' + esc(r.name) + '</span><span class="rb-d">' + esc(r.desc) + '</span>' +
-          (dn ? '<span class="rb-p">' + esc(t('route.progress', { n: dn, m: r.ids.length })) + '</span>' : '') + '</a>';
-      }).join('') + '</div>' +
-      '<div class="search big" role="search"><label class="sr" for="q-home">' + esc(t('home.search.label')) + '</label><span class="sicon" aria-hidden="true">🔍</span>' +
-      '<input id="q-home" type="search" placeholder="' + esc(t('home.search.ph')) + '" autocomplete="off"><div class="search-results" hidden></div></div></section>' +
-
-      '<section class="block" aria-labelledby="h-toc"><div class="block-head"><h2 id="h-toc">' + esc(t('toc.h')) + '</h2>' +
-      '<div class="progress" aria-live="polite"><span>' + t('progress', { n: n, m: CH.length }) + '</span><span class="bar" aria-hidden="true"><i style="width:' + (n / CH.length * 100) + '%"></i></span>' +
-      (n ? '<button class="btn btn-ghost btn-sm" id="clear-p">' + esc(t('progress.clear')) + '</button>' : '') + '</div><p class="p-note">' + esc(t('progress.note')) + '</p></div>' +
-      '<ol class="toc">' + CH.map(chapterCard).join('') + '</ol>' +
-      '<p class="note">' + esc(t('privacy')) + '</p></section>' +
-
-      '<section class="block safety-wrap" aria-labelledby="h-safe"><div class="chalkboard">' +
-      '<span class="doodle d-star" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.5l2.6 6 6.4.6-4.9 4.2 1.5 6.3L12 16.4 6.4 19.6l1.5-6.3L3 9.1l6.4-.6z" fill="none" stroke="#f6d77a" stroke-width="1.6" stroke-linejoin="round"/></svg></span>' +
-      '<span class="doodle d-heart" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" fill="none" stroke="#f7b6c8" stroke-width="1.7" stroke-linejoin="round"/></svg></span>' +
-      '<span class="doodle d-swirl" aria-hidden="true"><svg viewBox="0 0 40 24"><path d="M3 18c4-10 10-12 13-8s-2 8-4 4 4-10 10-9 9 7 15 3" fill="none" stroke="#fbf6e9" stroke-width="1.6" stroke-linecap="round"/></svg></span>' +
-      '<span class="doodle d-star2" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18M6 6l12 12M18 6L6 18" stroke="#fbf6e9" stroke-width="1.6" stroke-linecap="round"/></svg></span>' +
-      '<span class="doodle d-heart2" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" fill="none" stroke="#f6d77a" stroke-width="1.7" stroke-linejoin="round"/></svg></span>' +
-      '<h2 id="h-safe"><span aria-hidden="true">⚠️</span> ' + esc(t('safe.h')) + '</h2><ul class="chalk-list">' +
-      ['safe.1', 'safe.2', 'safe.3', 'safe.4', 'safe.5'].map(function (key) { return '<li>' + esc(t(key)) + '</li>'; }).join('') +
-      '</ul><div class="chalk-foot"><a class="chalk-btn" href="#/c/09">' + esc(t('safe.more')) + '</a></div><span class="chalk-tray" aria-hidden="true"></span></div>' +
-      '<img class="chalk-mascot" src="assets/img/panda-teacher-cut3.png?v=20261015171108" alt="' + esc(t('safe.alt')) + '" width="148" height="173"></section>' +
-
-      '<section class="block" aria-labelledby="h-quick"><h2 id="h-quick">' + esc(t('quick.h')) + '</h2><div class="quick">' +
-      '<a class="qcard yellow" href="#/c/14"><span class="qi" aria-hidden="true">🧰</span><strong>' + esc(t('q.tools')) + '</strong><span>' + esc(t('q.tools.d')) + '</span></a>' +
-      '<a class="qcard pink" href="#/c/05"><span class="qi" aria-hidden="true">🏦</span><strong>' + esc(t('q.ex')) + '</strong><span>' + esc(t('q.ex.d')) + '</span></a>' +
-      '<a class="qcard lilac" href="#/c/13"><span class="qi" aria-hidden="true">💬</span><strong>' + esc(t('q.slang')) + '</strong><span>' + esc(t('q.slang.d')) + '</span></a>' +
-      '<a class="qcard sky" href="#/punycode"><span class="qi" aria-hidden="true">🔤</span><strong>' + esc(t('q.puny')) + '</strong><span>' + esc(t('q.puny.d')) + '</span></a>' +
-      '<a class="qcard mint" href="#/c/16"><span class="qi" aria-hidden="true">✅</span><strong>' + esc(t('q.practice')) + '</strong><span>' + esc(t('q.practice.d')) + '</span></a>' +
-      '</div><img class="quick-img" src="assets/img/panda-phone.png?v=20261015171108" alt="' + esc(t('quick.alt')) + '" width="140" height="137"></section></div>';
-    bindSearch($('#q-home'), $('.paths-block .search-results'));
+      planetAtlas() + '';
     mountHero();
-    var cp = $('#clear-p');
-    if (cp) cp.addEventListener('click', function () {
-      if (confirm(t('progress.confirm'))) { try { localStorage.removeItem(KEY); } catch (e) { } renderHome(); $('#h-toc').focus && $('#h-toc').scrollIntoView(); }
+    mountAtlas();
+  }
+  var PLANETS = [
+    { id: 'entry', ids: ['01', '02', '16'], deco: '<span class="spark">✧</span>' },
+    { id: 'safety', ids: ['09', '15'], deco: '<span class="shield"></span>' },
+    { id: 'trade', ids: ['03', '04', '05', '06', '07'], deco: '<span class="ring"></span>' },
+    { id: 'wallet', ids: ['08'], deco: '<span class="key">⚿</span>' },
+    { id: 'chain', ids: ['10', '11', '12'], deco: '<span class="network"></span>' }
+  ];
+  function planetById(id) { for (var i = 0; i < PLANETS.length; i++) if (PLANETS[i].id === id) return PLANETS[i]; }
+  function planetLinks(ids) {
+    return '<div class="planet-links" id="atlas-links">' + ids.map(function (id) {
+      var c = chap(id);
+      return '<a href="#/c/' + id + '">' + esc((c ? c.id + ' ' + c.title : id)) + '</a>';
+    }).join('') + '</div>';
+  }
+  function planetAtlas() {
+      return '<div class="planet-scene"><section class="scene" id="h-toc" aria-labelledby="atlas-heading">' +
+      '<div class="glow a"></div><div class="glow b"></div>' +
+      '<div class="heading"><div class="eyebrow">' + esc(t('atlas.eyebrow')) + '</div>' +
+      '<h1 id="atlas-heading">' + esc(t('atlas.h')) + '</h1><p>' + esc(t('atlas.lead')) + '</p></div>' +
+      '<div class="atlas"><div class="orbit"></div>' + PLANETS.map(function (p) {
+        return '<button type="button" class="planet-option ' + p.id + '" data-planet="' + p.id + '" aria-pressed="' + (p.id === 'entry' ? 'true' : 'false') + '">' +
+          '<span class="planet-holder"><span class="planet"><img alt="" src="assets/planets/' + p.id + '.png?v=20261107270000"></span>' + p.deco + '</span>' +
+          '<span class="num">' + esc(t('atlas.' + p.id + '.num')) + '</span>' +
+          '<span class="name">' + esc(t('atlas.' + p.id + '.name')) + '</span>' +
+          '<span class="desc">' + esc(t('atlas.' + p.id + '.desc')) + '</span></button>';
+      }).join('') + '</div>' +
+      '<article class="panel" aria-live="polite"><div><div class="over" id="atlas-over">' + esc(t('atlas.entry.over')) + '</div>' +
+      '<h2 id="atlas-title">' + esc(t('atlas.entry.title')) + '</h2>' +
+      '<p id="atlas-text">' + esc(t('atlas.entry.text')) + '</p>' + planetLinks(PLANETS[0].ids) + '</div>' +
+      '<a class="go" id="atlas-go" href="#/c/01">' + esc(t('atlas.go')) + '</a></article>' +
+      '<div class="foot"><div class="footerline"></div>' + esc(t('atlas.foot')) + '</div></section></div>';
+  }
+  function showPlanet(id) {
+    var p = planetById(id); if (!p) return;
+    $$('.planet-scene .planet-option').forEach(function (b) {
+      b.setAttribute('aria-pressed', b.getAttribute('data-planet') === id ? 'true' : 'false');
+    });
+    var over = $('#atlas-over'), title = $('#atlas-title'), text = $('#atlas-text'), go = $('#atlas-go');
+    if (over) over.textContent = t('atlas.' + id + '.over');
+    if (title) title.textContent = t('atlas.' + id + '.title');
+    if (text) text.textContent = t('atlas.' + id + '.text');
+    var links = $('#atlas-links');
+    if (links) links.outerHTML = planetLinks(p.ids);
+    if (go) go.setAttribute('href', '#/c/' + p.ids[0]);
+  }
+  function mountAtlas() {
+    $$('.planet-scene .planet-option').forEach(function (btn) {
+      btn.addEventListener('click', function () { showPlanet(btn.getAttribute('data-planet')); });
     });
   }
 
