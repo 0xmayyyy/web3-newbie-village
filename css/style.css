@@ -679,11 +679,11 @@ html.exs-open body{position:fixed;left:0;right:0;width:100%}
 }
 
 /* 打赏弹窗：紫金宇宙。只作用于这个 dialog。 */
-dialog#donate{position:relative;border:1px solid rgba(174,140,207,.45);border-radius:24px;padding:22px 20px 18px;max-width:min(400px,calc(100vw - 28px));max-height:min(860px,calc(100svh - 28px));overflow:auto;text-align:center;color:#F5F3FF;background:radial-gradient(ellipse 90% 42% at 50% -8%,#2B1D5B 0%,rgba(43,29,91,0) 68%),#1A1236;box-shadow:0 18px 44px rgba(12,8,28,.42),0 0 28px rgba(255,223,168,.12)}
+dialog#donate{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);margin:0;border:1px solid rgba(174,140,207,.45);border-radius:24px;padding:18px 20px 14px;width:min(400px,calc(100vw - 28px));max-height:min(980px,calc(100svh - 24px));overflow:auto;text-align:center;color:#F5F3FF;background:radial-gradient(ellipse 90% 42% at 50% -8%,#2B1D5B 0%,rgba(43,29,91,0) 68%),#1A1236;box-shadow:0 18px 44px rgba(12,8,28,.42),0 0 28px rgba(255,223,168,.12)}
 dialog#donate::backdrop{background:rgba(16,10,32,.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 dialog#donate h2{margin:2px 0 4px;font-size:22px;line-height:1.3;color:#F5F3FF}
 dialog#donate .w-note{color:#C9B6E6}
-dialog#donate .dlg-avatar{display:block;width:min(228px,68%);height:auto;margin:2px auto 8px;border:0;border-radius:0;object-fit:contain;background:transparent;box-shadow:none;filter:none;image-rendering:auto}
+dialog#donate .dlg-avatar{display:block;width:min(196px,62%);height:auto;aspect-ratio:1;margin:0 auto 6px;border:0;border-radius:0;object-fit:contain;background:transparent;box-shadow:none;filter:none;image-rendering:auto}
 dialog#donate .dlg-x{background:transparent;color:#FFDFA8;border:1px solid rgba(255,223,168,.55)}
 dialog#donate .dlg-x:hover{background:rgba(255,223,168,.16)}
 dialog#donate .seg.don-tabs{background:#34264F;border:1px solid rgba(174,140,207,.35)}
@@ -691,12 +691,13 @@ dialog#donate .seg.don-tabs button{color:#C9B6E6}
 dialog#donate .seg.don-tabs button[aria-selected=true]{background:#FFDFA8;color:#1A1236;box-shadow:none}
 dialog#donate .chain{color:#C9B6E6}
 dialog#donate .chain b{color:#F5F3FF}
-dialog#donate .qr{background:#fff;border:1px solid #AE8CCF;border-radius:16px;box-shadow:0 0 16px rgba(255,223,168,.16)}
-dialog#donate .addr{background:#34264F;color:#F5F3FF;border:1px solid rgba(174,140,207,.4)}
+dialog#donate .qr{width:180px;height:180px;aspect-ratio:1;background:#fff;border:1px solid #AE8CCF;border-radius:16px;box-shadow:0 0 16px rgba(255,223,168,.16)}
+dialog#donate .addr{background:#34264F;color:#F5F3FF;border:1px solid rgba(174,140,207,.4);word-break:keep-all;overflow-wrap:normal;line-height:1.45}
+dialog#donate .addr-line{white-space:nowrap}
 dialog#donate .btn{background:#FFDFA8;color:#1A1236;border-color:#FFDFA8}
 dialog#donate .btn:hover{background:#FFF2D9;color:#1A1236;transform:none}
 dialog#donate .dlg-warn{color:#FFF2D9;background:rgba(52,38,79,.85);border:1px solid rgba(174,140,207,.28)}
-dialog#donate .copied{color:#FFDFA8}
+dialog#donate .copied{box-sizing:border-box;min-height:2.8em;margin:6px 0 0;color:#FFDFA8;line-height:1.35;font-size:13px}
 @media (max-width:700px){
   dialog#donate{padding:18px 14px 14px}
   dialog#donate .dlg-avatar{width:min(200px,72%)}

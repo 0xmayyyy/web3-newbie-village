@@ -101,7 +101,6 @@ Under the current consensus rules, the issuance cap for BTC is about 21 million.
 
 - English PDF: https://bitcoin.org/bitcoin.pdf
 - Versions in other languages: https://bitcoin.org/en/bitcoin-paper
-- Basic FAQ: https://bitcoin.org/en/faq
 
 ## Coin or token?
 

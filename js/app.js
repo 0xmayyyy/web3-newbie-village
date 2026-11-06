@@ -226,6 +226,11 @@
     var p = PLANETS[i];
     return ('0' + (i + 1)).slice(-2) + ' · ' + t('atlas.' + p.id + '.name');
   }
+  function noLoneChar(s) {
+    s = String(s);
+    if (s.length < 2) return esc(s);
+    return esc(s.slice(0, -1)) + '&#8288;' + esc(s.slice(-1));
+  }
   function planetAtlas() {
     return '<div class="planet-scene"><section class="scene" id="h-toc" aria-labelledby="atlas-heading">' +
       '<div class="heading"><div class="eyebrow">' + esc(t('atlas.eyebrow')) + '</div>' +
@@ -236,7 +241,7 @@
           '<div class="planet-wrap"><img src="assets/planets/' + p.file + '.png?v=20261107290000" alt=""></div>' +
           '<span class="num">' + ('0' + (i + 1)).slice(-2) + '</span>' +
           '<strong>' + esc(t('atlas.' + p.id + '.name')) + '</strong>' +
-          '<small>' + esc(t('atlas.' + p.id + '.sub')) + '</small>' +
+          '<small>' + noLoneChar(t('atlas.' + p.id + '.sub')) + '</small>' +
           (p.locked ? '<em>' + esc(t('atlas.locked')) + '</em>' : '') + '</button>';
       }).join('') + '</div>' +
       '<p class="footnote">' + esc(t('atlas.note')) + '</p></section></div>';
@@ -453,7 +458,7 @@
   var W = {};
   W.wpbuttons = function (el) {
     el.className = 'btn-row';
-    el.innerHTML = [[t('wp.read'), 'https://bitcoin.org/bitcoin.pdf'], [t('wp.zh'), 'https://bitcoin.org/en/bitcoin-paper'], [t('wp.faq'), 'https://bitcoin.org/en/faq']]
+    el.innerHTML = [[t('wp.read'), 'https://bitcoin.org/bitcoin.pdf'], [t('wp.zh'), 'https://bitcoin.org/en/bitcoin-paper']]
       .map(function (b) { return '<a class="btn btn-sm" href="' + b[1] + '" target="_blank" rel="noopener noreferrer nofollow">' + b[0] + ' ↗<span class="btn-domain">' + host(b[1]) + '</span></a>'; }).join('');
   };
   W.exchanges = function (el) {
@@ -880,14 +885,14 @@
     var dlg = $('#donate');
     if (!dlg) {
       dlg = document.createElement('dialog'); dlg.id = 'donate'; dlg.setAttribute('aria-labelledby', 'donate-h');
-      dlg.innerHTML = '<button class="dlg-x" aria-label="' + esc(t('don.close')) + '">×</button><img class="dlg-avatar" src="assets/img/tip-avatar.webp?v=20261107380000" alt="" width="1245" height="1245">' +
+      dlg.innerHTML = '<button class="dlg-x" aria-label="' + esc(t('don.close')) + '">×</button><img class="dlg-avatar" src="assets/img/tip-avatar.webp?v=20261107420000" alt="" width="1254" height="1254">' +
         '<h2 id="donate-h">' + esc(t('don.h')) + '</h2><p class="w-note">' + esc(t('don.p')) + '</p>' +
         '<div class="seg don-tabs" role="tablist" aria-label="' + esc(t('don.tabs')) + '">' + C.donate.map(function (d, i) { return '<button role="tab" aria-selected="' + (i === 0) + '" data-d="' + i + '">' + esc(chainName(d)) + '</button>'; }).join('') + '</div>' +
         C.donate.map(function (d, i) {
           var chain = chainName(d);
           return '<div class="don-pane" data-p="' + i + '"' + (i ? ' hidden' : '') + '><p class="chain">' + esc(t('don.net')) + '<b>' + esc(chain) + '</b></p>' +
             '<img class="qr" src="assets/img/donate-qr-' + d.key + '.svg?v=' + ASSET_V + '" alt="' + esc(t('don.alt', { chain: chain })) + '" width="180" height="180">' +
-            '<code class="addr" data-addr="' + esc(d.key) + '">' + esc(d.address) + '</code>' +
+            '<code class="addr" data-addr="' + esc(d.key) + '">' + (function (a) { var m = Math.ceil(a.length / 2); return '<span class="addr-line">' + esc(a.slice(0, m)) + '</span><br><span class="addr-line">' + esc(a.slice(m)) + '</span>'; })(d.address) + '</code>' +
             '<button class="btn btn-sm copy-addr" data-i="' + i + '">' + esc(t('don.copy')) + '</button>' +
             '<p class="dlg-warn"><span aria-hidden="true">⚠️</span> ' + esc(t('don.warn', { chain: chain })) + '</p></div>';
         }).join('') + '<p class="copied" role="status" aria-live="polite"></p>';

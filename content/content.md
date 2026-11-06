@@ -97,7 +97,6 @@ BTC 是比特币网络的原生资产。ETH 是以太坊网络的原生资产，
 
 - 英文原文 PDF：https://bitcoin.org/bitcoin.pdf
 - 多语言版本：https://bitcoin.org/en/bitcoin-paper
-- 基础问答：https://bitcoin.org/en/faq
 
 ## 币与代币有什么区别？
 

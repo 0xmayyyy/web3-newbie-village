@@ -42,11 +42,22 @@
 .course-reader .prose p{margin:0 0 18px}
 .course-reader .prose strong{color:#fff8e9}
 .course-reader .prose h3{font-size:18px;color:#f1d8b9;margin:28px 0 12px}
-.course-reader .prose a{color:#e6c79e}
+.course-reader .prose a{color:#FFDFA8}
 .course-reader .prose ul,.course-reader .prose ol{padding-left:22px}
 .course-reader .prose li{margin:8px 0}
-.course-reader .prose table{display:block;overflow-x:auto;border-collapse:collapse;max-width:100%;font-size:13px;margin:20px 0}
-.course-reader .prose td,.course-reader .prose th{padding:12px;border:1px solid #e6c79e30}
+.course-reader .prose code{background:#2B1D5B;color:#FFF2D9;border-radius:4px;padding:0 4px}
+.course-reader .prose .table-wrap,
+.course-reader .table-wrap{overflow-x:auto;margin:16px 0;border:1px solid rgba(174,140,207,.4);border-radius:12px;background:#34264F}
+.course-reader .prose table,
+.course-reader table{display:table;width:100%;border-collapse:collapse;max-width:100%;font-size:14px;margin:0;background:#34264F;color:#F5F3FF}
+.course-reader .prose td,
+.course-reader .prose th,
+.course-reader td,
+.course-reader th{padding:12px;border:1px solid rgba(174,140,207,.35);background:#34264F;color:#F5F3FF}
+.course-reader .prose th,
+.course-reader th{background:#2B1D5B;color:#FFF2D9;font-weight:700}
+.course-reader .prose td a,
+.course-reader .prose th a{color:#FFDFA8}
 .course-reader .prose blockquote{margin:20px 0;padding:12px 18px;border-left:2px solid var(--gold);background:#ffffff09}
 .course-reader .prose img{max-width:100%}
 .course-reader .reading-footer{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:34px;padding-top:22px;border-top:1px solid var(--line)}
@@ -99,15 +110,24 @@ body.is-reader main{max-width:none;margin:0;padding:0;background:transparent}
 .course-reader .ref-tag{color:#FFF2D9;background:rgba(255,223,168,.14);border:1px solid rgba(255,223,168,.42)}
 .course-reader .verify{background:rgba(174,140,207,.16);color:#C9B6E6;border-color:rgba(174,140,207,.4)}
 .course-reader .verify.ok{background:transparent;border:0;color:#FFDFA8}
-.course-reader .ex-warn{color:#FFF2D9;background:rgba(26,18,54,.55);border:1px solid rgba(174,140,207,.28)}
+.course-reader .ex-warn,
+.course-reader .ex-card p.ex-warn{color:#FFF2D9;background:#2B1D5B;border:1px solid rgba(174,140,207,.35)}
 .course-reader .promo{background:rgba(174,140,207,.22);color:#F5F3FF}
-.course-reader .ext-meta .domain{background:rgba(26,18,54,.55);color:#C9B6E6}
+.course-reader .pick-tag{background:rgba(255,223,168,.16);color:#FFF2D9;border:1px solid rgba(255,223,168,.42)}
+.course-reader details.more-tools{border-color:rgba(174,140,207,.45);background:#34264F;color:#F5F3FF}
+.course-reader details.more-tools>summary{color:#FFF2D9}
+.course-reader .domain b{color:#F5F3FF}
+.course-reader .ext-meta .domain{background:#2B1D5B;color:#C9B6E6}
+.course-reader a.btn,
+.course-reader .prose a.btn,
 .course-reader .btn{background:#FFDFA8;color:#1A1236;border-color:#FFDFA8}
+.course-reader a.btn:hover,
+.course-reader .prose a.btn:hover,
 .course-reader .btn:hover{background:#FFF2D9;color:#1A1236}
+.course-reader a.btn-ghost,
+.course-reader .prose a.btn-ghost,
 .course-reader .btn-ghost{background:transparent;color:#FFDFA8;border-color:rgba(255,223,168,.55)}
+.course-reader a.btn .btn-domain,
+.course-reader .prose a.btn .btn-domain,
 .course-reader .btn-domain{color:#1A1236}
-.course-reader .table-wrap{border-color:rgba(174,140,207,.35)}
-.course-reader table{background:#34264F;color:#F5F3FF}
-.course-reader th{background:#2B1D5B;color:#FFF2D9;border-bottom-color:rgba(174,140,207,.35)}
-.course-reader td{color:#F5F3FF;border-bottom-color:rgba(174,140,207,.28)}
 .course-reader .toc{top:calc(var(--hdr, 72px) + 16px)}

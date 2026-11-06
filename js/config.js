@@ -33,7 +33,6 @@ window.SITE_CONFIG = {
     'https://basescan.org/': '2026-10-15',
     'https://bitcoin.org/bitcoin.pdf': '2026-10-15',
     'https://bitcoin.org/en/bitcoin-paper': '2026-10-15',
-    'https://bitcoin.org/en/faq': '2026-10-15',
     'https://bscscan.com/': '2026-10-15',
     'https://coinmarketcap.com/': '2026-10-15',
     'https://debot.ai/r/0xMay': '2026-10-15',
