@@ -101,7 +101,6 @@ Under the current consensus rules, the issuance cap for BTC is about 21 million.
 
 - English PDF: https://bitcoin.org/bitcoin.pdf
 - Versions in other languages: https://bitcoin.org/en/bitcoin-paper
-- Basic FAQ: https://bitcoin.org/en/faq
 
 ## Coin or token?
 
@@ -1432,14 +1431,16 @@ Any wrong: "A few spots are worth another look 🧸 Follow the answer back to th
 
 ## Practice spot P&L calculator
 
-Inputs: buy price, sell price, quantity, and total fees. A simplified spot example only: one buy and one sell, in the same quote coin.
+Enter the buy price, the sell price, and the cost (how much you spent to buy). A simplified spot example only: one buy and one sell, in the same quote coin.
 
-Amount spent = buy price × quantity.
-Net profit or loss = (sell price − buy price) × quantity − total fees.
-Simplified return = net profit or loss ÷ amount spent × 100%.
+Quantity bought = cost ÷ buy price.
+Proceeds = quantity bought × sell price.
+Net profit or loss = proceeds − cost.
+Simplified return = net profit or loss ÷ cost × 100% (= sell price ÷ buy price − 1).
+Trading fees, slippage, and similar costs are not included.
 
-Invalid input: "Enter valid numbers. Buy price and quantity must be greater than 0. Fees cannot be negative."
-Result note: "This is a simplified learning result. It does not apply to contracts, lending, trades in several fills, or fees in more than one coin. A full account can look different."
+Invalid input: "Enter valid numbers. Buy price and cost must be greater than 0. The sell price cannot be negative."
+Result note: "This is a simplified learning result. Fees are not included. It does not apply to contracts, lending, trades in several fills, or fees in more than one coin. A full account can look different."
 
 ## Checklist before a transfer
 

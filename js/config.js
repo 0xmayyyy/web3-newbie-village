@@ -33,7 +33,6 @@ window.SITE_CONFIG = {
     'https://basescan.org/': '2026-10-15',
     'https://bitcoin.org/bitcoin.pdf': '2026-10-15',
     'https://bitcoin.org/en/bitcoin-paper': '2026-10-15',
-    'https://bitcoin.org/en/faq': '2026-10-15',
     'https://bscscan.com/': '2026-10-15',
     'https://coinmarketcap.com/': '2026-10-15',
     'https://debot.ai/r/0xMay': '2026-10-15',
@@ -86,6 +85,10 @@ window.SITE_CONFIG = {
     { name: 'DeBot', desc: '链上 Meme 币交易与跟踪工具', url: 'https://debot.ai/r/0xMay' },
     { name: '币安 Web3 钱包', desc: '无私钥（MPC）钱包，内置链上兑换', url: 'https://web3.binance.com/referral?ref=BFSADLNM' }
   ],
+
+  /* 顶栏「交易所」弹层顺序。URL 仍用上面 exchanges / onchain 里已有的邀请链接，邀请码从这些 URL 读取。
+     不含币安 Web3 钱包（钱包邀请，不是这个入口）。 */
+  exchangeNav: ['Binance', 'Bybit', 'Gate', 'DeBot'],
 
   /* 搜索别名：同一组里的词互相等价 */
   aliases: [
