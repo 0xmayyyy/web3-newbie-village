@@ -365,7 +365,7 @@
     var cur = visible[pos];
     var ids = readerChapterIds(planetIndex, id);
     var glossary = id === '13';
-    var cardIds = ids.filter(function (cid) { return cid !== '13'; });
+    var cardIds = glossary ? ids.filter(function (cid) { return cid !== '13'; }) : ids;
     var highlight = glossary ? '' : firstExcerpt(cur.s.text || '');
     document.title = t('title.ch', { id: c.id, title: c.title });
     var code = planet ? t(planetIndex === 0 ? 'reader.begin' : 'reader.explore', { n: ('0' + (planetIndex + 1)).slice(-2) }) : 'CHAPTER ' + c.id;
