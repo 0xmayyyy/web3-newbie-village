@@ -195,7 +195,7 @@
       : '<video class="hero-video" src="' + HERO_VIDEO + '" poster="' + HERO_POSTER + '" muted autoplay loop playsinline preload="metadata" aria-hidden="true"></video>';
     main.innerHTML =
       '<section class="hero-screen" aria-labelledby="h-hero">' +
-      '<div class="hero-media">' + video + '<div class="hero-shade" aria-hidden="true"></div></div>' +
+      '<div class="hero-media"><div class="hero-frame">' + video + '</div><div class="hero-shade" aria-hidden="true"></div></div>' +
       '<div class="hero-copy"><h1 id="h-hero">' + esc(t('hero.h1')) + '</h1>' +
       '<p class="hero-sub">' + esc(t('hero.lead')) + '</p>' +
       '<div class="hero-cta"><a class="hero-btn hero-btn-primary" href="#/c/01">' + esc(t('hero.cta')) + '</a>' +
