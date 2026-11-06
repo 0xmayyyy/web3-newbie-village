@@ -885,7 +885,7 @@
     var dlg = $('#donate');
     if (!dlg) {
       dlg = document.createElement('dialog'); dlg.id = 'donate'; dlg.setAttribute('aria-labelledby', 'donate-h');
-      dlg.innerHTML = '<button class="dlg-x" aria-label="' + esc(t('don.close')) + '">×</button><img class="dlg-bear" src="assets/img/bear-milktea.jpg?v=20261015171108" alt="" width="80" height="80">' +
+      dlg.innerHTML = '<button class="dlg-x" aria-label="' + esc(t('don.close')) + '">×</button><img class="dlg-avatar" src="assets/img/tip-avatar.webp?v=20261107360000" alt="" width="640" height="862">' +
         '<h2 id="donate-h">' + esc(t('don.h')) + '</h2><p class="w-note">' + esc(t('don.p')) + '</p>' +
         '<div class="seg don-tabs" role="tablist" aria-label="' + esc(t('don.tabs')) + '">' + C.donate.map(function (d, i) { return '<button role="tab" aria-selected="' + (i === 0) + '" data-d="' + i + '">' + esc(chainName(d)) + '</button>'; }).join('') + '</div>' +
         C.donate.map(function (d, i) {
