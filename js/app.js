@@ -204,6 +204,7 @@
       '<a class="qcard yellow" href="#/c/14"><span class="qi" aria-hidden="true">🧰</span><strong>常用工具导航</strong><span>查行情、查交易、查链上数据</span></a>' +
       '<a class="qcard pink" href="#/c/05"><span class="qi" aria-hidden="true">🏦</span><strong>CEX 交易所导航</strong><span>常用交易所注册入口与选择要点</span></a>' +
       '<a class="qcard lilac" href="#/c/13"><span class="qi" aria-hidden="true">💬</span><strong>币圈话术翻译器</strong><span>正经术语与社区玩梗分开看</span></a>' +
+      '<a class="qcard sky" href="#/punycode"><span class="qi" aria-hidden="true">🔤</span><strong>Punycode 转换</strong><span>中文域名和 xn-- 编码互转</span></a>' +
       '<a class="qcard mint" href="#/c/16"><span class="qi" aria-hidden="true">✅</span><strong>练习与自测</strong><span>安全自测、盈亏计算器、转账清单</span></a>' +
       '</div><img class="quick-img" src="assets/img/panda-phone.png?v=20261015171108" alt="拿着手机的小熊猫" width="140" height="137"></section>';
     bindSearch($('#q-home'), $('.hero-full .search-results'));
@@ -542,18 +543,143 @@
   }
   $('#donate-btn').addEventListener('click', openDonate);
 
+  /* ---------- Punycode 页面。计算在 js/punycode.js，这里只渲染，用户输入只用 textContent。 ---------- */
+  function punyFillMarked(el, text) {
+    el.textContent = '';
+    var cps = PUNY.codePoints(text), any = false, i, cp, ch, m;
+    for (i = 0; i < cps.length; i++) {
+      cp = cps[i]; ch = PUNY.fromCodePoint(cp);
+      if (cp > 127) {
+        any = true;
+        m = document.createElement('mark');
+        m.className = 'puny-odd';
+        m.textContent = ch;
+        m.title = PUNY.kindName(cp) + ' U+' + ('0000' + cp.toString(16).toUpperCase()).slice(-4);
+        el.appendChild(m);
+      } else el.appendChild(document.createTextNode(ch));
+    }
+    return any;
+  }
+  function punyCopy(text, statusEl, okText) {
+    function ok() { statusEl.textContent = okText; }
+    function fallback() {
+      var t = document.createElement('textarea');
+      t.value = text; t.setAttribute('readonly', '');
+      t.style.position = 'fixed'; t.style.left = '-9999px';
+      document.body.appendChild(t); t.select();
+      try { document.execCommand('copy'); ok(); } catch (e) { statusEl.textContent = '复制失败，请长按文字手动复制'; }
+      t.remove();
+    }
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(ok, fallback);
+    else fallback();
+  }
+  function renderPuny() {
+    document.title = 'Punycode 转换 - Web3 新手村';
+    main.innerHTML = '<div class="puny-page"><nav class="crumbs" aria-label="位置"><a href="#/">首页</a> › <span>Punycode 转换</span></nav>' +
+      '<h1>🔤 Punycode 转换</h1>' +
+      '<p class="lead">把域名在 Unicode 和 xn-- 之间转换。计算只在这台设备的浏览器里完成，输入不会上传，也不会自动打开你贴进来的网址。</p>' +
+      '<div class="widget puny">' +
+      '<div class="puny-examples"><p class="puny-ex-h">点一下，看拉丁字母 a 和西里尔字母 а</p><div class="puny-ex-row">' +
+      '<button type="button" class="puny-ex" id="puny-ex-latin" aria-pressed="false"><b>正常英文</b><span class="puny-ex-host">binance.com</span><small>字母 a 是拉丁文，结果仍是 binance.com</small></button>' +
+      '<button type="button" class="puny-ex" id="puny-ex-cyr" aria-pressed="false"><b>长得像的写法</b><span class="puny-ex-host">bin<mark class="puny-odd" title="西里尔字母 а（U+0430）">\u0430</mark>nce.com</span><small>标出的 a 是西里尔字母，会变成 xn--binnce-5nf.com</small></button>' +
+      '</div></div>' +
+      '<label class="puny-field" for="puny-in">域名或完整网址' +
+      '<input id="puny-in" type="text" inputmode="url" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" placeholder="例如 例子.中国 或 https://例子.中国"></label>' +
+      '<p class="puny-tip">这不是安全扫描，也不能告诉你网站是不是真的、安不安全。形似字、不同文字混在一起，以及普通的英文仿写（比如把 binance 写成 binonce）都可能被用来钓鱼。这里只做编码转换。</p>' +
+      '<p class="puny-dir" id="puny-dir" role="status" aria-live="polite"></p>' +
+      '<p class="puny-warn" id="puny-warn" hidden></p>' +
+      '<p class="puny-user" id="puny-user" hidden></p>' +
+      '<div class="puny-out" id="puny-out" hidden>' +
+      '<div class="puny-row"><span class="puny-k">你输入的原文</span><code id="puny-raw"></code></div>' +
+      '<div class="puny-row"><span class="puny-k">Unicode 域名</span><p class="puny-odd-host" id="puny-uni"></p><p class="puny-odd-note" id="puny-odd-note" hidden></p><button type="button" class="btn btn-ghost btn-sm" id="puny-copy-uni">复制 Unicode</button></div>' +
+      '<div class="puny-row"><span class="puny-k">Punycode / ASCII</span><code id="puny-host"></code><button type="button" class="btn btn-ghost btn-sm" id="puny-copy-host">复制 Punycode</button></div>' +
+      '<div class="puny-row" id="puny-url-row" hidden><span class="puny-k" id="puny-url-k">只替换了域名的网址</span><code id="puny-url"></code><button type="button" class="btn btn-ghost btn-sm" id="puny-copy-url">复制网址</button></div>' +
+      '</div><p class="copied" id="puny-copied" role="status" aria-live="polite"></p></div></div>';
+    var input = $('#puny-in'), dir = $('#puny-dir'), warn = $('#puny-warn'), userNote = $('#puny-user'), out = $('#puny-out');
+    var rawEl = $('#puny-raw'), uniEl = $('#puny-uni'), noteEl = $('#puny-odd-note'), hostEl = $('#puny-host'), urlEl = $('#puny-url'), urlRow = $('#puny-url-row'), copied = $('#puny-copied');
+    var exLatin = $('#puny-ex-latin'), exCyr = $('#puny-ex-cyr');
+    var state = { ascii: '', unicode: '', url: '' }, composing = false;
+    function setPressed() {
+      var v = input.value.replace(/^\s+|\s+$/g, '');
+      exLatin.setAttribute('aria-pressed', v === PUNY.EX_LATIN ? 'true' : 'false');
+      exCyr.setAttribute('aria-pressed', v === PUNY.EX_CYR ? 'true' : 'false');
+    }
+    function clearOut() {
+      warn.hidden = true; warn.textContent = '';
+      userNote.hidden = true; userNote.textContent = '';
+      rawEl.textContent = ''; uniEl.textContent = ''; hostEl.textContent = ''; urlEl.textContent = '';
+      noteEl.hidden = true; noteEl.textContent = '';
+      urlRow.hidden = true; out.hidden = true;
+      state.ascii = ''; state.unicode = ''; state.url = '';
+    }
+    function showEmpty() {
+      dir.className = 'puny-dir';
+      dir.textContent = '贴上域名或完整网址，会自动转换。也可以点上面的例子。';
+      clearOut(); setPressed();
+    }
+    function showError(msg) {
+      dir.className = 'puny-dir err';
+      dir.textContent = msg;
+      clearOut(); setPressed();
+    }
+    function run() {
+      setPressed();
+      var res = PUNY.convert(input.value);
+      if (res.empty) return showEmpty();
+      if (res.error) return showError(res.error);
+      var msg = '已转成 Punycode（xn--）。';
+      if (res.kind === 'to-ascii' && !/(^|\.)xn--/i.test(res.ascii)) msg = '已转成浏览器使用的英文写法。';
+      else if (res.kind === 'to-unicode') msg = '已转成可读的 Unicode 域名。';
+      else if (res.kind === 'same') msg = '这是英文域名，不用转成 xn--。';
+      else if (res.kind === 'mapped') msg = '英文域名会按规则写成小写，没有 xn--。';
+      else if (res.kind === 'ip') msg = '这是 IP 地址，没有 Punycode 这一层。';
+      dir.className = 'puny-dir';
+      dir.textContent = msg;
+      if (res.warn) {
+        warn.hidden = false;
+        warn.textContent = '这条里面有非英文字符，或结果带 xn--。有的字符和普通英文字母长得几乎一样。上面只是编码转换，不是在说这个网站安全或不安全。';
+      } else { warn.hidden = true; warn.textContent = ''; }
+      if (res.userinfo) {
+        userNote.hidden = false;
+        userNote.textContent = '@ 前面不是域名。真正的域名是 @ 后面、下面标出来的那一个。';
+      } else { userNote.hidden = true; userNote.textContent = ''; }
+      rawEl.textContent = res.input;
+      punyFillMarked(uniEl, res.unicode);
+      var note = PUNY.markNote(res.unicode);
+      if (note) { noteEl.hidden = false; noteEl.textContent = note; }
+      else { noteEl.hidden = true; noteEl.textContent = ''; }
+      hostEl.textContent = res.ascii;
+      state.ascii = res.ascii; state.unicode = res.unicode;
+      if (res.rebuilt) { urlEl.textContent = res.rebuilt; urlRow.hidden = false; state.url = res.rebuilt; }
+      else { urlEl.textContent = ''; urlRow.hidden = true; state.url = ''; }
+      out.hidden = false;
+    }
+    input.addEventListener('compositionstart', function () { composing = true; });
+    input.addEventListener('compositionend', function () { composing = false; run(); });
+    input.addEventListener('input', function () { copied.textContent = ''; if (!composing) run(); });
+    function loadEx(value) { input.value = value; copied.textContent = ''; run(); input.focus(); }
+    exLatin.addEventListener('click', function () { loadEx(PUNY.EX_LATIN); });
+    exCyr.addEventListener('click', function () { loadEx(PUNY.EX_CYR); });
+    $('#puny-copy-host').addEventListener('click', function () { if (state.ascii) punyCopy(state.ascii, copied, '已复制 Punycode'); });
+    $('#puny-copy-uni').addEventListener('click', function () { if (state.unicode) punyCopy(state.unicode, copied, '已复制 Unicode'); });
+    $('#puny-copy-url').addEventListener('click', function () { if (state.url) punyCopy(state.url, copied, '已复制网址'); });
+    showEmpty();
+  }
+
   /* ---------- 路由 ---------- */
   function route() {
     var h = location.hash, m = h.match(/^#\/c\/(\d\d)(?:\/(\d+))?/);
     $$('.topbar .search-results').forEach(function (b) { b.hidden = true; });
-    var rm = h.match(/^#\/r\/(\w+)(?:\/(\d+))?/), cx = /^#\/cex/.test(h);
-    document.body.classList.toggle('is-home', !m && !rm && !cx);
+    var rm = h.match(/^#\/r\/(\w+)(?:\/(\d+))?/), cx = /^#\/cex/.test(h), py = /^#\/punycode/.test(h);
+    document.body.classList.toggle('is-home', !m && !rm && !cx && !py);
     if (cx) { renderCex(); window.scrollTo(0, 0); }
+    else if (py) { renderPuny(); window.scrollTo(0, 0); }
     else if (rm) renderRoute(rm[1], rm[2] ? +rm[2] : 0);
     else if (m) renderChapter(m[1], m[2] != null ? +m[2] : null);
     else { renderHome(); window.scrollTo(0, 0); }
     setHdr();
-    $$('.topnav a').forEach(function (a) { a.toggleAttribute('aria-current', a.getAttribute('href') === (cx ? '#/cex' : m ? '#/c/' + m[1] : '#/')); });
+    var cur = cx ? '#/cex' : py ? '#/punycode' : m ? '#/c/' + m[1] : '#/';
+    $$('.topnav a').forEach(function (a) { a.toggleAttribute('aria-current', !!cur && a.getAttribute('href') === cur); });
     if (h && h !== '#/' && !(m && m[2])) main.focus({ preventScroll: true });
   }
   function setHdr() { document.documentElement.style.setProperty('--hdr', $('.topbar').offsetHeight + 'px'); }
