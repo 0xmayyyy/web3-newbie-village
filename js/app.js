@@ -693,6 +693,178 @@
       '</div></div>';
   }
 
+  /* ---------- 顶栏「交易所」快捷入口 ---------- */
+  var exsScrollY = 0, exsOpener = null;
+  var EXS_BLURB = { Binance: 'exs.binance', Bybit: 'exs.bybit', Gate: 'exs.gate', HTX: 'exs.htx', DeBot: 'exs.debot' };
+  var EXS_MARK = { Binance: 'BN', Bybit: 'BY', Gate: 'GT', HTX: 'HX', DeBot: 'DB' };
+  function exchangeShortcutsOpen() {
+    var root = $('#ex-shortcuts');
+    return !!(root && !root.hidden);
+  }
+  function inviteCodeFromUrl(url) {
+    var u, i, v, parts;
+    try { u = new URL(url); } catch (e) { return ''; }
+    var keys = ['invite_code', 'inviteCode', 'ref', 'referral', 'code'];
+    for (i = 0; i < keys.length; i++) {
+      v = u.searchParams.get(keys[i]);
+      if (v) return v;
+    }
+    parts = u.pathname.split('/').filter(Boolean);
+    return parts.length ? parts[parts.length - 1] : '';
+  }
+  function exchangeShortcutItems() {
+    var names = (C && C.exchangeNav) || [];
+    return names.map(function (name) {
+      var x = null;
+      (C.exchanges || []).some(function (e) { if (e.name === name) { x = e; return true; } return false; });
+      if (!x) (C.onchain || []).some(function (e) { if (e.name === name) { x = e; return true; } return false; });
+      var url = x && x.url ? x.url : '';
+      var code = x && x.code ? String(x.code) : (url ? inviteCodeFromUrl(url) : '');
+      var enabled = !!(x && url && x.enabled !== false);
+      return { name: name, url: enabled ? url : '', code: code, enabled: enabled };
+    });
+  }
+  function setPageInert(on) {
+    ['header.topbar', '#main', '#footer'].forEach(function (sel) {
+      var el = document.querySelector(sel);
+      if (!el) return;
+      if (on) el.setAttribute('inert', '');
+      else el.removeAttribute('inert');
+    });
+  }
+  function ensureExchangeShortcuts() {
+    var root = $('#ex-shortcuts');
+    if (root) return root;
+    root = document.createElement('div');
+    root.id = 'ex-shortcuts';
+    root.className = 'exs';
+    root.hidden = true;
+    root.setAttribute('role', 'dialog');
+    root.setAttribute('aria-modal', 'true');
+    root.setAttribute('aria-labelledby', 'exs-title');
+    root.setAttribute('aria-describedby', 'exs-sub');
+    root.innerHTML = '<div class="exs-panel"><div class="exs-head"></div><div class="exs-body"></div><p class="sr exs-live" role="status" aria-live="polite"></p></div>';
+    document.body.appendChild(root);
+    root.addEventListener('click', onExchangeShortcutClick);
+    return root;
+  }
+  function paintExchangeShortcuts() {
+    var root = ensureExchangeShortcuts();
+    var head = $('.exs-head', root);
+    var body = $('.exs-body', root);
+    var cards = exchangeShortcutItems().map(function (item) {
+      var blurbKey = EXS_BLURB[item.name];
+      var blurb = blurbKey ? t(blurbKey) : '';
+      var mark = EXS_MARK[item.name] || item.name.slice(0, 2).toUpperCase();
+      var codeRow = item.code
+        ? '<div class="exs-code"><span class="exs-code-k">' + esc(t('exs.code')) + '</span><code>' + esc(item.code) + '</code><button type="button" class="exs-copy" data-code="' + esc(item.code) + '">' + esc(t('exs.copy')) + '</button></div>'
+        : '';
+      var go = item.enabled
+        ? '<a class="exs-go" href="' + esc(item.url) + '" target="_blank" rel="noopener noreferrer">' + esc(t('exs.register')) + '</a>'
+        : '<button type="button" class="exs-go" disabled>' + esc(t('exs.register')) + '</button>';
+      return '<article class="exs-card"><div class="exs-top"><span class="exs-mark" aria-hidden="true">' + esc(mark) + '</span><div><h3>' + esc(item.name) + '</h3>' +
+        (blurb ? '<p>' + esc(blurb) + '</p>' : '') + '</div></div>' + codeRow + go + '</article>';
+    }).join('');
+    head.innerHTML = '<button type="button" class="exs-x" data-exs-close aria-label="' + esc(t('exs.close')) + '">×</button>' +
+      '<h2 id="exs-title">' + esc(t('exs.title')) + '</h2><p id="exs-sub" class="exs-sub">' + esc(t('exs.sub')) + '</p>';
+    body.innerHTML = '<div class="exs-grid">' + cards + '</div>';
+  }
+  function openExchangeShortcuts() {
+    var root = ensureExchangeShortcuts();
+    if (!root.hidden) { paintExchangeShortcuts(); return; }
+    exsOpener = document.activeElement;
+    exsScrollY = window.scrollY || window.pageYOffset || 0;
+    paintExchangeShortcuts();
+    root.hidden = false;
+    document.body.style.top = '-' + exsScrollY + 'px';
+    document.documentElement.classList.add('exs-open');
+    var navBtn = $('#nav-ex');
+    if (navBtn) navBtn.setAttribute('aria-expanded', 'true');
+    setPageInert(true);
+    var x = $('.exs-x', root);
+    if (x) x.focus({ preventScroll: true });
+  }
+  function closeExchangeShortcuts() {
+    var root = $('#ex-shortcuts');
+    if (!root || root.hidden) return;
+    root.hidden = true;
+    var navBtn = $('#nav-ex');
+    if (navBtn) navBtn.setAttribute('aria-expanded', 'false');
+    var y = exsScrollY;
+    document.documentElement.classList.remove('exs-open');
+    document.body.style.top = '';
+    setPageInert(false);
+    function pinScroll() {
+      var root = document.documentElement;
+      var prev = root.style.scrollBehavior;
+      root.style.scrollBehavior = 'auto';
+      window.scrollTo(0, y);
+      root.style.scrollBehavior = prev;
+    }
+    pinScroll();
+    if (exsOpener && exsOpener.focus && document.contains(exsOpener)) {
+      try { exsOpener.focus({ preventScroll: true }); } catch (err) { exsOpener.focus(); }
+    }
+    pinScroll();
+    requestAnimationFrame(pinScroll);
+  }
+  function onExchangeShortcutClick(e) {
+    if (e.target === e.currentTarget || e.target.closest('[data-exs-close]')) {
+      closeExchangeShortcuts();
+      return;
+    }
+    var copyBtn = e.target.closest('.exs-copy');
+    if (!copyBtn || copyBtn.disabled) return;
+    var code = copyBtn.getAttribute('data-code') || '';
+    if (!code) return;
+    var live = $('.exs-live', $('#ex-shortcuts'));
+    function ok() {
+      copyBtn.textContent = t('exs.copied');
+      copyBtn.classList.add('is-copied');
+      if (live) live.textContent = t('exs.copied');
+      if (copyBtn._t) clearTimeout(copyBtn._t);
+      copyBtn._t = setTimeout(function () {
+        if (!copyBtn.isConnected) return;
+        copyBtn.textContent = t('exs.copy');
+        copyBtn.classList.remove('is-copied');
+      }, 1600);
+    }
+    function fallback() {
+      var ta = document.createElement('textarea');
+      ta.value = code;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      var copied = false;
+      try { copied = document.execCommand('copy'); } catch (err) { copied = false; }
+      ta.remove();
+      if (copied) ok();
+    }
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(code).then(ok, fallback);
+    else fallback();
+  }
+  function trapExchangeShortcuts(e) {
+    if (e.key !== 'Tab') return;
+    var root = $('#ex-shortcuts');
+    if (!root) return;
+    var nodes = root.querySelectorAll('button, a[href]');
+    var list = [];
+    Array.prototype.forEach.call(nodes, function (n) {
+      if (n.disabled || n.getAttribute('aria-hidden') === 'true') return;
+      list.push(n);
+    });
+    if (!list.length) { e.preventDefault(); return; }
+    var first = list[0], last = list[list.length - 1], active = document.activeElement;
+    if (e.shiftKey) {
+      if (active === first || !root.contains(active)) { e.preventDefault(); last.focus(); }
+    } else if (active === last || !root.contains(active)) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
+
   /* ---------- 打赏 ---------- */
   function chainName(d) { return LANG === 'en' ? t('chain.' + d.key) : d.chain; }
   function openDonate() {
@@ -727,6 +899,7 @@
     dlg.showModal();
   }
   $('#donate-btn').addEventListener('click', openDonate);
+  $('#nav-ex').addEventListener('click', function () { openExchangeShortcuts(); });
 
   /* ---------- Punycode 页面。计算在 js/punycode.js，这里只渲染，用户输入只用 textContent。 ---------- */
   function punyFillMarked(el, text) {
@@ -943,7 +1116,6 @@
     if (/^#\/cex/.test(h)) key = 'cex';
     else if (/^#\/punycode/.test(h)) key = 'puny';
     else if (/^#\/r\//.test(h)) key = 'courses';
-    else if (id === '05') key = 'ex';
     else if (id === '14') key = 'tools';
     else if (id === '13') key = 'slang';
     else if (m) key = 'courses';
@@ -1000,6 +1172,7 @@
     if ((next !== 'zh' && next !== 'en') || next === LANG) return;
     var snap = snapshotInputs();
     var dlg = $('#donate'), donateOpen = !!(dlg && dlg.open);
+    var exsWas = exchangeShortcutsOpen();
     LANG = next;
     try { localStorage.setItem(LANG_KEY, LANG); } catch (e) { }
     applyCourse();
@@ -1009,6 +1182,7 @@
     route(true);
     restoreInputs(snap);
     if (donateOpen) openDonate();
+    if (exsWas) paintExchangeShortcuts();
     setHdr();
     syncNavTone();
   }
@@ -1059,6 +1233,11 @@
     if ($('#more-menu') && $('#more-menu').classList.contains('is-open') && !e.target.closest('#more-menu') && !e.target.closest('#nav-more')) setMoreOpen(false);
   });
   document.addEventListener('keydown', function (e) {
+    if (exchangeShortcutsOpen()) {
+      if (e.key === 'Escape') { e.preventDefault(); closeExchangeShortcuts(); return; }
+      trapExchangeShortcuts(e);
+      return;
+    }
     if (e.key === 'Escape') { setNavOpen(false); setMoreOpen(false); }
   });
   $('#site-nav').addEventListener('click', function (e) {

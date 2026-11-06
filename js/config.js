@@ -87,6 +87,10 @@ window.SITE_CONFIG = {
     { name: '币安 Web3 钱包', desc: '无私钥（MPC）钱包，内置链上兑换', url: 'https://web3.binance.com/referral?ref=BFSADLNM' }
   ],
 
+  /* 顶栏「交易所」弹层顺序。URL 仍用上面 exchanges / onchain 里已有的邀请链接，邀请码从这些 URL 读取。
+     不含币安 Web3 钱包（钱包邀请，不是这个入口）。 */
+  exchangeNav: ['Binance', 'Bybit', 'Gate', 'HTX', 'DeBot'],
+
   /* 搜索别名：同一组里的词互相等价 */
   aliases: [
     ['爆仓', '强平', '清算', 'liquidation', '保证金'],
