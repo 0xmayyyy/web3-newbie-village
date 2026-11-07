@@ -248,7 +248,7 @@
       '<div class="galaxy">' + PLANETS.map(function (p, i) {
         return '<button type="button" class="planet-card p' + i + '" data-i="' + i + '" aria-pressed="' + (i === 0 ? 'true' : 'false') + '"' +
           (p.locked ? ' disabled' : '') + ' aria-label="' + esc(t('atlas.' + p.id + '.name')) + '">' +
-          '<div class="planet-wrap"><img src="assets/planets/' + p.file + '.png?v=20261107290000" alt=""></div>' +
+          '<div class="planet-wrap"><img src="assets/planets/' + p.file + '.png?v=20261107290000" alt="" draggable="false"></div>' +
           '<span class="num">' + ('0' + (i + 1)).slice(-2) + '</span>' +
           '<strong>' + esc(t('atlas.' + p.id + '.name')) + '</strong>' +
           '<small>' + noLoneChar(t('atlas.' + p.id + '.sub')) + '</small>' +
@@ -265,7 +265,7 @@
       '<h2>' + esc(t('atlas.m.h')) + '</h2><p>' + esc(t('atlas.m.lead')) + '</p></div>' +
       '<div class="m-planets">' + PLANETS.slice(0, 6).map(function (p, i) {
         return '<button type="button" class="m-planet planet-card" data-i="' + i + '" aria-label="' + esc(t('atlas.m.' + p.id + '.name')) + '" style="--aura:' + MOBILE_AURA[i] + ';--duration:' + MOBILE_DUR[i] + 's;--delay:' + MOBILE_DELAY[i] + 's">' +
-          '<span class="orb"><img src="assets/planets/mobile/0' + (i + 1) + '.png?v=20261107510000" alt=""></span>' +
+          '<span class="orb"><img src="assets/planets/mobile/0' + (i + 1) + '.png?v=20261107510000" alt="" draggable="false"></span>' +
           '<span class="number">0' + (i + 1) + ' / 06</span>' +
           '<strong>' + esc(t('atlas.m.' + p.id + '.name')) + '</strong>' +
           '<span class="desc">' + esc(t('atlas.m.' + p.id + '.desc')) + '</span></button>';
@@ -379,7 +379,7 @@
       '<div class="crumb-bar"><div class="crumb"><a href="#/">' + esc(t('crumb.home')) + '</a> / ' + esc(planet ? t('reader.crumb', { planet: t('atlas.' + planet.id + '.name'), title: c.title }) : c.id + ' ' + c.title) + '</div>' +
       '<div class="planet-return"><label for="planet-jump">' + esc(t('reader.jump')) + '</label><select id="planet-jump" aria-label="' + esc(t('reader.jump')) + '">' + planetOptions + '</select></div></div>' +
       '<section class="hero"><div><div class="eyebrow">' + esc(code) + '</div><h1>' + esc(planet ? t('atlas.' + planet.id + '.name') : c.title) + '</h1><p>' + esc(planet ? t('reader.' + planet.id + '.desc') : c.intro) + '</p></div>' +
-      (planet ? '<div class="hero-planet" aria-hidden="true"><img alt="" src="assets/planets/' + planet.file + '.png?v=20261107290000"></div>' : '') +
+      (planet ? '<div class="hero-planet" aria-hidden="true"><img alt="" draggable="false" src="assets/planets/' + planet.file + '.png?v=20261107290000"></div>' : '') +
       '</section><div class="layout">' +
       '<aside class="side"><h2>' + esc(t('reader.planets')) + '</h2><div class="planet-menu">' + PLANETS.filter(function (p) { return !p.locked; }).map(function (p) {
         var real = PLANETS.indexOf(p);
