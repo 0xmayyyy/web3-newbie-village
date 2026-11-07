@@ -42,13 +42,14 @@ check('英文仿写 binonce.com 也不当成形似字报警', function () {
   eq(r.ascii, 'binonce.com');
   eq(r.warn, false);
 });
-check('西里尔 а → xn--binnce-5nf.com', function () {
+check('西里尔 с 和 е → xn--abd-tdd2d.com', function () {
   var r = PUNY.convert(PUNY.EX_CYR);
-  eq(r.ascii, 'xn--binnce-5nf.com');
+  eq(r.ascii, 'xn--abd-tdd2d.com');
   eq(r.warn, true);
-  eq(r.unicode.indexOf('\u0430') >= 0, true);
-  eq(PUNY.markNote(r.unicode).indexOf('西里尔字母') >= 0, true);
-  eq(PUNY.markNote(r.unicode).indexOf('U+0430') >= 0, true);
+  eq(r.unicode.indexOf('\u0441') >= 0, true);
+  eq(r.unicode.indexOf('\u0435') >= 0, true);
+  eq(PUNY.markNote(r.unicode).indexOf('U+0441') >= 0, true);
+  eq(PUNY.markNote(r.unicode).indexOf('U+0435') >= 0, true);
 });
 check('https 只替换主机，路径查询哈希保留', function () {
   var r = PUNY.convert('https://例子.中国/路径?q=1#哈');

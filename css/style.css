@@ -520,6 +520,16 @@ body:has(.puny-page){background:#0D1022}
 .puny-page .btn-ghost{background:transparent;color:#1A1236;border-color:rgba(26,18,54,.55)}
 .puny-page .btn-ghost:hover{background:rgba(26,18,54,.08);color:#1A1236}
 .puny-page .copied{min-height:1.4em;color:#FFDFA8}
+.puny-chart{margin-top:28px}
+.puny-page .puny-chart-title{margin:0 0 8px;font-size:26px;font-weight:700;line-height:1.35;color:#F5F3FF}
+.puny-chart p{margin:0 0 10px;color:#F5F3FF;line-height:1.6}
+.puny-page .puny-chart-sub{margin:16px 0 10px;font-size:20px;font-weight:700;line-height:1.35;color:#F5F3FF}
+.puny-table-wrap{overflow-x:auto;margin:8px 0 12px;border:1px solid rgba(174,140,207,.4);border-radius:12px;background:#34264F}
+.puny-table{width:100%;border-collapse:collapse;background:#34264F;color:#F5F3FF;font-size:15px}
+.puny-table th,.puny-table td{padding:10px 14px;border-bottom:1px solid rgba(174,140,207,.28);text-align:left;background:#34264F;color:#F5F3FF}
+.puny-table th{background:#2B1D5B;color:#FFF2D9;font-weight:700}
+.puny-glyph{display:inline-grid;place-items:center;min-width:2.2em;min-height:2.2em;padding:2px 8px;border-radius:8px;background:#C5B4EA;color:#1A1236;font-weight:700;font-size:20px;line-height:1}
+.puny-chart-note{color:#C9B6E6 !important;font-size:13px}
 
 /* ===== 深空开场 + 悬浮导航（仅首页首屏与顶栏） ===== */
 html.boot-home body:not(.is-home){background:#0D1022}
