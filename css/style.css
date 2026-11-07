@@ -648,6 +648,34 @@ html[lang="zh-CN"] .hero-screen,html[lang="zh-CN"] .hero-sub{font-family:"Noto S
 .paths-block .route-btns{margin-left:auto;margin-right:auto}
 .paths-block .search.big{max-width:520px;margin-left:auto;margin-right:auto}
 .cex-audit-note{margin:0 0 12px;max-width:72ch;font-size:14px;line-height:1.65;color:var(--ink);background:#fff6e5;border:1px solid #f0d49a;border-radius:12px;padding:8px 12px}
+body:has(.cex-page){background:#0D1022}
+.cex-page{color:#F5F3FF}
+.cex-page h1{color:#F5F3FF}
+.cex-page .lead,.cex-page .crumbs,.cex-page .w-note,.cex-page .cex-stats{color:#C9B6E6}
+.cex-page .crumbs a,.cex-page a{color:#FFDFA8}
+.cex-page .cex-audit-note{color:#FFF2D9;background:#3E315C;border:1px solid rgba(255,223,168,.55)}
+.cex-page .cex-tools input{background:#3E315C;color:#F5F3FF;border:1px solid rgba(174,140,207,.45)}
+.cex-page .cex-tools input::placeholder{color:#C9B6E6;opacity:1}
+.cex-page .cex-tools input:focus{border-color:#FFDFA8;outline:none;box-shadow:0 0 0 3px rgba(255,223,168,.28)}
+.cex-page .widget.cexboard{background:#4A3870;border:1px solid rgba(174,140,207,.4);color:#F5F3FF;box-shadow:none}
+.cex-page .cexboard .table-wrap{border:1px solid rgba(174,140,207,.4);border-radius:12px}
+.cex-page .cexboard table{border:0;background:#4A3870;color:#F5F3FF}
+.cex-page .cexboard th,.cex-page .cexboard td{border:1px solid rgba(174,140,207,.35);background:#4A3870;color:#F5F3FF}
+.cex-page .cexboard thead th{background:#3E315C;color:#FFF2D9}
+.cex-page .cexboard thead .th-sort{color:#FFF2D9}
+.cex-page .cexboard thead .th-sort:hover,.cex-page .cexboard thead .th-sort:focus-visible{color:#FFDFA8}
+.cex-page .cexboard tbody tr:nth-child(even) td{background:#3E315C}
+.cex-page .cexboard tbody tr:hover td{background:rgba(255,223,168,.12)}
+.cex-page .cexboard tbody tr.hl td,.cex-page .cexboard tr.hl td{background:rgba(255,223,168,.18);color:#FFF2D9}
+.cex-page .cexboard tbody tr.hl:hover td{background:rgba(255,223,168,.28)}
+.cex-page .cexboard td.pos,.cex-page .cexboard tbody tr.hl td.pos{color:#b7f0cf}
+.cex-page .cexboard td.neg,.cex-page .cexboard tbody tr.hl td.neg{color:#ffb4a2}
+.cex-page .cexboard td.na{color:#C9B6E6}
+.cex-page .cexboard td:first-child,.cex-page .cexboard th:first-child{color:#C9B6E6}
+.cex-page .cexboard td.nm{color:#F5F3FF}
+.cex-page .callout.cex-notes{background:#4A3870;border:1px solid rgba(174,140,207,.4);color:#F5F3FF}
+.cex-page .cex-notes h2{color:#F5F3FF}
+.cex-page .cex-notes li{color:#C9B6E6}
 @media (prefers-reduced-motion:reduce){
   .hero-btn:hover{transform:none}
   .exs,.exs-panel{animation:none}
