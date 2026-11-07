@@ -1031,6 +1031,42 @@
     if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(ok, fallback);
     else fallback();
   }
+  function punyChart() {
+    var pairs = [
+      ['A', '0041', '\u0410', '0410'],
+      ['a', '0061', '\u0430', '0430'],
+      ['B', '0042', '\u0412', '0412'],
+      ['C', '0043', '\u0421', '0421'],
+      ['c', '0063', '\u0441', '0441'],
+      ['E', '0045', '\u0415', '0415'],
+      ['e', '0065', '\u0435', '0435'],
+      ['H', '0048', '\u041D', '041D'],
+      ['K', '004B', '\u041A', '041A'],
+      ['M', '004D', '\u041C', '041C'],
+      ['O', '004F', '\u041E', '041E'],
+      ['o', '006F', '\u043E', '043E'],
+      ['P', '0050', '\u0420', '0420'],
+      ['p', '0070', '\u0440', '0440'],
+      ['T', '0054', '\u0422', '0422'],
+      ['X', '0058', '\u0425', '0425'],
+      ['x', '0078', '\u0445', '0445'],
+      ['y', '0079', '\u0443', '0443'],
+      ['i', '0069', '\u0456', '0456'],
+      ['I', '0049', '\u0406', '0406'],
+      ['j', '006A', '\u0458', '0458'],
+      ['S', '0053', '\u0405', '0405'],
+      ['s', '0073', '\u0455', '0455']
+    ];
+    var body = pairs.map(function (row) {
+      return '<tr><td><span class="puny-glyph">' + row[0] + '</span></td><td><span class="puny-glyph">' + row[2] + '</span></td><td>U+' + row[1] + ' / U+' + row[3] + '</td></tr>';
+    }).join('');
+    return '<section class="puny-chart" aria-labelledby="puny-chart-title">' +
+      '<h2 id="puny-chart-title" class="puny-chart-title">' + esc(t('puny.chart.h')) + '</h2>' +
+      '<p>' + esc(t('puny.chart.p1')) + '</p><p>' + esc(t('puny.chart.p2')) + '</p>' +
+      '<h3 class="puny-chart-sub">' + esc(t('puny.chart.sub')) + '</h3>' +
+      '<div class="puny-table-wrap"><table class="puny-table"><thead><tr><th>' + esc(t('puny.chart.lat')) + '</th><th>' + esc(t('puny.chart.cyr')) + '</th><th>' + esc(t('puny.chart.cp')) + '</th></tr></thead><tbody>' +
+      body + '</tbody></table></div><p class="puny-chart-note">' + esc(t('puny.chart.note')) + '</p></section>';
+  }
   function renderPuny() {
     document.title = t('puny.title');
     main.innerHTML = '<div class="puny-page"><nav class="crumbs" aria-label="' + esc(t('crumb.where')) + '"><a href="#/">' + esc(t('crumb.home')) + '</a> › <span>' + esc(t('puny.crumb')) + '</span></nav>' +
@@ -1038,21 +1074,25 @@
       '<p class="lead">' + esc(t('puny.lead')) + '</p>' +
       '<div class="widget puny">' +
       '<div class="puny-examples"><p class="puny-ex-h">' + esc(t('puny.ex.h')) + '</p><div class="puny-ex-row">' +
-      '<button type="button" class="puny-ex" id="puny-ex-latin" aria-pressed="false"><b>' + esc(t('puny.ex.latin')) + '</b><span class="puny-ex-host">binance.com</span><small>' + esc(t('puny.ex.latin.s')) + '</small></button>' +
-      '<button type="button" class="puny-ex" id="puny-ex-cyr" aria-pressed="false"><b>' + esc(t('puny.ex.cyr')) + '</b><span class="puny-ex-host">bin<mark class="puny-odd" title="' + esc(t('puny.ex.cyr.mark')) + '">\u0430</mark>nce.com</span><small>' + esc(t('puny.ex.cyr.s')) + '</small></button>' +
+      '<button type="button" class="puny-ex" id="puny-ex-latin" aria-pressed="false"><b>' + esc(t('puny.ex.latin')) + '</b><span class="puny-ex-host">abcde</span><small>' + esc(t('puny.ex.latin.s')) + '</small></button>' +
+      '<button type="button" class="puny-ex" id="puny-ex-cyr" aria-pressed="false"><b>' + esc(t('puny.ex.cyr')) + '</b><span class="puny-ex-host">ab<mark class="puny-odd" title="' + esc(t('puny.ex.mark.c')) + '">\u0441</mark>d<mark class="puny-odd" title="' + esc(t('puny.ex.mark.e')) + '">\u0435</mark></span><small>' + esc(t('puny.ex.cyr.s')) + '</small></button>' +
       '</div></div>' +
-      '<label class="puny-field" for="puny-in">' + esc(t('puny.label')) +
-      '<input id="puny-in" type="text" inputmode="url" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" placeholder="' + esc(t('puny.ph')) + '"></label>' +
-      '<p class="puny-tip">' + esc(t('puny.tip')) + '</p>' +
+      '<div class="puny-split">' +
+      '<label class="puny-label" for="puny-in">' + esc(t('puny.label')) + '</label>' +
+      '<span class="puny-label-gap" aria-hidden="true"></span>' +
+      '<textarea id="puny-in" class="puny-input" rows="2" inputmode="url" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" placeholder="' + esc(t('puny.ph')) + '"></textarea>' +
+      '<div class="puny-out" id="puny-out">' +
+      '<div class="puny-row"><span class="puny-k">' + esc(t('puny.uni')) + '</span><p class="puny-odd-host" id="puny-uni"></p><button type="button" class="btn btn-ghost btn-sm" id="puny-copy-uni">' + esc(t('puny.copy.uni')) + '</button></div>' +
+      '<div class="puny-row"><span class="puny-k">' + esc(t('puny.ascii')) + '</span><code id="puny-host"></code><button type="button" class="btn btn-ghost btn-sm" id="puny-copy-host">' + esc(t('puny.copy.ascii')) + '</button>' +
+      '<div class="puny-url-line" id="puny-url-row" hidden><span class="puny-k" id="puny-url-k">' + esc(t('puny.url')) + '</span><code id="puny-url"></code><button type="button" class="btn btn-ghost btn-sm" id="puny-copy-url">' + esc(t('puny.copy.url')) + '</button></div></div>' +
+      '</div></div>' +
       '<p class="puny-dir" id="puny-dir" role="status" aria-live="polite"></p>' +
       '<p class="puny-warn" id="puny-warn" hidden></p>' +
+      '<p class="puny-odd-note" id="puny-odd-note" hidden></p>' +
       '<p class="puny-user" id="puny-user" hidden></p>' +
-      '<div class="puny-out" id="puny-out" hidden>' +
-      '<div class="puny-row"><span class="puny-k">' + esc(t('puny.raw')) + '</span><code id="puny-raw"></code></div>' +
-      '<div class="puny-row"><span class="puny-k">' + esc(t('puny.uni')) + '</span><p class="puny-odd-host" id="puny-uni"></p><p class="puny-odd-note" id="puny-odd-note" hidden></p><button type="button" class="btn btn-ghost btn-sm" id="puny-copy-uni">' + esc(t('puny.copy.uni')) + '</button></div>' +
-      '<div class="puny-row"><span class="puny-k">' + esc(t('puny.ascii')) + '</span><code id="puny-host"></code><button type="button" class="btn btn-ghost btn-sm" id="puny-copy-host">' + esc(t('puny.copy.ascii')) + '</button></div>' +
-      '<div class="puny-row" id="puny-url-row" hidden><span class="puny-k" id="puny-url-k">' + esc(t('puny.url')) + '</span><code id="puny-url"></code><button type="button" class="btn btn-ghost btn-sm" id="puny-copy-url">' + esc(t('puny.copy.url')) + '</button></div>' +
-      '</div><p class="copied" id="puny-copied" role="status" aria-live="polite"></p></div></div>';
+      '<p class="puny-tip">' + esc(t('puny.tip')) + '</p>' +
+      '<span id="puny-raw" hidden></span>' +
+      '<p class="copied" id="puny-copied" role="status" aria-live="polite"></p></div>' + punyChart() + '</div>';
     var input = $('#puny-in'), dir = $('#puny-dir'), warn = $('#puny-warn'), userNote = $('#puny-user'), out = $('#puny-out');
     var rawEl = $('#puny-raw'), uniEl = $('#puny-uni'), noteEl = $('#puny-odd-note'), hostEl = $('#puny-host'), urlEl = $('#puny-url'), urlRow = $('#puny-url-row'), copied = $('#puny-copied');
     var exLatin = $('#puny-ex-latin'), exCyr = $('#puny-ex-cyr');
@@ -1067,7 +1107,7 @@
       userNote.hidden = true; userNote.textContent = '';
       rawEl.textContent = ''; uniEl.textContent = ''; hostEl.textContent = ''; urlEl.textContent = '';
       noteEl.hidden = true; noteEl.textContent = '';
-      urlRow.hidden = true; out.hidden = true;
+      urlRow.hidden = true;
       state.ascii = ''; state.unicode = ''; state.url = '';
     }
     function showEmpty() {
@@ -1095,7 +1135,7 @@
       dir.textContent = msg;
       if (res.warn) {
         warn.hidden = false;
-        warn.textContent = t('puny.warn');
+        warn.textContent = '\u26a0\ufe0f ' + t('puny.warn');
       } else { warn.hidden = true; warn.textContent = ''; }
       if (res.userinfo) {
         userNote.hidden = false;
@@ -1104,14 +1144,14 @@
       rawEl.textContent = res.input;
       punyFillMarked(uniEl, res.unicode);
       var note = PUNY.markNote(res.unicode, LANG);
-      if (note) { noteEl.hidden = false; noteEl.textContent = note; }
+      if (note) { noteEl.hidden = false; noteEl.textContent = '\u26a0\ufe0f ' + note; }
       else { noteEl.hidden = true; noteEl.textContent = ''; }
       hostEl.textContent = res.ascii;
       state.ascii = res.ascii; state.unicode = res.unicode;
       if (res.rebuilt) { urlEl.textContent = res.rebuilt; urlRow.hidden = false; state.url = res.rebuilt; }
       else { urlEl.textContent = ''; urlRow.hidden = true; state.url = ''; }
-      out.hidden = false;
     }
+    input.addEventListener('keydown', function (e) { if (e.key === 'Enter') e.preventDefault(); });
     input.addEventListener('compositionstart', function () { composing = true; });
     input.addEventListener('compositionend', function () { composing = false; run(); });
     input.addEventListener('input', function () { copied.textContent = ''; if (!composing) run(); });
