@@ -1,5 +1,5 @@
 /* Phone homepage only. Desktop hero, atlas, and nav are unchanged. */
-.m-hero,.m-atlas-head,.m-planets,.hero-video-m{display:none}
+.m-hero,.m-atlas-head,.m-planets,.m-foot,.hero-video-m{display:none}
 
 @media (max-width:699px){
   body.is-home{background:#100b24}
@@ -74,7 +74,7 @@
   body.is-home .m-planet strong{font-size:13px;white-space:nowrap;font-weight:650;color:#f4ecff}
   body.is-home .m-planet .desc{font-size:10px;color:#bdafce;line-height:1.35;margin-top:2px;max-width:150px}
   body.is-home .m-planet:after{content:"";position:absolute;bottom:0;width:28px;height:1px;background:linear-gradient(90deg,transparent,#d5b88d99,transparent)}
-  body.is-home .m-foot{flex:none;margin:8px 0 0;color:#aa94c6;font-size:11px;line-height:1.45;text-align:center}
+  body.is-home .m-foot{display:block;flex:none;margin:8px 0 0;color:#aa94c6;font-size:11px;line-height:1.45;text-align:center}
   body.is-home .m-foot span{color:#aa94c6}
   @keyframes m-float{0%,100%{translate:0 0}50%{translate:0 -9px}}
 }
