@@ -486,8 +486,15 @@
   }
   function applyRef(root) {
     $$('.tool-card', root).forEach(function (card) {
-      var v = $('.verify[data-url]', card); if (!v || $('.ref-tag', card)) return;
-      var t = refTag(v.dataset.url); if (t) $('.tool-head strong', card).insertAdjacentHTML('afterend', t);
+      var v = $('.verify[data-url]', card); if (!v) return;
+      var url = v.dataset.url;
+      var strong = $('.tool-head strong', card);
+      if (strong && !$('.brand-logo', card) && refTag(url)) {
+        var logo = brandImg(strong.textContent, url, 'brand-logo');
+        if (logo) strong.insertAdjacentHTML('beforebegin', logo);
+      }
+      if ($('.ref-tag', card)) return;
+      var tag = refTag(url); if (tag && strong) strong.insertAdjacentHTML('afterend', tag);
     });
   }
 
@@ -510,7 +517,7 @@
   };
   W.exchanges = function (el) {
     el.innerHTML = '<div class="ex-grid">' + C.exchanges.map(function (x) {
-      return '<div class="ex-card"><div class="ex-head"><h3>' + esc(x.name) + '</h3><span class="verify" data-url="' + esc(x.url) + '"></span></div>' +
+      return '<div class="ex-card"><div class="ex-head"><div class="ex-id">' + brandImg(x.name, x.url, 'brand-logo') + '<h3>' + esc(x.name) + '</h3></div><span class="verify" data-url="' + esc(x.url) + '"></span></div>' +
         refTag(x.url) +
         '<p class="domain">' + esc(t('ex.domain')) + '<b>' + esc(host(x.url)) + '</b></p>' +
         (x.mainDomain && !(host(x.url) === x.mainDomain || host(x.url).slice(-x.mainDomain.length - 1) === '.' + x.mainDomain) ? '<p class="promo-domain">' + esc(t('ex.promo')) + '</p>' : '') +
@@ -525,7 +532,7 @@
         if (x.url.indexOf('debot.ai') >= 0) desc = t('oc.debot');
         else if (x.url.indexOf('web3.binance.com') >= 0) desc = t('oc.binance');
       }
-      return '<div class="ex-card"><div class="ex-head"><h3>' + esc(x.name) + '</h3><span class="verify" data-url="' + esc(x.url) + '"></span></div>' +
+      return '<div class="ex-card"><div class="ex-head"><div class="ex-id">' + brandImg(x.name, x.url, 'brand-logo') + '<h3>' + esc(x.name) + '</h3></div><span class="verify" data-url="' + esc(x.url) + '"></span></div>' +
         '<p>' + esc(desc) + '</p>' + refTag(x.url) +
         '<p class="domain">' + esc(t('ex.domain')) + '<b>' + esc(host(x.url)) + '</b></p>' +
         '<a class="btn btn-sm" href="' + esc(x.url) + '" target="_blank" rel="noopener noreferrer nofollow">' + esc(t('oc.open')) + ' ↗<span class="sr">' + esc(t('ex.new', { host: host(x.url) })) + '</span></a>' +
@@ -708,14 +715,14 @@
   };
   W.binancewallet = function (el) {
     var reg = C.exchanges.filter(function (x) { return x.name === 'Binance'; })[0].url;
-    var wal = 'https://web3.binance.com/referral?ref=BFSADLNM';
+    var wal = 'https://web3.binance.com/referral?ref=0XMAY';
     var items = [
       { title: t('bw.reg'), url: reg, action: t('ex.register') },
       { title: t('bw.wal'), url: wal, action: t('oc.open') }
     ];
     el.className = 'invite-pair';
     el.innerHTML = items.map(function (b) {
-      return '<article class="ex-card"><div class="ex-head"><h3>' + esc(b.title) + '</h3></div>' +
+      return '<article class="ex-card"><div class="ex-head"><div class="ex-id">' + brandImg(b.title, b.url, 'brand-logo') + '<h3>' + esc(b.title) + '</h3></div></div>' +
         refTag(b.url) +
         '<p class="domain">' + esc(t('ex.domain')) + '<b>' + esc(host(b.url)) + '</b></p>' +
         '<a class="btn btn-sm" href="' + esc(b.url) + '" target="_blank" rel="noopener noreferrer nofollow">' + esc(b.action) + ' ↗<span class="sr">' + esc(t('ex.new', { host: host(b.url) })) + '</span></a></article>';
@@ -767,7 +774,29 @@
   /* ---------- 顶栏「交易所」快捷入口 ---------- */
   var exsScrollY = 0, exsOpener = null;
   var EXS_BLURB = { Binance: 'exs.binance', Bybit: 'exs.bybit', Gate: 'exs.gate', HTX: 'exs.htx', DeBot: 'exs.debot' };
-  var EXS_MARK = { Binance: 'BN', Bybit: 'BY', Gate: 'GT', HTX: 'HX', DeBot: 'DB' };
+  var LOGO_V = '20261107640000';
+  var BRAND_LOGOS = {
+    binance: 'assets/img/logo-binance.png?v=' + LOGO_V,
+    bybit: 'assets/img/logo-bybit.png?v=' + LOGO_V,
+    gate: 'assets/img/logo-gate.png?v=' + LOGO_V,
+    wallet: 'assets/img/logo-binance-wallet.png?v=' + LOGO_V,
+    debot: 'assets/img/logo-debot.png?v=' + LOGO_V
+  };
+  function brandKey(name, url) {
+    var n = String(name || '').toLowerCase();
+    var u = String(url || '').toLowerCase();
+    if (u.indexOf('web3.binance.com') >= 0) return 'wallet';
+    if (u.indexOf('debot.ai') >= 0 || n.indexOf('debot') >= 0) return 'debot';
+    if (u.indexOf('bybit') >= 0 || n === 'bybit') return 'bybit';
+    if (u.indexOf('gatewebsite') >= 0 || u.indexOf('gate.com') >= 0 || n === 'gate') return 'gate';
+    if (u.indexOf('binance') >= 0 || n === 'binance') return 'binance';
+    return '';
+  }
+  function brandImg(name, url, cls) {
+    var key = brandKey(name, url);
+    if (!key) return '';
+    return '<img class="' + cls + '" src="' + BRAND_LOGOS[key] + '" alt="' + esc(name) + '" width="44" height="44" decoding="async">';
+  }
   function exchangeShortcutsOpen() {
     var root = $('#ex-shortcuts');
     return !!(root && !root.hidden);
@@ -826,14 +855,14 @@
     var cards = exchangeShortcutItems().map(function (item) {
       var blurbKey = EXS_BLURB[item.name];
       var blurb = blurbKey ? t(blurbKey) : '';
-      var mark = EXS_MARK[item.name] || item.name.slice(0, 2).toUpperCase();
+      var logo = brandImg(item.name, item.url, 'exs-mark');
       var codeRow = item.code
         ? '<div class="exs-code"><span class="exs-code-k">' + esc(t('exs.code')) + '</span><code>' + esc(item.code) + '</code><button type="button" class="exs-copy" data-code="' + esc(item.code) + '">' + esc(t('exs.copy')) + '</button></div>'
         : '';
       var go = item.enabled
         ? '<a class="exs-go" href="' + esc(item.url) + '" target="_blank" rel="noopener noreferrer">' + esc(t('exs.register')) + '</a>'
         : '<button type="button" class="exs-go" disabled>' + esc(t('exs.register')) + '</button>';
-      return '<article class="exs-card"><div class="exs-top"><span class="exs-mark" aria-hidden="true">' + esc(mark) + '</span><div><h3>' + esc(item.name) + '</h3>' +
+      return '<article class="exs-card"><div class="exs-top">' + logo + '<div><h3>' + esc(item.name) + '</h3>' +
         (blurb ? '<p>' + esc(blurb) + '</p>' : '') + '</div></div>' + codeRow + go + '</article>';
     }).join('');
     head.innerHTML = '<button type="button" class="exs-x" data-exs-close aria-label="' + esc(t('exs.close')) + '">×</button>' +

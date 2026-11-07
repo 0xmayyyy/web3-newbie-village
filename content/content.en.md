@@ -1007,7 +1007,7 @@ Beginners can start with Binance Wallet (keyless). It is easier at the start:
 
 For how it works and how to back it up, see [Chapter 08, "A keyless wallet beginners can start with"](#/c/08/4).
 
-Binance Wallet (keyless)：https://web3.binance.com/referral?ref=BFSADLNM
+Binance Wallet (keyless)：https://web3.binance.com/referral?ref=0XMAY
 用途：A self-custody on-chain wallet that suits a beginner. You can connect DApps, sign, and hold on-chain assets. It is not the same thing as the exchange account.
 
 ## DeFi: financial apps on a chain
