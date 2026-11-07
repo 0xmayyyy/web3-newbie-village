@@ -470,37 +470,46 @@ details.more-tools>summary{cursor:pointer;font-weight:600;color:#7a5c3a;padding:
 .cex-notes h2{font-size:1.05rem;margin:0 0 8px}
 .cex-notes ul{margin:0;padding-left:1.2em;line-height:1.75}
 .cex-notes li{margin:4px 0}
-.puny-page{max-width:760px}
-.puny-page h1{margin:0 0 6px;font-size:26px}
-.puny-page .lead{margin:0 0 14px;color:var(--muted)}
+body:has(.puny-page){background:#0D1022}
+.puny-page{max-width:760px;color:#F5F3FF}
+.puny-page h1{margin:0 0 6px;font-size:26px;color:#F5F3FF}
+.puny-page .lead{margin:0 0 14px;color:#C9B6E6}
+.puny-page .crumbs{color:#C9B6E6}
+.puny-page .crumbs a{color:#FFDFA8}
+.puny-page .widget.puny{background:#34264F;border:1px solid rgba(174,140,207,.4);color:#F5F3FF;box-shadow:none}
 .puny-field{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:700}
-.puny-field input{font:inherit;font-weight:400;font-size:16px;border:2px solid var(--line);border-radius:12px;padding:10px 12px;background:#fff;color:var(--ink);width:100%;min-width:0}
-.puny-field input:focus{border-color:var(--lilac-d);outline:none;box-shadow:0 0 0 3px var(--lilac)}
-.puny-tip{font-size:13px;color:var(--muted);background:#fbf6ff;border-radius:10px;padding:8px 10px;margin:12px 0}
+.puny-page .puny-field{color:#F5F3FF}
+.puny-field input{font:inherit;font-weight:400;font-size:16px;border:1px solid rgba(174,140,207,.45);border-radius:12px;padding:10px 12px;background:#2B1D5B;color:#F5F3FF;width:100%;min-width:0}
+.puny-field input::placeholder{color:#C9B6E6;opacity:1}
+.puny-field input:focus{border-color:#FFDFA8;outline:none;box-shadow:0 0 0 3px rgba(255,223,168,.28)}
+.puny-tip{font-size:13px;color:#C9B6E6;background:#2B1D5B;border:1px solid rgba(174,140,207,.4);border-radius:10px;padding:8px 10px;margin:12px 0}
 .puny-examples{margin:0 0 12px}
-.puny-ex-h{margin:0 0 8px;font-size:14px;font-weight:700}
+.puny-ex-h{margin:0 0 8px;font-size:14px;font-weight:700;color:#F5F3FF}
 .puny-ex-row{display:grid;gap:8px}
-.puny-ex{font:inherit;text-align:left;background:#fff;color:var(--ink);border:2px solid var(--line);border-radius:14px;padding:10px 12px;cursor:pointer;min-width:0}
-.puny-ex[aria-pressed=true]{border-color:var(--lilac-d);background:var(--lilac)}
+.puny-ex{font:inherit;text-align:left;background:#2B1D5B;color:#F5F3FF;border:1px solid rgba(174,140,207,.45);border-radius:14px;padding:10px 12px;cursor:pointer;min-width:0}
+.puny-ex[aria-pressed=true]{border-color:#FFDFA8;background:#FFDFA8;color:#1A1236}
 .puny-ex b{display:block;font-size:14px}
 .puny-ex-host{display:block;margin:2px 0;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-weight:800;font-size:15px;overflow-wrap:anywhere}
-.puny-ex small{display:block;color:var(--muted);font-size:12px;font-weight:400;line-height:1.45}
-.puny-ex[aria-pressed=true] small{color:var(--ink)}
-.puny-warn{font-size:14px;color:#6b3a00;background:#fff6e5;border:1px solid #f0d49a;border-left:4px solid var(--danger);border-radius:10px;padding:8px 10px;margin:0 0 10px}
-.puny-user{font-size:13px;color:#6b3a00;background:#fff6e5;border-radius:10px;padding:8px 10px;margin:0 0 10px}
-.puny-odd{background:#ffe4dc;color:var(--danger);border-radius:4px;padding:0 3px;font-weight:800;box-shadow:inset 0 -2px 0 var(--danger)}
-.puny-odd-host{margin:0;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:16px;font-weight:800;overflow-wrap:anywhere}
-.puny-odd-note{margin:4px 0 0;font-size:13px;color:var(--danger);font-weight:700}
+.puny-ex small{display:block;color:#C9B6E6;font-size:12px;font-weight:400;line-height:1.45}
+.puny-ex[aria-pressed=true] small{color:#1A1236}
+.puny-warn{font-size:14px;color:#FFF2D9;background:#2B1D5B;border:1px solid rgba(255,223,168,.55);border-left:4px solid #ff8f7a;border-radius:10px;padding:8px 10px;margin:0 0 10px}
+.puny-user{font-size:13px;color:#FFF2D9;background:#2B1D5B;border:1px solid rgba(174,140,207,.45);border-radius:10px;padding:8px 10px;margin:0 0 10px}
+.puny-odd{background:rgba(255,120,96,.22);color:#ffd0c6;border-radius:4px;padding:0 3px;font-weight:800;box-shadow:inset 0 -2px 0 #ff6b5a}
+.puny-ex[aria-pressed=true] .puny-odd{background:#7a1c12;color:#fff6f3;box-shadow:inset 0 -2px 0 #ffd0c8}
+.puny-odd-host{margin:0;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:16px;font-weight:800;overflow-wrap:anywhere;color:#F5F3FF}
+.puny-odd-note{margin:4px 0 0;font-size:13px;color:#ffb4a2;font-weight:700}
 .puny-row[hidden],.puny-warn[hidden],.puny-out[hidden]{display:none !important}
 @media (min-width:640px){.puny-ex-row{grid-template-columns:1fr 1fr}}
-.puny-dir{font-size:14px;color:var(--muted);margin:0 0 8px;min-height:1.4em}
-.puny-dir.err{margin-bottom:0}
+.puny-dir{font-size:14px;color:#C9B6E6;margin:0 0 8px;min-height:1.4em}
+.puny-dir.err{margin-bottom:0;color:#ffb4a2}
 .puny-out{display:flex;flex-direction:column;gap:10px}
-.puny-row{background:#fbf6ff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:flex;flex-wrap:wrap;align-items:center;gap:8px;min-width:0}
-.puny-k{font-size:12px;color:var(--muted);font-weight:700;flex:1 0 100%}
-.puny-row code,.puny-odd-host{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:15px;font-weight:700;overflow-wrap:anywhere;word-break:break-word;flex:1 1 180px;min-width:0}
+.puny-row{background:#2B1D5B;border:1px solid rgba(174,140,207,.4);border-radius:12px;padding:10px 12px;display:flex;flex-wrap:wrap;align-items:center;gap:8px;min-width:0;color:#F5F3FF}
+.puny-k{font-size:12px;color:#C9B6E6;font-weight:700;flex:1 0 100%}
+.puny-row code,.puny-odd-host{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:15px;font-weight:700;overflow-wrap:anywhere;word-break:break-word;flex:1 1 180px;min-width:0;color:#F5F3FF}
 .puny-row .btn{flex:none}
-.puny-page .copied{min-height:1.4em}
+.puny-page .btn-ghost{background:transparent;color:#FFDFA8;border-color:rgba(255,223,168,.55)}
+.puny-page .btn-ghost:hover{background:rgba(255,223,168,.12);color:#FFF2D9}
+.puny-page .copied{min-height:1.4em;color:#FFDFA8}
 
 /* ===== 深空开场 + 悬浮导航（仅首页首屏与顶栏） ===== */
 html.boot-home body:not(.is-home){background:#0D1022}
