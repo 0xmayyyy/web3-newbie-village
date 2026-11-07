@@ -49,7 +49,6 @@ window.SITE_CONFIG = {
     'https://solscan.io/': '2026-10-15',
     'https://t.me/Mayyy00x': '2026-10-15',
     'https://tronscan.org/': '2026-10-15',
-    'https://web3.binance.com/referral?ref=0XMAY': '2026-10-15',
     'https://www.coinbase.com/learn': '2026-10-15',
     'https://www.coingecko.com/': '2026-10-15',
     'https://www.htx.com/invite/zh-cn/1h?invite_code=jdz98223': '2026-10-15',
