@@ -1044,7 +1044,7 @@
       '<div class="puny-split">' +
       '<label class="puny-label" for="puny-in">' + esc(t('puny.label')) + '</label>' +
       '<span class="puny-label-gap" aria-hidden="true"></span>' +
-      '<input id="puny-in" class="puny-input" type="text" inputmode="url" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" placeholder="' + esc(t('puny.ph')) + '">' +
+      '<textarea id="puny-in" class="puny-input" rows="2" inputmode="url" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" placeholder="' + esc(t('puny.ph')) + '"></textarea>' +
       '<div class="puny-out" id="puny-out">' +
       '<div class="puny-row"><span class="puny-k">' + esc(t('puny.uni')) + '</span><p class="puny-odd-host" id="puny-uni"></p><button type="button" class="btn btn-ghost btn-sm" id="puny-copy-uni">' + esc(t('puny.copy.uni')) + '</button></div>' +
       '<div class="puny-row"><span class="puny-k">' + esc(t('puny.ascii')) + '</span><code id="puny-host"></code><button type="button" class="btn btn-ghost btn-sm" id="puny-copy-host">' + esc(t('puny.copy.ascii')) + '</button>' +
@@ -1115,6 +1115,7 @@
       if (res.rebuilt) { urlEl.textContent = res.rebuilt; urlRow.hidden = false; state.url = res.rebuilt; }
       else { urlEl.textContent = ''; urlRow.hidden = true; state.url = ''; }
     }
+    input.addEventListener('keydown', function (e) { if (e.key === 'Enter') e.preventDefault(); });
     input.addEventListener('compositionstart', function () { composing = true; });
     input.addEventListener('compositionend', function () { composing = false; run(); });
     input.addEventListener('input', function () { copied.textContent = ''; if (!composing) run(); });
