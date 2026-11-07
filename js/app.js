@@ -1042,8 +1042,9 @@
       '<button type="button" class="puny-ex" id="puny-ex-cyr" aria-pressed="false"><b>' + esc(t('puny.ex.cyr')) + '</b><span class="puny-ex-host">bin<mark class="puny-odd" title="' + esc(t('puny.ex.cyr.mark')) + '">\u0430</mark>nce.com</span><small>' + esc(t('puny.ex.cyr.s')) + '</small></button>' +
       '</div></div>' +
       '<div class="puny-split">' +
-      '<label class="puny-field" for="puny-in">' + esc(t('puny.label')) +
-      '<input id="puny-in" type="text" inputmode="url" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" placeholder="' + esc(t('puny.ph')) + '"></label>' +
+      '<label class="puny-label" for="puny-in">' + esc(t('puny.label')) + '</label>' +
+      '<span class="puny-label-gap" aria-hidden="true"></span>' +
+      '<input id="puny-in" class="puny-input" type="text" inputmode="url" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" placeholder="' + esc(t('puny.ph')) + '">' +
       '<div class="puny-out" id="puny-out">' +
       '<div class="puny-row"><span class="puny-k">' + esc(t('puny.uni')) + '</span><p class="puny-odd-host" id="puny-uni"></p><button type="button" class="btn btn-ghost btn-sm" id="puny-copy-uni">' + esc(t('puny.copy.uni')) + '</button></div>' +
       '<div class="puny-row"><span class="puny-k">' + esc(t('puny.ascii')) + '</span><code id="puny-host"></code><button type="button" class="btn btn-ghost btn-sm" id="puny-copy-host">' + esc(t('puny.copy.ascii')) + '</button>' +
