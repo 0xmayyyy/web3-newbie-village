@@ -49,7 +49,7 @@ window.SITE_CONFIG = {
     'https://solscan.io/': '2026-10-15',
     'https://t.me/Mayyy00x': '2026-10-15',
     'https://tronscan.org/': '2026-10-15',
-    'https://web3.binance.com/referral?ref=BFSADLNM': '2026-10-15',
+    'https://web3.binance.com/referral?ref=0XMAY': '2026-10-15',
     'https://www.coinbase.com/learn': '2026-10-15',
     'https://www.coingecko.com/': '2026-10-15',
     'https://www.htx.com/invite/zh-cn/1h?invite_code=jdz98223': '2026-10-15',
@@ -67,7 +67,7 @@ window.SITE_CONFIG = {
     'https://partner.bybit.com/b/0xmay': { feeDiscount: false },
     'https://www.gatewebsite.app/share/u1dgb10j': { feeDiscount: false },
     'https://www.htx.com/invite/zh-cn/1h?invite_code=jdz98223': { feeDiscount: false },
-    'https://web3.binance.com/referral?ref=BFSADLNM': { feeDiscount: false },
+    'https://web3.binance.com/referral?ref=0XMAY': { feeDiscount: false },
     'https://debot.ai/r/0xMay': { feeDiscount: false }
   },
 
@@ -83,7 +83,7 @@ window.SITE_CONFIG = {
   /* 链上交易工具（二级市场链上买卖，不是一级市场） */
   onchain: [
     { name: 'DeBot', desc: '链上 Meme 币交易与跟踪工具', url: 'https://debot.ai/r/0xMay' },
-    { name: '币安 Web3 钱包', desc: '无私钥（MPC）钱包，内置链上兑换', url: 'https://web3.binance.com/referral?ref=BFSADLNM' }
+    { name: '币安 Web3 钱包', desc: '无私钥（MPC）钱包，内置链上兑换', url: 'https://web3.binance.com/referral?ref=0XMAY' }
   ],
 
   /* 顶栏「交易所」弹层顺序。URL 仍用上面 exchanges / onchain 里已有的邀请链接，邀请码从这些 URL 读取。

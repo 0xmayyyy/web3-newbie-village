@@ -715,7 +715,7 @@
   };
   W.binancewallet = function (el) {
     var reg = C.exchanges.filter(function (x) { return x.name === 'Binance'; })[0].url;
-    var wal = 'https://web3.binance.com/referral?ref=BFSADLNM';
+    var wal = 'https://web3.binance.com/referral?ref=0XMAY';
     var items = [
       { title: t('bw.reg'), url: reg, action: t('ex.register') },
       { title: t('bw.wal'), url: wal, action: t('oc.open') }

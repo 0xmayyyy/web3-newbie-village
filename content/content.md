@@ -1003,7 +1003,7 @@ TVL 是按特定规则统计的锁定资产价值，会受币价和重复计算�
 
 想详细了解它怎么工作、怎么备份，见[第 08 章「无私钥钱包：新手也能轻松开始」](#/c/08/4)。
 
-币安钱包（无私钥）：https://web3.binance.com/referral?ref=BFSADLNM
+币安钱包（无私钥）：https://web3.binance.com/referral?ref=0XMAY
 用途：适合新手的自托管链上钱包，可用于连接 DApp、签名和存放链上资产。和交易所账户不是一回事。
 
 ## DeFi：链上金融应用
