@@ -1074,8 +1074,8 @@
       '<p class="lead">' + esc(t('puny.lead')) + '</p>' +
       '<div class="widget puny">' +
       '<div class="puny-examples"><p class="puny-ex-h">' + esc(t('puny.ex.h')) + '</p><div class="puny-ex-row">' +
-      '<button type="button" class="puny-ex" id="puny-ex-latin" aria-pressed="false"><b>' + esc(t('puny.ex.latin')) + '</b><span class="puny-ex-host">abcde.com</span><small>' + esc(t('puny.ex.latin.s')) + '</small></button>' +
-      '<button type="button" class="puny-ex" id="puny-ex-cyr" aria-pressed="false"><b>' + esc(t('puny.ex.cyr')) + '</b><span class="puny-ex-host">ab<mark class="puny-odd" title="' + esc(t('puny.ex.mark.c')) + '">\u0441</mark>d<mark class="puny-odd" title="' + esc(t('puny.ex.mark.e')) + '">\u0435</mark>.com</span><small>' + esc(t('puny.ex.cyr.s')) + '</small></button>' +
+      '<button type="button" class="puny-ex" id="puny-ex-latin" aria-pressed="false"><b>' + esc(t('puny.ex.latin')) + '</b><span class="puny-ex-host">abcde</span><small>' + esc(t('puny.ex.latin.s')) + '</small></button>' +
+      '<button type="button" class="puny-ex" id="puny-ex-cyr" aria-pressed="false"><b>' + esc(t('puny.ex.cyr')) + '</b><span class="puny-ex-host">ab<mark class="puny-odd" title="' + esc(t('puny.ex.mark.c')) + '">\u0441</mark>d<mark class="puny-odd" title="' + esc(t('puny.ex.mark.e')) + '">\u0435</mark></span><small>' + esc(t('puny.ex.cyr.s')) + '</small></button>' +
       '</div></div>' +
       '<div class="puny-split">' +
       '<label class="puny-label" for="puny-in">' + esc(t('puny.label')) + '</label>' +

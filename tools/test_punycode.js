@@ -42,9 +42,9 @@ check('英文仿写 binonce.com 也不当成形似字报警', function () {
   eq(r.ascii, 'binonce.com');
   eq(r.warn, false);
 });
-check('西里尔 с 和 е → xn--abd-tdd2d.com', function () {
+check('西里尔 с 和 е → xn--abd-tdd2d', function () {
   var r = PUNY.convert(PUNY.EX_CYR);
-  eq(r.ascii, 'xn--abd-tdd2d.com');
+  eq(r.ascii, 'xn--abd-tdd2d');
   eq(r.warn, true);
   eq(r.unicode.indexOf('\u0441') >= 0, true);
   eq(r.unicode.indexOf('\u0435') >= 0, true);

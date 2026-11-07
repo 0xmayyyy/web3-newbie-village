@@ -5,8 +5,8 @@
   root.PUNY = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
   var BASE = 36, TMIN = 1, TMAX = 26, SKEW = 38, DAMP = 700, BIAS0 = 72, N0 = 128;
-  var EX_LATIN = 'abcde.com';
-  var EX_CYR = 'ab\u0441d\u0435.com';
+  var EX_LATIN = 'abcde';
+  var EX_CYR = 'ab\u0441d\u0435';
 
   function adapt(delta, numPoints, firstTime) {
     delta = firstTime ? Math.floor(delta / DAMP) : Math.floor(delta / 2);
