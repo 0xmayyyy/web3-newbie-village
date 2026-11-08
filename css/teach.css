@@ -7,7 +7,7 @@
 .course-reader .key strong{color:#e9c99c}
 .course-reader .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .course-reader .step{border:1px solid #aa92bd75;background:linear-gradient(145deg,#3a2c4a9e,#201d37b9);border-radius:16px;padding:16px;box-shadow:inset 0 1px #ffffff1d}
-.course-reader .step .num{font-size:12px;color:#e9c99c}
+.course-reader .step .num{font-size:12px;color:#fff6e4}
 .course-reader .step b{display:block;margin:5px 0;color:#f6f0ff}
 .course-reader .step p{font-size:13px;color:#bcb0ca;margin:0}
 .course-reader .quiz{border:1px solid #a98a9966;border-radius:18px;padding:20px;background:linear-gradient(125deg,#352941d9,#241e38d9);margin-top:24px;box-shadow:inset 0 1px #ffffff22}
@@ -190,3 +190,5 @@ body{position:relative;isolation:isolate}
 .course-reader .prose .diagram-caption,
 .course-reader .prose .caption,
 .course-reader .teach-status{color:#bcb0ca}
+.course-reader .steps .step,
+.course-reader .steps .step:hover{background:none;border:0;box-shadow:none;transform:none;padding:0}

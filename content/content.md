@@ -1540,7 +1540,7 @@ Ethereum 安全资料：https://ethereum.org/security/
 
 <div class="checklist"><label class="checkrow"><input type="checkbox"><span><b>确认平台</b><small>不只看品牌 Logo；核对平台名称及是否支持该转账方式。</small></span></label><label class="checkrow"><input type="checkbox"><span><b>确认收款信息与网络</b><small>站内核对 UID、用户名、头像等；链上核对地址、币种和网络。头像只是辅助信息。</small></span></label><label class="checkrow"><input type="checkbox"><span><b>先做小额测试</b><small>首次转账先用小额试转，确认真实到账，再考虑剩余资金。</small></span></label></div>
 <p class="teach-status" data-tpl="自检 {n} / {m} 项 · 情景题{quiz}" data-yes="已答对" data-no="待通过">自检 0 / 3 项 · 情景题待通过</p>
-<div class="quiz" data-correct="b" data-ok="✓ 回答正确！本题已通过。" data-bad="还不对，请重新判断平台及官方支持的转账路径。"><h3>通关验证 · 情景题</h3><p>你已核对 UID、用户名和头像，但不知道两个 App 是否支持直接互转。这时应该？</p><button type="button" class="option" data-answer="a">A. 先转一大笔，看看是否到账</button><button type="button" class="option" data-answer="b">B. 暂停转账，先核对官方支持的转账方式</button><button type="button" class="option" data-answer="c">C. 只要头像一致就可以转</button><div class="feedback"></div></div>
+<div class="quiz" data-correct="b" data-ok="✓ 回答正确！本题已通过。" data-bad="还不对，请重新判断平台及官方支持的转账路径。"><h3>通关验证 · 情景题</h3><p>你已核对 UID、用户名和头像，不确定两个 App 是否支持直接互转。这时应该？</p><button type="button" class="option" data-answer="a">A. 先转一大笔，看看是否到账</button><button type="button" class="option" data-answer="b">B. 暂停转账，先核对官方支持的转账方式</button><button type="button" class="option" data-answer="c">C. 只要头像一致就可以转</button><div class="feedback"></div></div>
 <div class="key"><strong>注意：</strong>小额测试不能代替核对平台和收款人，也不能保证后续交易绝对安全。</div>
 
 ## 如果已经转错了怎么办？
