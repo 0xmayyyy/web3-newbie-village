@@ -34,6 +34,7 @@ Search placeholder: What do you want to know? Try "wallet", "primary market", or
 | 14 | Tool guide 🧰 | Prices, trades, and on-chain data | Guide |
 | 15 | Something went wrong 🆘 | Deposits, withdrawals, transfers, and suspected theft | Troubleshooting |
 | 16 | Common questions and practice ✅ | Check that the key ideas stuck | Review |
+| 17 | Before you transfer: safety basics that are easy to skip 💸 | The same brand is not the same account. Confirm the platform, the payment details, and the network before you transfer | Must-read |
 
 ## Pick a path
 
@@ -46,7 +47,7 @@ Suggested order: 05 (create an exchange account) → 03 → 09 → 04 → 06.
 Learn safety and the basics of trading, then practice with a small amount you can afford to lose.
 
 **🛡️ I already hold coins and want to protect them**
-Suggested order: 08 → 09 → 10 → 15.
+Suggested order: 08 → 09 → 17 → 10 → 15.
 Focus on custody, seed phrases, approvals, and transfer checks.
 
 ## Before you act, remember
@@ -807,92 +808,6 @@ An API key is a secret too. If you later need automation, use the smallest permi
 
 On many public chains, transactions can be looked up by anyone. A public address can be linked to balances, behavior, and identity. A wallet that does not display a legal name is not the same as "cannot be traced".
 
-## Before you transfer: safety basics that are easy to skip
-
-A recent case: someone wanted to move assets from Binance international to Binance TH (the Thailand version). They assumed the two platforms shared one account, and the transfer went wrong.
-
-They did check the receiving UID. What they missed was this: **Platforms under the same brand do not necessarily share one account system.**
-
-01｜ The same brand is not the same account
-
-Take Binance international and Binance TH.
-
-Both use the Binance brand, but they are different services. Their accounts do not connect directly.
-
-There is a simple way to tell:
-
-If you already registered on platform A, and you try to register the same email on the same account system, you usually see "this email is already registered".
-
-If the same email can register separately in two apps under one brand, and you even have to complete KYC (identity verification) again, that is already a clear signal: the two platforms do not share one account system.
-
-They are two separate accounts. Before you transfer, confirm that the platforms support moving funds between them. Do not look only at the brand name.
-
-02｜ Why can it still go to the wrong place after you checked the UID?
-
-A UID is an ID number the platform assigns to a user.
-
-It is not a receiving address that works across the whole industry. You cannot tell who the recipient is from a UID alone, apart from the platform it belongs to.
-
-For example:
-
-You may have one UID on Binance international and another UID on Binance TH.
-
-Even if both accounts are yours, that does not mean the two platforms support a direct transfer by UID.
-
-**Checking that the UID is correct is only part of checking the payment details. What matters more is which platform that UID belongs to, and whether that platform supports this transfer path.**
-
-03｜ Before you transfer, get used to a three-step check
-
-**Step 1: confirm the platform**
-
-See clearly which platform is sending and which platform is receiving.
-
-In general, different app entries mean different account systems and databases, especially when the platforms serve different countries or regions.
-
-So do not go by the brand logo alone. Even when the names look alike, confirm the specific platform, whether the accounts connect, and whether an internal transfer is supported.
-
-**Step 2: confirm the payment details and the network**
-
-For an internal transfer, besides checking the UID, email, or other receiving ID, also check that the recipient's **username and avatar** match what you expect.
-
-A username and an avatar are only extra checks. On their own, they do not prove who the recipient is.
-
-For an on-chain transfer, check the coin, the receiving address, and the blockchain network.
-
-For example, USDT on TRC20 and USDT on ERC20 are not networks you can mix as you like.
-
-**Step 3: test a small amount, then send the rest**
-
-Especially the first time you send to a platform, an address, or an account, test with a small amount first.
-
-Confirm the other side actually received it, and that the coin and the network are right, then send the rest.
-
-A small test does not guarantee later transfers are completely safe. It does keep one mistake from costing the whole amount.
-
-04｜ What if you already sent it to the wrong place?
-
-First, save the transfer record, the order number, the receiving UID, the transaction hash (if there is one), and the screenshots. Contact official support as soon as you can.
-
-If it was an internal transfer to the wrong account, you usually file an appeal or a report under the platform's rules. The platform checks the record and, depending on the case, helps you reach the person who actually received the funds so you can talk it through.
-
-One basic rule:
-
-**Once the funds are in another user's account, the exchange cannot take them out of that account on the sender's word alone.**
-
-Even when the transfer really was a mistake, it still goes through identity checks, a review of the transaction, and the platform's process.
-
-If the other person will not cooperate, getting the money back can be very hard. You may need a legal path.
-
-If it was an on-chain transfer to the wrong place, a confirmed transaction usually cannot be undone. If it went to an address you do not control, or onto the wrong network, the chance of getting it back can be very small.
-
-So do not count on fixing it afterward.
-
-A last reminder
-
-The easiest place for a crypto transfer to go wrong is sometimes not a complicated technique. It is a bit of common sense you treated as obvious.
-
-Two extra minutes of checking before you send is much easier than spending days looking for a fix after the funds go to the wrong place.
-
 Note: Safety is not one cold wallet. It is a set of habits you keep.
 
 # 10｜Your first on-chain actions 🔗
@@ -1539,6 +1454,92 @@ Result note: "This is a simplified learning result. Fees are not included. It do
 - The first time I use a path, I send a small test that meets the minimum.
 
 Done message: "Check finished. Check once more on the final confirmation screen. A ticked list cannot guarantee there is no risk."
+
+# 17｜Before you transfer: safety basics that are easy to skip 💸
+
+## The same brand is not the same account
+
+A recent case: someone wanted to move assets from Binance international to Binance TH (the Thailand version). They assumed the two platforms shared one account, and the transfer went wrong.
+
+They did check the receiving UID. What they missed was this: **Platforms under the same brand do not necessarily share one account system.**
+
+Take Binance international and Binance TH.
+
+Both use the Binance brand, but they are different services. Their accounts do not connect directly.
+
+There is a simple way to tell:
+
+If you already registered on platform A, and you try to register the same email on the same account system, you usually see "this email is already registered".
+
+If the same email can register separately in two apps under one brand, and you even have to complete KYC (identity verification) again, that is already a clear signal: the two platforms do not share one account system.
+
+They are two separate accounts. Before you transfer, confirm that the platforms support moving funds between them. Do not look only at the brand name.
+
+## Why can it still go to the wrong place after you checked the UID?
+
+A UID is an ID number the platform assigns to a user.
+
+It is not a receiving address that works across the whole industry. You cannot tell who the recipient is from a UID alone, apart from the platform it belongs to.
+
+For example:
+
+You may have one UID on Binance international and another UID on Binance TH.
+
+Even if both accounts are yours, that does not mean the two platforms support a direct transfer by UID.
+
+**Checking that the UID is correct is only part of checking the payment details. What matters more is which platform that UID belongs to, and whether that platform supports this transfer path.**
+
+## Before you transfer, get used to a three-step check
+
+**Step 1: confirm the platform**
+
+See clearly which platform is sending and which platform is receiving.
+
+In general, different app entries mean different account systems and databases, especially when the platforms serve different countries or regions.
+
+So do not go by the brand logo alone. Even when the names look alike, confirm the specific platform, whether the accounts connect, and whether an internal transfer is supported.
+
+**Step 2: confirm the payment details and the network**
+
+For an internal transfer, besides checking the UID, email, or other receiving ID, also check that the recipient's **username and avatar** match what you expect.
+
+A username and an avatar are only extra checks. On their own, they do not prove who the recipient is.
+
+For an on-chain transfer, check the coin, the receiving address, and the blockchain network.
+
+For example, USDT on TRC20 and USDT on ERC20 are not networks you can mix as you like.
+
+**Step 3: test a small amount, then send the rest**
+
+Especially the first time you send to a platform, an address, or an account, test with a small amount first.
+
+Confirm the other side actually received it, and that the coin and the network are right, then send the rest.
+
+A small test does not guarantee later transfers are completely safe. It does keep one mistake from costing the whole amount.
+
+## What if you already sent it to the wrong place?
+
+First, save the transfer record, the order number, the receiving UID, the transaction hash (if there is one), and the screenshots. Contact official support as soon as you can.
+
+If it was an internal transfer to the wrong account, you usually file an appeal or a report under the platform's rules. The platform checks the record and, depending on the case, helps you reach the person who actually received the funds so you can talk it through.
+
+One basic rule:
+
+**Once the funds are in another user's account, the exchange cannot take them out of that account on the sender's word alone.**
+
+Even when the transfer really was a mistake, it still goes through identity checks, a review of the transaction, and the platform's process.
+
+If the other person will not cooperate, getting the money back can be very hard. You may need a legal path.
+
+If it was an on-chain transfer to the wrong place, a confirmed transaction usually cannot be undone. If it went to an address you do not control, or onto the wrong network, the chance of getting it back can be very small.
+
+So do not count on fixing it afterward.
+
+A last reminder
+
+The easiest place for a crypto transfer to go wrong is sometimes not a complicated technique. It is a bit of common sense you treated as obvious.
+
+Two extra minutes of checking before you send is much easier than spending days looking for a fix after the funds go to the wrong place.
 
 # Footer
 
