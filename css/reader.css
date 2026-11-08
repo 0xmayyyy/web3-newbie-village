@@ -39,7 +39,7 @@
 .course-reader .reading h2{font-size:clamp(24px,2.5vw,35px);line-height:1.4;margin:20px 0;color:var(--ink)}
 .course-reader .summary{border-left:3px solid var(--gold);padding:13px 18px;background:#e6c79e0d;color:#f4e9da;line-height:1.8;margin:20px 0 27px;font-size:15px}
 .course-reader .prose{color:#e5dce9;font-size:15px;line-height:1.95;overflow-wrap:anywhere}
-.course-reader .prose p{margin:0 0 18px}
+.course-reader .prose p{margin:0 0 18px;text-align:left;text-wrap:pretty}
 .course-reader .prose strong{color:#fff8e9}
 .course-reader .prose h3{font-size:18px;color:#f1d8b9;margin:28px 0 12px}
 .course-reader .prose a{color:#FFDFA8}
