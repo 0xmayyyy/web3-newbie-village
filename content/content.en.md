@@ -1461,6 +1461,16 @@ Done message: "Check finished. Check once more on the final confirmation screen.
 
 **Platforms under the same brand do not necessarily share one account system.**
 
+<span class="tag">Template A · Compare</span>
+<div class="diagram"><h3>See it first: the same brand is not a shared account</h3>
+<div class="cosmic-scene compare-scene" role="img" aria-label="Two separate platform accounts under one brand. Do not assume an internal transfer."><div class="scene-halo halo-violet"></div><div class="scene-halo halo-cyan"></div>
+<div class="brand-constellation"><span class="star-glyph">✦</span><span>One brand · different account systems</span></div>
+<div class="account-worlds"><div class="world"><div class="planet planet-violet"><img class="platform-app-icon" src="assets/teach/binance-intl.png?v=20261108130000" alt="Binance international app icon"></div><div class="world-card"><small>GLOBAL PLATFORM</small><b>Binance international</b><span>Separate sign-up / identity check</span></div></div>
+<div class="world"><div class="planet planet-cyan"><img class="platform-app-icon" src="assets/teach/binance-th.png?v=20261108130000" alt="Binance TH app icon"></div><div class="world-card"><small>THAILAND PLATFORM</small><b>Binance TH</b><span>Separate sign-up / identity check</span></div></div></div>
+<div class="scene-divider"><i></i><span>Do not assume an internal transfer</span><i></i></div>
+<div class="scene-bottom">Same brand ≠ same account · Follow the platform's official rules</div></div>
+<div class="caption">A sketch of the structure, not the platforms' actual databases.</div></div>
+
 A recent case: someone wanted to move assets from Binance international to Binance TH (the Thailand version). They assumed the two platforms shared one account, and the transfer went wrong.
 
 They did check the receiving UID. What they missed was this: **Platforms under the same brand do not necessarily share one account system.**
@@ -1477,46 +1487,36 @@ If the same email can register separately in two apps under one brand, and you e
 
 They are two separate accounts. Before you transfer, confirm that the platforms support moving funds between them. Do not look only at the brand name.
 
+<div class="key"><strong>Remember:</strong> If you can register two accounts, you cannot infer an internal transfer from the brand name. Whether a dedicated path exists depends on the platform's official rules.</div>
+<div class="quiz" data-correct="b" data-ok="Correct. This question is passed." data-bad="Not yet. Look again at the platforms and the transfer path the official rules support."><h3>Check your judgment</h3><p>You registered on Binance international and on Binance TH. Both use the same email, and both finished KYC. Since both are Binance platforms, can you transfer between the two accounts by UID?</p><button type="button" class="option" data-answer="a">A. Yes. The same brand means you can transfer.</button><button type="button" class="option" data-answer="b">B. Don't assume it is supported. Check the official transfer path first.</button><div class="feedback"></div></div>
+
 ## The UID is right — why can the transfer still go wrong?
 
 **A UID is only an in-platform user number, not an industry-wide receiving identity.**
 
-### Look at an example first
-
-<div class="uid-compare">
-<div class="uid-cards">
-<article class="uid-card">
-<svg class="uid-phone" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 5h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="18.2" r=".9" fill="currentColor"/></svg>
-<h4>Binance international</h4>
-<p class="uid-num">UID: 123456</p>
-<p class="uid-pill uid-pill-a">Account A</p>
-</article>
-<article class="uid-card">
-<svg class="uid-phone" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 5h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="18.2" r=".9" fill="currentColor"/></svg>
-<h4>Binance TH</h4>
-<p class="uid-num">UID: 789012</p>
-<p class="uid-pill uid-pill-b">Account B</p>
-</article>
-</div>
-<p class="uid-swap"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h11l-3-3M17 17H6l3 3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Don’t assume UID transfers work between them</p>
-<p class="uid-note">Sample numbers only, to show that the two platforms use different account systems.</p>
-</div>
-
-### What you really need to check is more than the UID:
-
-<ul class="uid-checks">
-<li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#2f7a52"/><path d="M7.4 12.2l3 3.1 6.2-6.4" fill="none" stroke="#f4fff6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Which platform does this receiving UID belong to?</li>
-<li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#2f7a52"/><path d="M7.4 12.2l3 3.1 6.2-6.4" fill="none" stroke="#f4fff6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Do the username and avatar match the intended recipient?</li>
-<li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#2f7a52"/><path d="M7.4 12.2l3 3.1 6.2-6.4" fill="none" stroke="#f4fff6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Do both platforms support this transfer path?</li>
-</ul>
-
-<h3 class="uid-rule"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="2.4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2.4v3.1M12 18.5v3.1M2.4 12h3.1M18.5 12h3.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Remember this rule</h3>
-
-A correct UID is only the first gate. Confirming the platform and the actual recipient is what prevents a wrong transfer.
+<span class="tag">Template B · Path</span>
+<div class="diagram"><h3>The same number is not the same recipient</h3>
+<div class="orbit-scene" aria-label="Each platform keeps its own UID. The same number does not prove the same recipient."><div class="space-glow"></div><div class="orbit-ring ring-a"></div><div class="orbit-ring ring-b"></div>
+<div class="orbit-account account-left"><div class="orb orb-a"><img class="platform-app-icon" src="assets/teach/binance-intl.png?v=20261108130000" alt="Binance international app icon"></div><div class="glass-account"><span class="micro">PLATFORM A</span><strong>Binance international</strong><span class="uid">UID · 123456</span><span class="identity"><i></i> Separate account system</span></div></div>
+<div class="orbit-account account-right"><div class="orb orb-b"><img class="platform-app-icon" src="assets/teach/binance-th.png?v=20261108130000" alt="Binance TH app icon"></div><div class="glass-account"><span class="micro">PLATFORM B</span><strong>Binance TH</strong><span class="uid">UID · 123456</span><span class="identity"><i></i> Separate account system</span></div></div>
+<div class="broken-route"><span class="route-line"></span><div class="route-lock"><span class="lock-symbol">✕</span><b>Same UID ≠ same recipient</b><small>A number alone does not identify someone across platforms</small></div><span class="route-line"></span></div>
+<div class="orbit-foot"><div><span class="tiny-dot"></span> Check identity inside each platform</div><div><span class="tiny-dot"></span> Confirm the path that platform supports</div></div>
+</div><p class="diagram-caption">Sample numbers only, to show that the accounts are separate. Not a real UID or a real transfer.</p></div>
+<div class="steps"><div class="step"><span class="num">01 / PLATFORM</span><b>Look at the platform first</b><p>Are the sender and the recipient on the same service?</p></div><div class="step"><span class="num">02 / IDENTITY</span><b>Then look at the recipient</b><p>Do the UID, username, and avatar match what you expect?</p></div><div class="step"><span class="num">03 / ROUTE</span><b>Then look at the path</b><p>Does the platform clearly support this kind of transfer?</p></div></div>
+<div class="key"><strong>The point:</strong> A correct UID only means you checked a number. It does not prove the transfer path is right.</div>
+<div class="quiz" data-correct="c" data-ok="Correct. This question is passed." data-bad="Not yet. Look again at the platforms and the transfer path the official rules support."><h3>What would you do?</h3><p>The receiving UID matches the number you were sent, but you are not sure the two apps connect.</p><button type="button" class="option" data-answer="a">A. Send it. The number is right.</button><button type="button" class="option" data-answer="b">B. Only check whether the avatar looks right.</button><button type="button" class="option" data-answer="c">C. Stop and confirm the platform and the receiving method it supports.</button><div class="feedback"></div></div>
 
 ## Before you transfer, get used to a three-step check
 
 **Before you transfer, confirm the platforms, then the recipient details and network; especially on a first transfer, send a small test before the rest.**
+
+<span class="tag">Template C · Checklist</span>
+<div class="diagram"><h3>The transfer safety check</h3>
+<div class="cosmic-scene check-scene" role="img" aria-label="Three stages: confirm the platform, check the recipient and network, then send a small test."><div class="check-track"><div class="track-line"></div>
+<div class="check-node"><div class="node-orb orb-blue"><span class="planet-texture" aria-hidden="true"></span><span class="orb-number">01</span></div><b>Confirm the platform</b><small>Does it support the transfer?</small></div>
+<div class="check-node"><div class="node-orb orb-rose"><span class="planet-texture" aria-hidden="true"></span><span class="orb-number">02</span></div><b>Check the details</b><small>Identity · coin · network</small></div>
+<div class="check-node"><div class="node-orb orb-gold"><span class="planet-texture" aria-hidden="true"></span><span class="orb-number">03</span></div><b>Small test</b><small>Confirm it arrived</small></div>
+</div><div class="scene-bottom">Finish the checks in order before you send the rest</div></div></div>
 
 **Step 1: confirm the platform**
 
@@ -1544,9 +1544,24 @@ Confirm the other side actually received it, and that the coin and the network a
 
 A small test does not guarantee later transfers are completely safe. It does keep one mistake from costing the whole amount.
 
+<div class="checklist"><label class="checkrow"><input type="checkbox"><span><b>Confirm the platform</b><small>Do not trust the brand logo alone. Check the platform name and whether it supports this transfer.</small></span></label><label class="checkrow"><input type="checkbox"><span><b>Confirm the recipient and the network</b><small>On an internal transfer, check the UID, username, and avatar. On-chain, check the address, coin, and network. An avatar is only a hint.</small></span></label><label class="checkrow"><input type="checkbox"><span><b>Test a small amount first</b><small>The first time, send a small test, confirm it really arrived, then consider the rest.</small></span></label></div>
+<p class="teach-status" data-tpl="Checked {n} / {m} · scenario {quiz}" data-yes="passed" data-no="not passed yet">Checked 0 / 3 · scenario not passed yet</p>
+<div class="quiz" data-correct="b" data-ok="Correct. This question is passed." data-bad="Not yet. Look again at the platforms and the transfer path the official rules support."><h3>Pass check · a scenario</h3><p>You checked the UID, username, and avatar, but you do not know whether the two apps can transfer to each other. What should you do?</p><button type="button" class="option" data-answer="a">A. Send a large amount and see if it arrives.</button><button type="button" class="option" data-answer="b">B. Pause the transfer and check the method the official rules support.</button><button type="button" class="option" data-answer="c">C. If the avatar matches, you can send it.</button><div class="feedback"></div></div>
+<div class="key"><strong>Note:</strong> A small test does not replace checking the platform and the recipient, and it does not make later transfers safe.</div>
+
 ## What if you already sent it to the wrong place?
 
 **If a transfer already went wrong, save the records and contact official support, but do not count on fixing it afterwards.**
+
+<span class="tag">Template D · What happens next</span>
+<div class="diagram"><h3>Sent to the wrong account inside a platform: what usually happens?</h3>
+<div class="cosmic-scene recovery-scene" role="img" aria-label="Steps after an internal mis-transfer: keep evidence, contact official support, the platform checks, you talk it through, then the rules decide."><div class="recovery-track"><div class="track-line"></div>
+<div class="recovery-node"><div class="recovery-orb">01</div><b>Keep evidence</b><small>Records and screenshots</small></div>
+<div class="recovery-node"><div class="recovery-orb">02</div><b>Official appeal</b><small>Send the documents</small></div>
+<div class="recovery-node"><div class="recovery-orb">03</div><b>Platform review</b><small>Check the transfer</small></div>
+<div class="recovery-node"><div class="recovery-orb">04</div><b>Talk it through</b><small>Reach the recipient</small></div>
+<div class="recovery-node"><div class="recovery-orb">05</div><b>Follow the rules</b><small>No guaranteed result</small></div>
+</div><div class="scene-bottom">The platform cannot take another user's assets on one person's word alone</div></div></div>
 
 First, save the transfer record, the order number, the receiving UID, the transaction hash (if there is one), and the screenshots. Contact official support as soon as you can.
 
@@ -1569,6 +1584,10 @@ A last reminder
 The easiest place for a crypto transfer to go wrong is sometimes not a complicated technique. It is a bit of common sense you treated as obvious.
 
 Two extra minutes of checking before you send is much easier than spending days looking for a fix after the funds go to the wrong place.
+
+<div class="compare"><div><b>Internal mis-transfer</b><p>The platform can check the record and follow its rules. It cannot take another user's assets just because the sender says so. Someone else's account usually needs a review, a conversation, and the proper process.</p></div><div><b>On-chain mis-transfer</b><p>A confirmed on-chain transaction usually cannot be undone. If it went to an address you do not control, or onto the wrong network, getting it back can be extremely hard, or impossible.</p></div></div>
+<div class="key"><strong>A realistic note:</strong> There is no one-click undo. What you can do is use the official channel quickly. Do not treat a later fix as a safety net.</div>
+<div class="quiz" data-correct="b" data-ok="Correct. This question is passed." data-bad="Not yet. Look again at the platforms and the transfer path the official rules support."><h3>If the funds are already in a stranger's account?</h3><p>Can the exchange take the money back from that account just because you explain it was a mistake?</p><button type="button" class="option" data-answer="a">A. Yes, if you explain it was a mistake.</button><button type="button" class="option" data-answer="b">B. No. It has to check and follow the proper process.</button><div class="feedback"></div></div>
 
 # Footer
 

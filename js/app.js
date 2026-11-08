@@ -463,7 +463,7 @@
   function balanceProse(prose) {
     if (!prose) return;
     prose.querySelectorAll('p').forEach(function (p) {
-      if (p.closest('.uid-compare, table, thead, tbody, pre, .summary, .tool-card, .tool-grid, button')) return;
+      if (p.closest('.uid-compare, .diagram, .cosmic-scene, .orbit-scene, .quiz, .checklist, .steps, .step, .compare, .key, .teach-status, table, thead, tbody, pre, .summary, .tool-card, .tool-grid, button')) return;
       if (p.querySelector('table, pre, code, button, img, svg, .uid-compare, .tool-card')) return;
       p.querySelectorAll('br.clause-br').forEach(function (br) { br.remove(); });
       var text = p.textContent;
@@ -517,9 +517,29 @@
       balanceProse(document.getElementById('reader-prose'));
     });
   }
+  function sectionHasQuiz(cid, index) {
+    var ch = chap(cid);
+    return !!(ch && ch.sections[index] && ch.sections[index].html.indexOf('data-correct=') !== -1);
+  }
+  function teachCanEnter(cid, index) {
+    var ch = chap(cid);
+    if (!ch || index < 0 || index >= ch.sections.length) return false;
+    if (!window.TEACH) return true;
+    for (var i = 0; i < index; i++) {
+      if (sectionHasQuiz(cid, i) && !TEACH.isPassed(cid, i)) return false;
+    }
+    return true;
+  }
   function renderChapter(id, sec, keep) {
     try { localStorage.removeItem('web3-reader-theme'); } catch (eTheme) {}
     var c = chap(id); if (!c) return renderHome();
+    if (sec != null && !teachCanEnter(id, sec)) {
+      var dest = 0;
+      for (var ti = 0; ti < sec; ti++) if (teachCanEnter(id, ti)) dest = ti;
+      var back = '#/c/' + id + (dest ? '/' + dest : '');
+      if (location.hash !== back) location.hash = back;
+      return;
+    }
     var planetIndex = planetIndexFor(id, sec);
     var planet = planetIndex >= 0 ? PLANETS[planetIndex] : null;
     var visible = visibleSections(planetIndex, id);
@@ -594,10 +614,23 @@
       });
     });
     $$('.course-reader [data-sec]').forEach(function (b) {
-      b.addEventListener('click', function () { goHash(id, +b.getAttribute('data-sec')); });
+      var si = +b.getAttribute('data-sec');
+      if (!teachCanEnter(id, si)) b.classList.add('is-locked');
+      b.addEventListener('click', function () {
+        if (!teachCanEnter(id, si)) return;
+        goHash(id, si);
+      });
     });
     var select = $('#section-select');
-    if (select) select.addEventListener('change', function () { goHash(id, +select.value); });
+    if (select) {
+      Array.prototype.forEach.call(select.options, function (opt) {
+        if (!teachCanEnter(id, +opt.value)) opt.disabled = true;
+      });
+      select.addEventListener('change', function () {
+        if (!teachCanEnter(id, +select.value)) { select.value = String(cur.i); return; }
+        goHash(id, +select.value);
+      });
+    }
     function step(dir) {
       var nextPos = pos + dir;
       if (nextPos >= 0 && nextPos < visible.length) { goHash(id, visible[nextPos].i); return; }
@@ -610,7 +643,29 @@
     }
     var prevBtn = $('#reader-prev'), nextBtn = $('#reader-next');
     if (prevBtn) prevBtn.addEventListener('click', function () { step(-1); });
-    if (nextBtn) nextBtn.addEventListener('click', function () { step(1); });
+    function unlockTeachNext() {
+      if (!nextBtn || nextBtn.getAttribute('data-end') === '1') return;
+      nextBtn.disabled = false;
+      nextBtn.classList.remove('is-locked');
+      nextBtn.textContent = t('reader.next');
+      $$('.course-reader [data-sec]').forEach(function (b) {
+        b.classList.toggle('is-locked', !teachCanEnter(id, +b.getAttribute('data-sec')));
+      });
+      if (select) Array.prototype.forEach.call(select.options, function (opt) {
+        opt.disabled = !teachCanEnter(id, +opt.value);
+      });
+    }
+    if (nextBtn && nextBtn.disabled) nextBtn.setAttribute('data-end', '1');
+    if (sectionHasQuiz(id, cur.i) && window.TEACH && !TEACH.isPassed(id, cur.i) && nextBtn) {
+      nextBtn.disabled = true;
+      nextBtn.classList.add('is-locked');
+      nextBtn.textContent = t('reader.locked');
+    }
+    if (nextBtn) nextBtn.addEventListener('click', function () {
+      if (nextBtn.disabled || nextBtn.classList.contains('is-locked')) return;
+      step(1);
+    });
+    if (window.TEACH && prose) TEACH.mount(prose, id, cur.i, unlockTeachNext);
     $$('.course-reader [data-tool]').forEach(function (b) {
       b.addEventListener('click', function () { goHash(b.getAttribute('data-tool'), null); });
     });
@@ -1404,6 +1459,7 @@
     var rm = h.match(/^#\/r\/(\w+)(?:\/(\d+))?/), cx = /^#\/cex/.test(h), py = /^#\/punycode/.test(h);
     document.body.classList.toggle('is-home', !m && !rm && !cx && !py);
     document.body.classList.toggle('is-reader', !!m);
+    if (window.TEACH) TEACH.syncStarfield(!!m);
     if (cx) { renderCex(); if (!keep) window.scrollTo(0, 0); }
     else if (py) { renderPuny(); if (!keep) window.scrollTo(0, 0); }
     else if (rm) renderRoute(rm[1], rm[2] ? +rm[2] : 0, keep);
