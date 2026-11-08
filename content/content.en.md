@@ -1461,7 +1461,6 @@ Done message: "Check finished. Check once more on the final confirmation screen.
 
 **Platforms under the same brand do not necessarily share one account system.**
 
-<span class="tag">Template A · Compare</span>
 <div class="diagram"><h3>See it first: the same brand is not a shared account</h3>
 <div class="cosmic-scene compare-scene" role="img" aria-label="Two separate platform accounts under one brand. Do not assume an internal transfer."><div class="scene-halo halo-violet"></div><div class="scene-halo halo-cyan"></div>
 <div class="brand-constellation"><span class="star-glyph">✦</span><span>One brand · different account systems</span></div>
@@ -1487,14 +1486,13 @@ If the same email can register separately in two apps under one brand, and you e
 
 They are two separate accounts. Before you transfer, confirm that the platforms support moving funds between them. Do not look only at the brand name.
 
-<div class="key"><strong>Remember:</strong> If you can register two accounts, you cannot infer an internal transfer from the brand name. Whether a dedicated path exists depends on the platform's official rules.</div>
+<div class="key"><strong>Remember:</strong> Since these are two independent systems, you cannot transfer by UID unless the official platform explicitly provides a dedicated transfer channel.</div>
 <div class="quiz" data-correct="b" data-ok="Correct. This question is passed." data-bad="Not yet. Look again at the platforms and the transfer path the official rules support."><h3>Check your judgment</h3><p>You registered on Binance international and on Binance TH. Both use the same email, and both finished KYC. Since both are Binance platforms, can you transfer between the two accounts by UID?</p><button type="button" class="option" data-answer="a">A. Yes. The same brand means you can transfer.</button><button type="button" class="option" data-answer="b">B. Don't assume it is supported. Check the official transfer path first.</button><div class="feedback"></div></div>
 
 ## The UID is right — why can the transfer still go wrong?
 
 **A UID is only an in-platform user number, not an industry-wide receiving identity.**
 
-<span class="tag">Template B · Path</span>
 <div class="diagram"><h3>The same number is not the same recipient</h3>
 <div class="orbit-scene" aria-label="Each platform keeps its own UID. The same number does not prove the same recipient."><div class="space-glow"></div><div class="orbit-ring ring-a"></div><div class="orbit-ring ring-b"></div>
 <div class="orbit-account account-left"><div class="orb orb-a"><img class="platform-app-icon" src="assets/teach/binance-intl.png?v=20261108130000" alt="Binance international app icon"></div><div class="glass-account"><span class="micro">PLATFORM A</span><strong>Binance international</strong><span class="uid">UID · 123456</span><span class="identity"><i></i> Separate account system</span></div></div>
@@ -1510,7 +1508,6 @@ They are two separate accounts. Before you transfer, confirm that the platforms 
 
 **Before you transfer, confirm the platforms, then the recipient details and network; especially on a first transfer, send a small test before the rest.**
 
-<span class="tag">Template C · Checklist</span>
 <div class="diagram"><h3>The transfer safety check</h3>
 <div class="cosmic-scene check-scene" role="img" aria-label="Three stages: confirm the platform, check the recipient and network, then send a small test."><div class="check-track"><div class="track-line"></div>
 <div class="check-node"><div class="node-orb orb-blue"><span class="planet-texture" aria-hidden="true"></span><span class="orb-number">01</span></div><b>Confirm the platform</b><small>Does it support the transfer?</small></div>
@@ -1553,7 +1550,6 @@ A small test does not guarantee later transfers are completely safe. It does kee
 
 **If a transfer already went wrong, save the records and contact official support, but do not count on fixing it afterwards.**
 
-<span class="tag">Template D · What happens next</span>
 <div class="diagram"><h3>Sent to the wrong account inside a platform: what usually happens?</h3>
 <div class="cosmic-scene recovery-scene" role="img" aria-label="Steps after an internal mis-transfer: keep evidence, contact official support, the platform checks, you talk it through, then the rules decide."><div class="recovery-track"><div class="track-line"></div>
 <div class="recovery-node"><div class="recovery-orb">01</div><b>Keep evidence</b><small>Records and screenshots</small></div>

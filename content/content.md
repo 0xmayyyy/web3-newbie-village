@@ -1458,7 +1458,6 @@ Ethereum 安全资料：https://ethereum.org/security/
 
 **同一个品牌旗下的平台，不代表使用同一套账户系统。**
 
-<span class="tag">模板 A · 对比图解</span>
 <div class="diagram"><h3>先看清：品牌关系 ≠ 账户互通</h3>
 <div class="cosmic-scene compare-scene" role="img" aria-label="同品牌下两个独立平台账户，不能默认站内互转"><div class="scene-halo halo-violet"></div><div class="scene-halo halo-cyan"></div>
 <div class="brand-constellation"><span class="star-glyph">✦</span><span>同一品牌 · 不同账户体系</span></div>
@@ -1484,14 +1483,13 @@ Ethereum 安全资料：https://ethereum.org/security/
 
 既然是两个独立账户，转账前就必须先确认平台之间是否支持资金互转，而不是只看品牌名称。
 
-<div class="key"><strong>记住：</strong>能注册两个账号，就不能凭品牌名称推断可以直接站内互转；是否有专门的跨平台通道，必须以平台官方规则为准。</div>
+<div class="key"><strong>记住：</strong>既然是两个独立的系统，就不能用 UID 互转，除非官方明确提供了专门的转账通道。</div>
 <div class="quiz" data-correct="b" data-ok="✓ 回答正确！本题已通过。" data-bad="还不对，请重新判断平台及官方支持的转账路径。"><h3>判断一下</h3><p>我分别在 Binance 国际版和 Binance TH 注册了账号，两个平台使用同一个邮箱，也都完成了 KYC。既然都是 Binance 旗下的平台，可以直接通过 UID 在两个账户之间互转资金吗？</p><button type="button" class="option" data-answer="a">A. 可以，品牌一样就能转</button><button type="button" class="option" data-answer="b">B. 不能默认支持，先核对官方转账路径</button><div class="feedback"></div></div>
 
 ## UID 对了，钱为什么还是可能转错？
 
 **UID 只是平台内的用户编号，不是全行业通用的收款身份。**
 
-<span class="tag">模板 B · 路径图解</span>
 <div class="diagram"><h3>相同的数字，不代表相同的收款人</h3>
 <div class="orbit-scene" aria-label="两个平台分别管理各自 UID，不能仅凭相同编号判断收款人相同"><div class="space-glow"></div><div class="orbit-ring ring-a"></div><div class="orbit-ring ring-b"></div>
 <div class="orbit-account account-left"><div class="orb orb-a"><img class="platform-app-icon" src="assets/teach/binance-intl.png?v=20261108130000" alt="Binance 国际版 App 图标"></div><div class="glass-account"><span class="micro">PLATFORM A</span><strong>Binance 国际版</strong><span class="uid">UID · 123456</span><span class="identity"><i></i> 独立账户体系</span></div></div>
@@ -1507,7 +1505,6 @@ Ethereum 安全资料：https://ethereum.org/security/
 
 **转账前先确认平台，再确认收款信息与网络；尤其是第一次转账时，先小额测试，再转大额。**
 
-<span class="tag">模板 C · 交互清单</span>
 <div class="diagram"><h3>转账安全检查路径</h3>
 <div class="cosmic-scene check-scene" role="img" aria-label="确认平台、核对收款信息与网络、小额测试三个阶段"><div class="check-track"><div class="track-line"></div>
 <div class="check-node"><div class="node-orb orb-blue"><span class="planet-texture" aria-hidden="true"></span><span class="orb-number">01</span></div><b>确认平台</b><small>是否支持互转</small></div>
@@ -1550,7 +1547,6 @@ Ethereum 安全资料：https://ethereum.org/security/
 
 **转错之后先保存记录并联系官方客服，但不要把希望寄托在事后补救上。**
 
-<span class="tag">模板 D · 处理流程</span>
 <div class="diagram"><h3>站内误转：通常需要走哪些步骤？</h3>
 <div class="cosmic-scene recovery-scene" role="img" aria-label="站内误转处理流程：保留证据、官方申诉、平台核查、协商沟通、依规处理"><div class="recovery-track"><div class="track-line"></div>
 <div class="recovery-node"><div class="recovery-orb">01</div><b>保留证据</b><small>记录与截图</small></div>
