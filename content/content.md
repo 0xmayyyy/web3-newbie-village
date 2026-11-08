@@ -1461,8 +1461,8 @@ Ethereum 安全资料：https://ethereum.org/security/
 <div class="diagram"><h3>先看清：品牌关系 ≠ 账户互通</h3>
 <div class="cosmic-scene compare-scene" role="img" aria-label="同品牌下两个独立平台账户，不能默认站内互转"><div class="scene-halo halo-violet"></div><div class="scene-halo halo-cyan"></div>
 <div class="brand-constellation"><span class="star-glyph">✦</span><span>同一品牌 · 不同账户体系</span></div>
-<div class="account-worlds"><div class="world"><div class="planet planet-violet"><img class="platform-app-icon" src="assets/teach/binance-intl.png?v=20261108130000" alt="Binance 国际版 App 图标"></div><div class="world-card"><small>GLOBAL PLATFORM</small><b>Binance 国际版</b><span>独立注册 / 身份认证</span></div></div>
-<div class="world"><div class="planet planet-cyan"><img class="platform-app-icon" src="assets/teach/binance-th.png?v=20261108130000" alt="Binance TH App 图标"></div><div class="world-card"><small>THAILAND PLATFORM</small><b>Binance TH</b><span>独立注册 / 身份认证</span></div></div></div>
+<div class="account-worlds"><div class="world"><div class="planet planet-violet"><img class="platform-app-icon" src="assets/teach/binance-intl.png?v=20261108130000" alt="Binance 国际版 App 图标"></div><div class="world-card"><b>Binance 国际版</b></div></div>
+<div class="world"><div class="planet planet-cyan"><img class="platform-app-icon" src="assets/teach/binance-th.png?v=20261108130000" alt="Binance TH App 图标"></div><div class="world-card"><b>Binance TH</b></div></div></div>
 <div class="scene-divider"><i></i><span>不能默认站内互通</span><i></i></div>
 <div class="scene-bottom">同品牌 ≠ 同账户 · 转账方式以官方规则为准</div></div>
 <div class="caption">结构示意，不代表平台底层数据库的具体实现。</div></div>

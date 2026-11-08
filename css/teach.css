@@ -84,9 +84,6 @@
 .course-reader .planet-cyan{background:radial-gradient(circle at 30% 25%,#b4f2e6,#3c9fbd 43%,#17445e 76%);animation-delay:-2.2s;box-shadow:0 0 38px #4daec27a,inset -22px -18px 25px #071827b5,inset 9px 8px 16px #ffffff48}
 .course-reader .planet-mark{font-size:26px;font-weight:800;text-shadow:0 2px 12px #090b2c}
 .course-reader .world-card{width:min(100%,300px);margin-top:12px;padding:13px 12px;text-align:center;display:flex;flex-direction:column;gap:3px;border:1px solid #d7b8db70;border-radius:14px;background:linear-gradient(140deg,#ffffff1c,#ffffff07);backdrop-filter:blur(12px);box-shadow:inset 0 1px #ffffff32,0 14px 28px #05061180}
-.course-reader .compare-scene .world-card small{font-size:13px;font-weight:700;color:#fff6e4;letter-spacing:.06em}
-.course-reader .compare-scene .world-card b{font-size:17px;color:#fff}
-@media(max-width:699px){.course-reader .compare-scene .world-card small{font-size:11px;letter-spacing:.04em}.course-reader .compare-scene .world-card b{font-size:14px}}
 .course-reader .world-card b{font-size:15px}
 .course-reader .world-card span{font-size:11px;color:#c8bfd9}
 .course-reader .scene-divider{display:flex;align-items:center;gap:10px;justify-content:center;margin:18px auto 0;color:#ffb5c6;font-weight:750;font-size:12px}

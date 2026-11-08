@@ -1464,8 +1464,8 @@ Done message: "Check finished. Check once more on the final confirmation screen.
 <div class="diagram"><h3>See it first: the same brand is not a shared account</h3>
 <div class="cosmic-scene compare-scene" role="img" aria-label="Two separate platform accounts under one brand. Do not assume an internal transfer."><div class="scene-halo halo-violet"></div><div class="scene-halo halo-cyan"></div>
 <div class="brand-constellation"><span class="star-glyph">✦</span><span>One brand · different account systems</span></div>
-<div class="account-worlds"><div class="world"><div class="planet planet-violet"><img class="platform-app-icon" src="assets/teach/binance-intl.png?v=20261108130000" alt="Binance international app icon"></div><div class="world-card"><small>GLOBAL PLATFORM</small><b>Binance international</b><span>Separate sign-up / identity check</span></div></div>
-<div class="world"><div class="planet planet-cyan"><img class="platform-app-icon" src="assets/teach/binance-th.png?v=20261108130000" alt="Binance TH app icon"></div><div class="world-card"><small>THAILAND PLATFORM</small><b>Binance TH</b><span>Separate sign-up / identity check</span></div></div></div>
+<div class="account-worlds"><div class="world"><div class="planet planet-violet"><img class="platform-app-icon" src="assets/teach/binance-intl.png?v=20261108130000" alt="Binance international app icon"></div><div class="world-card"><b>Binance international</b></div></div>
+<div class="world"><div class="planet planet-cyan"><img class="platform-app-icon" src="assets/teach/binance-th.png?v=20261108130000" alt="Binance TH app icon"></div><div class="world-card"><b>Binance TH</b></div></div></div>
 <div class="scene-divider"><i></i><span>Do not assume an internal transfer</span><i></i></div>
 <div class="scene-bottom">Same brand ≠ same account · Follow the platform's official rules</div></div>
 <div class="caption">A sketch of the structure, not the platforms' actual databases.</div></div>
