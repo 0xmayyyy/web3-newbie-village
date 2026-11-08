@@ -1,0 +1,194 @@
+/* Shared illustrated teaching components. Scoped to the course reader. */
+.course-reader .diagram{background:radial-gradient(ellipse at 83% 8%,#65508045,transparent 50%),linear-gradient(160deg,#2b2342ee,#16182eea);border:1px solid #b79aab5c;border-radius:20px;padding:22px;margin:22px 0;overflow:hidden;box-shadow:inset 0 1px #f6e2ff14,0 14px 34px #06041350}
+.course-reader .diagram h3{margin:0 0 16px;font-size:17px;color:#f1d8b9}
+.course-reader .diagram h3:before{content:'✧';color:#e9c99c;margin-right:9px}
+.course-reader .caption,.course-reader .diagram-caption{color:#afa0bd;font-size:12px;margin-top:10px}
+.course-reader .key{border-left:3px solid #f3d5a4;background:linear-gradient(90deg,#e9c99c17,transparent);padding:15px 18px;margin:24px 0;border-radius:0 12px 12px 0}
+.course-reader .key strong{color:#e9c99c}
+.course-reader .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.course-reader .step{border:1px solid #aa92bd75;background:linear-gradient(145deg,#3a2c4a9e,#201d37b9);border-radius:16px;padding:16px;box-shadow:inset 0 1px #ffffff1d}
+.course-reader .step .num{font-size:12px;color:#fff6e4}
+.course-reader .step b{display:block;margin:5px 0;color:#f6f0ff}
+.course-reader .step p{font-size:13px;color:#bcb0ca;margin:0}
+.course-reader .quiz{border:1px solid #a98a9966;border-radius:18px;padding:20px;background:linear-gradient(125deg,#352941d9,#241e38d9);margin-top:24px;box-shadow:inset 0 1px #ffffff22}
+.course-reader .quiz h3{margin:0 0 6px;color:#f1d8b9;font-size:18px}
+.course-reader .quiz p{margin:0 0 14px;color:#bcb0ca;font-size:14px}
+.course-reader .option{width:100%;text-align:left;display:block;margin:9px 0;padding:12px 14px;border:1px solid #584861;background:#251c34;color:#f6f0ff;border-radius:10px}
+.course-reader .option:hover,.course-reader .option:focus-visible{border-color:#e9c99c}
+.course-reader .option.selected{border-color:#e9c99c;background:#403048;box-shadow:0 0 0 1px #e9c99c66}
+.course-reader .feedback{margin-top:12px;padding:12px;border-radius:10px;background:#1c392f;color:#c4f5df;display:none}
+.course-reader .feedback.wrong{background:#49303c;color:#ffd7de}
+.course-reader .checklist{display:grid;gap:10px}
+.course-reader .checkrow{display:flex;align-items:flex-start;gap:12px;border:1px solid #aa92bd75;padding:12px;border-radius:12px;background:linear-gradient(145deg,#3a2c4a9e,#201d37b9);color:#f6f0ff}
+.course-reader .checkrow input{accent-color:#e9c99c;width:18px;height:18px;margin-top:6px}
+.course-reader .checkrow span{flex:1}
+.course-reader .checkrow b{display:block;color:#f6f0ff}
+.course-reader .checkrow small{display:block;color:#bcb0ca}
+.course-reader .checkrow:has(input:checked){border-color:#80cdbd;background:linear-gradient(135deg,#1e504b8a,#22263f)}
+.course-reader .tag{display:inline-block;border:1px solid #7b6176;border-radius:99px;color:#e9c99c;padding:3px 10px;font-size:11px;letter-spacing:.06em}
+.course-reader .compare{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.course-reader .compare>div{border:1px solid #aa92bd75;border-radius:16px;padding:16px;background:linear-gradient(145deg,#3a2c4a9e,#201d37b9)}
+.course-reader .compare b{color:#e9c99c}
+.course-reader .compare p{font-size:13px;color:#bcb0ca}
+.course-reader .teach-status{font-size:13px;color:#bcb0ca}
+.course-reader .orbit-scene{position:relative;isolation:isolate;min-height:420px;padding:38px 24px 25px;display:grid;grid-template-columns:1fr 1fr;column-gap:48px;align-items:start;overflow:hidden;border-radius:20px;background:radial-gradient(ellipse at 50% 50%,#41315d55 0%,transparent 65%),linear-gradient(155deg,#0c1027,#17112b 58%,#100d22);border:1px solid #a18ab445;box-shadow:inset 0 1px #ffffff24,inset 0 -35px 90px #07071755,0 24px 60px #05030e55}
+.course-reader .orbit-scene:before{content:"";position:absolute;inset:0;z-index:-1;opacity:.52;background-image:radial-gradient(1px 1px at 11% 20%,#fff 95%,transparent),radial-gradient(2px 2px at 78% 14%,#f5d6b5 95%,transparent),radial-gradient(1px 1px at 56% 76%,#fff 95%,transparent),radial-gradient(1px 1px at 92% 60%,#fff 95%,transparent),radial-gradient(1px 1px at 22% 83%,#fff 95%,transparent);background-size:100% 100%}
+.course-reader .space-glow{position:absolute;z-index:-1;left:25%;right:25%;top:5%;height:70%;background:radial-gradient(ellipse,#8a62d024,transparent 70%);filter:blur(16px)}
+.course-reader .orbit-ring{position:absolute;z-index:-1;width:330px;height:125px;border:1px solid #d7b6e04a;border-radius:50%;top:100px;transform:rotate(-28deg);box-shadow:0 0 24px #ad80c219}
+.course-reader .ring-a{left:-15px}
+.course-reader .ring-b{right:-15px;transform:rotate(28deg)}
+.course-reader .orbit-account{display:flex;align-items:center;flex-direction:column;gap:12px;min-width:0}
+.course-reader .orb{height:88px;width:88px;border-radius:50%;display:grid;place-items:center;position:relative;box-shadow:inset -18px -15px 24px #090c25b9,inset 8px 8px 20px #ffffff42,0 0 30px #a777d75c,0 18px 25px #0008}
+.course-reader .orb:after{content:"";position:absolute;inset:-7px;border:1px solid #ddc5e36b;border-radius:50%;transform:rotateX(66deg) rotate(-26deg)}
+.course-reader .orb span{font-size:14px;color:#ffffffcc;letter-spacing:2px}
+.course-reader .orb-a{background:radial-gradient(circle at 30% 25%,#e4b7ef,#7754a9 35%,#312555 75%)}
+.course-reader .orb-b{background:radial-gradient(circle at 30% 25%,#d6c3f5,#6584b8 35%,#29335d 75%);box-shadow:inset -18px -15px 24px #090c25b9,inset 8px 8px 20px #ffffff42,0 0 30px #789bdb55,0 18px 25px #0008}
+.course-reader .glass-account{width:100%;max-width:285px;min-height:152px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:17px 10px;border:1px solid #e6c7ef6b;border-radius:19px;background:linear-gradient(145deg,#ffffff19,#9274c11c 35%,#120f2dbb);box-shadow:inset 0 1px #ffffff48,inset 0 -1px #ffffff12,0 18px 35px #0007,0 0 35px #a574c01b;backdrop-filter:blur(16px);text-align:center}
+.course-reader .micro{font-size:10px;letter-spacing:2px;color:#e7c99d}
+.course-reader .glass-account strong{font-size:19px;color:#f6edff}
+.course-reader .uid{font-size:18px;font-weight:700;color:#f1d0a1}
+.course-reader .identity{font-size:12px;color:#d7c8e3}
+.course-reader .identity i{display:inline-block;width:6px;height:6px;border-radius:50%;background:#9bd4c5;box-shadow:0 0 8px #9bd4c5}
+.course-reader .broken-route{grid-column:1/-1;display:flex;align-items:center;gap:10px;margin:22px auto 16px;width:min(100%,590px)}
+.course-reader .route-line{flex:1;border-top:2px dashed #dba5b477;filter:drop-shadow(0 0 6px #e4a8bd)}
+.course-reader .route-lock{display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center;border:1px solid #e4a5b16e;border-radius:16px;padding:12px 22px;background:linear-gradient(145deg,#5b304766,#2b1a35dd);box-shadow:0 0 30px #e39ab020,inset 0 1px #ffffff2c}
+.course-reader .lock-symbol{display:grid;place-items:center;width:25px;height:25px;border-radius:50%;background:#f0b0bc;color:#32172a;font-weight:900}
+.course-reader .route-lock b{font-size:15px;color:#ffdee5}
+.course-reader .route-lock small{font-size:11px;color:#dfc1d2}
+.course-reader .orbit-foot{grid-column:1/-1;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.course-reader .orbit-foot>div{padding:9px 14px;border:1px solid #9bbba54b;border-radius:99px;background:#24443a55;color:#d0eadc;font-size:12px}
+.course-reader .tiny-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#9ed4b9;margin-right:5px;box-shadow:0 0 7px #9ed4b9}
+.course-reader .diagram-caption{text-align:center;color:#b7a7c7;font-size:12px;margin:12px 0 0}
+@media(max-width:699px){.course-reader .steps,.course-reader .compare{grid-template-columns:1fr}.course-reader .diagram{padding:13px}.course-reader .orbit-scene{min-height:0;padding:26px 12px 20px;column-gap:12px}.course-reader .orb{height:60px;width:60px}.course-reader .glass-account{min-height:135px;padding:12px 5px;gap:7px}.course-reader .glass-account strong{font-size:14px}.course-reader .uid{font-size:13px}.course-reader .micro{font-size:9px;letter-spacing:1px}.course-reader .identity{font-size:10px}.course-reader .orbit-ring{width:180px;height:80px;top:65px}.course-reader .route-lock{padding:10px 9px}.course-reader .route-lock b{font-size:12px}.course-reader .route-lock small{font-size:10px}.course-reader .broken-route{gap:6px;margin:18px auto}.course-reader .orbit-foot>div{font-size:11px}}
+.course-reader /* V4: chapter gate and orbital learning status */
+.navbtn.locked{opacity:.43;cursor:not-allowed;filter:grayscale(.45)}
+.course-reader .navbtn:disabled{cursor:not-allowed}
+.course-reader .pill:disabled{opacity:.5;cursor:not-allowed;background:#5b4c63;color:#e6d5e6;box-shadow:none}
+.course-reader .option.selected{box-shadow:0 0 0 1px #e9c99c66,0 0 18px #e9c99c1a}
+.course-reader .checkrow:has(input:checked){border-color:#a6d8b988;background:linear-gradient(110deg,#20423977,#281f38)}
+.course-reader /* V5 · dimensional diagrams across all lessons */
+.cosmic-scene{position:relative;isolation:isolate;overflow:hidden;border-radius:20px;min-height:350px;padding:28px 24px 24px;background:radial-gradient(ellipse at 50% 5%,#735a9850,transparent 52%),radial-gradient(ellipse at 5% 90%,#204c6940,transparent 55%),linear-gradient(145deg,#11162c,#1b1631 57%,#0e1329);border:1px solid #ab96bd69;box-shadow:inset 0 1px #ffffff25,inset 0 -35px 80px #04071760,0 24px 65px #06031075}
+.course-reader .cosmic-scene:before{content:"";position:absolute;inset:-50%;z-index:-1;background:conic-gradient(from 15deg at 50% 50%,transparent,#6d5cb21c,transparent,#2e9db61a,transparent);animation:nebula-turn 34s linear infinite}
+.course-reader .scene-stars{position:absolute;inset:0;pointer-events:none;opacity:.65;background-image:radial-gradient(2px 2px at 12% 19%,#fff 90%,transparent),radial-gradient(1px 1px at 34% 66%,#fff 90%,transparent),radial-gradient(2px 2px at 78% 26%,#e8d0ff 90%,transparent),radial-gradient(1px 1px at 91% 76%,#fff 90%,transparent),radial-gradient(2px 2px at 59% 89%,#f9d49c 90%,transparent);background-size:100% 100%;animation:twinkle 4.8s ease-in-out infinite alternate}
+.course-reader .scene-halo{position:absolute;width:270px;height:270px;filter:blur(30px);opacity:.38;border-radius:50%;pointer-events:none}
+.course-reader .halo-violet{top:0;left:4%;background:radial-gradient(circle,#9068d8,transparent 68%)}
+.course-reader .halo-cyan{top:0;right:4%;background:radial-gradient(circle,#41a5c5,transparent 68%)}
+.course-reader .brand-constellation{display:flex;align-items:center;justify-content:center;gap:10px;color:#f2d8b1;letter-spacing:.08em;font-size:12px;font-weight:750;position:relative;z-index:1}
+.course-reader .star-glyph{font-size:23px;text-shadow:0 0 15px #ffcf90}
+.course-reader .account-worlds{display:grid;grid-template-columns:1fr 1fr;gap:28px;position:relative;margin:18px auto 0;max-width:730px}
+.course-reader .account-worlds:after{content:"";position:absolute;left:50%;top:64px;height:90px;border-left:1px dashed #d3a6b777;transform:translateX(-50%)}
+.course-reader .world{display:flex;flex-direction:column;align-items:center;position:relative;min-width:0}
+.course-reader .planet{width:112px;height:112px;border-radius:50%;display:grid;place-items:center;position:relative;animation:float-planet 5.5s ease-in-out infinite;box-shadow:0 0 35px #8061c380,inset -22px -18px 25px #080a29b5,inset 9px 8px 16px #ffffff48}
+.course-reader .planet:before{content:"";position:absolute;width:145%;height:42%;border:1px solid #f2d6bc9e;border-radius:50%;transform:rotate(-24deg);box-shadow:0 0 14px #e6bb9c45}
+.course-reader .planet-violet{background:radial-gradient(circle at 30% 25%,#d8baf2,#7958bd 43%,#272657 76%)}
+.course-reader .planet-cyan{background:radial-gradient(circle at 30% 25%,#b4f2e6,#3c9fbd 43%,#17445e 76%);animation-delay:-2.2s;box-shadow:0 0 38px #4daec27a,inset -22px -18px 25px #071827b5,inset 9px 8px 16px #ffffff48}
+.course-reader .planet-mark{font-size:26px;font-weight:800;text-shadow:0 2px 12px #090b2c}
+.course-reader .world-card{width:min(100%,300px);margin-top:12px;padding:13px 12px;text-align:center;display:flex;flex-direction:column;gap:3px;border:1px solid #d7b8db70;border-radius:14px;background:linear-gradient(140deg,#ffffff1c,#ffffff07);backdrop-filter:blur(12px);box-shadow:inset 0 1px #ffffff32,0 14px 28px #05061180}
+.course-reader .world-card b{font-size:15px}
+.course-reader .world-card span{font-size:11px;color:#c8bfd9}
+.course-reader .scene-divider{display:flex;align-items:center;gap:10px;justify-content:center;margin:18px auto 0;color:#ffb5c6;font-weight:750;font-size:12px}
+.course-reader .scene-divider i{width:30px;height:1px;background:linear-gradient(90deg,transparent,#e69fb2)}
+.course-reader .scene-divider i:last-child{transform:rotate(180deg)}
+.course-reader .scene-bottom{text-align:center;color:#c6bbd9;font-size:12px;margin-top:18px;position:relative}
+.course-reader .check-scene, .course-reader .recovery-scene{display:flex;flex-direction:column;justify-content:center;min-height:310px}
+.course-reader .check-track, .course-reader .recovery-track{position:relative;display:grid;align-items:start;gap:12px;margin:22px 0 8px}
+.course-reader .check-track{grid-template-columns:repeat(3,minmax(0,1fr))}
+.course-reader .track-line{position:absolute;top:49px;left:12%;right:12%;height:2px;background:linear-gradient(90deg,#68c9e5,#ed9dc8,#f3d09b);box-shadow:0 0 15px #a57eff88;z-index:0}
+.course-reader .track-line:after{content:"";position:absolute;top:-2px;left:0;width:30%;height:6px;border-radius:99px;background:#ffffffaa;filter:blur(4px);animation:travel 5s linear infinite}
+.course-reader .check-node, .course-reader .recovery-node{display:flex;flex-direction:column;align-items:center;gap:7px;z-index:1;text-align:center;min-width:0}
+.course-reader .node-orb{width:98px;height:98px;display:grid;place-items:center;border-radius:50%;font-size:24px;font-weight:800;color:#fff;box-shadow:inset 7px 8px 17px #ffffff3c,inset -18px -18px 26px #0b103caa,0 0 28px var(--glow);animation:float-planet 5s ease-in-out infinite}
+.course-reader .orb-blue{--glow:#3ca5d966;background:radial-gradient(circle at 28% 20%,#a8eaff,#438dca 50%,#242b79)}
+.course-reader .orb-rose{--glow:#df81b366;background:radial-gradient(circle at 28% 20%,#ffd6ec,#b46fa9 50%,#55306b);animation-delay:-1.7s}
+.course-reader .orb-gold{--glow:#e6b86e66;background:radial-gradient(circle at 28% 20%,#fff0b9,#d5a56b 50%,#6e4567);animation-delay:-3.4s}
+.course-reader .check-node b, .course-reader .recovery-node b{font-size:15px}
+.course-reader .check-node small, .course-reader .recovery-node small{font-size:11px;color:#c4b8d2}
+.course-reader .recovery-track{grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.course-reader .recovery-track .track-line{top:34px;left:9%;right:9%}
+.course-reader .recovery-orb{width:68px;height:68px;border-radius:20px;display:grid;place-items:center;color:#f8e8ff;font-weight:800;font-size:18px;background:linear-gradient(135deg,#6d5697,#352d65);border:1px solid #e0c7e660;box-shadow:inset 0 2px #ffffff48,0 10px 25px #06081cbb,0 0 24px #9269c94a;transform:rotate(-7deg);animation:orb-pulse 5s ease-in-out infinite}
+.course-reader .recovery-node:nth-child(3) .recovery-orb{background:linear-gradient(135deg,#3887a8,#2a436f);animation-delay:-1s}
+.course-reader .recovery-node:nth-child(4) .recovery-orb{background:linear-gradient(135deg,#aa6caa,#613a78);animation-delay:-2s}
+.course-reader .recovery-node:nth-child(5) .recovery-orb{background:linear-gradient(135deg,#bb8669,#76516d);animation-delay:-3s}
+.course-reader .recovery-node:nth-child(6) .recovery-orb{background:linear-gradient(135deg,#8b93a9,#42486c);animation-delay:-4s}
+.course-reader .step, .course-reader .checkrow, .course-reader .compare>div{border-color:#aa92bd75;background:linear-gradient(145deg,#3a2c4a9e,#201d37b9);box-shadow:inset 0 1px #ffffff1d,0 12px 24px #0706163b;transition:transform .25s,box-shadow .25s}
+.course-reader .step:hover, .course-reader .checkrow:hover, .course-reader .compare>div:hover{transform:translateY(-3px);box-shadow:inset 0 1px #ffffff2c,0 16px 30px #07061677}
+.course-reader .checkrow:has(input:checked){border-color:#80cdbd;background:linear-gradient(135deg,#1e504b8a,#22263f)}
+.course-reader .quiz{box-shadow:inset 0 1px #ffffff22,0 15px 40px #06041866}
+.course-reader .option{transition:transform .2s,border-color .2s,background .2s}
+.course-reader .option:hover{transform:translateX(3px)}
+@keyframes twinkle{from{opacity:.3;transform:scale(1)}to{opacity:.9;transform:scale(1.015)}}
+@keyframes nebula-turn{to{transform:rotate(360deg)}}
+@keyframes float-planet{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes travel{0%{left:0}100%{left:70%}}
+@keyframes orb-pulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.2)}}
+@media(max-width:699px){.course-reader .cosmic-scene{padding:20px 10px;min-height:300px}.course-reader .account-worlds{gap:10px}.course-reader .planet{width:75px;height:75px}.course-reader .world-card{padding:10px 6px}.course-reader .world-card b{font-size:12px}.course-reader .world-card span{font-size:10px}.course-reader .brand-constellation{font-size:10px}.course-reader .check-track{gap:4px}.course-reader .node-orb{width:68px;height:68px;font-size:17px}.course-reader .check-track .track-line{top:34px}.course-reader .check-node b, .course-reader .recovery-node b{font-size:12px}.course-reader .check-node small, .course-reader .recovery-node small{font-size:10px}.course-reader .recovery-track{gap:3px}.course-reader .recovery-orb{width:43px;height:43px;border-radius:13px;font-size:12px}.course-reader .recovery-track .track-line{top:22px}.course-reader .recovery-node b{font-size:10px}.course-reader .recovery-node small{font-size:9px}.course-reader .scene-bottom{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.course-reader .cosmic-scene:before, .course-reader .scene-stars, .course-reader .planet, .course-reader .node-orb, .course-reader .recovery-orb, .course-reader .track-line:after{animation:none!important}.course-reader .step:hover, .course-reader .checkrow:hover, .course-reader .compare>div:hover, .course-reader .option:hover{transform:none}}
+.course-reader /* V6: original Web3 Newbie Village planet art and individual animated stars */
+.planet, .course-reader .planet-violet, .course-reader .planet-cyan, .course-reader .node-orb{background:transparent!important;box-shadow:none!important;border-radius:50%;overflow:visible}
+.course-reader .planet:before{display:none!important}
+.course-reader .official-planet{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 18px #a27fe580) drop-shadow(0 15px 18px #03031380);position:relative;z-index:1}
+.course-reader .orb-number{position:absolute;z-index:2;bottom:-3px;left:50%;transform:translateX(-50%);padding:0 8px;border-radius:20px;background:#19152de8;border:1px solid #f1d5ac80;font-size:12px;color:#ffe2b5}
+.course-reader .cosmic-scene .moving-star{position:absolute;left:var(--sx);top:var(--sy);width:var(--ss);height:var(--ss);border-radius:50%;pointer-events:none;background:var(--sc);opacity:.25;box-shadow:0 0 8px 2px var(--sc);z-index:0;animation:star-breathe var(--sd) ease-in-out var(--delay) infinite alternate,star-drift var(--sm) ease-in-out var(--delay) infinite alternate}
+.course-reader .cosmic-scene .moving-star.spark{width:2px;height:2px}
+.course-reader .cosmic-scene .moving-star.spark:after{content:"";position:absolute;left:-5px;top:0;width:12px;height:1px;background:linear-gradient(90deg,transparent,var(--sc),transparent);opacity:.7}
+@keyframes star-breathe{0%{opacity:.14;filter:brightness(.8)}100%{opacity:.92;filter:brightness(1.6)}}
+@keyframes star-drift{0%{translate:0 0}100%{translate:var(--dx) var(--dy)}}
+.course-reader .orbit-account .orb{overflow:visible!important;background:transparent!important;box-shadow:none!important}
+.course-reader .orbit-account .orb:before, .course-reader .orbit-account .orb:after{opacity:.45}
+@media(prefers-reduced-motion:reduce){.course-reader .cosmic-scene .moving-star{animation:none!important;opacity:.55}.course-reader .planet, .course-reader .orb, .course-reader .node-orb{animation:none!important}}
+.course-reader /* V7: source-accurate hero planet, .course-reader platform app icons, .course-reader custom teaching worlds */
+.account-worlds .planet, .course-reader .orbit-account .orb{background:transparent!important;box-shadow:none!important;overflow:visible}
+.course-reader .platform-app-icon{width:100%;height:100%;object-fit:contain;border-radius:24%;filter:drop-shadow(0 12px 18px #0009) drop-shadow(0 0 15px #e4b96b38);animation:icon-breathe 5s ease-in-out infinite}
+.course-reader .account-worlds .planet:before, .course-reader .orbit-account .orb:after{display:none!important}
+.course-reader .orbit-account .orb{width:96px;height:96px}
+.course-reader /* Three original planets: mineral ridges, .course-reader luminous latitude lines, .course-reader icy storms */
+.check-node .node-orb{position:relative;overflow:hidden;isolation:isolate;box-shadow:inset -14px -16px 22px #050d2fbb,inset 7px 7px 18px #ffffff40,0 0 35px var(--glow)!important}
+.course-reader .check-node .node-orb .planet-texture{position:absolute;inset:0;border-radius:50%;overflow:hidden;z-index:0;mix-blend-mode:screen;opacity:.8}
+.course-reader .check-node .orb-blue{background:radial-gradient(circle at 26% 20%,#d5ffff,#53d6de 24%,#2a7eab 53%,#162b69 82%)!important;--glow:#2cd8ef88}
+.course-reader .check-node .orb-blue .planet-texture{background:repeating-radial-gradient(ellipse 48px 18px at 62% 42%,transparent 0 7px,#b5ffff4d 8px 10px,transparent 12px 18px),linear-gradient(145deg,transparent 35%,#a8ffff55 43%,transparent 49%) ;transform:rotate(-24deg)}
+.course-reader .check-node .orb-rose{background:radial-gradient(circle at 29% 20%,#fff1ff,#e1a5e9 22%,#a35cb4 52%,#3e255f 82%)!important;--glow:#f28bd988}
+.course-reader .check-node .orb-rose .planet-texture{background:repeating-linear-gradient(165deg,transparent 0 11px,#ffc9f44f 12px 14px,transparent 17px 27px),radial-gradient(ellipse at 55% 70%,#ffd6ec6b,transparent 55%);transform:rotate(18deg)}
+.course-reader .check-node .orb-gold{background:radial-gradient(circle at 25% 19%,#fff9d4,#ffc878 25%,#c67c4d 55%,#683c65 84%)!important;--glow:#ffc07388}
+.course-reader .check-node .orb-gold .planet-texture{background:repeating-radial-gradient(ellipse 55px 20px at 22% 42%,transparent 0 10px,#ffedb16b 12px 14px,transparent 16px 25px),linear-gradient(20deg,transparent 30%,#fff2ba50 44%,transparent 56%);transform:rotate(-14deg)}
+.course-reader .check-node .node-orb:after{content:"";position:absolute;inset:9px -18px;border:1px solid #f8d8b98a;border-radius:50%;transform:rotate(-25deg) scaleY(.36);box-shadow:0 0 14px #e9c9aa38;pointer-events:none}
+.course-reader .check-node:nth-child(3) .node-orb:after{transform:rotate(20deg) scaleY(.32);border-color:#ffd1f5a0}
+.course-reader .check-node:nth-child(4) .node-orb:after{transform:rotate(-12deg) scaleY(.4);border-color:#ffe3a5b0}
+.course-reader .orb-number{z-index:2!important;position:relative;text-shadow:0 2px 8px #101027,0 0 9px #101027;font-weight:850}
+@keyframes icon-breathe{0%,100%{filter:drop-shadow(0 12px 18px #0009) drop-shadow(0 0 12px #e4b96b22)}50%{filter:drop-shadow(0 16px 20px #000a) drop-shadow(0 0 22px #e4b96b65)}}
+@media(prefers-reduced-motion:reduce){.course-reader .platform-app-icon{animation:none!important}}
+.course-reader /* V8: Correct official icons, .course-reader no white badge/frame, .course-reader static platform comparison */
+.account-worlds .planet, .course-reader .orbit-account .orb{
+  border:0!important; outline:0!important; background:none!important;
+  box-shadow:none!important; border-radius:0!important;
+  animation:none!important; transform:none!important;
+  filter:none!important; overflow:visible!important;
+}
+.course-reader .platform-app-icon{
+  display:block; width:100%;height:100%;object-fit:contain;
+  border:0!important; outline:0!important; border-radius:0!important;
+  box-shadow:none!important; filter:none!important; background:transparent!important;
+  animation:none!important; transform:none!important;
+}
+.course-reader .account-worlds .planet::before, .course-reader .account-worlds .planet::after, .course-reader .orbit-account .orb::before, .course-reader .orbit-account .orb::after{display:none!important}
+.course-reader /* Cards remain stable; decorative stars elsewhere may still twinkle */
+.account-worlds .world, .course-reader .account-worlds .world-card, .course-reader .orbit-account, .course-reader .orbit-account .glass-account{animation:none!important;transform:none!important}
+.course-reader /* V9: starfield belongs to the page background, .course-reader never the teaching diagrams */
+body{position:relative;isolation:isolate}
+#outer-starfield{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0;contain:strict}
+#outer-starfield .falling-star{position:absolute;left:var(--x);top:-10vh;width:var(--sz);height:var(--sz);border-radius:50%;background:var(--tint);opacity:0;box-shadow:0 0 7px 1px var(--tint);animation:falling-star var(--dur) linear var(--delay) infinite}
+#outer-starfield .falling-star.streak:after{content:"";position:absolute;width:1px;height:var(--tail);left:50%;bottom:3px;transform:translateX(-50%);background:linear-gradient(to top,var(--tint),transparent);opacity:.6}
+@keyframes falling-star{0%{transform:translate3d(0,-8vh,0);opacity:0}6%{opacity:var(--opacity)}85%{opacity:var(--opacity)}100%{transform:translate3d(var(--shift),115vh,0);opacity:0}}
+.course-reader .cosmic-scene .moving-star, .course-reader .cosmic-scene .scene-stars{display:none!important}
+.course-reader .platform-app-icon{object-fit:contain!important;border-radius:0!important;background:transparent!important}
+@media(prefers-reduced-motion:reduce){#outer-starfield .falling-star{animation:none!important;opacity:.25;top:var(--still-top)}}
+.course-reader #reader-next.is-locked,
+.course-reader #reader-next:disabled.is-locked{opacity:.55;cursor:not-allowed;background:#5b4c63;color:#e6d5e6}
+.course-reader .toc-btn.is-locked{opacity:.45}
+.course-reader .prose .option{color:#f6f0ff}
+.course-reader .prose .quiz p,
+.course-reader .prose .step p,
+.course-reader .prose .compare p,
+.course-reader .prose .diagram-caption,
+.course-reader .prose .caption,
+.course-reader .teach-status{color:#bcb0ca}
+.course-reader .steps .step,
+.course-reader .steps .step:hover{background:none;border:0;box-shadow:none;transform:none;padding:0}

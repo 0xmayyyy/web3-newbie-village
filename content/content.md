@@ -1458,6 +1458,15 @@ Ethereum 安全资料：https://ethereum.org/security/
 
 **同一个品牌旗下的平台，不代表使用同一套账户系统。**
 
+<div class="diagram"><h3>先看清：品牌关系 ≠ 账户互通</h3>
+<div class="cosmic-scene compare-scene" role="img" aria-label="同品牌下两个独立平台账户，不能默认站内互转"><div class="scene-halo halo-violet"></div><div class="scene-halo halo-cyan"></div>
+<div class="brand-constellation"><span class="star-glyph">✦</span><span>同一品牌 · 不同账户体系</span></div>
+<div class="account-worlds"><div class="world"><div class="planet planet-violet"><img class="platform-app-icon" src="assets/teach/binance-intl.png?v=20261108130000" alt="Binance 国际版 App 图标"></div><div class="world-card"><b>Binance 国际版</b></div></div>
+<div class="world"><div class="planet planet-cyan"><img class="platform-app-icon" src="assets/teach/binance-th.png?v=20261108130000" alt="Binance TH App 图标"></div><div class="world-card"><b>Binance TH</b></div></div></div>
+<div class="scene-divider"><i></i><span>不能默认站内互通</span><i></i></div>
+<div class="scene-bottom">同品牌 ≠ 同账户 · 转账方式以官方规则为准</div></div>
+<div class="caption">结构示意，不代表平台底层数据库的具体实现。</div></div>
+
 最近有个案例：一位用户想把资产从 Binance 国际版转到 Binance TH（泰国版），结果因为误以为两个平台的账户互通，导致转账出现问题。
 
 当事人并不是没有核对收款 UID，而是忽略了一个问题：**同一个品牌旗下的平台，不代表使用同一套账户系统。**
@@ -1474,46 +1483,34 @@ Ethereum 安全资料：https://ethereum.org/security/
 
 既然是两个独立账户，转账前就必须先确认平台之间是否支持资金互转，而不是只看品牌名称。
 
+<div class="key"><strong>记住：</strong>既然是两个独立的系统，就不能用 UID 互转，除非官方明确提供了专门的转账通道。</div>
+<div class="quiz" data-correct="b" data-ok="✓ 回答正确！本题已通过。" data-bad="还不对，请重新判断平台及官方支持的转账路径。"><h3>判断一下</h3><p>我分别在 Binance 国际版和 Binance TH 注册了账号，两个平台使用同一个邮箱，也都完成了 KYC。既然都是 Binance 旗下的平台，可以直接通过 UID 在两个账户之间互转资金吗？</p><button type="button" class="option" data-answer="a">A. 可以，品牌一样就能转</button><button type="button" class="option" data-answer="b">B. 不能默认支持，先核对官方转账路径</button><div class="feedback"></div></div>
+
 ## UID 对了，钱为什么还是可能转错？
 
 **UID 只是平台内的用户编号，不是全行业通用的收款身份。**
 
-### 先看一个例子
-
-<div class="uid-compare">
-<div class="uid-cards">
-<article class="uid-card">
-<svg class="uid-phone" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 5h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="18.2" r=".9" fill="currentColor"/></svg>
-<h4>Binance 国际版</h4>
-<p class="uid-num">UID：123456</p>
-<p class="uid-pill uid-pill-a">账户 A</p>
-</article>
-<article class="uid-card">
-<svg class="uid-phone" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 5h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="18.2" r=".9" fill="currentColor"/></svg>
-<h4>Binance TH</h4>
-<p class="uid-num">UID：789012</p>
-<p class="uid-pill uid-pill-b">账户 B</p>
-</article>
-</div>
-<p class="uid-swap"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h11l-3-3M17 17H6l3 3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>不能默认支持 UID 互转</p>
-<p class="uid-note">示意编号，仅用于说明两个平台账户体系的区别。</p>
-</div>
-
-### 真正需要核对的，不只是 UID：
-
-<ul class="uid-checks">
-<li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#2f7a52"/><path d="M7.4 12.2l3 3.1 6.2-6.4" fill="none" stroke="#f4fff6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>收款 UID 属于哪个平台？</li>
-<li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#2f7a52"/><path d="M7.4 12.2l3 3.1 6.2-6.4" fill="none" stroke="#f4fff6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>用户名、头像是否与收款人一致？</li>
-<li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#2f7a52"/><path d="M7.4 12.2l3 3.1 6.2-6.4" fill="none" stroke="#f4fff6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>两个平台是否支持这条转账路径？</li>
-</ul>
-
-<h3 class="uid-rule"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="2.4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2.4v3.1M12 18.5v3.1M2.4 12h3.1M18.5 12h3.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>记住这个判断原则</h3>
-
-UID 正确只是第一关，确认平台和实际收款人，才是避免误转的关键。
+<div class="diagram"><h3>相同的数字，不代表相同的收款人</h3>
+<div class="orbit-scene" aria-label="两个平台分别管理各自 UID，不能仅凭相同编号判断收款人相同"><div class="space-glow"></div><div class="orbit-ring ring-a"></div><div class="orbit-ring ring-b"></div>
+<div class="orbit-account account-left"><div class="orb orb-a"><img class="platform-app-icon" src="assets/teach/binance-intl.png?v=20261108130000" alt="Binance 国际版 App 图标"></div><div class="glass-account"><span class="micro">PLATFORM A</span><strong>Binance 国际版</strong><span class="uid">UID · 123456</span><span class="identity"><i></i> 独立账户体系</span></div></div>
+<div class="orbit-account account-right"><div class="orb orb-b"><img class="platform-app-icon" src="assets/teach/binance-th.png?v=20261108130000" alt="Binance TH App 图标"></div><div class="glass-account"><span class="micro">PLATFORM B</span><strong>Binance TH</strong><span class="uid">UID · 123456</span><span class="identity"><i></i> 独立账户体系</span></div></div>
+<div class="broken-route"><span class="route-line"></span><div class="route-lock"><span class="lock-symbol">✕</span><b>相同 UID ≠ 相同收款人</b><small>跨平台不能仅凭编号识别身份</small></div><span class="route-line"></span></div>
+<div class="orbit-foot"><div><span class="tiny-dot"></span> 在各自平台内核对身份</div><div><span class="tiny-dot"></span> 确认平台支持的转账路径</div></div>
+</div><p class="diagram-caption">示意编号仅用于解释账户隔离，不代表真实用户 UID 或具体交易结果。</p></div>
+<div class="steps"><div class="step"><span class="num">01 / PLATFORM</span><b>先看平台</b><p>发送方和接收方是不是同一套服务？</p></div><div class="step"><span class="num">02 / IDENTITY</span><b>再看收款人</b><p>UID、用户名和头像是否符合预期？</p></div><div class="step"><span class="num">03 / ROUTE</span><b>最后看路径</b><p>平台是否明确支持该种转账方式？</p></div></div>
+<div class="key"><strong>核心：</strong>UID 对了，只能说明你核对了一个编号，不能证明转账路径正确。</div>
+<div class="quiz" data-correct="c" data-ok="✓ 回答正确！本题已通过。" data-bad="还不对，请重新判断平台及官方支持的转账路径。"><h3>你会怎么判断？</h3><p>收款 UID 与对方发来的数字一致，但你不确定两边 App 是否互通。</p><button type="button" class="option" data-answer="a">A. 直接转，数字没错</button><button type="button" class="option" data-answer="b">B. 只看头像像不像</button><button type="button" class="option" data-answer="c">C. 停下来确认平台及支持的收款方式</button><div class="feedback"></div></div>
 
 ## 转账前，养成三步自检习惯
 
 **转账前先确认平台，再确认收款信息与网络；尤其是第一次转账时，先小额测试，再转大额。**
+
+<div class="diagram"><h3>转账安全检查路径</h3>
+<div class="cosmic-scene check-scene" role="img" aria-label="确认平台、核对收款信息与网络、小额测试三个阶段"><div class="check-track"><div class="track-line"></div>
+<div class="check-node"><div class="node-orb orb-blue"><span class="planet-texture" aria-hidden="true"></span><span class="orb-number">01</span></div><b>确认平台</b><small>是否支持互转</small></div>
+<div class="check-node"><div class="node-orb orb-rose"><span class="planet-texture" aria-hidden="true"></span><span class="orb-number">02</span></div><b>核对信息</b><small>身份 · 币种 · 网络</small></div>
+<div class="check-node"><div class="node-orb orb-gold"><span class="planet-texture" aria-hidden="true"></span><span class="orb-number">03</span></div><b>小额测试</b><small>确认实际到账</small></div>
+</div><div class="scene-bottom">按顺序完成检查，再考虑正式转账</div></div></div>
 
 **第一步：确认平台**
 
@@ -1541,9 +1538,23 @@ UID 正确只是第一关，确认平台和实际收款人，才是避免误转�
 
 小额测试虽然不能保证后续转账绝对安全，但至少能避免一次操作失误就损失全部资金。
 
+<div class="checklist"><label class="checkrow"><input type="checkbox"><span><b>确认平台</b><small>不只看品牌 Logo；核对平台名称及是否支持该转账方式。</small></span></label><label class="checkrow"><input type="checkbox"><span><b>确认收款信息与网络</b><small>站内核对 UID、用户名、头像等；链上核对地址、币种和网络。头像只是辅助信息。</small></span></label><label class="checkrow"><input type="checkbox"><span><b>先做小额测试</b><small>首次转账先用小额试转，确认真实到账，再考虑剩余资金。</small></span></label></div>
+<p class="teach-status" data-tpl="自检 {n} / {m} 项 · 情景题{quiz}" data-yes="已答对" data-no="待通过">自检 0 / 3 项 · 情景题待通过</p>
+<div class="quiz" data-correct="b" data-ok="✓ 回答正确！本题已通过。" data-bad="还不对，请重新判断平台及官方支持的转账路径。"><h3>通关验证 · 情景题</h3><p>你已核对 UID、用户名和头像，不确定两个 App 是否支持直接互转。这时应该？</p><button type="button" class="option" data-answer="a">A. 先转一大笔，看看是否到账</button><button type="button" class="option" data-answer="b">B. 暂停转账，先核对官方支持的转账方式</button><button type="button" class="option" data-answer="c">C. 只要头像一致就可以转</button><div class="feedback"></div></div>
+<div class="key"><strong>注意：</strong>小额测试不能代替核对平台和收款人，也不能保证后续交易绝对安全。</div>
+
 ## 如果已经转错了怎么办？
 
 **转错之后先保存记录并联系官方客服，但不要把希望寄托在事后补救上。**
+
+<div class="diagram"><h3>站内误转：通常需要走哪些步骤？</h3>
+<div class="cosmic-scene recovery-scene" role="img" aria-label="站内误转处理流程：保留证据、官方申诉、平台核查、协商沟通、依规处理"><div class="recovery-track"><div class="track-line"></div>
+<div class="recovery-node"><div class="recovery-orb">01</div><b>保留证据</b><small>记录与截图</small></div>
+<div class="recovery-node"><div class="recovery-orb">02</div><b>官方申诉</b><small>提交资料</small></div>
+<div class="recovery-node"><div class="recovery-orb">03</div><b>平台核查</b><small>核实交易</small></div>
+<div class="recovery-node"><div class="recovery-orb">04</div><b>协商沟通</b><small>联系收款方</small></div>
+<div class="recovery-node"><div class="recovery-orb">05</div><b>依规处理</b><small>结果不保证</small></div>
+</div><div class="scene-bottom">平台不能仅凭单方描述，直接划走其他用户的资产</div></div></div>
 
 首先保存好转账记录、订单编号、收款 UID、交易哈希（如有）及相关截图，并尽快联系官方客服。
 
@@ -1566,6 +1577,10 @@ UID 正确只是第一关，确认平台和实际收款人，才是避免误转�
 币圈转账最容易出问题的地方，有时不是复杂的技术，而是那些我们以为理所当然的常识。
 
 转账前多花两分钟确认核对 ，远比转错后花几天寻找解决办法轻松。
+
+<div class="compare"><div><b>站内误转</b><p>平台可核查记录并依规则处理，但不能仅凭转出方单方面说法，随意划走另一用户的资产。涉及他人账户通常需要核实、沟通及适当程序。</p></div><div><b>链上误转</b><p>链上确认后的交易通常不可撤销。若转至无法控制的地址或错误网络，追回可能极其困难，甚至无法追回。</p></div></div>
+<div class="key"><strong>现实提醒：</strong>误转后没有「一键撤销」。能做的是尽快走正式渠道，不能把事后补救当成安全保障。</div>
+<div class="quiz" data-correct="b" data-ok="✓ 回答正确！本题已通过。" data-bad="还不对，请重新判断平台及官方支持的转账路径。"><h3>如果资金已进入陌生账户？</h3><p>交易所能否仅凭你的描述，就直接把对方账户的钱划回来？</p><button type="button" class="option" data-answer="a">A. 能，只要说清楚是误转</button><button type="button" class="option" data-answer="b">B. 不能，需要核查并遵循相关处理程序</button><div class="feedback"></div></div>
 
 # 页脚
 
