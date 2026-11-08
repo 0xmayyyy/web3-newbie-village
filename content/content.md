@@ -1497,7 +1497,7 @@ Ethereum 安全资料：https://ethereum.org/security/
 <div class="broken-route"><span class="route-line"></span><div class="route-lock"><span class="lock-symbol">✕</span><b>相同 UID ≠ 相同收款人</b><small>跨平台不能仅凭编号识别身份</small></div><span class="route-line"></span></div>
 <div class="orbit-foot"><div><span class="tiny-dot"></span> 在各自平台内核对身份</div><div><span class="tiny-dot"></span> 确认平台支持的转账路径</div></div>
 </div><p class="diagram-caption">示意编号仅用于解释账户隔离，不代表真实用户 UID 或具体交易结果。</p></div>
-<div class="steps"><div class="step"><span class="num">01 / PLATFORM</span><b>先看平台</b><p>发送方和接收方是不是同一套服务？</p></div><div class="step"><span class="num">02 / IDENTITY</span><b>再看收款人</b><p>UID、用户名和头像是否符合预期？</p></div><div class="step"><span class="num">03 / ROUTE</span><b>最后看路径</b><p>平台是否明确支持该种转账方式？</p></div></div>
+<div class="steps"><div class="step"><span class="num">01 / PLATFORM</span><b>先看平台</b><p>发送方和接收方是不是同一套系统？</p></div><div class="step"><span class="num">02 / IDENTITY</span><b>再看收款人</b><p>UID、用户名和头像是否符合预期？</p></div><div class="step"><span class="num">03 / ROUTE</span><b>最后看路径</b><p>平台是否明确支持该种转账方式？</p></div></div>
 <div class="key"><strong>核心：</strong>UID 对了，只能说明你核对了一个编号，不能证明转账路径正确。</div>
 <div class="quiz" data-correct="c" data-ok="✓ 回答正确！本题已通过。" data-bad="还不对，请重新判断平台及官方支持的转账路径。"><h3>你会怎么判断？</h3><p>收款 UID 与对方发来的数字一致，但你不确定两边 App 是否互通。</p><button type="button" class="option" data-answer="a">A. 直接转，数字没错</button><button type="button" class="option" data-answer="b">B. 只看头像像不像</button><button type="button" class="option" data-answer="c">C. 停下来确认平台及支持的收款方式</button><div class="feedback"></div></div>
 
