@@ -352,6 +352,171 @@
     }
     return '';
   }
+  /* Break reader paragraphs at a comma when the next clause does not fit. */
+  function clauseCuts(text) {
+    var cuts = [0], i, ch, end, m;
+    var urls = [], uplus = [];
+    var urlRe = /https?:\/\/[^\s]+/g, uRe = /U\+[0-9A-Fa-f]+/g;
+    while ((m = urlRe.exec(text))) urls.push([m.index, m.index + m[0].length]);
+    while ((m = uRe.exec(text))) uplus.push([m.index, m.index + m[0].length]);
+    function inside(ranges, idx) {
+      for (var k = 0; k < ranges.length; k++) if (idx >= ranges[k][0] && idx < ranges[k][1]) return true;
+      return false;
+    }
+    for (i = 0; i < text.length; i++) {
+      ch = text.charAt(i);
+      var split = ch === '，' || ch === '；' || ch === '：';
+      if (!split && LANG === 'en' && (ch === ',' || ch === ';' || ch === ':')) split = true;
+      if (!split) continue;
+      if (inside(urls, i) || inside(uplus, i)) continue;
+      if ((ch === ',' || ch === ':') && i > 0 && i + 1 < text.length && /\d/.test(text.charAt(i - 1)) && /\d/.test(text.charAt(i + 1))) continue;
+      if (ch === ':' && text.slice(Math.max(0, i - 5), i + 3).indexOf('://') !== -1) continue;
+      end = i + 1;
+      while (end < text.length && /\s/.test(text.charAt(end))) end++;
+      if (end < text.length) cuts.push(end);
+    }
+    return cuts;
+  }
+  function locateText(root, index) {
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (node) {
+        if (node.parentNode && node.parentNode.classList && node.parentNode.classList.contains('clause-measure')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node, seen = 0;
+    while ((node = walker.nextNode())) {
+      var len = node.nodeValue.length;
+      if (seen + len >= index) return { node: node, offset: index - seen };
+      seen += len;
+    }
+    return null;
+  }
+  function textRange(root, start, end) {
+    var a = locateText(root, start), b = locateText(root, end);
+    if (!a || !b) return null;
+    var range = document.createRange();
+    range.setStart(a.node, a.offset);
+    range.setEnd(b.node, b.offset);
+    return range;
+  }
+  function measureBox(p, start, end, width) {
+    var range = textRange(p, start, end);
+    if (!range) return 0;
+    var cs = getComputedStyle(p);
+    var span = document.createElement('span');
+    span.className = 'clause-measure';
+    span.style.position = 'absolute';
+    span.style.left = '0';
+    span.style.top = '0';
+    span.style.visibility = 'hidden';
+    span.style.pointerEvents = 'none';
+    span.style.font = cs.font;
+    span.style.letterSpacing = cs.letterSpacing;
+    span.style.wordSpacing = cs.wordSpacing;
+    if (width) {
+      span.style.display = 'block';
+      span.style.whiteSpace = 'normal';
+      span.style.overflowWrap = cs.overflowWrap || 'anywhere';
+      span.style.width = width + 'px';
+    } else {
+      span.style.whiteSpace = 'nowrap';
+      span.style.overflowWrap = 'normal';
+    }
+    span.appendChild(range.cloneContents());
+    document.body.appendChild(span);
+    var result = width ? (function () {
+      var r = document.createRange();
+      r.selectNodeContents(span);
+      var rects = r.getClientRects();
+      if (!rects.length) return width;
+      var lastTop = rects[rects.length - 1].top, left = Infinity, right = 0, n;
+      for (n = 0; n < rects.length; n++) {
+        if (Math.abs(rects[n].top - lastTop) > 1) continue;
+        if (rects[n].left < left) left = rects[n].left;
+        if (rects[n].right > right) right = rects[n].right;
+      }
+      return right - left;
+    })() : span.offsetWidth;
+    span.remove();
+    return result;
+  }
+  function insertClauseBreak(root, index) {
+    var pos = locateText(root, index);
+    if (!pos) return;
+    var node = pos.node, offset = pos.offset;
+    if (offset === node.length) {
+      var after = node.nextSibling;
+      if (after && after.classList && after.classList.contains('clause-br')) return;
+      var brEnd = document.createElement('br');
+      brEnd.className = 'clause-br';
+      node.parentNode.insertBefore(brEnd, after);
+      return;
+    }
+    if (offset > 0) node = node.splitText(offset);
+    var prev = node.previousSibling;
+    if (prev && prev.classList && prev.classList.contains('clause-br')) return;
+    var br = document.createElement('br');
+    br.className = 'clause-br';
+    node.parentNode.insertBefore(br, node);
+  }
+  function balanceProse(prose) {
+    if (!prose) return;
+    prose.querySelectorAll('p').forEach(function (p) {
+      if (p.closest('.uid-compare, table, thead, tbody, pre, .summary, .tool-card, .tool-grid, button')) return;
+      if (p.querySelector('table, pre, code, button, img, svg, .uid-compare, .tool-card')) return;
+      p.querySelectorAll('br.clause-br').forEach(function (br) { br.remove(); });
+      var text = p.textContent;
+      var cuts = clauseCuts(text);
+      if (cuts.length < 2) return;
+      var lineWidth = p.clientWidth;
+      if (lineWidth < 40) return;
+      var budget = lineWidth - 1;
+      var widths = [];
+      for (var i = 0; i < cuts.length; i++) {
+        var end = i + 1 < cuts.length ? cuts[i + 1] : text.length;
+        widths.push(measureBox(p, cuts[i], end, 0));
+      }
+      var remaining = budget, at = [];
+      for (i = 0; i < cuts.length; i++) {
+        var w = widths[i];
+        if (i === 0) {
+          remaining = w <= budget ? budget - w : Math.max(0, budget - measureBox(p, cuts[i], cuts.length > 1 ? cuts[1] : text.length, lineWidth));
+          continue;
+        }
+        if (w <= remaining) remaining -= w;
+        else if (w <= budget) { at.push(cuts[i]); remaining = budget - w; }
+        else {
+          if (remaining < budget - 0.5) at.push(cuts[i]);
+          var endAt = i + 1 < cuts.length ? cuts[i + 1] : text.length;
+          remaining = Math.max(0, budget - measureBox(p, cuts[i], endAt, lineWidth));
+        }
+      }
+      for (i = at.length - 1; i >= 0; i--) insertClauseBreak(p, at[i]);
+      for (i = 1; i < cuts.length; i++) {
+        var clauseEnd = i + 1 < cuts.length ? cuts[i + 1] : p.textContent.length;
+        var clauseRange = textRange(p, cuts[i], clauseEnd);
+        if (!clauseRange) continue;
+        var rects = clauseRange.getClientRects(), tops = [], n, top;
+        for (n = 0; n < rects.length; n++) {
+          top = Math.round(rects[n].top);
+          if (tops.indexOf(top) < 0) tops.push(top);
+        }
+        if (tops.length <= 1) continue;
+        if (widths[i] > budget) continue;
+        insertClauseBreak(p, cuts[i]);
+      }
+    });
+  }
+  var clauseTick = false;
+  function scheduleClauseBalance() {
+    if (clauseTick) return;
+    clauseTick = true;
+    requestAnimationFrame(function () {
+      clauseTick = false;
+      balanceProse(document.getElementById('reader-prose'));
+    });
+  }
   function renderChapter(id, sec, keep) {
     try { localStorage.removeItem('web3-reader-theme'); } catch (eTheme) {}
     var c = chap(id); if (!c) return renderHome();
@@ -412,6 +577,7 @@
         if (norm(opening.textContent) === norm(highlight)) opening.remove();
       }
     }
+    balanceProse(prose);
     function goHash(nextId, nextSec) { location.hash = '#/c/' + nextId + (nextSec != null ? '/' + nextSec : ''); }
     $$('.course-reader [data-planet]').forEach(function (b) {
       b.addEventListener('click', function () {
@@ -1367,7 +1533,9 @@
     setHdr();
     if (window.innerWidth >= 980) setNavOpen(false);
     syncNavTone();
+    scheduleClauseBalance();
   });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(scheduleClauseBalance);
   var navTick = false;
   window.addEventListener('scroll', function () {
     if (navTick) return;
