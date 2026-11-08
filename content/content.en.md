@@ -34,6 +34,7 @@ Search placeholder: What do you want to know? Try "wallet", "primary market", or
 | 14 | Tool guide 🧰 | Prices, trades, and on-chain data | Guide |
 | 15 | Something went wrong 🆘 | Deposits, withdrawals, transfers, and suspected theft | Troubleshooting |
 | 16 | Common questions and practice ✅ | Check that the key ideas stuck | Review |
+| 17 | Before you transfer: safety basics that are easy to skip 💸 | The same brand is not the same account. Confirm the platform, the payment details, and the network before you transfer | Must-read |
 
 ## Pick a path
 
@@ -46,7 +47,7 @@ Suggested order: 05 (create an exchange account) → 03 → 09 → 04 → 06.
 Learn safety and the basics of trading, then practice with a small amount you can afford to lose.
 
 **🛡️ I already hold coins and want to protect them**
-Suggested order: 08 → 09 → 10 → 15.
+Suggested order: 08 → 09 → 17 → 10 → 15.
 Focus on custody, seed phrases, approvals, and transfer checks.
 
 ## Before you act, remember
@@ -768,9 +769,9 @@ An unlimited approval lets the approved party use a very large token allowance, 
 
 A strange asset showing up in the wallet does not mean you have to do anything with it. Do not visit a link inside it just because it displays a high "value".
 
-## Three traps that show up constantly in Chinese-language circles
+## Three traps that show up constantly in crypto
 
-**Tainted USDT and a frozen bank card, the pig-butchering scam, and letting someone use your account to move money are three of the most common traps in Chinese-language circles.**
+**Tainted USDT and a frozen bank card, the pig-butchering scam, and letting someone use your account to move money are three of the most common traps in crypto.**
 
 **1. Tainted USDT (黑 U) and a frozen card**
 In a P2P trade you may receive money with a dirty source. The bank card can be frozen, and you can be pulled into a case. Trade only with merchants the platform has verified. Do not accept a third party's payment. Do not collect money on someone else's behalf.
@@ -1453,6 +1454,121 @@ Result note: "This is a simplified learning result. Fees are not included. It do
 - The first time I use a path, I send a small test that meets the minimum.
 
 Done message: "Check finished. Check once more on the final confirmation screen. A ticked list cannot guarantee there is no risk."
+
+# 17｜Before you transfer: safety basics that are easy to skip 💸
+
+## The same brand is not the same account
+
+**Platforms under the same brand do not necessarily share one account system.**
+
+A recent case: someone wanted to move assets from Binance international to Binance TH (the Thailand version). They assumed the two platforms shared one account, and the transfer went wrong.
+
+They did check the receiving UID. What they missed was this: **Platforms under the same brand do not necessarily share one account system.**
+
+Take Binance international and Binance TH.
+
+Both use the Binance brand, but they are different services. Their accounts do not connect directly.
+
+There is a simple way to tell:
+
+If you already registered on platform A, and you try to register the same email on the same account system, you usually see "this email is already registered".
+
+If the same email can register separately in two apps under one brand, and you even have to complete KYC (identity verification) again, that is already a clear signal: the two platforms do not share one account system.
+
+They are two separate accounts. Before you transfer, confirm that the platforms support moving funds between them. Do not look only at the brand name.
+
+## The UID is right — why can the transfer still go wrong?
+
+**A UID is only an in-platform user number, not an industry-wide receiving identity.**
+
+### Look at an example first
+
+<div class="uid-compare">
+<div class="uid-cards">
+<article class="uid-card">
+<svg class="uid-phone" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 5h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="18.2" r=".9" fill="currentColor"/></svg>
+<h4>Binance international</h4>
+<p class="uid-num">UID: 123456</p>
+<p class="uid-pill uid-pill-a">Account A</p>
+</article>
+<article class="uid-card">
+<svg class="uid-phone" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 5h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="18.2" r=".9" fill="currentColor"/></svg>
+<h4>Binance TH</h4>
+<p class="uid-num">UID: 789012</p>
+<p class="uid-pill uid-pill-b">Account B</p>
+</article>
+</div>
+<p class="uid-swap"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h11l-3-3M17 17H6l3 3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Don’t assume UID transfers work between them</p>
+<p class="uid-note">Sample numbers only, to show that the two platforms use different account systems.</p>
+</div>
+
+### What you really need to check is more than the UID:
+
+<ul class="uid-checks">
+<li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#2f7a52"/><path d="M7.4 12.2l3 3.1 6.2-6.4" fill="none" stroke="#f4fff6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Which platform does this receiving UID belong to?</li>
+<li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#2f7a52"/><path d="M7.4 12.2l3 3.1 6.2-6.4" fill="none" stroke="#f4fff6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Do the username and avatar match the intended recipient?</li>
+<li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#2f7a52"/><path d="M7.4 12.2l3 3.1 6.2-6.4" fill="none" stroke="#f4fff6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Do both platforms support this transfer path?</li>
+</ul>
+
+<h3 class="uid-rule"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="2.4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2.4v3.1M12 18.5v3.1M2.4 12h3.1M18.5 12h3.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Remember this rule</h3>
+
+A correct UID is only the first gate. Confirming the platform and the actual recipient is what prevents a wrong transfer.
+
+## Before you transfer, get used to a three-step check
+
+**Before you transfer, confirm the platforms, then the recipient details and network; especially on a first transfer, send a small test before the rest.**
+
+**Step 1: confirm the platform**
+
+See clearly which platform is sending and which platform is receiving.
+
+In general, different app entries mean different account systems and databases, especially when the platforms serve different countries or regions.
+
+So do not go by the brand logo alone. Even when the names look alike, confirm the specific platform, whether the accounts connect, and whether an internal transfer is supported.
+
+**Step 2: confirm the payment details and the network**
+
+For an internal transfer, besides checking the UID, email, or other receiving ID, also check that the recipient's **username and avatar** match what you expect.
+
+A username and an avatar are only extra checks. On their own, they do not prove who the recipient is.
+
+For an on-chain transfer, check the coin, the receiving address, and the blockchain network.
+
+For example, USDT on TRC20 and USDT on ERC20 are not networks you can mix as you like.
+
+**Step 3: test a small amount, then send the rest**
+
+Especially the first time you send to a platform, an address, or an account, test with a small amount first.
+
+Confirm the other side actually received it, and that the coin and the network are right, then send the rest.
+
+A small test does not guarantee later transfers are completely safe. It does keep one mistake from costing the whole amount.
+
+## What if you already sent it to the wrong place?
+
+**If a transfer already went wrong, save the records and contact official support, but do not count on fixing it afterwards.**
+
+First, save the transfer record, the order number, the receiving UID, the transaction hash (if there is one), and the screenshots. Contact official support as soon as you can.
+
+If it was an internal transfer to the wrong account, you usually file an appeal or a report under the platform's rules. The platform checks the record and, depending on the case, helps you reach the person who actually received the funds so you can talk it through.
+
+One basic rule:
+
+**Once the funds are in another user's account, the exchange cannot take them out of that account on the sender's word alone.**
+
+Even when the transfer really was a mistake, it still goes through identity checks, a review of the transaction, and the platform's process.
+
+If the other person will not cooperate, getting the money back can be very hard. You may need a legal path.
+
+If it was an on-chain transfer to the wrong place, a confirmed transaction usually cannot be undone. If it went to an address you do not control, or onto the wrong network, the chance of getting it back can be very small.
+
+So do not count on fixing it afterward.
+
+A last reminder
+
+The easiest place for a crypto transfer to go wrong is sometimes not a complicated technique. It is a bit of common sense you treated as obvious.
+
+Two extra minutes of checking before you send is much easier than spending days looking for a fix after the funds go to the wrong place.
 
 # Footer
 

@@ -46,7 +46,7 @@
     return [
       { key: 'new', icon: '🧸', name: t('route.new'), ids: ['01', '02', '03', '08', '09', '05'], desc: t('route.new.d'), cls: 'pink' },
       { key: 'buy', icon: '🛒', name: t('route.buy'), ids: ['05', '03', '09', '04', '06'], desc: t('route.buy.d'), cls: 'mint' },
-      { key: 'protect', icon: '🛡️', name: t('route.protect'), ids: ['08', '09', '10', '15'], desc: t('route.protect.d'), cls: 'lilac' }
+      { key: 'protect', icon: '🛡️', name: t('route.protect'), ids: ['08', '09', '17', '10', '15'], desc: t('route.protect.d'), cls: 'lilac' }
     ];
   }
 
@@ -218,7 +218,7 @@
   }
   var PLANETS = [
     { id: 'entry', file: 'entry', color: '#bba1e9', dot: '#c9a8f3', soft: 'rgba(187,161,233,.28)', chapters: [{ id: '01' }, { id: '02' }, { id: '13' }] },
-    { id: 'safety', file: 'safety', color: '#83b9e8', dot: '#8cc8f1', soft: 'rgba(131,185,232,.28)', chapters: [{ id: '09' }, { id: '15' }] },
+    { id: 'safety', file: 'safety', color: '#83b9e8', dot: '#8cc8f1', soft: 'rgba(131,185,232,.28)', chapters: [{ id: '09' }, { id: '17' }, { id: '15' }] },
     { id: 'trade', file: 'trade', color: '#e7b46f', dot: '#e5b373', soft: 'rgba(231,180,111,.28)', chapters: [{ id: '03' }, { id: '04' }, { id: '05' }, { id: '06' }, { id: '07' }] },
     { id: 'wallet', file: 'wallet', color: '#d69ac4', dot: '#e3a6cf', soft: 'rgba(214,154,196,.28)', chapters: [{ id: '08' }, { id: '10' }] },
     { id: 'world', file: 'world', color: '#79c8c6', dot: '#83e0d4', soft: 'rgba(121,200,198,.28)', sections12: [0, 1, 2, 3, 4, 6, 7], chapters: [{ id: '12', label: 'atlas.world.ch12' }] },

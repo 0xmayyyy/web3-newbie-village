@@ -30,6 +30,7 @@
 | 14 | 常用工具导航 🧰 | 查行情、查交易、查链上数据 | 导航 |
 | 15 | 出问题了怎么办？🆘 | 充值、提现、转账与被盗排查 | 故障处理 |
 | 16 | 新手常见问题与练习 ✅ | 检查自己是否理解关键知识 | 复习 |
+| 17 | 转账前必看：那些容易被忽略的安全常识 💸 | 同一品牌不一定同一账户，转账前先确认平台、收款信息和网络 | 必读 |
 
 ## 选一条适合你的路线
 
@@ -42,7 +43,7 @@
 先掌握安全与交易基础，再用自己能承受损失的小额资金练习。
 
 **🛡️ 我已经有币，想保护资产**
-建议顺序：08 → 09 → 10 → 15。
+建议顺序：08 → 09 → 17 → 10 → 15。
 重点了解资产保管、助记词、授权和转账检查。
 
 ## 操作前先记住
@@ -764,9 +765,9 @@ GoPlus 可以帮助你检查代币、授权及部分链上安全风险，但检�
 
 陌生资产出现在钱包里，不等于你必须处理。不要因为显示「价值很高」就访问其中的链接。
 
-## 中文圈最常见的三个坑
+## 币圈最常见的三个坑
 
-**黑 U 冻卡、杀猪盘、跑分收 U，是中文圈最常见的三个坑。**
+**黑 U 冻卡、杀猪盘、跑分收 U，是币圈最常见的三个坑。**
 
 **1. 黑 U 和冻卡**
 P2P 买卖时收到来源不干净的钱，银行卡可能被冻结，甚至被卷进案件。只和平台认证商家交易，不接第三方付款，不帮别人代收。
@@ -1450,6 +1451,121 @@ Ethereum 安全资料：https://ethereum.org/security/
 - 第一次使用时，我会先做符合最低要求的小额测试。
 
 完成提示：「检查完成。请在最终确认页再核对一次，勾选清单不能保证没有风险。」
+
+# 17｜转账前必看：那些容易被忽略的安全常识 💸
+
+## 同一个品牌，不等于同一个账户
+
+**同一个品牌旗下的平台，不代表使用同一套账户系统。**
+
+最近有个案例：一位用户想把资产从 Binance 国际版转到 Binance TH（泰国版），结果因为误以为两个平台的账户互通，导致转账出现问题。
+
+当事人并不是没有核对收款 UID，而是忽略了一个问题：**同一个品牌旗下的平台，不代表使用同一套账户系统。**
+
+以 Binance 国际版和 Binance TH 为例。
+
+虽然都使用 Binance 品牌，但它们是不同的服务平台，账户体系并不直接互通。
+
+这里有一个很简单的判断方法：
+
+如果你已经在 A 平台注册了账号，再用相同的邮箱注册同一账户系统，通常会提示「此邮箱已被注册」。
+
+如果同一个邮箱能在同一品牌旗下的两个 APP 分别注册账号，甚至需要重新完成 KYC（身份认证），就已经是一个很明显的信号：这两个平台的账户体系并不直接互通。
+
+既然是两个独立账户，转账前就必须先确认平台之间是否支持资金互转，而不是只看品牌名称。
+
+## UID 对了，钱为什么还是可能转错？
+
+**UID 只是平台内的用户编号，不是全行业通用的收款身份。**
+
+### 先看一个例子
+
+<div class="uid-compare">
+<div class="uid-cards">
+<article class="uid-card">
+<svg class="uid-phone" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 5h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="18.2" r=".9" fill="currentColor"/></svg>
+<h4>Binance 国际版</h4>
+<p class="uid-num">UID：123456</p>
+<p class="uid-pill uid-pill-a">账户 A</p>
+</article>
+<article class="uid-card">
+<svg class="uid-phone" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 5h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="18.2" r=".9" fill="currentColor"/></svg>
+<h4>Binance TH</h4>
+<p class="uid-num">UID：789012</p>
+<p class="uid-pill uid-pill-b">账户 B</p>
+</article>
+</div>
+<p class="uid-swap"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h11l-3-3M17 17H6l3 3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>不能默认支持 UID 互转</p>
+<p class="uid-note">示意编号，仅用于说明两个平台账户体系的区别。</p>
+</div>
+
+### 真正需要核对的，不只是 UID：
+
+<ul class="uid-checks">
+<li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#2f7a52"/><path d="M7.4 12.2l3 3.1 6.2-6.4" fill="none" stroke="#f4fff6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>收款 UID 属于哪个平台？</li>
+<li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#2f7a52"/><path d="M7.4 12.2l3 3.1 6.2-6.4" fill="none" stroke="#f4fff6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>用户名、头像是否与收款人一致？</li>
+<li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#2f7a52"/><path d="M7.4 12.2l3 3.1 6.2-6.4" fill="none" stroke="#f4fff6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>两个平台是否支持这条转账路径？</li>
+</ul>
+
+<h3 class="uid-rule"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="2.4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2.4v3.1M12 18.5v3.1M2.4 12h3.1M18.5 12h3.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>记住这个判断原则</h3>
+
+UID 正确只是第一关，确认平台和实际收款人，才是避免误转的关键。
+
+## 转账前，养成三步自检习惯
+
+**转账前先确认平台，再确认收款信息与网络；尤其是第一次转账时，先小额测试，再转大额。**
+
+**第一步：确认平台**
+
+先看清楚发送方和接收方分别属于哪个平台。
+
+一般情况下，不同的 APP 入口对应不同的账户系统和数据库，尤其是面向不同国家或地区运营的平台。
+
+所以不要只认品牌 Logo。即使名称相似，也要确认具体平台、账户是否互通，以及是否支持站内转账。
+
+**第二步：确认收款信息与网络**
+
+站内转账，除了核对 UID、邮箱等收款标识，还要检查收款方显示的**用户名、头像**是否与预期一致。
+
+但要注意，用户名和头像只能作为辅助核对信息，不能单独证明收款人身份。
+
+链上转账，则要核对币种、收款地址和区块链网络。
+
+例如，同样是 USDT，TRC20 和 ERC20 也不是可以随意混用的网络。
+
+**第三步：先小额测试，再转大额**
+
+尤其是首次向某个平台、地址或账户转账时，先用一笔小额资金测试。
+
+确认对方实际到账、币种和网络都正确，再转剩余金额。
+
+小额测试虽然不能保证后续转账绝对安全，但至少能避免一次操作失误就损失全部资金。
+
+## 如果已经转错了怎么办？
+
+**转错之后先保存记录并联系官方客服，但不要把希望寄托在事后补救上。**
+
+首先保存好转账记录、订单编号、收款 UID、交易哈希（如有）及相关截图，并尽快联系官方客服。
+
+如果是站内误转，通常需要按照平台规定提交申诉或备案，由平台核实交易记录，并视情况协助联系实际收款人进行沟通和协商。
+
+这里要明白一个基本原则：
+
+**资金进入其他用户的账户后，交易所不能仅凭转出方的一面之词，就直接从对方账户划走资金。**
+
+即使转账确实是操作失误，也需要经过身份核实、交易调查及相应的处理流程。
+
+如果对方不愿意配合，追回资金可能非常困难，必要时还需要通过法律途径处理。
+
+如果是链上误转，交易一旦确认，通常无法撤销。尤其是转入无法控制的地址或错误网络时，追回的机会可能非常渺茫。
+
+因此，不要把希望寄托在事后补救上。
+
+最后提醒
+
+币圈转账最容易出问题的地方，有时不是复杂的技术，而是那些我们以为理所当然的常识。
+
+转账前多花两分钟确认核对 ，远比转错后花几天寻找解决办法轻松。
 
 # 页脚
 
