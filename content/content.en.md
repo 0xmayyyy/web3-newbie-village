@@ -1459,6 +1459,8 @@ Done message: "Check finished. Check once more on the final confirmation screen.
 
 ## The same brand is not the same account
 
+**Platforms under the same brand do not necessarily share one account system.**
+
 A recent case: someone wanted to move assets from Binance international to Binance TH (the Thailand version). They assumed the two platforms shared one account, and the transfer went wrong.
 
 They did check the receiving UID. What they missed was this: **Platforms under the same brand do not necessarily share one account system.**
@@ -1477,6 +1479,8 @@ They are two separate accounts. Before you transfer, confirm that the platforms 
 
 ## Why can it still go to the wrong place after you checked the UID?
 
+**Checking that a UID is correct is only part of confirming the recipient; more important is which platform that UID belongs to, and whether that platform supports this transfer path.**
+
 A UID is an ID number the platform assigns to a user.
 
 It is not a receiving address that works across the whole industry. You cannot tell who the recipient is from a UID alone, apart from the platform it belongs to.
@@ -1490,6 +1494,8 @@ Even if both accounts are yours, that does not mean the two platforms support a 
 **Checking that the UID is correct is only part of checking the payment details. What matters more is which platform that UID belongs to, and whether that platform supports this transfer path.**
 
 ## Before you transfer, get used to a three-step check
+
+**Before you transfer, confirm the platforms, then the recipient details and network; especially on a first transfer, send a small test before the rest.**
 
 **Step 1: confirm the platform**
 
@@ -1518,6 +1524,8 @@ Confirm the other side actually received it, and that the coin and the network a
 A small test does not guarantee later transfers are completely safe. It does keep one mistake from costing the whole amount.
 
 ## What if you already sent it to the wrong place?
+
+**If a transfer already went wrong, save the records and contact official support, but do not count on fixing it afterwards.**
 
 First, save the transfer record, the order number, the receiving UID, the transaction hash (if there is one), and the screenshots. Contact official support as soon as you can.
 
