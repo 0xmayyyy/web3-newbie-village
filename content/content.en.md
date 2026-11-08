@@ -1477,21 +1477,42 @@ If the same email can register separately in two apps under one brand, and you e
 
 They are two separate accounts. Before you transfer, confirm that the platforms support moving funds between them. Do not look only at the brand name.
 
-## Why can it still go to the wrong place after you checked the UID?
+## The UID is right — why can the transfer still go wrong?
 
-**Checking that a UID is correct is only part of confirming the recipient; more important is which platform that UID belongs to, and whether that platform supports this transfer path.**
+**A UID is only an in-platform user number, not an industry-wide receiving identity.**
 
-A UID is an ID number the platform assigns to a user.
+### Look at an example first
 
-It is not a receiving address that works across the whole industry. You cannot tell who the recipient is from a UID alone, apart from the platform it belongs to.
+<div class="uid-compare">
+<div class="uid-cards">
+<article class="uid-card">
+<svg class="uid-phone" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 5h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="18.2" r=".9" fill="currentColor"/></svg>
+<h4>Binance international</h4>
+<p class="uid-num">UID: 123456</p>
+<p class="uid-pill uid-pill-a">Account A</p>
+</article>
+<article class="uid-card">
+<svg class="uid-phone" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 5h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="18.2" r=".9" fill="currentColor"/></svg>
+<h4>Binance TH</h4>
+<p class="uid-num">UID: 789012</p>
+<p class="uid-pill uid-pill-b">Account B</p>
+</article>
+</div>
+<p class="uid-swap"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h11l-3-3M17 17H6l3 3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Don’t assume UID transfers work between them</p>
+<p class="uid-note">Sample numbers only, to show that the two platforms use different account systems.</p>
+</div>
 
-For example:
+### What you really need to check is more than the UID:
 
-You may have one UID on Binance international and another UID on Binance TH.
+<ul class="uid-checks">
+<li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#2f7a52"/><path d="M7.4 12.2l3 3.1 6.2-6.4" fill="none" stroke="#f4fff6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Which platform does this receiving UID belong to?</li>
+<li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#2f7a52"/><path d="M7.4 12.2l3 3.1 6.2-6.4" fill="none" stroke="#f4fff6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Do the username and avatar match the intended recipient?</li>
+<li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#2f7a52"/><path d="M7.4 12.2l3 3.1 6.2-6.4" fill="none" stroke="#f4fff6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Do both platforms support this transfer path?</li>
+</ul>
 
-Even if both accounts are yours, that does not mean the two platforms support a direct transfer by UID.
+<h3 class="uid-rule"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="2.4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2.4v3.1M12 18.5v3.1M2.4 12h3.1M18.5 12h3.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Remember this rule</h3>
 
-**Checking that the UID is correct is only part of checking the payment details. What matters more is which platform that UID belongs to, and whether that platform supports this transfer path.**
+A correct UID is only the first gate. Confirming the platform and the actual recipient is what prevents a wrong transfer.
 
 ## Before you transfer, get used to a three-step check
 

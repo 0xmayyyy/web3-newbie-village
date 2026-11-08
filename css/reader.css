@@ -165,3 +165,23 @@ body.is-reader main{max-width:none;margin:0;padding:0;background:transparent}
 .course-reader .slang .term dd{color:#C9B6E6}
 .course-reader .slang .badge-serious{background:rgba(174,140,207,.22);color:#FFF2D9}
 .course-reader .slang .badge-meme{background:rgba(255,223,168,.16);color:#FFF2D9}
+.course-reader .uid-compare{margin:4px 0 8px}
+.course-reader .uid-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.course-reader .uid-card{background:#34264F;border:1px solid rgba(174,140,207,.45);border-radius:16px;padding:22px 16px 18px;text-align:center;color:#e5dce9}
+.course-reader .uid-phone{display:block;width:22px;height:22px;margin:0 auto;color:#f1d8b9}
+.course-reader .prose .uid-card h4{margin:12px 0 6px;font-size:17px;line-height:1.4;font-weight:650;color:#f1d8b9}
+.course-reader .prose .uid-num{margin:0 0 12px;color:#e5dce9;font-size:14px}
+.course-reader .prose .uid-pill{display:inline-block;margin:0;padding:3px 12px;border-radius:999px;font-size:13px;line-height:1.5}
+.course-reader .uid-pill-a{background:rgba(111,184,138,.22);color:#d7f5e2;border:1px solid rgba(143,214,168,.55)}
+.course-reader .uid-pill-b{background:rgba(183,170,200,.12);color:#cbbfd6;border:1px solid rgba(183,170,200,.3)}
+.course-reader .prose .uid-swap{display:flex;align-items:center;justify-content:center;gap:8px;margin:16px 0 6px;color:#f1d8b9;font-weight:650;text-align:center}
+.course-reader .uid-swap svg{width:18px;height:18px;flex:none}
+.course-reader .prose .uid-note{margin:0 0 8px;text-align:center;color:#b7aac8;font-size:13px;line-height:1.7}
+.course-reader .uid-checks{list-style:none;padding:0;margin:4px 0 18px}
+.course-reader .uid-checks li{display:flex;align-items:flex-start;gap:10px;margin:12px 0;color:#e5dce9}
+.course-reader .uid-checks svg{width:22px;height:22px;flex:none;margin-top:4px}
+.course-reader .prose h3.uid-rule{display:flex;align-items:center;gap:8px}
+.course-reader .uid-rule svg{width:18px;height:18px;flex:none;color:#f1d8b9}
+@media(max-width:699px){
+.course-reader .uid-cards{grid-template-columns:1fr}
+}

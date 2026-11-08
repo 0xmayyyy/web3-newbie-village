@@ -1474,21 +1474,42 @@ Ethereum 安全资料：https://ethereum.org/security/
 
 既然是两个独立账户，转账前就必须先确认平台之间是否支持资金互转，而不是只看品牌名称。
 
-## 为什么核对了 UID，还是可能转错 ？
+## UID 对了，钱为什么还是可能转错？
 
-**核对 UID 是否正确，只是确认收款信息的一部分；更重要的是确认这个 UID 属于哪个平台，以及该平台是否支持这条转账路径。**
+**UID 只是平台内的用户编号，不是全行业通用的收款身份。**
 
-UID 是平台分配给用户的身份编号。
+### 先看一个例子
 
-但它不是全行业通用的收款地址，也不能脱离所属平台单独判断收款人。
+<div class="uid-compare">
+<div class="uid-cards">
+<article class="uid-card">
+<svg class="uid-phone" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 5h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="18.2" r=".9" fill="currentColor"/></svg>
+<h4>Binance 国际版</h4>
+<p class="uid-num">UID：123456</p>
+<p class="uid-pill uid-pill-a">账户 A</p>
+</article>
+<article class="uid-card">
+<svg class="uid-phone" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 5h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="18.2" r=".9" fill="currentColor"/></svg>
+<h4>Binance TH</h4>
+<p class="uid-num">UID：789012</p>
+<p class="uid-pill uid-pill-b">账户 B</p>
+</article>
+</div>
+<p class="uid-swap"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h11l-3-3M17 17H6l3 3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>不能默认支持 UID 互转</p>
+<p class="uid-note">示意编号，仅用于说明两个平台账户体系的区别。</p>
+</div>
 
-举个例子：
+### 真正需要核对的，不只是 UID：
 
-你在 Binance 国际版有一个 UID，在 Binance TH 也有一个 UID。
+<ul class="uid-checks">
+<li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#2f7a52"/><path d="M7.4 12.2l3 3.1 6.2-6.4" fill="none" stroke="#f4fff6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>收款 UID 属于哪个平台？</li>
+<li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#2f7a52"/><path d="M7.4 12.2l3 3.1 6.2-6.4" fill="none" stroke="#f4fff6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>用户名、头像是否与收款人一致？</li>
+<li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#2f7a52"/><path d="M7.4 12.2l3 3.1 6.2-6.4" fill="none" stroke="#f4fff6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>两个平台是否支持这条转账路径？</li>
+</ul>
 
-即使两个账户都属于你，也不能因此认定两个平台支持通过 UID 直接转账。
+<h3 class="uid-rule"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="2.4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2.4v3.1M12 18.5v3.1M2.4 12h3.1M18.5 12h3.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>记住这个判断原则</h3>
 
-**核对 UID 是否正确，只是确认收款信息的一部分；更重要的是确认这个 UID 属于哪个平台，以及该平台是否支持这条转账路径。**
+UID 正确只是第一关，确认平台和实际收款人，才是避免误转的关键。
 
 ## 转账前，养成三步自检习惯
 
