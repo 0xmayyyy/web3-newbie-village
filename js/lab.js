@@ -1279,6 +1279,10 @@ function chartOptions() {
       background: { color: "transparent" },
       textColor: "#6b645c",
       fontFamily: "Outfit, PingFang SC, sans-serif",
+      panes: {
+        separatorColor: "rgba(213, 183, 226, 0.55)",
+        separatorHoverColor: "rgba(233, 201, 142, 0.95)",
+      },
     },
     grid: {
       vertLines: { color: "rgba(28,25,22,0.05)" },

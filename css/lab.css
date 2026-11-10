@@ -1144,9 +1144,12 @@ body.is-lab #price-chart table tr:last-child td{background:#1b2142!important}
 .lab-root .hero-line .eyebrow,
 .lab-root .hero-line h1,
 .lab-root .hero-line > div > p{display:none!important}
-.lab-root .hero-line{overflow:visible!important;align-items:center!important;min-height:148px!important}
-.lab-root .hero-planet{width:132px!important;height:132px!important;overflow:visible!important;flex:0 0 auto;position:relative;z-index:2}
-.lab-root .hero-planet img{width:132px!important;height:132px!important;max-width:none!important;object-fit:contain!important;display:block!important}
+.lab-root .hero-line{overflow:visible!important;align-items:center!important;min-height:0!important;padding:2px 2px 8px!important}
+.lab-root .hero-planet,.lab-root .hero-planet img{display:none!important}
+.lab-root .hero-live-row{margin:0!important}
+.lab-root .header-meta,.lab-root .hero-live-row .header-meta{flex-direction:row!important;align-items:center!important;justify-content:flex-start!important;gap:10px!important;text-align:left!important}
+.lab-root .live,.lab-root .clock{font-size:12px!important;line-height:1.2!important}
+.lab-root .side{background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important;padding:0!important;position:static!important;max-height:none!important;overflow:visible!important}
 .lab-root #market-chart-card .px-strip{align-items:center}
 .lab-root #market-chart-card .anno-toggles{margin-left:auto!important;flex:0 1 auto!important;width:auto!important;max-width:100%;justify-content:flex-end!important}
 .lab-root #market-chart-card .anno-toggle-row{justify-content:flex-end!important;width:auto}
