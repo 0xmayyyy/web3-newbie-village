@@ -1084,7 +1084,7 @@ body.is-lab.nav-showing #nav-peek{opacity:0}
 
 .lab-root #price-chart{height:100%!important;min-height:660px!important}
 .lab-root .chart-wrap{height:clamp(680px,78vh,970px)!important}
-.lab-root .v18-pane-note{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;background:#0c1027;color:#d5b77e;border:1px solid rgba(159,132,207,.25);border-radius:0 0 13px 13px;padding:11px 15px;font-size:12px}
+.lab-root .v18-pane-note{display:none!important}
 .lab-root .v18-pane-note span{color:#b6a9cc}.lab-root .v18-pane-note.muted{opacity:.6}
 @media(max-width:650px){.lab-root .chart-wrap{height:620px!important}.lab-root #price-chart{min-height:560px!important}}
 
@@ -1159,6 +1159,10 @@ body.is-lab #price-chart table tr:last-child td{background:#1b2142!important}
 body.is-lab .topbar{transition:transform .38s cubic-bezier(.2,.8,.2,1),opacity .3s ease}
 body.is-lab .topbar.lab-nav-hidden{transform:translate3d(0,calc(-100% - 18px),0);opacity:0;pointer-events:none}
 #lab-nav-edge{position:fixed;z-index:80;top:0;left:0;width:100%;height:14px}
+.lab-root .chart-wrap{border-radius:13px!important;border-bottom:1px solid #35304e!important}
+.lab-root .tv-legend{position:absolute;z-index:5;left:8px;top:6px;max-width:calc(100% - 72px);pointer-events:none;font:500 11px/1.35 Outfit,"PingFang SC","Noto Sans SC",sans-serif;color:#d9d0ea;text-shadow:0 1px 2px rgba(0,0,0,.85);white-space:normal}
+.lab-root .tv-legend .tv-meta{color:#cbbfe3;margin-right:6px}
+@media(max-width:699px){.lab-root .tv-legend{font-size:10px;left:6px;top:4px;max-width:calc(100% - 52px)}}
 @media (max-width:699px){
   body.is-lab main#main{padding:0 0 16px}
   .lab-root .page{width:calc(100% - 16px)!important}
