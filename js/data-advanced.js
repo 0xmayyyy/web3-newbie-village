@@ -139,8 +139,8 @@ window.ADVANCED_STAR = {
             en: 'Mark the obvious swing highs and lows. Do not treat every small wiggle as a turn. One pullback in a rise does not have to mean the trend is over. In a range, highs and lows can interleave, so there is no need to force a direction. Which swings you mark also depends on the timeframe and the rule. Trend is not the color of the last candle. It is whether the important highs and lows keep rising or falling.'
           },
           example: {
-            zh: '高点100→110→120，低点90→98→105，是典型上移结构。跌破105可能提示结构变化，但不保证反转。爬楼梯也有暂时向下的一步。',
-            en: 'Highs 100, then 110, then 120, and lows 90, then 98, then 105, are a typical rising structure. A break below 105 may hint that the structure is changing. It does not guarantee a reversal. Climbing stairs can include a step down.'
+            zh: '高点100→110→120，低点90→98→105，是典型上移结构。跌破105可能提示结构变化，但不保证反转。',
+            en: 'Highs 100, then 110, then 120, and lows 90, then 98, then 105, are a typical rising structure. A break below 105 may hint that the structure is changing. It does not guarantee a reversal.'
           },
           pitfalls: [
             { zh: '看到新高就断言继续上涨。', en: 'Treating a new high as proof that price must keep rising.' },

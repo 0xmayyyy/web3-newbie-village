@@ -514,13 +514,14 @@
     }
     root.innerHTML =
       '<div class="a2"><p class="a1-flag">' + t('star.sim') + ' · ' + t('star.a2.disclaimer') + '</p>' +
-      '<div class="a3-intro"><div class="a1-note">' + noteHtml(t('star.a3.rule')) + '</div>' +
+      '<div class="a3-intro"><div class="a1-note">' + noteHtml(t('star.a3.stair')) + noteHtml(t('star.a3.tap')) + '</div>' +
       '<div class="a3-side"><table class="a3-terms"><tbody>' +
       '<tr><th>HH</th><td>Higher High</td><td>更高的高点</td></tr>' +
       '<tr><th>HL</th><td>Higher Low</td><td>更高的低点</td></tr>' +
       '<tr><th>LH</th><td>Lower High</td><td>更低的高点</td></tr>' +
       '<tr><th>LL</th><td>Lower Low</td><td>更低的低点</td></tr>' +
       '</tbody></table>' + proseLines(t('star.a3.terms'), noteEsc, ['；']) + '</div></div>' +
+      '<div class="a1-note">' + proseLines(t('star.a3.rule'), noteEsc, ['；']) + '<p><strong>' + noteEsc(t('star.a3.ruleNote')) + '</strong></p></div>' +
       '<div class="a3-switch" role="group">' +
       ['up', 'down', 'range'].map(function (id) {
         return '<button type="button" data-set="' + id + '" aria-pressed="' + (id === 'up' ? 'true' : 'false') + '">' + mini(packs[id].bars) + '<span>' + t('star.a3.' + id) + '</span></button>';
@@ -617,7 +618,10 @@
       if (picked && byIndex[picked] && !byIndex[picked].dash) {
         var rel = window.STAR_A3.relate(pivots, byIndex[picked]);
         ask.hidden = false;
-        ask.innerHTML = '<p class="a2-window">' + (rel.prev ? t('star.a3.ask', { p: px(byIndex[picked].p), prev: px(rel.prev.p) }) : t('star.a3.askFirst')) + '</p>' +
+        var askText = rel.prev
+          ? t(byIndex[picked].k === 'H' ? 'star.a3.askHigh' : 'star.a3.askLow')
+          : t(byIndex[picked].k === 'H' ? 'star.a3.askFirstHigh' : 'star.a3.askFirstLow');
+        ask.innerHTML = '<p class="a2-window">' + askText + '</p>' +
           '<button type="button" data-judge="up">' + t('star.a3.higher') + '</button>' +
           '<button type="button" data-judge="down">' + t('star.a3.lower') + '</button>' +
           '<button type="button" data-judge="first">' + t('star.a3.unsure') + '</button>';
@@ -653,11 +657,12 @@
         var want = rel.prev ? rel.dir : 'first';
         var right = judge.getAttribute('data-judge') === want;
         var fact;
-        if (!rel.prev) fact = right ? t('star.a3.factFirst') : t('star.a3.wrongFirst');
+        if (!rel.prev) fact = t(point.k === 'H' ? 'star.a3.askFirstHigh' : 'star.a3.askFirstLow');
         else {
           var cmp = rel.dir === 'up' ? t('star.a3.cmpUp') : t('star.a3.cmpDown');
-          var bits = { tag: window.STAR_A3.tag(pivots, rel.prev), prev: px(rel.prev.p), cur: px(point.p), cmp: cmp };
-          fact = t(right ? 'star.a3.rightCmp' : (point.k === 'H' ? 'star.a3.wrongHigh' : 'star.a3.wrongLow'), bits);
+          var bits = { prev: px(rel.prev.p), cur: px(point.p), cmp: cmp };
+          var keyName = (right ? 'star.a3.right' : 'star.a3.wrong') + (point.k === 'H' ? 'High' : 'Low');
+          fact = t(keyName, bits);
         }
         paintAnswer(live, right, t(right ? 'star.quizOk' : 'star.quizNo'), fact);
         return;
