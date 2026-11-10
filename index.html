@@ -10,9 +10,9 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="icon" href="assets/img/nav-compass.svg?v=20261107120000" type="image/svg+xml">
 <link rel="preload" as="image" href="assets/hero/hero-poster.jpg?v=20261106231500">
-<link rel="stylesheet" href="css/style.css?v=20261107720000">
+<link rel="stylesheet" href="css/style.css?v=20261110200000">
 <link rel="stylesheet" href="css/atlas.css?v=20261107630000">
-<link rel="stylesheet" href="css/mobile-home.css?v=20261107630000">
+<link rel="stylesheet" href="css/mobile-home.css?v=20261110200000">
 <link rel="stylesheet" href="css/reader.css?v=20261107780000">
 <link rel="stylesheet" href="css/teach.css?v=20261108180000">
 <link rel="stylesheet" href="css/lab.css?v=20261110182000">
@@ -37,14 +37,17 @@
       <a href="#/" data-nav="courses" data-scroll="h-toc" data-i18n="nav.courses">课程</a>
       <button type="button" id="nav-ex" class="nav-ex" data-nav="ex" data-i18n="nav.ex" aria-haspopup="dialog" aria-expanded="false" aria-controls="ex-shortcuts">交易所</button>
       <a href="#/c/14" data-nav="tools" data-i18n="nav.tools">工具</a>
-      <button type="button" id="donate-btn" class="nav-donate" data-i18n="nav.donate">打赏</button>
-      <div class="nav-overflow" id="more-menu">
-        <p class="nav-overflow-label" data-i18n="nav.more">其他</p>
-        <a href="#/cex" data-nav="cex" data-i18n="nav.cex">CEX 排行</a>
-        <a href="#/c/13" data-nav="slang" data-i18n="nav.slang">话术翻译</a>
-        <a href="#/punycode" data-nav="puny" data-i18n="nav.puny">Punycode 转换器</a>
-        <a href="#/lab" data-nav="lab" data-i18n="nav.lab">星际行情实验室</a>
+      <a href="#/lab" data-nav="lab" data-i18n="nav.lab">星际行情实验室</a>
+      <div class="nav-more">
+        <button type="button" class="nav-more-btn" id="nav-more" aria-expanded="false" aria-controls="more-menu" aria-haspopup="true" data-i18n="nav.more">其他</button>
+        <div class="nav-overflow" id="more-menu">
+          <p class="nav-overflow-label" data-i18n="nav.more">其他</p>
+          <a href="#/cex" data-nav="cex" data-i18n="nav.cex">CEX 排行</a>
+          <a href="#/c/13" data-nav="slang" data-i18n="nav.slang">话术翻译</a>
+          <a href="#/punycode" data-nav="puny" data-i18n="nav.puny">Punycode 转换器</a>
+        </div>
       </div>
+      <button type="button" id="donate-btn" class="nav-donate" data-i18n="nav.donate">打赏</button>
     </nav>
     <div class="search mini" role="search">
       <label class="sr" for="q-top" data-i18n="search.label">搜索</label>
@@ -55,7 +58,6 @@
       <button type="button" id="lang-zh" aria-pressed="true" aria-label="中文">中</button>
       <button type="button" id="lang-en" aria-pressed="false" aria-label="English">EN</button>
     </div>
-    <button type="button" class="nav-more-btn" id="nav-more" aria-expanded="false" aria-controls="more-menu" aria-haspopup="true" data-i18n="nav.more">其他</button>
     <button type="button" class="nav-menu" id="nav-menu" aria-expanded="false" aria-controls="site-nav"><span class="nav-menu-ico" aria-hidden="true">☰</span><span class="sr" id="nav-menu-label" data-i18n="nav.menu">菜单</span></button>
   </div>
 </header>
@@ -69,7 +71,7 @@
 <script src="js/punycode.js?v=20261107730000"></script>
 <script src="js/teach.js?v=20261108130000"></script>
 <script src="js/lab.js?v=20261110191000"></script>
-<script src="js/app.js?v=20261110180000"></script>
+<script src="js/app.js?v=20261110200000"></script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "12f50d684faf4e4287f9cb7f1a503e34"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

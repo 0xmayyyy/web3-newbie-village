@@ -1544,7 +1544,7 @@
       else a.removeAttribute('aria-current');
     });
     var more = $('#nav-more');
-    if (more) more.classList.toggle('is-current', key === 'cex' || key === 'slang' || key === 'puny' || key === 'lab');
+    if (more) more.classList.toggle('is-current', key === 'cex' || key === 'slang' || key === 'puny');
   }
   function syncNavTone() {
     document.body.classList.add('nav-on-dark');
