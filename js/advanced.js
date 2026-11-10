@@ -1180,10 +1180,10 @@
         return '<button type="button" data-branch="' + id + '" aria-pressed="false">' + miniSpark(window.STAR_A5.series(id)) + '<span>' + t('star.a5.branch' + id) + '</span></button>';
       }).join('') +
       '</div>' +
-      '<div class="a1-modes">' +
+      '<div class="a3-mid"><div class="a1-modes">' +
       '<button type="button" data-step="prev">' + t('star.a3.prev') + '</button>' +
       '<button type="button" data-step="next">' + t('star.a3.next') + '</button>' +
-      '</div>' +
+      '</div></div>' +
       '<div class="a2-scroll" id="a5-scroll" tabindex="0" role="group" aria-label="' + t('star.a5.rule') + '"></div>' +
       '<div class="a1-live a2-readout" id="a5-live" aria-live="polite"></div>' +
       '<div class="a1-modes" id="a5-ask">' +

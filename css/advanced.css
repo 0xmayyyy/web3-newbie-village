@@ -57,7 +57,7 @@ body.is-star main{max-width:none;margin:0;padding:0 0 48px;background:transparen
 .a3-scenarios button[aria-pressed="true"]{background:#e6c79e;color:#1b1428}
 .a3-mid{display:flex;justify-content:center;padding:22px 0}
 .a3-mid .a1-modes{justify-content:center;margin:0;width:100%}
-#a3-scroll{margin-top:0}
+#a3-scroll,#a5-scroll{margin-top:0}
 .a2-readout.is-right,.star-feedback.is-right{background:#1f8a4d;border:1px solid #1f8a4d;color:#fff}
 .a2-readout.is-wrong,.star-feedback.is-wrong{background:#6e2c32;border:1px solid #d4534e;color:#fff}
 .star-feedback.is-right,.star-feedback.is-wrong{border-radius:14px;padding:12px 14px}
