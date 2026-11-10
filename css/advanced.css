@@ -5,6 +5,11 @@ body.is-star #outer-starfield{z-index:-1;pointer-events:none}
 .star-hub .star-modules,.star-hub .star-tools{max-width:1190px;margin-left:auto;margin-right:auto}
 .star-hub .star-modules{margin-top:28px}
 .star-hub .star-tools{margin-top:18px}
+.star-hub{padding-bottom:64px}
+body.is-star main:has(.star-hub){padding-bottom:0}
+.star-modules>li{display:flex;min-width:0}
+.star-modules>li>.star-mod{flex:1 1 auto;width:100%;height:100%}
+.star-modules>li>.star-mod em{margin-top:auto}
 .star-page h1{font-family:Georgia,"Songti SC","STSong",serif;font-weight:500;font-size:clamp(28px,4vw,44px);line-height:1.3;margin:8px 0 18px}
 .star-kicker{margin:0;color:#e6c79e;letter-spacing:.08em;font-size:12px}
 .star-crumb{color:#b7aac8;font-size:13px;line-height:1.6}
@@ -147,6 +152,7 @@ body.is-star #outer-starfield{z-index:-1;pointer-events:none}
 @media (max-width:768px){
   .star-modules{grid-template-columns:1fr 1fr}
   .star-mascot{width:72px}
+  .star-hub{padding-bottom:40px}
 }
 @media (max-width:430px){
   .star-modules,.star-lessons{grid-template-columns:1fr}
