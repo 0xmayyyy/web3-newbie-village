@@ -30,16 +30,15 @@ window.ADVANCED_STAR = {
             en: 'A candlestick records the open, high, low, and close (OHLC) for a period of time, and does not record the full order in which price moved.'
           },
           explain: {
-            zh: '实体连接开盘价与收盘价；上影线到最高价，下影线到最低价。收盘高于开盘常画绿色，低于开盘常画红色，但平台配色可能相反。长影线表示期间价格曾到过那里，却不能单凭影线判断下一根涨跌。',
-            en: 'The body connects the open and the close; the upper wick reaches the high, and the lower wick reaches the low. A close above the open is often drawn green, and a close below the open is often drawn red, but a platform may use the opposite colors. A long wick means price went there during the period, but you cannot judge whether the next candle rises or falls from the wick alone.'
+            zh: '实心蜡烛连接着开盘价与收盘价\n上影线为到过的最高价, 下影线为到过的最低价\n收盘价高于开盘价为绿色，收盘价低于开盘价则为红色\n但有些平台配色可能相反 （红涨绿跌/绿涨红跌）\n长影线表示期间价格曾到过那里，但不能单凭影线判断下一根涨跌',
+            en: 'The solid candle connects the opening price and the closing price\nThe upper wick is the highest price reached, the lower wick is the lowest price reached\nA closing price above the opening price is green, a closing price below the opening price is red\nBut some platforms may use the opposite colors (red up green down / green up red down)\nA long wick means price reached there during the period, but you cannot judge the next candle up or down from the wick alone'
           },
           example: {
             zh: '开100、高110、低95、收106：实体100–106，上影106–110，下影95–100。不能据此知道先涨到110还是先跌到95。',
             en: 'Open 100, high 110, low 95, close 106: the body is 100–106, the upper wick is 106–110, and the lower wick is 95–100. You cannot tell from this whether it rose to 110 first or fell to 95 first.'
           },
           pitfalls: [
-            { zh: '大阳线不等于必涨。', en: 'A large bullish candle does not mean price must rise.' },
-            { zh: '影线不证明“主力操纵”。', en: 'A wick does not prove that “big players manipulated” the market.' }
+            { zh: '大阳线不等于后续必持续上涨', en: 'A large bullish candle does not mean it must keep rising afterward' }
           ],
           practice: {
             zh: '在 BTC 4H 任取三根 K 线，指出开高低收。',
