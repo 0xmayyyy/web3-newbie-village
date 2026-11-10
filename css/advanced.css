@@ -32,6 +32,17 @@ body.is-star main{max-width:none;margin:0;padding:0 0 48px;background:transparen
 .a2-svg [data-i]:focus{outline:none}
 .a2-svg [data-i]:focus rect:first-child{stroke:#e6c79e;stroke-width:1}
 .a2-subhead{margin:12px 0 0;color:#e6c79e;font-size:14px}
+#a2-scroll{margin-bottom:6px;padding-bottom:6px}
+.a2-readout{margin:18px 0 0;padding:12px 14px;line-height:1.75;border-radius:12px;background:rgba(230,199,158,.08)}
+.a2-readout .star-lines p{margin:0;line-height:1.75}
+.a2-legend{margin-top:16px}
+.a2-legend .star-lines p{margin:0 0 .9em;line-height:1.8}
+.a2-legend .star-lines p:last-child{margin-bottom:0}
+@media (max-width:430px){
+  .a2-readout{margin-top:16px;padding:12px}
+  .a2-legend{margin-top:16px}
+  .a2-legend .star-lines p{margin-bottom:1em;line-height:1.85}
+}
 @media (prefers-reduced-motion:reduce){
   .a2-result{animation:none}
 }

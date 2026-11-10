@@ -275,10 +275,10 @@
       '</div>' +
       '<p class="a2-window" id="a2-window"></p>' +
       '<div class="a2-scroll" id="a2-scroll" tabindex="0" role="group" aria-label="' + t('star.a2.keys') + '"></div>' +
-      '<div class="a1-live" id="a2-live" aria-live="polite"></div>' +
+      '<div class="a1-live a2-readout" id="a2-live" aria-live="polite"></div>' +
       '<h4 class="a2-subhead" id="a2-subhead" hidden></h4>' +
       '<div class="a2-scroll" id="a2-child" hidden></div>' +
-      '<div class="a1-note">' + noteHtml(t('star.a2.legend')) + '</div></div>';
+      '<div class="a1-note a2-legend">' + noteHtml(t('star.a2.legend')) + '</div></div>';
     var scroll = root.querySelector('#a2-scroll');
     var child = root.querySelector('#a2-child');
     var subhead = root.querySelector('#a2-subhead');
