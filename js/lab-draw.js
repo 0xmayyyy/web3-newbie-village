@@ -15,6 +15,8 @@
     redo: ['重做', 'Redo'],
     del: ['删除', 'Delete'],
     clear: ['清空', 'Clear'],
+    red: ['红', 'Red'],
+    green: ['绿', 'Green'],
     note: ['画线只保存在这台浏览器，不会上传。', 'Drawings stay only in this browser and are not uploaded.'],
     clearAsk: ['清空当前币种和周期上的全部画线？可以撤销。', 'Clear every drawing on this coin and timeframe? You can undo this.'],
     hintPan: ['平移不挡图表。要改画线，先点选择。', 'Pan leaves the chart alone. To change a drawing, tap Select.'],
@@ -28,6 +30,7 @@
   var chart = null;
   var series = null;
   var tool = 'pan';
+  var lineColor = 'red';
   var selected = null;
   var draft = null;
   var drag = null;
@@ -231,7 +234,30 @@
     var next = book().items().concat([item]);
     book().commit(next);
     selected = item.id;
+    tool = 'pan';
+    draft = null;
     persist();
+    paintBar();
+    schedule();
+  }
+  function chosenColor() {
+    var item = selected && find(selected);
+    if (item && (item.type === 'hline' || item.type === 'trend') && (item.color === 'red' || item.color === 'green')) return item.color;
+    return lineColor;
+  }
+  function showColors() {
+    if (tool === 'trend' || tool === 'hline') return true;
+    var item = selected && find(selected);
+    return !!(item && (item.type === 'hline' || item.type === 'trend'));
+  }
+  function setLineColor(color) {
+    lineColor = color === 'green' ? 'green' : 'red';
+    var item = selected && find(selected);
+    if (item && (item.type === 'hline' || item.type === 'trend') && item.color !== lineColor) {
+      book().commit(book().items());
+      find(selected).color = lineColor;
+      persist();
+    }
     paintBar();
     schedule();
   }
@@ -273,7 +299,9 @@
     draft = null;
     if (!d || !d.a || !d.b) return;
     if (d.a.time === d.b.time && d.a.price === d.b.price) return;
-    add({ id: uid(), type: d.type, a: { time: d.a.time, price: d.a.price }, b: { time: d.b.time, price: d.b.price } });
+    var made = { id: uid(), type: d.type, a: { time: d.a.time, price: d.a.price }, b: { time: d.b.time, price: d.b.price } };
+    if (d.type === 'trend' || d.type === 'hline') made.color = lineColor;
+    add(made);
   }
   function setTool(next) {
     tool = next;
@@ -304,7 +332,7 @@
     if (tool === 'hline') {
       var price = toData(pt);
       if (!price) return;
-      add({ id: uid(), type: 'hline', price: price.price });
+      add({ id: uid(), type: 'hline', price: price.price, color: lineColor });
       return;
     }
     var data = toData(pt);
@@ -350,6 +378,8 @@
       host.addEventListener('click', function (e) {
         var btn = e.target.closest ? e.target.closest('button') : null;
         if (!btn || !host.contains(btn)) return;
+        var color = btn.getAttribute('data-color');
+        if (color) { setLineColor(color); return; }
         var next = btn.getAttribute('data-tool');
         if (next) { setTool(next); return; }
         var act = btn.getAttribute('data-act');
@@ -395,8 +425,15 @@
     var host = document.getElementById('lab-draw');
     if (!host || !key) return;
     var bar = host.querySelector('.lab-draw-bar');
+    var picked = chosenColor();
     var html = TOOLS.map(function (name) {
-      return '<button type="button" data-tool="' + name + '" aria-pressed="' + (tool === name ? 'true' : 'false') + '" title="' + esc(t(name)) + '" aria-label="' + esc(t(name)) + '">' + icon(name) + '</button>';
+      var btn = '<button type="button" data-tool="' + name + '" aria-pressed="' + (tool === name ? 'true' : 'false') + '" title="' + esc(t(name)) + '" aria-label="' + esc(t(name)) + '">' + icon(name) + '</button>';
+      if (name === 'hline' && showColors()) {
+        btn += '<span class="lab-draw-colors" role="group" aria-label="' + esc(t('red') + ' / ' + t('green')) + '">' +
+          '<button type="button" data-color="red" title="' + esc(t('red')) + '" aria-label="' + esc(t('red')) + '" aria-pressed="' + (picked === 'red' ? 'true' : 'false') + '"></button>' +
+          '<button type="button" data-color="green" title="' + esc(t('green')) + '" aria-label="' + esc(t('green')) + '" aria-pressed="' + (picked === 'green' ? 'true' : 'false') + '"></button></span>';
+      }
+      return btn;
     }).join('');
     html += toolButton('undo', 'data-act="undo"', book().canUndo());
     html += toolButton('redo', 'data-act="redo"', book().canRedo());
@@ -422,14 +459,19 @@
     var bits = ['<defs><clipPath id="lab-draw-clip"><rect x="0" y="0" width="' + w + '" height="' + h + '"></rect></clipPath></defs><g clip-path="url(#lab-draw-clip)">'];
     if (drawingTool()) bits.push('<rect class="is-hit" x="0" y="0" width="' + w + '" height="' + h + '" fill="transparent"></rect>');
     book().items().forEach(function (item) { bits.push(drawItem(item, w, item.id === selected)); });
-    if (draft && draft.a && draft.b) bits.push(drawItem({ id: 'draft', type: draft.type, a: draft.a, b: draft.b }, w, false));
+    if (draft && draft.a && draft.b) bits.push(drawItem({ id: 'draft', type: draft.type, a: draft.a, b: draft.b, color: lineColor }, w, false));
     bits.push('</g>');
     svg.innerHTML = bits.join('');
     svg.setAttribute('viewBox', '0 0 ' + w + ' ' + (svg.clientHeight || h));
   }
+  function lineHex(item) {
+    if (item.color === 'green') return '#3dbe7a';
+    if (item.color === 'red') return '#e15b64';
+    return '#e6c79e';
+  }
   function drawItem(item, width, on) {
-    var stroke = on ? '#fff' : '#e6c79e';
-    var widthPx = on ? 2.4 : 1.6;
+    var stroke = (item.type === 'hline' || item.type === 'trend') ? lineHex(item) : (on ? '#fff' : '#e6c79e');
+    var widthPx = on ? 2.6 : 1.6;
     var grab = on || tool === 'select';
     if (item.type === 'hline') {
       var y = series.priceToCoordinate(item.price);
