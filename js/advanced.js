@@ -745,6 +745,11 @@
       steps(['star.a4.how1', 'star.a4.how2', 'star.a4.how3', 'star.a4.how4', 'star.a4.how5']) +
       '</ol><div class="a1-note">' + noteHtml(t('star.a4.sample')) + '</div><div class="a4-sample" id="a4-sample"></div></section>' +
       '<div class="a1-note">' + noteHtml(t('star.a4.when')) + '</div>' +
+      '<ol class="a4-steps">' + steps(['star.a4.do1', 'star.a4.do2', 'star.a4.do3']) + '</ol>' +
+      '<div class="a4-chartwrap">' +
+      '<p class="a4-coach" id="a4-coach">' + noteEsc(t('star.a4.coach')) + '</p>' +
+      '<div class="a2-scroll" id="a4-scroll" tabindex="0" role="group" aria-label="' + noteEsc(t('star.a4.do1')) + '" style="touch-action:none"></div>' +
+      '</div>' +
       '<div class="a1-modes a4-bar" role="group">' +
       '<button type="button" data-zone="support" aria-pressed="true">' + t('star.a4.support') + '</button>' +
       '<button type="button" data-zone="resist" aria-pressed="false">' + t('star.a4.resist') + '</button>' +
@@ -755,13 +760,8 @@
       '<button type="button" data-step="all">' + t('star.a3.allBars') + '</button>' +
       '<button type="button" data-check="1">' + t('star.a4.check') + '</button>' +
       '</div>' +
-      '<ol class="a4-steps">' + steps(['star.a4.do1', 'star.a4.do2', 'star.a4.do3']) + '</ol>' +
-      '<div class="a4-chartwrap">' +
-      '<p class="a4-coach" id="a4-coach">' + noteEsc(t('star.a4.coach')) + '</p>' +
-      '<div class="a2-scroll" id="a4-scroll" tabindex="0" role="group" aria-label="' + noteEsc(t('star.a4.do1')) + '" style="touch-action:none"></div>' +
-      '</div>' +
       '<div class="a1-live a2-readout" id="a4-live" aria-live="polite"></div>' +
-      '<div class="a1-note a2-legend">' + noteHtml(t('star.a2.legend')) + '</div></div>';
+      '<div class="a1-note a2-legend">' + noteHtml(t('star.a4.legend')) + '</div></div>';
     var scroll = root.querySelector('#a4-scroll');
     var live = root.querySelector('#a4-live');
     function visible() {
@@ -787,14 +787,10 @@
       var padR = scale.padR;
       var padT = scale.padT;
       var priceH = scale.priceH;
-      var volH = 42;
       var plot = bars.length * slot;
       scale.plot = plot;
       var svgW = padL + plot + padR;
-      var svgH = padT + priceH + 8 + volH + 20;
-      var maxV = 1;
-      bars.forEach(function (bar) { if (bar.v > maxV) maxV = bar.v; });
-      var volTop = padT + priceH + 8;
+      var svgH = padT + priceH + 18;
       var bits = [];
       for (var g = 0; g < 4; g++) {
         var price = minP + (maxP - minP) * (g / 3);
@@ -825,8 +821,6 @@
         bits.push('<rect x="' + x + '" y="' + padT + '" width="' + slot + '" height="' + priceH + '" fill="transparent"></rect>');
         bits.push('<line x1="' + xc + '" y1="' + yPrice(bar.h) + '" x2="' + xc + '" y2="' + yPrice(bar.l) + '" stroke="' + color + '" stroke-width="1.4"></line>');
         bits.push('<rect x="' + (xc - bw / 2) + '" y="' + top + '" width="' + bw + '" height="' + bh + '" fill="' + color + '"></rect>');
-        var yv = volTop + volH - (bar.v / maxV) * (volH - 4);
-        bits.push('<rect x="' + (xc - bw / 2) + '" y="' + yv + '" width="' + bw + '" height="' + (volTop + volH - yv) + '" fill="' + color + '" opacity="0.85"></rect>');
         bits.push('<text x="' + xc + '" y="' + (svgH - 4) + '" text-anchor="middle" fill="#b7aac8" font-size="10">' + (i + 1) + '</text>');
         bits.push('</g>');
       });
@@ -871,7 +865,6 @@
         bits.push('<rect class="a4-hit" x="' + lx + '" y="' + (y - 22) + '" width="' + labelW + '" height="44" fill="transparent"></rect>');
         bits.push('</g>');
       });
-      bits.push('<text x="' + padL + '" y="' + (volTop + 11) + '" fill="#b7aac8" font-size="10">' + noteEsc(t('star.a2.vol')) + '</text>');
       var widthAttr = svgW < hostW - 1 ? '100%' : svgW + 'px';
       scroll.innerHTML = '<svg class="a2-svg" viewBox="0 0 ' + svgW + ' ' + svgH + '" style="width:' + widthAttr + ';touch-action:none" role="img">' + bits.join('') + '</svg>';
       var placed = window.STAR_A4.zone(edgeA, edgeB);

@@ -97,6 +97,7 @@ body.is-star main{max-width:none;margin:0;padding:0 0 48px;background:transparen
 .a4-mark{fill:#f0d59a;font-size:13px;font-weight:700}
 .a2 .a4-bar button{min-height:44px}
 .a2 .a4-bar button[data-check]{background:#e6c79e;color:#1b1428;font-weight:700}
+.a4-bar{margin-top:12px}
 .a4-reveal{margin-top:8px;min-height:44px;padding:8px 14px;border-radius:999px;border:0;background:#e6c79e;color:#1b1428;font:inherit;font-weight:700;cursor:pointer}
 #a4-scroll,#a4-scroll svg{touch-action:none;-webkit-user-select:none;user-select:none}
 @media (prefers-reduced-motion:reduce){
