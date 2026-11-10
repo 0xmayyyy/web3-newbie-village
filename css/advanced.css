@@ -2,6 +2,9 @@ body.is-star{background:#120e21;color:#f5efff}
 body.is-star main{max-width:none;margin:0;padding:0 0 48px;background:transparent;position:relative;z-index:1}
 body.is-star #outer-starfield{z-index:-1;pointer-events:none}
 .star-page{max-width:980px;margin:0 auto;padding:24px 16px 0}
+.star-hub .star-modules,.star-hub .star-tools{max-width:1190px;margin-left:auto;margin-right:auto}
+.star-hub .star-modules{margin-top:28px}
+.star-hub .star-tools{margin-top:18px}
 .star-page h1{font-family:Georgia,"Songti SC","STSong",serif;font-weight:500;font-size:clamp(28px,4vw,44px);line-height:1.3;margin:8px 0 18px}
 .star-kicker{margin:0;color:#e6c79e;letter-spacing:.08em;font-size:12px}
 .star-crumb{color:#b7aac8;font-size:13px;line-height:1.6}
