@@ -28,6 +28,17 @@
   function simFlag(t) {
     return '<p class="a1-flag">' + t('star.sim') + ' · ' + t('star.figure') + ' · ' + t('star.a2.disclaimer') + '</p>';
   }
+  function miniSpark(bars) {
+    var cs = bars.map(function (bar) { return bar.c; });
+    var lo = Math.min.apply(null, cs);
+    var hi = Math.max.apply(null, cs);
+    var pts = cs.map(function (c, i) {
+      var x = (i / (cs.length - 1)) * 108 + 6;
+      var y = 40 - ((c - lo) / (hi - lo || 1)) * 32;
+      return x.toFixed(1) + ',' + y.toFixed(1);
+    }).join(' ');
+    return '<svg viewBox="0 0 120 48" aria-hidden="true"><polyline points="' + pts + '" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>';
+  }
   function candleFromPath(path) {
     return {
       o: path[0],
@@ -504,17 +515,6 @@
       var h = hours % 24;
       return t('star.a3.clock', { d: day, h: (h < 10 ? '0' : '') + h });
     }
-    function mini(bars) {
-      var cs = bars.map(function (bar) { return bar.c; });
-      var lo = Math.min.apply(null, cs);
-      var hi = Math.max.apply(null, cs);
-      var pts = cs.map(function (c, i) {
-        var x = (i / (cs.length - 1)) * 108 + 6;
-        var y = 40 - ((c - lo) / (hi - lo || 1)) * 32;
-        return x.toFixed(1) + ',' + y.toFixed(1);
-      }).join(' ');
-      return '<svg viewBox="0 0 120 48" aria-hidden="true"><polyline points="' + pts + '" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>';
-    }
     root.innerHTML =
       '<div class="a2">' +
       '<div class="a3-top"><div class="a3-copy">' + simFlag(t) +
@@ -534,7 +534,7 @@
       '</tbody></table>' + plainLines(t('star.a3.terms')) + '</div></div>' +
       '<div class="a3-scenarios" role="group">' +
       ['up', 'down', 'range'].map(function (id) {
-        return '<button type="button" data-set="' + id + '" aria-pressed="' + (id === 'up' ? 'true' : 'false') + '">' + mini(packs[id].bars) + '<span>' + t('star.a3.' + id) + '</span></button>';
+        return '<button type="button" data-set="' + id + '" aria-pressed="' + (id === 'up' ? 'true' : 'false') + '">' + miniSpark(packs[id].bars) + '<span>' + t('star.a3.' + id) + '</span></button>';
       }).join('') +
       '</div>' +
       '<div class="a3-mid"><div class="a1-modes">' +
@@ -1175,9 +1175,9 @@
     root.innerHTML =
       '<div class="a2">' + simFlag(t) +
       '<div class="a1-note">' + proseLines(t('star.a5.guide'), noteEsc, ['；']) + '</div>' +
-      '<div class="a3-switch" role="group">' +
+      '<div class="a3-scenarios" role="group">' +
       ['A', 'B', 'C'].map(function (id) {
-        return '<button type="button" data-branch="' + id + '" aria-pressed="false">' + t('star.a5.branch' + id) + '</button>';
+        return '<button type="button" data-branch="' + id + '" aria-pressed="false">' + miniSpark(window.STAR_A5.series(id)) + '<span>' + t('star.a5.branch' + id) + '</span></button>';
       }).join('') +
       '</div>' +
       '<div class="a1-modes">' +
