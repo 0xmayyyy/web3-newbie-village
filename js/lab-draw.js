@@ -98,11 +98,17 @@
     } catch (e) {}
     return svg ? svg.clientHeight * 0.72 : 0;
   }
-  function toData(pt) {
-    if (!chart || !series || !pt) return null;
-    var time = chart.timeScale().coordinateToTime(pt.x);
+  function priceAt(pt) {
+    if (!series || !pt) return null;
     var price = series.coordinateToPrice(pt.y);
-    if (typeof time !== 'number' || !isFinite(time) || typeof price !== 'number' || !isFinite(price)) return null;
+    if (typeof price !== 'number' || !isFinite(price)) return null;
+    return price;
+  }
+  function toData(pt) {
+    if (!chart || !pt) return null;
+    var time = chart.timeScale().coordinateToTime(pt.x);
+    var price = priceAt(pt);
+    if (typeof time !== 'number' || !isFinite(time) || price == null) return null;
     return { time: time, price: price };
   }
   function toXY(time, price) {
@@ -178,25 +184,41 @@
 
   function beginDrag(kind, id, pt) {
     var item = find(id);
+    if (!item || !pt) return;
+    var price = priceAt(pt);
     var data = toData(pt);
-    if (!item || !data) return;
+    if (item.type === 'hline') {
+      if (price == null) return;
+    } else if (!data) return;
     selected = id;
-    drag = { kind: kind, id: id, orig: JSON.parse(JSON.stringify(item)), pointer: data, marked: false };
+    drag = {
+      kind: item.type === 'hline' ? 'line' : kind,
+      id: id,
+      orig: JSON.parse(JSON.stringify(item)),
+      pointer: data,
+      pointerPrice: price,
+      marked: false
+    };
+    try { if (svgEl()) svgEl().setPointerCapture(pt.pointerId); } catch (err) {}
   }
   function applyDrag(pt) {
+    if (!drag || !pt) return;
+    var price = priceAt(pt);
     var now = toData(pt);
-    if (!drag || !now) return;
     if (!drag.marked) {
       book().commit(book().items());
       drag.marked = true;
     }
     var item = find(drag.id);
     if (!item) return;
-    if (drag.kind === 'a' || drag.kind === 'b') {
+    if (item.type === 'hline') {
+      if (price == null) return;
+      item.price = drag.orig.price + (price - drag.pointerPrice);
+    } else if (drag.kind === 'a' || drag.kind === 'b') {
+      if (!now) return;
       item[drag.kind] = { time: now.time, price: now.price };
-    } else if (item.type === 'hline') {
-      item.price = drag.orig.price + (now.price - drag.pointer.price);
     } else {
+      if (!now || !drag.pointer) return;
       var dt = now.time - drag.pointer.time;
       var dp = now.price - drag.pointer.price;
       item.a = { time: drag.orig.a.time + dt, price: drag.orig.a.price + dp };
@@ -263,13 +285,17 @@
 
   function onDown(e) {
     lastPointer = e.pointerType || 'mouse';
-    var node = e.target;
-    if (node && node.classList && node.classList.contains('is-handle')) {
+    var node = e.target && e.target.closest ? e.target.closest('.is-body, .is-handle') : null;
+    if (node) {
       e.preventDefault();
       e.stopPropagation();
-      beginDrag(node.getAttribute('data-handle'), node.getAttribute('data-id'), local(e));
+      var pt = local(e);
+      if (pt) pt.pointerId = e.pointerId;
+      beginDrag(node.getAttribute('data-handle') || 'line', node.getAttribute('data-id'), pt);
+      paintBar();
       return;
     }
+    node = e.target;
     if (!node || !node.classList || !node.classList.contains('is-hit')) return;
     var pt = local(e);
     if (!pt || pt.y > paneHeight()) return;
@@ -316,8 +342,11 @@
       var host = document.createElement('div');
       host.id = 'lab-draw';
       host.className = 'lab-draw';
-      host.innerHTML = '<div class="lab-draw-bar" role="toolbar"></div><p class="lab-draw-note"></p>';
-      wrap.parentNode.insertBefore(host, wrap);
+      host.innerHTML = '<div class="lab-draw-bar" role="toolbar"></div>';
+      var head = document.querySelector('#market-chart-card .chart-head');
+      var coins = head && head.querySelector('.coins');
+      if (head && coins) head.insertBefore(host, coins);
+      else wrap.parentNode.insertBefore(host, wrap);
       host.addEventListener('click', function (e) {
         var btn = e.target.closest ? e.target.closest('button') : null;
         if (!btn || !host.contains(btn)) return;
@@ -343,25 +372,47 @@
     }
     paintBar();
   }
+  function icon(name) {
+    var paths = {
+      pan: '<path d="M4 8h8M8 4v8" fill="none" stroke="currentColor" stroke-width="1.6"/>',
+      select: '<path d="M5 3l8 6-3.2.4 2.2 4.2-1.6.8-2.2-4.2L5 13z" fill="currentColor"/>',
+      trend: '<path d="M4 12l8-8" fill="none" stroke="currentColor" stroke-width="1.6"/>',
+      hline: '<path d="M3 8h10" fill="none" stroke="currentColor" stroke-width="1.6"/>',
+      box: '<rect x="3.5" y="4" width="9" height="8" fill="none" stroke="currentColor" stroke-width="1.4"/>',
+      fib: '<path d="M3 5h10M3 8h10M3 11h10" fill="none" stroke="currentColor" stroke-width="1.2"/>',
+      undo: '<path d="M7 4L3 8l4 4M3 8h7a3 3 0 0 1 0 6H8" fill="none" stroke="currentColor" stroke-width="1.4"/>',
+      redo: '<path d="M9 4l4 4-4 4M13 8H6a3 3 0 0 0 0 6h2" fill="none" stroke="currentColor" stroke-width="1.4"/>',
+      del: '<path d="M4 5h8M6 5l.5 8h3L10 5M6.5 5V3.5h3V5" fill="none" stroke="currentColor" stroke-width="1.3"/>',
+      clear: '<path d="M3 8h10M5 8l1 5h4l1-5" fill="none" stroke="currentColor" stroke-width="1.3"/>'
+    };
+    return '<svg viewBox="0 0 16 16" aria-hidden="true">' + (paths[name] || '') + '</svg>';
+  }
+  function toolButton(name, attr, enabled) {
+    var label = t(name);
+    return '<button type="button" ' + attr + ' title="' + esc(label) + '" aria-label="' + esc(label) + '"' + (enabled ? '' : ' disabled') + '>' + icon(name) + '</button>';
+  }
   function paintBar() {
     var host = document.getElementById('lab-draw');
     if (!host || !key) return;
     var bar = host.querySelector('.lab-draw-bar');
     var html = TOOLS.map(function (name) {
-      return '<button type="button" data-tool="' + name + '" aria-pressed="' + (tool === name ? 'true' : 'false') + '">' + t(name) + '</button>';
+      return '<button type="button" data-tool="' + name + '" aria-pressed="' + (tool === name ? 'true' : 'false') + '" title="' + esc(t(name)) + '" aria-label="' + esc(t(name)) + '">' + icon(name) + '</button>';
     }).join('');
-    html += '<button type="button" data-act="undo"' + (book().canUndo() ? '' : ' disabled') + '>' + t('undo') + '</button>';
-    html += '<button type="button" data-act="redo"' + (book().canRedo() ? '' : ' disabled') + '>' + t('redo') + '</button>';
-    html += '<button type="button" data-act="del"' + (selected ? '' : ' disabled') + '>' + t('del') + '</button>';
-    html += '<button type="button" data-act="clear">' + t('clear') + '</button>';
+    html += toolButton('undo', 'data-act="undo"', book().canUndo());
+    html += toolButton('redo', 'data-act="redo"', book().canRedo());
+    html += toolButton('del', 'data-act="del"', !!selected);
+    html += toolButton('clear', 'data-act="clear"', true);
     bar.innerHTML = html;
-    var hint = { pan: 'hintPan', select: 'hintSelect', trend: 'hintTrend', hline: 'hintHline', box: 'hintBox', fib: 'hintFib' }[tool];
-    host.querySelector('.lab-draw-note').textContent = t(hint) + ' ' + t('note');
+    bar.title = t('note');
+    bar.setAttribute('aria-description', t('note'));
   }
 
   function handle(id, which, x, y) {
-    return '<circle class="is-handle" data-id="' + esc(id) + '" data-handle="' + which + '" cx="' + x + '" cy="' + y + '" r="16" fill="transparent"></circle>' +
+    return '<circle class="is-handle" data-id="' + esc(id) + '" data-handle="' + which + '" cx="' + x + '" cy="' + y + '" r="18" fill="transparent"></circle>' +
       '<circle cx="' + x + '" cy="' + y + '" r="5" fill="#fff" stroke="#1b1428" pointer-events="none"></circle>';
+  }
+  function grabLine(id, x1, y1, x2, y2) {
+    return '<line class="is-body" data-id="' + esc(id) + '" data-handle="line" x1="' + x1 + '" y1="' + y1 + '" x2="' + x2 + '" y2="' + y2 + '" stroke="transparent" stroke-width="22" pointer-events="stroke"></line>';
   }
   function render() {
     var svg = svgEl();
@@ -379,25 +430,29 @@
   function drawItem(item, width, on) {
     var stroke = on ? '#fff' : '#e6c79e';
     var widthPx = on ? 2.4 : 1.6;
+    var grab = on || tool === 'select';
     if (item.type === 'hline') {
       var y = series.priceToCoordinate(item.price);
       if (y == null) return '';
-      var hx = Math.max(24, width - 28);
       return '<line x1="0" y1="' + y + '" x2="' + width + '" y2="' + y + '" stroke="' + stroke + '" stroke-width="' + widthPx + '"></line>' +
         '<text x="8" y="' + (y - 6) + '" fill="#f5efff" font-size="11">' + item.price.toFixed(item.price >= 100 ? 1 : 2) + '</text>' +
-        (on ? handle(item.id, 'line', hx, y) : '');
+        (grab ? grabLine(item.id, 0, y, width, y) : '');
     }
     var a = toXY(item.a.time, item.a.price);
     var b = toXY(item.b.time, item.b.price);
     if (!a || !b) return '';
     if (item.type === 'trend') {
       return '<line x1="' + a.x + '" y1="' + a.y + '" x2="' + b.x + '" y2="' + b.y + '" stroke="' + stroke + '" stroke-width="' + widthPx + '"></line>' +
+        (grab ? grabLine(item.id, a.x, a.y, b.x, b.y) : '') +
         (on ? handle(item.id, 'a', a.x, a.y) + handle(item.id, 'b', b.x, b.y) : '');
     }
     if (item.type === 'box') {
       var x = Math.min(a.x, b.x);
       var y = Math.min(a.y, b.y);
-      return '<rect x="' + x + '" y="' + y + '" width="' + Math.abs(b.x - a.x) + '" height="' + Math.abs(b.y - a.y) + '" fill="rgba(125,206,160,.18)" stroke="' + stroke + '" stroke-width="' + widthPx + '"></rect>' +
+      var bw = Math.abs(b.x - a.x);
+      var bh = Math.abs(b.y - a.y);
+      return '<rect x="' + x + '" y="' + y + '" width="' + bw + '" height="' + bh + '" fill="rgba(125,206,160,.18)" stroke="' + stroke + '" stroke-width="' + widthPx + '"></rect>' +
+        (grab ? '<rect class="is-body" data-id="' + esc(item.id) + '" data-handle="line" x="' + x + '" y="' + y + '" width="' + bw + '" height="' + bh + '" fill="transparent" pointer-events="all"></rect>' : '') +
         (on ? handle(item.id, 'a', a.x, a.y) + handle(item.id, 'b', b.x, b.y) : '');
     }
     var lines = math.LEVELS.map(function (level) {
@@ -407,9 +462,11 @@
       if (!left || !right) return '';
       var label = level.toFixed(3).replace(/0+$/, '').replace(/\.$/, '') + ' ' + price.toFixed(price >= 100 ? 1 : 2);
       return '<line x1="' + left.x + '" y1="' + left.y + '" x2="' + right.x + '" y2="' + right.y + '" stroke="#c4b5fd" stroke-width="1.4"></line>' +
+        (grab ? grabLine(item.id, left.x, left.y, right.x, right.y) : '') +
         '<text x="' + (right.x + 4) + '" y="' + (right.y - 4) + '" fill="#f5efff" font-size="11">' + label + '</text>';
     }).join('');
     return lines + '<line x1="' + a.x + '" y1="' + a.y + '" x2="' + b.x + '" y2="' + b.y + '" stroke="' + stroke + '" stroke-dasharray="4 3"></line>' +
+      (grab ? grabLine(item.id, a.x, a.y, b.x, b.y) : '') +
       (on ? handle(item.id, 'a', a.x, a.y) + handle(item.id, 'b', b.x, b.y) : '');
   }
 
