@@ -1288,6 +1288,11 @@
       '<div class="puny-table-wrap"><table class="puny-table"><thead><tr><th>' + esc(t('puny.chart.lat')) + '</th><th>' + esc(t('puny.chart.cyr')) + '</th><th>' + esc(t('puny.chart.cp')) + '</th></tr></thead><tbody>' +
       body + '</tbody></table></div><p class="puny-chart-note">' + esc(t('puny.chart.note')) + '</p></section>';
   }
+  function renderLab() {
+    document.title = t('lab.title');
+    if (window.Lab) Lab.mount(main, { lang: LANG });
+    else main.innerHTML = '<p class="lead">' + esc(t('lab.title')) + '</p>';
+  }
   function renderPuny() {
     document.title = t('puny.title');
     main.innerHTML = '<div class="puny-page"><nav class="crumbs" aria-label="' + esc(t('crumb.where')) + '"><a href="#/">' + esc(t('crumb.home')) + '</a> › <span>' + esc(t('puny.crumb')) + '</span></nav>' +
@@ -1456,12 +1461,18 @@
   function route(keep) {
     var h = location.hash, m = h.match(/^#\/c\/(\d\d)(?:\/(\d+))?/);
     $$('.topbar .search-results').forEach(function (b) { b.hidden = true; });
-    var rm = h.match(/^#\/r\/(\w+)(?:\/(\d+))?/), cx = /^#\/cex/.test(h), py = /^#\/punycode/.test(h);
-    document.body.classList.toggle('is-home', !m && !rm && !cx && !py);
+    var rm = h.match(/^#\/r\/(\w+)(?:\/(\d+))?/), cx = /^#\/cex/.test(h), py = /^#\/punycode/.test(h), lab = /^#\/lab(?:$|[/?#])/.test(h);
+    document.body.classList.toggle('is-home', !m && !rm && !cx && !py && !lab);
+    document.body.classList.toggle('is-lab', lab);
+    if (!lab && window.Lab && Lab.mounted) Lab.unmount();
     document.body.classList.toggle('is-reader', !!m);
     if (window.TEACH) TEACH.syncStarfield(!!m);
     if (cx) { renderCex(); if (!keep) window.scrollTo(0, 0); }
     else if (py) { renderPuny(); if (!keep) window.scrollTo(0, 0); }
+    else if (lab) {
+      if (keep && window.Lab && Lab.mounted && Lab.setLang) Lab.setLang(LANG);
+      else { renderLab(); if (!keep) window.scrollTo(0, 0); }
+    }
     else if (rm) renderRoute(rm[1], rm[2] ? +rm[2] : 0, keep);
     else if (m) renderChapter(m[1], m[2] != null ? +m[2] : null, keep);
     else { renderHome(); if (!keep && !pendingAnchor) window.scrollTo(0, 0); }
@@ -1519,6 +1530,7 @@
     var key = 'explore';
     if (/^#\/cex/.test(h)) key = 'cex';
     else if (/^#\/punycode/.test(h)) key = 'puny';
+    else if (/^#\/lab(?:$|[/?#])/.test(h)) key = 'lab';
     else if (/^#\/r\//.test(h)) key = 'courses';
     else if (id === '14') key = 'tools';
     else if (id === '13') key = 'slang';
