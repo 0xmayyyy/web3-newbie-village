@@ -53,8 +53,8 @@ window.ADVANCED_STAR = {
             ],
             answer: 'B',
             why: {
-              zh: '不能据此知道先涨到110还是先跌到95。',
-              en: 'You cannot tell from this whether it rose to 110 first or fell to 95 first.'
+              zh: 'OHLC 是一根 K 线的四个价格：开盘价（Open）、最高价（High）、最低价（Low）、收盘价（Close）。它只记录了这段时间里到过哪些价格，没有记录哪个价格先出现。所以不能据此知道是先涨到 110 还是先跌到 95。',
+              en: 'OHLC is the four prices of one candlestick: the opening price (Open), the highest price (High), the lowest price (Low), and the closing price (Close). It only records which prices were reached during that period, and does not record which price came first. So you cannot tell from this whether it rose to 110 first or fell to 95 first.'
             }
           }
         },

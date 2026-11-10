@@ -1413,7 +1413,8 @@
         if (!(/\d/.test(prev) && /\d/.test(next)) && (next === '' || next === ' ' || next === '\n')) end = true;
       }
       if (end) {
-        parts.push(ch === '\n' ? buf.slice(0, -1) : buf);
+        var piece = (ch === '\n' ? buf.slice(0, -1) : buf).replace(/^\s+|\s+$/g, '');
+        if (piece) parts.push(piece);
         buf = '';
       }
     }
