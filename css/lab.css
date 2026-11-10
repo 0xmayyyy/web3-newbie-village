@@ -1162,7 +1162,27 @@ body.is-lab .topbar.lab-nav-hidden{transform:translate3d(0,calc(-100% - 18px),0)
 .lab-root .chart-wrap{border-radius:13px!important;border-bottom:1px solid #35304e!important}
 .lab-root .tv-legend{position:absolute;z-index:5;left:8px;top:6px;max-width:calc(100% - 72px);pointer-events:none;font:500 11px/1.35 Outfit,"PingFang SC","Noto Sans SC",sans-serif;color:#d9d0ea;text-shadow:0 1px 2px rgba(0,0,0,.85);white-space:normal}
 .lab-root .tv-legend .tv-meta{color:#cbbfe3;margin-right:6px}
-@media(max-width:699px){.lab-root .tv-legend{font-size:10px;left:6px;top:4px;max-width:calc(100% - 52px)}}
+@media(max-width:699px){.lab-root .tv-legend{font-size:10px;left:6px;top:4px;max-width:calc(100% - 52px)}
+  .lab-root .chart-card{padding:10px!important}
+  .lab-root .chart-wrap{height:min(64dvh,540px)!important}
+  .lab-root #price-chart{min-height:0!important;touch-action:none}
+  .lab-root .chart-head{flex-direction:column!important;align-items:stretch!important;gap:8px!important}
+  .lab-root .chart-head .coins{margin-left:0!important;width:100%;justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto}
+  .lab-root .tf-switch{width:100%;max-width:none;flex-wrap:nowrap;overflow-x:auto}
+  .lab-root .coin,.lab-root .tf-btn{min-height:36px}
+  .lab-root .px{font-size:28px!important}
+  .lab-root #market-chart-card .anno-toggles{width:100%!important;justify-content:flex-end!important}
+  body.is-lab.market-fullscreen{position:fixed!important;inset:0!important;width:100%!important;height:100dvh!important}
+  body.is-lab.market-fullscreen #market-chart-card{height:100dvh!important;padding:max(6px,env(safe-area-inset-top)) max(6px,env(safe-area-inset-right)) max(6px,env(safe-area-inset-bottom)) max(6px,env(safe-area-inset-left))!important}
+  body.is-lab.market-fullscreen #market-chart-card .px-strip{display:none!important}
+  body.is-lab.market-fullscreen #market-chart-card .chart-head{flex-direction:row!important;flex-wrap:wrap!important}
+}
+@media(max-width:360px){.lab-root .tv-legend{font-size:9px}.lab-root .coin{padding:8px 10px}}
+@media(orientation:landscape) and (max-height:520px){
+  .lab-root .hero-line{display:none!important}
+  .lab-root .chart-wrap{height:calc(100dvh - 108px)!important}
+  body.is-lab.market-fullscreen #market-chart-card .px-strip{display:none!important}
+}
 @media (max-width:699px){
   body.is-lab main#main{padding:0 0 16px}
   .lab-root .page{width:calc(100% - 16px)!important}

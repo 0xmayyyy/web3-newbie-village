@@ -1469,7 +1469,10 @@
     if (window.TEACH) TEACH.syncStarfield(!!m);
     if (cx) { renderCex(); if (!keep) window.scrollTo(0, 0); }
     else if (py) { renderPuny(); if (!keep) window.scrollTo(0, 0); }
-    else if (lab) { renderLab(); if (!keep) window.scrollTo(0, 0); }
+    else if (lab) {
+      if (keep && window.Lab && Lab.mounted && Lab.setLang) Lab.setLang(LANG);
+      else { renderLab(); if (!keep) window.scrollTo(0, 0); }
+    }
     else if (rm) renderRoute(rm[1], rm[2] ? +rm[2] : 0, keep);
     else if (m) renderChapter(m[1], m[2] != null ? +m[2] : null, keep);
     else { renderHome(); if (!keep && !pendingAnchor) window.scrollTo(0, 0); }

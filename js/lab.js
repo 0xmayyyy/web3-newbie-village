@@ -693,7 +693,7 @@ function fmtYi(n) {
 }
 
 function clockText() {
-  return (labLang() === "en" ? "Shanghai " : "上海时间 ") + shanghaiClock();
+  return "UTC+8 " + shanghaiClock();
 }
 function shanghaiClock(date = new Date()) {
   return date.toLocaleString(labLang() === "en" ? "en-US" : "zh-CN", {
@@ -1296,6 +1296,9 @@ function chartOptions() {
       timeVisible: true,
       secondsVisible: false,
     },
+    handleScroll: { mouseWheel: true, pressedMouseMove: true, horzTouchDrag: true, vertTouchDrag: false },
+    handleScale: { axisPressedMouseMove: { time: true, price: true }, mouseWheel: true, pinch: true },
+    kineticScroll: { mouse: false, touch: true },
     localization: {
       timeFormatter: (time) => {
         const ts = typeof time === "object" ? Date.UTC(time.year, time.month - 1, time.day) / 1000 : time;
@@ -1541,6 +1544,26 @@ async function loadAnalytics(livePrice, seq = loadSeq) {
   renderLiq(livePrice || ind.price);
 }
 
+function paintCycleNote() {
+  const s = state.cycleSnap;
+  const el = $("cycle-note");
+  if (!s || !el) return;
+  const en = labLang() === "en";
+  const id = currentCoin().id;
+  const windowNote = en
+    ? (id === "BTC"
+      ? "Aligned by days after the halving. This cycle is counted from Apr 20, 2024, and the chart shows 2026-08-11 through the latest session. The prior cycle is the same stretch after the May 11, 2020 halving (about 2022-09-01 to 2022-11-29)."
+      : "Aligned to the same calendar window after Bitcoin's halving. This is a market-cycle comparison, not " + id + "'s own halving. This cycle is 2026-08-11 through the latest session; the prior cycle is about 2022-09-01 to 2022-11-29.")
+    : (id === "BTC"
+      ? "按减半后天数对齐：本周期从 2024 年 4 月 20 日起算，对应 2026-08-11 至最新交易日；上周期为 2020 年 5 月 11 日减半后的同一段（2022-09-01 至 2022-11-29 一带）。"
+      : "按比特币减半后的同一日历窗口对齐（市场周期对照，并非 " + id + " 自身减半）：本周期 2026-08-11 至最新交易日；上周期 2022-09-01 至 2022-11-29 一带。");
+  el.textContent = en
+    ? windowNote + " Both lines are rebased so the first close in the window is 100. This cycle runs from " + fmtPx(s.c0) + " to " + fmtPx(s.currClose) + " (" + (s.currRet * 100).toFixed(1) + "%, index " + s.thisIdx.toFixed(2) + "). The prior cycle runs from " + fmtPx(s.p0) + " to " + fmtPx(s.prevClose) + " (" + (s.prevRet * 100).toFixed(1) + "%, index " + s.prevIdx.toFixed(2) + "). About 911 days after that halving, the prior cycle hit the FTX collapse. That path is not a forecast."
+    : windowNote + "两条线都以窗口起点收盘价 = 100。窗口内本周期从 " + fmtPx(s.c0) + " 至 " + fmtPx(s.currClose) + "（" + (s.currRet * 100).toFixed(1) + "%，指数 " + s.thisIdx.toFixed(2) + "）；上周期同期从 " + fmtPx(s.p0) + " 至 " + fmtPx(s.prevClose) + "（" + (s.prevRet * 100).toFixed(1) + "%，指数 " + s.prevIdx.toFixed(2) + "）。上周期在减半后约第 911 天正值 FTX 破产暴跌，结构与本轮不同，不能把上轮路径当成预测。";
+  if (cyclePrevSeries && s.ftxTime) {
+    v18SetMarkers(cyclePrevSeries, [{ time: s.ftxTime, position: "belowBar", color: "#3d6fbf", shape: "arrowUp", text: labT("上周期 FTX", "Prior cycle · FTX") }]);
+  }
+}
 async function loadCycle(seq = loadSeq) {
   const pair = currentCoin().pair;
   const currentStart = Date.UTC(2026, 7, 11);
@@ -1581,6 +1604,8 @@ async function loadCycle(seq = loadSeq) {
   cycleChart.timeScale().fitContent();
   const currRet = curr[n - 1].close / c0 - 1;
   const prevRet = prev[n - 1].close / p0 - 1;
+  state.cycleSnap = { c0, p0, currClose: curr[n - 1].close, prevClose: prev[n - 1].close, currRet, prevRet, thisIdx: thisLine[n - 1].value, prevIdx: prevLine[n - 1].value, ftxTime: (ftxIdx > 0 && ftxIdx < n) ? curr[ftxIdx].time : null };
+  paintCycleNote();
   const windowNote = labLang() === "en"
     ? (currentCoin().id === "BTC"
       ? "Aligned by days after the halving. This cycle is counted from Apr 20, 2024, and the chart shows 2026-08-11 through the latest session. The prior cycle is the same stretch after the May 11, 2020 halving (about 2022-09-01 to 2022-11-29)."
@@ -2809,7 +2834,7 @@ function drawVillageSmcOverlay(){
  layer.replaceChildren(svg);
 }
 
-/* V21 fullscreen uses the existing native multipane chart instance. */
+/* In-page fullscreen. iOS Safari cannot fullscreen a non-video element, so this is a fixed viewport overlay. */
 function initLabFullscreen(){
  const btn=document.getElementById('chart-fullscreen-btn');
  const host=document.getElementById('market-chart-card');
@@ -2826,9 +2851,10 @@ function initLabFullscreen(){
        chart.resize(w,h);
        const panes=chart.panes();
        if(panes.length>1){
-         const usable=Math.max(180,h-32);
-         const macd=Math.max(105,Math.round(usable*.27));
-         panes[0].setHeight(Math.max(110,usable-macd));
+         const narrow=window.innerWidth<700||window.innerHeight<520;
+         const usable=Math.max(narrow?150:180,h-32);
+         const macd=narrow?Math.round(Math.max(84,Math.min(usable*0.32,usable-110))):Math.max(105,Math.round(usable*.27));
+         panes[0].setHeight(Math.max(narrow?100:110,usable-macd));
          panes[1].setHeight(macd);
        }
      }catch(e){console.warn('fullscreen resize',e)}
@@ -2851,11 +2877,50 @@ function initLabFullscreen(){
  if(typeof ResizeObserver!=='undefined'){
    resizeObserver=new ResizeObserver(()=>{if(active)refresh()});
    resizeObserver.observe(chartEl);
+   resizeObserver.observe(host);
  }
 }
 
   window.Lab = {
     mounted: false,
+    setLang: function (lang) {
+      labLangCode = lang === "en" ? "en" : "zh";
+      applyLabI18n(document.getElementById("lab-root"));
+      if ($("clock")) $("clock").textContent = clockText();
+      updateCoinChrome();
+      const fsBtn = document.getElementById("chart-fullscreen-btn");
+      if (fsBtn) {
+        const on = fsBtn.getAttribute("aria-pressed") === "true";
+        fsBtn.innerHTML = on ? "⤢ <span>" + labT("退出全屏", "Exit full screen") + "</span>" : "⛶ <span>" + labT("全屏图表", "Full screen") + "</span>";
+        fsBtn.title = on ? labT("退出全屏 (Esc)", "Exit full screen (Esc)") : labT("全屏查看图表", "View the chart full screen");
+        fsBtn.setAttribute("aria-label", fsBtn.title);
+      }
+      renderFeed("news-list", currentCoin().news);
+      renderFeed("macro-list", MACRO);
+      if (state.price != null) renderLiq(state.price);
+      if (state.indicators && state.daily && state.daily.length) {
+        const ind4 = state.h4 && state.h4.length ? computeIndicators(state.h4, state.price) : null;
+        const ind1 = state.h1 && state.h1.length ? computeIndicators(state.h1, state.price) : null;
+        const extra = htfNote(ind1, ind4);
+        const pair = currentCoin().pair;
+        renderIndicators(state.indicators, extra + labT(
+          "指标均用币安 " + pair + " 现场计算：RSI 为 Wilder 平滑，布林带为 20 日均线 ± 2 倍样本标准差，EMA 以对应周期 SMA 做种子。日线最新一根用实时成交价替代未收盘收盘价。",
+          "Indicators are calculated here from Binance " + pair + ". RSI uses Wilder smoothing, Bollinger Bands are the 20-period mean ± 2 sample standard deviations, and EMA is seeded with the SMA of the same length. The newest daily bar uses the live trade price instead of an unclosed close."
+        ));
+        renderSummary(state.indicators, extra);
+      }
+      if (state.chartRows && state.chartRows.length) {
+        applyAnnotations(state.chartRows);
+        let range = null;
+        try { range = priceChart && priceChart.timeScale().getVisibleLogicalRange(); } catch (e) {}
+        if (typeof renderVillageStudies === "function") renderVillageStudies(state.chartRows);
+        if (range && priceChart) { try { priceChart.timeScale().setVisibleLogicalRange(range); } catch (e) {} }
+      }
+      paintLegends(labHoverTime);
+      paintCycleNote();
+      if (cycleThisSeries) cycleThisSeries.applyOptions({ title: labT("本周期", "This cycle") });
+      if (cyclePrevSeries) cyclePrevSeries.applyOptions({ title: labT("上周期", "Prior cycle") });
+    },
     mount: function (root, opts) {
       labLangCode = opts && opts.lang === 'en' ? 'en' : 'zh';
       if (this.mounted) this.unmount();
