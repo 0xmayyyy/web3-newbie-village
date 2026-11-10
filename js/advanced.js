@@ -1400,11 +1400,19 @@
   function proseLines(text, esc, breaks) {
     var cut = { '。': true };
     (breaks || []).forEach(function (ch) { cut[ch] = true; });
+    if (cut['；']) cut[';'] = true;
     var parts = [];
     var buf = '';
     for (var i = 0; i < text.length; i++) {
-      buf += text.charAt(i);
-      if (cut[text.charAt(i)]) {
+      var ch = text.charAt(i);
+      buf += ch;
+      var end = !!cut[ch];
+      if (!end && ch === '.') {
+        var prev = i > 0 ? text.charAt(i - 1) : '';
+        var next = i + 1 < text.length ? text.charAt(i + 1) : '';
+        if (!(/\d/.test(prev) && /\d/.test(next)) && (next === '' || next === ' ' || next === '\n')) end = true;
+      }
+      if (end) {
         parts.push(buf);
         buf = '';
       }
@@ -1426,7 +1434,7 @@
     el.innerHTML = noteHtml(text);
   }
   function paintAnswer(el, right, lead, rest) {
-    rest = String(rest || '').replace(/^(答对了。|答错了。|Correct\.\s*|Right\.\s*|Not right\.\s*)/, '');
+    rest = String(rest || '').replace(/^(答对了。|答错了。|Correct\.\s*|Right\.\s*|Wrong\.\s*|Not right\.\s*)/, '');
     el.classList.toggle('is-right', !!right);
     el.classList.toggle('is-wrong', !right);
     el.innerHTML = noteHtml(rest ? String(lead).replace(/\s*$/, ' ') + rest : String(lead));
