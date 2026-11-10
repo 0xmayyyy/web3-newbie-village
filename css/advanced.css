@@ -40,6 +40,7 @@ body.is-star main{max-width:none;margin:0;padding:0 0 48px;background:transparen
 .a2-legend .star-lines p:last-child{margin-bottom:0}
 .a3-top{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(240px,.85fr);gap:16px 22px;align-items:start;margin-top:8px}
 .a3-copy,.a3-side{margin:0;padding:0;align-self:start}
+.a3-side{padding-right:16px;box-sizing:border-box}
 .a3-copy .a1-flag{margin:0 0 10px}
 .a3-block{margin:0 0 1.65em}
 .a3-block:last-child{margin-bottom:0}
@@ -63,6 +64,7 @@ body.is-star main{max-width:none;margin:0;padding:0 0 48px;background:transparen
 .a2-readout.is-right .star-lines p,.a2-readout.is-wrong .star-lines p,.star-feedback.is-right .star-lines p,.star-feedback.is-wrong .star-lines p{color:#fff}
 @media (max-width:768px){
   .a3-top{grid-template-columns:1fr}
+  .a3-side{padding-right:0}
   .a3-scenarios button{min-height:118px}
 }
 .a3-switch{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
