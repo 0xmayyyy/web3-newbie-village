@@ -516,9 +516,16 @@
       return '<svg viewBox="0 0 120 48" aria-hidden="true"><polyline points="' + pts + '" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>';
     }
     root.innerHTML =
-      '<div class="a2">' + simFlag(t) +
-      '<div class="a3-top"><div class="a3-copy"><div class="a1-note">' + noteHtml(t('star.a3.stair')) + noteHtml(t('star.a3.tap')) + '</div>' +
-      '<div class="a1-note">' + proseLines(t('star.a3.rule'), noteEsc, ['；']) + '<p><strong>' + noteEsc(t('star.a3.ruleNote')) + '</strong></p></div></div>' +
+      '<div class="a2">' +
+      '<div class="a3-top"><div class="a3-copy">' + simFlag(t) +
+      t('star.a3.left').split('\n\n').map(function (para) {
+        return '<div class="a3-block">' + para.split('\n').filter(function (line) {
+          return line.replace(/\s/g, '');
+        }).map(function (line) {
+          return '<p>' + noteEsc(line) + '</p>';
+        }).join('') + '</div>';
+      }).join('') +
+      '<div class="a3-block"><p><strong>' + noteEsc(t('star.a3.ruleNote')) + '</strong></p></div></div>' +
       '<div class="a3-side"><table class="a3-terms"><tbody>' +
       '<tr><th>HH</th><td>Higher High</td><td>更高的高点</td></tr>' +
       '<tr><th>HL</th><td>Higher Low</td><td>更高的低点</td></tr>' +

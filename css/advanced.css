@@ -39,9 +39,12 @@ body.is-star main{max-width:none;margin:0;padding:0 0 48px;background:transparen
 .a2-legend .star-lines p{margin:0 0 .9em;line-height:1.8}
 .a2-legend .star-lines p:last-child{margin-bottom:0}
 .a3-top{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(240px,.85fr);gap:16px 22px;align-items:start;margin-top:8px}
-.a3-copy .a1-note{margin:0 0 10px}
-.a3-copy .a1-note:last-child{margin-bottom:0}
-.a3-terms{border-collapse:collapse;font-size:14px;line-height:1.55;width:100%}
+.a3-copy,.a3-side{margin:0;padding:0;align-self:start}
+.a3-copy .a1-flag{margin:0 0 10px}
+.a3-block{margin:0 0 1.65em}
+.a3-block:last-child{margin-bottom:0}
+.a3-block p{margin:0;line-height:1.75}
+.a3-terms{border-collapse:collapse;font-size:14px;line-height:1.55;width:100%;margin:0}
 .a3-terms th,.a3-terms td{border:1px solid rgba(230,199,158,.35);padding:6px 10px;text-align:left}
 .a3-terms th{color:#e6c79e;font-weight:650}
 .a3-side .star-lines{margin-top:10px}
