@@ -68,7 +68,7 @@
     const extra = ANNO_EN[kind];
     return extra ? Object.assign({}, base, extra) : base;
   }
-  const LAB_HTML = "<div id=\"v6-data-notice\" class=\"lab-notice\" role=\"status\" style=\"display:none;position:fixed;bottom:18px;left:18px;right:18px;max-width:560px;z-index:100001;padding:14px 18px;border-radius:15px;background:rgba(31,21,55,.97);color:#f0d7ad;border:1px solid rgba(222,172,91,.55);box-shadow:0 12px 35px #0008;font:14px/1.6 Outfit,system-ui\">\n  <span data-lab-i18n=\"notice\">离线 / 演示状态：行情源没有连上（Binance 公共接口）。这里没有实时 K 线。页面上的价格、清算估算和新闻快照都不要当成实时行情。</span>\n  <button type=\"button\" id=\"lab-retry\" data-lab-i18n=\"retry\" style=\"margin-left:10px;background:#5d428b;color:white;border:0;border-radius:8px;padding:5px 12px;cursor:pointer\">重试</button>\n</div>\n<div class=\"page\">\n<div class=\"lab-brand\">\n  <img class=\"lab-mark\" src=\"assets/lab/mark.svg\" width=\"46\" height=\"46\" alt=\"\">\n  <div class=\"wordmark\">Web3 新手村 <span class=\"brand-sep\">/</span> <span data-lab-i18n=\"brand.lab\">星际行情实验室</span></div>\n</div>\n\n    <div class=\"hero-line\"><div><div class=\"hero-live-row\"><div class=\"header-meta\">\n        <div class=\"live\" id=\"live-status\"><span class=\"dot\"></span><span data-lab-i18n=\"live.connecting\">连接中</span></div>\n        <div class=\"clock\" id=\"clock\">—</div>\n      </div></div>\n<div class=\"eyebrow\" data-lab-i18n=\"hero.eye\">WEB3 NEWBIE VILLAGE · MARKET LAB</div><h1><span data-lab-i18n=\"hero.h1\">把行情看清楚，再做判断</span><span class=\"star-dot\">✦</span></h1><p data-lab-i18n=\"hero.p\">专业 K 线放大到主视觉，指标自由开关；清算、宏观与市场催化事件放在下方，不抢图表空间。</p></div><div class=\"hero-planet\"><img src=\"assets/lab/planet.png\" alt=\"进阶知识星\" data-lab-i18n-alt=\"hero.alt\"></div></div><div class=\"board\" id=\"lab-board\">\n      <section class=\"card chart-card\" id=\"market-chart-card\">\n        <div class=\"card-head chart-head\">\n          <button type=\"button\" id=\"chart-fullscreen-btn\" class=\"chart-fullscreen-btn\" data-lab-i18n-aria=\"fs.aria\" aria-label=\"全屏查看K线与MACD\" aria-pressed=\"false\" data-lab-i18n-title=\"fs.title\" title=\"全屏查看图表\">⛶ <span data-lab-i18n=\"fs.label\">全屏图表</span></button>\n          <div class=\"tf-switch\" role=\"tablist\" data-lab-i18n-aria=\"tf.aria\" aria-label=\"周期\">\n            <button class=\"tf-btn\" type=\"button\" data-tf=\"1m\" data-lab-i18n=\"tf.1m\">1分</button>\n            <button class=\"tf-btn\" type=\"button\" data-tf=\"5m\" data-lab-i18n=\"tf.5m\">5分</button>\n            <button class=\"tf-btn\" type=\"button\" data-tf=\"15m\" data-lab-i18n=\"tf.15m\">15分</button>\n            <button class=\"tf-btn\" type=\"button\" data-tf=\"1h\" data-lab-i18n=\"tf.1h\">1H</button>\n            <button class=\"tf-btn active\" type=\"button\" data-tf=\"4h\" data-lab-i18n=\"tf.4h\">4H</button>\n            <button class=\"tf-btn\" type=\"button\" data-tf=\"1d\" data-lab-i18n=\"tf.1d\">1D</button>\n            <button class=\"tf-btn\" type=\"button\" data-tf=\"1w\" data-lab-i18n=\"tf.1w\">1W</button>\n            <button class=\"tf-btn\" type=\"button\" data-tf=\"1M\" data-lab-i18n=\"tf.1M\">1M</button>\n          </div>\n<nav class=\"coins\" data-lab-i18n-aria=\"coins.aria\" aria-label=\"代币切换\">\n        <button class=\"coin active\" type=\"button\" data-symbol=\"BTC\">BTC</button>\n        <button class=\"coin\" type=\"button\" data-symbol=\"ETH\">ETH</button>\n        <button class=\"coin\" type=\"button\" data-symbol=\"BNB\">BNB</button>\n        <button class=\"coin\" type=\"button\" data-symbol=\"TRX\">TRX</button>\n      </nav>\n        </div>\n        \n        <div class=\"px-strip\" data-lab-i18n-aria=\"px.aria\" aria-label=\"行情摘要\">\n          <div class=\"px-ticker\">\n            <div class=\"px-main\">\n              <div class=\"px-label\" id=\"px-label\">BTC / USDT</div>\n              <div class=\"px\" id=\"last-price\">—</div>\n              <div class=\"px-sub\">\n                <span class=\"px-cny\" id=\"last-cny\">¥—</span>\n                <span class=\"chg\" id=\"last-chg\">—</span>\n              </div>\n            </div>\n            <div class=\"px-stats\" data-lab-i18n-aria=\"stats.aria\" aria-label=\"24小时行情\">\n              <div class=\"px-stat\">\n                <span class=\"px-stat-label\" data-lab-i18n=\"px.high\">24H最高价</span>\n                <span class=\"px-stat-value\" id=\"stat-high\">—</span>\n              </div>\n              <div class=\"px-stat\">\n                <span class=\"px-stat-label\" data-lab-i18n=\"px.low\">24H最低价</span>\n                <span class=\"px-stat-value\" id=\"stat-low\">—</span>\n              </div>\n              <div class=\"px-stat\">\n                <span class=\"px-stat-label\" data-lab-i18n=\"px.vol\">24H成交量</span>\n                <span class=\"px-stat-value\" id=\"stat-vol\">—</span>\n              </div>\n              <div class=\"px-stat\">\n                <span class=\"px-stat-label\" data-lab-i18n=\"px.turn\">24小时成交额</span>\n                <span class=\"px-stat-value\" id=\"stat-turnover\">—</span>\n              </div>\n            </div>\n          </div>\n          <div class=\"anno-guide\"><span data-lab-i18n=\"guide\">图表标记 · 自由开关 · 自动记忆</span><button type=\"button\" id=\"learn-anno\" data-lab-i18n-title=\"learn.title\" title=\"学习指标含义\"><span data-lab-i18n=\"learn\">? 指标课堂</span></button></div><div class=\"anno-toggles\" role=\"group\" data-lab-i18n-aria=\"anno.aria\" aria-label=\"K线标注开关\" id=\"anno-toggles\"><div class=\"unified-studies\" role=\"group\" data-lab-i18n-aria=\"studies.aria\" aria-label=\"技术指标\"><button class=\"study-btn active\" data-study=\"ema20\" aria-pressed=\"true\">EMA 20</button><button class=\"study-btn active\" data-study=\"ema50\" aria-pressed=\"true\">EMA 50</button><button class=\"study-btn active\" data-study=\"macd\" aria-pressed=\"true\">MACD</button><button class=\"study-btn active\" data-study=\"smc\" aria-pressed=\"true\">SMC <small>BOS / CHoCH / FVG</small></button></div>\n            <div class=\"anno-toggle-row\">\n              <button type=\"button\" class=\"anno-toggle\" data-anno-kind=\"reclaim\" data-lab-i18n-title=\"anno.reclaim.t\" title=\"显示/隐藏 站上 EMA200\" aria-pressed=\"false\"><span class=\"eye\" aria-hidden=\"true\"></span><span class=\"anno-toggle-label\" data-lab-i18n=\"anno.reclaim\">站上EMA200</span></button>\n              <button type=\"button\" class=\"anno-toggle\" data-anno-kind=\"reject\" data-lab-i18n-title=\"anno.reject.t\" title=\"显示/隐藏 跌破 EMA200\" aria-pressed=\"false\"><span class=\"eye\" aria-hidden=\"true\"></span><span class=\"anno-toggle-label\" data-lab-i18n=\"anno.reject\">跌破EMA200</span></button>\n              <button type=\"button\" class=\"anno-toggle on\" data-anno-kind=\"support\" data-lab-i18n-title=\"anno.support.t\" title=\"显示/隐藏 近端支撑\" aria-pressed=\"true\"><span class=\"eye\" aria-hidden=\"true\"></span><span class=\"anno-toggle-label\" data-lab-i18n=\"anno.support\">近端支撑</span></button>\n              <button type=\"button\" class=\"anno-toggle on\" data-anno-kind=\"resist\" data-lab-i18n-title=\"anno.resist.t\" title=\"显示/隐藏 近端压力\" aria-pressed=\"true\"><span class=\"eye\" aria-hidden=\"true\"></span><span class=\"anno-toggle-label\" data-lab-i18n=\"anno.resist\">近端压力</span></button>\n            </div>\n            <div class=\"anno-toggle-row\">\n              <button type=\"button\" class=\"anno-toggle\" data-anno-kind=\"overbought\" data-lab-i18n-title=\"anno.overbought.t\" title=\"显示/隐藏 超买\" aria-pressed=\"false\"><span class=\"eye\" aria-hidden=\"true\"></span><span class=\"anno-toggle-label\" data-lab-i18n=\"anno.overbought\">超买</span></button>\n              <button type=\"button\" class=\"anno-toggle\" data-anno-kind=\"oversold\" data-lab-i18n-title=\"anno.oversold.t\" title=\"显示/隐藏 超卖\" aria-pressed=\"false\"><span class=\"eye\" aria-hidden=\"true\"></span><span class=\"anno-toggle-label\" data-lab-i18n=\"anno.oversold\">超卖</span></button>\n              <button type=\"button\" class=\"anno-toggle on\" data-anno-kind=\"bearish_div\" data-lab-i18n-title=\"anno.bearish_div.t\" title=\"显示/隐藏 顶背离\" aria-pressed=\"true\"><span class=\"eye\" aria-hidden=\"true\"></span><span class=\"anno-toggle-label\" data-lab-i18n=\"anno.bearish_div\">顶背离</span></button>\n              <button type=\"button\" class=\"anno-toggle on\" data-anno-kind=\"bullish_div\" data-lab-i18n-title=\"anno.bullish_div.t\" title=\"显示/隐藏 底背离\" aria-pressed=\"true\"><span class=\"eye\" aria-hidden=\"true\"></span><span class=\"anno-toggle-label\" data-lab-i18n=\"anno.bullish_div\">底背离</span></button>\n              <button type=\"button\" class=\"anno-toggle\" data-anno-kind=\"vol_break\" data-lab-i18n-title=\"anno.vol_break.t\" title=\"显示/隐藏 放量突破\" aria-pressed=\"false\"><span class=\"eye\" aria-hidden=\"true\"></span><span class=\"anno-toggle-label\" data-lab-i18n=\"anno.vol_break\">放量突破</span></button>\n              <button type=\"button\" class=\"anno-toggle\" data-anno-kind=\"vol_shrink_up\" data-lab-i18n-title=\"anno.vol_shrink_up.t\" title=\"显示/隐藏 缩量上涨\" aria-pressed=\"false\"><span class=\"eye\" aria-hidden=\"true\"></span><span class=\"anno-toggle-label\" data-lab-i18n=\"anno.vol_shrink_up\">缩量上涨</span></button>\n            </div>\n            <div class=\"anno-toggle-row\">\n              <button type=\"button\" class=\"anno-toggle\" data-anno-kind=\"vol_dump\" data-lab-i18n-title=\"anno.vol_dump.t\" title=\"显示/隐藏 放量下跌\" aria-pressed=\"false\"><span class=\"eye\" aria-hidden=\"true\"></span><span class=\"anno-toggle-label\" data-lab-i18n=\"anno.vol_dump\">放量下跌</span></button>\n              <button type=\"button\" class=\"anno-toggle\" data-anno-kind=\"vol_shrink_down\" data-lab-i18n-title=\"anno.vol_shrink_down.t\" title=\"显示/隐藏 缩量下跌\" aria-pressed=\"false\"><span class=\"eye\" aria-hidden=\"true\"></span><span class=\"anno-toggle-label\" data-lab-i18n=\"anno.vol_shrink_down\">缩量下跌</span></button>\n              <button type=\"button\" class=\"anno-toggle\" data-anno-kind=\"news\" data-lab-i18n-title=\"anno.news.t\" title=\"显示/隐藏 市场新闻\" aria-pressed=\"false\"><span class=\"eye\" aria-hidden=\"true\"></span><span class=\"anno-toggle-label\" data-lab-i18n=\"anno.news\">市场新闻</span></button>\n              <button type=\"button\" class=\"anno-toggle\" data-anno-kind=\"macro\" data-lab-i18n-title=\"anno.macro.t\" title=\"显示/隐藏 宏观事件\" aria-pressed=\"false\"><span class=\"eye\" aria-hidden=\"true\"></span><span class=\"anno-toggle-label\" data-lab-i18n=\"anno.macro\">宏观事件</span></button>\n            </div>\n          </div>\n        </div>\n        <div class=\"chart-wrap\">\n          <div id=\"price-chart\" role=\"img\" aria-label=\"BTCUSDT K线图\"><div id=\"ohlc-legend\" class=\"tv-legend\"></div><div id=\"macd-legend\" class=\"tv-legend\"></div></div>\n          <div id=\"anno-layer\" class=\"anno-layer\" aria-hidden=\"true\"></div>\n          <div id=\"anno-tip\" class=\"anno-tip\" hidden>\n            <div class=\"anno-tip-title\"></div>\n            <div class=\"anno-tip-detail\"></div>\n            <div class=\"anno-tip-outlook\">\n              <div class=\"anno-tip-outlook-label\" data-lab-i18n=\"tip.follow\">后续分析</div>\n              <div class=\"anno-tip-outlook-text\"></div>\n            </div>\n            <div class=\"anno-tip-price\"></div>\n          </div>\n        </div>\n        <div class=\"v18-pane-note\"><span data-lab-i18n=\"pane\">MACD (12,26,9) · 与 K 线共用时间轴及十字光标</span>　<span id=\"v18-hover\" data-lab-i18n=\"hover\">鼠标移到 K 线或 MACD，查看同一时间</span></div>\n        <p class=\"chart-note\" id=\"chart-note\" hidden></p>\n      </section>\n\n      <aside class=\"side\">\n        <section class=\"card panel summary-card\" data-panel=\"ai\">\n          <button class=\"panel-toggle\" type=\"button\" aria-expanded=\"false\">\n            <div class=\"panel-toggle-text\">\n              <h2 class=\"card-title\" data-lab-i18n=\"ai.title\">AI 综合研判</h2>\n              <p class=\"card-sub\" data-lab-i18n=\"ai.sub\">综合技术、清算、新闻与宏观，给出支撑 / 压力与看法</p>\n            </div>\n            <div class=\"panel-toggle-right\">\n              <div id=\"view-pill\" class=\"view-pill warn\" data-lab-i18n=\"ai.pill\">研判生成中</div>\n              <span class=\"chev\" aria-hidden=\"true\"></span>\n            </div>\n          </button>\n          <div class=\"panel-body\">\n            <p class=\"summary-lead\" id=\"summary-lead\" data-lab-i18n=\"ai.lead\">正在根据最新数据生成看法…</p>\n            <div class=\"summary-grid\">\n              <article class=\"sum-box\">\n                <h3 data-lab-i18n=\"sum.support\">支撑位</h3>\n                <p id=\"sum-support\">—</p>\n              </article>\n              <article class=\"sum-box\">\n                <h3 data-lab-i18n=\"sum.resist\">压力位</h3>\n                <p id=\"sum-resist\">—</p>\n              </article>\n              <article class=\"sum-box\">\n                <h3 data-lab-i18n=\"sum.view\">行情看法</h3>\n                <p id=\"sum-view\">—</p>\n              </article>\n            </div>\n            <p class=\"disclaimer\" data-lab-i18n=\"disclaimer\">以上为对公开行情与事件的规则化解读，不构成投资建议。价格与指标会随币安数据自动刷新；新闻与宏观为人工梳理的近期快照，清算带为模型估算（比特币含公开转述快照）。</p>\n          </div>\n        </section>\n        <section class=\"card panel\" data-panel=\"indicators\">\n          <button class=\"panel-toggle\" type=\"button\" aria-expanded=\"false\">\n            <div class=\"panel-toggle-text\">\n              <h2 class=\"card-title\" data-lab-i18n=\"ind.title\">技术指标</h2>\n              <p class=\"card-sub\" data-lab-i18n=\"ind.sub\">日线收盘价现场计算，各指标附中文判读</p>\n            </div>\n            <span class=\"chev\" aria-hidden=\"true\"></span>\n          </button>\n          <div class=\"panel-body\">\n            <div id=\"indicator-list\" class=\"ind-list\">\n              <div class=\"skeleton\"></div>\n              <div class=\"skeleton\"></div>\n              <div class=\"skeleton\"></div>\n              <div class=\"skeleton\"></div>\n            </div>\n            <p class=\"panel-note\" id=\"indicator-note\"></p>\n          </div>\n        </section>\n\n        <section class=\"card panel\" data-panel=\"ledger\">\n          <button class=\"panel-toggle\" type=\"button\" aria-expanded=\"false\">\n            <div class=\"panel-toggle-text\">\n              <h2 class=\"card-title\" data-lab-i18n=\"led.title\">信号对账</h2>\n              <p class=\"card-sub\" data-lab-i18n=\"led.sub\">当前周期最近若干次标注之后，价格实际怎么走（仅供学习对照）</p>\n            </div>\n            <span class=\"chev\" aria-hidden=\"true\"></span>\n          </button>\n          <div class=\"panel-body\">\n            <div id=\"ledger-list\" class=\"ledger-list\"></div>\n            <p class=\"panel-note\" id=\"ledger-note\"></p>\n          </div>\n        </section>\n\n        <section class=\"card panel\" data-panel=\"liq\">\n          <button class=\"panel-toggle\" type=\"button\" aria-expanded=\"false\">\n            <div class=\"panel-toggle-text\">\n              <h2 class=\"card-title\" data-lab-i18n=\"liq.title\">强平热力图</h2>\n              <p class=\"card-sub\" data-lab-i18n=\"liq.sub\">清算强度与位置（模型估算，非交易所实时挂单）</p>\n            </div>\n            <span class=\"chev\" aria-hidden=\"true\"></span>\n          </button>\n          <div class=\"panel-body\">\n            <div id=\"liq-map\" class=\"liq-map\"></div>\n            <p class=\"panel-note\" id=\"liq-note\"></p>\n          </div>\n        </section>\n\n        <section class=\"card panel\" data-panel=\"news\">\n          <button class=\"panel-toggle\" type=\"button\" aria-expanded=\"false\">\n            <div class=\"panel-toggle-text\">\n              <h2 class=\"card-title\" data-lab-i18n=\"news.title\">市场催化事件</h2>\n              <p class=\"card-sub\" data-lab-i18n=\"news.sub\">优先关注政策、ETF、交易所风险与重大市场事件 · 原版内容为静态快照</p>\n            </div>\n            <span class=\"chev\" aria-hidden=\"true\"></span>\n          </button>\n          <div class=\"panel-body\">\n            <div id=\"news-list\" class=\"feed\"></div>\n          </div>\n        </section>\n\n        <section class=\"card panel\" data-panel=\"macro\">\n          <button class=\"panel-toggle\" type=\"button\" aria-expanded=\"false\">\n            <div class=\"panel-toggle-text\">\n              <h2 class=\"card-title\" data-lab-i18n=\"mac.title\">宏观事件</h2>\n              <p class=\"card-sub\" data-lab-i18n=\"mac.sub\">经济日历展示区 · 原版宏观数据为静态快照，尚未接入实时免费日历</p>\n            </div>\n            <span class=\"chev\" aria-hidden=\"true\"></span>\n          </button>\n          <div class=\"panel-body\">\n            <div id=\"macro-list\" class=\"feed\"></div>\n          </div>\n        </section>\n\n        <section class=\"card panel\" data-panel=\"cycle\">\n          <button class=\"panel-toggle\" type=\"button\" aria-expanded=\"false\">\n            <div class=\"panel-toggle-text\">\n              <h2 class=\"card-title\" data-lab-i18n=\"cyc.title\">刻舟求剑</h2>\n              <p class=\"card-sub\" data-lab-i18n=\"cyc.sub\">同一张图叠线：金色为本周期，蓝色为上周期</p>\n            </div>\n            <span class=\"chev\" aria-hidden=\"true\"></span>\n          </button>\n          <div class=\"panel-body\">\n            <div class=\"legend\">\n              <span class=\"lg gold\" data-lab-i18n=\"cyc.this\">本周期</span>\n              <span class=\"lg blue\" data-lab-i18n=\"cyc.prev\">上周期</span>\n            </div>\n            <div id=\"cycle-chart\" role=\"img\" data-lab-i18n-aria=\"cyc.aria\" aria-label=\"本周期与上周期走势对照\"></div>\n            <p class=\"panel-note\" id=\"cycle-note\"></p>\n          </div>\n        </section>\n      </aside>\n\n    </div>\n\n    <footer class=\"foot\">\n      <span id=\"foot-coin\" data-lab-i18n=\"foot.coin\">Web3 新手村 · 星际行情实验室</span>\n      <span id=\"foot-source\">数据源：Binance 现货 BTCUSDT · 清算带转述自 CoinGlass / Base Camp / Chaincatcher</span>\n    </footer>\n  </div>\n";
+  const LAB_HTML = "<div id=\"v6-data-notice\" class=\"lab-notice\" role=\"status\" style=\"display:none;position:fixed;bottom:18px;left:18px;right:18px;max-width:560px;z-index:100001;padding:14px 18px;border-radius:15px;background:rgba(31,21,55,.97);color:#f0d7ad;border:1px solid rgba(222,172,91,.55);box-shadow:0 12px 35px #0008;font:14px/1.6 Outfit,system-ui\">\n  <span data-lab-i18n=\"notice\">离线 / 演示状态：行情源没有连上（Binance 公共接口）。这里没有实时 K 线。页面上的价格、清算估算和新闻快照都不要当成实时行情。</span>\n  <button type=\"button\" id=\"lab-retry\" data-lab-i18n=\"retry\" style=\"margin-left:10px;background:#5d428b;color:white;border:0;border-radius:8px;padding:5px 12px;cursor:pointer\">重试</button>\n</div>\n<div class=\"page\">\n<div class=\"lab-brand\">\n  <img class=\"lab-mark\" src=\"assets/lab/mark.svg\" width=\"46\" height=\"46\" alt=\"\">\n  <div class=\"wordmark\">Web3 新手村 <span class=\"brand-sep\">/</span> <span data-lab-i18n=\"brand.lab\">星际行情实验室</span></div>\n</div>\n\n    <div class=\"hero-line\"><div><div class=\"hero-live-row\"><div class=\"header-meta\">\n        <div class=\"live\" id=\"live-status\"><span class=\"dot\"></span><span data-lab-i18n=\"live.connecting\">连接中</span></div>\n        <div class=\"clock\" id=\"clock\">—</div>\n      </div></div>\n<div class=\"eyebrow\" data-lab-i18n=\"hero.eye\">WEB3 NEWBIE VILLAGE · MARKET LAB</div><h1><span data-lab-i18n=\"hero.h1\">把行情看清楚，再做判断</span><span class=\"star-dot\">✦</span></h1><p data-lab-i18n=\"hero.p\">专业 K 线放大到主视觉，指标自由开关；清算、宏观与市场催化事件放在下方，不抢图表空间。</p></div><div class=\"hero-planet\"><img src=\"assets/lab/planet.png\" alt=\"进阶知识星\" data-lab-i18n-alt=\"hero.alt\"></div></div><div class=\"board\" id=\"lab-board\">\n      <section class=\"card chart-card\" id=\"market-chart-card\">\n        <div class=\"card-head chart-head\">\n          <button type=\"button\" id=\"chart-fullscreen-btn\" class=\"chart-fullscreen-btn\" data-lab-i18n-aria=\"fs.aria\" aria-label=\"全屏查看K线与MACD\" aria-pressed=\"false\" data-lab-i18n-title=\"fs.title\" title=\"全屏查看图表\">⛶ <span data-lab-i18n=\"fs.label\">全屏图表</span></button>\n          <div class=\"tf-switch\" role=\"tablist\" data-lab-i18n-aria=\"tf.aria\" aria-label=\"周期\">\n            <button class=\"tf-btn\" type=\"button\" data-tf=\"1m\" data-lab-i18n=\"tf.1m\">1分</button>\n            <button class=\"tf-btn\" type=\"button\" data-tf=\"5m\" data-lab-i18n=\"tf.5m\">5分</button>\n            <button class=\"tf-btn\" type=\"button\" data-tf=\"15m\" data-lab-i18n=\"tf.15m\">15分</button>\n            <button class=\"tf-btn\" type=\"button\" data-tf=\"1h\" data-lab-i18n=\"tf.1h\">1H</button>\n            <button class=\"tf-btn active\" type=\"button\" data-tf=\"4h\" data-lab-i18n=\"tf.4h\">4H</button>\n            <button class=\"tf-btn\" type=\"button\" data-tf=\"1d\" data-lab-i18n=\"tf.1d\">1D</button>\n            <button class=\"tf-btn\" type=\"button\" data-tf=\"1w\" data-lab-i18n=\"tf.1w\">1W</button>\n            <button class=\"tf-btn\" type=\"button\" data-tf=\"1M\" data-lab-i18n=\"tf.1M\">1M</button>\n          </div>\n<nav class=\"coins\" data-lab-i18n-aria=\"coins.aria\" aria-label=\"代币切换\">\n        <button class=\"coin active\" type=\"button\" data-symbol=\"BTC\">BTC</button>\n        <button class=\"coin\" type=\"button\" data-symbol=\"ETH\">ETH</button>\n        <button class=\"coin\" type=\"button\" data-symbol=\"BNB\">BNB</button>\n        <button class=\"coin\" type=\"button\" data-symbol=\"TRX\">TRX</button>\n      </nav>\n        </div>\n        \n        <div class=\"px-strip\" data-lab-i18n-aria=\"px.aria\" aria-label=\"行情摘要\">\n          <div class=\"px-ticker\">\n            <div class=\"px-main\">\n              <div class=\"px-label\" id=\"px-label\">BTC / USDT</div>\n              <div class=\"px\" id=\"last-price\">—</div>\n              <div class=\"px-sub\">\n                <span class=\"px-cny\" id=\"last-cny\">¥—</span>\n                <span class=\"chg\" id=\"last-chg\">—</span>\n              </div>\n            </div>\n            <div class=\"px-stats\" data-lab-i18n-aria=\"stats.aria\" aria-label=\"24小时行情\">\n              <div class=\"px-stat\">\n                <span class=\"px-stat-label\" data-lab-i18n=\"px.high\">24H最高价</span>\n                <span class=\"px-stat-value\" id=\"stat-high\">—</span>\n              </div>\n              <div class=\"px-stat\">\n                <span class=\"px-stat-label\" data-lab-i18n=\"px.low\">24H最低价</span>\n                <span class=\"px-stat-value\" id=\"stat-low\">—</span>\n              </div>\n              <div class=\"px-stat\">\n                <span class=\"px-stat-label\" data-lab-i18n=\"px.vol\">24H成交量</span>\n                <span class=\"px-stat-value\" id=\"stat-vol\">—</span>\n              </div>\n              <div class=\"px-stat\">\n                <span class=\"px-stat-label\" data-lab-i18n=\"px.turn\">24小时成交额</span>\n                <span class=\"px-stat-value\" id=\"stat-turnover\">—</span>\n              </div>\n            </div>\n          </div>\n          <div class=\"anno-guide\"><span data-lab-i18n=\"guide\">图表标记 · 自由开关 · 自动记忆</span><button type=\"button\" id=\"learn-anno\" data-lab-i18n-title=\"learn.title\" title=\"学习指标含义\"><span data-lab-i18n=\"learn\">? 指标课堂</span></button></div><div class=\"anno-toggles\" role=\"group\" data-lab-i18n-aria=\"anno.aria\" aria-label=\"K线标注开关\" id=\"anno-toggles\"><div class=\"unified-studies\" role=\"group\" data-lab-i18n-aria=\"studies.aria\" aria-label=\"技术指标\"><button class=\"study-btn active\" data-study=\"ema20\" aria-pressed=\"true\">EMA 20</button><button class=\"study-btn active\" data-study=\"ema50\" aria-pressed=\"true\">EMA 50</button><button class=\"study-btn active\" data-study=\"macd\" aria-pressed=\"true\">MACD</button><button class=\"study-btn active\" data-study=\"smc\" aria-pressed=\"true\">SMC <small>BOS / CHoCH / FVG</small></button></div>\n            <div class=\"anno-toggle-row\">\n              <button type=\"button\" class=\"anno-toggle\" data-anno-kind=\"reclaim\" data-lab-i18n-title=\"anno.reclaim.t\" title=\"显示/隐藏 站上 EMA200\" aria-pressed=\"false\"><span class=\"eye\" aria-hidden=\"true\"></span><span class=\"anno-toggle-label\" data-lab-i18n=\"anno.reclaim\">站上EMA200</span></button>\n              <button type=\"button\" class=\"anno-toggle\" data-anno-kind=\"reject\" data-lab-i18n-title=\"anno.reject.t\" title=\"显示/隐藏 跌破 EMA200\" aria-pressed=\"false\"><span class=\"eye\" aria-hidden=\"true\"></span><span class=\"anno-toggle-label\" data-lab-i18n=\"anno.reject\">跌破EMA200</span></button>\n              <button type=\"button\" class=\"anno-toggle on\" data-anno-kind=\"support\" data-lab-i18n-title=\"anno.support.t\" title=\"显示/隐藏 近端支撑\" aria-pressed=\"true\"><span class=\"eye\" aria-hidden=\"true\"></span><span class=\"anno-toggle-label\" data-lab-i18n=\"anno.support\">近端支撑</span></button>\n              <button type=\"button\" class=\"anno-toggle on\" data-anno-kind=\"resist\" data-lab-i18n-title=\"anno.resist.t\" title=\"显示/隐藏 近端压力\" aria-pressed=\"true\"><span class=\"eye\" aria-hidden=\"true\"></span><span class=\"anno-toggle-label\" data-lab-i18n=\"anno.resist\">近端压力</span></button>\n            </div>\n            <div class=\"anno-toggle-row\">\n              <button type=\"button\" class=\"anno-toggle\" data-anno-kind=\"overbought\" data-lab-i18n-title=\"anno.overbought.t\" title=\"显示/隐藏 超买\" aria-pressed=\"false\"><span class=\"eye\" aria-hidden=\"true\"></span><span class=\"anno-toggle-label\" data-lab-i18n=\"anno.overbought\">超买</span></button>\n              <button type=\"button\" class=\"anno-toggle\" data-anno-kind=\"oversold\" data-lab-i18n-title=\"anno.oversold.t\" title=\"显示/隐藏 超卖\" aria-pressed=\"false\"><span class=\"eye\" aria-hidden=\"true\"></span><span class=\"anno-toggle-label\" data-lab-i18n=\"anno.oversold\">超卖</span></button>\n              <button type=\"button\" class=\"anno-toggle on\" data-anno-kind=\"bearish_div\" data-lab-i18n-title=\"anno.bearish_div.t\" title=\"显示/隐藏 顶背离\" aria-pressed=\"true\"><span class=\"eye\" aria-hidden=\"true\"></span><span class=\"anno-toggle-label\" data-lab-i18n=\"anno.bearish_div\">顶背离</span></button>\n              <button type=\"button\" class=\"anno-toggle on\" data-anno-kind=\"bullish_div\" data-lab-i18n-title=\"anno.bullish_div.t\" title=\"显示/隐藏 底背离\" aria-pressed=\"true\"><span class=\"eye\" aria-hidden=\"true\"></span><span class=\"anno-toggle-label\" data-lab-i18n=\"anno.bullish_div\">底背离</span></button>\n              <button type=\"button\" class=\"anno-toggle\" data-anno-kind=\"vol_break\" data-lab-i18n-title=\"anno.vol_break.t\" title=\"显示/隐藏 放量突破\" aria-pressed=\"false\"><span class=\"eye\" aria-hidden=\"true\"></span><span class=\"anno-toggle-label\" data-lab-i18n=\"anno.vol_break\">放量突破</span></button>\n              <button type=\"button\" class=\"anno-toggle\" data-anno-kind=\"vol_shrink_up\" data-lab-i18n-title=\"anno.vol_shrink_up.t\" title=\"显示/隐藏 缩量上涨\" aria-pressed=\"false\"><span class=\"eye\" aria-hidden=\"true\"></span><span class=\"anno-toggle-label\" data-lab-i18n=\"anno.vol_shrink_up\">缩量上涨</span></button>\n            </div>\n            <div class=\"anno-toggle-row\">\n              <button type=\"button\" class=\"anno-toggle\" data-anno-kind=\"vol_dump\" data-lab-i18n-title=\"anno.vol_dump.t\" title=\"显示/隐藏 放量下跌\" aria-pressed=\"false\"><span class=\"eye\" aria-hidden=\"true\"></span><span class=\"anno-toggle-label\" data-lab-i18n=\"anno.vol_dump\">放量下跌</span></button>\n              <button type=\"button\" class=\"anno-toggle\" data-anno-kind=\"vol_shrink_down\" data-lab-i18n-title=\"anno.vol_shrink_down.t\" title=\"显示/隐藏 缩量下跌\" aria-pressed=\"false\"><span class=\"eye\" aria-hidden=\"true\"></span><span class=\"anno-toggle-label\" data-lab-i18n=\"anno.vol_shrink_down\">缩量下跌</span></button>\n              <button type=\"button\" class=\"anno-toggle\" data-anno-kind=\"news\" data-lab-i18n-title=\"anno.news.t\" title=\"显示/隐藏 市场新闻\" aria-pressed=\"false\"><span class=\"eye\" aria-hidden=\"true\"></span><span class=\"anno-toggle-label\" data-lab-i18n=\"anno.news\">市场新闻</span></button>\n              <button type=\"button\" class=\"anno-toggle\" data-anno-kind=\"macro\" data-lab-i18n-title=\"anno.macro.t\" title=\"显示/隐藏 宏观事件\" aria-pressed=\"false\"><span class=\"eye\" aria-hidden=\"true\"></span><span class=\"anno-toggle-label\" data-lab-i18n=\"anno.macro\">宏观事件</span></button>\n            </div>\n          </div>\n        </div>\n        <div class=\"chart-wrap\">\n          <div id=\"price-chart\" role=\"img\" aria-label=\"BTCUSDT K线图\"><div id=\"ohlc-legend\" class=\"tv-legend\"></div><div id=\"macd-legend\" class=\"tv-legend\"></div></div>\n          <div id=\"anno-layer\" class=\"anno-layer\" aria-hidden=\"true\"></div>\n          <div id=\"anno-tip\" class=\"anno-tip\" hidden>\n            <div class=\"anno-tip-title\"></div>\n            <div class=\"anno-tip-detail\"></div>\n            <div class=\"anno-tip-outlook\">\n              <div class=\"anno-tip-outlook-label\" data-lab-i18n=\"tip.follow\">后续分析</div>\n              <div class=\"anno-tip-outlook-text\"></div>\n            </div>\n            <div class=\"anno-tip-price\"></div>\n          </div>\n          <button type=\"button\" id=\"history-hint\" class=\"history-hint\" hidden></button>\n        </div>\n        <div class=\"v18-pane-note\"><span data-lab-i18n=\"pane\">MACD (12,26,9) · 与 K 线共用时间轴及十字光标</span>　<span id=\"v18-hover\" data-lab-i18n=\"hover\">鼠标移到 K 线或 MACD，查看同一时间</span></div>\n        <p class=\"chart-note\" id=\"chart-note\" hidden></p>\n      </section>\n\n      <aside class=\"side\">\n        <section class=\"card panel summary-card\" data-panel=\"ai\">\n          <button class=\"panel-toggle\" type=\"button\" aria-expanded=\"false\">\n            <div class=\"panel-toggle-text\">\n              <h2 class=\"card-title\" data-lab-i18n=\"ai.title\">AI 综合研判</h2>\n              <p class=\"card-sub\" data-lab-i18n=\"ai.sub\">综合技术、清算、新闻与宏观，给出支撑 / 压力与看法</p>\n            </div>\n            <div class=\"panel-toggle-right\">\n              <div id=\"view-pill\" class=\"view-pill warn\" data-lab-i18n=\"ai.pill\">研判生成中</div>\n              <span class=\"chev\" aria-hidden=\"true\"></span>\n            </div>\n          </button>\n          <div class=\"panel-body\">\n            <p class=\"summary-lead\" id=\"summary-lead\" data-lab-i18n=\"ai.lead\">正在根据最新数据生成看法…</p>\n            <div class=\"summary-grid\">\n              <article class=\"sum-box\">\n                <h3 data-lab-i18n=\"sum.support\">支撑位</h3>\n                <p id=\"sum-support\">—</p>\n              </article>\n              <article class=\"sum-box\">\n                <h3 data-lab-i18n=\"sum.resist\">压力位</h3>\n                <p id=\"sum-resist\">—</p>\n              </article>\n              <article class=\"sum-box\">\n                <h3 data-lab-i18n=\"sum.view\">行情看法</h3>\n                <p id=\"sum-view\">—</p>\n              </article>\n            </div>\n            <p class=\"disclaimer\" data-lab-i18n=\"disclaimer\">以上为对公开行情与事件的规则化解读，不构成投资建议。价格与指标会随币安数据自动刷新；新闻与宏观为人工梳理的近期快照，清算带为模型估算（比特币含公开转述快照）。</p>\n          </div>\n        </section>\n        <section class=\"card panel\" data-panel=\"indicators\">\n          <button class=\"panel-toggle\" type=\"button\" aria-expanded=\"false\">\n            <div class=\"panel-toggle-text\">\n              <h2 class=\"card-title\" data-lab-i18n=\"ind.title\">技术指标</h2>\n              <p class=\"card-sub\" data-lab-i18n=\"ind.sub\">日线收盘价现场计算，各指标附中文判读</p>\n            </div>\n            <span class=\"chev\" aria-hidden=\"true\"></span>\n          </button>\n          <div class=\"panel-body\">\n            <div id=\"indicator-list\" class=\"ind-list\">\n              <div class=\"skeleton\"></div>\n              <div class=\"skeleton\"></div>\n              <div class=\"skeleton\"></div>\n              <div class=\"skeleton\"></div>\n            </div>\n            <p class=\"panel-note\" id=\"indicator-note\"></p>\n          </div>\n        </section>\n\n        <section class=\"card panel\" data-panel=\"ledger\">\n          <button class=\"panel-toggle\" type=\"button\" aria-expanded=\"false\">\n            <div class=\"panel-toggle-text\">\n              <h2 class=\"card-title\" data-lab-i18n=\"led.title\">信号对账</h2>\n              <p class=\"card-sub\" data-lab-i18n=\"led.sub\">当前周期最近若干次标注之后，价格实际怎么走（仅供学习对照）</p>\n            </div>\n            <span class=\"chev\" aria-hidden=\"true\"></span>\n          </button>\n          <div class=\"panel-body\">\n            <div id=\"ledger-list\" class=\"ledger-list\"></div>\n            <p class=\"panel-note\" id=\"ledger-note\"></p>\n          </div>\n        </section>\n\n        <section class=\"card panel\" data-panel=\"liq\">\n          <button class=\"panel-toggle\" type=\"button\" aria-expanded=\"false\">\n            <div class=\"panel-toggle-text\">\n              <h2 class=\"card-title\" data-lab-i18n=\"liq.title\">强平热力图</h2>\n              <p class=\"card-sub\" data-lab-i18n=\"liq.sub\">清算强度与位置（模型估算，非交易所实时挂单）</p>\n            </div>\n            <span class=\"chev\" aria-hidden=\"true\"></span>\n          </button>\n          <div class=\"panel-body\">\n            <div id=\"liq-map\" class=\"liq-map\"></div>\n            <p class=\"panel-note\" id=\"liq-note\"></p>\n          </div>\n        </section>\n\n        <section class=\"card panel\" data-panel=\"news\">\n          <button class=\"panel-toggle\" type=\"button\" aria-expanded=\"false\">\n            <div class=\"panel-toggle-text\">\n              <h2 class=\"card-title\" data-lab-i18n=\"news.title\">市场催化事件</h2>\n              <p class=\"card-sub\" data-lab-i18n=\"news.sub\">优先关注政策、ETF、交易所风险与重大市场事件 · 原版内容为静态快照</p>\n            </div>\n            <span class=\"chev\" aria-hidden=\"true\"></span>\n          </button>\n          <div class=\"panel-body\">\n            <div id=\"news-list\" class=\"feed\"></div>\n          </div>\n        </section>\n\n        <section class=\"card panel\" data-panel=\"macro\">\n          <button class=\"panel-toggle\" type=\"button\" aria-expanded=\"false\">\n            <div class=\"panel-toggle-text\">\n              <h2 class=\"card-title\" data-lab-i18n=\"mac.title\">宏观事件</h2>\n              <p class=\"card-sub\" data-lab-i18n=\"mac.sub\">经济日历展示区 · 原版宏观数据为静态快照，尚未接入实时免费日历</p>\n            </div>\n            <span class=\"chev\" aria-hidden=\"true\"></span>\n          </button>\n          <div class=\"panel-body\">\n            <div id=\"macro-list\" class=\"feed\"></div>\n          </div>\n        </section>\n\n        <section class=\"card panel\" data-panel=\"cycle\">\n          <button class=\"panel-toggle\" type=\"button\" aria-expanded=\"false\">\n            <div class=\"panel-toggle-text\">\n              <h2 class=\"card-title\" data-lab-i18n=\"cyc.title\">刻舟求剑</h2>\n              <p class=\"card-sub\" data-lab-i18n=\"cyc.sub\">同一张图叠线：金色为本周期，蓝色为上周期</p>\n            </div>\n            <span class=\"chev\" aria-hidden=\"true\"></span>\n          </button>\n          <div class=\"panel-body\">\n            <div class=\"legend\">\n              <span class=\"lg gold\" data-lab-i18n=\"cyc.this\">本周期</span>\n              <span class=\"lg blue\" data-lab-i18n=\"cyc.prev\">上周期</span>\n            </div>\n            <div id=\"cycle-chart\" role=\"img\" data-lab-i18n-aria=\"cyc.aria\" aria-label=\"本周期与上周期走势对照\"></div>\n            <p class=\"panel-note\" id=\"cycle-note\"></p>\n          </div>\n        </section>\n      </aside>\n\n    </div>\n\n    <footer class=\"foot\">\n      <span id=\"foot-coin\" data-lab-i18n=\"foot.coin\">Web3 新手村 · 星际行情实验室</span>\n      <span id=\"foot-source\">数据源：Binance 现货 BTCUSDT · 清算带转述自 CoinGlass / Base Camp / Chaincatcher</span>\n    </footer>\n  </div>\n";
   function ensureLabFonts() {
     if (document.getElementById('lab-fonts')) return;
     const link = document.createElement('link');
@@ -120,6 +120,7 @@
     pillsBound = false;
     tipBound = false;
     chromeBound = false;
+    resetHistory();
   }
 
 const READY_COINS = ["BTC", "ETH", "BNB", "TRX"];
@@ -572,6 +573,10 @@ let labHoverTime = null;
 let pollTimer = null, analyticsTimer = null, clockTimer = null;
 let tipBound = false;
 let pillsBound = false;
+const HISTORY_PAGE = 1000;
+const HISTORY_EDGE = 50;
+const HISTORY_CAP = 10000;
+const historyHint = { mode: "", hold: false, loading: false, exhausted: false, capped: false, applying: false, token: 0, timer: 0, hideTimer: 0 };
 
 function $(id) {
   return document.getElementById(id);
@@ -1455,7 +1460,7 @@ function ensureCycleChart() {
   new ResizeObserver(() => cycleChart && cycleChart.applyOptions({ autoSize: true })).observe($("cycle-chart"));
 }
 
-function applyChartData(rows) {
+function applyChartSeries(rows) {
   ensurePriceChart();
   candleSeries.setData(rows.map((row) => ({
     time: row.time,
@@ -1472,10 +1477,15 @@ function applyChartData(rows) {
   applyAnnotations(rows);
   if (typeof renderVillageStudies === "function") renderVillageStudies(rows);
   if (typeof bindSmcRange === "function") bindSmcRange();
+  bindHistoryLoader();
   paintLegends(labHoverTime);
-  priceChart.timeScale().fitContent();
   requestAnimationFrame(syncAnnoPills);
   setTimeout(syncAnnoPills, 60);
+}
+
+function applyChartData(rows) {
+  applyChartSeries(rows);
+  priceChart.timeScale().fitContent();
 }
 
 function updateLastCandle(price) {
@@ -1501,13 +1511,205 @@ function tfLabel(tf) {
 }
 
 async function loadChart(tf, seq = loadSeq) {
+  resetHistory();
   const pair = currentCoin().pair;
   const limit = TF_LIMITS[tf] || 300;
   const rows = await fetchKlines(tf, limit);
-  if (isStale(seq) || currentCoin().pair !== pair) return;
+  if (isStale(seq) || currentCoin().pair !== pair || state.tf !== tf) return;
   state.chartRows = rows;
   applyChartData(rows);
   setChartNote();
+}
+
+function historyHintText(mode) {
+  if (mode === "loading") return labT("加载更早行情…", "Loading earlier data…");
+  if (mode === "done") return labT("已到最早数据", "Reached earliest data");
+  return labT("更早行情没载上，点此重试", "Earlier data didn't load. Tap to retry.");
+}
+
+function hideHistoryHint() {
+  historyHint.mode = "";
+  const el = $("history-hint");
+  if (!el) return;
+  el.hidden = true;
+  el.textContent = "";
+  el.classList.remove("is-error");
+  el.disabled = true;
+}
+
+function showHistoryHint(mode) {
+  historyHint.mode = mode;
+  const el = $("history-hint");
+  if (!el) return;
+  clearTimeout(historyHint.hideTimer);
+  el.textContent = historyHintText(mode);
+  el.hidden = false;
+  el.classList.toggle("is-error", mode === "error");
+  el.disabled = mode !== "error";
+  if (mode === "done") {
+    historyHint.hideTimer = setTimeout(() => {
+      if (historyHint.mode === "done") hideHistoryHint();
+    }, 2800);
+  }
+}
+
+function resetHistory() {
+  historyHint.token += 1;
+  historyHint.loading = false;
+  historyHint.exhausted = false;
+  historyHint.capped = false;
+  historyHint.hold = false;
+  historyHint.applying = false;
+  clearTimeout(historyHint.timer);
+  clearTimeout(historyHint.hideTimer);
+  hideHistoryHint();
+}
+
+function mergeCandles(existing, incoming) {
+  const map = new Map();
+  existing.forEach((row) => map.set(row.time, row));
+  incoming.forEach((row) => map.set(row.time, row));
+  return Array.from(map.values()).sort((a, b) => a.time - b.time);
+}
+
+function prependOlder(existing, older) {
+  if (!existing.length) return older.slice();
+  const earliest = existing[0].time;
+  const seen = new Set(existing.map((row) => row.time));
+  const fresh = [];
+  older.forEach((row) => {
+    if (row.time < earliest && !seen.has(row.time)) {
+      seen.add(row.time);
+      fresh.push(row);
+    }
+  });
+  fresh.sort((a, b) => a.time - b.time);
+  return fresh.concat(existing);
+}
+
+function bindHistoryLoader() {
+  if (!priceChart || priceChart.__historyBound) return;
+  priceChart.__historyBound = true;
+  priceChart.timeScale().subscribeVisibleLogicalRangeChange((range) => {
+    if (range) scheduleOlderCandles(range);
+  });
+  const hint = $("history-hint");
+  if (hint && hint.dataset.bound !== "1") {
+    hint.dataset.bound = "1";
+    hint.addEventListener("click", () => {
+      if (historyHint.mode !== "error") return;
+      historyHint.hold = false;
+      loadOlderCandles();
+    });
+  }
+}
+
+function scheduleOlderCandles(range) {
+  if (!range || historyHint.loading || historyHint.applying) return;
+  const n = state.chartRows.length;
+  if (range.from > HISTORY_EDGE + 20) historyHint.hold = false;
+  if (historyHint.exhausted || historyHint.capped || historyHint.hold || !n || n >= HISTORY_CAP) return;
+  // The first fit shows every loaded bar, including the earliest. Wait until the
+  // latest bar has been scrolled off to the right, which is a drag or a zoom into the past.
+  if (range.from > HISTORY_EDGE || range.to >= n - 1.5) return;
+  clearTimeout(historyHint.timer);
+  historyHint.timer = setTimeout(() => {
+    const live = priceChart && priceChart.timeScale().getVisibleLogicalRange();
+    if (!live || live.from > HISTORY_EDGE || live.to >= state.chartRows.length - 1.5) return;
+    loadOlderCandles();
+  }, 200);
+}
+
+function restoreLogicalRange(range, shift) {
+  if (!range || !priceChart) return;
+  try {
+    priceChart.timeScale().setVisibleLogicalRange({
+      from: range.from + shift,
+      to: range.to + shift,
+    });
+  } catch (_) {}
+}
+
+async function loadOlderCandles() {
+  if (historyHint.loading || historyHint.exhausted || historyHint.capped) return;
+  if (!state.chartRows.length || state.chartRows.length >= HISTORY_CAP || !candleSeries) return;
+  const seq = loadSeq;
+  const token = historyHint.token;
+  const pair = currentCoin().pair;
+  const tf = state.tf;
+  const earliest = state.chartRows[0];
+  historyHint.loading = true;
+  showHistoryHint("loading");
+  let older = [];
+  try {
+    older = await fetchKlines(tf, HISTORY_PAGE, { endTime: earliest.openTime - 1 });
+  } catch (err) {
+    if (token !== historyHint.token || isStale(seq) || currentCoin().pair !== pair || state.tf !== tf) return;
+    historyHint.loading = false;
+    historyHint.hold = true;
+    showHistoryHint("error");
+    console.error(err);
+    return;
+  }
+  if (token !== historyHint.token || isStale(seq) || currentCoin().pair !== pair || state.tf !== tf) return;
+  const room = HISTORY_CAP - state.chartRows.length;
+  let page = older;
+  if (page.length > room) {
+    page = page.slice(page.length - room);
+    historyHint.capped = true;
+  }
+  const merged = prependOlder(state.chartRows, page);
+  const added = merged.length - state.chartRows.length;
+  if (added <= 0) {
+    historyHint.loading = false;
+    historyHint.exhausted = true;
+    showHistoryHint("done");
+    return;
+  }
+  hideHistoryHint();
+  const range = priceChart.timeScale().getVisibleLogicalRange();
+  historyHint.applying = true;
+  state.chartRows = merged;
+  try {
+    applyChartSeries(merged);
+    restoreLogicalRange(range, added);
+  } finally {
+    historyHint.applying = false;
+    historyHint.loading = false;
+  }
+  const live = priceChart.timeScale().getVisibleLogicalRange();
+  if (live) scheduleOlderCandles(live);
+}
+
+async function refreshChartTail(seq = loadSeq) {
+  if (historyHint.loading || historyHint.applying) return;
+  const pair = currentCoin().pair;
+  const tf = state.tf;
+  const rows = await fetchKlines(tf, TF_LIMITS[tf] || 300);
+  if (isStale(seq) || currentCoin().pair !== pair || state.tf !== tf) return;
+  if (!state.chartRows.length || !priceChart) {
+    state.chartRows = rows;
+    applyChartData(rows);
+    return;
+  }
+  const oldLast = state.chartRows[state.chartRows.length - 1].time;
+  const before = state.chartRows.length;
+  let merged = mergeCandles(state.chartRows, rows);
+  if (merged.length > HISTORY_CAP) merged = merged.slice(merged.length - HISTORY_CAP);
+  const keptFirst = merged[0].time;
+  let dropped = 0;
+  while (dropped < before && state.chartRows[dropped].time < keptFirst) dropped += 1;
+  const addedNew = merged.reduce((n, row) => n + (row.time > oldLast ? 1 : 0), 0);
+  const range = priceChart.timeScale().getVisibleLogicalRange();
+  const follow = range && range.to >= before - 2;
+  historyHint.applying = true;
+  state.chartRows = merged;
+  try {
+    applyChartSeries(merged);
+    if (range) restoreLogicalRange(range, (follow ? addedNew : 0) - dropped);
+  } finally {
+    historyHint.applying = false;
+  }
 }
 
 function htfNote(ind1, ind4) {
@@ -2665,7 +2867,7 @@ async function reloadLabData() {
   analyticsTimer = setInterval(async () => {
     const poll = loadSeq;
     try {
-      await loadChart(state.tf, poll);
+      await refreshChartTail(poll);
       await loadAnalytics(state.price, poll);
     } catch (err) {
       console.error(err);
@@ -2930,6 +3132,7 @@ function initLabFullscreen(){
         if (range && priceChart) { try { priceChart.timeScale().setVisibleLogicalRange(range); } catch (e) {} }
       }
       paintLegends(labHoverTime);
+      if (historyHint.mode) showHistoryHint(historyHint.mode);
       paintCycleNote();
       if (cycleThisSeries) cycleThisSeries.applyOptions({ title: labT("本周期", "This cycle") });
       if (cyclePrevSeries) cyclePrevSeries.applyOptions({ title: labT("上周期", "Prior cycle") });

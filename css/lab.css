@@ -1189,6 +1189,9 @@ body.is-lab .topbar{transition:transform .38s cubic-bezier(.2,.8,.2,1),opacity .
 body.is-lab .topbar.lab-nav-hidden{transform:translate3d(0,calc(-100% - 18px),0);opacity:0;pointer-events:none}
 #lab-nav-edge{position:fixed;z-index:80;top:0;left:0;width:100%;height:14px}
 .lab-root .chart-wrap{border-radius:13px!important;border-bottom:1px solid #35304e!important}
+.lab-root .history-hint{position:absolute;z-index:6;left:10px;top:42px;max-width:min(240px,calc(100% - 70px));margin:0;padding:3px 8px;border-radius:999px;border:1px solid rgba(214,196,160,.28);background:rgba(12,16,39,.88);color:#d5dbe8;font:400 12px/1.45 Outfit,"PingFang SC","Noto Sans SC",sans-serif;text-align:left;pointer-events:none;box-shadow:0 6px 16px rgba(0,0,0,.28)}
+.lab-root .history-hint.is-error{pointer-events:auto;cursor:pointer;color:#f0d59a}
+.lab-root .history-hint:disabled{opacity:1}
 .lab-root .tv-legend{position:absolute;z-index:5;left:8px;top:6px;max-width:calc(100% - 72px);pointer-events:none;font:500 11px/1.35 Outfit,"PingFang SC","Noto Sans SC",sans-serif;color:#d9d0ea;text-shadow:0 1px 2px rgba(0,0,0,.85);white-space:normal}
 .lab-root .tv-legend .tv-meta{color:#cbbfe3;margin-right:6px}
 @media(max-width:699px){.lab-root .tv-legend{font-size:10px;left:6px;top:4px;max-width:calc(100% - 52px)}
