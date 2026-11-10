@@ -1445,13 +1445,16 @@
     var data = pack();
     var lang = api.lang;
     document.title = api.t('star.docTitle', { title: api.t('atlas.advanced.name') });
-    main.innerHTML = '<div class="star-page"><header class="star-hero"><p class="star-kicker">' + api.t('star.kicker') + '</p><h1>' + api.t('atlas.advanced.name') + '</h1><p>' + api.esc(L(data.tagline, lang)) + '</p></header><ul class="star-modules">' +
+    main.innerHTML = '<div class="course-reader star-hub" style="--accent:#a28bf0;--planet-halo:#a28bf0;--planet-soft:rgba(162,139,240,.28)"><div class="shell">' +
+      '<section class="hero"><div><div class="eyebrow">' + api.esc(api.t('reader.explore', { n: '07' })) + '</div><h1>' + api.t('atlas.advanced.name') + '</h1><p>' + api.esc(L(data.tagline, lang)) + '</p></div>' +
+      '<div class="hero-planet" aria-hidden="true"><img alt="" draggable="false" src="assets/planets/advanced.png?v=20261107290000"></div></section>' +
+      '<ul class="star-modules">' +
       data.modules.map(function (mod) {
         var open = mod.status === 'open';
         var inner = '<span class="star-mod-id">' + mod.id + '</span><strong>' + api.esc(L(mod.title, lang)) + '</strong><span>' + api.esc(L(mod.blurb, lang)) + '</span><em>' + api.t(open ? 'star.moduleOpen' : 'star.soon') + '</em>';
         return '<li>' + (open ? '<a class="star-mod" href="#/star/' + mod.id + '">' + inner + '</a>' : '<div class="star-mod is-soon">' + inner + '</div>') + '</li>';
       }).join('') +
-      '</ul><p class="star-tools"><a href="#/lab">' + api.t('star.labLink') + '</a></p></div>';
+      '</ul><p class="star-tools"><a href="#/lab">' + api.t('star.labLink') + '</a></p></div></div>';
   }
 
   function renderChapter(main, api, chapterId) {
