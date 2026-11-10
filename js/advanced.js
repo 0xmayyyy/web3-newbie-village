@@ -514,14 +514,7 @@
     }
     root.innerHTML =
       '<div class="a2"><p class="a1-flag">' + t('star.sim') + ' · ' + t('star.a2.disclaimer') + '</p>' +
-      '<div class="a3-intro"><div class="a1-note">' + noteHtml(t('star.a3.stair')) + noteHtml(t('star.a3.tap')) + '</div>' +
-      '<div class="a3-side"><table class="a3-terms"><tbody>' +
-      '<tr><th>HH</th><td>Higher High</td><td>更高的高点</td></tr>' +
-      '<tr><th>HL</th><td>Higher Low</td><td>更高的低点</td></tr>' +
-      '<tr><th>LH</th><td>Lower High</td><td>更低的高点</td></tr>' +
-      '<tr><th>LL</th><td>Lower Low</td><td>更低的低点</td></tr>' +
-      '</tbody></table>' + proseLines(t('star.a3.terms'), noteEsc, ['；']) + '</div></div>' +
-      '<div class="a1-note">' + proseLines(t('star.a3.rule'), noteEsc, ['；']) + '<p><strong>' + noteEsc(t('star.a3.ruleNote')) + '</strong></p></div>' +
+      '<div class="a3-intro"><div class="a3-col"><div class="a1-note">' + noteHtml(t('star.a3.stair')) + noteHtml(t('star.a3.tap')) + '</div>' +
       '<div class="a3-switch" role="group">' +
       ['up', 'down', 'range'].map(function (id) {
         return '<button type="button" data-set="' + id + '" aria-pressed="' + (id === 'up' ? 'true' : 'false') + '">' + mini(packs[id].bars) + '<span>' + t('star.a3.' + id) + '</span></button>';
@@ -532,7 +525,14 @@
       '<button type="button" data-step="prev">' + t('star.a3.prev') + '</button>' +
       '<button type="button" data-step="next">' + t('star.a3.next') + '</button>' +
       '<button type="button" data-step="all">' + t('star.a3.allBars') + '</button>' +
-      '</div>' +
+      '</div></div>' +
+      '<div class="a3-side"><table class="a3-terms"><tbody>' +
+      '<tr><th>HH</th><td>Higher High</td><td>更高的高点</td></tr>' +
+      '<tr><th>HL</th><td>Higher Low</td><td>更高的低点</td></tr>' +
+      '<tr><th>LH</th><td>Lower High</td><td>更低的高点</td></tr>' +
+      '<tr><th>LL</th><td>Lower Low</td><td>更低的低点</td></tr>' +
+      '</tbody></table>' + plainLines(t('star.a3.terms')) + '</div></div>' +
+      '<div class="a1-note">' + proseLines(t('star.a3.rule'), noteEsc, ['；']) + '<p><strong>' + noteEsc(t('star.a3.ruleNote')) + '</strong></p></div>' +
       '<div class="a2-scroll" id="a3-scroll" tabindex="0" role="group" aria-label="' + t('star.a2.keys') + '"></div>' +
       '<div class="a1-live a2-readout" id="a3-live" aria-live="polite"></div>' +
       '<div class="a1-modes" id="a3-ask" hidden></div>' +
@@ -885,11 +885,6 @@
     function describe(bar) {
       return t('star.a4.candle', { n: bar.i + 1, o: px(bar.o), h: px(bar.h), l: px(bar.l), c: px(bar.c) });
     }
-    function sentences(list) {
-      return '<div class="star-lines">' + list.map(function (line) {
-        return '<p>' + noteEsc(line) + '</p>';
-      }).join('') + '</div>';
-    }
     function touchInfo(band, kind) {
       var vals = [];
       visible().forEach(function (bar) {
@@ -921,9 +916,8 @@
         lines.push(t(mode === 'support' ? 'star.a4.refSupport' : 'star.a4.refResist', bits));
         lines.push(t('star.a4.revealAsk'));
       } else lines.push(t('star.a4.okRest'));
-      live.innerHTML = '<span class="' + (ok ? 'star-ok' : '') + '">' + noteEsc(t(ok ? 'star.practiceOk' : 'star.quizNo')) + '</span>' +
-        sentences(lines) +
-        (ok ? '' : '<p><button type="button" class="a4-reveal" data-reveal="1">' + noteEsc(t('star.a4.reveal')) + '</button></p>');
+      paintAnswer(live, ok, t(ok ? 'star.practiceOk' : 'star.quizNo'), lines.join(''));
+      if (!ok) live.insertAdjacentHTML('beforeend', '<p><button type="button" class="a4-reveal" data-reveal="1">' + noteEsc(t('star.a4.reveal')) + '</button></p>');
     }
     function clamp(price) {
       return Math.max(94, Math.min(116, Math.round(price * 2) / 2));
@@ -1280,7 +1274,7 @@
         var bar = window.STAR_A5.series(branch)[focus];
         var want = window.STAR_A5.kind(bar);
         var right = mark.getAttribute('data-mark') === want;
-        setNote(live, (right ? t('star.quizOk') : t('star.quizNo')) + ' ' + t('star.a5.fact' + (want === 'close' ? 'Close' : want === 'wick' ? 'Wick' : 'Inside')));
+        paintAnswer(live, right, t(right ? 'star.quizOk' : 'star.quizNo'), t('star.a5.fact' + (want === 'close' ? 'Close' : want === 'wick' ? 'Wick' : 'Inside')));
         return;
       }
       var candle = event.target.closest('#a5-scroll [data-i]');
@@ -1413,10 +1407,19 @@
     return String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
   function noteHtml(text) { return proseLines(text, noteEsc); }
-  function setNote(el, text) { el.innerHTML = noteHtml(text); }
+  function plainLines(text) {
+    var parts = String(text).split('\n').filter(function (line) { return line.replace(/\s/g, ''); });
+    return '<div class="star-lines">' + parts.map(function (line) { return '<p>' + noteEsc(line) + '</p>'; }).join('') + '</div>';
+  }
+  function setNote(el, text) {
+    el.classList.remove('is-right', 'is-wrong');
+    el.innerHTML = noteHtml(text);
+  }
   function paintAnswer(el, right, lead, rest) {
     rest = String(rest || '').replace(/^(答对了。|答错了。|Correct\.\s*|Right\.\s*|Not right\.\s*)/, '');
-    el.innerHTML = '<span class="' + (right ? 'star-ok' : '') + '">' + noteEsc(lead) + '</span>' + (rest ? ' ' + noteEsc(rest) : '');
+    el.classList.toggle('is-right', !!right);
+    el.classList.toggle('is-wrong', !right);
+    el.innerHTML = noteHtml(rest ? String(lead).replace(/\s*$/, ' ') + rest : String(lead));
   }
 
   function renderOverview(main, api) {
@@ -1560,7 +1563,9 @@
       main.querySelectorAll('[data-quiz-retry]').forEach(function (btn) {
         btn.addEventListener('click', function () {
           var box = btn.closest('[data-qi]');
-          box.querySelector('[data-quiz-feedback]').textContent = '';
+          var quizNote = box.querySelector('[data-quiz-feedback]');
+          quizNote.textContent = '';
+          quizNote.classList.remove('is-right', 'is-wrong');
           box.querySelectorAll('[data-choice]').forEach(function (other) {
             other.setAttribute('aria-pressed', 'false');
             other.classList.remove('is-right', 'is-wrong');
@@ -1593,6 +1598,7 @@
     });
     quizRetry.addEventListener('click', function () {
       quizFeedback.textContent = '';
+      quizFeedback.classList.remove('is-right', 'is-wrong');
       main.querySelectorAll('[data-choice]').forEach(function (other) {
         other.setAttribute('aria-pressed', 'false');
         other.classList.remove('is-right', 'is-wrong');
