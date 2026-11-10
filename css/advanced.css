@@ -22,7 +22,14 @@ body.is-star main{max-width:none;margin:0;padding:0 0 48px;background:transparen
 .star-lesson h3{color:#f1d8b9;font-size:15px;letter-spacing:.04em;margin:0 0 8px}
 .star-contrast{padding-left:14px;border-left:2px solid rgba(230,199,158,.45)}
 .star-submit{margin-top:10px;min-height:44px;padding:8px 16px;border-radius:999px;border:1px solid rgba(230,199,158,.45);background:#241c33;color:#f0d59a;font:inherit}
-.a1-parts{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.a1-parts,.a2-bars{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.a2-bars{flex-wrap:nowrap;overflow-x:auto;align-items:flex-end;min-height:120px;padding-bottom:6px}
+.a2-bar{width:14px;min-width:14px;min-height:8px;border:0;border-radius:3px;padding:0}
+.a2-bar.up{background:#1f8a4d}
+.a2-bar.down{background:#d4534e}
+.a2-bar[aria-pressed="true"]{outline:2px solid #e6c79e;outline-offset:2px}
+.a2-subhead{margin:12px 0 0;color:#e6c79e;font-size:14px}
+.a2-child{min-height:72px}
 .a1{border:1px solid rgba(230,199,158,.28);border-radius:18px;padding:12px;background:#171226}
 .a1-flag{display:inline-block;margin:0 0 8px;padding:2px 8px;border-radius:999px;background:rgba(230,199,158,.16);color:#e6c79e;font-size:12px}
 .a1-modes,.a1-sub,.a1-fields{display:flex;flex-wrap:wrap;gap:8px}

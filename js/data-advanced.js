@@ -59,7 +59,64 @@ window.ADVANCED_STAR = {
             }
           }
         },
-        { id: '02', status: 'soon', title: { zh: '为什么5分钟图和日线看起来相反？', en: 'Why can a 5-minute chart and a daily chart look opposite?' } },
+        {
+          id: '02',
+          status: 'live',
+          chart: 'a2',
+          title: { zh: '为什么5分钟图和日线看起来相反？', en: 'Why can a 5-minute chart and a daily chart look opposite?' },
+          scene: {
+            zh: '日线是一根阳线的时候，5 分钟图为什么还能走出一段下跌？',
+            en: 'If the daily candle is bullish, why can the 5-minute chart still show a decline?'
+          },
+          one: {
+            zh: '不同周期是对同一段价格的不同尺度观察。',
+            en: 'Different timeframes are different scales of the same prices.'
+          },
+          explain: {
+            zh: '5分钟图把一天拆成很多段，日线把整天压成一根。日线收涨不代表其中每个5分钟都涨。短周期更容易受到噪声影响；长周期更适合观察较大结构，但反应也更慢。交易观察周期应与自己的持仓计划相匹配。',
+            en: 'A 5-minute chart splits the day into many pieces. A daily candle compresses the whole day into one. A rising daily close does not mean every 5-minute candle rose. Shorter timeframes pick up more noise. Longer timeframes are better for larger structure, but they react more slowly. The timeframe you watch should match how long you plan to hold.'
+          },
+          example: {
+            zh: '价格从早上100到晚上105，日线收涨；下午从108跌到103的两小时，短周期却可能是下降结构。',
+            en: 'Price goes from 100 in the morning to 105 in the evening, so the daily candle rises. During two afternoon hours it falls from 108 to 103, so the shorter timeframe can show a downtrend.'
+          },
+          pitfalls: [
+            { zh: '用一分钟图的波动推翻长期计划。', en: 'Letting a one-minute wiggle cancel a longer plan.' },
+            { zh: '混用不同周期的支撑压力。', en: 'Mixing support and resistance from different timeframes.' }
+          ],
+          practice: {
+            zh: '比较 BTC 15m、4H、1D 的高低点变化。',
+            en: 'Compare how the highs and lows change on BTC 15m, 4H, and 1D.'
+          },
+          lab: { symbol: 'BTCUSDT', interval: '15m', studies: 'none' },
+          check: {
+            ask: {
+              zh: '这组教学模拟里，哪句是对的？',
+              en: 'Which statement matches this teaching simulation?'
+            },
+            options: [
+              { id: 'A', zh: '日线收涨，同时下午两小时的 5 分钟可以连着收跌', en: 'The day closes up, while the afternoon 5-minute candles can keep closing down' },
+              { id: 'B', zh: '日线收涨，所以每一根 5 分钟都收涨', en: 'The day closes up, so every 5-minute candle closes up' }
+            ],
+            answer: 'A',
+            why: {
+              zh: '价格从早上100到晚上105，日线收涨；下午从108跌到103的两小时，短周期却可能是下降结构。',
+              en: 'Price goes from 100 in the morning to 105 in the evening, so the daily candle rises. During two afternoon hours it falls from 108 to 103, so the shorter timeframe can show a downtrend.'
+            }
+          },
+          quiz: {
+            q: { zh: '日线收阳意味着所有 5 分钟 K 线都收阳吗？', en: 'Does a bullish daily candle mean every 5-minute candle closed up?' },
+            options: [
+              { id: 'A', zh: '是', en: 'Yes' },
+              { id: 'B', zh: '否', en: 'No' }
+            ],
+            answer: 'B',
+            why: {
+              zh: '日线收涨不代表其中每个5分钟都涨。',
+              en: 'A rising daily close does not mean every 5-minute candle rose.'
+            }
+          }
+        },
         { id: '03', status: 'soon', title: { zh: '趋势、高点与低点', en: 'Trend, highs, and lows' } },
         { id: '04', status: 'soon', title: { zh: '支撑与压力', en: 'Support and resistance' } },
         { id: '05', status: 'soon', title: { zh: '突破、假突破、回踩与震荡', en: 'Breakouts, failed breaks, retests, and ranges' } },

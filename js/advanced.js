@@ -228,6 +228,137 @@
     draw();
   }
 
+  function round3(n) { return Math.round(n * 1000) / 1000; }
+  function a2Price(t) {
+    var raw;
+    if (t <= 240) raw = 100 + (8 * t) / 240;
+    else if (t <= 360) raw = 108 - (5 * (t - 240)) / 120;
+    else raw = 103 + (2 * (t - 360)) / 120;
+    return round3(raw);
+  }
+  function a2Minutes() {
+    var out = [];
+    for (var i = 0; i < 480; i += 1) {
+      var o = a2Price(i);
+      var c = a2Price(i + 1);
+      out.push({ start: i, o: o, h: Math.max(o, c), l: Math.min(o, c), c: c, v: 1 });
+    }
+    return out;
+  }
+  function a2Aggregate(bars, size) {
+    var out = [];
+    for (var i = 0; i < bars.length; i += size) {
+      var slice = bars.slice(i, i + size);
+      var h = slice[0].h;
+      var l = slice[0].l;
+      var v = 0;
+      slice.forEach(function (bar) {
+        if (bar.h > h) h = bar.h;
+        if (bar.l < l) l = bar.l;
+        v += bar.v;
+      });
+      out.push({
+        start: slice[0].start,
+        end: slice[slice.length - 1].start,
+        o: slice[0].o,
+        h: h,
+        l: l,
+        c: slice[slice.length - 1].c,
+        v: v
+      });
+    }
+    return out;
+  }
+  function a2Same(a, b) {
+    return a.o === b.o && a.h === b.h && a.l === b.l && a.c === b.c && a.v === b.v;
+  }
+  function a2Check(minutes, m5, h1, day) {
+    var direct = a2Aggregate(minutes, 480)[0];
+    if (!a2Same(day, direct)) throw new Error('daily aggregation');
+    if (day.o !== 100 || day.c !== 105 || day.h !== 108 || day.l !== 100 || day.v !== 480) throw new Error('daily textbook shape');
+    var from5 = a2Aggregate(m5, 12);
+    if (from5.length !== h1.length) throw new Error('hour count');
+    from5.forEach(function (bar, i) { if (!a2Same(bar, h1[i])) throw new Error('hour from 5m'); });
+    m5.forEach(function (bar) {
+      if (bar.start >= 240 && bar.end <= 359 && !(bar.c < bar.o)) throw new Error('afternoon 5m');
+    });
+  }
+  function a2Clock(start) {
+    var total = 9 * 60 + start;
+    var h = Math.floor(total / 60);
+    var m = total % 60;
+    return (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m;
+  }
+  function mountTimeframes(root, lang, t) {
+    var minutes = a2Minutes();
+    var sets = { m5: a2Aggregate(minutes, 5), h1: a2Aggregate(minutes, 60), d1: a2Aggregate(minutes, 480) };
+    a2Check(minutes, sets.m5, sets.h1, sets.d1[0]);
+    var tf = 'd1';
+    var picked = 0;
+    root.innerHTML =
+      '<div class="a2"><p class="a1-flag">' + t('star.sim') + '</p>' +
+      '<div class="a1-modes" role="group" aria-label="' + t('star.chart.modes') + '">' +
+      '<button type="button" data-tf="m5" aria-pressed="false">' + t('star.a2.m5') + '</button>' +
+      '<button type="button" data-tf="h1" aria-pressed="false">' + t('star.a2.h1') + '</button>' +
+      '<button type="button" data-tf="d1" aria-pressed="true">' + t('star.a2.d1') + '</button>' +
+      '</div>' +
+      '<div class="a2-bars" id="a2-main"></div>' +
+      '<p class="a1-live" id="a2-live" aria-live="polite"></p>' +
+      '<h4 class="a2-subhead" id="a2-subhead"></h4>' +
+      '<div class="a2-bars a2-child" id="a2-child"></div>' +
+      '<p class="a1-note">' + t('star.a2.rule') + '</p></div>';
+    var mainBars = root.querySelector('#a2-main');
+    var childBars = root.querySelector('#a2-child');
+    var subhead = root.querySelector('#a2-subhead');
+    var live = root.querySelector('#a2-live');
+    function barButton(bar, pressed) {
+      var up = bar.c >= bar.o;
+      var height = Math.max(18, Math.round(((bar.h - bar.l) / 8) * 90 + (up ? 28 : 22)));
+      return '<button type="button" class="a2-bar ' + (up ? 'up' : 'down') + '" style="height:' + height + 'px" data-start="' + bar.start + '" aria-pressed="' + (pressed ? 'true' : 'false') + '" aria-label="' + a2Clock(bar.start) + ' ' + bar.o + ' ' + bar.c + '"></button>';
+    }
+    function readout(bar, name) {
+      return t('star.a2.readout', { tf: name, clock: a2Clock(bar.start), o: bar.o, h: bar.h, l: bar.l, c: bar.c, v: bar.v });
+    }
+    function draw() {
+      var bars = sets[tf];
+      if (picked >= bars.length) picked = 0;
+      var names = { m5: t('star.a2.m5'), h1: t('star.a2.h1'), d1: t('star.a2.d1') };
+      mainBars.innerHTML = bars.map(function (bar, i) { return barButton(bar, i === picked); }).join('');
+      var bar = bars[picked];
+      live.textContent = readout(bar, names[tf]);
+      if (tf === 'm5') {
+        subhead.hidden = true;
+        childBars.hidden = true;
+        childBars.innerHTML = '';
+        return;
+      }
+      subhead.hidden = false;
+      childBars.hidden = false;
+      subhead.textContent = t('star.a2.parts');
+      var kids = sets.m5.filter(function (item) { return item.start >= bar.start && item.start <= bar.end; });
+      childBars.innerHTML = kids.map(function (item) { return barButton(item, false); }).join('');
+    }
+    root.addEventListener('click', function (event) {
+      var tfBtn = event.target.closest('[data-tf]');
+      if (tfBtn && root.contains(tfBtn)) {
+        tf = tfBtn.getAttribute('data-tf');
+        picked = 0;
+        root.querySelectorAll('[data-tf]').forEach(function (btn) {
+          btn.setAttribute('aria-pressed', btn === tfBtn ? 'true' : 'false');
+        });
+        draw();
+        return;
+      }
+      var barBtn = event.target.closest('#a2-main [data-start]');
+      if (barBtn) {
+        var start = Number(barBtn.getAttribute('data-start'));
+        picked = sets[tf].findIndex(function (bar) { return bar.start === start; });
+        draw();
+      }
+    });
+    draw();
+  }
+
   function renderOverview(main, api) {
     var data = pack();
     var lang = api.lang;
@@ -265,23 +396,36 @@
     var lab = lesson.lab || {};
     var labHref = '#/lab?symbol=' + encodeURIComponent(lab.symbol || 'BTCUSDT') + '&interval=' + encodeURIComponent(lab.interval || '4h') + '&studies=' + encodeURIComponent(lab.studies || 'none');
     var next = null;
+    var prev = null;
     chapter.lessons.forEach(function (item, index) {
-      if (item.id === lessonId && chapter.lessons[index + 1]) next = chapter.lessons[index + 1];
+      if (item.id === lessonId) {
+        if (chapter.lessons[index + 1]) next = chapter.lessons[index + 1];
+        if (index > 0) prev = chapter.lessons[index - 1];
+      }
     });
+    var sceneQ = lesson.scene ? api.esc(L(lesson.scene, lang)) : api.t('star.sceneQ');
+    var practiceAsk = lesson.check ? api.esc(L(lesson.check.ask, lang)) : api.t('star.practiceAsk');
+    var practiceButtons = lesson.check
+      ? lesson.check.options.map(function (opt) {
+        return '<button type="button" data-practice="' + opt.id + '" aria-pressed="false">' + opt.id + '. ' + api.esc(L(opt, lang)) + '</button>';
+      }).join('')
+      : '<button type="button" data-practice="A" aria-pressed="false">' + api.t('star.practiceA') + '</button>' +
+        '<button type="button" data-practice="B" aria-pressed="false">' + api.t('star.practiceB') + '</button>' +
+        '<button type="button" data-practice="C" aria-pressed="false">' + api.t('star.practiceC') + '</button>';
+    var practiceAnswer = lesson.check ? lesson.check.answer : 'A';
+    var practiceWhy = lesson.check ? L(lesson.check.why, lang) : L(lesson.example, lang);
     main.innerHTML =
       '<div class="course-reader star-page"><p class="star-crumb"><a href="#/">' + api.t('crumb.home') + '</a> / <a href="#/star">' + api.t('atlas.advanced.name') + '</a> / <a href="#/star/' + chapterId + '">' + api.esc(L(chapter.title, lang)) + '</a> / ' + chapterId + '-' + lessonId + '</p>' +
       '<article class="reading star-lesson"><p class="star-kicker">' + chapterId + '-' + lessonId + ' · ' + api.t('star.minutes', { n: minutes(lesson) }) + (done ? ' · ' + api.t('star.done') : '') + '</p>' +
       (api.listenBar ? api.listenBar() : '') +
       '<h2>' + api.esc(L(lesson.title, lang)) + '</h2>' +
-      '<section class="star-scene"><img class="star-mascot" src="assets/img/footer-character.webp" alt=""><div><h3>' + api.t('star.sceneQ') + '</h3><p class="star-one">' + api.esc(L(lesson.one, lang)) + '</p></div></section>' +
+      '<section class="star-scene"><img class="star-mascot" src="assets/img/footer-character.webp" alt=""><div><h3>' + sceneQ + '</h3><p class="star-one">' + api.esc(L(lesson.one, lang)) + '</p></div></section>' +
       '<section class="star-stage"><h3>' + api.t('star.watch') + '</h3><div id="star-chart"></div></section>' +
       '<section class="star-prose"><h3>' + api.t('star.define') + '</h3><p>' + api.esc(L(lesson.explain, lang)) + '</p></section>' +
       '<section class="star-contrast"><h3>' + api.t('star.contrast') + '</h3><p>' + api.esc(L(lesson.example, lang)) + '</p></section>' +
       '<section class="star-pit"><h3>' + api.t('star.pitfalls') + '</h3><ul>' + (lesson.pitfalls || []).map(function (item) { return '<li>' + api.esc(L(item, lang)) + '</li>'; }).join('') + '</ul></section>' +
-      '<section class="star-do"><h3>' + api.t('star.tryHands') + '</h3><p>' + api.t('star.practiceAsk') + '</p><div class="star-quiz" role="group">' +
-      '<button type="button" data-practice="A" aria-pressed="false">' + api.t('star.practiceA') + '</button>' +
-      '<button type="button" data-practice="B" aria-pressed="false">' + api.t('star.practiceB') + '</button>' +
-      '<button type="button" data-practice="C" aria-pressed="false">' + api.t('star.practiceC') + '</button>' +
+      '<section class="star-do"><h3>' + api.t('star.tryHands') + '</h3><p>' + practiceAsk + '</p><div class="star-quiz" role="group">' +
+      practiceButtons +
       '</div><button type="button" class="star-submit" id="practice-submit">' + api.t('star.practiceSubmit') + '</button><button type="button" class="star-submit" id="practice-retry" hidden>' + api.t('star.practiceRetry') + '</button><p class="star-feedback" id="practice-feedback" role="status"></p></section>' +
       '<section class="star-check"><h3>' + api.t('star.quiz') + '</h3><div class="star-quiz" role="group" aria-labelledby="quiz-q"><p id="quiz-q">' + api.esc(L(lesson.quiz.q, lang)) + '</p>' +
       lesson.quiz.options.map(function (opt) {
@@ -289,11 +433,14 @@
       }).join('') +
       '</div><button type="button" class="star-submit" id="quiz-submit">' + api.t('star.quizSubmit') + '</button><button type="button" class="star-submit" id="quiz-retry" hidden>' + api.t('star.quizRetry') + '</button><p class="star-feedback" id="quiz-feedback" role="status"></p></section>' +
       '<section class="star-lab"><h3>' + api.t('star.verify') + '</h3><p>' + api.esc(L(lesson.practice, lang)) + '</p><a class="star-go" href="' + labHref + '">' + api.t('star.practiceGo') + '</a></section>' +
-      '<div class="reading-footer"><a class="navbtn" href="#/star/' + chapterId + '">' + api.t('star.back') + '</a>' +
+      '<div class="reading-footer">' +
+      (prev && prev.status === 'live' ? '<a class="navbtn" href="#/star/' + chapterId + '/' + prev.id + '">' + api.t('star.prev') + '</a>' : '') +
+      '<a class="navbtn" href="#/star/' + chapterId + '">' + api.t('star.back') + '</a>' +
       (next && next.status === 'live' ? '<a class="navbtn primary" href="#/star/' + chapterId + '/' + next.id + '">' + api.t('star.next') + '</a>' : '<button type="button" class="navbtn" disabled>' + api.esc(next ? L(next.title, lang) : '') + ' · ' + api.t('star.soon') + '</button>') +
       '</div></article></div>';
     var chartHost = document.getElementById('star-chart');
     if (chartHost && lesson.chart === 'a1') mountChart(chartHost, lang, api.t);
+    else if (chartHost && lesson.chart === 'a2') mountTimeframes(chartHost, lang, api.t);
     if (api.bindListen) api.bindListen();
     var mascot = main.querySelector('.star-mascot');
     var practicePick = '';
@@ -309,12 +456,12 @@
     var practiceFeedback = document.getElementById('practice-feedback');
     document.getElementById('practice-submit').addEventListener('click', function () {
       if (!practicePick) { practiceFeedback.textContent = api.t('star.practiceNeed'); return; }
-      var right = practicePick === 'A';
+      var right = practicePick === practiceAnswer;
       main.querySelectorAll('[data-practice]').forEach(function (other) {
         other.classList.toggle('is-wrong', other.getAttribute('data-practice') === practicePick && !right);
-        other.classList.toggle('is-right', right && other.getAttribute('data-practice') === 'A');
+        other.classList.toggle('is-right', right && other.getAttribute('data-practice') === practiceAnswer);
       });
-      practiceFeedback.textContent = right ? L(lesson.example, lang) : api.t('star.practiceNo');
+      practiceFeedback.textContent = right ? practiceWhy : api.t('star.practiceNo');
       document.getElementById('practice-retry').hidden = false;
     });
     document.getElementById('practice-retry').addEventListener('click', function () {
