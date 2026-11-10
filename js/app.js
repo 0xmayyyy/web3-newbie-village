@@ -530,7 +530,257 @@
     }
     return true;
   }
+  var speechRate = 1;
+  var speechJob = null;
+  var speechGen = 0;
+  var speechMark = null;
+  var speechKeep = 0;
+  function speechSupported() {
+    return !!(window.speechSynthesis && window.SpeechSynthesisUtterance);
+  }
+  function cleanSpeech(text) {
+    return String(text || '')
+      .replace(/https?:\/\/\S+/g, ' ')
+      .replace(/0x[a-fA-F0-9]{16,}/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+  function splitSentences(text) {
+    var parts = [];
+    var buf = '';
+    function pushLong(s) {
+      var rest = s;
+      while (rest.length > 120) {
+        var cut = rest.lastIndexOf('，', 120);
+        if (cut < 40) cut = rest.lastIndexOf(', ', 120);
+        if (cut < 40) cut = rest.lastIndexOf(' ', 120);
+        if (cut < 40) cut = 120;
+        parts.push(rest.slice(0, cut + 1).trim());
+        rest = rest.slice(cut + 1).trim();
+      }
+      if (rest) parts.push(rest);
+    }
+    function flush() {
+      var s = buf.replace(/\s+/g, ' ').trim();
+      buf = '';
+      if (s) pushLong(s);
+    }
+    for (var i = 0; i < text.length; i++) {
+      var ch = text.charAt(i);
+      buf += ch;
+      var end = '。！？；!?'.indexOf(ch) >= 0;
+      if (ch === '.') {
+        var prev = i > 0 ? text.charAt(i - 1) : '';
+        var next = i + 1 < text.length ? text.charAt(i + 1) : '';
+        if (/\d/.test(prev) && /\d/.test(next)) end = false;
+        else if (next && !/\s/.test(next) && next !== '"' && next !== '”' && next !== ')') end = false;
+        else end = true;
+      }
+      if (end) flush();
+    }
+    flush();
+    return parts;
+  }
+  function speechBlocked(el) {
+    return !!(el.closest && el.closest('.reading-footer, button, .option, .btn, .feedback, .teach-status, .sr, .num, .micro'));
+  }
+  function blockText(el) {
+    var skip = 'button, .btn, .option, input, select, textarea, .sr, .num, .micro, .feedback';
+    var parts = [];
+    function walk(node) {
+      if (node.nodeType === 3) { parts.push(node.nodeValue || ''); return; }
+      if (node.nodeType !== 1) return;
+      if (node.matches && node.matches(skip)) return;
+      var kids = node.childNodes;
+      for (var i = 0; i < kids.length; i++) walk(kids[i]);
+    }
+    walk(el);
+    return cleanSpeech(parts.join(' '));
+  }
+  function collectSpeechBlocks(article) {
+    var sel = 'h2, h3, h4, p, li, .key, .checkrow, .diagram-caption, .caption, .summary, td, th, .step > b, .compare > div > b';
+    var out = [];
+    $$(sel, article).forEach(function (el) {
+      if (speechBlocked(el)) return;
+      if (el.matches('li, td, th, .key') && el.querySelector('p, h3, h4')) return;
+      var text = blockText(el);
+      if (!text) return;
+      var mark = el.closest('.step, .checkrow, .key, .summary, blockquote, li, p, h2, h3, h4') || el;
+      splitSentences(text).forEach(function (sentence) {
+        out.push({ el: mark, text: sentence });
+      });
+    });
+    return out;
+  }
+  function pickVoice(kind) {
+    var voices = [];
+    try { voices = window.speechSynthesis.getVoices() || []; } catch (e) { return null; }
+    var zh = kind !== 'en';
+    var pool = voices.filter(function (v) {
+      var lang = (v.lang || '').toLowerCase().replace('_', '-');
+      return zh ? lang.indexOf('zh') === 0 : lang.indexOf('en') === 0;
+    });
+    var prefs = zh
+      ? ['tingting', '婷婷', 'xiaoxiao', 'natural', 'neural', 'online', 'google 普通话', 'google']
+      : ['natural', 'neural', 'online', 'google', 'samantha', 'aria'];
+    var best = null;
+    var bestScore = -1;
+    pool.forEach(function (v) {
+      var name = (v.name || '').toLowerCase();
+      var score = 0;
+      prefs.forEach(function (p, i) { if (name.indexOf(p) >= 0) score += (prefs.length - i) * 10; });
+      var lang = (v.lang || '').toLowerCase().replace('_', '-');
+      if (lang === (zh ? 'zh-cn' : 'en-us')) score += 5;
+      if (score > bestScore) { best = v; bestScore = score; }
+    });
+    return best || pool[0] || null;
+  }
+  function clearSpeechMark() {
+    if (speechMark) speechMark.classList.remove('is-speaking');
+    speechMark = null;
+  }
+  function markSpeaking(el) {
+    if (speechMark === el) return;
+    clearSpeechMark();
+    speechMark = el;
+    if (!el) return;
+    el.classList.add('is-speaking');
+    try { el.scrollIntoView({ block: 'center', behavior: prefersReduce() ? 'auto' : 'smooth' }); } catch (e) {}
+  }
+  function paintListen() {
+    var btn = $('#listen-toggle');
+    var live = $('#listen-live');
+    if (!btn) return;
+    if (!speechJob) {
+      btn.textContent = t('reader.listen');
+      btn.setAttribute('aria-pressed', 'false');
+      if (live) live.hidden = true;
+      return;
+    }
+    btn.textContent = speechJob.paused ? t('reader.listen.resume') : t('reader.listen.pause');
+    btn.setAttribute('aria-pressed', 'true');
+    if (live) live.hidden = false;
+  }
+  function stopLessonSpeech() {
+    speechGen += 1;
+    speechJob = null;
+    clearInterval(speechKeep);
+    speechKeep = 0;
+    clearSpeechMark();
+    if (window.speechSynthesis) {
+      try { window.speechSynthesis.cancel(); } catch (e) {}
+    }
+    paintListen();
+  }
+  function speakChunk(index) {
+    if (!speechJob || speechJob.paused || index >= speechJob.blocks.length) {
+      if (speechJob && index >= speechJob.blocks.length) stopLessonSpeech();
+      return;
+    }
+    var gen = speechJob.gen;
+    var block = speechJob.blocks[index];
+    speechJob.index = index;
+    markSpeaking(block.el);
+    var utter = new SpeechSynthesisUtterance(block.text);
+    utter.lang = LANG === 'en' ? 'en-US' : 'zh-CN';
+    utter.rate = speechRate;
+    var voice = pickVoice(LANG === 'en' ? 'en' : 'zh');
+    if (voice) utter.voice = voice;
+    utter.onend = function () {
+      if (!speechJob || speechJob.gen !== gen || speechJob.utter !== utter) return;
+      speakChunk(index + 1);
+    };
+    utter.onerror = function (ev) {
+      if (!speechJob || speechJob.gen !== gen || speechJob.utter !== utter) return;
+      var err = ev && ev.error;
+      if (err === 'interrupted' || err === 'canceled' || err === 'cancelled') return;
+      speakChunk(index + 1);
+    };
+    speechJob.utter = utter;
+    var sawAsync = false;
+    setTimeout(function () { sawAsync = true; }, 0);
+    var prevError = utter.onerror;
+    utter.onerror = function (ev) {
+      if (!sawAsync) {
+        if (speechJob && speechJob.gen === gen) stopLessonSpeech();
+        return;
+      }
+      prevError.call(utter, ev);
+    };
+    window.speechSynthesis.speak(utter);
+  }
+  function startKeepAlive() {
+    clearInterval(speechKeep);
+    speechKeep = setInterval(function () {
+      if (!speechJob || speechJob.paused || !window.speechSynthesis) return;
+      if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+        try { window.speechSynthesis.resume(); } catch (e) {}
+      }
+    }, 10000);
+  }
+  function startLessonSpeech() {
+    var article = $('.course-reader .reading');
+    if (!article || !speechSupported()) return;
+    try { window.speechSynthesis.getVoices(); } catch (e) {}
+    var blocks = collectSpeechBlocks(article);
+    if (!blocks.length) return;
+    speechJob = { gen: ++speechGen, blocks: blocks, index: 0, paused: false, utter: null };
+    paintListen();
+    speakChunk(0);
+    startKeepAlive();
+  }
+  function resumeLessonSpeech() {
+    if (!speechJob) return;
+    speechJob.paused = false;
+    paintListen();
+    if (window.speechSynthesis.paused) {
+      try { window.speechSynthesis.resume(); } catch (e) {}
+      return;
+    }
+    var gen = speechJob.gen;
+    var index = speechJob.index;
+    setTimeout(function () {
+      if (!speechJob || speechJob.gen !== gen || speechJob.paused) return;
+      speakChunk(index);
+    }, 80);
+  }
+  function bindLessonSpeech() {
+    var btn = $('#listen-toggle');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      if (!speechJob) { startLessonSpeech(); return; }
+      if (speechJob.paused) { resumeLessonSpeech(); return; }
+      speechJob.paused = true;
+      paintListen();
+      try { window.speechSynthesis.pause(); } catch (e) {}
+    });
+    var stopBtn = $('#listen-stop');
+    if (stopBtn) stopBtn.addEventListener('click', function () { stopLessonSpeech(); });
+    var rate = $('#listen-rate');
+    if (rate) rate.addEventListener('change', function () {
+      var next = parseFloat(rate.value);
+      if (next) speechRate = next;
+      if (!speechJob || speechJob.paused) return;
+      var gen = speechJob.gen;
+      var index = speechJob.index;
+      try { window.speechSynthesis.cancel(); } catch (e) {}
+      setTimeout(function () {
+        if (!speechJob || speechJob.gen !== gen || speechJob.paused) return;
+        speakChunk(index);
+      }, 80);
+    });
+  }
+  function listenBarHtml() {
+    if (!speechSupported()) return '';
+    var options = [0.75, 1, 1.25, 1.5].map(function (n) {
+      return '<option value="' + n + '"' + (n === speechRate ? ' selected' : '') + '>' + n + 'x</option>';
+    }).join('');
+    return '<div class="listen-bar" id="lesson-listen"><button type="button" class="listen-pill" id="listen-toggle" aria-pressed="false">' + esc(t('reader.listen')) + '</button>' +
+      '<span class="listen-live" id="listen-live" hidden><button type="button" class="listen-pill listen-stop" id="listen-stop">' + esc(t('reader.listen.stop')) + '</button>' +
+      '<label class="listen-speed"><span>' + esc(t('reader.listen.speed')) + '</span><select id="listen-rate" aria-label="' + esc(t('reader.listen.speed')) + '">' + options + '</select></label></span></div>';
+  }
   function renderChapter(id, sec, keep) {
+    stopLessonSpeech();
     try { localStorage.removeItem('web3-reader-theme'); } catch (eTheme) {}
     var c = chap(id); if (!c) return renderHome();
     if (sec != null && !teachCanEnter(id, sec)) {
@@ -578,6 +828,7 @@
         return '<option value="' + item.i + '"' + (i === pos ? ' selected' : '') + '>' + (i + 1) + '. ' + esc(item.s.title) + '</option>';
       }).join('') + '</select></div>' +
       '<article class="reading"><div class="meta"><span>CHAPTER ' + c.id + ' / LESSON ' + ('0' + (pos + 1)).slice(-2) + '</span><span>' + (pos + 1) + ' / ' + visible.length + '</span></div>' +
+      listenBarHtml() +
       '<h2>' + esc(cur.s.title) + '</h2>' + (highlight ? '<div class="summary">' + esc(highlight) + '</div>' : '') +
       '<div class="prose" id="reader-prose">' + cur.s.html + '</div>' +
       '<div class="reading-footer"><button type="button" class="navbtn" id="reader-prev"' + (pos === 0 && ids.indexOf(id) <= 0 ? ' disabled' : '') + '>' + esc(t('reader.prev')) + '</button>' +
@@ -666,6 +917,7 @@
       step(1);
     });
     if (window.TEACH && prose) TEACH.mount(prose, id, cur.i, unlockTeachNext);
+    bindLessonSpeech();
     $$('.course-reader [data-tool]').forEach(function (b) {
       b.addEventListener('click', function () { goHash(b.getAttribute('data-tool'), null); });
     });
@@ -1459,6 +1711,7 @@
 
   /* ---------- 路由 ---------- */
   function route(keep) {
+    stopLessonSpeech();
     var h = location.hash, m = h.match(/^#\/c\/(\d\d)(?:\/(\d+))?/);
     $$('.topbar .search-results').forEach(function (b) { b.hidden = true; });
     var rm = h.match(/^#\/r\/(\w+)(?:\/(\d+))?/), cx = /^#\/cex/.test(h), py = /^#\/punycode/.test(h), lab = /^#\/lab(?:$|[/?#])/.test(h);
@@ -1658,5 +1911,12 @@
   applyCourse();
   applyChrome();
   renderFooter();
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'hidden') stopLessonSpeech();
+  });
+  window.addEventListener('pagehide', function () { stopLessonSpeech(); });
+  if (speechSupported()) {
+    try { window.speechSynthesis.getVoices(); } catch (e) {}
+  }
   route();
 })();
