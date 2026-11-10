@@ -527,10 +527,10 @@
       }).join('') +
       '<div class="a3-block"><p><strong>' + noteEsc(t('star.a3.ruleNote')) + '</strong></p></div></div>' +
       '<div class="a3-side"><table class="a3-terms"><tbody>' +
-      '<tr><th>HH</th><td>Higher High</td><td>更高的高点</td></tr>' +
-      '<tr><th>HL</th><td>Higher Low</td><td>更高的低点</td></tr>' +
-      '<tr><th>LH</th><td>Lower High</td><td>更低的高点</td></tr>' +
-      '<tr><th>LL</th><td>Lower Low</td><td>更低的低点</td></tr>' +
+      '<tr><th>HH</th><td>Higher High</td><td>' + noteEsc(t('star.a3.hh')) + '</td></tr>' +
+      '<tr><th>HL</th><td>Higher Low</td><td>' + noteEsc(t('star.a3.hl')) + '</td></tr>' +
+      '<tr><th>LH</th><td>Lower High</td><td>' + noteEsc(t('star.a3.lh')) + '</td></tr>' +
+      '<tr><th>LL</th><td>Lower Low</td><td>' + noteEsc(t('star.a3.ll')) + '</td></tr>' +
       '</tbody></table>' + plainLines(t('star.a3.terms')) + '</div></div>' +
       '<div class="a3-scenarios" role="group">' +
       ['up', 'down', 'range'].map(function (id) {
@@ -1435,6 +1435,7 @@
   function renderOverview(main, api) {
     var data = pack();
     var lang = api.lang;
+    document.title = api.t('star.docTitle', { title: api.t('atlas.advanced.name') });
     main.innerHTML = '<div class="star-page"><header class="star-hero"><p class="star-kicker">' + api.t('star.kicker') + '</p><h1>' + api.t('atlas.advanced.name') + '</h1><p>' + api.esc(L(data.tagline, lang)) + '</p></header><ul class="star-modules">' +
       data.modules.map(function (mod) {
         var open = mod.status === 'open';
@@ -1449,6 +1450,7 @@
     var chapter = data.chapters[chapterId];
     if (!chapter) { location.hash = '#/star'; return; }
     var lang = api.lang;
+    document.title = api.t('star.docTitle', { title: L(chapter.title, lang) });
     main.innerHTML = '<div class="star-page"><p class="star-crumb"><a href="#/">' + api.t('crumb.home') + '</a> / <a href="#/star">' + api.t('atlas.advanced.name') + '</a> / ' + api.esc(L(chapter.title, lang)) + '</p><h1>' + api.esc(L(chapter.title, lang)) + '</h1><ol class="star-lessons">' +
       chapter.lessons.map(function (lesson) {
         var live = lesson.status === 'live';
@@ -1465,6 +1467,7 @@
     var lesson = lessonById(chapter, lessonId);
     if (!chapter || !lesson || lesson.status !== 'live') { location.hash = '#/star/' + chapterId; return; }
     var lang = api.lang;
+    document.title = api.t('star.docTitle', { title: L(lesson.title, lang) });
     var done = api.isDone('star-' + chapterId + '-' + lessonId);
     var lab = lesson.lab || {};
     var labHref = '#/lab?symbol=' + encodeURIComponent(lab.symbol || 'BTCUSDT') + '&interval=' + encodeURIComponent(lab.interval || '4h') + '&studies=' + encodeURIComponent(lab.studies || 'none');
@@ -1515,7 +1518,8 @@
       '<div class="reading-footer">' +
       (prev && prev.status === 'live' ? '<a class="navbtn" href="#/star/' + chapterId + '/' + prev.id + '">' + api.t('star.prev') + '</a>' : '') +
       '<a class="navbtn" href="#/star/' + chapterId + '">' + api.t('star.back') + '</a>' +
-      (next && next.status === 'live' ? '<a class="navbtn primary" href="#/star/' + chapterId + '/' + next.id + '">' + api.t('star.next') + '</a>' : '<button type="button" class="navbtn" disabled>' + api.esc(next ? L(next.title, lang) : '') + ' · ' + api.t('star.soon') + '</button>') +
+      (next && next.status === 'live' ? '<a class="navbtn primary" href="#/star/' + chapterId + '/' + next.id + '">' + api.t('star.next') + '</a>' : '') +
+      (next && next.status !== 'live' ? '<button type="button" class="navbtn" disabled>' + api.esc(L(next.title, lang)) + ' · ' + api.t('star.soon') + '</button>' : '') +
       '</div></article></div>';
     var chartHost = document.getElementById('star-chart');
     if (chartHost && lesson.chart === 'a1') mountChart(chartHost, lang, api.t);

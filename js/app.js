@@ -1242,7 +1242,7 @@
       '<div class="footer-in"><img class="footer-avatar" src="assets/img/footer-character.webp?v=20261107370000" alt="" width="706" height="668">' +
       '<div class="footer-copy"><p class="footer-d1">' + (LANG === 'en' ? esc(lines.a) : esc(lines.a).replace('，', '，<br>')) + '</p><p class="footer-d2">' + esc(lines.b) + '</p></div>' +
       '<div class="footer-contact"><p>' + esc(t('foot.contact')) + '</p>' + pills + '</div></div>' +
-      '<div class="footer-base"><p class="footer-brand"><svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true"><circle cx="14" cy="16" r="7" fill="#AE8CCF"/><ellipse cx="14" cy="16" rx="13" ry="4.2" fill="none" stroke="#FFDFA8" stroke-width="1.4" transform="rotate(-24 14 16)"/></svg><span>Web3 新手村</span></p>' +
+      '<div class="footer-base"><p class="footer-brand"><svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true"><circle cx="14" cy="16" r="7" fill="#AE8CCF"/><ellipse cx="14" cy="16" rx="13" ry="4.2" fill="none" stroke="#FFDFA8" stroke-width="1.4" transform="rotate(-24 14 16)"/></svg><span>' + esc(t('brand')) + '</span></p>' +
       '<p class="footer-sign">May<span class="footer-heart" aria-hidden="true">♥</span><span class="footer-spark" aria-hidden="true">✦</span></p></div>';
   }
 
