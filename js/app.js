@@ -223,7 +223,7 @@
     { id: 'wallet', file: 'wallet', color: '#d69ac4', dot: '#e3a6cf', soft: 'rgba(214,154,196,.28)', chapters: [{ id: '08' }, { id: '10' }] },
     { id: 'world', file: 'world', color: '#79c8c6', dot: '#83e0d4', soft: 'rgba(121,200,198,.28)', sections12: [0, 1, 2, 3, 4, 6, 7], chapters: [{ id: '12', label: 'atlas.world.ch12' }] },
     { id: 'chance', file: 'chance', color: '#eea36d', dot: '#ffb17b', soft: 'rgba(238,163,109,.28)', sections12: [5, 8, 9, 10, 11], chapters: [{ id: '11' }, { id: '12', label: 'atlas.chance.ch12' }] },
-    { id: 'advanced', file: 'advanced', color: '#a28bf0', dot: '#b4a0f5', soft: 'rgba(162,139,240,.28)', locked: true, chapters: [] }
+    { id: 'advanced', file: 'advanced', color: '#a28bf0', dot: '#b4a0f5', soft: 'rgba(162,139,240,.28)', chapters: [] }
   ];
   var readerJumpTop = false;
   try { localStorage.removeItem('web3-reader-theme'); } catch (eTheme) {}
@@ -257,16 +257,17 @@
       '<p class="footnote">' + esc(t('atlas.note')) + '</p>' +
       mobilePlanets() + '</section></div>';
   }
-  var MOBILE_AURA = ['#a98ee8', '#67aee8', '#e9b26b', '#c38bbd', '#67d7c5', '#ec9976'];
-  var MOBILE_DUR = [5.3, 6.2, 5.8, 6.6, 5.6, 6.1];
-  var MOBILE_DELAY = [-0.4, -2.3, -1.8, -3.1, -2.7, -0.8];
+  var MOBILE_AURA = ['#a98ee8', '#67aee8', '#e9b26b', '#c38bbd', '#67d7c5', '#ec9976', '#b4a0f5'];
+  var MOBILE_DUR = [5.3, 6.2, 5.8, 6.6, 5.6, 6.1, 5.9];
+  var MOBILE_DELAY = [-0.4, -2.3, -1.8, -3.1, -2.7, -0.8, -1.2];
   function mobilePlanets() {
     return '<div class="m-atlas-head"><div class="kicker">' + esc(t('atlas.m.kicker')) + '</div>' +
       '<h2>' + esc(t('atlas.m.h')) + '</h2><p>' + esc(t('atlas.m.lead')) + '</p></div>' +
-      '<div class="m-planets">' + PLANETS.slice(0, 6).map(function (p, i) {
+      '<div class="m-planets">' + PLANETS.map(function (p, i) {
+        var planetSrc = i < 6 ? 'assets/planets/mobile/0' + (i + 1) + '.png?v=20261107510000' : 'assets/planets/' + p.file + '.png?v=20261107290000';
         return '<button type="button" class="m-planet planet-card" data-i="' + i + '" aria-label="' + esc(t('atlas.m.' + p.id + '.name')) + '" style="--aura:' + MOBILE_AURA[i] + ';--duration:' + MOBILE_DUR[i] + 's;--delay:' + MOBILE_DELAY[i] + 's">' +
-          '<span class="orb"><img src="assets/planets/mobile/0' + (i + 1) + '.png?v=20261107510000" alt="" draggable="false"></span>' +
-          '<span class="number">0' + (i + 1) + ' / 06</span>' +
+          '<span class="orb"><img src="' + planetSrc + '" alt="" draggable="false"></span>' +
+          '<span class="number">0' + (i + 1) + (i < 6 ? ' / 06' : '') + '</span>' +
           '<strong>' + esc(t('atlas.m.' + p.id + '.name')) + '</strong>' +
           '<span class="desc">' + esc(t('atlas.m.' + p.id + '.desc')) + '</span></button>';
       }).join('') + '</div>' +
@@ -275,6 +276,7 @@
   function planetEntryHash(i) {
     var p = PLANETS[i];
     if (!p || p.locked) return '';
+    if (p.id === 'advanced') return '#/star';
     if (p.id === 'world') return '#/c/12/0';
     var first = p.chapters[0];
     if (first.label === 'atlas.chance.ch12') return '#/c/12/5';
@@ -582,7 +584,7 @@
     return parts;
   }
   function speechBlocked(el) {
-    return !!(el.closest && el.closest('.reading-footer, button, .option, .btn, .feedback, .teach-status, .sr, .num, .micro'));
+    return !!(el.closest && el.closest('.reading-footer, .star-kicker, .star-crumb, button, .option, .btn, .feedback, .teach-status, .sr, .num, .micro'));
   }
   function blockText(el) {
     var skip = 'button, .btn, .option, input, select, textarea, .sr, .num, .micro, .feedback';
@@ -1240,7 +1242,7 @@
       '<div class="footer-in"><img class="footer-avatar" src="assets/img/footer-character.webp?v=20261107370000" alt="" width="706" height="668">' +
       '<div class="footer-copy"><p class="footer-d1">' + (LANG === 'en' ? esc(lines.a) : esc(lines.a).replace('，', '，<br>')) + '</p><p class="footer-d2">' + esc(lines.b) + '</p></div>' +
       '<div class="footer-contact"><p>' + esc(t('foot.contact')) + '</p>' + pills + '</div></div>' +
-      '<div class="footer-base"><p class="footer-brand"><svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true"><circle cx="14" cy="16" r="7" fill="#AE8CCF"/><ellipse cx="14" cy="16" rx="13" ry="4.2" fill="none" stroke="#FFDFA8" stroke-width="1.4" transform="rotate(-24 14 16)"/></svg><span>Web3 新手村</span></p>' +
+      '<div class="footer-base"><p class="footer-brand"><svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true"><circle cx="14" cy="16" r="7" fill="#AE8CCF"/><ellipse cx="14" cy="16" rx="13" ry="4.2" fill="none" stroke="#FFDFA8" stroke-width="1.4" transform="rotate(-24 14 16)"/></svg><span>' + esc(t('brand')) + '</span></p>' +
       '<p class="footer-sign">May<span class="footer-heart" aria-hidden="true">♥</span><span class="footer-spark" aria-hidden="true">✦</span></p></div>';
   }
 
@@ -1715,7 +1717,9 @@
     var h = location.hash, m = h.match(/^#\/c\/(\d\d)(?:\/(\d+))?/);
     $$('.topbar .search-results').forEach(function (b) { b.hidden = true; });
     var rm = h.match(/^#\/r\/(\w+)(?:\/(\d+))?/), cx = /^#\/cex/.test(h), py = /^#\/punycode/.test(h), lab = /^#\/lab(?:$|[/?#])/.test(h);
-    document.body.classList.toggle('is-home', !m && !rm && !cx && !py && !lab);
+    var star = h.match(/^#\/star(?:\/(\d\d))?(?:\/(\d\d))?$/);
+    document.body.classList.toggle('is-home', !m && !rm && !cx && !py && !lab && !star);
+    document.body.classList.toggle('is-star', !!star);
     document.body.classList.toggle('is-lab', lab);
     if (!lab && window.Lab && Lab.mounted) Lab.unmount();
     document.body.classList.toggle('is-reader', !!m);
@@ -1725,6 +1729,10 @@
     else if (lab) {
       if (keep && window.Lab && Lab.mounted && Lab.setLang) Lab.setLang(LANG);
       else { renderLab(); if (!keep) window.scrollTo(0, 0); }
+    }
+    else if (star && window.AdvancedStar) {
+      AdvancedStar.render(main, { lang: LANG, t: t, esc: esc, isDone: isDone, setDone: setDone, listenBar: listenBarHtml, bindListen: bindLessonSpeech }, star[1], star[2]);
+      if (!keep) window.scrollTo(0, 0);
     }
     else if (rm) renderRoute(rm[1], rm[2] ? +rm[2] : 0, keep);
     else if (m) renderChapter(m[1], m[2] != null ? +m[2] : null, keep);

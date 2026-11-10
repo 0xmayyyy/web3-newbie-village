@@ -19,7 +19,7 @@
 .planet-scene .planet-card small{font-size:clamp(11px,.85vw,13px);color:#c6b8d2;line-height:1.55;max-width:100%;margin-top:10px;padding:0 8px;word-break:keep-all;line-break:strict;overflow-wrap:normal}
 .planet-scene .planet-card em{font-style:normal;font-size:11px;color:#e9cda2;margin-top:8px;border:1px solid #e9cda24d;border-radius:20px;padding:3px 9px}
 .planet-scene .p1,.planet-scene .p3,.planet-scene .p5{margin-top:36px}
-.planet-scene .p6{margin-top:11px;cursor:default;opacity:.86}
+.planet-scene .p6{margin-top:11px}
 .planet-scene .overlay{position:fixed;inset:0;z-index:80;background:#090614c9;display:none;place-items:center;padding:18px}
 .planet-scene .overlay.open{display:grid}
 .planet-scene .dialog{position:relative;width:min(550px,100%);background:linear-gradient(145deg,#362541,#171327);border:1px solid #d4b3b055;border-radius:24px;padding:30px;box-shadow:0 24px 80px #000a;color:#f9f3ff}
