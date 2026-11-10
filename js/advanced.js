@@ -232,133 +232,255 @@
     draw();
   }
 
-  function round3(n) { return Math.round(n * 1000) / 1000; }
-  function a2Price(t) {
-    var raw;
-    if (t <= 240) raw = 100 + (8 * t) / 240;
-    else if (t <= 360) raw = 108 - (5 * (t - 240)) / 120;
-    else raw = 103 + (2 * (t - 360)) / 120;
-    return round3(raw);
-  }
-  function a2Minutes() {
-    var out = [];
-    for (var i = 0; i < 480; i += 1) {
-      var o = a2Price(i);
-      var c = a2Price(i + 1);
-      out.push({ start: i, o: o, h: Math.max(o, c), l: Math.min(o, c), c: c, v: 1 });
-    }
-    return out;
-  }
-  function a2Aggregate(bars, size) {
-    var out = [];
-    for (var i = 0; i < bars.length; i += size) {
-      var slice = bars.slice(i, i + size);
-      var h = slice[0].h;
-      var l = slice[0].l;
-      var v = 0;
-      slice.forEach(function (bar) {
-        if (bar.h > h) h = bar.h;
-        if (bar.l < l) l = bar.l;
-        v += bar.v;
-      });
-      out.push({
-        start: slice[0].start,
-        end: slice[slice.length - 1].start,
-        o: slice[0].o,
-        h: h,
-        l: l,
-        c: slice[slice.length - 1].c,
-        v: v
-      });
-    }
-    return out;
-  }
-  function a2Same(a, b) {
-    return a.o === b.o && a.h === b.h && a.l === b.l && a.c === b.c && a.v === b.v;
-  }
-  function a2Check(minutes, m5, h1, day) {
-    var direct = a2Aggregate(minutes, 480)[0];
-    if (!a2Same(day, direct)) throw new Error('daily aggregation');
-    if (day.o !== 100 || day.c !== 105 || day.h !== 108 || day.l !== 100 || day.v !== 480) throw new Error('daily textbook shape');
-    var from5 = a2Aggregate(m5, 12);
-    if (from5.length !== h1.length) throw new Error('hour count');
-    from5.forEach(function (bar, i) { if (!a2Same(bar, h1[i])) throw new Error('hour from 5m'); });
-    m5.forEach(function (bar) {
-      if (bar.start >= 240 && bar.end <= 359 && !(bar.c < bar.o)) throw new Error('afternoon 5m');
-    });
-  }
-  function a2Clock(start) {
-    var total = 9 * 60 + start;
-    var h = Math.floor(total / 60);
-    var m = total % 60;
-    return (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m;
-  }
   function mountTimeframes(root, lang, t) {
-    var minutes = a2Minutes();
-    var sets = { m5: a2Aggregate(minutes, 5), h1: a2Aggregate(minutes, 60), d1: a2Aggregate(minutes, 480) };
-    a2Check(minutes, sets.m5, sets.h1, sets.d1[0]);
-    var tf = 'd1';
-    var picked = 0;
+    var pack = window.STAR_A2.day();
+    var m5 = pack.m5;
+    var h1 = pack.h1;
+    var d1 = pack.d1;
+    var view = 'twelve';
+    var hour = 9;
+    var merged = false;
+    var dayMerged = false;
+    var focus = null;
+    var zoom = 1;
+    function px(n) {
+      var s = Number(n).toFixed(2);
+      return s.replace(/\.00$/, '').replace(/(\.\d)0$/, '$1');
+    }
+    function clock(mins) {
+      if (mins >= 1440) return '24:00';
+      var h = Math.floor(mins / 60);
+      var m = mins % 60;
+      return (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m;
+    }
+    function span(start, step) { return clock(start) + '–' + clock(start + step); }
     root.innerHTML =
-      '<div class="a2"><p class="a1-flag">' + t('star.sim') + '</p>' +
-      '<div class="a1-modes" role="group" aria-label="' + t('star.chart.modes') + '">' +
-      '<button type="button" data-tf="m5" aria-pressed="false">' + t('star.a2.m5') + '</button>' +
-      '<button type="button" data-tf="h1" aria-pressed="false">' + t('star.a2.h1') + '</button>' +
-      '<button type="button" data-tf="d1" aria-pressed="true">' + t('star.a2.d1') + '</button>' +
+      '<div class="a2"><p class="a1-flag">' + t('star.sim') + ' · ' + t('star.a2.disclaimer') + '</p>' +
+      '<p class="a1-note">' + t('star.a2.scale') + '</p>' +
+      '<p class="a1-note">' + t('star.a2.agg') + '</p>' +
+      '<p class="a1-note">' + t('star.a2.when') + '</p>' +
+      '<div class="a1-modes" role="group">' +
+      '<button type="button" data-view="twelve" aria-pressed="true">' + t('star.a2.twelve') + '</button>' +
+      '<button type="button" data-view="drop" aria-pressed="false">' + t('star.a2.drop') + '</button>' +
+      '<button type="button" data-view="hours" aria-pressed="false">' + t('star.a2.hours') + '</button>' +
+      '<button type="button" data-view="all" aria-pressed="false">' + t('star.a2.all') + '</button>' +
       '</div>' +
-      '<div class="a2-bars" id="a2-main"></div>' +
+      '<div class="a1-modes a2-tools">' +
+      '<button type="button" data-hour="-1">' + t('star.a2.prev') + '</button>' +
+      '<button type="button" data-hour="1">' + t('star.a2.next') + '</button>' +
+      '<button type="button" data-merge="hour">' + t('star.a2.mergeHour') + '</button>' +
+      '<button type="button" data-merge="day">' + t('star.a2.mergeDay') + '</button>' +
+      '<button type="button" data-zoom="out">' + t('star.a2.zoomOut') + '</button>' +
+      '<button type="button" data-zoom="in">' + t('star.a2.zoomIn') + '</button>' +
+      '</div>' +
+      '<p class="a2-window" id="a2-window"></p>' +
+      '<div class="a2-scroll" id="a2-scroll" tabindex="0" role="group" aria-label="' + t('star.a2.keys') + '"></div>' +
       '<p class="a1-live" id="a2-live" aria-live="polite"></p>' +
-      '<h4 class="a2-subhead" id="a2-subhead"></h4>' +
-      '<div class="a2-bars a2-child" id="a2-child"></div>' +
-      '<p class="a1-note">' + t('star.a2.rule') + '</p></div>';
-    var mainBars = root.querySelector('#a2-main');
-    var childBars = root.querySelector('#a2-child');
+      '<h4 class="a2-subhead" id="a2-subhead" hidden></h4>' +
+      '<div class="a2-scroll" id="a2-child" hidden></div>' +
+      '<p class="a1-note">' + t('star.a2.legend') + '</p></div>';
+    var scroll = root.querySelector('#a2-scroll');
+    var child = root.querySelector('#a2-child');
     var subhead = root.querySelector('#a2-subhead');
     var live = root.querySelector('#a2-live');
-    function barButton(bar, pressed) {
-      var up = bar.c >= bar.o;
-      var height = Math.max(18, Math.round(((bar.h - bar.l) / 8) * 90 + (up ? 28 : 22)));
-      return '<button type="button" class="a2-bar ' + (up ? 'up' : 'down') + '" style="height:' + height + 'px" data-start="' + bar.start + '" aria-pressed="' + (pressed ? 'true' : 'false') + '" aria-label="' + a2Clock(bar.start) + ' ' + bar.o + ' ' + bar.c + '"></button>';
+    var windowLine = root.querySelector('#a2-window');
+    function scene() {
+      if (view === 'twelve') return { bars: m5.slice(hour * 12, hour * 12 + 12), step: 5, result: merged ? h1[hour] : null, src: merged ? window.STAR_A2.sources(m5.slice(hour * 12, hour * 12 + 12)) : null };
+      if (view === 'drop') return { bars: m5.slice(156, 180), step: 5, result: null, src: null };
+      if (view === 'hours') return { bars: h1, step: 60, result: dayMerged ? d1 : null, src: dayMerged ? window.STAR_A2.sources(h1) : null };
+      return { bars: m5, step: 5, result: null, src: null };
     }
-    function readout(bar, name) {
-      return t('star.a2.readout', { tf: name, clock: a2Clock(bar.start), o: bar.o, h: bar.h, l: bar.l, c: bar.c, v: bar.v });
+    function svgOf(bars, step, opts) {
+      var hostW = (opts.host || scroll).clientWidth || root.clientWidth || 320;
+      var padL = 8;
+      var padR = 54;
+      var extra = opts.result ? 28 : 0;
+      var count = bars.length + (opts.result ? 1 : 0);
+      var usable = Math.max(160, hostW - padL - padR - extra);
+      var fit = usable / Math.max(count, 1);
+      var slot = opts.child ? Math.max(8, Math.min(28, fit)) : (bars.length > 40 ? Math.max(8, fit) : Math.max(10, Math.min(48, fit)));
+      slot = Math.round(slot * (opts.child ? 1 : zoom) * 10) / 10;
+      var lows = bars.map(function (bar) { return bar.l; });
+      var highs = bars.map(function (bar) { return bar.h; });
+      if (opts.result) { lows.push(opts.result.l); highs.push(opts.result.h); }
+      var minP = Math.min.apply(null, lows);
+      var maxP = Math.max.apply(null, highs);
+      var padP = Math.max(0.15, (maxP - minP) * 0.12);
+      minP -= padP;
+      maxP += padP;
+      var padT = 22;
+      var priceH = opts.child ? 120 : 188;
+      var volH = opts.child ? 0 : 52;
+      var gap = opts.child ? 0 : 8;
+      var timeH = 20;
+      var plot = bars.length * slot + (opts.result ? slot + 26 : 0);
+      var svgW = padL + plot + padR;
+      var svgH = padT + priceH + gap + volH + timeH;
+      function yPrice(price) { return padT + (maxP - price) / (maxP - minP) * priceH; }
+      var maxV = 1;
+      bars.forEach(function (bar) { if (bar.v > maxV) maxV = bar.v; });
+      var volTop = padT + priceH + gap;
+      function yVol(v) { return volTop + volH - (v / maxV) * (volH - 4); }
+      var bits = [];
+      for (var g = 0; g < 4; g++) {
+        var price = minP + (maxP - minP) * (g / 3);
+        var gy = yPrice(price);
+        bits.push('<line x1="' + padL + '" y1="' + gy + '" x2="' + (padL + plot) + '" y2="' + gy + '" stroke="rgba(230,199,158,.2)"></line>');
+        bits.push('<text x="' + (padL + plot + 6) + '" y="' + (gy + 4) + '" fill="#d4bc9e" font-size="11">' + px(price) + '</text>');
+      }
+      function candle(bar, i, x, wide, badge) {
+        var up = bar.c >= bar.o;
+        var color = up ? '#1f8a4d' : '#d4534e';
+        var xc = x + wide / 2;
+        var yH = yPrice(bar.h);
+        var yL = yPrice(bar.l);
+        var yO = yPrice(bar.o);
+        var yC = yPrice(bar.c);
+        var top = Math.min(yO, yC);
+        var bh = Math.max(1.5, Math.abs(yC - yO));
+        var bw = Math.max(3, wide * 0.62);
+        var on = opts.focus === i;
+        var label = clock(bar.start) + ' ' + t('star.chart.o') + px(bar.o) + ' ' + t('star.chart.h') + px(bar.h) + ' ' + t('star.chart.l') + px(bar.l) + ' ' + t('star.chart.c') + px(bar.c);
+        var tab = bars.length <= 24 ? '0' : '-1';
+        bits.push('<g data-i="' + i + '" tabindex="' + tab + '" role="button" aria-label="' + label + '">');
+        bits.push('<rect x="' + x + '" y="' + padT + '" width="' + wide + '" height="' + priceH + '" fill="transparent"></rect>');
+        bits.push('<line x1="' + xc + '" y1="' + yH + '" x2="' + xc + '" y2="' + yL + '" stroke="' + color + '" stroke-width="' + (on ? 2.4 : 1.4) + '"></line>');
+        bits.push('<rect x="' + (xc - bw / 2) + '" y="' + top + '" width="' + bw + '" height="' + bh + '" fill="' + color + '"' + (on ? ' stroke="#e6c79e" stroke-width="2"' : '') + '></rect>');
+        if (badge) bits.push('<text x="' + xc + '" y="' + Math.max(12, yH - 4) + '" text-anchor="middle" fill="#e6c79e" font-size="11">' + badge + '</text>');
+        if (!opts.child && volH && i !== 'r') {
+          bits.push('<rect x="' + (xc - bw / 2) + '" y="' + yVol(bar.v) + '" width="' + bw + '" height="' + (volTop + volH - yVol(bar.v)) + '" fill="' + color + '" opacity="0.85"></rect>');
+        }
+        var labelEvery = bars.length > 40 ? 24 : (bars.length > 14 ? 2 : 1);
+        if (i % labelEvery === 0) bits.push('<text x="' + xc + '" y="' + (svgH - 4) + '" text-anchor="middle" fill="#b7aac8" font-size="10">' + clock(bar.start) + '</text>');
+        bits.push('</g>');
+      }
+      bars.forEach(function (bar, i) {
+        var badge = [];
+        if (opts.src) {
+          if (opts.src.o === i) badge.push(t('star.chart.o'));
+          if (opts.src.h === i) badge.push(t('star.chart.h'));
+          if (opts.src.l === i) badge.push(t('star.chart.l'));
+          if (opts.src.c === i) badge.push(t('star.chart.c'));
+        }
+        candle(bar, i, padL + i * slot, slot, badge && badge.length ? badge.join(' ') : '');
+      });
+      if (opts.result) {
+        var rx = padL + bars.length * slot + 18;
+        bits.push('<g class="a2-result">');
+        candle(opts.result, 'r', rx, slot + 8, t(step === 60 ? 'star.a2.d1' : 'star.a2.h1'));
+        bits.push('</g>');
+      }
+      if (!opts.child && volH) {
+        bits.push('<text x="' + padL + '" y="' + (volTop + 12) + '" fill="#b7aac8" font-size="10">' + t('star.a2.vol') + '</text>');
+      }
+      var widthAttr = svgW < hostW - 1 ? '100%' : svgW + 'px';
+      return '<svg class="a2-svg" viewBox="0 0 ' + svgW + ' ' + svgH + '" style="width:' + widthAttr + '" role="img">' + bits.join('') + '</svg>';
     }
     function draw() {
-      var bars = sets[tf];
-      if (picked >= bars.length) picked = 0;
-      var names = { m5: t('star.a2.m5'), h1: t('star.a2.h1'), d1: t('star.a2.d1') };
-      mainBars.innerHTML = bars.map(function (bar, i) { return barButton(bar, i === picked); }).join('');
-      var bar = bars[picked];
-      live.textContent = readout(bar, names[tf]);
-      if (tf === 'm5') {
+      var now = scene();
+      root.querySelectorAll('[data-view]').forEach(function (btn) {
+        btn.setAttribute('aria-pressed', btn.getAttribute('data-view') === view ? 'true' : 'false');
+      });
+      root.querySelector('[data-merge="hour"]').hidden = view !== 'twelve';
+      root.querySelector('[data-merge="day"]').hidden = view !== 'hours';
+      root.querySelector('[data-hour="-1"]').hidden = view !== 'twelve';
+      root.querySelector('[data-hour="1"]').hidden = view !== 'twelve';
+      var label;
+      if (view === 'twelve') label = t('star.a2.window', { a: clock(hour * 60), b: clock((hour + 1) * 60) });
+      else if (view === 'drop') label = t('star.a2.dropNote', { o: px(m5[156].o), c: px(m5[179].c) });
+      else if (view === 'hours') label = t('star.a2.window', { a: '00:00', b: '24:00' });
+      else label = t('star.a2.window', { a: '00:00', b: '24:00' });
+      windowLine.textContent = label;
+      scroll.innerHTML = svgOf(now.bars, now.step, { result: now.result, src: now.src, focus: focus });
+      var picked = focus === 'r' ? now.result : (focus == null ? null : now.bars[focus]);
+      if (now.src && focus == null) {
+        var srcBars = view === 'twelve' ? m5.slice(hour * 12, hour * 12 + 12) : h1;
+        live.textContent = t('star.a2.from', {
+          o: now.src.o + 1, ot: clock(srcBars[now.src.o].start),
+          h: now.src.h + 1, ht: clock(srcBars[now.src.h].start),
+          l: now.src.l + 1, lt: clock(srcBars[now.src.l].start),
+          c: now.src.c + 1, ct: clock(srcBars[now.src.c].start)
+        });
+      } else if (picked) {
+        live.textContent = t('star.a2.readout', {
+          tf: view === 'hours' && focus === 'r' ? t('star.a2.d1') : (view === 'hours' ? t('star.a2.h1') : t('star.a2.m5')),
+          clock: span(picked.start, now.step),
+          o: px(picked.o), h: px(picked.h), l: px(picked.l), c: px(picked.c), v: picked.v
+        });
+      } else live.textContent = t('star.a2.hint');
+      var kids = null;
+      if (view === 'hours' && typeof focus === 'number') kids = m5.slice(focus * 12, focus * 12 + 12);
+      if (kids) {
+        subhead.hidden = false;
+        child.hidden = false;
+        subhead.textContent = t('star.a2.partsHour', { a: clock(kids[0].start), b: clock(kids[0].start + 60) });
+        child.innerHTML = svgOf(kids, 5, { host: child, child: true, src: window.STAR_A2.sources(kids), focus: null });
+      } else {
         subhead.hidden = true;
-        childBars.hidden = true;
-        childBars.innerHTML = '';
-        return;
+        child.hidden = true;
+        child.innerHTML = '';
       }
-      subhead.hidden = false;
-      childBars.hidden = false;
-      subhead.textContent = t('star.a2.parts');
-      var kids = sets.m5.filter(function (item) { return item.start >= bar.start && item.start <= bar.end; });
-      childBars.innerHTML = kids.map(function (item) { return barButton(item, false); }).join('');
+    }
+    function setFocus(next) {
+      focus = next;
+      draw();
+      var node = scroll.querySelector('[data-i="' + next + '"]');
+      if (node && node.scrollIntoView) node.scrollIntoView({ inline: 'nearest', block: 'nearest' });
     }
     root.addEventListener('click', function (event) {
-      var tfBtn = event.target.closest('[data-tf]');
-      if (tfBtn && root.contains(tfBtn)) {
-        tf = tfBtn.getAttribute('data-tf');
-        picked = 0;
-        root.querySelectorAll('[data-tf]').forEach(function (btn) {
-          btn.setAttribute('aria-pressed', btn === tfBtn ? 'true' : 'false');
-        });
+      var viewBtn = event.target.closest('[data-view]');
+      if (viewBtn) {
+        view = viewBtn.getAttribute('data-view');
+        focus = null;
         draw();
         return;
       }
-      var barBtn = event.target.closest('#a2-main [data-start]');
-      if (barBtn) {
-        var start = Number(barBtn.getAttribute('data-start'));
-        picked = sets[tf].findIndex(function (bar) { return bar.start === start; });
+      var hourBtn = event.target.closest('[data-hour]');
+      if (hourBtn) {
+        hour = (hour + Number(hourBtn.getAttribute('data-hour')) + 24) % 24;
+        merged = false;
+        focus = null;
         draw();
+        return;
       }
+      var mergeBtn = event.target.closest('[data-merge]');
+      if (mergeBtn) {
+        if (mergeBtn.getAttribute('data-merge') === 'hour') merged = true;
+        else dayMerged = true;
+        focus = null;
+        draw();
+        return;
+      }
+      var zoomBtn = event.target.closest('[data-zoom]');
+      if (zoomBtn) {
+        zoom = zoomBtn.getAttribute('data-zoom') === 'in' ? Math.min(2.6, zoom * 1.25) : Math.max(0.7, zoom / 1.25);
+        draw();
+        return;
+      }
+      var candle = event.target.closest('[data-i]');
+      if (candle && scroll.contains(candle)) setFocus(candle.getAttribute('data-i') === 'r' ? 'r' : Number(candle.getAttribute('data-i')));
+    });
+    root.addEventListener('mousemove', function (event) {
+      var candle = event.target.closest('[data-i]');
+      if (!candle || !scroll.contains(candle)) return;
+      var next = candle.getAttribute('data-i') === 'r' ? 'r' : Number(candle.getAttribute('data-i'));
+      if (next !== focus) setFocus(next);
+    });
+    scroll.addEventListener('keydown', function (event) {
+      var bars = scene().bars;
+      var max = bars.length - 1;
+      if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft' && event.key !== 'Home' && event.key !== 'End') return;
+      event.preventDefault();
+      var cur = typeof focus === 'number' ? focus : 0;
+      if (event.key === 'ArrowRight') cur = Math.min(max, cur + 1);
+      if (event.key === 'ArrowLeft') cur = Math.max(0, cur - 1);
+      if (event.key === 'Home') cur = 0;
+      if (event.key === 'End') cur = max;
+      setFocus(cur);
+    });
+    window.addEventListener('resize', function onResize() {
+      if (!root.isConnected) { window.removeEventListener('resize', onResize); return; }
+      draw();
     });
     draw();
   }
