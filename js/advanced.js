@@ -61,7 +61,7 @@
       '<button type="button" data-path="low" aria-pressed="false">' + t('star.chart.lowFirst') + '</button>' +
       '</div>' +
       '<div class="a1-stage"><svg class="a1-svg" viewBox="0 0 360 280" role="img" aria-labelledby="a1-title"></svg></div>' +
-      '<p id="a1-title" class="a1-live" aria-live="polite"></p>' +
+      '<div id="a1-title" class="a1-live" aria-live="polite"></div>' +
       '<div class="a1-edit" data-panel="candle">' +
       '<p class="a1-edit-label">' + t('star.chart.edit') + '</p>' +
       '<div class="a1-fields">' +
@@ -76,7 +76,7 @@
         return '<button type="button" data-part="' + key + '" aria-pressed="false">' + t('star.chart.' + key) + '</button>';
       }).join('') +
       '</div>' +
-      '<p class="a1-note">' + t('star.chart.colorNote') + '</p>' +
+      '<div class="a1-note">' + noteHtml(t('star.chart.colorNote')) + '</div>' +
       '</div>';
     var svg = root.querySelector('.a1-svg');
     var live = root.querySelector('.a1-live');
@@ -151,7 +151,7 @@
         svgBits += '<text x="16" y="' + (yC + 4) + '" fill="#e6c79e" font-size="12">' + t('star.chart.c') + ' ' + candle.c + '</text>';
       }
       svg.innerHTML = svgBits;
-      live.textContent = partText(candle) + (mode === 'path' && selected === 'all' ? ' ' + t('star.chart.order') : '');
+      setNote(live, partText(candle) + (mode === 'path' && selected === 'all' ? ' ' + t('star.chart.order') : ''));
       if (mode === 'candle') fillInputs(candle);
       root.querySelectorAll('[data-part]').forEach(function (btn) {
         btn.setAttribute('aria-pressed', btn.getAttribute('data-part') === selected ? 'true' : 'false');
@@ -256,9 +256,9 @@
     function span(start, step) { return clock(start) + '–' + clock(start + step); }
     root.innerHTML =
       '<div class="a2"><p class="a1-flag">' + t('star.sim') + ' · ' + t('star.a2.disclaimer') + '</p>' +
-      '<p class="a1-note">' + t('star.a2.scale') + '</p>' +
-      '<p class="a1-note">' + t('star.a2.agg') + '</p>' +
-      '<p class="a1-note">' + t('star.a2.when') + '</p>' +
+      '<div class="a1-note">' + noteHtml(t('star.a2.scale')) + '</div>' +
+      '<div class="a1-note">' + noteHtml(t('star.a2.agg')) + '</div>' +
+      '<div class="a1-note">' + noteHtml(t('star.a2.when')) + '</div>' +
       '<div class="a1-modes" role="group">' +
       '<button type="button" data-view="twelve" aria-pressed="true">' + t('star.a2.twelve') + '</button>' +
       '<button type="button" data-view="drop" aria-pressed="false">' + t('star.a2.drop') + '</button>' +
@@ -275,10 +275,10 @@
       '</div>' +
       '<p class="a2-window" id="a2-window"></p>' +
       '<div class="a2-scroll" id="a2-scroll" tabindex="0" role="group" aria-label="' + t('star.a2.keys') + '"></div>' +
-      '<p class="a1-live" id="a2-live" aria-live="polite"></p>' +
+      '<div class="a1-live" id="a2-live" aria-live="polite"></div>' +
       '<h4 class="a2-subhead" id="a2-subhead" hidden></h4>' +
       '<div class="a2-scroll" id="a2-child" hidden></div>' +
-      '<p class="a1-note">' + t('star.a2.legend') + '</p></div>';
+      '<div class="a1-note">' + noteHtml(t('star.a2.legend')) + '</div></div>';
     var scroll = root.querySelector('#a2-scroll');
     var child = root.querySelector('#a2-child');
     var subhead = root.querySelector('#a2-subhead');
@@ -395,19 +395,19 @@
       var picked = focus === 'r' ? now.result : (focus == null ? null : now.bars[focus]);
       if (now.src && focus == null) {
         var srcBars = view === 'twelve' ? m5.slice(hour * 12, hour * 12 + 12) : h1;
-        live.textContent = t('star.a2.from', {
+        setNote(live, t('star.a2.from', {
           o: now.src.o + 1, ot: clock(srcBars[now.src.o].start),
           h: now.src.h + 1, ht: clock(srcBars[now.src.h].start),
           l: now.src.l + 1, lt: clock(srcBars[now.src.l].start),
           c: now.src.c + 1, ct: clock(srcBars[now.src.c].start)
-        });
+        }));
       } else if (picked) {
-        live.textContent = t('star.a2.readout', {
+        setNote(live, t('star.a2.readout', {
           tf: view === 'hours' && focus === 'r' ? t('star.a2.d1') : (view === 'hours' ? t('star.a2.h1') : t('star.a2.m5')),
           clock: span(picked.start, now.step),
           o: px(picked.o), h: px(picked.h), l: px(picked.l), c: px(picked.c), v: picked.v
-        });
-      } else live.textContent = t('star.a2.hint');
+        }));
+      } else setNote(live, t('star.a2.hint'));
       var kids = null;
       if (view === 'hours' && typeof focus === 'number') kids = m5.slice(focus * 12, focus * 12 + 12);
       if (kids) {
@@ -485,12 +485,14 @@
     draw();
   }
 
-  function proseLines(text, esc) {
+  function proseLines(text, esc, breaks) {
+    var cut = { '。': true };
+    (breaks || []).forEach(function (ch) { cut[ch] = true; });
     var parts = [];
     var buf = '';
     for (var i = 0; i < text.length; i++) {
       buf += text.charAt(i);
-      if (text.charAt(i) === '。') {
+      if (cut[text.charAt(i)]) {
         parts.push(buf);
         buf = '';
       }
@@ -499,6 +501,11 @@
     if (!parts.length) parts = [text];
     return '<div class="star-lines">' + parts.map(function (line) { return '<p>' + esc(line) + '</p>'; }).join('') + '</div>';
   }
+  function noteEsc(text) {
+    return String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+  function noteHtml(text) { return proseLines(text, noteEsc); }
+  function setNote(el, text) { el.innerHTML = noteHtml(text); }
 
   function renderOverview(main, api) {
     var data = pack();
@@ -563,7 +570,7 @@
       '<section class="star-scene"><img class="star-mascot" src="assets/img/footer-character.webp" alt=""><div><h3>' + sceneQ + '</h3><p class="star-one">' + api.esc(L(lesson.one, lang)) + '</p></div></section>' +
       '<section class="star-stage"><h3>' + api.t('star.watch') + '</h3><div id="star-chart"></div></section>' +
       '<section class="star-prose"><h3>' + api.t('star.define') + '</h3>' + proseLines(L(lesson.explain, lang), api.esc) + '</section>' +
-      '<section class="star-contrast"><h3>' + api.t('star.contrast') + '</h3>' + proseLines(L(lesson.example, lang), api.esc) + '</section>' +
+      '<section class="star-contrast"><h3>' + api.t('star.contrast') + '</h3>' + proseLines(L(lesson.example, lang), api.esc, ['；']) + '</section>' +
       '<section class="star-pit"><h3>' + api.t('star.pitfalls') + '</h3><ul>' + (lesson.pitfalls || []).map(function (item) { return '<li>' + api.esc(L(item, lang)) + '</li>'; }).join('') + '</ul></section>' +
       '<section class="star-do"><h3>' + api.t('star.tryHands') + '</h3><p>' + practiceAsk + '</p><div class="star-quiz" role="group">' +
       practiceButtons +
@@ -572,7 +579,7 @@
       lesson.quiz.options.map(function (opt) {
         return '<button type="button" data-choice="' + opt.id + '" aria-pressed="false">' + opt.id + '. ' + api.esc(L(opt, lang)) + '</button>';
       }).join('') +
-      '</div><button type="button" class="star-submit" id="quiz-submit">' + api.t('star.quizSubmit') + '</button><button type="button" class="star-submit" id="quiz-retry" hidden>' + api.t('star.quizRetry') + '</button><p class="star-feedback" id="quiz-feedback" role="status"></p></section>' +
+      '</div><button type="button" class="star-submit" id="quiz-retry" hidden>' + api.t('star.quizRetry') + '</button><p class="star-feedback" id="quiz-feedback" role="status"></p></section>' +
       '<section class="star-lab"><h3>' + api.t('star.verify') + '</h3><p>' + api.esc(L(lesson.practice, lang)) + '</p><a class="star-go" href="' + labHref + '">' + api.t('star.practiceGo') + '</a></section>' +
       '<div class="reading-footer">' +
       (prev && prev.status === 'live' ? '<a class="navbtn" href="#/star/' + chapterId + '/' + prev.id + '">' + api.t('star.prev') + '</a>' : '') +
@@ -598,36 +605,29 @@
         practiceFeedback.textContent = right ? api.t('star.practiceOk') : practiceMiss;
       });
     });
-    var quizPick = '';
     var quizFeedback = document.getElementById('quiz-feedback');
+    var quizRetry = document.getElementById('quiz-retry');
     main.querySelectorAll('[data-choice]').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        quizPick = btn.getAttribute('data-choice');
+        var pick = btn.getAttribute('data-choice');
+        var right = pick === lesson.quiz.answer;
         main.querySelectorAll('[data-choice]').forEach(function (other) {
-          other.setAttribute('aria-pressed', other === btn ? 'true' : 'false');
-          other.classList.remove('is-right', 'is-wrong');
+          var id = other.getAttribute('data-choice');
+          other.setAttribute('aria-pressed', id === pick ? 'true' : 'false');
+          other.classList.toggle('is-wrong', id === pick && !right);
+          other.classList.toggle('is-right', right && id === lesson.quiz.answer);
         });
+        quizFeedback.textContent = (right ? api.t('star.quizOk') : api.t('star.quizNo')) + ' ' + L(lesson.quiz.why, lang);
+        quizRetry.hidden = false;
+        if (right) {
+          api.setDone('star-' + chapterId + '-' + lessonId);
+          if (mascot) mascot.classList.add('is-right');
+          var kick = main.querySelector('.star-kicker');
+          if (kick && kick.textContent.indexOf(api.t('star.done')) < 0) kick.textContent += ' · ' + api.t('star.done');
+        }
       });
     });
-    document.getElementById('quiz-submit').addEventListener('click', function () {
-      if (!quizPick) { quizFeedback.textContent = api.t('star.quizNeed'); return; }
-      var right = quizPick === lesson.quiz.answer;
-      main.querySelectorAll('[data-choice]').forEach(function (other) {
-        var id = other.getAttribute('data-choice');
-        other.classList.toggle('is-wrong', id === quizPick && !right);
-        other.classList.toggle('is-right', right && id === lesson.quiz.answer);
-      });
-      quizFeedback.textContent = right ? (api.t('star.quizOk') + ' ' + L(lesson.quiz.why, lang)) : api.t('star.quizNo');
-      document.getElementById('quiz-retry').hidden = false;
-      if (right) {
-        api.setDone('star-' + chapterId + '-' + lessonId);
-        if (mascot) mascot.classList.add('is-right');
-        var kick = main.querySelector('.star-kicker');
-        if (kick && kick.textContent.indexOf(api.t('star.done')) < 0) kick.textContent += ' · ' + api.t('star.done');
-      }
-    });
-    document.getElementById('quiz-retry').addEventListener('click', function () {
-      quizPick = '';
+    quizRetry.addEventListener('click', function () {
       quizFeedback.textContent = '';
       main.querySelectorAll('[data-choice]').forEach(function (other) {
         other.setAttribute('aria-pressed', 'false');
