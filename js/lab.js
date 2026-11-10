@@ -2389,12 +2389,20 @@ function showAnnoTip(anno, point) {
   tip.hidden = false;
   const tipW = tip.offsetWidth || 200;
   const tipH = tip.offsetHeight || 140;
+  const maxLeft = Math.max(8, wrap.clientWidth - tipW - 8);
+  const maxTop = Math.max(8, wrap.clientHeight - tipH - 8);
   let left = point.x + 14;
   let top = point.y - tipH - 12;
-  if (left + tipW > wrap.clientWidth - 8) left = Math.max(8, point.x - tipW - 14);
-  if (top < 8) top = Math.min(wrap.clientHeight - tipH - 8, point.y + 16);
+  if (left > maxLeft) left = point.x - tipW - 14;
+  if (top < 8) top = point.y + 16;
+  left = Math.max(8, Math.min(left, maxLeft));
+  top = Math.max(8, Math.min(top, maxTop));
   tip.style.left = left + "px";
   tip.style.top = top + "px";
+  const below = top >= point.y;
+  tip.classList.toggle("is-below", below);
+  const arrowX = Math.max(14, Math.min(tipW - 18, point.x - left - 5));
+  tip.style.setProperty("--tip-arrow-x", arrowX + "px");
 }
 
 function bindAnnoTip() {
