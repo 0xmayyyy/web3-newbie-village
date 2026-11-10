@@ -1,0 +1,10 @@
+/* Drawing overlay for the lab. Scoped so the rest of the site is unchanged. */
+.lab-root .lab-draw{margin:0 0 8px}
+.lab-root .lab-draw-bar{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px;-webkit-overflow-scrolling:touch}
+.lab-root .lab-draw-bar button{flex:0 0 auto;min-height:44px;padding:6px 12px;border-radius:999px;border:1px solid rgba(230,199,158,.4);background:#241c33;color:#f5efff;font:inherit;font-size:14px}
+.lab-root .lab-draw-bar button[aria-pressed="true"]{background:#e6c79e;color:#1b1428;font-weight:700}
+.lab-root .lab-draw-bar button:disabled{opacity:.4}
+.lab-root .lab-draw-note{margin:6px 0 0;color:#d4bc9e;font-size:12px;line-height:1.5}
+.lab-root .lab-draw-svg{position:absolute;inset:0;width:100%;height:100%;z-index:8;overflow:hidden;pointer-events:none}
+.lab-root .lab-draw-svg .is-hit{pointer-events:all;touch-action:none}
+.lab-root .lab-draw-svg .is-handle{pointer-events:all;touch-action:none;cursor:grab}
