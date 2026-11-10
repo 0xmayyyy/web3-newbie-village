@@ -1167,8 +1167,7 @@
     }
     root.innerHTML =
       '<div class="a2">' + simFlag(t) +
-      '<div class="a1-note">' + noteHtml(t('star.a5.rule')) + '</div>' +
-      '<div class="a1-note">' + noteHtml(t('star.a5.when')) + '</div>' +
+      '<div class="a1-note">' + proseLines(t('star.a5.guide'), noteEsc, ['；']) + '</div>' +
       '<div class="a3-switch" role="group">' +
       ['A', 'B', 'C'].map(function (id) {
         return '<button type="button" data-branch="' + id + '" aria-pressed="false">' + t('star.a5.branch' + id) + '</button>';
@@ -1223,7 +1222,7 @@
       });
       var yTop = yPrice(110);
       var yBot = yPrice(100);
-      bits.push('<rect x="' + padL + '" y="' + yTop + '" width="' + plot + '" height="' + (yBot - yTop) + '" fill="rgba(230,199,158,.08)"></rect>');
+      bits.push('<rect x="' + padL + '" y="' + yTop + '" width="' + plot + '" height="' + (yBot - yTop) + '" fill="rgba(230,199,158,.16)"></rect>');
       view.forEach(function (bar, i) {
         var up = bar.c >= bar.o;
         var color = up ? '#1f8a4d' : '#d4534e';
@@ -1242,6 +1241,14 @@
         bits.push('</g>');
       });
       bits.push('<text x="' + padL + '" y="' + (volTop + 11) + '" fill="#b7aac8" font-size="10">' + t('star.a2.vol') + '</text>');
+      var zoneName = t('star.a5.zone');
+      var zoneW = Math.max(58, 18 + zoneName.length * (lang === 'en' ? 8 : 14));
+      var zx = padL + 8;
+      var zy = (yTop + yBot) / 2;
+      bits.push('<g pointer-events="none">');
+      bits.push('<rect x="' + zx + '" y="' + (zy - 12) + '" width="' + zoneW + '" height="24" rx="7" fill="#1b1428" stroke="#e6c79e"></rect>');
+      bits.push('<text x="' + (zx + zoneW / 2) + '" y="' + (zy + 5) + '" text-anchor="middle" fill="#f0d59a" font-size="13" font-weight="700">' + noteEsc(zoneName) + '</text>');
+      bits.push('</g>');
       var widthAttr = svgW < hostW - 1 ? '100%' : svgW + 'px';
       scroll.innerHTML = '<svg class="a2-svg" viewBox="0 0 ' + svgW + ' ' + svgH + '" style="width:' + widthAttr + '" role="img">' + bits.join('') + '</svg>';
       var bar = view[focus];

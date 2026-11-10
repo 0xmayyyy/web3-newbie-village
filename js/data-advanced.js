@@ -346,8 +346,8 @@ window.ADVANCED_STAR = {
             en: 'Price crossing a range boundary is called a breakout. Whether it holds depends on what happens next.'
           },
           explain: {
-            zh: '越过前高、前低或震荡区边界可称为突破；越过后很快返回原区间，常称假突破；突破后重新接近边界测试叫回踩。回踩不是每次都有，收盘确认和成交量只能提供辅助信息，不能保证突破成功。越过边界不等于稳稳突破；要区分影线越界、收盘越界、回踩和重新跌回。候选震荡区100–110，上边界观察带109–111；本课用4h收盘价>111作为收盘突破的条件。这只是本课的教学标准，不是交易信号。',
-            en: 'A cross of a prior high, prior low, or range boundary can be called a breakout. A quick return into the old range is often called a failed breakout. A move back toward the boundary after the break is a retest. A retest does not happen every time. A closing confirmation and volume are only extra information. They do not guarantee success. Crossing a boundary is not the same as a breakout that has held. Separate a wick cross, a close cross, a retest, and a move back inside. The candidate range here is 100–110, and the upper watch band is 109–111. This lesson uses a 4-hour close above 111 as its close-break rule. That is a teaching rule for this lesson, not a trading signal.'
+            zh: '越过前高、前低或震荡区边界可称为突破；越过后很快返回原区间，常称假突破；突破后重新接近边界测试叫回踩。回踩不是每次都有，收盘确认和成交量只能提供辅助信息，不能保证突破成功。越过边界不等于稳稳突破；要区分影线越界、收盘越界、回踩和重新跌回。候选震荡区100–110，上边界观察带109–111；本课用4h收盘价>111作为收盘突破的条件。',
+            en: 'A cross of a prior high, prior low, or range boundary can be called a breakout. A quick return into the old range is often called a failed breakout. A move back toward the boundary after the break is a retest. A retest does not happen every time. A closing confirmation and volume are only extra information. They do not guarantee success. Crossing a boundary is not the same as a breakout that has held. Separate a wick cross, a close cross, a retest, and a move back inside. The candidate range here is 100–110, and the upper watch band is 109–111. This lesson uses a 4-hour close above 111 as its close-break rule.'
           },
           example: {
             zh: '区间95–105，价格刺到107又收回103，是假突破示例；另一段收在108、回踩105后继续上行，是突破回踩示例。',
