@@ -1723,7 +1723,7 @@
     document.body.classList.toggle('is-lab', lab);
     if (!lab && window.Lab && Lab.mounted) Lab.unmount();
     document.body.classList.toggle('is-reader', !!m);
-    if (window.TEACH) TEACH.syncStarfield(!!m);
+    if (window.TEACH) TEACH.syncStarfield(!!m || !!star);
     if (cx) { renderCex(); if (!keep) window.scrollTo(0, 0); }
     else if (py) { renderPuny(); if (!keep) window.scrollTo(0, 0); }
     else if (lab) {
