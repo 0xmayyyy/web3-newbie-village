@@ -99,6 +99,10 @@ window.ADVANCED_STAR = {
               { id: 'B', zh: '日线收涨，所以每一根 5 分钟都收涨', en: 'The day closes up, so every 5-minute candle closes up' }
             ],
             answer: 'A',
+            miss: {
+              zh: '答错了。日线收涨不代表其中每个5分钟都涨。',
+              en: 'Not right. A rising daily close does not mean every 5-minute candle rose.'
+            },
             why: {
               zh: '价格从早上100到晚上105，日线收涨；下午从108跌到103的两小时，短周期却可能是下降结构。',
               en: 'Price goes from 100 in the morning to 105 in the evening, so the daily candle rises. During two afternoon hours it falls from 108 to 103, so the shorter timeframe can show a downtrend.'

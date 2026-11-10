@@ -135,17 +135,21 @@
         }).join(' ');
         svgBits += '<polyline points="' + pts + '" fill="none" stroke="#e6c79e" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"></polyline>';
         path.forEach(function (price, i) {
-          svgBits += '<circle cx="' + (36 + i * 52) + '" cy="' + yOf(price, candle) + '" r="4.5" fill="#f5efff"></circle>';
-          svgBits += '<text x="' + (36 + i * 52) + '" y="' + (yOf(price, candle) - 10) + '" text-anchor="middle" fill="#d4bc9e" font-size="11">' + price + '</text>';
+          var x = 36 + i * 52;
+          var y = yOf(price, candle);
+          svgBits += '<circle cx="' + x + '" cy="' + y + '" r="4.5" fill="#f5efff"></circle>';
+          svgBits += '<text x="' + x + '" y="' + (y - 12) + '" text-anchor="middle" fill="#d4bc9e" font-size="11">' + price + '</text>';
         });
       }
       var cx = mode === 'path' ? 268 : 168;
       svgBits += '<line x1="' + cx + '" y1="' + yH + '" x2="' + cx + '" y2="' + yL + '" stroke="' + color + '" stroke-width="2"></line>';
       svgBits += '<rect data-part="body" x="' + (cx - 18) + '" y="' + bodyY + '" width="36" height="' + bodyH + '" rx="2" fill="' + color + '"' + (selected === 'body' ? ' stroke="#e6c79e" stroke-width="3"' : '') + '></rect>';
-      svgBits += '<text x="' + (cx + 28) + '" y="' + (yH + 4) + '" fill="#f5efff" font-size="12">' + t('star.chart.h') + ' ' + candle.h + '</text>';
-      svgBits += '<text x="' + (cx + 28) + '" y="' + (yL + 4) + '" fill="#f5efff" font-size="12">' + t('star.chart.l') + ' ' + candle.l + '</text>';
-      svgBits += '<text x="16" y="' + (yO + 4) + '" fill="#e6c79e" font-size="12">' + t('star.chart.o') + ' ' + candle.o + '</text>';
-      svgBits += '<text x="16" y="' + (yC + 4) + '" fill="#e6c79e" font-size="12">' + t('star.chart.c') + ' ' + candle.c + '</text>';
+      if (mode !== 'path') {
+        svgBits += '<text x="' + (cx + 28) + '" y="' + (yH + 4) + '" fill="#f5efff" font-size="12">' + t('star.chart.h') + ' ' + candle.h + '</text>';
+        svgBits += '<text x="' + (cx + 28) + '" y="' + (yL + 4) + '" fill="#f5efff" font-size="12">' + t('star.chart.l') + ' ' + candle.l + '</text>';
+        svgBits += '<text x="16" y="' + (yO + 4) + '" fill="#e6c79e" font-size="12">' + t('star.chart.o') + ' ' + candle.o + '</text>';
+        svgBits += '<text x="16" y="' + (yC + 4) + '" fill="#e6c79e" font-size="12">' + t('star.chart.c') + ' ' + candle.c + '</text>';
+      }
       svg.innerHTML = svgBits;
       live.textContent = partText(candle) + (mode === 'path' && selected === 'all' ? ' ' + t('star.chart.order') : '');
       if (mode === 'candle') fillInputs(candle);
@@ -359,6 +363,21 @@
     draw();
   }
 
+  function proseLines(text, esc) {
+    var parts = [];
+    var buf = '';
+    for (var i = 0; i < text.length; i++) {
+      buf += text.charAt(i);
+      if (text.charAt(i) === '。') {
+        parts.push(buf);
+        buf = '';
+      }
+    }
+    if (buf.replace(/\s/g, '')) parts.push(buf);
+    if (!parts.length) parts = [text];
+    return '<div class="star-lines">' + parts.map(function (line) { return '<p>' + esc(line) + '</p>'; }).join('') + '</div>';
+  }
+
   function renderOverview(main, api) {
     var data = pack();
     var lang = api.lang;
@@ -413,7 +432,7 @@
         '<button type="button" data-practice="B" aria-pressed="false">' + api.t('star.practiceB') + '</button>' +
         '<button type="button" data-practice="C" aria-pressed="false">' + api.t('star.practiceC') + '</button>';
     var practiceAnswer = lesson.check ? lesson.check.answer : 'A';
-    var practiceWhy = lesson.check ? L(lesson.check.why, lang) : L(lesson.example, lang);
+    var practiceMiss = lesson.check && lesson.check.miss ? L(lesson.check.miss, lang) : api.t('star.practiceMiss');
     main.innerHTML =
       '<div class="course-reader star-page"><p class="star-crumb"><a href="#/">' + api.t('crumb.home') + '</a> / <a href="#/star">' + api.t('atlas.advanced.name') + '</a> / <a href="#/star/' + chapterId + '">' + api.esc(L(chapter.title, lang)) + '</a> / ' + chapterId + '-' + lessonId + '</p>' +
       '<article class="reading star-lesson"><p class="star-kicker">' + chapterId + '-' + lessonId + ' · ' + api.t('star.minutes', { n: minutes(lesson) }) + (done ? ' · ' + api.t('star.done') : '') + '</p>' +
@@ -421,12 +440,12 @@
       '<h2>' + api.esc(L(lesson.title, lang)) + '</h2>' +
       '<section class="star-scene"><img class="star-mascot" src="assets/img/footer-character.webp" alt=""><div><h3>' + sceneQ + '</h3><p class="star-one">' + api.esc(L(lesson.one, lang)) + '</p></div></section>' +
       '<section class="star-stage"><h3>' + api.t('star.watch') + '</h3><div id="star-chart"></div></section>' +
-      '<section class="star-prose"><h3>' + api.t('star.define') + '</h3><p>' + api.esc(L(lesson.explain, lang)) + '</p></section>' +
-      '<section class="star-contrast"><h3>' + api.t('star.contrast') + '</h3><p>' + api.esc(L(lesson.example, lang)) + '</p></section>' +
+      '<section class="star-prose"><h3>' + api.t('star.define') + '</h3>' + proseLines(L(lesson.explain, lang), api.esc) + '</section>' +
+      '<section class="star-contrast"><h3>' + api.t('star.contrast') + '</h3>' + proseLines(L(lesson.example, lang), api.esc) + '</section>' +
       '<section class="star-pit"><h3>' + api.t('star.pitfalls') + '</h3><ul>' + (lesson.pitfalls || []).map(function (item) { return '<li>' + api.esc(L(item, lang)) + '</li>'; }).join('') + '</ul></section>' +
       '<section class="star-do"><h3>' + api.t('star.tryHands') + '</h3><p>' + practiceAsk + '</p><div class="star-quiz" role="group">' +
       practiceButtons +
-      '</div><button type="button" class="star-submit" id="practice-submit">' + api.t('star.practiceSubmit') + '</button><button type="button" class="star-submit" id="practice-retry" hidden>' + api.t('star.practiceRetry') + '</button><p class="star-feedback" id="practice-feedback" role="status"></p></section>' +
+      '</div><p class="star-feedback" id="practice-feedback" role="status"></p></section>' +
       '<section class="star-check"><h3>' + api.t('star.quiz') + '</h3><div class="star-quiz" role="group" aria-labelledby="quiz-q"><p id="quiz-q">' + api.esc(L(lesson.quiz.q, lang)) + '</p>' +
       lesson.quiz.options.map(function (opt) {
         return '<button type="button" data-choice="' + opt.id + '" aria-pressed="false">' + opt.id + '. ' + api.esc(L(opt, lang)) + '</button>';
@@ -443,35 +462,19 @@
     else if (chartHost && lesson.chart === 'a2') mountTimeframes(chartHost, lang, api.t);
     if (api.bindListen) api.bindListen();
     var mascot = main.querySelector('.star-mascot');
-    var practicePick = '';
+    var practiceFeedback = document.getElementById('practice-feedback');
     main.querySelectorAll('[data-practice]').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        practicePick = btn.getAttribute('data-practice');
+        var pick = btn.getAttribute('data-practice');
+        var right = pick === practiceAnswer;
         main.querySelectorAll('[data-practice]').forEach(function (other) {
-          other.setAttribute('aria-pressed', other === btn ? 'true' : 'false');
-          other.classList.remove('is-right', 'is-wrong');
+          var id = other.getAttribute('data-practice');
+          other.setAttribute('aria-pressed', id === pick ? 'true' : 'false');
+          other.classList.toggle('is-wrong', id === pick && !right);
+          other.classList.toggle('is-right', right && id === practiceAnswer);
         });
+        practiceFeedback.textContent = right ? api.t('star.practiceOk') : practiceMiss;
       });
-    });
-    var practiceFeedback = document.getElementById('practice-feedback');
-    document.getElementById('practice-submit').addEventListener('click', function () {
-      if (!practicePick) { practiceFeedback.textContent = api.t('star.practiceNeed'); return; }
-      var right = practicePick === practiceAnswer;
-      main.querySelectorAll('[data-practice]').forEach(function (other) {
-        other.classList.toggle('is-wrong', other.getAttribute('data-practice') === practicePick && !right);
-        other.classList.toggle('is-right', right && other.getAttribute('data-practice') === practiceAnswer);
-      });
-      practiceFeedback.textContent = right ? practiceWhy : api.t('star.practiceNo');
-      document.getElementById('practice-retry').hidden = false;
-    });
-    document.getElementById('practice-retry').addEventListener('click', function () {
-      practicePick = '';
-      practiceFeedback.textContent = '';
-      main.querySelectorAll('[data-practice]').forEach(function (other) {
-        other.setAttribute('aria-pressed', 'false');
-        other.classList.remove('is-right', 'is-wrong');
-      });
-      this.hidden = true;
     });
     var quizPick = '';
     var quizFeedback = document.getElementById('quiz-feedback');

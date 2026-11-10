@@ -19,6 +19,8 @@ body.is-star main{max-width:none;margin:0;padding:0 0 48px;background:transparen
 .star-one{margin:0;color:#f4e9da;line-height:1.7}
 .star-stage{margin:0 -8px 28px;padding:18px 16px 12px;border-radius:28px;background:radial-gradient(ellipse at 80% 0%,rgba(90,63,176,.35),transparent 55%),#100c1c}
 .star-prose,.star-contrast,.star-pit,.star-do,.star-check,.star-lab{max-width:40em;margin:0 0 28px}
+.star-lines p{margin:0 0 .4em}
+.star-lines p:last-child{margin-bottom:0}
 .star-lesson h3{color:#f1d8b9;font-size:15px;letter-spacing:.04em;margin:0 0 8px}
 .star-contrast{padding-left:14px;border-left:2px solid rgba(230,199,158,.45)}
 .star-submit{margin-top:10px;min-height:44px;padding:8px 16px;border-radius:999px;border:1px solid rgba(230,199,158,.45);background:#241c33;color:#f0d59a;font:inherit}
