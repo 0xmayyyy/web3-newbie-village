@@ -485,6 +485,204 @@
     draw();
   }
 
+  function mountSwings(root, lang, t) {
+    var packs = { up: window.STAR_A3.pack('up'), down: window.STAR_A3.pack('down'), range: window.STAR_A3.pack('range') };
+    var key = 'up';
+    var shown = null;
+    var focus = 0;
+    var picked = null;
+    function px(n) {
+      var s = Number(n).toFixed(2);
+      return s.replace(/\.00$/, '').replace(/(\.\d)0$/, '$1');
+    }
+    function when(start) {
+      var hours = start / 60;
+      var day = Math.floor(hours / 24) + 1;
+      var h = hours % 24;
+      return t('star.a3.clock', { d: day, h: (h < 10 ? '0' : '') + h });
+    }
+    function mini(bars) {
+      var cs = bars.map(function (bar) { return bar.c; });
+      var lo = Math.min.apply(null, cs);
+      var hi = Math.max.apply(null, cs);
+      var pts = cs.map(function (c, i) {
+        var x = (i / (cs.length - 1)) * 86 + 1;
+        var y = 34 - ((c - lo) / (hi - lo || 1)) * 30;
+        return x.toFixed(1) + ',' + y.toFixed(1);
+      }).join(' ');
+      return '<svg viewBox="0 0 88 36" width="88" height="36" aria-hidden="true"><polyline points="' + pts + '" fill="none" stroke="#e6c79e" stroke-width="2"></polyline></svg>';
+    }
+    root.innerHTML =
+      '<div class="a2"><p class="a1-flag">' + t('star.sim') + ' · ' + t('star.a2.disclaimer') + '</p>' +
+      '<div class="a1-note">' + noteHtml(t('star.a3.rule')) + '</div>' +
+      '<div class="a1-note">' + noteHtml(t('star.a3.when')) + '</div>' +
+      '<div class="a3-switch" role="group">' +
+      ['up', 'down', 'range'].map(function (id) {
+        return '<button type="button" data-set="' + id + '" aria-pressed="' + (id === 'up' ? 'true' : 'false') + '">' + mini(packs[id].bars) + '<span>' + t('star.a3.' + id) + '</span></button>';
+      }).join('') +
+      '</div>' +
+      '<div class="a1-modes">' +
+      '<button type="button" data-step="play">' + t('star.a3.play') + '</button>' +
+      '<button type="button" data-step="prev">' + t('star.a3.prev') + '</button>' +
+      '<button type="button" data-step="next">' + t('star.a3.next') + '</button>' +
+      '<button type="button" data-step="all">' + t('star.a3.allBars') + '</button>' +
+      '</div>' +
+      '<div class="a2-scroll" id="a3-scroll" tabindex="0" role="group" aria-label="' + t('star.a2.keys') + '"></div>' +
+      '<div class="a1-live a2-readout" id="a3-live" aria-live="polite"></div>' +
+      '<div class="a1-modes" id="a3-ask" hidden></div>' +
+      '<div class="a1-note a2-legend">' + noteHtml(t('star.a2.legend')) + '</div></div>';
+    var scroll = root.querySelector('#a3-scroll');
+    var live = root.querySelector('#a3-live');
+    var ask = root.querySelector('#a3-ask');
+    function viewBars() {
+      var bars = packs[key].bars;
+      var n = shown == null ? bars.length : Math.max(5, Math.min(bars.length, shown));
+      return bars.slice(0, n);
+    }
+    function draw() {
+      var bars = viewBars();
+      var full = packs[key].bars;
+      var pivots = window.STAR_A3.confirmed(full, bars.length);
+      var dashes = window.STAR_A3.provisional(full, bars.length);
+      root.querySelectorAll('[data-set]').forEach(function (btn) {
+        btn.setAttribute('aria-pressed', btn.getAttribute('data-set') === key ? 'true' : 'false');
+      });
+      var hostW = scroll.clientWidth || root.clientWidth || 320;
+      var slot = Math.max(10, Math.min(28, (hostW - 62) / bars.length));
+      var lows = bars.map(function (bar) { return bar.l; });
+      var highs = bars.map(function (bar) { return bar.h; });
+      var minP = Math.min.apply(null, lows);
+      var maxP = Math.max.apply(null, highs);
+      var padP = Math.max(0.4, (maxP - minP) * 0.12);
+      minP -= padP;
+      maxP += padP;
+      var padL = 8;
+      var padR = 48;
+      var padT = 28;
+      var priceH = 180;
+      var volH = 44;
+      var plot = bars.length * slot;
+      var svgW = padL + plot + padR;
+      var svgH = padT + priceH + 8 + volH + 20;
+      function yPrice(price) { return padT + (maxP - price) / (maxP - minP) * priceH; }
+      var maxV = 1;
+      bars.forEach(function (bar) { if (bar.v > maxV) maxV = bar.v; });
+      var volTop = padT + priceH + 8;
+      var bits = [];
+      for (var g = 0; g < 4; g++) {
+        var price = minP + (maxP - minP) * (g / 3);
+        var gy = yPrice(price);
+        bits.push('<line x1="' + padL + '" y1="' + gy + '" x2="' + (padL + plot) + '" y2="' + gy + '" stroke="rgba(230,199,158,.2)"></line>');
+        bits.push('<text x="' + (padL + plot + 4) + '" y="' + (gy + 4) + '" fill="#d4bc9e" font-size="11">' + px(price) + '</text>');
+      }
+      var byIndex = {};
+      pivots.forEach(function (point) { byIndex[point.i] = point; });
+      dashes.forEach(function (point) { if (!byIndex[point.i]) byIndex[point.i] = point; });
+      bars.forEach(function (bar, i) {
+        var up = bar.c >= bar.o;
+        var color = up ? '#1f8a4d' : '#d4534e';
+        var x = padL + i * slot;
+        var xc = x + slot / 2;
+        var bw = Math.max(3, slot * 0.62);
+        var yH = yPrice(bar.h);
+        var yL = yPrice(bar.l);
+        var top = Math.min(yPrice(bar.o), yPrice(bar.c));
+        var bh = Math.max(1.5, Math.abs(yPrice(bar.c) - yPrice(bar.o)));
+        var on = focus === i;
+        bits.push('<g data-i="' + i + '" tabindex="-1" role="button" aria-label="' + when(bar.start) + '">');
+        bits.push('<rect x="' + x + '" y="' + padT + '" width="' + slot + '" height="' + priceH + '" fill="transparent"></rect>');
+        bits.push('<line x1="' + xc + '" y1="' + yH + '" x2="' + xc + '" y2="' + yL + '" stroke="' + color + '" stroke-width="' + (on ? 2.2 : 1.3) + '"></line>');
+        bits.push('<rect x="' + (xc - bw / 2) + '" y="' + top + '" width="' + bw + '" height="' + bh + '" fill="' + color + '"' + (on ? ' stroke="#e6c79e" stroke-width="2"' : '') + '></rect>');
+        var yv = volTop + volH - (bar.v / maxV) * (volH - 4);
+        bits.push('<rect x="' + (xc - bw / 2) + '" y="' + yv + '" width="' + bw + '" height="' + (volTop + volH - yv) + '" fill="' + color + '" opacity="0.85"></rect>');
+        if (i % 4 === 0) bits.push('<text x="' + xc + '" y="' + (svgH - 4) + '" text-anchor="middle" fill="#b7aac8" font-size="10">' + when(bar.start) + '</text>');
+        var mark = byIndex[i];
+        if (mark) {
+          var yy = mark.k === 'H' ? yH - 8 : yL + 12;
+          var label = mark.dash ? t('star.a3.dash') : window.STAR_A3.tag(pivots, mark);
+          bits.push('<text x="' + xc + '" y="' + yy + '" text-anchor="middle" fill="#e6c79e" font-size="11"' + (mark.dash ? ' stroke="#e6c79e" stroke-width="0.4" stroke-dasharray="2 2"' : '') + '>' + label + '</text>');
+        }
+        bits.push('</g>');
+      });
+      bits.push('<text x="' + padL + '" y="' + (volTop + 11) + '" fill="#b7aac8" font-size="10">' + t('star.a2.vol') + '</text>');
+      var widthAttr = svgW < hostW - 1 ? '100%' : svgW + 'px';
+      scroll.innerHTML = '<svg class="a2-svg" viewBox="0 0 ' + svgW + ' ' + svgH + '" style="width:' + widthAttr + '" role="img">' + bits.join('') + '</svg>';
+      var bar = bars[focus] || bars[bars.length - 1];
+      if (!picked) setNote(live, t('star.a3.hint', { clock: when(bar.start), o: px(bar.o), h: px(bar.h), l: px(bar.l), c: px(bar.c), v: bar.v }));
+      if (picked && byIndex[picked] && !byIndex[picked].dash) {
+        var rel = window.STAR_A3.relate(pivots, byIndex[picked]);
+        ask.hidden = false;
+        ask.innerHTML = '<p class="a2-window">' + (rel.prev ? t('star.a3.ask', { p: px(byIndex[picked].p), prev: px(rel.prev.p) }) : t('star.a3.askFirst')) + '</p>' +
+          '<button type="button" data-judge="up">' + t('star.a3.higher') + '</button>' +
+          '<button type="button" data-judge="down">' + t('star.a3.lower') + '</button>' +
+          '<button type="button" data-judge="first">' + t('star.a3.unsure') + '</button>';
+      } else ask.hidden = true;
+    }
+    function setKey(next) { key = next; shown = null; focus = 0; picked = null; draw(); }
+    root.addEventListener('click', function (event) {
+      var setBtn = event.target.closest('[data-set]');
+      if (setBtn) { setKey(setBtn.getAttribute('data-set')); return; }
+      var step = event.target.closest('[data-step]');
+      if (step) {
+        var bars = packs[key].bars;
+        var cur = shown == null ? bars.length : shown;
+        var kind = step.getAttribute('data-step');
+        if (kind === 'play') shown = 5;
+        if (kind === 'prev') shown = Math.max(5, cur - 1);
+        if (kind === 'next') shown = Math.min(bars.length, cur + 1);
+        if (kind === 'all') shown = null;
+        if (shown != null && focus >= shown) focus = shown - 1;
+        picked = null;
+        draw();
+        return;
+      }
+      var judge = event.target.closest('[data-judge]');
+      if (judge && picked != null) {
+        var full = packs[key].bars;
+        var n = shown == null ? full.length : shown;
+        var pivots = window.STAR_A3.confirmed(full, n);
+        var point = null;
+        pivots.forEach(function (item) { if (item.i === picked) point = item; });
+        if (!point) return;
+        var rel = window.STAR_A3.relate(pivots, point);
+        var want = rel.prev ? rel.dir : 'first';
+        var right = judge.getAttribute('data-judge') === want;
+        var fact = !rel.prev ? t('star.a3.factFirst') : (rel.dir === 'up' ? t('star.a3.factUp') : t('star.a3.factDown'));
+        setNote(live, (right ? t('star.quizOk') : t('star.quizNo')) + ' ' + fact);
+        return;
+      }
+      var candle = event.target.closest('#a3-scroll [data-i]');
+      if (!candle) return;
+      focus = Number(candle.getAttribute('data-i'));
+      var fullBars = packs[key].bars;
+      var nShown = shown == null ? fullBars.length : shown;
+      var marks = window.STAR_A3.confirmed(fullBars, nShown).concat(window.STAR_A3.provisional(fullBars, nShown));
+      var mark = null;
+      marks.forEach(function (item) { if (item.i === focus) mark = item; });
+      if (mark && mark.dash) {
+        picked = null;
+        draw();
+        setNote(live, t('star.a3.wait'));
+        return;
+      }
+      picked = mark ? focus : null;
+      draw();
+    });
+    scroll.addEventListener('keydown', function (event) {
+      var bars = viewBars();
+      if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+        event.preventDefault();
+        focus = event.key === 'ArrowRight' ? Math.min(bars.length - 1, focus + 1) : Math.max(0, focus - 1);
+        picked = null;
+        draw();
+      } else if (event.key === 'Enter') {
+        var node = scroll.querySelector('[data-i="' + focus + '"]');
+        if (node) node.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      }
+    });
+    draw();
+  }
+
   function proseLines(text, esc, breaks) {
     var cut = { '。': true };
     (breaks || []).forEach(function (ch) { cut[ch] = true; });
@@ -569,17 +767,23 @@
       '<h2>' + api.esc(L(lesson.title, lang)) + '</h2>' +
       '<section class="star-scene"><img class="star-mascot" src="assets/img/footer-character.webp" alt=""><div><h3>' + sceneQ + '</h3><p class="star-one">' + api.esc(L(lesson.one, lang)) + '</p></div></section>' +
       '<section class="star-stage"><h3>' + api.t('star.watch') + '</h3><div id="star-chart"></div></section>' +
-      '<section class="star-prose"><h3>' + api.t('star.define') + '</h3>' + proseLines(L(lesson.explain, lang), api.esc) + '</section>' +
+      '<section class="star-prose"><h3>' + api.t('star.define') + '</h3>' + proseLines(L(lesson.explain, lang), api.esc, ['；']) + '</section>' +
       '<section class="star-contrast"><h3>' + api.t('star.contrast') + '</h3>' + proseLines(L(lesson.example, lang), api.esc, ['；']) + '</section>' +
       '<section class="star-pit"><h3>' + api.t('star.pitfalls') + '</h3><ul>' + (lesson.pitfalls || []).map(function (item) { return '<li>' + api.esc(L(item, lang)) + '</li>'; }).join('') + '</ul></section>' +
       '<section class="star-do"><h3>' + api.t('star.tryHands') + '</h3><p>' + practiceAsk + '</p><div class="star-quiz" role="group">' +
       practiceButtons +
       '</div><p class="star-feedback" id="practice-feedback" role="status"></p></section>' +
-      '<section class="star-check"><h3>' + api.t('star.quiz') + '</h3><div class="star-quiz" role="group" aria-labelledby="quiz-q"><p id="quiz-q">' + api.esc(L(lesson.quiz.q, lang)) + '</p>' +
+      '<section class="star-check"><h3>' + api.t('star.quiz') + '</h3>' + (lesson.quizzes ? lesson.quizzes.map(function (q, qi) {
+        return '<div class="star-q" data-qi="' + qi + '"><p>' + (qi + 1) + '. ' + api.esc(L(q.q, lang)) + '</p><div class="star-quiz" role="group">' +
+          q.options.map(function (opt) {
+            return '<button type="button" data-qi="' + qi + '" data-choice="' + opt.id + '" aria-pressed="false">' + opt.id + '. ' + api.esc(L(opt, lang)) + '</button>';
+          }).join('') +
+          '</div><button type="button" class="star-submit" data-quiz-retry="' + qi + '" hidden>' + api.t('star.quizRetry') + '</button><p class="star-feedback" data-quiz-feedback="' + qi + '" role="status"></p></div>';
+      }).join('') : '<div class="star-quiz" role="group" aria-labelledby="quiz-q"><p id="quiz-q">' + api.esc(L(lesson.quiz.q, lang)) + '</p>' +
       lesson.quiz.options.map(function (opt) {
         return '<button type="button" data-choice="' + opt.id + '" aria-pressed="false">' + opt.id + '. ' + api.esc(L(opt, lang)) + '</button>';
       }).join('') +
-      '</div><button type="button" class="star-submit" id="quiz-retry" hidden>' + api.t('star.quizRetry') + '</button><p class="star-feedback" id="quiz-feedback" role="status"></p></section>' +
+      '</div><button type="button" class="star-submit" id="quiz-retry" hidden>' + api.t('star.quizRetry') + '</button><p class="star-feedback" id="quiz-feedback" role="status"></p>') + '</section>' +
       '<section class="star-lab"><h3>' + api.t('star.verify') + '</h3><p>' + api.esc(L(lesson.practice, lang)) + '</p><a class="star-go" href="' + labHref + '">' + api.t('star.practiceGo') + '</a></section>' +
       '<div class="reading-footer">' +
       (prev && prev.status === 'live' ? '<a class="navbtn" href="#/star/' + chapterId + '/' + prev.id + '">' + api.t('star.prev') + '</a>' : '') +
@@ -589,6 +793,7 @@
     var chartHost = document.getElementById('star-chart');
     if (chartHost && lesson.chart === 'a1') mountChart(chartHost, lang, api.t);
     else if (chartHost && lesson.chart === 'a2') mountTimeframes(chartHost, lang, api.t);
+    else if (chartHost && lesson.chart === 'a3') mountSwings(chartHost, lang, api.t);
     if (api.bindListen) api.bindListen();
     var mascot = main.querySelector('.star-mascot');
     var practiceFeedback = document.getElementById('practice-feedback');
@@ -602,9 +807,51 @@
           other.classList.toggle('is-wrong', id === pick && !right);
           other.classList.toggle('is-right', right && id === practiceAnswer);
         });
-        practiceFeedback.textContent = right ? api.t('star.practiceOk') : practiceMiss;
+        var missText = practiceMiss;
+        if (!right && lesson.check && lesson.check.misses && lesson.check.misses[pick]) missText = L(lesson.check.misses[pick], lang);
+        practiceFeedback.textContent = right ? api.t('star.practiceOk') : missText;
       });
     });
+    if (lesson.quizzes) {
+      var solved = {};
+      function markLesson() {
+        var keys = Object.keys(solved);
+        if (keys.length < lesson.quizzes.length) return;
+        api.setDone('star-' + chapterId + '-' + lessonId);
+        if (mascot) mascot.classList.add('is-right');
+        var kick = main.querySelector('.star-kicker');
+        if (kick && kick.textContent.indexOf(api.t('star.done')) < 0) kick.textContent += ' · ' + api.t('star.done');
+      }
+      main.querySelectorAll('[data-qi][data-choice]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var qi = btn.getAttribute('data-qi');
+          var q = lesson.quizzes[Number(qi)];
+          var pick = btn.getAttribute('data-choice');
+          var right = pick === q.answer;
+          var box = btn.closest('.star-q');
+          box.querySelectorAll('[data-choice]').forEach(function (other) {
+            var id = other.getAttribute('data-choice');
+            other.setAttribute('aria-pressed', id === pick ? 'true' : 'false');
+            other.classList.toggle('is-wrong', id === pick && !right);
+            other.classList.toggle('is-right', right && id === q.answer);
+          });
+          box.querySelector('[data-quiz-feedback]').textContent = (right ? api.t('star.quizOk') : api.t('star.quizNo')) + ' ' + L(q.why, lang);
+          box.querySelector('[data-quiz-retry]').hidden = false;
+          if (right) { solved[qi] = true; markLesson(); }
+        });
+      });
+      main.querySelectorAll('[data-quiz-retry]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var box = btn.closest('[data-qi]');
+          box.querySelector('[data-quiz-feedback]').textContent = '';
+          box.querySelectorAll('[data-choice]').forEach(function (other) {
+            other.setAttribute('aria-pressed', 'false');
+            other.classList.remove('is-right', 'is-wrong');
+          });
+          btn.hidden = true;
+        });
+      });
+    } else {
     var quizFeedback = document.getElementById('quiz-feedback');
     var quizRetry = document.getElementById('quiz-retry');
     main.querySelectorAll('[data-choice]').forEach(function (btn) {
@@ -635,6 +882,7 @@
       });
       this.hidden = true;
     });
+    }
   }
 
   window.AdvancedStar = {

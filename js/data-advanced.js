@@ -121,7 +121,112 @@ window.ADVANCED_STAR = {
             }
           }
         },
-        { id: '03', status: 'soon', title: { zh: '趋势、高点与低点', en: 'Trend, highs, and lows' } },
+        {
+          id: '03',
+          status: 'live',
+          chart: 'a3',
+          title: { zh: '趋势、高点与低点', en: 'Trend, highs, and lows' },
+          scene: {
+            zh: '趋势是看最后一根 K 线的颜色，还是看重要高点和低点有没有抬高或降低？',
+            en: 'Does trend come from the color of the last candle, or from whether the important highs and lows are rising or falling?'
+          },
+          one: {
+            zh: '上升结构常见更高的高点HH和更高的低点HL；下降结构常见更低的高点LH和更低的低点LL。',
+            en: 'An uptrend often shows a higher high (HH) and a higher low (HL). A downtrend often shows a lower high (LH) and a lower low (LL).'
+          },
+          explain: {
+            zh: '先标记明显的摆动高低点，不要把每个小波动都算成转折。上涨中一次回调不必然意味着趋势结束；震荡区里高低点可能交错，没必要强行定方向。摆动点的选择也依赖时间周期和规则。趋势不是最后一根K线颜色，而是重要高点与低点是否持续抬高或降低。HH更高的高点、HL更高的低点、LH更低的高点、LL更低的低点。上涨结构常见HH+HL；下跌结构常见LH+LL；混合结构可能是震荡/转折/不明确。只描述已发生事实，不预测下一根。',
+            en: 'Mark the obvious swing highs and lows. Do not treat every small wiggle as a turn. One pullback in a rise does not have to mean the trend is over. In a range, highs and lows can interleave, so there is no need to force a direction. Which swings you mark also depends on the timeframe and the rule. Trend is not the color of the last candle. It is whether the important highs and lows keep rising or falling. HH is a higher high, HL a higher low, LH a lower high, and LL a lower low. An uptrend often shows HH plus HL. A downtrend often shows LH plus LL. A mix can be a range, a turn, or simply unclear. Describe what has already happened. Do not predict the next candle.'
+          },
+          example: {
+            zh: '高点100→110→120，低点90→98→105，是典型上移结构。跌破105可能提示结构变化，但不保证反转。爬楼梯也有暂时向下的一步。',
+            en: 'Highs 100, then 110, then 120, and lows 90, then 98, then 105, are a typical rising structure. A break below 105 may hint that the structure is changing. It does not guarantee a reversal. Climbing stairs can include a step down.'
+          },
+          pitfalls: [
+            { zh: '看到新高就断言继续上涨。', en: 'Treating a new high as proof that price must keep rising.' },
+            { zh: '事后随意调整结构点。', en: 'Moving the swing points afterward so the story fits.' },
+            { zh: '一根红K线不等于反转。', en: 'One red candle is not a reversal.' },
+            { zh: 'HH/HL不等于保证未来上涨。', en: 'HH and HL do not guarantee a future rise.' },
+            { zh: '不同周期可以相反。', en: 'Different timeframes can point in different directions.' }
+          ],
+          practice: {
+            zh: '关闭指标，在BTC 4H上标出三个主要高点和低点。',
+            en: 'Turn the indicators off and mark three main highs and lows on the BTC 4H chart.'
+          },
+          lab: { symbol: 'BTCUSDT', interval: '4h', studies: 'none' },
+          check: {
+            ask: {
+              zh: '高点 105、112、120，低点 90、96、101。这组已经发生的摆动点属于？',
+              en: 'Highs at 105, 112, and 120, lows at 90, 96, and 101. What structure has already happened?'
+            },
+            options: [
+              { id: 'A', zh: '上涨结构', en: 'An up structure' },
+              { id: 'B', zh: '下跌结构', en: 'A down structure' },
+              { id: 'C', zh: '还不明确', en: 'Still unclear' }
+            ],
+            answer: 'A',
+            misses: {
+              B: {
+                zh: '答错了。下跌结构常见更低的高点LH和更低的低点LL。这组高点和低点都在抬高。',
+                en: 'Not right. A down structure usually shows a lower high (LH) and a lower low (LL). These highs and lows are rising.'
+              },
+              C: {
+                zh: '答错了。这些高点和低点已经依次抬高，不是还分不出来。',
+                en: 'Not right. These highs and lows have already stepped up. The direction is not still unclear.'
+              }
+            }
+          },
+          quiz: {
+            q: { zh: '高点与低点持续上移通常属于？', en: 'Highs and lows that keep stepping up usually belong to which structure?' },
+            options: [
+              { id: 'A', zh: '上升', en: 'Up' },
+              { id: 'B', zh: '下降', en: 'Down' }
+            ],
+            answer: 'A',
+            why: { zh: '上升结构常见更高的高点HH和更高的低点HL。', en: 'An up structure usually shows a higher high (HH) and a higher low (HL).' }
+          },
+          quizzes: [
+            {
+              q: { zh: '高点与低点持续上移通常属于？', en: 'Highs and lows that keep stepping up usually belong to which structure?' },
+              options: [
+                { id: 'A', zh: '上升', en: 'Up' },
+                { id: 'B', zh: '下降', en: 'Down' }
+              ],
+              answer: 'A',
+              why: { zh: '上升结构常见更高的高点HH和更高的低点HL。', en: 'An up structure usually shows a higher high (HH) and a higher low (HL).' }
+            },
+            {
+              q: { zh: '高点 105、112、120，低点 90、96、101，这组结构是？', en: 'Highs at 105, 112, and 120, lows at 90, 96, and 101. Which structure is this?' },
+              options: [
+                { id: 'A', zh: '下跌', en: 'Down' },
+                { id: 'B', zh: '上涨', en: 'Up' },
+                { id: 'C', zh: '必然暴涨', en: 'Must surge' }
+              ],
+              answer: 'B',
+              why: { zh: '上涨结构常见HH+HL。这里高点和低点都在抬高。这只描述已经发生的事实，不表示下一根必然暴涨。', en: 'An up structure usually shows HH plus HL. These highs and lows are rising. That only describes what has already happened. It does not mean the next candle must surge.' }
+            },
+            {
+              q: { zh: '刚出现一个疑似高点，可以立刻标成 HH 吗？', en: 'A possible high just printed. Can you mark it HH immediately?' },
+              options: [
+                { id: 'A', zh: '可以', en: 'Yes' },
+                { id: 'B', zh: '要等右侧两根 K 线', en: 'Wait for two bars on the right' },
+                { id: 'C', zh: '收盘是绿色就可以', en: 'Yes, if it closes green' }
+              ],
+              answer: 'B',
+              why: { zh: '摆动点要左右各 2 根都满足，右侧两根出现之后才确认。不能因为这一根是绿色就确认。', en: 'A swing needs two bars on each side. It is confirmed only after the two bars on the right have printed. A green close is not enough.' }
+            },
+            {
+              q: { zh: '5 分钟在跌，日线在涨，可能吗？', en: 'Can the 5-minute chart fall while the daily chart rises?' },
+              options: [
+                { id: 'A', zh: '数据一定错了', en: 'The data must be wrong' },
+                { id: 'B', zh: '日线接下来必跌', en: 'The daily chart must then fall' },
+                { id: 'C', zh: '不同周期可以方向不同', en: 'Different timeframes can point different ways' }
+              ],
+              answer: 'C',
+              why: { zh: '不同周期可以相反。5 分钟下跌并不表示日线数据是错的，也不表示日线必然下跌。', en: 'Different timeframes can disagree. A falling 5-minute chart does not mean the daily data is wrong, and it does not mean the daily chart must fall.' }
+            }
+          ]
+        },
         { id: '04', status: 'soon', title: { zh: '支撑与压力', en: 'Support and resistance' } },
         { id: '05', status: 'soon', title: { zh: '突破、假突破、回踩与震荡', en: 'Breakouts, failed breaks, retests, and ranges' } },
         { id: '06', status: 'soon', title: { zh: '成交量与价格', en: 'Volume and price' } }
