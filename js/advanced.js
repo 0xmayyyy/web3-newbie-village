@@ -873,6 +873,138 @@
     draw();
   }
 
+  function mountBreaks(root, lang, t) {
+    var branch = null;
+    var shown = 8;
+    var focus = 7;
+    function px(n) { return String(n); }
+    function when(start) {
+      var hours = start / 60;
+      var day = Math.floor(hours / 24) + 1;
+      var h = hours % 24;
+      return t('star.a3.clock', { d: day, h: (h < 10 ? '0' : '') + h });
+    }
+    root.innerHTML =
+      '<div class="a2"><p class="a1-flag">' + t('star.sim') + ' · ' + t('star.a2.disclaimer') + '</p>' +
+      '<div class="a1-note">' + noteHtml(t('star.a5.rule')) + '</div>' +
+      '<div class="a1-note">' + noteHtml(t('star.a5.when')) + '</div>' +
+      '<div class="a3-switch" role="group">' +
+      ['A', 'B', 'C'].map(function (id) {
+        return '<button type="button" data-branch="' + id + '" aria-pressed="false">' + t('star.a5.branch' + id) + '</button>';
+      }).join('') +
+      '</div>' +
+      '<div class="a1-modes">' +
+      '<button type="button" data-step="prev">' + t('star.a3.prev') + '</button>' +
+      '<button type="button" data-step="next">' + t('star.a3.next') + '</button>' +
+      '</div>' +
+      '<div class="a2-scroll" id="a5-scroll" tabindex="0" role="group" aria-label="' + t('star.a5.rule') + '"></div>' +
+      '<div class="a1-live a2-readout" id="a5-live" aria-live="polite"></div>' +
+      '<div class="a1-modes" id="a5-ask">' +
+      '<button type="button" data-mark="inside">' + t('star.a5.inside') + '</button>' +
+      '<button type="button" data-mark="wick">' + t('star.a5.wick') + '</button>' +
+      '<button type="button" data-mark="close">' + t('star.a5.close') + '</button>' +
+      '</div>' +
+      '<div class="a1-note a2-legend">' + noteHtml(t('star.a2.legend')) + '</div></div>';
+    var scroll = root.querySelector('#a5-scroll');
+    var live = root.querySelector('#a5-live');
+    function full() { return window.STAR_A5.series(branch); }
+    function draw() {
+      var bars = full();
+      var maxN = bars.length;
+      if (shown > maxN) shown = maxN;
+      if (shown < 1) shown = 1;
+      if (focus >= shown) focus = shown - 1;
+      root.querySelectorAll('[data-branch]').forEach(function (btn) {
+        btn.setAttribute('aria-pressed', btn.getAttribute('data-branch') === branch ? 'true' : 'false');
+      });
+      var view = bars.slice(0, shown);
+      var hostW = scroll.clientWidth || root.clientWidth || 320;
+      var slot = Math.max(18, Math.min(56, (hostW - 62) / Math.max(view.length, 8)));
+      var minP = 96;
+      var maxP = 120;
+      var padL = 8;
+      var padR = 46;
+      var padT = 16;
+      var priceH = 200;
+      var volH = 42;
+      var plot = Math.max(view.length, 8) * slot;
+      var svgW = padL + plot + padR;
+      var svgH = padT + priceH + 8 + volH + 20;
+      function yPrice(price) { return padT + (maxP - price) / (maxP - minP) * priceH; }
+      var maxV = 1;
+      view.forEach(function (bar) { if (bar.v > maxV) maxV = bar.v; });
+      var volTop = padT + priceH + 8;
+      var bits = [];
+      [100, 105, 110, 111, 116].forEach(function (price) {
+        var gy = yPrice(price);
+        bits.push('<line x1="' + padL + '" y1="' + gy + '" x2="' + (padL + plot) + '" y2="' + gy + '" stroke="' + (price === 111 ? 'rgba(230,199,158,.7)' : 'rgba(230,199,158,.2)') + '"></line>');
+        bits.push('<text x="' + (padL + plot + 4) + '" y="' + (gy + 4) + '" fill="#d4bc9e" font-size="11">' + price + '</text>');
+      });
+      var yTop = yPrice(110);
+      var yBot = yPrice(100);
+      bits.push('<rect x="' + padL + '" y="' + yTop + '" width="' + plot + '" height="' + (yBot - yTop) + '" fill="rgba(230,199,158,.08)"></rect>');
+      view.forEach(function (bar, i) {
+        var up = bar.c >= bar.o;
+        var color = up ? '#1f8a4d' : '#d4534e';
+        var x = padL + i * slot;
+        var xc = x + slot / 2;
+        var bw = Math.max(5, slot * 0.56);
+        var top = Math.min(yPrice(bar.o), yPrice(bar.c));
+        var bh = Math.max(1.5, Math.abs(yPrice(bar.c) - yPrice(bar.o)));
+        bits.push('<g data-i="' + i + '" role="button" tabindex="-1" aria-label="' + (i + 1) + '">');
+        bits.push('<rect x="' + x + '" y="' + padT + '" width="' + slot + '" height="' + priceH + '" fill="transparent"></rect>');
+        bits.push('<line x1="' + xc + '" y1="' + yPrice(bar.h) + '" x2="' + xc + '" y2="' + yPrice(bar.l) + '" stroke="' + color + '" stroke-width="1.4"></line>');
+        bits.push('<rect x="' + (xc - bw / 2) + '" y="' + top + '" width="' + bw + '" height="' + bh + '" fill="' + color + '"' + (focus === i ? ' stroke="#e6c79e" stroke-width="2"' : '') + '></rect>');
+        var yv = volTop + volH - (bar.v / maxV) * (volH - 4);
+        bits.push('<rect x="' + (xc - bw / 2) + '" y="' + yv + '" width="' + bw + '" height="' + (volTop + volH - yv) + '" fill="' + color + '" opacity="0.85"></rect>');
+        bits.push('<text x="' + xc + '" y="' + (svgH - 4) + '" text-anchor="middle" fill="#b7aac8" font-size="10">' + (i + 1) + '</text>');
+        bits.push('</g>');
+      });
+      bits.push('<text x="' + padL + '" y="' + (volTop + 11) + '" fill="#b7aac8" font-size="10">' + t('star.a2.vol') + '</text>');
+      var widthAttr = svgW < hostW - 1 ? '100%' : svgW + 'px';
+      scroll.innerHTML = '<svg class="a2-svg" viewBox="0 0 ' + svgW + ' ' + svgH + '" style="width:' + widthAttr + '" role="img">' + bits.join('') + '</svg>';
+      var bar = view[focus];
+      setNote(live, t('star.a5.readout', { n: bar.i + 1, h: px(bar.h), c: px(bar.c) }));
+    }
+    root.addEventListener('click', function (event) {
+      var branchBtn = event.target.closest('[data-branch]');
+      if (branchBtn) {
+        branch = branchBtn.getAttribute('data-branch');
+        shown = Math.min(9, fullWait());
+        focus = shown - 1;
+        draw();
+        return;
+      }
+      var step = event.target.closest('[data-step]');
+      if (step) {
+        var maxN = window.STAR_A5.series(branch).length;
+        if (step.getAttribute('data-step') === 'next') shown = Math.min(maxN, shown + 1);
+        else shown = Math.max(1, shown - 1);
+        focus = shown - 1;
+        draw();
+        return;
+      }
+      var mark = event.target.closest('[data-mark]');
+      if (mark) {
+        var bar = window.STAR_A5.series(branch)[focus];
+        var want = window.STAR_A5.kind(bar);
+        var right = mark.getAttribute('data-mark') === want;
+        setNote(live, (right ? t('star.quizOk') : t('star.quizNo')) + ' ' + t('star.a5.fact' + (want === 'close' ? 'Close' : want === 'wick' ? 'Wick' : 'Inside')));
+        return;
+      }
+      var candle = event.target.closest('#a5-scroll [data-i]');
+      if (candle) { focus = Number(candle.getAttribute('data-i')); draw(); }
+    });
+    function fullWait() { return window.STAR_A5.series(branch).length; }
+    scroll.addEventListener('keydown', function (event) {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      event.preventDefault();
+      focus = event.key === 'ArrowRight' ? Math.min(shown - 1, focus + 1) : Math.max(0, focus - 1);
+      draw();
+    });
+    draw();
+  }
+
   function proseLines(text, esc, breaks) {
     var cut = { '。': true };
     (breaks || []).forEach(function (ch) { cut[ch] = true; });
@@ -985,6 +1117,7 @@
     else if (chartHost && lesson.chart === 'a2') mountTimeframes(chartHost, lang, api.t);
     else if (chartHost && lesson.chart === 'a3') mountSwings(chartHost, lang, api.t);
     else if (chartHost && lesson.chart === 'a4') mountZones(chartHost, lang, api.t);
+    else if (chartHost && lesson.chart === 'a5') mountBreaks(chartHost, lang, api.t);
     if (api.bindListen) api.bindListen();
     var mascot = main.querySelector('.star-mascot');
     var practiceFeedback = document.getElementById('practice-feedback');

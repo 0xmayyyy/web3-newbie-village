@@ -331,7 +331,113 @@ window.ADVANCED_STAR = {
             }
           ]
         },
-        { id: '05', status: 'soon', title: { zh: '突破、假突破、回踩与震荡', en: 'Breakouts, failed breaks, retests, and ranges' } },
+        {
+          id: '05',
+          status: 'live',
+          chart: 'a5',
+          title: { zh: '突破、假突破、回踩与震荡', en: 'Breakouts, failed breaks, retests, and ranges' },
+          scene: {
+            zh: '价格越过边界，是不是就等于已经稳稳突破？',
+            en: 'If price crosses a boundary, does that already mean the breakout has held?'
+          },
+          one: {
+            zh: '价格越过区间边界叫突破，但是否站稳要看后续表现。',
+            en: 'Price crossing a range boundary is called a breakout. Whether it holds depends on what happens next.'
+          },
+          explain: {
+            zh: '越过前高、前低或震荡区边界可称为突破；越过后很快返回原区间，常称假突破；突破后重新接近边界测试叫回踩。回踩不是每次都有，收盘确认和成交量只能提供辅助信息，不能保证突破成功。越过边界不等于稳稳突破；要区分影线越界、收盘越界、回踩和重新跌回。候选震荡区100–110，上边界观察带109–111；本课用4h收盘价>111作为收盘突破的条件。这只是本课的教学标准，不是交易信号。',
+            en: 'A cross of a prior high, prior low, or range boundary can be called a breakout. A quick return into the old range is often called a failed breakout. A move back toward the boundary after the break is a retest. A retest does not happen every time. A closing confirmation and volume are only extra information. They do not guarantee success. Crossing a boundary is not the same as a breakout that has held. Separate a wick cross, a close cross, a retest, and a move back inside. The candidate range here is 100–110, and the upper watch band is 109–111. This lesson uses a 4-hour close above 111 as its close-break rule. That is a teaching rule for this lesson, not a trading signal.'
+          },
+          example: {
+            zh: '区间95–105，价格刺到107又收回103，是假突破示例；另一段收在108、回踩105后继续上行，是突破回踩示例。',
+            en: 'In a 95–105 range, a poke to 107 that comes back to 103 is an example of a failed breakout. Another stretch that closes at 108, retests 105, and then continues up is an example of a breakout and retest.'
+          },
+          pitfalls: [
+            { zh: '看到一根影线刺穿就追价。', en: 'Chasing because one wick poked through.' },
+            { zh: '认为回踩必然出现。', en: 'Assuming a retest must happen.' },
+            { zh: '影线越界不等于收盘确认。', en: 'A wick beyond the line is not a close confirmation.' },
+            { zh: '收盘突破仍可失败。', en: 'A close beyond the line can still fail.' },
+            { zh: '回踩不是必然发生。', en: 'A retest does not have to occur.' },
+            { zh: '不能提前知道假突破。', en: 'You cannot know a failed breakout before it has failed.' }
+          ],
+          practice: {
+            zh: '找一段历史震荡，分别标注成功和失败的突破。',
+            en: 'Find a past range and mark one breakout that held and one that failed.'
+          },
+          lab: { symbol: 'BTCUSDT', interval: '4h', studies: 'none' },
+          check: {
+            ask: {
+              zh: '最高 113，收盘 108，本课门槛是收盘价大于 111。这根满足收盘突破吗？',
+              en: 'High 113, close 108. This lesson’s line is a close above 111. Does this candle meet that close rule?'
+            },
+            options: [
+              { id: 'A', zh: '满足', en: 'Yes' },
+              { id: 'B', zh: '不满足', en: 'No' },
+              { id: 'C', zh: '所以它一定是假突破', en: 'So it must be a failed breakout' }
+            ],
+            answer: 'B',
+            misses: {
+              A: {
+                zh: '答错了。本课用收盘价大于 111 作为收盘突破。收盘是 108，不满足。',
+                en: 'Not right. This lesson uses a close above 111. The close is 108, so it does not meet that rule.'
+              },
+              C: {
+                zh: '答错了。收盘没有大于 111，只是影线越过。不能提前把它叫成假突破。',
+                en: 'Not right. The close is not above 111. Only the wick went beyond. That is not yet a failed breakout.'
+              }
+            }
+          },
+          quiz: {
+            q: { zh: '瞬间高于压力就一定成功突破？', en: 'Does a brief move above resistance mean the breakout has succeeded?' },
+            options: [
+              { id: 'A', zh: '是', en: 'Yes' },
+              { id: 'B', zh: '否', en: 'No' }
+            ],
+            answer: 'B',
+            why: { zh: '价格越过区间边界叫突破，但是否站稳要看后续表现。', en: 'Crossing a range boundary is called a breakout. Whether it holds depends on what happens next.' }
+          },
+          quizzes: [
+            {
+              q: { zh: '瞬间高于压力就一定成功突破？', en: 'Does a brief move above resistance mean the breakout has succeeded?' },
+              options: [
+                { id: 'A', zh: '是', en: 'Yes' },
+                { id: 'B', zh: '否', en: 'No' }
+              ],
+              answer: 'B',
+              why: { zh: '价格越过区间边界叫突破，但是否站稳要看后续表现。', en: 'Crossing a range boundary is called a breakout. Whether it holds depends on what happens next.' }
+            },
+            {
+              q: { zh: '最高 113，收盘 108，门槛是收盘价大于 111。这根怎么看？', en: 'High 113, close 108. The line is a close above 111. How do you read this candle?' },
+              options: [
+                { id: 'A', zh: '满足收盘突破', en: 'It meets the close rule' },
+                { id: 'B', zh: '不满足收盘突破', en: 'It does not meet the close rule' },
+                { id: 'C', zh: '一定是假突破', en: 'It must be a failed breakout' }
+              ],
+              answer: 'B',
+              why: { zh: '收盘 108，没有大于 111，不符合本课的收盘突破。也不能因此就叫它假突破。', en: 'The close is 108, not above 111, so it does not meet this lesson’s close rule. That does not by itself make it a failed breakout.' }
+            },
+            {
+              q: { zh: '先收在 112，下一根收在 107。这时能说什么？', en: 'Price closes at 112, then the next candle closes at 107. What can you say?' },
+              options: [
+                { id: 'A', zh: '之后必涨', en: 'It must rise after that' },
+                { id: 'B', zh: '收盘回到了区间', en: 'The close came back into the range' },
+                { id: 'C', zh: '不知道有没有收盘', en: 'There is no close to look at' }
+              ],
+              answer: 'B',
+              why: { zh: '112 大于 111，107 又回到 100–110 里。收盘突破仍可失败。', en: '112 is above 111, and 107 is back inside 100–110. A close beyond the line can still fail.' }
+            },
+            {
+              q: { zh: '回踩更准确的说法是？', en: 'Which statement about a retest is the accurate one?' },
+              options: [
+                { id: 'A', zh: '回踩必成功', en: 'A retest must succeed' },
+                { id: 'B', zh: '回踩必反转', en: 'A retest must reverse' },
+                { id: 'C', zh: '价格返回测试边界，但结果不定', en: 'Price comes back to test the boundary, and the result is not settled' }
+              ],
+              answer: 'C',
+              why: { zh: '突破后重新接近边界测试叫回踩。回踩不是每次都有，也不能保证成功或反转。', en: 'A move back toward the boundary after a break is a retest. It does not happen every time, and it does not guarantee success or a reversal.' }
+            }
+          ]
+        },
         { id: '06', status: 'soon', title: { zh: '成交量与价格', en: 'Volume and price' } }
       ]
     }
