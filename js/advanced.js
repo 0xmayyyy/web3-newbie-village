@@ -514,8 +514,13 @@
     }
     root.innerHTML =
       '<div class="a2"><p class="a1-flag">' + t('star.sim') + ' · ' + t('star.a2.disclaimer') + '</p>' +
-      '<div class="a1-note">' + noteHtml(t('star.a3.rule')) + '</div>' +
-      '<div class="a1-note">' + noteHtml(t('star.a3.when')) + '</div>' +
+      '<div class="a3-intro"><div class="a1-note">' + noteHtml(t('star.a3.rule')) + '</div>' +
+      '<div class="a3-side"><table class="a3-terms"><tbody>' +
+      '<tr><th>HH</th><td>Higher High</td><td>更高的高点</td></tr>' +
+      '<tr><th>HL</th><td>Higher Low</td><td>更高的低点</td></tr>' +
+      '<tr><th>LH</th><td>Lower High</td><td>更低的高点</td></tr>' +
+      '<tr><th>LL</th><td>Lower Low</td><td>更低的低点</td></tr>' +
+      '</tbody></table>' + proseLines(t('star.a3.terms'), noteEsc, ['；']) + '</div></div>' +
       '<div class="a3-switch" role="group">' +
       ['up', 'down', 'range'].map(function (id) {
         return '<button type="button" data-set="' + id + '" aria-pressed="' + (id === 'up' ? 'true' : 'false') + '">' + mini(packs[id].bars) + '<span>' + t('star.a3.' + id) + '</span></button>';
@@ -647,8 +652,14 @@
         var rel = window.STAR_A3.relate(pivots, point);
         var want = rel.prev ? rel.dir : 'first';
         var right = judge.getAttribute('data-judge') === want;
-        var fact = !rel.prev ? t('star.a3.factFirst') : (rel.dir === 'up' ? t('star.a3.factUp') : t('star.a3.factDown'));
-        setNote(live, (right ? t('star.quizOk') : t('star.quizNo')) + ' ' + fact);
+        var fact;
+        if (!rel.prev) fact = right ? t('star.a3.factFirst') : t('star.a3.wrongFirst');
+        else {
+          var cmp = rel.dir === 'up' ? t('star.a3.cmpUp') : t('star.a3.cmpDown');
+          var bits = { tag: window.STAR_A3.tag(pivots, rel.prev), prev: px(rel.prev.p), cur: px(point.p), cmp: cmp };
+          fact = t(right ? 'star.a3.rightCmp' : (point.k === 'H' ? 'star.a3.wrongHigh' : 'star.a3.wrongLow'), bits);
+        }
+        paintAnswer(live, right, t(right ? 'star.quizOk' : 'star.quizNo'), fact);
         return;
       }
       var candle = event.target.closest('#a3-scroll [data-i]');
@@ -1123,6 +1134,10 @@
   }
   function noteHtml(text) { return proseLines(text, noteEsc); }
   function setNote(el, text) { el.innerHTML = noteHtml(text); }
+  function paintAnswer(el, right, lead, rest) {
+    rest = String(rest || '').replace(/^(答对了。|答错了。|Correct\.\s*|Right\.\s*|Not right\.\s*)/, '');
+    el.innerHTML = '<span class="' + (right ? 'star-ok' : '') + '">' + noteEsc(lead) + '</span>' + (rest ? ' ' + noteEsc(rest) : '');
+  }
 
   function renderOverview(main, api) {
     var data = pack();
@@ -1231,7 +1246,7 @@
         });
         var missText = practiceMiss;
         if (!right && lesson.check && lesson.check.misses && lesson.check.misses[pick]) missText = L(lesson.check.misses[pick], lang);
-        practiceFeedback.textContent = right ? api.t('star.practiceOk') : missText;
+        paintAnswer(practiceFeedback, right, api.t(right ? 'star.practiceOk' : 'star.quizNo'), right ? '' : missText);
       });
     });
     if (lesson.quizzes) {
@@ -1257,7 +1272,7 @@
             other.classList.toggle('is-wrong', id === pick && !right);
             other.classList.toggle('is-right', right && id === q.answer);
           });
-          box.querySelector('[data-quiz-feedback]').textContent = (right ? api.t('star.quizOk') : api.t('star.quizNo')) + ' ' + L(q.why, lang);
+          paintAnswer(box.querySelector('[data-quiz-feedback]'), right, api.t(right ? 'star.quizOk' : 'star.quizNo'), L(q.why, lang));
           box.querySelector('[data-quiz-retry]').hidden = false;
           if (right) { solved[qi] = true; markLesson(); }
         });
@@ -1286,7 +1301,7 @@
           other.classList.toggle('is-wrong', id === pick && !right);
           other.classList.toggle('is-right', right && id === lesson.quiz.answer);
         });
-        quizFeedback.textContent = (right ? api.t('star.quizOk') : api.t('star.quizNo')) + ' ' + L(lesson.quiz.why, lang);
+        paintAnswer(quizFeedback, right, api.t(right ? 'star.quizOk' : 'star.quizNo'), L(lesson.quiz.why, lang));
         quizRetry.hidden = false;
         if (right) {
           api.setDone('star-' + chapterId + '-' + lessonId);

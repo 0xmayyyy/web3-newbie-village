@@ -135,8 +135,8 @@ window.ADVANCED_STAR = {
             en: 'An uptrend often shows a higher high (HH) and a higher low (HL). A downtrend often shows a lower high (LH) and a lower low (LL).'
           },
           explain: {
-            zh: '先标记明显的摆动高低点，不要把每个小波动都算成转折。上涨中一次回调不必然意味着趋势结束；震荡区里高低点可能交错，没必要强行定方向。摆动点的选择也依赖时间周期和规则。趋势不是最后一根K线颜色，而是重要高点与低点是否持续抬高或降低。HH更高的高点、HL更高的低点、LH更低的高点、LL更低的低点。上涨结构常见HH+HL；下跌结构常见LH+LL；混合结构可能是震荡/转折/不明确。只描述已发生事实，不预测下一根。',
-            en: 'Mark the obvious swing highs and lows. Do not treat every small wiggle as a turn. One pullback in a rise does not have to mean the trend is over. In a range, highs and lows can interleave, so there is no need to force a direction. Which swings you mark also depends on the timeframe and the rule. Trend is not the color of the last candle. It is whether the important highs and lows keep rising or falling. HH is a higher high, HL a higher low, LH a lower high, and LL a lower low. An uptrend often shows HH plus HL. A downtrend often shows LH plus LL. A mix can be a range, a turn, or simply unclear. Describe what has already happened. Do not predict the next candle.'
+            zh: '先标记明显的摆动高低点，不要把每个小波动都算成转折。上涨中一次回调不必然意味着趋势结束；震荡区里高低点可能交错，没必要强行定方向。摆动点的选择也依赖时间周期和规则。趋势不是最后一根K线颜色，而是重要高点与低点是否持续抬高或降低。',
+            en: 'Mark the obvious swing highs and lows. Do not treat every small wiggle as a turn. One pullback in a rise does not have to mean the trend is over. In a range, highs and lows can interleave, so there is no need to force a direction. Which swings you mark also depends on the timeframe and the rule. Trend is not the color of the last candle. It is whether the important highs and lows keep rising or falling.'
           },
           example: {
             zh: '高点100→110→120，低点90→98→105，是典型上移结构。跌破105可能提示结构变化，但不保证反转。爬楼梯也有暂时向下的一步。',
@@ -147,7 +147,8 @@ window.ADVANCED_STAR = {
             { zh: '事后随意调整结构点。', en: 'Moving the swing points afterward so the story fits.' },
             { zh: '一根红K线不等于反转。', en: 'One red candle is not a reversal.' },
             { zh: 'HH/HL不等于保证未来上涨。', en: 'HH and HL do not guarantee a future rise.' },
-            { zh: '不同周期可以相反。', en: 'Different timeframes can point in different directions.' }
+            { zh: '不同周期可以相反。', en: 'Different timeframes can point in different directions.' },
+            { zh: '市场总会有噪音破坏结构。', en: 'The market always has noise that can break the structure.' }
           ],
           practice: {
             zh: '关闭指标，在BTC 4H上标出三个主要高点和低点。',
