@@ -13,11 +13,16 @@ body.is-star main{max-width:none;margin:0;padding:0 0 48px;background:transparen
 .star-mod em,.star-lessons em{font-style:normal;color:#d4bc9e;font-size:12px}
 .star-tools{margin-top:18px}
 .star-tools a,.star-go{display:inline-flex;align-items:center;min-height:44px;padding:8px 16px;border-radius:999px;background:#e6c79e;color:#1b1428;font-weight:700;text-decoration:none}
-.star-lesson .star-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
-.star-mascot{width:92px;height:auto;flex:none;border-radius:18px;background:#1b1428}
-.star-one{border-left:3px solid #e6c79e;padding:8px 12px;background:rgba(230,199,158,.08)}
-.star-lesson h3{color:#f1d8b9;font-size:18px;margin:26px 0 10px}
-.star-lesson section+section{margin-top:8px}
+.star-scene{display:flex;align-items:center;gap:16px;margin:8px 0 28px;padding:8px 0 8px;border:0;background:transparent}
+.star-mascot{width:96px;height:auto;flex:none;border-radius:18px;background:#1b1428}
+.star-scene h3{margin:0 0 8px;font-size:clamp(18px,2.4vw,24px);line-height:1.45;color:#f5efff}
+.star-one{margin:0;color:#f4e9da;line-height:1.7}
+.star-stage{margin:0 -8px 28px;padding:18px 16px 12px;border-radius:28px;background:radial-gradient(ellipse at 80% 0%,rgba(90,63,176,.35),transparent 55%),#100c1c}
+.star-prose,.star-contrast,.star-pit,.star-do,.star-check,.star-lab{max-width:40em;margin:0 0 28px}
+.star-lesson h3{color:#f1d8b9;font-size:15px;letter-spacing:.04em;margin:0 0 8px}
+.star-contrast{padding-left:14px;border-left:2px solid rgba(230,199,158,.45)}
+.star-submit{margin-top:10px;min-height:44px;padding:8px 16px;border-radius:999px;border:1px solid rgba(230,199,158,.45);background:#241c33;color:#f0d59a;font:inherit}
+.a1-parts{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
 .a1{border:1px solid rgba(230,199,158,.28);border-radius:18px;padding:12px;background:#171226}
 .a1-flag{display:inline-block;margin:0 0 8px;padding:2px 8px;border-radius:999px;background:rgba(230,199,158,.16);color:#e6c79e;font-size:12px}
 .a1-modes,.a1-sub,.a1-fields{display:flex;flex-wrap:wrap;gap:8px}
@@ -43,7 +48,8 @@ body.is-star main{max-width:none;margin:0;padding:0 0 48px;background:transparen
 }
 @media (max-width:430px){
   .star-modules,.star-lessons{grid-template-columns:1fr}
-  .star-lesson .star-top{flex-direction:column}
+  .star-scene{align-items:flex-start}
+  .star-mascot{width:72px}
 }
 @media (prefers-reduced-motion:reduce){
   .a1-svg{scroll-behavior:auto}
