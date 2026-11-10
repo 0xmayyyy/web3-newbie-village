@@ -2904,11 +2904,41 @@ function bindLabNavHide() {
   labListen(nav, 'focusout', () => { focus = nav.contains(document.activeElement); if (!focus) schedule(650); });
   show();
 }
+function labParams() {
+  const hash = location.hash || '';
+  const q = hash.indexOf('?');
+  const fromHash = new URLSearchParams(q >= 0 ? hash.slice(q + 1) : '');
+  let fromSearch = new URLSearchParams();
+  try { fromSearch = new URLSearchParams(location.search); } catch (e) {}
+  fromSearch.forEach((value, key) => { if (value) fromHash.set(key, value); });
+  return fromHash;
+}
+
+function applyLabEntry() {
+  state.coin = readInitialCoin();
+  let params;
+  try { params = labParams(); } catch (e) { return; }
+  const coinQ = (params.get('coin') || '').toUpperCase();
+  const symbol = (params.get('symbol') || '').toUpperCase();
+  if (!READY_COINS.includes(coinQ) && symbol.endsWith('USDT')) {
+    const id = symbol.slice(0, -4);
+    if (READY_COINS.includes(id)) state.coin = id;
+  }
+  const interval = params.get('interval') || '';
+  if (Object.prototype.hasOwnProperty.call(TF_LIMITS, interval)) state.tf = interval;
+  if ((params.get('studies') || '').toLowerCase() === 'none') {
+    Object.keys(VILLAGE_DEFAULT_STUDIES).forEach((key) => { villageStudies[key] = false; });
+  }
+}
+
 async function boot() {
   if (!labAlive) return;
   if (typeof tagNews === "function") tagNews();
-  state.coin = readInitialCoin();
+  applyLabEntry();
   updateCoinChrome();
+  document.querySelectorAll('.tf-btn').forEach((btn) => {
+    btn.classList.toggle('active', btn.dataset.tf === state.tf);
+  });
   if ($("clock")) $("clock").textContent = clockText();
   if (!clockTimer) {
     clockTimer = setInterval(() => {
