@@ -168,7 +168,7 @@
             C: ['92 是成交价，不是亏损额。', '92 is the fill price, not the loss.']
           })
         ],
-        study: { kind: 'book', headers: ['价', '买盘数量'], cells: [['95', '0'], ['94', '0'], ['92', '2']], rows: [
+        study: { kind: 'book', headers: [bi('价', 'Price'), bi('买盘数量', 'Bid size')], cells: [['95', '0'], ['94', '0'], ['92', '2']], rows: [
           bi('买入 100，触发 95，成交 92，每枚亏损 8。', 'Bought at 100, trigger 95, fill 92, loss 8 per coin.')
         ] }
       }),

@@ -65,7 +65,7 @@
           quiz('已有余额会被减半吗？', 'Are existing balances halved?', [opt('A', '会', 'Yes'), opt('B', '否', 'No'), opt('C', '只减零头', 'Only the dust')], 'B', { A: ['减的是新发行补贴，不是账本上的余额。', 'What is cut is the new issuance subsidy, not balances on the ledger.'], B: ['1 枚还是 1 枚。', '1 coin is still 1 coin.'], C: ['没有“只减零头”这条规则。', 'There is no rule that only dust is cut.'] }),
           quiz('历史路径保证下一次吗？', 'Does the historical path guarantee the next time?', [opt('A', '保证', 'It does'), opt('B', '不保证', 'It does not'), opt('C', '只保证减半当月', 'Only the halving month')], 'B', { A: ['过去的价格不是协议规则。', 'Past prices are not a protocol rule.'], B: ['补贴规则可以重复，价格路径不必重复。', 'The subsidy rule can repeat. The price path need not.'], C: ['当月同样没有价格保证。', 'The month of the halving has no price guarantee either.'] })
         ],
-        study: { kind: 'panel', headers: ['阶段', '补贴'], cells: [['1', '50'], ['2', '25'], ['3', '12.5'], ['4', '6.25'], ['5', '3.125']], rows: [bi('按区块高度递减。已有余额不减。', 'It steps down by block height. Existing balances are not reduced.')] }
+        study: { kind: 'panel', headers: [bi('阶段', 'Stage'), bi('补贴', 'Subsidy')], cells: [['1', '50'], ['2', '25'], ['3', '12.5'], ['4', '6.25'], ['5', '3.125']], rows: [bi('按区块高度递减。已有余额不减。', 'It steps down by block height. Existing balances are not reduced.')] }
       }),
       lesson({
         id: '05', title: bi('宏观事件日历：先计划再看结果', 'A macro calendar: plan before the result'),

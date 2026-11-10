@@ -52,7 +52,7 @@
           quiz('名义 2000、费率 +0.01%，费用是？', 'Notional 2000 and rate +0.01%. What is the fee?', [opt('A', '0.2', '0.2'), opt('B', '2', '2'), opt('C', '20', '20')], 'A', { A: ['0.01%=0.0001，2000×0.0001=0.2。', '0.01%=0.0001, and 2000×0.0001=0.2.'], B: ['2 会是 0.1%，大了 10 倍。', '2 would be 0.1%, ten times larger.'], C: ['20 会是 1%。', '20 would be 1%.'] }),
           quiz('资金费率会永远固定吗？', 'Is the funding rate fixed forever?', [opt('A', '会', 'Yes'), opt('B', '否', 'No'), opt('C', '只有为 0 时会变', 'It changes only when it is 0')], 'B', { A: ['例子里三期就是 +0.01%、−0.02% 和 0。', 'The example’s three periods are +0.01%, −0.02%, and 0.'], B: ['每一期单独计算，下一期可以变号。', 'Each period is calculated alone. The next period can change sign.'], C: ['不为 0 的费率下一期也可以变。', 'A non-zero rate can also change next period.'] })
         ],
-        study: { kind: 'panel', headers: ['期', '费率', '2000 的费用'], cells: [['1', '+0.01%', '0.2'], ['2', '−0.02%', '−0.4'], ['3', '0', '0']], rows: [bi('正数表示多头支付。', 'A positive number means longs pay.')] }
+        study: { kind: 'panel', headers: [bi('期', 'Period'), bi('费率', 'Rate'), bi('2000 的费用', 'Fee on 2000')], cells: [['1', '+0.01%', '0.2'], ['2', '−0.02%', '−0.4'], ['3', '0', '0']], rows: [bi('正数表示多头支付。', 'A positive number means longs pay.')] }
       }),
       lesson({
         id: '04',
@@ -69,7 +69,7 @@
           quiz('市价单会不会滑价？', 'Can a market order slip?', [opt('A', '会', 'Yes'), opt('B', '不会', 'No'), opt('C', '只有卖出会', 'Only sells slip')], 'A', { A: ['吃到下一档 101，均价就高于 100。', 'Lifting the next level at 101 makes the average higher than 100.'], B: ['第一档数量不够时，不可能全部停在 100。', 'When the first level is not large enough, the whole order cannot stay at 100.'], C: ['买入一样会往更高的卖价吃。', 'A buy also lifts higher asks.'] }),
           quiz('限价单是否总会成交？', 'Does a limit order always fill?', [opt('A', '总会', 'Always'), opt('B', '否', 'No'), opt('C', '市价才不会', 'Only market orders may fail')], 'B', { A: ['价格没有碰到限价，订单就还挂着。', 'If price never reaches the limit, the order stays open.'], B: ['限价的含义就是可以不成交。', 'The meaning of a limit is that it may not fill.'], C: ['市价会去吃现有深度。限价才是可能不成交的那一种。', 'A market order lifts the current depth. The limit is the one that may not fill.'] })
         ],
-        study: { kind: 'book', headers: ['卖价', '数量'], cells: [['100', '1'], ['101', '2']], rows: [bi('买 3：花费 302，均价约 100.667。第 4 个超出已知深度。', 'Buy 3: cost 302, average about 100.667. The 4th unit is past the known depth.')] }
+        study: { kind: 'book', headers: [bi('卖价', 'Ask'), bi('数量', 'Size')], cells: [['100', '1'], ['101', '2']], rows: [bi('买 3：花费 302，均价约 100.667。第 4 个超出已知深度。', 'Buy 3: cost 302, average about 100.667. The 4th unit is past the known depth.')] }
       }),
       lesson({
         id: '05',
@@ -86,7 +86,7 @@
           quiz('一张未平仓合约是否两边都有人？', 'Does one open contract have someone on both sides?', [opt('A', '是', 'Yes'), opt('B', '否', 'No'), opt('C', '只有多头', 'Only a long')], 'A', { A: ['多头和空头成对存在，张数才算一张未平仓。', 'The long and the short exist as a pair. That is one unit of open interest.'], B: ['没有对手方就没有这张合约。', 'Without the other side there is no contract.'], C: ['只有多头无法单独形成未平仓合约。', 'A long alone cannot form an open contract.'] }),
           quiz('清算数据是否一定覆盖全部市场？', 'Does liquidation data necessarily cover the whole market?', [opt('A', '一定', 'Yes'), opt('B', '不一定', 'Not necessarily'), opt('C', 'OI 上升就一定', 'Yes whenever OI rises')], 'B', { A: ['不同来源的覆盖范围可以缺一块。', 'Different sources can leave part of the market out.'], B: ['看见一部分清算，不能当成全部合约都算进来了。', 'Seeing some liquidations does not mean every contract was included.'], C: ['OI 变化不证明数据源是完整的。', 'A change in OI does not prove the data source is complete.'] })
         ],
-        study: { kind: 'panel', headers: ['事件', 'OI'], cells: [['双方开仓', '+1'], ['双方平仓', '−1'], ['一开一平', '0']], rows: [bi('OI 上升不等于价格上涨。', 'Rising OI does not mean price rose.')] }
+        study: { kind: 'panel', headers: [bi('事件', 'Event'), 'OI'], cells: [[bi('双方开仓', 'Both sides open'), '+1'], [bi('双方平仓', 'Both sides close'), '−1'], [bi('一开一平', 'One opens and one closes'), '0']], rows: [bi('OI 上升不等于价格上涨。', 'Rising OI does not mean price rose.')] }
       })
     ]
   };

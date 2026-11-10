@@ -49,7 +49,7 @@
           quiz('复盘要看什么？', 'What does a review look at?', [opt('A', '过程和结果', 'Process and outcome'), opt('B', '只看盈利截图', 'Only winning screenshots'), opt('C', '只看胜率一个数', 'Only the single win-rate number')], 'A', { A: ['四格就是为了同时留下过程和结果。', 'The four cells exist so process and outcome are kept together.'], B: ['只留盈利，违规和亏损都会消失。', 'Keeping only winners makes rule breaks and losses disappear.'], C: ['50% 胜率旁边还有 4 笔没按计划。', 'Beside the 50% win rate there are still 4 trades that broke the plan.'] }),
           quiz('这十笔的 50% 胜率等于以后也是 50% 吗？', 'Does this ten-trade 50% win rate mean the future is also 50%?', [opt('A', '等于', 'Yes'), opt('B', '高于 50% 才等于', 'Yes only if it is above 50%'), opt('C', '不是', 'No')], 'C', { A: ['十笔是一段样本，不是未来的分布。', 'Ten trades are one sample, not the future distribution.'], B: ['就算不是 50%，同样不能外推。', 'Even if it were not 50%, it still could not be extrapolated.'], C: ['样本胜率不是下一段的承诺。', 'A sample win rate is not a promise for the next stretch.'] })
         ],
-        study: { kind: 'panel', headers: ['项目', '十笔教学记录'], cells: [['盈亏合计', '+50'], ['赢 / 亏', '5 / 5'], ['胜率', '50%'], ['未按计划', '4 笔']], rows: [bi('违规的盈利仍然放在过程不合格。', 'A rule-breaking win still sits in failed process.')] }
+        study: { kind: 'panel', headers: [bi('项目', 'Item'), bi('十笔教学记录', 'Ten-trade teaching record')], cells: [[bi('盈亏合计', 'Total PnL'), '+50'], [bi('赢 / 亏', 'Wins / losses'), '5 / 5'], [bi('胜率', 'Win rate'), '50%'], [bi('未按计划', 'Did not follow the plan'), bi('4 笔', '4 trades')]], rows: [bi('违规的盈利仍然放在过程不合格。', 'A rule-breaking win still sits in failed process.')] }
       })
     ]
   };

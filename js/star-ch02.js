@@ -4,8 +4,7 @@
   var i;
   for (i = 0; i < 30; i++) macd.push(Math.round((100 + i * 0.8) * 1000) / 1000);
   for (i = 0; i < 12; i++) macd.push(Math.round((macd[macd.length - 1] + 0.12) * 1000) / 1000);
-  var rsi = [];
-  for (i = 0; i < 20; i++) rsi.push(100 + i * 1.2);
+  var rsi75 = [100, 103, 106, 103.5, 106.5, 104, 107, 110, 107.5, 110.5, 108, 111, 114, 117, 120];
   P.chapters['02'] = {
     title: bi('技术指标与信号', 'Indicators and signals'),
     lessons: [
@@ -118,7 +117,7 @@
             C: ['持仓量是合约未平仓数量，不是 RSI 的输入。', 'Open interest is outstanding contracts, not an RSI input.']
           })
         ],
-        study: { kind: 'rsi', closes: rsi, start: 14 }
+        study: { kind: 'rsi', closes: rsi75, start: 15 }
       }),
       lesson({
         id: '04',
@@ -192,7 +191,21 @@
             C: ['练习和正式图用同一条确认规则。', 'Practice and the main chart use the same confirmation rule.']
           })
         ],
-        study: { kind: 'rsi', closes: [100, 102, 105, 103, 108, 112, 110, 111, 109, 107, 108, 106, 104, 105, 103, 102, 104, 106, 105, 103], start: 8 }
+        study: {
+          kind: 'rsi',
+          bars: [
+            { o: 76.4, h: 77.6, l: 75.9, c: 77 }, { o: 77, h: 82.6, l: 76.5, c: 82 }, { o: 82, h: 82.6, l: 78.5, c: 79 },
+            { o: 79, h: 84.6, l: 78.5, c: 84 }, { o: 84, h: 84.6, l: 80.5, c: 81 }, { o: 81, h: 86.6, l: 80.5, c: 86 },
+            { o: 86, h: 86.6, l: 82.5, c: 83 }, { o: 83, h: 88.6, l: 82.5, c: 88 }, { o: 88, h: 88.6, l: 85.5, c: 86 },
+            { o: 86, h: 91.6, l: 85.5, c: 91 }, { o: 91, h: 91.6, l: 90.5, c: 91 }, { o: 91, h: 96.6, l: 90.5, c: 96 },
+            { o: 96, h: 96.6, l: 95.5, c: 96 }, { o: 96, h: 101.6, l: 95.5, c: 101 }, { o: 101, h: 105, l: 100, c: 105 },
+            { o: 99, h: 100, l: 96, c: 97 }, { o: 97, h: 97.6, l: 91, c: 91.5 }, { o: 91.5, h: 92.1, l: 91, c: 91.5 },
+            { o: 91.5, h: 96.6, l: 91, c: 96 }, { o: 96, h: 102.1, l: 95.5, c: 101.5 }, { o: 101.5, h: 109, l: 101, c: 107 },
+            { o: 107, h: 112, l: 104, c: 106 }, { o: 106, h: 106.6, l: 103.5, c: 104 }, { o: 104, h: 104.6, l: 100.5, c: 101 }
+          ],
+          peaks: [{ index: 14, high: 105 }, { index: 21, high: 112 }],
+          start: 24
+        }
       }),
       lesson({
         id: '06',

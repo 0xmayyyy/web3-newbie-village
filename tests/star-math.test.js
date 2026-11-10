@@ -37,6 +37,27 @@ test('position size, expectancy, and five one-percent losses', function () {
   assert.equal(M.round(M.pathEquity(1000, [0.01, 0.01, 0.01, 0.01, 0.01]), 2), 950.99);
 });
 
+test('lesson RSI series match the worked examples', function () {
+  var win = {};
+  new Function('window', [
+    fs.readFileSync('js/star-pack.js', 'utf8'),
+    fs.readFileSync('js/star-math.js', 'utf8'),
+    fs.readFileSync('js/star-ch02.js', 'utf8')
+  ].join('\n'))(win);
+  var lessons = win.STAR_PACK.chapters['02'].lessons;
+  var overbought = lessons.filter(function (l) { return l.id === '03'; })[0];
+  var divergence = lessons.filter(function (l) { return l.id === '05'; })[0];
+  var rsi75 = win.STAR_MATH.rsiWilder(overbought.study.closes, 14);
+  assert.equal(win.STAR_MATH.round(rsi75[14], 2), 75);
+  var bars = divergence.study.bars;
+  var rsiDiv = win.STAR_MATH.rsiWilder(bars.map(function (b) { return b.c; }), 14);
+  assert.equal(bars[14].h, 105);
+  assert.equal(bars[21].h, 112);
+  assert.equal(win.STAR_MATH.round(rsiDiv[14], 2), 78);
+  assert.equal(win.STAR_MATH.round(rsiDiv[21], 2), 69);
+  bars.forEach(function (bar) { assert.equal(win.STAR_MATH.validBar(bar), true); });
+});
+
 test('histogram is DIF minus DEA, and Pearson of a reverse series is -1', function () {
   var series = [];
   for (var i = 0; i < 40; i++) series.push(100 + i * 0.4);

@@ -17,7 +17,7 @@
           quiz('网页上写着收入很高，你应该？', 'The page says revenue is high. What should you do?', [opt('A', '直接引用为事实', 'Cite it as fact'), opt('B', '忽略所有收入', 'Ignore all revenue'), opt('C', '核对证据来源', 'Check the evidence')], 'C', { A: ['没看来源，就不能从声称跳到事实。', 'Without a source, a claim cannot jump to a fact.'], B: ['收入可能重要，但要核对，不是一概忽略。', 'Revenue may matter, but it needs a check. It is not ignored automatically.'], C: ['标成已核对之前，要看到能复核的来源。', 'Before marking it checked, you need a source you can re-check.'] }),
           quiz('代币会不会捕获价值，要研究什么？', 'To know whether the token captures value, what do you study?', [opt('A', '机制', 'The mechanism'), opt('B', '只看价格新高', 'Only the price high'), opt('C', '只看地址数', 'Only the address count')], 'A', { A: ['费用、回购、分配或没有任何路径，都写在机制里。', 'Fees, buybacks, distributions, or no path at all are written in the mechanism.'], B: ['价格新高不说明持币人分享了收入。', 'A price high does not show that holders shared the revenue.'], C: ['地址数不是价值捕获。', 'An address count is not value capture.'] })
         ],
-        study: { kind: 'panel', headers: ['说法', '状态'], cells: [['用户 10 万', '声称，不能当成人数'], ['收入很高', '未知，待核对'], ['代币分享收入', '要看机制']], rows: [bi('虚构项目：星桥协议。', 'Fictional project: Starbridge Protocol.')] }
+        study: { kind: 'panel', headers: [bi('说法', 'Statement'), bi('状态', 'Status')], cells: [[bi('用户 10 万', '100,000 addresses'), bi('声称，不能当成人数', 'Claimed, not a head count')], [bi('收入很高', 'Revenue is high'), bi('未知，待核对', 'Unknown, still to check')], [bi('代币分享收入', 'The token shares revenue'), bi('要看机制', 'Depends on the mechanism')]], rows: [bi('虚构项目：星桥协议。', 'Fictional project: Starbridge Protocol.')] }
       }),
       lesson({
         id: '02', title: bi('Tokenomics：供应与解锁', 'Tokenomics: supply and unlocks'),
@@ -33,7 +33,7 @@
           quiz('FDV 20 亿表示已经有人买了 20 亿吗？', 'Does an FDV of 2 billion mean someone bought 2 billion?', [opt('A', '表示', 'Yes'), opt('B', '不是', 'No'), opt('C', '解锁前表示', 'Yes before unlocks')], 'B', { A: ['FDV 是价格乘以最大供应，不是成交额。', 'FDV is price times max supply, not traded cash.'], B: ['很多代币可能还没进入流通，更没有被买成 20 亿成交。', 'Many tokens may not be circulating, and they were not bought as 2 billion of trades.'], C: ['解锁前 FDV 的定义仍然不是成交额。', 'Before unlocks, FDV is still not traded cash.'] }),
           quiz('解锁 5000 万是否一定砸盘？', 'Does unlocking 50 million necessarily dump the price?', [opt('A', '一定', 'Yes'), opt('B', '一定不跌', 'It certainly does not fall'), opt('C', '不一定', 'Not necessarily')], 'C', { A: ['解锁增加的是可流通数量，不是一张已经成交的卖单。', 'An unlock increases the quantity that can circulate. It is not a sell order that has already traded.'], B: ['也不能保证不跌。卖出与否还没发生。', 'It also does not guarantee no drop. Whether anyone sells has not happened yet.'], C: ['价格 2 不变时，流通市值从 2 亿记到 3 亿，这只是计价，不是卖压证明。', 'If price stays 2, circulating market cap is marked from 200 million to 300 million. That is a valuation, not proof of selling pressure.'] })
         ],
-        study: { kind: 'panel', headers: ['项目', '数值'], cells: [['价格', '2'], ['流通', '1 亿'], ['最大供应', '10 亿'], ['流通市值', '2 亿'], ['FDV', '20 亿'], ['解锁后再计流通市值', '3 亿']], rows: [bi('解锁 5000 万后，按原价计，流通市值是 3 亿。', 'After unlocking 50 million, at the same price, circulating market cap is 300 million.')] }
+        study: { kind: 'panel', headers: [bi('项目', 'Item'), bi('数值', 'Value')], cells: [[bi('价格', 'Price'), '2'], [bi('流通', 'Circulating'), bi('1 亿', '100 million')], [bi('最大供应', 'Max supply'), bi('10 亿', '1 billion')], [bi('流通市值', 'Circulating market cap'), bi('2 亿', '200 million')], ['FDV', bi('20 亿', '2 billion')], [bi('解锁后再计流通市值', 'Circulating market cap after the unlock'), bi('3 亿', '300 million')]], rows: [bi('解锁 5000 万后，按原价计，流通市值是 3 亿。', 'After unlocking 50 million, at the same price, circulating market cap is 300 million.')] }
       }),
       lesson({
         id: '03', title: bi('市场叙事：热度不是基本面', 'Narratives: attention is not fundamentals'),
@@ -49,7 +49,7 @@
           quiz('盘口薄时，滑点通常怎样？', 'When the book is thin, slippage is usually?', [opt('A', '更明显', 'More visible'), opt('B', '消失', 'Gone'), opt('C', '只影响卖出', 'Only sells')], 'A', { A: ['300 个要吃到 2.3，均价高于第一档的 2。', '300 units reach 2.3, so the average is above the first level at 2.'], B: ['档位数量小，滑点不会消失。', 'Small size at each level does not remove slippage.'], C: ['买入一样会往上吃价。', 'A buy also lifts prices upward.'] }),
           quiz('热度之外还要看什么？', 'Besides attention, what else do you check?', [opt('A', '真实产品和证据', 'The real product and the evidence'), opt('B', '只看帖子排名', 'Only the post ranking'), opt('C', '只看均价', 'Only the average price')], 'A', { A: ['产品是否存在、证据能否复核，热度回答不了。', 'Whether the product exists and whether evidence can be re-checked is not answered by attention.'], B: ['排名仍是热度。', 'A ranking is still attention.'], C: ['均价只描述这笔成交，不描述项目。', 'The average only describes this fill. It does not describe the project.'] })
         ],
-        study: { kind: 'book', headers: ['卖价', '数量'], cells: [['2', '100'], ['2.1', '100'], ['2.3', '100']], rows: [bi('买 300：花费 640，均价 2.1333333333。', 'Buy 300: cost 640, average 2.1333333333.')] }
+        study: { kind: 'book', headers: [bi('卖价', 'Ask'), bi('数量', 'Size')], cells: [['2', '100'], ['2.1', '100'], ['2.3', '100']], rows: [bi('买 300：花费 640，均价 2.1333333333。', 'Buy 300: cost 640, average 2.1333333333.')] }
       }),
       lesson({
         id: '04', title: bi('项目尽调：写出可以被推翻的结论', 'Diligence: write a conclusion that can be overturned'),
@@ -65,7 +65,7 @@
           quiz('管理员可以升级合约时，你应该？', 'If an admin can upgrade the contract, you should?', [opt('A', '评估权限能做什么', 'Assess what the power can do'), opt('B', '忽略，因为还没升级', 'Ignore it because it has not been upgraded'), opt('C', '当成已经去中心化', 'Treat it as already decentralized')], 'A', { A: ['权限本身就是风险：它能改什么，要写出来。', 'The power is the risk. Write down what it can change.'], B: ['还没使用，不表示以后不能使用。', 'Not having used it does not mean it cannot be used later.'], C: ['可升级的管理员权限与“已经去中心化”相反。', 'An upgradeable admin is the opposite of “already decentralized.”'] }),
           quiz('还不知道的信息怎么写？', 'How do you write information you still do not know?', [opt('A', '写成有利', 'Write it as favorable'), opt('B', '写成不利', 'Write it as unfavorable'), opt('C', '标成未知并继续核实', 'Mark it unknown and keep checking')], 'C', { A: ['未知不是利好。', 'Unknown is not bullish.'], B: ['未知也不是自动的利空。', 'Unknown is not automatically bearish either.'], C: ['标成未知，结论才留着被以后的证据推翻或补上。', 'Mark it unknown so later evidence can overturn or fill the conclusion.'] })
         ],
-        study: { kind: 'panel', headers: ['证据', '作用'], cells: [['A', '支持产品存在'], ['B', '管理员可升级'], ['C', '与收入声称冲突'], ['D', '未知']], rows: [bi('结论要容得下反证。这不是买卖建议。', 'The conclusion has to fit the counter-evidence. This is not a buy or sell recommendation.')] }
+        study: { kind: 'panel', headers: [bi('证据', 'Evidence'), bi('作用', 'Role')], cells: [['A', bi('支持产品存在', 'Supports that a product exists')], ['B', bi('管理员可升级', 'Admin can upgrade')], ['C', bi('与收入声称冲突', 'Conflicts with the revenue claim')], ['D', bi('未知', 'Unknown')]], rows: [bi('结论要容得下反证。这不是买卖建议。', 'The conclusion has to fit the counter-evidence. This is not a buy or sell recommendation.')] }
       })
     ]
   };

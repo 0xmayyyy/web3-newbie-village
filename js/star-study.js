@@ -105,6 +105,7 @@
             if (v != null && i < bars.length) pts.push((padL + i * slot + slot / 2).toFixed(1) + ',' + yp(v).toFixed(1));
           });
           if (pts.length > 1) bits.push('<polyline points="' + pts.join(' ') + '" fill="none" stroke="' + series.color + '" stroke-width="1.8"></polyline>');
+          else if (pts.length === 1) bits.push('<circle cx="' + pts[0].split(',')[0] + '" cy="' + pts[0].split(',')[1] + '" r="3" fill="' + series.color + '"></circle>');
         }
       });
     }
@@ -112,9 +113,10 @@
     return bits.join('');
   }
 
-  function table(headers, rows) {
-    return '<div class="table-wrap"><table><thead><tr>' + headers.map(function (h) { return '<th>' + esc(h) + '</th>'; }).join('') + '</tr></thead><tbody>' +
-      rows.map(function (row) { return '<tr>' + row.map(function (cell) { return '<td>' + esc(cell) + '</td>'; }).join('') + '</tr>'; }).join('') +
+  function table(headers, rows, lang) {
+    function cell(value) { return esc(text(value, lang)); }
+    return '<div class="table-wrap"><table><thead><tr>' + headers.map(function (h) { return '<th>' + cell(h) + '</th>'; }).join('') + '</tr></thead><tbody>' +
+      rows.map(function (row) { return '<tr>' + row.map(function (value) { return '<td>' + cell(value) + '</td>'; }).join('') + '</tr>'; }).join('') +
       '</tbody></table></div>';
   }
 
@@ -180,7 +182,7 @@
       return svg + '<label class="a2-window">N <input data-state="n" type="range" min="1" max="50" value="' + p1 + '"></label><p class="a2-readout">' + esc(note) + '</p>' +
         table(['#', 'C', 'EMA' + p1, 'EMA' + p2], closes.map(function (c, i) {
           return [String(i + 1), fmt(c, 3), fmt(e1[i], 6), fmt(e2[i], 6)];
-        }));
+        }), lang);
     }
     if (study.kind === 'macd') {
       var m = math.macd(closes);
@@ -198,9 +200,22 @@
     }
     if (study.kind === 'rsi') {
       var r = math.rsiWilder(closes, 14);
+      var missing = lang === 'en' ? 'Insufficient data' : '样本不足';
+      function rsiText(v) { return v == null ? missing : fmt(v, 2); }
+      var readout;
+      if (study.peaks) {
+        readout = study.peaks.map(function (pk) {
+          var v = pk.index < r.length ? r[pk.index] : null;
+          return lang === 'en'
+            ? 'High ' + pk.high + ', RSI ' + rsiText(v)
+            : '高点 ' + pk.high + '，RSI ' + rsiText(v);
+        }).join(lang === 'en' ? '; ' : '；');
+      } else {
+        readout = 'RSI ' + rsiText(r[r.length - 1]);
+      }
       return candleSvg(bars, {
-        pane: { label: 'RSI(14)', values: r.map(function (v) { return v == null ? 50 : v; }), series: [{ values: r, color: '#e6c79e' }] }
-      }) + '<p class="a2-readout">RSI ' + fmt(r[r.length - 1], 2) + '</p>';
+        pane: { label: 'RSI(14)', values: r, series: [{ values: r, color: '#e6c79e' }] }
+      }) + '<p class="a2-readout">' + esc(readout) + '</p>';
     }
     if (study.kind === 'boll') {
       var band = math.bollinger(closes, study.n || 3, study.k || 2);
@@ -221,7 +236,7 @@
       var drawn = levels.map(function (lv) { return { price: lv.price, label: String(lv.r) }; });
       return candleSvg(bars, { levels: drawn }) +
         '<div class="a1-modes"><button type="button" data-state="dir" data-pick="up">' + (lang === 'en' ? 'Up retrace' : '上涨回撤') + '</button><button type="button" data-state="dir" data-pick="down">' + (lang === 'en' ? 'Down retrace' : '下跌回撤') + '</button></div>' +
-        table(['r', lang === 'en' ? 'Price' : '价格'], levels.map(function (lv) { return [String(lv.r), fmt(lv.price, 2)]; }));
+        table(['r', lang === 'en' ? 'Price' : '价格'], levels.map(function (lv) { return [String(lv.r), fmt(lv.price, 2)]; }), lang);
     }
     if (study.kind === 'zone') {
       return candleSvg(bars, { zone: study.zone }) + '<p class="a2-readout">' + esc(text(study.caption, lang)) + '</p>';
@@ -232,7 +247,7 @@
     if (study.kind === 'panel' || study.kind === 'book') {
       return '<div class="a2-readout">' + (study.rows || []).map(function (row) {
         return '<p>' + esc(text(row, lang)) + '</p>';
-      }).join('') + '</div>' + (study.headers ? table(study.headers, study.cells || []) : '');
+      }).join('') + '</div>' + (study.headers ? table(study.headers, study.cells || [], lang) : '');
     }
     return candleSvg(bars, {});
   }

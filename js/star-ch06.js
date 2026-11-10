@@ -17,7 +17,7 @@
           quiz('成功是否等于你认识的收款人已经收到？', 'Does success mean the recipient you know has received it?', [opt('A', '等于', 'Yes'), opt('B', '否', 'No'), opt('C', '三笔确认就等于', 'Yes at three confirmations')], 'B', { A: ['成功没有包含“收款地址是你核对过的那一个”。', 'Success does not include “the recipient is the address you checked.”'], B: ['地址、合约和链都要另外看。', 'Address, contract, and chain each need their own look.'], C: ['确认数不是身份证明。', 'A confirmation count is not proof of identity.'] }),
           quiz('同名代币就是同一份代币吗？', 'Is a same-name token the same token?', [opt('A', '是', 'Yes'), opt('B', '否', 'No'), opt('C', '符号一样就是', 'Yes if the symbol matches')], 'B', { A: ['名字可以复制，合约地址不能靠名字代替。', 'A name can be copied. A contract address cannot be replaced by a name.'], B: ['要核对合约，而不是只核对符号。', 'Check the contract, not only the symbol.'], C: ['符号相同仍然可能是另一份合约。', 'The same symbol can still be a different contract.'] })
         ],
-        study: { kind: 'panel', headers: ['字段', '模拟值'], cells: [['链', 'DemoChain'], ['交易', 'DEMO_TX_001'], ['区块', '1001'], ['金额', '100 DEMO_USDT'], ['确认', '3']], rows: [bi('教学模拟。成功不等于收款人已被你核对。', 'Teaching simulation. Success does not mean you have checked the recipient.')] }
+        study: { kind: 'panel', headers: [bi('字段', 'Field'), bi('模拟值', 'Simulated value')], cells: [[bi('链', 'Chain'), 'DemoChain'], [bi('交易', 'Transaction'), 'DEMO_TX_001'], [bi('区块', 'Block'), '1001'], [bi('金额', 'Amount'), '100 DEMO_USDT'], [bi('确认', 'Confirmations'), '3']], rows: [bi('教学模拟。成功不等于收款人已被你核对。', 'Teaching simulation. Success does not mean you have checked the recipient.')] }
       }),
       lesson({
         id: '02', title: bi('交易所净流入：进交易所不等于卖掉', 'Exchange netflow: coins in do not mean coins sold'),
@@ -33,7 +33,7 @@
           quiz('净流入 +300 等于卖掉 300 吗？', 'Does a net inflow of +300 mean 300 was sold?', [opt('A', '等于', 'Yes'), opt('B', '否', 'No'), opt('C', '过了 24 小时就等于', 'Yes after 24 hours')], 'B', { A: ['进入交易所还可以继续放着，没有成交记录就不能说已卖。', 'Coins can sit on the exchange. Without a trade record you cannot say they were sold.'], B: ['+300 只是外部净进入的数量。', '+300 is only the external net amount that entered.'], C: ['时间过去也不会自动把转入变成卖出。', 'Time passing does not automatically turn a deposit into a sale.'] }),
           quiz('标签不完整会不会影响净额？', 'Can incomplete labels change the net?', [opt('A', '会', 'Yes'), opt('B', '不会', 'No'), opt('C', '只影响未知 200', 'Only the unknown 200')], 'A', { A: ['把外部流转错标成内部，净额就会变。', 'Mislabelling an external flow as internal changes the net.'], B: ['口径依赖标签。标签错了，加减的集合就错了。', 'The measure depends on labels. Wrong labels mean the wrong set is added and subtracted.'], C: ['未知 200 只是其中一项。其他错标也会影响。', 'The unknown 200 is only one item. Other mislabels matter too.'] })
         ],
-        study: { kind: 'panel', headers: ['项目', '数量'], cells: [['外部流入', '1000'], ['外部流出', '700'], ['内部划转', '500（排除）'], ['净流入', '+300'], ['未知', '200']], rows: [bi('净流入不是已卖出。', 'Net inflow is not coins already sold.')] }
+        study: { kind: 'panel', headers: [bi('项目', 'Item'), bi('数量', 'Amount')], cells: [[bi('外部流入', 'External inflow'), '1000'], [bi('外部流出', 'External outflow'), '700'], [bi('内部划转', 'Internal transfer'), bi('500（排除）', '500 (excluded)')], [bi('净流入', 'Net inflow'), '+300'], [bi('未知', 'Unknown'), '200']], rows: [bi('净流入不是已卖出。', 'Net inflow is not coins already sold.')] }
       }),
       lesson({
         id: '03', title: bi('稳定币增发：Mint 不等于买盘', 'Stablecoin minting: a mint is not buying pressure'),
@@ -49,7 +49,7 @@
           quiz('Mint 是否等于有人买比特币？', 'Does a mint mean someone bought bitcoin?', [opt('A', '等于', 'Yes'), opt('B', '不是', 'No'), opt('C', '一小时后等于', 'Yes after one hour')], 'B', { A: ['增发记录里没有买入 BTC 这个动作。', 'A mint record does not contain a BTC purchase.'], B: ['供应变化和买盘是两件事。', 'A supply change and buying pressure are two different things.'], C: ['时间过去不会自动把 mint 变成买单。', 'Time passing does not turn a mint into a buy.'] }),
           quiz('跨链判断要不要多链一起看？', 'For a cross-chain claim, do you look at several chains together?', [opt('A', '要', 'Yes'), opt('B', '不用', 'No'), opt('C', '看符号就够', 'The symbol is enough')], 'A', { A: ['单链的 mint 看不到另一条链有没有 burn。', 'A mint on one chain does not show whether another chain burned.'], B: ['只看一条链，合计供应可能算错。', 'Looking at one chain can mis-count combined supply.'], C: ['符号相同不能代替另一条链的记录。', 'The same symbol does not replace the other chain’s record.'] })
         ],
-        study: { kind: 'panel', headers: ['链', '变化'], cells: [['A', 'mint 1 亿'], ['B', 'burn 1 亿'], ['合计', '0']], rows: [bi('金额相同不等于已经证明是桥。也不是 BTC 买盘。', 'The same amount is not proof of a bridge. It is also not BTC buying.')] }
+        study: { kind: 'panel', headers: [bi('链', 'Chain'), bi('变化', 'Change')], cells: [['A', bi('mint 1 亿', 'mint 100 million')], ['B', bi('burn 1 亿', 'burn 100 million')], [bi('合计', 'Total'), '0']], rows: [bi('金额相同不等于已经证明是桥。也不是 BTC 买盘。', 'The same amount is not proof of a bridge. It is also not BTC buying.')] }
       }),
       lesson({
         id: '04', title: bi('TVL 与巨鲸：估值涨不等于流入', 'TVL and large holders: a higher valuation is not an inflow'),
@@ -65,7 +65,7 @@
           quiz('活跃地址等于用户人数吗？', 'Do active addresses equal users?', [opt('A', '等于', 'Yes'), opt('B', '不是', 'No'), opt('C', '大于 100 就等于', 'Yes above 100')], 'B', { A: ['一个控制者可以有很多地址，程序也可以发交易。', 'One controller can use many addresses, and a program can send transactions.'], B: ['地址数不是人头数。', 'An address count is not a head count.'], C: ['数量阈值不能把地址变成用户。', 'A count threshold does not turn addresses into users.'] }),
           quiz('巨鲸转账是否等于卖出？', 'Does a large-holder transfer equal a sale?', [opt('A', '等于', 'Yes'), opt('B', '不一定', 'Not necessarily'), opt('C', '转入交易所才一定不是', 'It is certainly not a sale only if it enters an exchange')], 'B', { A: ['转给自己的另一个地址，或者转入托管，都还不是卖出成交。', 'Moving to another address of the same holder, or into custody, is not yet a sale.'], B: ['要看从哪转到哪，以及有没有成交。', 'Look at the source, the destination, and whether a trade happened.'], C: ['转入交易所更不能反过来证明“一定不是卖出”，它仍可能之后才卖。', 'A deposit to an exchange does not prove it is certainly not a sale. It may be sold later. It is still not the sale itself.'] })
         ],
-        study: { kind: 'panel', headers: ['数量', '价格', 'TVL'], cells: [['100', '2000', '200000'], ['100', '2500', '250000'], ['110', '2500', '275000']], rows: [bi('第二行涨 25%，数量没变。', 'The second row is up 25% with unchanged quantity.')] }
+        study: { kind: 'panel', headers: [bi('数量', 'Quantity'), bi('价格', 'Price'), 'TVL'], cells: [['100', '2000', '200000'], ['100', '2500', '250000'], ['110', '2500', '275000']], rows: [bi('第二行涨 25%，数量没变。', 'The second row is up 25% with unchanged quantity.')] }
       })
     ]
   };
