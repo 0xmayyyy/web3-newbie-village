@@ -683,6 +683,196 @@
     draw();
   }
 
+  function mountZones(root, lang, t) {
+    var all = window.STAR_A4.bars();
+    var support = window.STAR_A4.support;
+    var resist = window.STAR_A4.resist;
+    var mode = 'support';
+    var showRef = false;
+    var shown = null;
+    var edgeA = 110;
+    var edgeB = 111;
+    var drag = null;
+    var focus = 0;
+    var activeEdge = 'a';
+    var scale = { min: 94, max: 116, padT: 16, priceH: 200, padL: 8, padR: 46 };
+    function px(n) {
+      var s = Number(n).toFixed(1);
+      return s.replace(/\.0$/, '');
+    }
+    function when(start) {
+      var hours = start / 60;
+      var day = Math.floor(hours / 24) + 1;
+      var h = hours % 24;
+      return t('star.a3.clock', { d: day, h: (h < 10 ? '0' : '') + h });
+    }
+    function yPrice(price) {
+      return scale.padT + (scale.max - price) / (scale.max - scale.min) * scale.priceH;
+    }
+    function priceFromY(y) {
+      return scale.max - (y - scale.padT) / scale.priceH * (scale.max - scale.min);
+    }
+    root.innerHTML =
+      '<div class="a2"><p class="a1-flag">' + t('star.sim') + ' · ' + t('star.a2.disclaimer') + '</p>' +
+      '<div class="a1-note">' + noteHtml(t('star.a4.rule')) + '</div>' +
+      '<div class="a1-note">' + noteHtml(t('star.a4.when')) + '</div>' +
+      '<div class="a1-modes" role="group">' +
+      '<button type="button" data-zone="support" aria-pressed="true">' + t('star.a4.support') + '</button>' +
+      '<button type="button" data-zone="resist" aria-pressed="false">' + t('star.a4.resist') + '</button>' +
+      '<button type="button" data-ref="1" aria-pressed="false">' + t('star.a4.ref') + '</button>' +
+      '<button type="button" data-step="play">' + t('star.a3.play') + '</button>' +
+      '<button type="button" data-step="next">' + t('star.a3.next') + '</button>' +
+      '<button type="button" data-step="all">' + t('star.a3.allBars') + '</button>' +
+      '<button type="button" data-check="1">' + t('star.a4.check') + '</button>' +
+      '</div>' +
+      '<div class="a2-scroll" id="a4-scroll" tabindex="0" role="group" aria-label="' + t('star.a4.rule') + '"></div>' +
+      '<div class="a1-live a2-readout" id="a4-live" aria-live="polite"></div>' +
+      '<div class="a1-note a2-legend">' + noteHtml(t('star.a2.legend')) + '</div></div>';
+    var scroll = root.querySelector('#a4-scroll');
+    var live = root.querySelector('#a4-live');
+    function visible() {
+      var n = shown == null ? all.length : Math.max(3, Math.min(all.length, shown));
+      return all.slice(0, n);
+    }
+    function draw() {
+      var bars = visible();
+      root.querySelectorAll('[data-zone]').forEach(function (btn) {
+        btn.setAttribute('aria-pressed', btn.getAttribute('data-zone') === mode ? 'true' : 'false');
+      });
+      root.querySelector('[data-ref]').setAttribute('aria-pressed', showRef ? 'true' : 'false');
+      var hostW = scroll.clientWidth || root.clientWidth || 320;
+      var slot = Math.max(16, Math.min(48, (hostW - 62) / bars.length));
+      var minP = 94;
+      var maxP = 116;
+      scale.min = minP;
+      scale.max = maxP;
+      var padL = scale.padL;
+      var padR = scale.padR;
+      var padT = scale.padT;
+      var priceH = scale.priceH;
+      var volH = 42;
+      var plot = bars.length * slot;
+      var svgW = padL + plot + padR;
+      var svgH = padT + priceH + 8 + volH + 20;
+      var maxV = 1;
+      bars.forEach(function (bar) { if (bar.v > maxV) maxV = bar.v; });
+      var volTop = padT + priceH + 8;
+      var bits = [];
+      for (var g = 0; g < 4; g++) {
+        var price = minP + (maxP - minP) * (g / 3);
+        var gy = yPrice(price);
+        bits.push('<line x1="' + padL + '" y1="' + gy + '" x2="' + (padL + plot) + '" y2="' + gy + '" stroke="rgba(230,199,158,.2)"></line>');
+        bits.push('<text x="' + (padL + plot + 4) + '" y="' + (gy + 4) + '" fill="#d4bc9e" font-size="11">' + px(price) + '</text>');
+      }
+      function band(ref, cls) {
+        var y1 = yPrice(ref.hi);
+        var y2 = yPrice(ref.lo);
+        bits.push('<rect class="' + cls + '" x="' + padL + '" y="' + y1 + '" width="' + plot + '" height="' + (y2 - y1) + '"></rect>');
+      }
+      if (showRef) {
+        band(support, 'a4-ref a4-sup');
+        band(resist, 'a4-ref a4-res');
+      }
+      var mine = window.STAR_A4.zone(edgeA, edgeB);
+      band(mine, 'a4-user');
+      [edgeA, edgeB].forEach(function (price, idx) {
+        var y = yPrice(price);
+        bits.push('<g data-edge="' + (idx ? 'b' : 'a') + '" tabindex="0" role="slider" aria-valuenow="' + px(price) + '" aria-label="' + t('star.a4.edge') + '">');
+        bits.push('<line x1="' + padL + '" y1="' + y + '" x2="' + (padL + plot) + '" y2="' + y + '" stroke="#e6c79e" stroke-width="2"></line>');
+        bits.push('<rect x="' + padL + '" y="' + (y - 8) + '" width="' + plot + '" height="16" fill="transparent"></rect>');
+        bits.push('</g>');
+      });
+      bars.forEach(function (bar, i) {
+        var up = bar.c >= bar.o;
+        var color = up ? '#1f8a4d' : '#d4534e';
+        var x = padL + i * slot;
+        var xc = x + slot / 2;
+        var bw = Math.max(4, slot * 0.58);
+        var top = Math.min(yPrice(bar.o), yPrice(bar.c));
+        var bh = Math.max(1.5, Math.abs(yPrice(bar.c) - yPrice(bar.o)));
+        bits.push('<g data-i="' + i + '" role="button" tabindex="-1" aria-label="' + when(bar.start) + '">');
+        bits.push('<rect x="' + x + '" y="' + padT + '" width="' + slot + '" height="' + priceH + '" fill="transparent"></rect>');
+        bits.push('<line x1="' + xc + '" y1="' + yPrice(bar.h) + '" x2="' + xc + '" y2="' + yPrice(bar.l) + '" stroke="' + color + '" stroke-width="1.4"></line>');
+        bits.push('<rect x="' + (xc - bw / 2) + '" y="' + top + '" width="' + bw + '" height="' + bh + '" fill="' + color + '"></rect>');
+        var yv = volTop + volH - (bar.v / maxV) * (volH - 4);
+        bits.push('<rect x="' + (xc - bw / 2) + '" y="' + yv + '" width="' + bw + '" height="' + (volTop + volH - yv) + '" fill="' + color + '" opacity="0.85"></rect>');
+        bits.push('<text x="' + xc + '" y="' + (svgH - 4) + '" text-anchor="middle" fill="#b7aac8" font-size="10">' + (i + 1) + '</text>');
+        bits.push('</g>');
+      });
+      bits.push('<text x="' + padL + '" y="' + (volTop + 11) + '" fill="#b7aac8" font-size="10">' + t('star.a2.vol') + '</text>');
+      var widthAttr = svgW < hostW - 1 ? '100%' : svgW + 'px';
+      scroll.innerHTML = '<svg class="a2-svg" viewBox="0 0 ' + svgW + ' ' + svgH + '" style="width:' + widthAttr + '" role="img">' + bits.join('') + '</svg>';
+    }
+    function describe(bar) {
+      return t('star.a4.candle', { n: bar.i + 1, o: px(bar.o), h: px(bar.h), l: px(bar.l), c: px(bar.c) });
+    }
+    function checkZone() {
+      var ref = mode === 'support' ? support : resist;
+      var ok = window.STAR_A4.reasonable(edgeA, edgeB, ref);
+      setNote(live, ok ? t('star.a4.ok') : t('star.a4.bad'));
+    }
+    function moveEdge(which, price) {
+      price = Math.max(94, Math.min(116, Math.round(price * 2) / 2));
+      if (which === 'a') edgeA = price;
+      else edgeB = price;
+      draw();
+    }
+    root.addEventListener('click', function (event) {
+      var zoneBtn = event.target.closest('[data-zone]');
+      if (zoneBtn) { mode = zoneBtn.getAttribute('data-zone'); draw(); return; }
+      var refBtn = event.target.closest('[data-ref]');
+      if (refBtn) { showRef = !showRef; draw(); return; }
+      var step = event.target.closest('[data-step]');
+      if (step) {
+        var cur = shown == null ? all.length : shown;
+        var kind = step.getAttribute('data-step');
+        if (kind === 'play') shown = 4;
+        if (kind === 'next') shown = Math.min(all.length, cur + 1);
+        if (kind === 'all') shown = null;
+        draw();
+        return;
+      }
+      if (event.target.closest('[data-check]')) { checkZone(); return; }
+      var candle = event.target.closest('#a4-scroll [data-i]');
+      if (candle && !event.target.closest('[data-edge]')) {
+        focus = Number(candle.getAttribute('data-i'));
+        setNote(live, describe(all[focus]));
+      }
+    });
+    scroll.addEventListener('pointerdown', function (event) {
+      var handle = event.target.closest('[data-edge]');
+      if (!handle) return;
+      drag = handle.getAttribute('data-edge');
+      scroll.setPointerCapture(event.pointerId);
+      event.preventDefault();
+    });
+    scroll.addEventListener('pointermove', function (event) {
+      if (!drag) return;
+      var svg = scroll.querySelector('svg');
+      var rect = svg.getBoundingClientRect();
+      var vb = svg.viewBox.baseVal;
+      var y = ((event.clientY - rect.top) / rect.height) * vb.height;
+      moveEdge(drag, priceFromY(y));
+    });
+    scroll.addEventListener('pointerup', function () { drag = null; });
+    scroll.addEventListener('keydown', function (event) {
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+        event.preventDefault();
+        activeEdge = activeEdge === 'a' ? 'b' : 'a';
+        return;
+      }
+      if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+        event.preventDefault();
+        var delta = event.key === 'ArrowUp' ? 0.5 : -0.5;
+        moveEdge(activeEdge, (activeEdge === 'a' ? edgeA : edgeB) + delta);
+      } else if (event.key === 'Enter') {
+        checkZone();
+      }
+    });
+    setNote(live, t('star.a4.hint'));
+    draw();
+  }
+
   function proseLines(text, esc, breaks) {
     var cut = { '。': true };
     (breaks || []).forEach(function (ch) { cut[ch] = true; });
@@ -794,6 +984,7 @@
     if (chartHost && lesson.chart === 'a1') mountChart(chartHost, lang, api.t);
     else if (chartHost && lesson.chart === 'a2') mountTimeframes(chartHost, lang, api.t);
     else if (chartHost && lesson.chart === 'a3') mountSwings(chartHost, lang, api.t);
+    else if (chartHost && lesson.chart === 'a4') mountZones(chartHost, lang, api.t);
     if (api.bindListen) api.bindListen();
     var mascot = main.querySelector('.star-mascot');
     var practiceFeedback = document.getElementById('practice-feedback');

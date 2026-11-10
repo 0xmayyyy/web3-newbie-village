@@ -227,7 +227,110 @@ window.ADVANCED_STAR = {
             }
           ]
         },
-        { id: '04', status: 'soon', title: { zh: '支撑与压力', en: 'Support and resistance' } },
+        {
+          id: '04',
+          status: 'live',
+          chart: 'a4',
+          title: { zh: '支撑与压力', en: 'Support and resistance' },
+          scene: {
+            zh: '支撑是一根碰到就必反弹的线，还是一块过去有过反应的价格区域？',
+            en: 'Is support a line that must bounce, or a price zone that reacted before?'
+          },
+          one: {
+            zh: '支撑压力是价格过去出现明显反应的区域，不是保证有效的精准价位。',
+            en: 'Support and resistance are zones where price reacted before, not exact prices that are guaranteed to hold.'
+          },
+          explain: {
+            zh: '支撑是价格跌到附近曾出现承接的区域；压力是涨到附近曾出现卖压的区域。实际绘图更适合画价格带，而非一条绝对精确的线。价格可以反弹、突破或直接穿过；过去有效不等于未来有效。支撑区为过去价格下探时曾出现反应的区间，压力区为上行时曾出现反应的区间；区域宽度由影线、波动和多次反应综合观察。价格可以穿越区域，角色转换不是必然。',
+            en: 'Support is a zone where price found buyers on the way down. Resistance is a zone where price found sellers on the way up. It is more useful to draw a band than one perfectly exact line. Price can bounce, break, or pass through. What worked before is not the same as what must work next. A support zone is where dips reacted before. A resistance zone is where rallies reacted before. The width comes from wicks, the size of the swings, and how many times price reacted. Price can travel through a zone. A role change is not guaranteed.'
+          },
+          example: {
+            zh: '98–102多次止跌，可暂视为候选支撑；之后跌到90，就说明这次没有守住。',
+            en: 'If 98–102 stopped several declines, it can be treated for now as a candidate support zone. A later drop to 90 means it did not hold that time.'
+          },
+          pitfalls: [
+            { zh: '把支撑当作必涨买点。', en: 'Treating support as a price that must rise.' },
+            { zh: '为了让预测显得准确而事后挪线。', en: 'Moving the line afterward so a forecast looks right.' },
+            { zh: '多次测试不等于永不跌破。', en: 'Several tests do not mean the zone can never break.' },
+            { zh: '压力突破不等于必然变支撑。', en: 'A break of resistance does not have to become support.' }
+          ],
+          practice: {
+            zh: '在BTC日线上画两个候选区域，记录成功和失败的触及案例。',
+            en: 'On the BTC daily chart, draw two candidate zones and note touches that held and touches that failed.'
+          },
+          lab: { symbol: 'BTCUSDT', interval: '4h', studies: 'none' },
+          check: {
+            ask: {
+              zh: '98–102 多次下探后又回升。这块更适合看成？',
+              en: 'Price dipped into 98–102 more than once and then rose. What is the better description?'
+            },
+            options: [
+              { id: 'A', zh: '绝对底部', en: 'An absolute bottom' },
+              { id: 'B', zh: '候选支撑区', en: 'A candidate support zone' },
+              { id: 'C', zh: '下一根必涨', en: 'The next candle must rise' }
+            ],
+            answer: 'B',
+            misses: {
+              A: {
+                zh: '答错了。支撑压力是价格过去出现明显反应的区域，不是保证有效的精准价位，也不是绝对底部。',
+                en: 'Not right. Support and resistance are zones where price reacted before, not an exact price that is guaranteed to hold, and not an absolute bottom.'
+              },
+              C: {
+                zh: '答错了。过去有效不等于未来有效。不能由这块区域推出下一根必涨。',
+                en: 'Not right. What worked before is not the same as what must work next. This zone does not mean the next candle must rise.'
+              }
+            }
+          },
+          quiz: {
+            q: { zh: '支撑是？', en: 'Support is?' },
+            options: [
+              { id: 'A', zh: '必涨价位', en: 'A price that must rise' },
+              { id: 'B', zh: '历史反应区域', en: 'A zone of past reactions' }
+            ],
+            answer: 'B',
+            why: { zh: '支撑压力是价格过去出现明显反应的区域，不是保证有效的精准价位。', en: 'Support and resistance are zones where price reacted before, not exact prices that are guaranteed to hold.' }
+          },
+          quizzes: [
+            {
+              q: { zh: '支撑是？', en: 'Support is?' },
+              options: [
+                { id: 'A', zh: '必涨价位', en: 'A price that must rise' },
+                { id: 'B', zh: '历史反应区域', en: 'A zone of past reactions' }
+              ],
+              answer: 'B',
+              why: { zh: '支撑压力是价格过去出现明显反应的区域，不是保证有效的精准价位。', en: 'Support and resistance are zones where price reacted before, not exact prices that are guaranteed to hold.' }
+            },
+            {
+              q: { zh: '支撑压力更适合看成？', en: 'Support and resistance are better treated as?' },
+              options: [
+                { id: 'A', zh: '永不失效的精确线', en: 'An exact line that never fails' },
+                { id: 'B', zh: '一块价格区域', en: 'A price zone' }
+              ],
+              answer: 'B',
+              why: { zh: '实际绘图更适合画价格带，而非一条绝对精确的线。', en: 'It is more useful to draw a band than one perfectly exact line.' }
+            },
+            {
+              q: { zh: '价格第三次碰到支撑，接下来？', en: 'Price touches support for a third time. What comes next?' },
+              options: [
+                { id: 'A', zh: '必反弹', en: 'It must bounce' },
+                { id: 'B', zh: '必跌破', en: 'It must break' },
+                { id: 'C', zh: '仍需观察', en: 'It still has to be watched' }
+              ],
+              answer: 'C',
+              why: { zh: '过去有效不等于未来有效。多次测试不等于永不跌破。', en: 'What worked before is not the same as what must work next. Several tests do not mean the zone can never break.' }
+            },
+            {
+              q: { zh: '价格穿过压力之后，应该？', en: 'After price trades through resistance, you should?' },
+              options: [
+                { id: 'A', zh: '立刻宣布那里永远变成支撑', en: 'Immediately call it permanent support' },
+                { id: 'B', zh: '观察后续', en: 'Watch what happens next' },
+                { id: 'C', zh: '把历史反应删掉', en: 'Erase the earlier reactions' }
+              ],
+              answer: 'B',
+              why: { zh: '价格可以穿越区域，角色转换不是必然。压力突破不等于必然变支撑。', en: 'Price can travel through a zone. A role change is not guaranteed. A break of resistance does not have to become support.' }
+            }
+          ]
+        },
         { id: '05', status: 'soon', title: { zh: '突破、假突破、回踩与震荡', en: 'Breakouts, failed breaks, retests, and ranges' } },
         { id: '06', status: 'soon', title: { zh: '成交量与价格', en: 'Volume and price' } }
       ]

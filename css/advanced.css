@@ -43,6 +43,11 @@ body.is-star main{max-width:none;margin:0;padding:0 0 48px;background:transparen
 .a3-switch button[aria-pressed="true"]{background:#e6c79e;color:#1b1428}
 .a3-switch button[aria-pressed="true"] polyline{stroke:#1b1428}
 .star-q{margin:0 0 18px}
+.a4-ref{opacity:.28}
+.a4-sup{fill:#7dcea0}
+.a4-res{fill:#e6a0a0}
+.a4-user{fill:rgba(230,199,158,.18);stroke:#e6c79e;stroke-width:1}
+#a4-scroll{touch-action:none}
 @media (max-width:430px){
   .a2-readout{margin-top:16px;padding:12px}
   .a2-legend{margin-top:16px}
