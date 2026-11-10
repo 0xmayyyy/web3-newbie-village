@@ -38,21 +38,29 @@ body.is-star main{max-width:none;margin:0;padding:0 0 48px;background:transparen
 .a2-legend{margin-top:16px}
 .a2-legend .star-lines p{margin:0 0 .9em;line-height:1.8}
 .a2-legend .star-lines p:last-child{margin-bottom:0}
-.a3-intro{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(240px,.85fr);gap:16px 22px;align-items:stretch;margin-top:8px}
-.a3-col,.a3-side{display:flex;flex-direction:column;min-width:0}
-.a3-col .a1-note{margin:0}
-.a3-col .a3-switch,.a3-col .a1-modes{margin-top:10px}
+.a3-top{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(240px,.85fr);gap:16px 22px;align-items:start;margin-top:8px}
+.a3-copy .a1-note{margin:0 0 10px}
+.a3-copy .a1-note:last-child{margin-bottom:0}
 .a3-terms{border-collapse:collapse;font-size:14px;line-height:1.55;width:100%}
 .a3-terms th,.a3-terms td{border:1px solid rgba(230,199,158,.35);padding:6px 10px;text-align:left}
 .a3-terms th{color:#e6c79e;font-weight:650}
 .a3-side .star-lines{margin-top:10px}
 .a3-side .star-lines p{margin:0 0 .35em}
+.a3-scenarios{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;width:100%;margin:18px 0 0}
+.a3-scenarios button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;width:100%;min-height:136px;padding:16px 12px 14px;border-radius:18px;border:1px solid rgba(230,199,158,.4);background:#241c33;color:#f5efff;font:inherit}
+.a3-scenarios svg{width:min(100%,180px);height:64px;display:block}
+.a3-scenarios span{font-weight:700}
+.a3-scenarios button[aria-pressed="true"]{background:#e6c79e;color:#1b1428}
+.a3-mid{display:flex;justify-content:center;padding:22px 0}
+.a3-mid .a1-modes{justify-content:center;margin:0;width:100%}
+#a3-scroll{margin-top:0}
 .a2-readout.is-right,.star-feedback.is-right{background:#1f8a4d;border:1px solid #1f8a4d;color:#fff}
 .a2-readout.is-wrong,.star-feedback.is-wrong{background:#6e2c32;border:1px solid #d4534e;color:#fff}
 .star-feedback.is-right,.star-feedback.is-wrong{border-radius:14px;padding:12px 14px}
 .a2-readout.is-right .star-lines p,.a2-readout.is-wrong .star-lines p,.star-feedback.is-right .star-lines p,.star-feedback.is-wrong .star-lines p{color:#fff}
 @media (max-width:768px){
-  .a3-intro{grid-template-columns:1fr}
+  .a3-top{grid-template-columns:1fr}
+  .a3-scenarios button{min-height:118px}
 }
 .a3-switch{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
 .a3-switch button{display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-height:44px;padding:8px 10px;border-radius:14px;border:1px solid rgba(230,199,158,.4);background:#241c33;color:#f5efff;font:inherit}

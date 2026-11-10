@@ -25,6 +25,9 @@
     var n = bits.join('').length;
     return Math.max(2, Math.round(n / 280));
   }
+  function simFlag(t) {
+    return '<p class="a1-flag">' + t('star.sim') + ' · ' + t('star.figure') + ' · ' + t('star.a2.disclaimer') + '</p>';
+  }
   function candleFromPath(path) {
     return {
       o: path[0],
@@ -47,7 +50,7 @@
     var selected = 'all';
     root.innerHTML =
       '<div class="a1">' +
-      '<p class="a1-flag">' + t('star.sim') + '</p>' +
+      simFlag(t) +
       '<div class="a1-modes" role="group" aria-label="' + t('star.chart.modes') + '">' +
       '<button type="button" data-mode="candle" aria-pressed="true">' + t('star.chart.candle') + '</button>' +
       '<button type="button" data-mode="path" aria-pressed="false">' + t('star.chart.paths') + '</button>' +
@@ -255,7 +258,7 @@
     }
     function span(start, step) { return clock(start) + '–' + clock(start + step); }
     root.innerHTML =
-      '<div class="a2"><p class="a1-flag">' + t('star.sim') + ' · ' + t('star.a2.disclaimer') + '</p>' +
+      '<div class="a2">' + simFlag(t) +
       '<div class="a1-note">' + noteHtml(t('star.a2.scale')) + '</div>' +
       '<div class="a1-note">' + noteHtml(t('star.a2.agg')) + '</div>' +
       '<div class="a1-note">' + noteHtml(t('star.a2.when')) + '</div>' +
@@ -506,36 +509,36 @@
       var lo = Math.min.apply(null, cs);
       var hi = Math.max.apply(null, cs);
       var pts = cs.map(function (c, i) {
-        var x = (i / (cs.length - 1)) * 86 + 1;
-        var y = 34 - ((c - lo) / (hi - lo || 1)) * 30;
+        var x = (i / (cs.length - 1)) * 108 + 6;
+        var y = 40 - ((c - lo) / (hi - lo || 1)) * 32;
         return x.toFixed(1) + ',' + y.toFixed(1);
       }).join(' ');
-      return '<svg viewBox="0 0 88 36" width="88" height="36" aria-hidden="true"><polyline points="' + pts + '" fill="none" stroke="#e6c79e" stroke-width="2"></polyline></svg>';
+      return '<svg viewBox="0 0 120 48" aria-hidden="true"><polyline points="' + pts + '" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>';
     }
     root.innerHTML =
-      '<div class="a2"><p class="a1-flag">' + t('star.sim') + ' · ' + t('star.a2.disclaimer') + '</p>' +
-      '<div class="a3-intro"><div class="a3-col"><div class="a1-note">' + noteHtml(t('star.a3.stair')) + noteHtml(t('star.a3.tap')) + '</div>' +
-      '<div class="a3-switch" role="group">' +
-      ['up', 'down', 'range'].map(function (id) {
-        return '<button type="button" data-set="' + id + '" aria-pressed="' + (id === 'up' ? 'true' : 'false') + '">' + mini(packs[id].bars) + '<span>' + t('star.a3.' + id) + '</span></button>';
-      }).join('') +
-      '</div>' +
-      '<div class="a1-modes">' +
-      '<button type="button" data-step="play">' + t('star.a3.play') + '</button>' +
-      '<button type="button" data-step="prev">' + t('star.a3.prev') + '</button>' +
-      '<button type="button" data-step="next">' + t('star.a3.next') + '</button>' +
-      '<button type="button" data-step="all">' + t('star.a3.allBars') + '</button>' +
-      '</div></div>' +
+      '<div class="a2">' + simFlag(t) +
+      '<div class="a3-top"><div class="a3-copy"><div class="a1-note">' + noteHtml(t('star.a3.stair')) + noteHtml(t('star.a3.tap')) + '</div>' +
+      '<div class="a1-note">' + proseLines(t('star.a3.rule'), noteEsc, ['；']) + '<p><strong>' + noteEsc(t('star.a3.ruleNote')) + '</strong></p></div></div>' +
       '<div class="a3-side"><table class="a3-terms"><tbody>' +
       '<tr><th>HH</th><td>Higher High</td><td>更高的高点</td></tr>' +
       '<tr><th>HL</th><td>Higher Low</td><td>更高的低点</td></tr>' +
       '<tr><th>LH</th><td>Lower High</td><td>更低的高点</td></tr>' +
       '<tr><th>LL</th><td>Lower Low</td><td>更低的低点</td></tr>' +
       '</tbody></table>' + plainLines(t('star.a3.terms')) + '</div></div>' +
-      '<div class="a1-note">' + proseLines(t('star.a3.rule'), noteEsc, ['；']) + '<p><strong>' + noteEsc(t('star.a3.ruleNote')) + '</strong></p></div>' +
+      '<div class="a3-scenarios" role="group">' +
+      ['up', 'down', 'range'].map(function (id) {
+        return '<button type="button" data-set="' + id + '" aria-pressed="' + (id === 'up' ? 'true' : 'false') + '">' + mini(packs[id].bars) + '<span>' + t('star.a3.' + id) + '</span></button>';
+      }).join('') +
+      '</div>' +
+      '<div class="a3-mid"><div class="a1-modes">' +
+      '<button type="button" data-step="play">' + t('star.a3.play') + '</button>' +
+      '<button type="button" data-step="prev">' + t('star.a3.prev') + '</button>' +
+      '<button type="button" data-step="next">' + t('star.a3.next') + '</button>' +
+      '<button type="button" data-step="all">' + t('star.a3.allBars') + '</button>' +
+      '</div></div>' +
       '<div class="a2-scroll" id="a3-scroll" tabindex="0" role="group" aria-label="' + t('star.a2.keys') + '"></div>' +
-      '<div class="a1-live a2-readout" id="a3-live" aria-live="polite"></div>' +
       '<div class="a1-modes" id="a3-ask" hidden></div>' +
+      '<div class="a1-live a2-readout" id="a3-live" aria-live="polite"></div>' +
       '<div class="a1-note a2-legend">' + noteHtml(t('star.a2.legend')) + '</div></div>';
     var scroll = root.querySelector('#a3-scroll');
     var live = root.querySelector('#a3-live');
@@ -737,7 +740,7 @@
       return keys.map(function (key) { return '<li>' + noteHtml(t(key)) + '</li>'; }).join('');
     }
     root.innerHTML =
-      '<div class="a2"><p class="a1-flag">' + t('star.sim') + ' · ' + t('star.a2.disclaimer') + '</p>' +
+      '<div class="a2">' + simFlag(t) +
       '<section class="a4-how"><h3>' + noteEsc(t('star.a4.howTitle')) + '</h3><ol>' +
       steps(['star.a4.how1', 'star.a4.how2', 'star.a4.how3', 'star.a4.how4', 'star.a4.how5']) +
       '</ol><div class="a1-note">' + noteHtml(t('star.a4.sample')) + '</div><div class="a4-sample" id="a4-sample"></div></section>' +
@@ -1170,7 +1173,7 @@
       return t('star.a3.clock', { d: day, h: (h < 10 ? '0' : '') + h });
     }
     root.innerHTML =
-      '<div class="a2"><p class="a1-flag">' + t('star.sim') + ' · ' + t('star.a2.disclaimer') + '</p>' +
+      '<div class="a2">' + simFlag(t) +
       '<div class="a1-note">' + noteHtml(t('star.a5.rule')) + '</div>' +
       '<div class="a1-note">' + noteHtml(t('star.a5.when')) + '</div>' +
       '<div class="a3-switch" role="group">' +
@@ -1298,7 +1301,7 @@
       return window.STAR_A6.compare(bars[i], i ? bars[i - 1] : null).tag;
     }
     root.innerHTML =
-      '<div class="a2"><p class="a1-flag">' + t('star.sim') + ' · ' + t('star.a2.disclaimer') + '</p>' +
+      '<div class="a2">' + simFlag(t) +
       '<div class="a1-note">' + noteHtml(t('star.a6.rule')) + '</div>' +
       '<div class="a1-note">' + noteHtml(t('star.a6.when')) + '</div>' +
       '<div class="a1-modes" role="group">' +
