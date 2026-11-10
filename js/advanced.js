@@ -706,12 +706,17 @@
     var mode = 'support';
     var showRef = false;
     var shown = null;
-    var edgeA = 110;
-    var edgeB = 111;
+    var START_A = 102;
+    var START_B = 110;
+    var edgeA = START_A;
+    var edgeB = START_B;
     var drag = null;
     var focus = 0;
     var activeEdge = 'a';
-    var scale = { min: 94, max: 116, padT: 16, priceH: 200, padL: 8, padR: 46 };
+    var hinted = false;
+    var swallowClick = false;
+    var motionOk = !window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var scale = { min: 94, max: 116, padT: 16, priceH: 200, padL: 8, padR: 46, plot: 200 };
     function px(n) {
       var s = Number(n).toFixed(1);
       return s.replace(/\.0$/, '');
@@ -728,20 +733,30 @@
     function priceFromY(y) {
       return scale.max - (y - scale.padT) / scale.priceH * (scale.max - scale.min);
     }
+    function steps(keys) {
+      return keys.map(function (key) { return '<li>' + noteHtml(t(key)) + '</li>'; }).join('');
+    }
     root.innerHTML =
       '<div class="a2"><p class="a1-flag">' + t('star.sim') + ' · ' + t('star.a2.disclaimer') + '</p>' +
-      '<div class="a1-note">' + noteHtml(t('star.a4.rule')) + '</div>' +
+      '<section class="a4-how"><h3>' + noteEsc(t('star.a4.howTitle')) + '</h3><ol>' +
+      steps(['star.a4.how1', 'star.a4.how2', 'star.a4.how3', 'star.a4.how4', 'star.a4.how5']) +
+      '</ol><div class="a1-note">' + noteHtml(t('star.a4.sample')) + '</div><div class="a4-sample" id="a4-sample"></div></section>' +
       '<div class="a1-note">' + noteHtml(t('star.a4.when')) + '</div>' +
-      '<div class="a1-modes" role="group">' +
+      '<div class="a1-modes a4-bar" role="group">' +
       '<button type="button" data-zone="support" aria-pressed="true">' + t('star.a4.support') + '</button>' +
       '<button type="button" data-zone="resist" aria-pressed="false">' + t('star.a4.resist') + '</button>' +
+      '<button type="button" data-reset="1">' + t('star.a4.reset') + '</button>' +
       '<button type="button" data-ref="1" aria-pressed="false">' + t('star.a4.ref') + '</button>' +
       '<button type="button" data-step="play">' + t('star.a3.play') + '</button>' +
       '<button type="button" data-step="next">' + t('star.a3.next') + '</button>' +
       '<button type="button" data-step="all">' + t('star.a3.allBars') + '</button>' +
       '<button type="button" data-check="1">' + t('star.a4.check') + '</button>' +
       '</div>' +
-      '<div class="a2-scroll" id="a4-scroll" tabindex="0" role="group" aria-label="' + t('star.a4.rule') + '"></div>' +
+      '<ol class="a4-steps">' + steps(['star.a4.do1', 'star.a4.do2', 'star.a4.do3']) + '</ol>' +
+      '<div class="a4-chartwrap">' +
+      '<p class="a4-coach" id="a4-coach">' + noteEsc(t('star.a4.coach')) + '</p>' +
+      '<div class="a2-scroll" id="a4-scroll" tabindex="0" role="group" aria-label="' + noteEsc(t('star.a4.do1')) + '" style="touch-action:none"></div>' +
+      '</div>' +
       '<div class="a1-live a2-readout" id="a4-live" aria-live="polite"></div>' +
       '<div class="a1-note a2-legend">' + noteHtml(t('star.a2.legend')) + '</div></div>';
     var scroll = root.querySelector('#a4-scroll');
@@ -752,6 +767,9 @@
     }
     function draw() {
       var bars = visible();
+      var focused = scroll.querySelector(':focus');
+      var focusEdge = focused && focused.getAttribute && focused.getAttribute('data-edge');
+      var focusBand = focused && focused.hasAttribute && focused.hasAttribute('data-band');
       root.querySelectorAll('[data-zone]').forEach(function (btn) {
         btn.setAttribute('aria-pressed', btn.getAttribute('data-zone') === mode ? 'true' : 'false');
       });
@@ -768,6 +786,7 @@
       var priceH = scale.priceH;
       var volH = 42;
       var plot = bars.length * slot;
+      scale.plot = plot;
       var svgW = padL + plot + padR;
       var svgH = padT + priceH + 8 + volH + 20;
       var maxV = 1;
@@ -783,7 +802,7 @@
       function band(ref, cls) {
         var y1 = yPrice(ref.hi);
         var y2 = yPrice(ref.lo);
-        bits.push('<rect class="' + cls + '" x="' + padL + '" y="' + y1 + '" width="' + plot + '" height="' + (y2 - y1) + '"></rect>');
+        bits.push('<rect class="' + cls + '" x="' + padL + '" y="' + y1 + '" width="' + plot + '" height="' + Math.max(0, y2 - y1) + '"></rect>');
       }
       if (showRef) {
         band(support, 'a4-ref a4-sup');
@@ -791,13 +810,6 @@
       }
       var mine = window.STAR_A4.zone(edgeA, edgeB);
       band(mine, 'a4-user');
-      [edgeA, edgeB].forEach(function (price, idx) {
-        var y = yPrice(price);
-        bits.push('<g data-edge="' + (idx ? 'b' : 'a') + '" tabindex="0" role="slider" aria-valuenow="' + px(price) + '" aria-label="' + t('star.a4.edge') + '">');
-        bits.push('<line x1="' + padL + '" y1="' + y + '" x2="' + (padL + plot) + '" y2="' + y + '" stroke="#e6c79e" stroke-width="2"></line>');
-        bits.push('<rect x="' + padL + '" y="' + (y - 8) + '" width="' + plot + '" height="16" fill="transparent"></rect>');
-        bits.push('</g>');
-      });
       bars.forEach(function (bar, i) {
         var up = bar.c >= bar.o;
         var color = up ? '#1f8a4d' : '#d4534e';
@@ -815,29 +827,284 @@
         bits.push('<text x="' + xc + '" y="' + (svgH - 4) + '" text-anchor="middle" fill="#b7aac8" font-size="10">' + (i + 1) + '</text>');
         bits.push('</g>');
       });
-      bits.push('<text x="' + padL + '" y="' + (volTop + 11) + '" fill="#b7aac8" font-size="10">' + t('star.a2.vol') + '</text>');
+      var topY = yPrice(Math.max(edgeA, edgeB));
+      var botY = yPrice(Math.min(edgeA, edgeB));
+      if (botY - topY >= 52) {
+        var bw = 44;
+        var bx = padL + plot / 2 - bw / 2;
+        var mid = (topY + botY) / 2;
+        bits.push('<g data-band="1" tabindex="0" role="slider" aria-label="' + noteEsc(t('star.a4.band')) + '">');
+        bits.push('<rect class="a4-grip" x="' + bx + '" y="' + (mid - bw / 2) + '" width="' + bw + '" height="' + bw + '" rx="12"></rect>');
+        bits.push('<text class="a4-grip-ico" x="' + (bx + bw / 2) + '" y="' + (mid + 6) + '" text-anchor="middle">↕</text>');
+        bits.push('<rect class="a4-hit" x="' + bx + '" y="' + (mid - bw / 2) + '" width="' + bw + '" height="' + bw + '" fill="transparent"></rect>');
+        bits.push('</g>');
+      }
+      [[edgeA, 'a'], [edgeB, 'b']].forEach(function (pair) {
+        var price = pair[0];
+        var id = pair[1];
+        var y = yPrice(price);
+        var upper = edgeA === edgeB ? id === 'b' : price === Math.max(edgeA, edgeB);
+        var name = upper ? t('star.a4.edgeHigh') : t('star.a4.edgeLow');
+        var grip = 44;
+        var gx = padL + 4;
+        var label = px(price);
+        var labelW = Math.max(44, 16 + label.length * 8);
+        var lx = padL + plot - labelW - 8;
+        bits.push('<g data-edge="' + id + '" tabindex="0" role="slider" aria-valuemin="94" aria-valuemax="116" aria-valuenow="' + label + '" aria-label="' + noteEsc(name + ' ' + label) + '">');
+        bits.push('<line class="a4-edge' + (hinted ? '' : ' a4-hot') + '" x1="' + padL + '" y1="' + y + '" x2="' + (padL + plot) + '" y2="' + y + '"></line>');
+        bits.push('<rect class="a4-grip" x="' + gx + '" y="' + (y - grip / 2) + '" width="' + grip + '" height="' + grip + '" rx="12"></rect>');
+        [-1, 0, 1].forEach(function (d) {
+          bits.push('<circle class="a4-dot" cx="' + (gx + 14) + '" cy="' + (y + d * 7) + '" r="1.7"></circle>');
+        });
+        bits.push('<text class="a4-grip-ico" x="' + (gx + 30) + '" y="' + (y + 6) + '" text-anchor="middle">↕</text>');
+        bits.push('<rect class="a4-tag" x="' + lx + '" y="' + (y - 12) + '" width="' + labelW + '" height="24" rx="7"></rect>');
+        bits.push('<text class="a4-tag-txt" x="' + (lx + labelW / 2) + '" y="' + (y + 5) + '" text-anchor="middle">' + label + '</text>');
+        if (!hinted && motionOk && upper) {
+          bits.push('<g pointer-events="none"><text class="a4-grip-ico" x="' + (gx + grip + 18) + '" y="' + (y + 6) + '">↕</text>');
+          bits.push('<animateTransform attributeName="transform" type="translate" values="0 0; 0 16; 0 -12; 0 0" dur="1.4s" repeatCount="4"/></g>');
+        }
+        bits.push('<rect class="a4-hit" x="' + padL + '" y="' + (y - 10) + '" width="' + plot + '" height="20" fill="transparent"></rect>');
+        bits.push('<rect class="a4-hit a4-grip-hit" x="' + gx + '" y="' + (y - grip / 2) + '" width="' + grip + '" height="' + grip + '" fill="transparent"></rect>');
+        bits.push('<rect class="a4-hit" x="' + lx + '" y="' + (y - 22) + '" width="' + labelW + '" height="44" fill="transparent"></rect>');
+        bits.push('</g>');
+      });
+      bits.push('<text x="' + padL + '" y="' + (volTop + 11) + '" fill="#b7aac8" font-size="10">' + noteEsc(t('star.a2.vol')) + '</text>');
       var widthAttr = svgW < hostW - 1 ? '100%' : svgW + 'px';
-      scroll.innerHTML = '<svg class="a2-svg" viewBox="0 0 ' + svgW + ' ' + svgH + '" style="width:' + widthAttr + '" role="img">' + bits.join('') + '</svg>';
+      scroll.innerHTML = '<svg class="a2-svg" viewBox="0 0 ' + svgW + ' ' + svgH + '" style="width:' + widthAttr + ';touch-action:none" role="img">' + bits.join('') + '</svg>';
+      var placed = window.STAR_A4.zone(edgeA, edgeB);
+      scroll.dataset.lo = String(placed.lo);
+      scroll.dataset.hi = String(placed.hi);
+      if (focusEdge) {
+        var again = scroll.querySelector('[data-edge="' + focusEdge + '"]');
+        if (again) again.focus();
+      } else if (focusBand) {
+        var bandEl = scroll.querySelector('[data-band]');
+        if (bandEl) bandEl.focus();
+      }
     }
     function describe(bar) {
       return t('star.a4.candle', { n: bar.i + 1, o: px(bar.o), h: px(bar.h), l: px(bar.l), c: px(bar.c) });
     }
+    function sentences(list) {
+      return '<div class="star-lines">' + list.map(function (line) {
+        return '<p>' + noteEsc(line) + '</p>';
+      }).join('') + '</div>';
+    }
+    function touchInfo(band, kind) {
+      var vals = [];
+      visible().forEach(function (bar) {
+        var p = kind === 'support' ? bar.l : bar.h;
+        if (p + 1e-9 >= band.lo && p - 1e-9 <= band.hi) vals.push(px(p));
+      });
+      var uniq = [];
+      vals.forEach(function (p) { if (uniq.indexOf(p) < 0) uniq.push(p); });
+      return { n: vals.length, list: uniq.join(lang === 'en' ? ', ' : '、') };
+    }
     function checkZone() {
       var ref = mode === 'support' ? support : resist;
+      var band = window.STAR_A4.zone(edgeA, edgeB);
       var ok = window.STAR_A4.reasonable(edgeA, edgeB, ref);
-      setNote(live, ok ? t('star.a4.ok') : t('star.a4.bad'));
+      var mine = touchInfo(band, mode);
+      var refTouch = touchInfo(ref, mode);
+      var bits = {
+        lo: px(band.lo), hi: px(band.hi), n: mine.n, mine: mine.list || '—',
+        kind: t(mode === 'support' ? 'star.a4.kindDown' : 'star.a4.kindUp'),
+        w: px(band.hi - band.lo), list: refTouch.list || '—', refN: refTouch.n,
+        refLo: px(ref.lo), refHi: px(ref.hi)
+      };
+      var lines = [mine.n ? t('star.a4.span', bits) : t('star.a4.spanNone', bits)];
+      if (!ok) {
+        var width = band.hi - band.lo;
+        if (width < 1.5) lines.push(t('star.a4.badThin', bits));
+        else if (width > 8) lines.push(t('star.a4.badWide', bits));
+        else lines.push(t('star.a4.badWhere', bits));
+        lines.push(t(mode === 'support' ? 'star.a4.refSupport' : 'star.a4.refResist', bits));
+        lines.push(t('star.a4.revealAsk'));
+      } else lines.push(t('star.a4.okRest'));
+      live.innerHTML = '<span class="' + (ok ? 'star-ok' : '') + '">' + noteEsc(t(ok ? 'star.practiceOk' : 'star.quizNo')) + '</span>' +
+        sentences(lines) +
+        (ok ? '' : '<p><button type="button" class="a4-reveal" data-reveal="1">' + noteEsc(t('star.a4.reveal')) + '</button></p>');
+    }
+    function clamp(price) {
+      return Math.max(94, Math.min(116, Math.round(price * 2) / 2));
     }
     function moveEdge(which, price) {
-      price = Math.max(94, Math.min(116, Math.round(price * 2) / 2));
-      if (which === 'a') edgeA = price;
-      else edgeB = price;
+      price = clamp(price);
+      if (which === 'a') {
+        if (price === edgeA) return;
+        edgeA = price;
+      } else {
+        if (price === edgeB) return;
+        edgeB = price;
+      }
+      activeEdge = which;
       draw();
     }
+    function moveBand(a, b) {
+      var aIsLow = drag && drag.baseA != null ? drag.baseA <= drag.baseB : edgeA <= edgeB;
+      var lo = Math.min(a, b);
+      var hi = Math.max(a, b);
+      var width = hi - lo;
+      if (lo < 94) { lo = 94; hi = 94 + width; }
+      if (hi > 116) { hi = 116; lo = 116 - width; }
+      if (lo < 94) lo = 94;
+      var nextLo = clamp(lo);
+      var nextHi = clamp(hi);
+      if (nextHi < nextLo) nextHi = nextLo;
+      var nextA = aIsLow ? nextLo : nextHi;
+      var nextB = aIsLow ? nextHi : nextLo;
+      if (nextA === edgeA && nextB === edgeB) return;
+      edgeA = nextA;
+      edgeB = nextB;
+      draw();
+    }
+    function pickDrag(pt) {
+      var yA = yPrice(edgeA);
+      var yB = yPrice(edgeB);
+      var grip = 44;
+      var gx = scale.padL + 4;
+      function inRect(x, y, w, h) {
+        return pt.x >= x && pt.x <= x + w && pt.y >= y && pt.y <= y + h;
+      }
+      function gripOf(y) { return inRect(gx, y - grip / 2, grip, grip); }
+      if (gripOf(yA) || gripOf(yB)) {
+        if (gripOf(yA) && gripOf(yB)) return Math.abs(pt.y - yA) <= Math.abs(pt.y - yB) ? 'a' : 'b';
+        return gripOf(yA) ? 'a' : 'b';
+      }
+      function tagOf(y, price) {
+        var labelW = Math.max(44, 16 + px(price).length * 8);
+        var lx = scale.padL + scale.plot - labelW - 8;
+        return inRect(lx, y - 22, labelW, 44);
+      }
+      if (tagOf(yA, edgeA) || tagOf(yB, edgeB)) {
+        if (tagOf(yA, edgeA) && tagOf(yB, edgeB)) return Math.abs(pt.y - yA) <= Math.abs(pt.y - yB) ? 'a' : 'b';
+        return tagOf(yA, edgeA) ? 'a' : 'b';
+      }
+      var top = Math.min(yA, yB);
+      var bot = Math.max(yA, yB);
+      if (bot - top >= 52) {
+        var bw = 44;
+        var bx = scale.padL + scale.plot / 2 - bw / 2;
+        if (inRect(bx, (top + bot) / 2 - bw / 2, bw, bw)) return 'band';
+      }
+      var tol = 18;
+      if (pt.x >= scale.padL && pt.x <= scale.padL + scale.plot) {
+        var da = Math.abs(pt.y - yA);
+        var db = Math.abs(pt.y - yB);
+        if (da <= tol || db <= tol) return da <= db ? 'a' : 'b';
+        if (pt.y > top + tol && pt.y < bot - tol) return 'band';
+      }
+      return null;
+    }
+    function clientToSvg(event) {
+      var svg = scroll.querySelector('svg');
+      if (!svg) return null;
+      var rect = svg.getBoundingClientRect();
+      if (!rect.width || !rect.height) return null;
+      var vb = svg.viewBox.baseVal;
+      return {
+        x: ((event.clientX - rect.left) / rect.width) * vb.width,
+        y: ((event.clientY - rect.top) / rect.height) * vb.height
+      };
+    }
+    function onMove(event) {
+      if (!drag) return;
+      var pt = clientToSvg(event);
+      if (!pt) return;
+      var price = priceFromY(pt.y);
+      if (Math.abs(price - drag.origin) > 0.05) swallowClick = true;
+      if (drag.kind === 'band') moveBand(drag.baseA + (price - drag.origin), drag.baseB + (price - drag.origin));
+      else moveEdge(drag.kind, price);
+      event.preventDefault();
+    }
+    function onUp() {
+      var was = drag;
+      drag = null;
+      window.removeEventListener('pointermove', onMove);
+      window.removeEventListener('pointerup', onUp);
+      window.removeEventListener('pointercancel', onUp);
+      if (was) draw();
+      setTimeout(function () { swallowClick = false; }, 0);
+    }
+    function onDown(event) {
+      if (event.button != null && event.button !== 0) return;
+      var pt = clientToSvg(event);
+      if (!pt) return;
+      var which = pickDrag(pt);
+      if (!which) return;
+      swallowClick = false;
+      hinted = true;
+      var coach = root.querySelector('#a4-coach');
+      if (coach) coach.classList.add('is-done');
+      drag = { kind: which, origin: priceFromY(pt.y), baseA: edgeA, baseB: edgeB };
+      scroll.dataset.pointer = event.pointerType || 'mouse';
+      try { scroll.setPointerCapture(event.pointerId); } catch (err) { /* window listeners still track the drag */ }
+      window.removeEventListener('pointermove', onMove);
+      window.removeEventListener('pointerup', onUp);
+      window.removeEventListener('pointercancel', onUp);
+      window.addEventListener('pointermove', onMove, { passive: false });
+      window.addEventListener('pointerup', onUp);
+      window.addEventListener('pointercancel', onUp);
+      event.preventDefault();
+    }
+    function drawSample() {
+      var host = root.querySelector('#a4-sample');
+      var minP = 94;
+      var maxP = 116;
+      var padL = 8;
+      var padR = 36;
+      var padT = 22;
+      var priceH = 140;
+      var slot = 28;
+      var plot = all.length * slot;
+      var svgW = padL + plot + padR;
+      var svgH = padT + priceH + 8;
+      function y(price) { return padT + (maxP - price) / (maxP - minP) * priceH; }
+      var bits = [];
+      var yHi = y(support.hi);
+      var yLo = y(support.lo);
+      bits.push('<rect x="' + padL + '" y="' + yHi + '" width="' + plot + '" height="' + (yLo - yHi) + '" fill="rgba(125,206,160,.35)"></rect>');
+      var marks = { 2: '①', 6: '②', 7: '③' };
+      all.forEach(function (bar, i) {
+        var up = bar.c >= bar.o;
+        var color = up ? '#1f8a4d' : '#d4534e';
+        var x = padL + i * slot;
+        var xc = x + slot / 2;
+        var bw = Math.max(4, slot * 0.55);
+        var top = Math.min(y(bar.o), y(bar.c));
+        var bh = Math.max(1.5, Math.abs(y(bar.c) - y(bar.o)));
+        bits.push('<line x1="' + xc + '" y1="' + y(bar.h) + '" x2="' + xc + '" y2="' + y(bar.l) + '" stroke="' + color + '" stroke-width="1.4"></line>');
+        bits.push('<rect x="' + (xc - bw / 2) + '" y="' + top + '" width="' + bw + '" height="' + bh + '" fill="' + color + '"></rect>');
+        if (marks[i]) bits.push('<text class="a4-mark" x="' + xc + '" y="' + (y(bar.h) - 6) + '" text-anchor="middle">' + marks[i] + '</text>');
+      });
+      bits.push('<text x="' + (padL + plot + 4) + '" y="' + (y(102) + 4) + '" fill="#d4bc9e" font-size="11">102</text>');
+      bits.push('<text x="' + (padL + plot + 4) + '" y="' + (y(98) + 4) + '" fill="#d4bc9e" font-size="11">98</text>');
+      host.innerHTML = '<svg viewBox="0 0 ' + svgW + ' ' + svgH + '" role="img" aria-hidden="true">' + bits.join('') + '</svg>';
+    }
     root.addEventListener('click', function (event) {
+      if (swallowClick && event.target.closest('#a4-scroll')) { swallowClick = false; return; }
+      swallowClick = false;
       var zoneBtn = event.target.closest('[data-zone]');
-      if (zoneBtn) { mode = zoneBtn.getAttribute('data-zone'); draw(); return; }
+      if (zoneBtn) {
+        mode = zoneBtn.getAttribute('data-zone');
+        draw();
+        setNote(live, t(mode === 'support' ? 'star.a4.modeSupport' : 'star.a4.modeResist'));
+        return;
+      }
+      if (event.target.closest('[data-reset]')) {
+        edgeA = START_A;
+        edgeB = START_B;
+        showRef = false;
+        hinted = false;
+        var coach = root.querySelector('#a4-coach');
+        if (coach) coach.classList.remove('is-done');
+        draw();
+        setNote(live, t('star.a4.hint'));
+        return;
+      }
       var refBtn = event.target.closest('[data-ref]');
       if (refBtn) { showRef = !showRef; draw(); return; }
+      if (event.target.closest('[data-reveal]')) { showRef = true; draw(); return; }
       var step = event.target.closest('[data-step]');
       if (step) {
         var cur = shown == null ? all.length : shown;
@@ -850,43 +1117,51 @@
       }
       if (event.target.closest('[data-check]')) { checkZone(); return; }
       var candle = event.target.closest('#a4-scroll [data-i]');
-      if (candle && !event.target.closest('[data-edge]')) {
+      if (candle && !event.target.closest('[data-edge]') && !event.target.closest('[data-band]')) {
         focus = Number(candle.getAttribute('data-i'));
         setNote(live, describe(all[focus]));
       }
     });
-    scroll.addEventListener('pointerdown', function (event) {
-      var handle = event.target.closest('[data-edge]');
-      if (!handle) return;
-      drag = handle.getAttribute('data-edge');
-      scroll.setPointerCapture(event.pointerId);
-      event.preventDefault();
-    });
-    scroll.addEventListener('pointermove', function (event) {
-      if (!drag) return;
-      var svg = scroll.querySelector('svg');
-      var rect = svg.getBoundingClientRect();
-      var vb = svg.viewBox.baseVal;
-      var y = ((event.clientY - rect.top) / rect.height) * vb.height;
-      moveEdge(drag, priceFromY(y));
-    });
-    scroll.addEventListener('pointerup', function () { drag = null; });
+    scroll.addEventListener('pointerdown', onDown, { passive: false });
+    scroll.addEventListener('touchstart', function (event) {
+      var touch = event.changedTouches && event.changedTouches[0];
+      if (!touch) return;
+      var pt = clientToSvg({ clientX: touch.clientX, clientY: touch.clientY });
+      if (pt && pickDrag(pt)) event.preventDefault();
+    }, { passive: false });
     scroll.addEventListener('keydown', function (event) {
+      var bandKey = event.target.closest && event.target.closest('[data-band]');
+      var edgeKey = event.target.closest && event.target.closest('[data-edge]');
       if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
         event.preventDefault();
         activeEdge = activeEdge === 'a' ? 'b' : 'a';
+        var node = scroll.querySelector('[data-edge="' + activeEdge + '"]');
+        if (node) node.focus();
         return;
       }
       if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
         event.preventDefault();
         var delta = event.key === 'ArrowUp' ? 0.5 : -0.5;
-        moveEdge(activeEdge, (activeEdge === 'a' ? edgeA : edgeB) + delta);
+        if (bandKey) {
+          var prev = drag;
+          drag = { baseA: edgeA, baseB: edgeB };
+          moveBand(edgeA + delta, edgeB + delta);
+          drag = prev;
+        } else {
+          if (edgeKey) activeEdge = edgeKey.getAttribute('data-edge');
+          moveEdge(activeEdge, (activeEdge === 'a' ? edgeA : edgeB) + delta);
+        }
       } else if (event.key === 'Enter') {
         checkZone();
       }
     });
+    drawSample();
     setNote(live, t('star.a4.hint'));
     draw();
+    requestAnimationFrame(function () { if (document.body.contains(scroll)) draw(); });
+    if (root._a4Resize) window.removeEventListener('resize', root._a4Resize);
+    root._a4Resize = function () { if (document.body.contains(scroll)) draw(); };
+    window.addEventListener('resize', root._a4Resize);
   }
 
   function mountBreaks(root, lang, t) {

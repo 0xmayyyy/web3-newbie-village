@@ -54,11 +54,41 @@ body.is-star main{max-width:none;margin:0;padding:0 0 48px;background:transparen
 .a3-switch button[aria-pressed="true"]{background:#e6c79e;color:#1b1428}
 .a3-switch button[aria-pressed="true"] polyline{stroke:#1b1428}
 .star-q{margin:0 0 18px}
+.a4-how{margin:2px 0 12px}
+.a4-how h3{margin:0 0 8px;color:#f1d8b9;font-size:15px;letter-spacing:.04em}
+.a4-how ol{margin:0;padding-left:1.25em}
+.a4-how li{margin:0 0 8px;line-height:1.7}
+.a4-how .star-lines p,.a4-steps .star-lines p{margin:0}
+.a4-sample{margin-top:4px}
+.a4-sample svg{width:100%;height:auto;display:block;background:#120e21;border-radius:12px}
+.a4-steps{list-style:none;margin:10px 0 8px;padding:10px 12px;border-radius:12px;background:rgba(230,199,158,.08)}
+.a4-steps li{margin:0 0 6px;line-height:1.7;color:#f4e9da}
+.a4-steps li:last-child{margin-bottom:0}
+.a4-chartwrap{position:relative}
+.a4-coach{position:absolute;left:64px;top:8px;z-index:2;margin:0;display:inline-flex;align-items:center;padding:6px 12px;border-radius:999px;background:#e6c79e;color:#1b1428;font-weight:700;pointer-events:none;animation:a4-bob 1.15s ease-in-out infinite}
+.a4-coach.is-done{display:none}
+@keyframes a4-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
 .a4-ref{opacity:.28}
 .a4-sup{fill:#7dcea0}
 .a4-res{fill:#e6a0a0}
-.a4-user{fill:rgba(230,199,158,.18);stroke:#e6c79e;stroke-width:1}
-#a4-scroll{touch-action:none}
+.a4-user{fill:rgba(230,199,158,.32)}
+.a4-edge{stroke:#f3d7a8;stroke-width:4;stroke-linecap:round;pointer-events:none}
+.a4-hot{animation:a4-glow 1s ease-in-out infinite}
+@keyframes a4-glow{0%,100%{stroke-opacity:1}50%{stroke-opacity:.25}}
+.a4-grip{fill:#2a2140;stroke:#f0d59a;stroke-width:2}
+.a4-grip-ico{fill:#f0d59a;font-size:16px;font-weight:700;pointer-events:none}
+.a4-dot{fill:#e6c79e;pointer-events:none}
+.a4-tag{fill:#1b1428;stroke:#e6c79e}
+.a4-tag-txt{fill:#f0d59a;font-size:12px;font-weight:700;pointer-events:none}
+.a4-hit{cursor:ns-resize;touch-action:none}
+.a4-mark{fill:#f0d59a;font-size:13px;font-weight:700}
+.a2 .a4-bar button{min-height:44px}
+.a2 .a4-bar button[data-check]{background:#e6c79e;color:#1b1428;font-weight:700}
+.a4-reveal{margin-top:8px;min-height:44px;padding:8px 14px;border-radius:999px;border:0;background:#e6c79e;color:#1b1428;font:inherit;font-weight:700;cursor:pointer}
+#a4-scroll,#a4-scroll svg{touch-action:none;-webkit-user-select:none;user-select:none}
+@media (prefers-reduced-motion:reduce){
+  .a4-hot,.a4-coach{animation:none}
+}
 @media (max-width:430px){
   .a2-readout{margin-top:16px;padding:12px}
   .a2-legend{margin-top:16px}
@@ -74,6 +104,8 @@ body.is-star main{max-width:none;margin:0;padding:0 0 48px;background:transparen
 .a1-modes,.a1-sub,.a1-fields{display:flex;flex-wrap:wrap;gap:8px}
 .a1 button,.a2 .a1-modes button,.a1-fields input{font:inherit;min-height:40px;border-radius:999px;border:1px solid rgba(230,199,158,.4);background:#241c33;color:#f5efff;padding:6px 12px}
 .a1 button[aria-pressed="true"],.a2 .a1-modes button[aria-pressed="true"]{background:#e6c79e;color:#1b1428}
+.a2 .a4-bar button{min-height:44px}
+.a2 .a4-bar button[data-check]{background:#e6c79e;color:#1b1428;font-weight:700}
 .a1-sub{margin-top:8px}
 .a1-svg{width:100%;height:auto;display:block;margin-top:8px;background:#120e21;border-radius:12px;touch-action:manipulation}
 .a1-live,.a1-note,.a1-error{font-size:14px;line-height:1.6}
