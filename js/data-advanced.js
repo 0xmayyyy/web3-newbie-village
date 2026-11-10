@@ -438,7 +438,112 @@ window.ADVANCED_STAR = {
             }
           ]
         },
-        { id: '06', status: 'soon', title: { zh: '成交量与价格', en: 'Volume and price' } }
+        {
+          id: '06',
+          status: 'live',
+          chart: 'a6',
+          title: { zh: '成交量与价格', en: 'Volume and price' },
+          scene: {
+            zh: '只看成交量，能不能知道下一根会涨还是会跌？',
+            en: 'Can volume alone tell you whether the next candle will rise or fall?'
+          },
+          one: {
+            zh: '成交量描述交易活跃程度，不能单独预测未来涨跌。',
+            en: 'Volume describes how active trading is. It cannot by itself predict the next rise or fall.'
+          },
+          explain: {
+            zh: '放量表示相对近期成交活跃，缩量表示相对清淡。成交量有交易所、交易对和单位差异；BTC成交量与USDT成交额不能混作同一数值。现货成交量和合约成交量也不同。缩量上涨不必然下跌，放量下跌也不必然反弹。价格反映这段时间的结果向哪边移动；成交量表示成交数量，不能单靠它预测下一根。成交量是指定市场、时段的成交标的数量；成交额是逐笔价格×数量求和；持仓量是未平仓合约规模，不是成交量。现货和永续的口径不可混淆。每笔成交有买卖双方，成交量柱不是净买入量。本课里，量增或量减只和上一根K线比较。',
+            en: 'Heavier volume means trading is more active than the recent bars. Lighter volume means it is quieter. Volume depends on the exchange, the pair, and the unit. BTC volume and USDT turnover are not the same number. Spot volume and contract volume are also different. A rise on lighter volume does not have to be followed by a fall, and a drop on heavier volume does not have to bounce. Price shows which way the result of that period moved. Volume is how much was traded. It cannot by itself predict the next candle. Volume is the amount traded in a named market and period. Turnover adds price times size trade by trade. Open interest is the size of contracts still open, not volume. Spot and perpetual figures should not be mixed. Every trade has a buyer and a seller, so a volume bar is not net buying. In this lesson, more or less volume is compared only with the previous candle.'
+          },
+          example: {
+            zh: '过去20根平均成交1000 BTC，本根1800 BTC可视为相对放量，但之后涨跌仍不确定。',
+            en: 'If the last 20 candles averaged 1000 BTC and this one trades 1800 BTC, that is relatively heavy volume. What happens next is still not settled.'
+          },
+          pitfalls: [
+            { zh: '把成交量当资金净流入。', en: 'Treating volume as net money flowing in.' },
+            { zh: '认为放量一定是“主力”。', en: 'Assuming heavy volume must be “the big players”.' },
+            { zh: '量大不必涨，量小不必跌。', en: 'Heavy volume does not have to rise, and light volume does not have to fall.' },
+            { zh: '现货量不等于合约量。', en: 'Spot volume is not the same as contract volume.' },
+            { zh: '收盘价乘成交量不是精确成交额。没有逐笔成交时，不能伪造精确成交额。', en: 'Close times volume is not exact turnover. Without each trade, do not invent an exact turnover figure.' }
+          ],
+          practice: {
+            zh: 'BTC 4H找三根相对放量K线，记录后续走势，不预设结论。',
+            en: 'On BTC 4H, find three relatively heavy candles, write down what happened next, and do not decide the ending in advance.'
+          },
+          lab: { symbol: 'BTCUSDT', interval: '4h', studies: 'none' },
+          check: {
+            ask: {
+              zh: '第 6 根开 108、收 111、成交量 75 BTC。前一根成交量 130 BTC。这根是？',
+              en: 'Candle 6 opens at 108, closes at 111, and trades 75 BTC. The previous candle traded 130 BTC. What is candle 6?'
+            },
+            options: [
+              { id: 'A', zh: '缩量上涨', en: 'A rise on less volume' },
+              { id: 'B', zh: '放量上涨', en: 'A rise on more volume' },
+              { id: 'C', zh: '下一根必跌', en: 'The next candle must fall' }
+            ],
+            answer: 'A',
+            misses: {
+              B: {
+                zh: '答错了。75 低于前一根 130，不是放量。收盘 111 高于开盘 108，是上涨。',
+                en: 'Not right. 75 is below the previous 130, so this is not more volume. The close 111 is above the open 108, so it is a rise.'
+              },
+              C: {
+                zh: '答错了。缩量上涨不必然下跌。不能单靠成交量预测下一根。',
+                en: 'Not right. A rise on less volume does not have to be followed by a fall. Volume alone cannot predict the next candle.'
+              }
+            }
+          },
+          quiz: {
+            q: { zh: '缩量下跌必然即将反弹？', en: 'Must a drop on less volume bounce soon?' },
+            options: [
+              { id: 'A', zh: '是', en: 'Yes' },
+              { id: 'B', zh: '否', en: 'No' }
+            ],
+            answer: 'B',
+            why: { zh: '成交量不能单独预测未来涨跌。放量下跌也不必然反弹。', en: 'Volume cannot by itself predict the next move. A drop on heavier volume does not have to bounce either.' }
+          },
+          quizzes: [
+            {
+              q: { zh: '缩量下跌必然即将反弹？', en: 'Must a drop on less volume bounce soon?' },
+              options: [
+                { id: 'A', zh: '是', en: 'Yes' },
+                { id: 'B', zh: '否', en: 'No' }
+              ],
+              answer: 'B',
+              why: { zh: '成交量不能单独预测未来涨跌。放量下跌也不必然反弹。', en: 'Volume cannot by itself predict the next move. A drop on heavier volume does not have to bounce either.' }
+            },
+            {
+              q: { zh: '第 7 根开 111、收 107、成交量 210 BTC。前一根成交量 75 BTC。这根是？', en: 'Candle 7 opens at 111, closes at 107, and trades 210 BTC. The previous candle traded 75 BTC. What is candle 7?' },
+              options: [
+                { id: 'A', zh: '缩量上涨', en: 'A rise on less volume' },
+                { id: 'B', zh: '放量下跌', en: 'A drop on more volume' },
+                { id: 'C', zh: '缩量下跌', en: 'A drop on less volume' }
+              ],
+              answer: 'B',
+              why: { zh: '收盘 107 低于开盘 111，成交量 210 高于前一根 75。本课把这叫放量下跌。', en: 'The close 107 is below the open 111, and 210 BTC is above the previous 75. This lesson calls that a drop on more volume.' }
+            },
+            {
+              q: { zh: '一根成交量柱表示什么？', en: 'What does one volume bar show?' },
+              options: [
+                { id: 'A', zh: '只有买入', en: 'Buying only' },
+                { id: 'B', zh: '买入减去卖出', en: 'Buying minus selling' },
+                { id: 'C', zh: '指定时段的成交数量', en: 'The amount traded in that period' }
+              ],
+              answer: 'C',
+              why: { zh: '成交量是指定市场、时段的成交标的数量。每笔成交有买卖双方，成交量柱不是净买入量。', en: 'Volume is the amount traded in a named market and period. Every trade has a buyer and a seller, so a volume bar is not net buying.' }
+            },
+            {
+              q: { zh: '缩量上涨说明什么？', en: 'What does a rise on less volume show?' },
+              options: [
+                { id: 'A', zh: '下一根必跌', en: 'The next candle must fall' },
+                { id: 'B', zh: '量低于比较基准，但后面还不确定', en: 'Volume is below the comparison, and what follows is not settled' },
+                { id: 'C', zh: '一定被操纵', en: 'It must be manipulation' }
+              ],
+              answer: 'B',
+              why: { zh: '本课的量增减只和上一根比。缩量上涨不必然下跌。不能把缩量上涨写成必跌。', en: 'In this lesson, more or less volume is compared only with the previous candle. A rise on less volume does not have to fall next. Do not write it as a certain drop.' }
+            }
+          ]
+        }
       ]
     }
   }

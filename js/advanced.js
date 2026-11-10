@@ -1005,6 +1005,103 @@
     draw();
   }
 
+  function mountVolume(root, lang, t) {
+    var bars = window.STAR_A6.bars();
+    var focus = 5;
+    var quad = null;
+    function tagOf(i) {
+      return window.STAR_A6.compare(bars[i], i ? bars[i - 1] : null).tag;
+    }
+    root.innerHTML =
+      '<div class="a2"><p class="a1-flag">' + t('star.sim') + ' · ' + t('star.a2.disclaimer') + '</p>' +
+      '<div class="a1-note">' + noteHtml(t('star.a6.rule')) + '</div>' +
+      '<div class="a1-note">' + noteHtml(t('star.a6.when')) + '</div>' +
+      '<div class="a1-modes" role="group">' +
+      ['upMore', 'upLess', 'downMore', 'downLess'].map(function (id) {
+        return '<button type="button" data-quad="' + id + '" aria-pressed="false">' + t('star.a6.' + id) + '</button>';
+      }).join('') +
+      '</div>' +
+      '<div class="a2-scroll" id="a6-scroll" tabindex="0" role="group" aria-label="' + t('star.a6.rule') + '"></div>' +
+      '<div class="a1-live a2-readout" id="a6-live" aria-live="polite"></div>' +
+      '<div class="a1-note a2-legend">' + noteHtml(t('star.a2.legend')) + '</div></div>';
+    var scroll = root.querySelector('#a6-scroll');
+    var live = root.querySelector('#a6-live');
+    function draw() {
+      root.querySelectorAll('[data-quad]').forEach(function (btn) {
+        btn.setAttribute('aria-pressed', btn.getAttribute('data-quad') === quad ? 'true' : 'false');
+      });
+      var hostW = scroll.clientWidth || root.clientWidth || 320;
+      var hostW = scroll.clientWidth || root.clientWidth || 320;
+      var slot = Math.max(28, Math.min(72, (hostW - 64) / bars.length));
+      var minP = 96;
+      var maxP = 116;
+      var padL = 8;
+      var padR = 52;
+      var padT = 12;
+      var priceH = 168;
+      var volH = 72;
+      var plot = bars.length * slot;
+      var svgW = padL + plot + padR;
+      var svgH = padT + priceH + 10 + volH + 22;
+      function yPrice(price) { return padT + (maxP - price) / (maxP - minP) * priceH; }
+      var maxV = 210;
+      var volTop = padT + priceH + 10;
+      var bits = [];
+      [100, 105, 110, 115].forEach(function (price) {
+        var gy = yPrice(price);
+        bits.push('<line x1="' + padL + '" y1="' + gy + '" x2="' + (padL + plot) + '" y2="' + gy + '" stroke="rgba(230,199,158,.2)"></line>');
+        bits.push('<text x="' + (padL + plot + 4) + '" y="' + (gy + 4) + '" fill="#d4bc9e" font-size="11">' + price + '</text>');
+      });
+      [80, 140, 210].forEach(function (vol) {
+        var gy = volTop + volH - (vol / maxV) * (volH - 8);
+        bits.push('<text x="' + (padL + plot + 4) + '" y="' + (gy + 4) + '" fill="#b7aac8" font-size="11">' + vol + '</text>');
+      });
+      bars.forEach(function (bar, i) {
+        var up = bar.c >= bar.o;
+        var color = up ? '#1f8a4d' : '#d4534e';
+        var dim = quad && tagOf(i) !== quad;
+        var x = padL + i * slot;
+        var xc = x + slot / 2;
+        var bw = Math.max(8, slot * 0.56);
+        var top = Math.min(yPrice(bar.o), yPrice(bar.c));
+        var bh = Math.max(2, Math.abs(yPrice(bar.c) - yPrice(bar.o)));
+        var on = focus === i;
+        bits.push('<g data-i="' + i + '" role="button" tabindex="-1" opacity="' + (dim ? '0.28' : '1') + '" aria-label="' + (i + 1) + '">');
+        bits.push('<rect x="' + x + '" y="' + padT + '" width="' + slot + '" height="' + (priceH + 10 + volH) + '" fill="transparent"></rect>');
+        bits.push('<line x1="' + xc + '" y1="' + yPrice(bar.h) + '" x2="' + xc + '" y2="' + yPrice(bar.l) + '" stroke="' + color + '" stroke-width="1.6"></line>');
+        bits.push('<rect x="' + (xc - bw / 2) + '" y="' + top + '" width="' + bw + '" height="' + bh + '" fill="' + color + '"' + (on ? ' stroke="#e6c79e" stroke-width="2.5"' : '') + '></rect>');
+        var yv = volTop + volH - (bar.v / maxV) * (volH - 8);
+        bits.push('<rect x="' + (xc - bw / 2) + '" y="' + yv + '" width="' + bw + '" height="' + Math.max(2, volTop + volH - yv) + '" fill="' + color + '"' + (on ? ' stroke="#e6c79e" stroke-width="2.5"' : '') + '></rect>');
+        bits.push('<text x="' + xc + '" y="' + (svgH - 4) + '" text-anchor="middle" fill="#b7aac8" font-size="10">' + (i + 1) + '</text>');
+        bits.push('</g>');
+      });
+      bits.push('<text x="' + padL + '" y="' + (volTop + 12) + '" fill="#b7aac8" font-size="10">' + t('star.a6.unit') + '</text>');
+      var widthAttr = svgW < hostW - 1 ? '100%' : svgW + 'px';
+      scroll.innerHTML = '<svg class="a2-svg" viewBox="0 0 ' + svgW + ' ' + svgH + '" style="width:' + widthAttr + '" role="img">' + bits.join('') + '</svg>';
+      var bar = bars[focus];
+      var prev = focus ? bars[focus - 1] : null;
+      setNote(live, prev ? t('star.a6.readout', { n: focus + 1, o: bar.o, c: bar.c, v: bar.v, prev: prev.v, tag: t('star.a6.' + tagOf(focus)) }) : t('star.a6.first', { n: 1, o: bar.o, c: bar.c, v: bar.v }));
+    }
+    root.addEventListener('click', function (event) {
+      var qbtn = event.target.closest('[data-quad]');
+      if (qbtn) {
+        var id = qbtn.getAttribute('data-quad');
+        quad = quad === id ? null : id;
+        draw();
+        return;
+      }
+      var candle = event.target.closest('#a6-scroll [data-i]');
+      if (candle) { focus = Number(candle.getAttribute('data-i')); draw(); }
+    });
+    scroll.addEventListener('keydown', function (event) {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      event.preventDefault();
+      focus = event.key === 'ArrowRight' ? Math.min(bars.length - 1, focus + 1) : Math.max(0, focus - 1);
+      draw();
+    });
+    draw();
+  }
+
   function proseLines(text, esc, breaks) {
     var cut = { '。': true };
     (breaks || []).forEach(function (ch) { cut[ch] = true; });
@@ -1118,6 +1215,7 @@
     else if (chartHost && lesson.chart === 'a3') mountSwings(chartHost, lang, api.t);
     else if (chartHost && lesson.chart === 'a4') mountZones(chartHost, lang, api.t);
     else if (chartHost && lesson.chart === 'a5') mountBreaks(chartHost, lang, api.t);
+    else if (chartHost && lesson.chart === 'a6') mountVolume(chartHost, lang, api.t);
     if (api.bindListen) api.bindListen();
     var mascot = main.querySelector('.star-mascot');
     var practiceFeedback = document.getElementById('practice-feedback');
