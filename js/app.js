@@ -205,7 +205,7 @@
       '<img class="hero-portrait" src="' + HERO_PORTRAIT + '" alt="" width="860" height="1528"></div><div class="hero-shade" aria-hidden="true"></div></div>' +
       '<div class="hero-copy"><h1 id="h-hero">' + esc(t('hero.h1')) + '</h1>' +
       '<p class="hero-sub">' + esc(t('hero.lead')) + '</p>' +
-      '<div class="hero-cta"><a class="hero-btn hero-btn-primary" href="#/c/01">' + esc(t('hero.cta')) + '</a>' +
+      '<div class="hero-cta"><a class="hero-btn hero-btn-primary" href="#/p/entry">' + esc(t('hero.cta')) + '</a>' +
       '<a class="hero-btn hero-btn-secondary" href="#/" data-scroll="h-toc">' + esc(t('hero.cta2')) + '</a></div></div>' +
       '<div class="m-hero"><div class="eyebrow">' + esc(t('hero.m.eyebrow')) + '</div>' +
       '<h1>' + esc(t('hero.m.h1')) + '</h1><p>' + esc(t('hero.m.lead')) + '</p>' +
@@ -277,10 +277,49 @@
     var p = PLANETS[i];
     if (!p || p.locked) return '';
     if (p.id === 'advanced') return '#/star';
-    if (p.id === 'world') return '#/c/12/0';
-    var first = p.chapters[0];
-    if (first.label === 'atlas.chance.ch12') return '#/c/12/5';
-    return '#/c/' + first.id;
+    return '#/p/' + p.id;
+  }
+  function chapterHeading(planetIndex, id) {
+    return readerChapterLabel(planetIndex, id).replace(/^\d+\s*·\s*/, '');
+  }
+  function lessonCrumb(planet, planetIndex, c) {
+    var home = '<a href="#/">' + esc(t('crumb.home')) + '</a>';
+    if (!planet) return '<p class="star-crumb">' + home + ' / ' + esc(c.title) + '</p>';
+    return '<p class="star-crumb">' + home + ' / <a href="#/p/' + planet.id + '">' + esc(t('atlas.' + planet.id + '.name')) + '</a> / <a href="#/p/' + planet.id + '/' + c.id + '">' + esc(chapterHeading(planetIndex, c.id)) + '</a></p>';
+  }
+  function renderPlanetHome(index) {
+    var planet = PLANETS[index];
+    var n = ('0' + (index + 1)).slice(-2);
+    document.title = t('title.ch', { id: n, title: t('atlas.' + planet.id + '.name') });
+    var cards = planet.chapters.map(function (item) {
+      var c = chap(item.id);
+      if (!c) return '';
+      var count = visibleSections(index, item.id).length;
+      var blurb = item.id === '12' ? '' : (c.intro || '');
+      return '<li><a class="star-mod" href="#/p/' + planet.id + '/' + item.id + '">' +
+        '<span class="star-mod-id">' + item.id + '</span><strong>' + esc(chapterHeading(index, item.id)) + '</strong>' +
+        (blurb ? '<span>' + esc(blurb) + '</span>' : '') +
+        '<em>' + esc(t('ch.toc', { n: count })) + '</em></a></li>';
+    }).join('');
+    main.innerHTML = '<div class="course-reader star-hub" style="--accent:' + planet.color + ';--planet-halo:' + planet.color + ';--planet-soft:' + planet.soft + '"><div class="shell">' +
+      '<section class="hero"><div><div class="eyebrow">' + esc(t(index === 0 ? 'reader.begin' : 'reader.explore', { n: n })) + '</div><h1>' + esc(t('atlas.' + planet.id + '.name')) + '</h1><p>' + esc(t('reader.' + planet.id + '.desc')) + '</p></div>' +
+      '<div class="hero-planet" aria-hidden="true"><img alt="" draggable="false" src="assets/planets/' + planet.file + '.png?v=20261107290000"></div></section>' +
+      '<ul class="star-modules">' + cards + '</ul></div></div>';
+  }
+  function renderPlanetChapter(index, id) {
+    var planet = PLANETS[index];
+    if (!planet.chapters.some(function (item) { return item.id === id; })) { location.hash = '#/p/' + planet.id; return; }
+    var c = chap(id);
+    if (!c) { location.hash = '#/p/' + planet.id; return; }
+    var visible = visibleSections(index, id);
+    document.title = t('title.ch', { id: c.id, title: c.title });
+    var items = visible.map(function (item, i) {
+      var num = ('0' + (i + 1)).slice(-2);
+      var open = teachCanEnter(id, item.i);
+      var label = '<span class="star-les-id">' + id + '-' + num + '</span><strong>' + esc(item.s.title) + '</strong><em>' + esc(open ? t('star.open') : t('reader.locked')) + '</em>';
+      return '<li>' + (open ? '<a href="#/c/' + id + '/' + item.i + '">' + label + '</a>' : '<div class="is-soon">' + label + '</div>') + '</li>';
+    }).join('');
+    main.innerHTML = '<div class="course-reader star-page"><p class="star-crumb"><a href="#/">' + esc(t('crumb.home')) + '</a> / <a href="#/p/' + planet.id + '">' + esc(t('atlas.' + planet.id + '.name')) + '</a> / ' + esc(chapterHeading(index, id)) + '</p><h1>' + esc(chapterHeading(index, id)) + '</h1><ol class="star-lessons">' + items + '</ol></div>';
   }
   function enterPlanet(i) {
     var hash = planetEntryHash(i);
@@ -803,45 +842,24 @@
     var cur = visible[pos];
     var ids = readerChapterIds(planetIndex, id);
     var glossary = id === '13';
-    var cardIds = glossary ? ids.filter(function (cid) { return cid !== '13'; }) : ids;
     var highlight = glossary ? '' : firstExcerpt(cur.s.text || '');
     document.title = t('title.ch', { id: c.id, title: c.title });
-    var code = planet ? t(planetIndex === 0 ? 'reader.begin' : 'reader.explore', { n: ('0' + (planetIndex + 1)).slice(-2) }) : 'CHAPTER ' + c.id;
-    var planetOptions = PLANETS.map(function (p, i) {
-      if (p.locked) return '';
-      return '<option value="' + i + '"' + (i === planetIndex ? ' selected' : '') + '>' + esc(planetInfo(i)) + '</option>';
-    }).join('');
+    if (glossary) {
+      main.innerHTML = '<div class="course-reader star-page is-glossary">' + lessonCrumb(planet, planetIndex, c) + '<div class="center"></div></div>';
+      mountWidgets(main);
+      applyVerify(main);
+      if (!keep) window.scrollTo(0, 0);
+      return;
+    }
     main.innerHTML =
-      '<div class="course-reader' + (glossary ? ' is-glossary' : '') + '" data-theme="dark" style="--accent:' + (planet ? planet.color : '#bfa6ee') + ';--planet-halo:' + (planet ? planet.color : '#bfa6ee') + ';--planet-soft:' + (planet ? planet.soft : 'rgba(191,166,238,.28)') + '"><div class="shell">' +
-      '<div class="crumb-bar"><div class="crumb"><a href="#/">' + esc(t('crumb.home')) + '</a> / ' + esc(planet ? t('reader.crumb', { planet: t('atlas.' + planet.id + '.name'), title: c.title }) : c.id + ' ' + c.title) + '</div>' +
-      '<div class="planet-return"><label for="planet-jump">' + esc(t('reader.jump')) + '</label><select id="planet-jump" aria-label="' + esc(t('reader.jump')) + '">' + planetOptions + '</select></div></div>' +
-      '<section class="hero"><div><div class="eyebrow">' + esc(code) + '</div><h1>' + esc(planet ? t('atlas.' + planet.id + '.name') : c.title) + '</h1><p>' + esc(planet ? t('reader.' + planet.id + '.desc') : c.intro) + '</p></div>' +
-      (planet ? '<div class="hero-planet" aria-hidden="true"><img alt="" draggable="false" src="assets/planets/' + planet.file + '.png?v=20261107290000"></div>' : '') +
-      '</section><div class="layout">' +
-      '<aside class="side"><h2>' + esc(t('reader.planets')) + '</h2><div class="planet-menu">' + PLANETS.filter(function (p) { return !p.locked; }).map(function (p) {
-        var real = PLANETS.indexOf(p);
-        return '<button type="button" class="planet-btn' + (real === planetIndex ? ' active' : '') + '" data-planet="' + real + '"><span class="dot" style="--dot:' + p.dot + '"></span>' + ('0' + (real + 1)).slice(-2) + ' · ' + esc(t('atlas.' + p.id + '.name')) + '</button>';
-      }).join('') + '</div><div class="side-note">' + esc(t('reader.note')) + '</div></aside>' +
-      '<section class="center"><div class="course-head"><h2>' + esc(t('reader.list')) + '</h2><span>' + esc(t('reader.count', { n: cardIds.length })) + '</span></div>' +
-      '<div class="chapter-list">' + (cardIds.indexOf(id) < 0 && !glossary ? '<div class="side-note">' + esc(t('reader.sharedTag')) + '</div>' : '') + cardIds.map(function (cid) {
-        return '<button type="button" class="chapter' + (cid === id ? ' active' : '') + '" data-chapter="' + cid + '"><small>CHAPTER ' + cid + '</small><strong>' + esc(readerChapterLabel(planetIndex, cid)) + '</strong></button>';
-      }).join('') + '</div>' +
-      (glossary ? '' : '<div class="mobile-toc"><select id="section-select" aria-label="' + esc(t('reader.map')) + '">' + visible.map(function (item, i) {
-        return '<option value="' + item.i + '"' + (i === pos ? ' selected' : '') + '>' + (i + 1) + '. ' + esc(item.s.title) + '</option>';
-      }).join('') + '</select></div>' +
+      '<div class="course-reader star-page">' + lessonCrumb(planet, planetIndex, c) +
       '<article class="reading"><div class="meta"><span>CHAPTER ' + c.id + ' / LESSON ' + ('0' + (pos + 1)).slice(-2) + '</span><span>' + (pos + 1) + ' / ' + visible.length + '</span></div>' +
       listenBarHtml() +
       '<h2>' + esc(cur.s.title) + '</h2>' + (highlight ? '<div class="summary">' + esc(highlight) + '</div>' : '') +
       '<div class="prose" id="reader-prose">' + cur.s.html + '</div>' +
       '<div class="reading-footer"><button type="button" class="navbtn" id="reader-prev"' + (pos === 0 && ids.indexOf(id) <= 0 ? ' disabled' : '') + '>' + esc(t('reader.prev')) + '</button>' +
       '<button type="button" class="done-link" id="done-btn" aria-pressed="' + isDone(c.id) + '">' + esc(isDone(c.id) ? t('ch.done') : t('ch.done.set')) + '</button>' +
-      '<button type="button" class="navbtn primary" id="reader-next"' + (pos === visible.length - 1 && ids.indexOf(id) === ids.length - 1 ? ' disabled' : '') + '>' + esc(t('reader.next')) + '</button></div></article>') +
-      '</section>' +
-      (glossary ? '' : '<aside class="toc"><h2>' + esc(t('reader.map')) + '</h2><div>' + visible.map(function (item, i) {
-        return '<button type="button" class="toc-btn' + (i === pos ? ' active' : '') + '" data-sec="' + item.i + '"><span class="idx">' + ('0' + (i + 1)).slice(-2) + '</span><span>' + esc(item.s.title) + '</span></button>';
-      }).join('') + '</div><div class="progress"><div id="reader-bar" style="width:' + ((pos + 1) / visible.length * 100) + '%"></div></div><div class="progress-label">' + esc(t('reader.reading', { n: pos + 1, m: visible.length })) + '</div>' +
-      '<div class="tools"><h2>' + esc(t('reader.shared')) + '</h2><button type="button" data-tool="14">' + esc(t('reader.tool14')) + '</button><button type="button" data-tool="16">' + esc(t('reader.tool16')) + '</button></div></aside>') + '</div></div>' +
-      '<p class="reader-home"><a href="#/">' + esc(t('reader.home')) + '</a></p></div>';
+      '<button type="button" class="navbtn primary" id="reader-next"' + (pos === visible.length - 1 && ids.indexOf(id) === ids.length - 1 ? ' disabled' : '') + '>' + esc(t('reader.next')) + '</button></div></article></div>';
     var prose = $('#reader-prose');
     if (highlight && prose) {
       var opening = prose.querySelector('p');
@@ -944,13 +962,8 @@
     mountWidgets(main);
     applyVerify(main);
     if (keep) return;
-    if (readerJumpTop) {
-      readerJumpTop = false;
-      window.scrollTo({ top: 0, behavior: prefersReduce() ? 'auto' : 'smooth' });
-    } else if (sec != null) {
-      var article = $('.course-reader .reading');
-      if (article) setTimeout(function () { article.scrollIntoView({ block: 'start' }); }, 0);
-    } else window.scrollTo(0, 0);
+    readerJumpTop = false;
+    window.scrollTo(0, 0);
   }
 
   /* ---------- 专属邀请链接标签 ---------- */
@@ -1718,12 +1731,13 @@
     $$('.topbar .search-results').forEach(function (b) { b.hidden = true; });
     var rm = h.match(/^#\/r\/(\w+)(?:\/(\d+))?/), cx = /^#\/cex/.test(h), py = /^#\/punycode/.test(h), lab = /^#\/lab(?:$|[/?#])/.test(h);
     var star = h.match(/^#\/star(?:\/(\d\d))?(?:\/(\d\d))?$/);
-    document.body.classList.toggle('is-home', !m && !rm && !cx && !py && !lab && !star);
+    var planetRoute = h.match(/^#\/p\/(entry|safety|trade|wallet|world|chance)(?:\/(\d\d))?$/);
+    document.body.classList.toggle('is-home', !m && !planetRoute && !rm && !cx && !py && !lab && !star);
     document.body.classList.toggle('is-star', !!star);
     document.body.classList.toggle('is-lab', lab);
     if (!lab && window.Lab && Lab.mounted) Lab.unmount();
-    document.body.classList.toggle('is-reader', !!m);
-    if (window.TEACH) TEACH.syncStarfield(!!m || !!star);
+    document.body.classList.toggle('is-reader', !!m || !!planetRoute);
+    if (window.TEACH) TEACH.syncStarfield(!!m || !!star || !!planetRoute);
     if (cx) { renderCex(); if (!keep) window.scrollTo(0, 0); }
     else if (py) { renderPuny(); if (!keep) window.scrollTo(0, 0); }
     else if (lab) {
@@ -1732,6 +1746,14 @@
     }
     else if (star && window.AdvancedStar) {
       AdvancedStar.render(main, { lang: LANG, t: t, esc: esc, isDone: isDone, setDone: setDone, listenBar: listenBarHtml, bindListen: bindLessonSpeech }, star[1], star[2]);
+      if (!keep) window.scrollTo(0, 0);
+    }
+    else if (planetRoute) {
+      var planetIndex = -1;
+      for (var pi = 0; pi < PLANETS.length; pi++) if (PLANETS[pi].id === planetRoute[1]) planetIndex = pi;
+      if (planetIndex < 0) renderHome();
+      else if (planetRoute[2]) renderPlanetChapter(planetIndex, planetRoute[2]);
+      else renderPlanetHome(planetIndex);
       if (!keep) window.scrollTo(0, 0);
     }
     else if (rm) renderRoute(rm[1], rm[2] ? +rm[2] : 0, keep);
@@ -1788,6 +1810,7 @@
     var h = location.hash;
     var m = h.match(/^#\/c\/(\d\d)/);
     var id = m ? m[1] : '';
+    var onPlanet = /^#\/p\/(entry|safety|trade|wallet|world|chance)(?:\/|$)/.test(h);
     var key = 'explore';
     if (/^#\/cex/.test(h)) key = 'cex';
     else if (/^#\/punycode/.test(h)) key = 'puny';
@@ -1795,7 +1818,7 @@
     else if (/^#\/r\//.test(h)) key = 'courses';
     else if (id === '14') key = 'tools';
     else if (id === '13') key = 'slang';
-    else if (m) key = 'courses';
+    else if (m || onPlanet) key = 'courses';
     else if (document.body.classList.contains('is-home')) {
       var toc = document.getElementById('h-toc');
       key = (toc && toc.getBoundingClientRect().top < Math.min(220, window.innerHeight * 0.35)) ? 'courses' : 'explore';

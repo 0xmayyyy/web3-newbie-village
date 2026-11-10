@@ -104,7 +104,8 @@
   .course-reader .planet-return{width:100%;justify-content:flex-end}
 }
 body.is-reader{background:radial-gradient(ellipse 85% 520px at 52% -130px,#4a2d55 0%,#21162f 50%,transparent 100%),#120e21}
-body.is-reader main{max-width:none;margin:0;padding:0;background:transparent}
+body.is-reader main{max-width:none;margin:0;padding:0;background:transparent;position:relative;z-index:1}
+body.is-reader #outer-starfield{z-index:-1;pointer-events:none}
 .course-reader .reader-home{min-height:90px;margin:0;display:flex;align-items:center;justify-content:center}
 .course-reader .reader-home a{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:8px 18px;border-radius:999px;border:1px solid rgba(220,195,155,.55);background:rgba(52,38,79,.55);color:#F5F3FF;text-decoration:none;font-size:14px;font-weight:600}
 .course-reader .reader-home a:hover{border-color:#FFDFA8;color:#FFF2D9;background:rgba(255,223,168,.12)}
