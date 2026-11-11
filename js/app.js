@@ -552,17 +552,18 @@
       else if (kind === 'drawers') mountDrawerLab(lab);
     });
   }
+  function labT(zh, en) { return LANG === 'en' ? en : zh; }
   function mountRouteLab(lab) {
     var notes = {
-      bank: '教学模拟：这是银行账户里的法币，由银行和支付体系处理。',
-      channel: '教学模拟：入金渠道处理的是法币支付。钱还没变成你钱包里的币。',
-      ex: '教学模拟：这是交易所账户。平台记账，资产由平台保管。它不是自托管钱包。',
-      sell: '教学模拟：卖出后你拿到的是报价资产，例如 USDT。它还不是银行里的法币。',
-      fiat: '教学模拟：法币出金渠道才把价值换成当地法币。不是每个地区都开放。',
-      bank2: '教学模拟：走到这里，你持有的才是银行里的法币。交易所显示成功，不等于银行已入账。',
-      net: '教学模拟：链上提现要先选网络。这条路和法币出金不是同一个按钮。',
-      chain: '教学模拟：链上提现把资产送到外部地址。输入的是链上地址，不是银行账号。',
-      wallet: '教学模拟：自托管钱包里是链上资产。转错或泄露密钥，往往无法撤销。'
+      bank: labT('教学模拟：这是银行账户里的法币，由银行和支付体系处理。', 'Teaching simulation: this is fiat in a bank account, handled by the bank and the payment system.'),
+      channel: labT('教学模拟：入金渠道处理的是法币支付。钱还没变成你钱包里的币。', 'Teaching simulation: the deposit channel is handling a fiat payment. The money is not coins in your wallet yet.'),
+      ex: labT('教学模拟：这是交易所账户。平台记账，资产由平台保管。它不是自托管钱包。', 'Teaching simulation: this is an exchange account. The platform keeps the books, and it holds the assets. It is not a self-custody wallet.'),
+      sell: labT('教学模拟：卖出后你拿到的是报价资产，例如 USDT。它还不是银行里的法币。', 'Teaching simulation: after you sell, you receive the quote asset, such as USDT. That is not fiat in the bank yet.'),
+      fiat: labT('教学模拟：法币出金渠道才把价值换成当地法币。不是每个地区都开放。', 'Teaching simulation: only the fiat withdrawal channel turns the value into local fiat. Not every region offers it.'),
+      bank2: labT('教学模拟：走到这里，你持有的才是银行里的法币。交易所显示成功，不等于银行已入账。', 'Teaching simulation: only here do you hold fiat in the bank. Success on the exchange is not the same as a bank credit.'),
+      net: labT('教学模拟：链上提现要先选网络。这条路和法币出金不是同一个按钮。', 'Teaching simulation: an on-chain withdrawal starts by choosing a network. This path is not the same button as a fiat withdrawal.'),
+      chain: labT('教学模拟：链上提现把资产送到外部地址。输入的是链上地址，不是银行账号。', 'Teaching simulation: an on-chain withdrawal sends assets to an external address. You enter a chain address, not a bank account.'),
+      wallet: labT('教学模拟：自托管钱包里是链上资产。转错或泄露密钥，往往无法撤销。', 'Teaching simulation: a self-custody wallet holds on-chain assets. A wrong transfer or a leaked key often cannot be undone.')
     };
     lab.querySelectorAll('[data-node]').forEach(function (btn) {
       btn.addEventListener('click', function () {
@@ -579,10 +580,10 @@
   function mountUidLab(lab) {
     var box = lab.querySelector('.lab-feedback');
     lab.querySelector('[data-uid="move"]').addEventListener('click', function () {
-      labSayEl(box, '答错了。教学模拟：UID 123456 从 Alpha Global 拿到 Alpha Local，不能由相同数字推断为同一用户。', true);
+      labSayEl(box, labT('答错了。教学模拟：UID 123456 从 Alpha Global 拿到 Alpha Local，不能由相同数字推断为同一用户。', 'Not quite. Teaching simulation: moving UID 123456 from Alpha Global to Alpha Local does not make the same number the same user.'), true);
     });
     lab.querySelector('[data-uid="check"]').addEventListener('click', function () {
-      labSayEl(box, '答对了。教学模拟：只有平台官方文档确认互通，并且收款人信息核对完整，才可以考虑平台内转账。', false);
+      labSayEl(box, labT('答对了。教学模拟：只有平台官方文档确认互通，并且收款人信息核对完整，才可以考虑平台内转账。', 'Correct. Teaching simulation: only after the official docs confirm the systems connect, and the payee details check out, should you consider an internal transfer.'), false);
     });
     lab.querySelector('[data-reset]').addEventListener('click', function () { labQuietEl(box); });
   }
@@ -600,11 +601,11 @@
   }
   function mountSecureLab(lab) {
     var items = [
-      { why: '广告排名不等于官方认证。', how: '核对完整域名、应用开发者和平台提示。', bad: '把搜索结果的第一条当成官网。' },
-      { why: '邮箱是账户恢复的重要入口。', how: '用独立强密码，并打开邮箱支持的双重验证。', bad: '和交易所共用一个弱密码。' },
-      { why: '登录被拿走，资产就可能被动。', how: '优先用平台支持的通行密钥或验证器。', bad: '开了双重验证就去点短信里的链接。' },
-      { why: '提款是资产离开账户的门。', how: '按平台功能打开地址白名单、防钓鱼码和设备提醒。', bad: '先把钱充进去，保护以后再说。' },
-      { why: '手机丢了还要能恢复账户。', how: '按官方方式保存恢复材料，不发给任何人。', bad: '把恢复码或证件发给私信里的客服。' }
+      { why: labT('广告排名不等于官方认证。', 'An ad ranking is not an official certification.'), how: labT('核对完整域名、应用开发者和平台提示。', 'Check the full domain, the app developer, and the platform prompt.'), bad: labT('把搜索结果的第一条当成官网。', 'Treating the first search result as the official site.') },
+      { why: labT('邮箱是账户恢复的重要入口。', 'Email is an important way back into the account.'), how: labT('用独立强密码，并打开邮箱支持的双重验证。', 'Use a separate strong password, and turn on the email two-factor option.'), bad: labT('和交易所共用一个弱密码。', 'Sharing one weak password with the exchange.') },
+      { why: labT('登录被拿走，资产就可能被动。', 'If the login is taken, the assets can be moved.'), how: labT('优先用平台支持的通行密钥或验证器。', 'Prefer a passkey or authenticator the platform supports.'), bad: labT('开了双重验证就去点短信里的链接。', 'Turning on two-factor and then tapping a link in a text message.') },
+      { why: labT('提款是资产离开账户的门。', 'Withdrawal is the door assets leave through.'), how: labT('按平台功能打开地址白名单、防钓鱼码和设备提醒。', 'Turn on the address allowlist, anti-phishing code, and device alerts the platform offers.'), bad: labT('先把钱充进去，保护以后再说。', 'Depositing first and leaving protection for later.') },
+      { why: labT('手机丢了还要能恢复账户。', 'You still need to recover the account if the phone is lost.'), how: labT('按官方方式保存恢复材料，不发给任何人。', 'Save the recovery material the official way, and give it to nobody.'), bad: labT('把恢复码或证件发给私信里的客服。', 'Sending a recovery code or an ID to support in a private message.') }
     ];
     var seen = {};
     lab.querySelectorAll('[data-sec]').forEach(function (btn) {
@@ -614,7 +615,10 @@
         var it = items[i];
         var n = Object.keys(seen).length;
         lab.querySelectorAll('[data-sec]').forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
-        labResult(lab, '为什么重要：' + it.why + ' 如何确认：' + it.how + ' 常见误区：' + it.bad + ' 已查看 ' + n + ' / 5。这只是学习进度，不代表账户 100% 安全。');
+        labResult(lab, labT(
+          '为什么重要：' + it.why + ' 如何确认：' + it.how + ' 常见误区：' + it.bad + ' 已查看 ' + n + ' / 5。这只是学习进度，不代表账户 100% 安全。',
+          'Why it matters: ' + it.why + ' How to check: ' + it.how + ' Common mistake: ' + it.bad + ' Viewed ' + n + ' / 5. This is only study progress, not a 100% safe account.'
+        ));
       });
     });
     lab.querySelector('[data-reset]').addEventListener('click', function () {
@@ -626,40 +630,43 @@
   }
   function mountQuoteLab(lab) {
     var rows = [
-      { name: '渠道 A', fee: 0, feeText: '明示费用 0', got: 19.6 },
-      { name: '渠道 B', fee: 2, feeText: '明示费用 2 单位法币', got: 20.1 }
+      { name: labT('渠道 A', 'Channel A'), fee: 0, feeText: labT('明示费用 0', 'Stated fee 0'), got: 19.6 },
+      { name: labT('渠道 B', 'Channel B'), fee: 2, feeText: labT('明示费用 2 单位法币', 'Stated fee 2 units of fiat'), got: 20.1 }
     ];
     var box = lab.querySelector('[data-rows]');
     function draw(list, note) {
+      var pay = labT('支付 100 单位法币', 'Pay 100 units of fiat');
+      var foot = labT('到账时间未知。退款政策需核对。不标最佳。', 'Arrival time unknown. Check the refund policy. Neither is labeled best.');
       box.innerHTML = list.map(function (r) {
-        return '<div><span>' + r.name + ' · 支付 100 单位法币</span><b>' + r.got + ' USDT</b><span>' + r.feeText + '</span><span>到账时间未知。退款政策需核对。不标最佳。</span></div>';
+        return '<div><span>' + r.name + ' · ' + pay + '</span><b>' + r.got + ' USDT</b><span>' + r.feeText + '</span><span>' + foot + '</span></div>';
       }).join('');
       labResult(lab, note);
     }
     lab.querySelector('[data-sort="fee"]').addEventListener('click', function () {
-      draw(rows.slice().sort(function (a, b) { return a.fee - b.fee; }), '教学模拟：按明示费用，渠道 A 排在前面。A 最终只有 19.6 USDT，B 有 20.1 USDT。费用写着 0，不一定到手更多。两边都不标最佳。');
+      draw(rows.slice().sort(function (a, b) { return a.fee - b.fee; }), labT('教学模拟：按明示费用，渠道 A 排在前面。A 最终只有 19.6 USDT，B 有 20.1 USDT。费用写着 0，不一定到手更多。两边都不标最佳。', 'Teaching simulation: sorted by the stated fee, channel A comes first. A finally delivers only 19.6 USDT, and B delivers 20.1 USDT. A fee that says 0 does not mean you receive more. Neither side is labeled best.'));
     });
     lab.querySelector('[data-sort="got"]').addEventListener('click', function () {
-      draw(rows.slice().sort(function (a, b) { return b.got - a.got; }), '教学模拟：按最终到账，渠道 B 排到前面，顺序反过来了。20.1 USDT 多于 19.6 USDT。这仍不是最佳标签，还要核对时间和退款。');
+      draw(rows.slice().sort(function (a, b) { return b.got - a.got; }), labT('教学模拟：按最终到账，渠道 B 排到前面，顺序反过来了。20.1 USDT 多于 19.6 USDT。这仍不是最佳标签，还要核对时间和退款。', 'Teaching simulation: sorted by the final amount, channel B moves first and the order flips. 20.1 USDT is more than 19.6 USDT. That is still not a best label; also check time and refunds.'));
     });
-    draw(rows, '教学模拟：两边都支付 100 单位法币。点一种排序，看顺序会不会反过来。');
+    draw(rows, labT('教学模拟：两边都支付 100 单位法币。点一种排序，看顺序会不会反过来。', 'Teaching simulation: both sides pay 100 units of fiat. Pick a sort and see whether the order flips.'));
   }
   function mountP2pLab(lab) {
+    function line(zh, en, bad) { return [labT(zh, en), bad]; }
     var book = {
       shot: {
-        check: ['答对了。截图不是到账。银行还没入账，继续在订单里核验，不要放币。', false],
-        pause: ['答错了。可以停下来，但这一步要先看银行官方渠道。截图仍然不能放币。', true],
-        rule: ['答错了。银行还没看到款，不能按已付款处理，更不能放币。', true]
+        check: line('答对了。截图不是到账。银行还没入账，继续在订单里核验，不要放币。', 'Correct. A screenshot is not a credit. The bank has not received it, so keep checking inside the order and do not release the coins.', false),
+        pause: line('答错了。可以停下来，但这一步要先看银行官方渠道。截图仍然不能放币。', 'Not quite. You can stop, but this step starts with the bank official channel. A screenshot still cannot release the coins.', true),
+        rule: line('答错了。银行还没看到款，不能按已付款处理，更不能放币。', 'Not quite. The bank has not seen the money, so you cannot treat it as paid, and you certainly cannot release the coins.', true)
       },
       name: {
-        check: ['答错了。付款人姓名已经和订单不符，不要当作还要再等一等就放币。', true],
-        pause: ['答对了。姓名不符。先暂停，保留订单、聊天和银行记录，走平台申诉。', false],
-        rule: ['答错了。姓名不符时，不能按“钱显示到了就放币”处理。', true]
+        check: line('答错了。付款人姓名已经和订单不符，不要当作还要再等一等就放币。', 'Not quite. The payer name already does not match the order. Do not wait a bit and then release the coins.', true),
+        pause: line('答对了。姓名不符。先暂停，保留订单、聊天和银行记录，走平台申诉。', 'Correct. The name does not match. Pause, keep the order, the chat, and the bank record, and appeal on the platform.', false),
+        rule: line('答错了。姓名不符时，不能按“钱显示到了就放币”处理。', 'Not quite. When the name does not match, you cannot release the coins just because the money appears.', true)
       },
       paid: {
-        check: ['答错了。官方渠道已经核实到账。下一步是按平台规则处理，不要改去站外。', true],
-        pause: ['答错了。付款人和订单一致，不必因为一张截图去申诉。仍要按平台规则操作。', true],
-        rule: ['答对了。银行官方渠道已核实，付款人与订单一致。按平台流程处理。不同地区的规则仍要以平台为准。', false]
+        check: line('答错了。官方渠道已经核实到账。下一步是按平台规则处理，不要改去站外。', 'Not quite. The official channel has already confirmed the credit. The next step is the platform rules, not a move off the site.', true),
+        pause: line('答错了。付款人和订单一致，不必因为一张截图去申诉。仍要按平台规则操作。', 'Not quite. The payer matches the order, so a screenshot is not a reason to appeal. Still follow the platform rules.', true),
+        rule: line('答对了。银行官方渠道已核实，付款人与订单一致。按平台流程处理。不同地区的规则仍要以平台为准。', 'Correct. The bank official channel has confirmed it, and the payer matches the order. Follow the platform process. Rules still depend on the platform and the region.', false)
       }
     };
     lab.querySelectorAll('[data-card]').forEach(function (btn) {
@@ -681,16 +688,16 @@
     var mode = 'market';
     var state = '';
     var modeText = {
-      market: '市价：成交价格不保证，可能有滑点。',
-      limit: '限价：成交不保证。可能只成交一部分，或一直挂着。'
+      market: labT('市价：成交价格不保证，可能有滑点。', 'Market: the fill price is not guaranteed, and there can be slippage.'),
+      limit: labT('限价：成交不保证。可能只成交一部分，或一直挂着。', 'Limit: a fill is not guaranteed. It may fill only in part, or stay open.')
     };
     var stateText = {
-      filled: '状态：已成交。教学模拟，20 USDT 按 50,000 的报价、不计费用，约 0.0004 BTC。真实数量还要看费用和精度。',
-      partial: '状态：部分成交。教学模拟。只买到一部分，剩下的委托还在。委托成功不等于全部成交。',
-      open: '状态：未成交。教学模拟。订单可能仍在等待匹配。钱不一定丢了，币也还没买到。'
+      filled: labT('状态：已成交。教学模拟，20 USDT 按 50,000 的报价、不计费用，约 0.0004 BTC。真实数量还要看费用和精度。', 'State: filled. Teaching simulation: 20 USDT at a quote of 50,000, before fees, is about 0.0004 BTC. The real amount also depends on fees and precision.'),
+      partial: labT('状态：部分成交。教学模拟。只买到一部分，剩下的委托还在。委托成功不等于全部成交。', 'State: partially filled. Teaching simulation. Only part was bought, and the rest of the order is still open. A submitted order is not a full fill.'),
+      open: labT('状态：未成交。教学模拟。订单可能仍在等待匹配。钱不一定丢了，币也还没买到。', 'State: unfilled. Teaching simulation. The order may still be waiting for a match. The money is not necessarily lost, and the coins are not bought yet.')
     };
     function paint() {
-      var text = '教学模拟：BTC/USDT = 50,000。花费 20 USDT，不计费用约 0.0004 BTC。' + modeText[mode];
+      var text = labT('教学模拟：BTC/USDT = 50,000。花费 20 USDT，不计费用约 0.0004 BTC。', 'Teaching simulation: BTC/USDT = 50,000. Spending 20 USDT, before fees, is about 0.0004 BTC. ') + modeText[mode];
       if (state) text += stateText[state];
       labResult(lab, text);
     }
@@ -719,21 +726,22 @@
     paint();
   }
   function mountGoalsLab(lab) {
+    function line(zh, en, bad) { return [labT(zh, en), bad]; }
     var book = {
       swap: {
-        spot: ['答对了。现货卖出把 BTC 换成 USDT。USDT 还在交易所里，不是银行存款。', false],
-        chain: ['答错了。链上提现是把币送到钱包地址，不是把 BTC 换成 USDT。', true],
-        fiat: ['答错了。法币出金去的是银行。这一步你要的是交易所里的 USDT。', true]
+        spot: line('答对了。现货卖出把 BTC 换成 USDT。USDT 还在交易所里，不是银行存款。', 'Correct. A spot sale turns BTC into USDT. The USDT is still on the exchange, not a bank deposit.', false),
+        chain: line('答错了。链上提现是把币送到钱包地址，不是把 BTC 换成 USDT。', 'Not quite. An on-chain withdrawal sends coins to a wallet address. It does not turn BTC into USDT.', true),
+        fiat: line('答错了。法币出金去的是银行。这一步你要的是交易所里的 USDT。', 'Not quite. A fiat withdrawal goes to the bank. This step is the USDT still on the exchange.', true)
       },
       wallet: {
-        spot: ['答错了。现货卖出只是换成报价资产，USDT 还在交易所。', true],
-        chain: ['答对了。链上提现才把 USDT 送到你自己的钱包。要核对网络和地址。', false],
-        fiat: ['答错了。法币出金去的是银行，不是你的链上钱包。', true]
+        spot: line('答错了。现货卖出只是换成报价资产，USDT 还在交易所。', 'Not quite. A spot sale only switches you into the quote asset. The USDT is still on the exchange.', true),
+        chain: line('答对了。链上提现才把 USDT 送到你自己的钱包。要核对网络和地址。', 'Correct. An on-chain withdrawal is what sends USDT to your own wallet. Check the network and the address.', false),
+        fiat: line('答错了。法币出金去的是银行，不是你的链上钱包。', 'Not quite. A fiat withdrawal goes to the bank, not to your on-chain wallet.', true)
       },
       bank: {
-        spot: ['答错了。卖掉只得到交易所里的报价资产，不是银行存款。', true],
-        chain: ['答错了。链上地址不是银行账户。资产会停在链上。', true],
-        fiat: ['答对了。想换成银行法币，要走当地支持的法币兑换和出金。不是每个地区都开放。', false]
+        spot: line('答错了。卖掉只得到交易所里的报价资产，不是银行存款。', 'Not quite. A sale only gives you the quote asset on the exchange, not a bank deposit.', true),
+        chain: line('答错了。链上地址不是银行账户。资产会停在链上。', 'Not quite. A chain address is not a bank account. The assets stay on the chain.', true),
+        fiat: line('答对了。想换成银行法币，要走当地支持的法币兑换和出金。不是每个地区都开放。', 'Correct. To turn it into fiat in the bank, use a local fiat conversion and withdrawal. Not every region offers that.', false)
       }
     };
     lab.querySelectorAll('[data-goal]').forEach(function (btn) {
@@ -762,24 +770,24 @@
     }
     lab.querySelector('[data-move]').addEventListener('click', function () {
       if (fund < 40) {
-        paint('教学模拟：资金账户可用 ' + fund + ' USDT，不能划转 40。余额不能小于 0，也不能超过可用余额。');
+        paint(labT('教学模拟：资金账户可用 ' + fund + ' USDT，不能划转 40。余额不能小于 0，也不能超过可用余额。', 'Teaching simulation: the funding account has ' + fund + ' USDT available, so you cannot transfer 40. The balance cannot go below 0, and it cannot exceed what is available.'));
         return;
       }
       stack.push({ fund: fund, spot: spot, perp: perp });
       fund -= 40;
       spot += 40;
-      paint('教学模拟：内部划转 40 USDT 到现货。现在是资金 ' + fund + ' / 现货 ' + spot + ' / 合约 ' + perp + '。无链上网络费（模拟）。这不是给另一个平台转账。');
+      paint(labT('教学模拟：内部划转 40 USDT 到现货。现在是资金 ' + fund + ' / 现货 ' + spot + ' / 合约 ' + perp + '。无链上网络费（模拟）。这不是给另一个平台转账。', 'Teaching simulation: internal transfer of 40 USDT to spot. Now funding ' + fund + ' / spot ' + spot + ' / contract ' + perp + '. No on-chain network fee (simulated). This is not a transfer to another platform.'));
     });
     lab.querySelector('[data-undo]').addEventListener('click', function () {
       var prev = stack.pop();
-      if (!prev) { paint('教学模拟：没有可以撤销的划转。现在是资金 ' + fund + ' / 现货 ' + spot + ' / 合约 ' + perp + '。'); return; }
+      if (!prev) { paint(labT('教学模拟：没有可以撤销的划转。现在是资金 ' + fund + ' / 现货 ' + spot + ' / 合约 ' + perp + '。', 'Teaching simulation: there is no transfer to undo. Now funding ' + fund + ' / spot ' + spot + ' / contract ' + perp + '.')); return; }
       fund = prev.fund; spot = prev.spot; perp = prev.perp;
-      paint('教学模拟：已撤销上一步。现在是资金 ' + fund + ' / 现货 ' + spot + ' / 合约 ' + perp + '。');
+      paint(labT('教学模拟：已撤销上一步。现在是资金 ' + fund + ' / 现货 ' + spot + ' / 合约 ' + perp + '。', 'Teaching simulation: the last step is undone. Now funding ' + fund + ' / spot ' + spot + ' / contract ' + perp + '.'));
     });
     lab.querySelector('[data-chain]').addEventListener('click', function () {
-      paint('教学模拟：链上提现要单独核对网络和地址。它不是刚才的内部划转，这里不会移动余额，也不会真的提现。现在仍是资金 ' + fund + ' / 现货 ' + spot + ' / 合约 ' + perp + '。');
+      paint(labT('教学模拟：链上提现要单独核对网络和地址。它不是刚才的内部划转，这里不会移动余额，也不会真的提现。现在仍是资金 ' + fund + ' / 现货 ' + spot + ' / 合约 ' + perp + '。', 'Teaching simulation: an on-chain withdrawal needs its own check of the network and the address. It is not the internal transfer above. This button does not move the balance, and it does not really withdraw. Still funding ' + fund + ' / spot ' + spot + ' / contract ' + perp + '.'));
     });
-    paint('教学模拟：资金账户 100 USDT，现货 0，合约 0。');
+    paint(labT('教学模拟：资金账户 100 USDT，现货 0，合约 0。', 'Teaching simulation: funding account 100 USDT, spot 0, contract 0.'));
   }
   function mountPairLab(lab) {
     var tabs = lab.querySelectorAll('[data-pair]');
@@ -798,15 +806,15 @@
       if (unit) unit.textContent = base;
       var raw = String(qty.value == null ? '' : qty.value).trim();
       if (raw === '') {
-        labResult(lab, '请输入数量。');
+        labResult(lab, labT('请输入数量。', 'Enter a quantity.'));
         return;
       }
       var n = Number(raw);
       if (!isFinite(n) || n < 0 || !isFinite(price) || price < 0) {
-        labResult(lab, '请输入不小于 0 的数量。');
+        labResult(lab, labT('请输入不小于 0 的数量。', 'Enter a quantity that is not below 0.'));
         return;
       }
-      labResult(lab, '教学虚构：买 ' + labNum(n, 8) + ' ' + base + ' 需要支付 ' + labNum(n * price, 8) + ' ' + quote + '。');
+      labResult(lab, labT('教学虚构：买 ' + labNum(n, 8) + ' ' + base + ' 需要支付 ' + labNum(n * price, 8) + ' ' + quote + '。', 'Fictional teaching example: buying ' + labNum(n, 8) + ' ' + base + ' costs ' + labNum(n * price, 8) + ' ' + quote + '.'));
     }
     tabs.forEach(function (b) { b.addEventListener('click', function () { show(b); }); });
     qty.addEventListener('input', function () {
@@ -823,7 +831,7 @@
       btn.addEventListener('click', function () {
         lab.querySelectorAll('[data-guess]').forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
         var good = btn.getAttribute('data-guess') === 'a';
-        labSay(lab, (good ? '答对了。' : '答错了。') + '教学虚构：A 流通市值 1 亿美元，FDV 10 亿美元。B 流通市值 1,000 万美元，FDV 2,000 万美元。单位是美元和枚。A 的单价更低，流通市值更高。', !good);
+        labSay(lab, (good ? labT('答对了。', 'Correct. ') : labT('答错了。', 'Not quite. ')) + labT('教学虚构：A 流通市值 1 亿美元，FDV 10 亿美元。B 流通市值 1,000 万美元，FDV 2,000 万美元。单位是美元和枚。A 的单价更低，流通市值更高。', 'Fictional teaching example: A has a circulating market cap of 100 million dollars and an FDV of 1 billion dollars. B has a circulating market cap of 10 million dollars and an FDV of 20 million dollars. The units are dollars and coins. A has the lower unit price and the higher market cap.'), !good);
       });
     });
     lab.querySelector('[data-reset]').addEventListener('click', function () {
@@ -841,20 +849,20 @@
     }
     function note(text) { labResult(lab, text); }
     lab.querySelector('[data-unlock]').addEventListener('click', function () {
-      if (s.unlocked) { note('解锁这一步已经做过。已发行总量仍是 ' + labNum(s.issued, 0) + ' 万枚。可以重置后再试另一种顺序。'); return; }
+      if (s.unlocked) { note(labT('解锁这一步已经做过。已发行总量仍是 ' + labNum(s.issued, 0) + ' 万枚。可以重置后再试另一种顺序。', 'The unlock step is already done. Issued supply is still ' + labNum(s.issued, 0) + ' ten-thousands of coins. Reset to try the other order.')); return; }
       s.unlocked = true;
       s.circ += 500;
       s.locked -= 500;
       paint();
-      note('教学虚构：解锁 500 万枚后，流通是 ' + labNum(s.circ, 0) + ' 万枚，已发行总量仍是 ' + labNum(s.issued, 0) + ' 万枚。解锁没有新发行代币。');
+      note(labT('教学虚构：解锁 500 万枚后，流通是 ' + labNum(s.circ, 0) + ' 万枚，已发行总量仍是 ' + labNum(s.issued, 0) + ' 万枚。解锁没有新发行代币。', 'Fictional teaching example: after unlocking 5 million coins, circulating supply is ' + labNum(s.circ, 0) + ' ten-thousands, and issued supply is still ' + labNum(s.issued, 0) + ' ten-thousands. An unlock does not issue new coins.'));
     });
     lab.querySelector('[data-mint]').addEventListener('click', function () {
-      if (s.minted) { note('增发这一步已经做过。已发行总量是 ' + labNum(s.issued, 0) + ' 万枚。可以重置后再试另一种顺序。'); return; }
+      if (s.minted) { note(labT('增发这一步已经做过。已发行总量是 ' + labNum(s.issued, 0) + ' 万枚。可以重置后再试另一种顺序。', 'The issuance step is already done. Issued supply is ' + labNum(s.issued, 0) + ' ten-thousands of coins. Reset to try the other order.')); return; }
       s.minted = true;
       s.issued += 1000;
       s.circ += 1000;
       paint();
-      note('教学虚构：增发 1,000 万枚并立即流通后，已发行总量是 ' + labNum(s.issued, 0) + ' 万枚，流通是 ' + labNum(s.circ, 0) + ' 万枚。');
+      note(labT('教学虚构：增发 1,000 万枚并立即流通后，已发行总量是 ' + labNum(s.issued, 0) + ' 万枚，流通是 ' + labNum(s.circ, 0) + ' 万枚。', 'Fictional teaching example: after issuing 10 million coins into circulation, issued supply is ' + labNum(s.issued, 0) + ' ten-thousands and circulating supply is ' + labNum(s.circ, 0) + ' ten-thousands.'));
     });
     lab.querySelector('[data-reset]').addEventListener('click', function () {
       s = Object.assign({}, start);
@@ -892,7 +900,7 @@
         var got = takeBook(levels, qty);
         markLevels(lab, got.used);
         lab.querySelectorAll('[data-qty]').forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
-        labResult(lab, '教学虚构：卖出 ' + labNum(qty, 0) + ' 枚，收到 ' + labMoney(got.cost) + ' 美元。最优买价 1.00 美元，实际均价 ' + labNum(got.avg, 4) + ' 美元。');
+        labResult(lab, labT('教学虚构：卖出 ' + labNum(qty, 0) + ' 枚，收到 ' + labMoney(got.cost) + ' 美元。最优买价 1.00 美元，实际均价 ' + labNum(got.avg, 4) + ' 美元。', 'Fictional teaching example: selling ' + labNum(qty, 0) + ' coins receives ' + labMoney(got.cost) + ' dollars. The best bid is 1.00 dollars, and the average fill is ' + labNum(got.avg, 4) + ' dollars.'));
       });
     });
     lab.querySelector('[data-reset]').addEventListener('click', function () {
@@ -914,7 +922,7 @@
         markLevels(lab, got.used);
         lab.querySelectorAll('[data-qty]').forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
         var gap = (got.avg - 1) * 100;
-        labResult(lab, '教学虚构：买入 ' + labNum(qty, 0) + ' 枚，总成本 ' + labMoney(got.cost) + ' 美元，均价 ' + labNum(got.avg, 4) + ' 美元。相对 1 美元偏离约 ' + labNum(gap, 2) + '%。这是扫到更贵档位造成的价格影响，不要把整段偏离都叫成滑点。');
+        labResult(lab, labT('教学虚构：买入 ' + labNum(qty, 0) + ' 枚，总成本 ' + labMoney(got.cost) + ' 美元，均价 ' + labNum(got.avg, 4) + ' 美元。相对 1 美元偏离约 ' + labNum(gap, 2) + '%。这是扫到更贵档位造成的价格影响，不要把整段偏离都叫成滑点。', 'Fictional teaching example: buying ' + labNum(qty, 0) + ' coins costs ' + labMoney(got.cost) + ' dollars in total, at an average of ' + labNum(got.avg, 4) + ' dollars. That is about ' + labNum(gap, 2) + '% away from 1 dollar. The gap comes from walking into a more expensive level. Do not call the whole gap slippage.'));
       });
     });
     lab.querySelector('[data-reset]').addEventListener('click', function () {
@@ -931,7 +939,7 @@
       items.forEach(function (btn) { if (btn.getAttribute('aria-pressed') === 'true') spent += Number(btn.getAttribute('data-fee')); });
       var left = Math.round((100 - spent) * 10) / 10;
       var loss = Math.round(spent * 10) / 10;
-      labResult(lab, '教学虚构：剩余 ' + labNum(left, 1) + ' USDT，损耗 ' + labNum(loss, 1) + '%。币价可以完全没动。');
+      labResult(lab, labT('教学虚构：剩余 ' + labNum(left, 1) + ' USDT，损耗 ' + labNum(loss, 1) + '%。币价可以完全没动。', 'Fictional teaching example: ' + labNum(left, 1) + ' USDT remains, and the cost is ' + labNum(loss, 1) + '%. The coin price can be completely unchanged.'));
     }
     items.forEach(function (btn) {
       btn.addEventListener('click', function () {
@@ -952,7 +960,7 @@
         var left = 100 * (1 - d);
         var need = d / (1 - d) * 100;
         lab.querySelectorAll('[data-drop]').forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
-        labResult(lab, '教学虚构：100 跌掉 ' + labNum(d * 100, 0) + '% 后剩 ' + labNum(left, 2) + '。回到 100 需要再涨 ' + labNum(need, 2) + '%。公式：回本涨幅 = 跌幅 ÷ (1 − 跌幅)。');
+        labResult(lab, labT('教学虚构：100 跌掉 ' + labNum(d * 100, 0) + '% 后剩 ' + labNum(left, 2) + '。回到 100 需要再涨 ' + labNum(need, 2) + '%。公式：回本涨幅 = 跌幅 ÷ (1 − 跌幅)。', 'Fictional teaching example: after 100 falls ' + labNum(d * 100, 0) + '%, ' + labNum(left, 2) + ' remains. Getting back to 100 takes another rise of ' + labNum(need, 2) + '%. Formula: rise to recover = drop ÷ (1 − drop).'));
       });
     });
     lab.querySelector('[data-reset]').addEventListener('click', function () {
@@ -965,11 +973,11 @@
     var facts = lab.querySelectorAll('.lab-facts [data-miss]');
     lab.querySelector('[data-buy]').addEventListener('click', function () {
       facts.forEach(function (li) { li.classList.remove('is-hit'); });
-      labSay(lab, '答错了。还没确认三天后解锁 5,000 万枚、盘口很浅，以及提现暂时维护。这不是真实买入。', true);
+      labSay(lab, labT('答错了。还没确认三天后解锁 5,000 万枚、盘口很浅，以及提现暂时维护。这不是真实买入。', 'Not quite. You have not checked the 50 million coins unlocking in three days, the thin book, or the withdrawal maintenance. This is not a real buy.'), true);
     });
     lab.querySelector('[data-check]').addEventListener('click', function () {
       facts.forEach(function (li) { li.classList.add('is-hit'); });
-      labSay(lab, '答对了。先看还没确认的事：三天后解锁 5,000 万枚、当前盘口很浅、提现暂时维护。', false);
+      labSay(lab, labT('答对了。先看还没确认的事：三天后解锁 5,000 万枚、当前盘口很浅、提现暂时维护。', 'Correct. First look at what is still unchecked: 50 million coins unlock in three days, the book is thin, and withdrawals are in maintenance.'), false);
     });
     lab.querySelector('[data-reset]').addEventListener('click', function () {
       facts.forEach(function (li) { li.classList.remove('is-hit'); });
