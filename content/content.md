@@ -737,6 +737,8 @@ Stoch RSI：对 RSI 再做随机指标处理，通常更敏感。
 
 ## 无私钥钱包：新手也能轻松开始 🧸
 
+无私钥钱包把钥匙拆开保存，创建时通常不用抄传统助记词，但它和交易所账户不是同一个资金池。
+
 **不想抄助记词？无私钥钱包把钥匙拆成三份，更适合新手。**
 
 担心不会保管私钥、弄丢助记词？可以了解一下 币安钱包（无私钥）。
@@ -772,6 +774,8 @@ Stoch RSI：对 RSI 再做随机指标处理，通常更敏感。
 <div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。MPC钱包还需要确认什么：恢复条件。" data-bad="答错了。MPC钱包还需要确认什么：恢复条件。"><h3>想一想</h3><p>MPC钱包还需要确认什么？</p><button type="button" class="option" data-answer="a">A. 恢复条件</button><button type="button" class="option" data-answer="b">B. K线颜色</button><button type="button" class="option" data-answer="c">C. 收益保证</button><div class="feedback"></div></div>
 
 ## 有没有必要买硬件钱包？
+
+要不要买硬件钱包没有统一金额门槛，它也挡不住备份泄露和你自己签下的恶意操作。
 
 **刚入门不用急着买硬件钱包，先学会备份和看懂签名。**
 
