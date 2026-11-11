@@ -983,6 +983,7 @@
       if (p.closest('.uid-compare, .diagram, .cosmic-scene, .orbit-scene, .quiz, .checklist, .steps, .step, .compare, .key, .teach-status, table, thead, tbody, pre, .summary, .tool-card, .tool-grid, .ch03-lab, button')) return;
       if (p.querySelector('table, pre, code, button, img, svg, .uid-compare, .tool-card')) return;
       p.querySelectorAll('br.clause-br').forEach(function (br) { br.remove(); });
+      if (p.classList.contains('keep-lines')) return;
       if (keepSentences && p.querySelector('br:not(.clause-br)')) return;
       var text = p.textContent;
       var cuts = clauseCuts(text);
