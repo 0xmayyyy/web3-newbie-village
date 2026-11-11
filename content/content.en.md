@@ -1571,13 +1571,13 @@ Once a seed phrase or private key has leaked, changing a password or reinstallin
 
 **If a seed phrase or private key has been given to someone else, uploaded to a web page, or exposed in an environment you do not trust, that wallet is no longer safe.**
 
-First, on a device you trust, create a wallet with a brand-new key.
-Then judge how to move any remaining assets there safely.
-Changing only the app password, uninstalling the wallet, or revoking an approval
-cannot make a private key that has already leaked stop working.
-If you suspect a program is automatically sweeping assets, and you add network fee to the old wallet,
-that fee may be swept away immediately too.
-In that situation, seek trusted professional help first.
+<p class="keep-lines">First, on a device you trust, create a wallet with a brand-new key.<br>
+Then judge how to move any remaining assets there safely.<br>
+Changing only the app password, uninstalling the wallet, or revoking an approval<br>
+cannot make a private key that has already leaked stop working.<br>
+If you suspect a program is automatically sweeping assets, and you add network fee to the old wallet,<br>
+that fee may be swept away immediately too.<br>
+In that situation, seek trusted professional help first.</p>
 
 <div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. A leaked private key does not stop working because you changed a password or reinstalled. Use a new key first, then consider how to move what remains." data-bad="Not quite. Changing a password and uninstalling cannot make the old private key stop working. Do not keep treating that address as a safe wallet."><h3>Think it through</h3><p>Fictional teaching example: the seed phrase was already sent to fake support. Can the old address still be used as a safe wallet?</p><button type="button" class="option" data-answer="a">A. Yes. Change the login password and keep using it</button><button type="button" class="option" data-answer="b">B. No. Create a brand-new wallet, then judge how to move the remaining assets safely</button><button type="button" class="option" data-answer="c">C. After you uninstall and reinstall, the old private key stops working</button><div class="feedback"></div></div>
 
