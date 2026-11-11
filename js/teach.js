@@ -106,7 +106,7 @@
           if (feedback) {
             feedback.style.display = 'block';
             feedback.classList.toggle('wrong', !good);
-            feedback.textContent = good ? (quiz.getAttribute('data-ok') || '') : (quiz.getAttribute('data-bad') || '');
+            feedback.textContent = good ? (quiz.getAttribute('data-ok') || '') : (btn.getAttribute('data-note') || quiz.getAttribute('data-bad') || '');
           }
           paintStatus(root);
           if (good && requirementsMet(root)) {

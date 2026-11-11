@@ -295,185 +295,695 @@ CEX 和 DEX 是交易场所的分类，和一级 / 二级市场不是一回事�
 
 ## 交易对
 
-**BTC/USDT 就是用 USDT 买 BTC，不用买一整枚。**
 
-BTC/USDT 表示用 USDT 给 BTC 报价。假设价格为 60,000，意思是 1 BTC 约对应 60,000 USDT。买入 BTC/USDT 通常是用 USDT 买 BTC，卖出则反过来。
+BTC/USDT 用右边的 USDT 给左边的 BTC 标价，可以买小数份额，卖出通常收回报价资产。
 
-不需要买完整一枚 BTC，很多资产可以按小数份额购买，但平台有最小订单要求。
+你在交易所看到「BTC/USDT：60,000」，是不是以为买一枚 BTC 才能交易？
+
+其实不用。
+**BTC/USDT 的意思是：用 USDT 给 BTC 标价。**
+左边 BTC 是你买卖的资产，右边 USDT 是报价资产。
+教学虚构：60,000 表示按这个报价，1 BTC 约值 60,000 USDT。
+
+教学虚构：假设你只想买 0.01 BTC。
+60,000 × 0.01 = **600 USDT**，还没算手续费。
+卖出时方向反过来，你卖 BTC，通常收到 USDT。
+交易所往往允许买小数份额，但会设置最小交易金额或数量。
+
+**容易搞错：** BTC/USDT 和 BTC/USD 不一定是同一个交易市场；
+USDT 是稳定币，不是银行账户里的美元。
+交易前看清楚右边的报价资产。
+
+<div class="ch03-lab" data-lab="pair">
+<h3>拆交易对</h3>
+<p class="lab-kicker">教学虚构。BTC/USDT 按 60,000，ETH/BTC 按 0.05，SOL/USDT 按 150，都不是真实行情。</p>
+<div class="lab-tabs" role="group" aria-label="选择交易对">
+<button type="button" data-pair="BTC/USDT" data-base="BTC" data-quote="USDT" data-price="60000" aria-pressed="true">BTC/USDT</button>
+<button type="button" data-pair="ETH/BTC" data-base="ETH" data-quote="BTC" data-price="0.05" aria-pressed="false">ETH/BTC</button>
+<button type="button" data-pair="SOL/USDT" data-base="SOL" data-quote="USDT" data-price="150" aria-pressed="false">SOL/USDT</button>
+</div>
+<div class="lab-cols">
+<div><span>买卖资产</span><strong data-base>BTC</strong></div>
+<div><span>报价资产</span><strong data-quote>USDT</strong></div>
+</div>
+<label data-qty-wrap>买入数量（<span data-unit>BTC</span>）
+<input data-qty type="number" min="0" step="any" value="0.01" inputmode="decimal">
+</label>
+<p class="lab-result" aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>重置</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。ETH/BTC 里，买入 ETH 通常花的是右边的 BTC。" data-bad="答错了。看交易对右边的报价资产。"><h3>想一想</h3><p>ETH/BTC 交易对里，买入 ETH 通常花什么？</p><button type="button" class="option" data-answer="a" data-note="答错了。看右侧报价资产。ETH/BTC 的报价资产是 BTC，不是 USDT。">A. USDT</button><button type="button" class="option" data-answer="b">B. BTC</button><button type="button" class="option" data-answer="c" data-note="答错了。ETH 是你买到的资产，不是你花出去的报价资产。">C. ETH</button><div class="feedback"></div></div>
 
 ## 币价、市值和 FDV
 
-**单价低不等于便宜，要看市值和总供应量。**
 
-币价：一单位资产的市场价格。
-流通市值：常见计算是价格 × 流通供应量。
-FDV：完全稀释估值，常见计算使用价格 × 总供应量或最大供应量；数据平台口径可能不同。
+单价低不等于便宜，要一起看流通市值和完全稀释估值，这两个数也不是实际投入的现金。
 
-假设某币价格 0.01 美元，流通 100 亿枚，它的流通市值约为 1 亿美元。另一个币单价 100 美元，流通 10 万枚，市值约为 1,000 万美元。
+A 币卖 0.01 美元，B 币卖 100 美元。
+哪个更便宜？
+**光看单价，根本判断不了。**
 
-所以，单价低不等于估值低。市值也不是所有人实际投入资金的总额。
+先看市值。
+常见算法是：**流通市值 = 当前价格 × 流通供应量。**
+
+教学虚构：A 币流通 100 亿枚。
+0.01 × 100 亿 = **1 亿美元**。
+B 币流通 10 万枚。
+100 × 10 万 = **1,000 万美元**。
+A 单价更低，流通市值反而是 B 的十倍。
+
+再看 **FDV（完全稀释估值）**：通常用当前价格乘总供应量或最大供应量，具体看数据平台口径。
+教学虚构：假设 A 币目前流通 100 亿枚，未来总供应量可能到 1,000 亿枚，按 0.01 美元算，FDV 约 **10 亿美元**。
+这是一个估值口径，**不是说真有 10 亿美元流进项目**。
+
+**容易搞错：** 市值不是「所有持币人投入的现金总额」；
+FDV 也不是未来一定会达到的价格或规模。
+
+<div class="ch03-lab" data-lab="mcap">
+<h3>币价错觉实验</h3>
+<p class="lab-kicker">教学虚构。先猜谁的流通市值更高，点一下就看到计算。单位是美元和枚。</p>
+<div class="lab-stats">
+<div><span>A：单价 0.01 美元</span><b>流通 100 亿枚</b><span>总量 1,000 亿枚</span></div>
+<div><span>B：单价 100 美元</span><b>流通 10 万枚</b><span>总量 20 万枚</span></div>
+</div>
+<div class="lab-choices" role="group" aria-label="谁的流通市值更高">
+<button type="button" data-guess="a" aria-pressed="false">A 的市值更高</button>
+<button type="button" data-guess="b" aria-pressed="false">B 的市值更高</button>
+<button type="button" data-guess="tie" aria-pressed="false">两边一样</button>
+</div>
+<p class="lab-feedback" hidden aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>重置</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。单价变低，不等于被低估。还要看供应、用途和风险。" data-bad="答错了。不能只看单价，也不能只看 FDV。"><h3>想一想</h3><p>一个币单价跌到 0.001 美元，就一定被低估了吗？</p><button type="button" class="option" data-answer="a" data-note="答错了。这是把价格当成了估值。">A. 是</button><button type="button" class="option" data-answer="b">B. 不一定，还要看供应、用途和风险</button><button type="button" class="option" data-answer="c" data-note="答错了。只看 FDV，会忽略需求和实际流通。">C. 只看 FDV 就够</button><div class="feedback"></div></div>
 
 ## 供应量
 
-**先看会不会增发、什么时候解锁，再看数量。**
 
-流通供应量是按特定口径已经进入流通的数量。总供应量通常是已经发行、扣除部分销毁后的数量。最大供应量是规则允许的上限，但并非每种资产都有固定上限。
+先分清流通量、总供应和最大供应，解锁改变的是能不能卖，增发才是新币进入供应。
 
-检查是否能增发、谁有权限、团队与投资者何时解锁，比单看一个数字更有帮助。
+想象一块蛋糕原本切成 100 份，你有 1 份，占 1%。
+后来按项目规则又新增 100 份，而你仍只有 1 份，你的占比就变成了 0.5%。
+
+代币也要看数量变化，但要区分三个概念：
+
+- **流通供应量：** 按数据平台口径，当前被计入市场流通的数量。
+- **总供应量：** 通常是已发行数量扣除某些销毁数量后的规模，口径可能不同。
+- **最大供应量：** 如果协议设定了发行上限，就是允许发行的最大数量；
+有些币没有固定上限。
+
+还要分清**增发**与**解锁**。
+增发是新代币进入供应体系；
+解锁通常是已经分配或发行的代币解除转让限制。
+两者可能都改变市场可卖的数量，但不是同一件事。
+
+**你要查的不是「总共有多少枚」这么简单，而是：谁能增发？谁手里的币什么时候解锁？解锁后可能卖给谁？**
+
+<div class="ch03-lab" data-lab="supply">
+<h3>供应量时间轴</h3>
+<p class="lab-kicker">教学虚构。两个按钮可以按不同顺序点，重置后重来。最大供应量 1 亿枚。</p>
+<div class="lab-stats">
+<div><span>当前流通</span><b data-circ>2,000 万枚</b></div>
+<div><span>仍在锁仓</span><b data-locked>3,000 万枚</b></div>
+<div><span>已发行总量</span><b data-issued>5,000 万枚</b></div>
+<div><span>最大供应量</span><b>1 亿枚</b></div>
+</div>
+<div class="lab-choices">
+<button type="button" data-unlock>解锁 500 万</button>
+<button type="button" data-mint>增发 1,000 万并立即流通</button>
+</div>
+<p class="lab-result" hidden aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>重置</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。解锁可以只改变流通状态，已发行总量不一定增加。" data-bad="答错了。解锁不等于新发行，也不保证价格下跌。"><h3>想一想</h3><p>500 万枚锁仓币解锁后，已发行总量必然增加 500 万吗？</p><button type="button" class="option" data-answer="a" data-note="答错了。这是把发行和解锁混成了一件事。">A. 必然</button><button type="button" class="option" data-answer="b">B. 不必然，可能只是流通状态改变</button><button type="button" class="option" data-answer="c" data-note="答错了。供应变化不是价格保证。">C. 币价必然跌</button><div class="feedback"></div></div>
 
 ## 流动性与成交量
 
-**流动性好，买卖时价格才不容易被你砸歪。**
 
-流动性描述在较小价格影响下买卖资产的能力。成交量描述一定时间内完成的交易数量或金额。
+成交量说的是过去成交了多少，流动性说的是现在大单会不会把价格打穿。
 
-成交量大，不一定每个时刻都有足够流动性；数据也可能受到刷量影响。
+你想卖 5 万美元的币，页面显示「24 小时成交量 1 亿美元」，听起来很热闹。
+但你点开盘口，发现现在愿意接你卖单的人很少。
+
+**成交量说的是过去一段时间成交了多少；流动性说的是现在能不能以较小的价格影响完成交易。**
+这两个数字有关，却不是一回事。
+
+教学虚构：例如某币最近 24 小时累计成交 1 亿美元，但当前最优买价附近只有 2,000 美元的买单。
+你直接市价卖出 5 万美元，订单可能一路吃到更低的买价，最终成交均价比屏幕上显示的价格差很多。
+
+有些交易对还可能出现刷量或不可靠的成交统计。
+成交量大，不代表市场真实深度足够。
+
+<div class="ch03-lab" data-lab="book">
+<h3>盘口承接测试</h3>
+<p class="lab-kicker">教学虚构。不是真实订单簿。点一个数量，立刻看到成交金额和均价。</p>
+<ul class="lab-book">
+<li data-px="1"><span>1.00 美元</span><span>1,000 枚</span></li>
+<li data-px="0.98"><span>0.98 美元</span><span>2,000 枚</span></li>
+<li data-px="0.95"><span>0.95 美元</span><span>5,000 枚</span></li>
+</ul>
+<div class="lab-choices" role="group" aria-label="选择卖出数量">
+<button type="button" data-qty="500" aria-pressed="false">卖出 500 枚</button>
+<button type="button" data-qty="2500" aria-pressed="false">卖出 2,500 枚</button>
+<button type="button" data-qty="6000" aria-pressed="false">卖出 6,000 枚</button>
+</div>
+<p class="lab-result" hidden aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>重置</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。大额能不能成交，要看当前盘口深度和可承接数量。" data-bad="答错了。涨幅和粉丝数都不能代替现在的买卖深度。"><h3>想一想</h3><p>判断大额订单是否容易成交，最该看什么？</p><button type="button" class="option" data-answer="a" data-note="答错了。昨天的涨幅不能代替现在的买卖深度。">A. 昨天的涨幅</button><button type="button" class="option" data-answer="b" data-note="答错了。粉丝数不能代替现在的买卖深度。">B. 项目粉丝数</button><button type="button" class="option" data-answer="c">C. 当前盘口深度与可承接数量</button><div class="feedback"></div></div>
 
 ## 买卖价差、价格影响与滑点
 
-**屏幕上的价格不一定是你最后成交的价格。**
 
-买卖价差是最佳卖价与最佳买价的差距。
-价格影响是你的订单对成交价格造成的影响，常见于深度不足或池子较小的市场。
-滑点是预期与实际成交价格之间的差异，可能来自市场变化、深度等因素。
+买卖价差、价格影响和滑点是三件相关但不同的事，屏幕上的价格不一定是你的成交价。
 
-例子：屏幕显示约 1 美元，不代表一笔很大的市价单都能以 1 美元成交。
+打开交易页面，最好的买价可能是 0.99 美元，最好的卖价是 1.00 美元。
+两者差的 0.01 美元叫**买卖价差**。
+
+如果你想买很多，最便宜的一档卖单不够，你就得继续买下一档更贵的币。
+这种因为订单规模与市场深度造成的成交价格变化，叫**价格影响**。
+
+**滑点**则是预期成交价格和实际成交价格之间的偏差，可能来自行情变化、流动性不足等原因。
+三者有关，但不能当成同一个词。
+
+教学虚构：卖盘只有两档，100 枚挂 1.00 美元，100 枚挂 1.05 美元。
+你市价买 150 枚，需要付 100 × 1.00 + 50 × 1.05 = **152.50 美元**，均价约 **1.0167 美元**，而不是全部按 1 美元买到。
+
+<div class="ch03-lab" data-lab="sweep">
+<h3>市价单扫单</h3>
+<p class="lab-kicker">教学虚构。点一个数量，高亮被吃掉的卖单。偏离不等于「全部都是滑点」。</p>
+<ul class="lab-book">
+<li data-px="1"><span>1.00 美元</span><span>100 枚</span></li>
+<li data-px="1.05"><span>1.05 美元</span><span>100 枚</span></li>
+</ul>
+<div class="lab-choices" role="group" aria-label="选择买入数量">
+<button type="button" data-qty="50" aria-pressed="false">买入 50 枚</button>
+<button type="button" data-qty="100" aria-pressed="false">买入 100 枚</button>
+<button type="button" data-qty="150" aria-pressed="false">买入 150 枚</button>
+<button type="button" data-qty="200" aria-pressed="false">买入 200 枚</button>
+</div>
+<p class="lab-result" hidden aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>重置</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。限价买单有最高价。深度不够时，可能只成交一部分，或暂时等不到。" data-bad="答错了。限价不能保证立刻买满，也不会自动把价格提到 1.05。"><h3>想一想</h3><p>限价买单设置最高 1.00 美元，能保证立刻买到 150 枚吗？</p><button type="button" class="option" data-answer="a">A. 不能，可能只成交部分或等不到</button><button type="button" class="option" data-answer="b" data-note="答错了。这忽略了盘口深度。">B. 能保证</button><button type="button" class="option" data-answer="c" data-note="答错了。限价买单不会自动把价格提到 1.05，那会违反你设的最高价。">C. 可以自动把价格提到 1.05</button><div class="feedback"></div></div>
 
 ## 手续费与网络费
 
-**算成本要把手续费、价差、滑点、提现费都加上。**
 
-交易手续费由平台或协议收取。链上网络费通常用于交易执行与网络资源。交易所提现费不一定等于当时链上实际成本。
+币价可以不动，手续费、价差、滑点、提现费和网络费仍会把余额一点点吃掉。
 
-计算成本时一起看：交易费、价差、滑点、提现费、网络费、汇率和支付渠道费用。
+刚入圈最容易忽略的不是涨跌，而是每一步的成本。
 
-### 一笔交易到底花了多少钱
+你买币可能有支付渠道报价差和交易手续费；
+在交易所买卖可能有价差和滑点；
+从交易所提币可能有提现费；
+到链上授权、兑换，还可能产生网络费或协议费用。
 
-| 成本 | 新手容易漏看的地方 |
-|---|---|
-| 买币成本 | 支付渠道报价、汇率和价差 |
-| 交易成本 | 手续费与滑点 |
-| 提币成本 | 平台提现费 |
-| 链上操作 | 授权、兑换等网络费 |
-| 合约持仓 | 资金费用等 |
+注意：**交易所提现费不一定等于链上网络费**。
+平台内部划转通常不是链上转账，费用结构也不同。
 
-**示例（数字为方便计算编的整数，不代表任何平台的真实费率）：**
+用一组**纯教学的假设**算算：
 
-| 步骤 | 假设的成本 | 剩下 |
-|---|---|---|
-| 准备买入 100 USDT 的币 | — | 100 USDT |
-| 买币时的报价与价差 | 约 1 USDT | 99 USDT |
-| 交易手续费与滑点 | 约 0.5 USDT | 98.5 USDT |
-| 提币到自己的钱包 | 提现费约 1 USDT | 97.5 USDT |
-| 在链上授权 + 兑换 | 网络费约 1.5 USDT | 96 USDT |
+| 步骤 | 费用假设 | 剩余等值 |
+|---|---:|---:|
+| 起点 | — | 100 USDT |
+| 买币报价差 | 1 USDT | 99 USDT |
+| 交易费与滑点 | 0.5 USDT | 98.5 USDT |
+| 交易所提现费 | 1 USDT | 97.5 USDT |
+| 链上授权和兑换网络费 | 1.5 USDT | 96 USDT |
 
-币价几乎没动，账面却少了约 4%。这就是「币价没怎么动，余额却少了」的原因：每一步都有一点成本。如果还开了合约，持仓期间的资金费用也会继续增减余额。金额越小、操作越多，成本占比越高。
+教学虚构：这里把不同费用统一折算成 USDT 等值，只是为了教你算成本。
+现实中网络费常用原生币支付，资产价值也可能随行情变化。
+
+<div class="ch03-lab" data-lab="fees">
+<h3>成本剥洋葱</h3>
+<p class="lab-kicker">教学虚构。起点 100 USDT。点开一项，余额立刻变。四项都打开是 96 USDT，损耗 4%。</p>
+<div class="lab-choices" role="group" aria-label="打开或关掉一项费用">
+<button type="button" data-fee="1" aria-pressed="false">报价差 1</button>
+<button type="button" data-fee="0.5" aria-pressed="false">交易费及滑点 0.5</button>
+<button type="button" data-fee="1" aria-pressed="false">提现费 1</button>
+<button type="button" data-fee="1.5" aria-pressed="false">网络费 1.5</button>
+</div>
+<p class="lab-result" aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>重置</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。同一平台里的账户划转，通常是内部记账，不是链上转账。" data-bad="答错了。内部划转通常不是链上转账，也不是跨链。"><h3>想一想</h3><p>在交易所内部把资金账户划转到现货账户，必然要支付区块链网络费吗？</p><button type="button" class="option" data-answer="a" data-note="答错了。内部划转和链上转账不是一回事。">A. 必然</button><button type="button" class="option" data-answer="b">B. 不必然，通常属于平台内部记账</button><button type="button" class="option" data-answer="c" data-note="答错了。同一平台的账户划转，通常也不是跨链。">C. 必然产生跨链费</button><div class="feedback"></div></div>
 
 ## 盈亏怎么算？
 
-**跌 50% 要涨 100% 才能回本。**
 
-简单现货示例：投入 100 USDT，卖出得到 110 USDT，未计费用盈利 10 USDT，收益率 10%。
+跌下去之后，要涨回原价所需的百分比比跌幅更大，因为计算的基数已经变小。
 
-跌 50% 后，需要涨 100% 才能回到原价：100 → 50 → 100。
+教学虚构：你用 100 USDT 买币，跌了 50%，只剩 50 USDT。
+这时它再涨 50%，也只是 50 × 1.5 = **75 USDT**，还差 25 USDT。
 
-多次买入、部分卖出、合约与多币种计价需要更完整的计算，不能只看最后一笔价格。
+因为**涨跌百分比的计算基数变了**。
+从 50 回到 100，需要涨 50 ÷ 50 = **100%**。
+
+最简单的现货盈亏算法：
+
+**未计费用盈亏 = 卖出所得 − 买入成本。**
+
+**未计费用收益率 = 盈亏 ÷ 买入成本 × 100%。**
+
+教学虚构：投入 100 USDT，卖出得到 110 USDT，未计费用赚 10 USDT，收益率 10%。
+但真正到手多少，还要扣交易费、提现费等。
+多次分批买卖、不同币种计价或合约仓位，需要另外算。
+
+<div class="ch03-lab" data-lab="recover">
+<h3>回本计算器</h3>
+<p class="lab-kicker">教学虚构。起点固定为 100。跌幅 100% 时价值归零，按百分比公式无法从 0 恢复。</p>
+<div class="lab-choices" role="group" aria-label="选择跌幅">
+<button type="button" data-drop="0.1" aria-pressed="false">跌 10%</button>
+<button type="button" data-drop="0.2" aria-pressed="false">跌 20%</button>
+<button type="button" data-drop="0.5" aria-pressed="false">跌 50%</button>
+<button type="button" data-drop="0.8" aria-pressed="false">跌 80%</button>
+</div>
+<p class="lab-result" hidden aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>重置</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。教学虚构：从 20 回到 100，要涨 80，80÷20 = 400%。" data-bad="答错了。回本涨幅要用剩下的 20 当基数，不是把原来的跌幅直接拿来用。"><h3>想一想</h3><p>教学虚构：100 跌到 20，要回到 100 需要涨多少？</p><button type="button" class="option" data-answer="a" data-note="答错了。80% 是把原来的跌幅直接当成了回本涨幅。">A. 80%</button><button type="button" class="option" data-answer="b" data-note="答错了。100% 没有按剩下的 20 当基数。">B. 100%</button><button type="button" class="option" data-answer="c">C. 400%</button><div class="feedback"></div></div>
 
 ## 学交易之前，至少能回答
 
-**说不清买的是什么、最多亏多少，就先别买。**
 
-- 我买的是什么？报价用什么币？
-- 我付哪些费用？能否正常卖出或提走？
-- 有没有锁仓、增发、解锁或合约权限？
-- 最坏可能损失多少？这笔钱能否承受全部损失？
+按下买入之前，先说清买的是什么、一共花多少、能不能退出，以及亏光会不会影响生活。
+
+你不需要先学会十几个技术指标，才有资格买第一笔币。
+但在按下「买入」之前，至少要能说清楚四件事：
+
+**第一，我买的是什么？**
+是 BTC、稳定币，还是某个陌生项目代币？
+它用什么币报价？
+
+**第二，我到底花多少钱？**
+除了币价，还有没有手续费、价差、滑点、提现费或网络费？
+
+**第三，我能不能退出？**
+是否有锁仓、解锁、平台提现限制、低流动性，或者合约权限风险？
+
+**第四，最坏会怎样？**
+这笔钱是否可能全部损失？
+如果亏光，会不会影响生活？
+
+如果其中一个问题答不上来，先去查，不需要为了赶行情勉强下单。
+
+<div class="ch03-lab" data-lab="check">
+<h3>模拟下单前检查</h3>
+<p class="lab-kicker">教学虚构项目 ABC。这里没有真实买入按钮，也不会连接交易所。</p>
+<ul class="lab-facts">
+<li>报价 ABC/USDT，单价 0.1 美元</li>
+<li>流通 1 亿枚</li>
+<li data-miss>三天后解锁 5,000 万枚</li>
+<li data-miss>当前盘口很浅</li>
+<li data-miss>提现暂时维护</li>
+</ul>
+<div class="lab-choices">
+<button type="button" data-buy>立即买入</button>
+<button type="button" data-check>先检查</button>
+</div>
+<p class="lab-feedback" hidden aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>重置</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。先回答能不能退出，再决定买不买。" data-bad="答错了。暴涨和 K 线都没有回答能不能退出。"><h3>想一想</h3><p>某币正在暴涨，但交易所暂停提现、盘口很浅。最稳妥的下一步？</p><button type="button" class="option" data-answer="a" data-note="答错了。还没回答能不能退出。">A. 先满仓</button><button type="button" class="option" data-answer="b">B. 查明退出限制和流动性再决定</button><button type="button" class="option" data-answer="c" data-note="答错了。K 线突破没有回答能不能退出。">C. 只看 K 线突破</button><div class="feedback"></div></div>
 
 # 04｜第一次买币与出入金 🛒
 
 ## 什么是入金和出金？
 
-**入金是把钱放进平台，出金是把钱拿出来，两件事规则不同。**
 
-入金是把法币或数字资产转入平台；出金是把资金转出，比如提币到钱包，或卖币后提取法币到银行。
+入金是把钱放进交易所，卖掉币不等于法币到账，链上提币和提到银行是两条不同的路。
 
-「提币成功」不等于「法币已经进入银行」。两种操作的规则、费用和风险不同。
+你银行卡里有 100 块钱法币，想买第一笔 BTC。
+把法币支付给合规渠道，最终在交易所账户拿到资产，这个过程常被叫作**入金**。
+之后你把币卖掉，再按当地支持的渠道把法币提回银行，才算走完**出金**流程。
+
+但「出金」也可能被用来指**提币**：把交易所里的 USDT 转到自己钱包。
+它和提现到银行完全不是一回事。
+
+记住三种位置：
+
+- **银行账户**：持有法币，由银行及相关支付体系处理。
+- **交易所账户**：平台记录你的资产余额；
+平台保管相应资产。
+- **自托管钱包**：你通过密钥控制链上资产，转错或泄露密钥往往无法撤销。
+
+教学模拟：你在交易所卖掉 BTC，得到 100 USDT。
+此时你持有的仍是 USDT，**不是银行里已经到账的 100 美元**。
+还需要找到当地允许使用的法币兑换、提款渠道，检查汇率、费用和限制。
+
+**别踩坑：** 「交易所显示提现成功」不等于「银行已入账」；
+「币已经卖掉」也不等于「法币已到账」。
+
+<div class="ch03-lab ch04-lab" data-lab="route">
+<h3>资金旅程双路线</h3>
+<p class="lab-kicker">教学模拟。点每个节点。路线 A 和路线 B 分开，没有合并成一个提现按钮。</p>
+<div class="lab-choices" role="group" aria-label="从银行到交易所">
+<button type="button" data-node="bank">银行法币</button>
+<button type="button" data-node="channel">支持的入金渠道</button>
+<button type="button" data-node="ex">交易所资金 / 现货账户</button>
+</div>
+<p class="lab-kicker">路线 A：卖出后走法币</p>
+<div class="lab-choices" role="group" aria-label="法币出金路线">
+<button type="button" data-node="sell">卖出</button>
+<button type="button" data-node="fiat">法币出金渠道</button>
+<button type="button" data-node="bank2">银行</button>
+</div>
+<p class="lab-kicker">路线 B：链上提现</p>
+<div class="lab-choices" role="group" aria-label="链上提现路线">
+<button type="button" data-node="net">选择网络</button>
+<button type="button" data-node="chain">链上提现</button>
+<button type="button" data-node="wallet">自托管钱包</button>
+</div>
+<p class="lab-result" hidden aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>重置</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。想收到银行里的法币，要走所在地支持的法币兑换和出金渠道。" data-bad="答错了。USDT 不会自动变成法币，也不能直接转到银行账号。"><h3>想一想</h3><p>你卖出 BTC 后得到 USDT，下一步想收到银行里的法币，应该？</p><button type="button" class="option" data-answer="a" data-note="答错了。USDT 不会自动变成法币。">A. 等待 USDT 自动变法币</button><button type="button" class="option" data-answer="b">B. 使用所在地支持的法币兑换及出金渠道</button><button type="button" class="option" data-answer="c" data-note="答错了。银行账号通常不是链上收款地址。">C. 直接把 USDT 转到银行账号</button><div class="feedback"></div></div>
 
 ## 第一步：确认平台与地区
 
-**注册时留意平台对你所在地区是否开放服务，注册页一般会有提示。**
 
-一个品牌可能由不同地区实体提供服务，产品并不完全相同。
+同名交易所在不同地区可能不是同一套账户，相同的 UID 也不能当成同一个人。
 
-**怎么选交易所：**
+有些交易所品牌在不同国家由不同公司经营。
+名字相似、Logo 相似，不代表账户、UID、充值系统或客服互通。
 
-- 看资金规模（资沉）：平台上的资金体量，是常用的参考之一。
-- 看储备证明：可以作为参考，但它只是某一时刻的快照，不保证平台不出事（见第 05 章）。
+你准备注册时，先问自己：**这是哪个运营主体提供的服务？支持我实际居住的地区吗？能用什么方式入金和提现？**
 
-无法使用时，不通过虚假身份、虚报居住地等方式绕过限制。
+教学模拟：朋友给你一个和 Binance 相关的应用收款 UID。
+你不能只看品牌，就认定它和你登录的交易所属于同一账户系统。
+**UID 只在对应平台系统内有意义**；
+即使数字恰好相同，也可能指向不同的人。
+
+**别踩坑：** 不要使用虚假身份、虚报居住地绕过地区限制；
+不要为了赶活动跳过运营主体和官方域名核对。
+
+<div class="ch03-lab ch04-lab" data-lab="uid">
+<h3>真假互通判断</h3>
+<p class="lab-kicker">教学模拟。Alpha Global 和 Alpha Local 不是真实平台。两边都显示 UID 123456，Logo 看起来一样。</p>
+<div class="lab-stats">
+<div><span>Alpha Global</span><b>UID 123456</b><span>运营主体：Global Learn Ltd</span></div>
+<div><span>Alpha Local</span><b>UID 123456</b><span>运营主体：Local Learn Pte</span></div>
+</div>
+<div class="lab-choices">
+<button type="button" data-uid="move">把 UID 123456 拿到另一边</button>
+<button type="button" data-uid="check">先核对官方是否互通</button>
+</div>
+<p class="lab-feedback" hidden aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>重置</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。UID 只在对应平台里有意义。数字相同，也不能断定是同一个人。" data-bad="答错了。相同数字和相同品牌，都不能当成跨系统的身份凭证。"><h3>想一想</h3><p>两个不同地区的交易所应用都显示 UID 123456，能断定是同一人吗？</p><button type="button" class="option" data-answer="a" data-note="答错了。相同数字不能当成跨系统的身份凭证。">A. 能</button><button type="button" class="option" data-answer="b" data-note="答错了。品牌相同也不代表账户系统互通。">B. 只要品牌相同就能</button><button type="button" class="option" data-answer="c">C. 不能，须核对平台主体与收款身份</button><div class="feedback"></div></div>
 
 ## 第二步：注册与安全设置
 
-**注册后第一件事：强密码 + 双重验证。**
 
-使用独立强密码，保护注册邮箱，按平台支持情况设置通行密钥或验证器等双重验证。妥善保存恢复方式，检查设备与登录记录，开启可用的提现保护措施。
+先锁好官方入口、邮箱、登录、提款和恢复方式，再把钱放进新账户。
 
-KYC 是身份验证。只在确认的官方应用或官网流程提交材料，不把身份证发给主动私信的「客服」。
+刚注册完就充值，等于新房钥匙还没保管好，就把贵重物品搬进去。
+
+按照这个顺序：
+
+1. **确认官方入口**：从可靠的官方渠道进入，核对完整域名、应用开发者及平台提示；
+广告排名不等于官方认证。
+2. **保护邮箱**：邮箱是账户恢复的重要入口，使用独立强密码，启用支持的双重验证。
+3. **保护交易所登录**：设置不同于邮箱的强密码，优先使用平台支持的通行密钥或验证器，安全保存恢复方式。
+4. **设置提款保护**：按平台功能启用提现地址白名单、防钓鱼码、设备管理及异常提醒。
+5. **完成必要 KYC**：只在已确认的官方流程提交身份材料，不向私信「客服」发送证件。
+
+<p class="keep-lines">教学模拟<br>
+你收到「账户异常，请立即重新验证」的短信。<br>
+正确动作不是点短信链接，<br>
+而是自己打开已安装并核对过的官方 App 检查通知。</p>
+
+**别踩坑：** 短信验证码不能交给别人；
+开启双重验证也不意味着可以忽略钓鱼链接和设备安全。
+
+<div class="ch03-lab ch04-lab" data-lab="secure">
+<h3>安全设置清单</h3>
+<p class="lab-kicker">点开一项，看为什么重要、如何确认、常见误区。完成度只代表学习，不代表账户 100% 安全。这里不收集密码、验证码或证件。</p>
+<div class="lab-choices" role="group" aria-label="五项安全设置">
+<button type="button" data-sec="0" aria-pressed="false">官方入口</button>
+<button type="button" data-sec="1" aria-pressed="false">邮箱安全</button>
+<button type="button" data-sec="2" aria-pressed="false">账户二次验证</button>
+<button type="button" data-sec="3" aria-pressed="false">提现保护</button>
+<button type="button" data-sec="4" aria-pressed="false">恢复方式</button>
+</div>
+<p class="lab-result" hidden aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>重置</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。验证码不要交出去。自己打开核对过的官方 App 看通知。" data-bad="答错了。验证码不能交给对方，转币也不能证明对方是客服。"><h3>想一想</h3><p>有人自称客服要求你发送登录验证码以「解除风控」，应该？</p><button type="button" class="option" data-answer="a">A. 拒绝，改从官方 App 内核实</button><button type="button" class="option" data-answer="b" data-note="答错了。验证码本身就可能被用来接管账户。">B. 发给对方但不发密码</button><button type="button" class="option" data-answer="c" data-note="答错了。转币不能证明对方是客服。">C. 先转少量币验证</button><div class="feedback"></div></div>
 
 ## 第三步：选择入金方式
 
-**入金前看清支持的银行、费用和到账时间。**
 
-银行卡或银行转账：检查支持银行、币种、付款人要求、到账时间与费用。
-第三方买币渠道：检查服务商身份、报价与费用。
-P2P：与其他用户交易，通过平台规定的流程结算法币和数字资产。
-已有数字资产充值：选择双方都支持的资产与网络，填写必要的 Memo / Tag。
+比较入金不能只看手续费写没写 0，要看最终拿到多少，以及时间、退款和限制。
+
+买币时常见三类入口：平台支持的银行卡或银行转账、第三方支付服务商、P2P。
+你也可能已经持有数字资产，选择直接充值到交易所。
+
+比较入金方式时，不要只看「手续费 0%」。
+真正要看**支付金额、最终拿到多少币、到账时间、能否退款、资金来源要求和当地限制**。
+
+教学模拟：你准备支付 100 单位法币。
+
+- 渠道 A：标称零手续费，但最终得到 19.6 USDT。
+- 渠道 B：明示收取 2 单位法币费用，但最终得到 20.1 USDT。
+
+在其他条件相同的前提下，B 虽然标注收费，实际到手反而更多。
+这里只比较模拟最终数量，不代表某种渠道总是更好。
+
+**已有币充值尤其要注意：** 充值地址、资产、网络、Memo / Tag 都要按**收款平台页面**确认。
+交易所支持 USDT，不代表支持每一条 USDT 网络。
+
+<div class="ch03-lab ch04-lab" data-lab="quote">
+<h3>报价比较</h3>
+<p class="lab-kicker">教学模拟。点两种排序。顺序会反过来。任何一边都不标最佳。</p>
+<div class="lab-stats" data-rows></div>
+<div class="lab-choices">
+<button type="button" data-sort="fee">按明示费用排序</button>
+<button type="button" data-sort="got">按最终到账数量排序</button>
+</div>
+<p class="lab-result" aria-live="polite"></p>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。要看你一共付多少、最后拿到多少，以及限制和风险。" data-bad="答错了。0 手续费和到账快，都不能单独决定哪个更划算。"><h3>想一想</h3><p>两个渠道一个写 0 手续费，一个写有手续费，怎样比较更合理？</p><button type="button" class="option" data-answer="a" data-note="答错了。0 手续费可能藏着更差的报价。">A. 只选 0 手续费</button><button type="button" class="option" data-answer="b" data-note="答错了。快不代表成本低，也不代表你能用。">B. 只选最快的</button><button type="button" class="option" data-answer="c">C. 核对总支付、实际到账、限制和风险</button><div class="feedback"></div></div>
 
 ## P2P 特别注意
 
-**P2P 只认本人账户和真实到账，别看截图。**
 
-- 按平台要求使用本人账户，核对订单与付款信息。
-- 不转到对方临时提供的站外地址或聊天链接。
-- 卖币时以本人银行真实到账记录为准，不只看付款截图或短信。
-- 遇到第三方付款、要求拆单或改变流程时，暂停并按平台规则处理。
-- 有争议使用平台申诉，保存聊天、订单与付款凭证。
-- 平台托管机制不能排除诈骗、拒付、银行冻结或资金来源风险。
+P2P 里截图不是到账，要在订单内核对银行真实入账和付款人，再按平台规则处理。
+
+P2P 常见场景是：你和另一位用户交易，平台按规则提供订单与托管机制。
+**但托管不等于银行转账没有风险。**
+
+如果你是卖币方，对方发来一张「转账成功」截图，不要因为着急就放币。
+截图能伪造，短信能冒充，甚至某些入账还可能涉及后续争议。
+
+安全操作顺序：
+
+1. 只在平台订单内沟通，核对交易对象和收款要求。
+2. 按平台规则使用本人名下账户；
+对第三方付款、账户姓名不符保持警惕。
+3. 自己登录银行官方渠道，核对真实可用余额、交易详情和付款人信息。
+4. 核实符合订单规则后，才按平台流程确认放币。
+5. 有争议就停止操作，保留订单、聊天和银行记录，走平台申诉。
+
+**别踩坑：** 对方催你「先放币，我马上补款」，或者要求转到站外聊天软件，都是暂停交易的理由。
+也不要把银行冻结、拒付、涉诈资金风险理解成「只要钱显示到账就绝对安全」。
+
+<div class="ch03-lab ch04-lab" data-lab="p2p">
+<h3>三张 P2P 消息</h3>
+<p class="lab-kicker">教学模拟。三张卡都在这一屏。没有一键放币。</p>
+<div class="ch04-card">
+<p>① 对方发来转账截图，你的银行还没入账。</p>
+<div class="lab-choices">
+<button type="button" data-card="shot" data-act="check">继续核验</button>
+<button type="button" data-card="shot" data-act="pause">暂停申诉</button>
+<button type="button" data-card="shot" data-act="rule">按平台规则处理</button>
+</div>
+<p class="lab-feedback" hidden aria-live="polite"></p>
+</div>
+<div class="ch04-card">
+<p>② 银行显示入账，但付款人姓名和订单不符。</p>
+<div class="lab-choices">
+<button type="button" data-card="name" data-act="check">继续核验</button>
+<button type="button" data-card="name" data-act="pause">暂停申诉</button>
+<button type="button" data-card="name" data-act="rule">按平台规则处理</button>
+</div>
+<p class="lab-feedback" hidden aria-live="polite"></p>
+</div>
+<div class="ch04-card">
+<p>③ 银行官方渠道已核实到账，付款人与订单一致。</p>
+<div class="lab-choices">
+<button type="button" data-card="paid" data-act="check">继续核验</button>
+<button type="button" data-card="paid" data-act="pause">暂停申诉</button>
+<button type="button" data-card="paid" data-act="rule">按平台规则处理</button>
+</div>
+<p class="lab-feedback" hidden aria-live="polite"></p>
+</div>
+<button type="button" class="lab-reset" data-reset>重置</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。银行还没看到款，就不要放币。在订单里核实。" data-bad="答错了。截图不能证明付款，离开订单也会丢掉平台里的记录。"><h3>想一想</h3><p>买家发来付款截图，但你银行账户没看到款，应该？</p><button type="button" class="option" data-answer="a" data-note="答错了。截图不能证明钱已经到账。">A. 先放币表示信任</button><button type="button" class="option" data-answer="b">B. 不放币，核实并按订单规则处理</button><button type="button" class="option" data-answer="c" data-note="答错了。离开订单会丢掉平台里的记录和保护。">C. 去站外聊天确认</button><div class="feedback"></div></div>
 
 ## 第四步：小额买入现货
 
-**第一次只用小钱买现货，先把流程走通。**
 
-先看交易对和订单类型，核对支付资产、预计获得数量与费用。完成后检查订单是否成交，资产是否进入正确账户。
+第一次买现货是为了看懂流程，市价不保证成交价格，限价不保证一定成交。
 
-「快捷兑换」和「现货下单」报价方式可能不同，要比较最终到账数量，而不是只比较标称手续费。
+第一次操作的目标，是**把整个流程看明白**，不是用第一笔交易赚多少钱。
+
+教学模拟：假设你计划用 20 USDT 试操作。
+
+1. 打开**现货**，确认交易对，例如 BTC/USDT。
+2. 确认是买入 BTC、花费 USDT，而不是方向反了。
+3. 查看订单类型：市价单可能滑点；
+限价单可能无法成交。
+4. 输入金额，检查预计数量、最小下单要求和费用。
+5. 提交前再读一遍确认页；
+成交后检查**实际成交数量与费用**。
+
+教学模拟：假设 BTC 报价 50,000 USDT，20 USDT 在不计费用时约能买到 0.0004 BTC。
+真实成交数量可能因费用、价格变动和平台精度规则不同。
+
+**别踩坑：** 「委托成功」不等于「已全部成交」；
+限价单可能挂在订单簿里，资产处于冻结状态。
+
+<div class="ch03-lab ch04-lab" data-lab="order">
+<h3>无资金模拟下单</h3>
+<p class="lab-kicker">教学模拟。不连接交易接口，也不要求登录。点市价或限价，再点一种状态。</p>
+<div class="lab-choices" role="group" aria-label="订单类型">
+<button type="button" data-side="market" aria-pressed="true">市价</button>
+<button type="button" data-side="limit" aria-pressed="false">限价</button>
+</div>
+<div class="lab-choices" role="group" aria-label="模拟状态">
+<button type="button" data-state="filled">已成交</button>
+<button type="button" data-state="partial">部分成交</button>
+<button type="button" data-state="open">未成交</button>
+</div>
+<p class="lab-result" aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>重置</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。未成交通常是还在等对手盘，不是已经买到，也不等于钱丢了。" data-bad="答错了。未成交不等于钱丢了，也不等于已经买到。"><h3>想一想</h3><p>你提交限价买单，页面显示「未成交」，最合理的理解是？</p><button type="button" class="option" data-answer="a">A. 订单可能仍在等待匹配</button><button type="button" class="option" data-answer="b" data-note="答错了。未成交不等于资产消失。限价单可能还挂着。">B. 钱一定丢了</button><button type="button" class="option" data-answer="c" data-note="答错了。未成交就是还没买到。">C. 已经买到币只是没显示</button><div class="feedback"></div></div>
 
 ## 第五步：理解卖出与提现
 
-**卖出后拿到什么，取决于交易对；换回银行里的法币，还要看出金渠道。**
 
-卖出后通常先得到交易对的报价资产。需要法币时，再使用所在地允许的法币交易与提现渠道。检查收款账户、费用与平台限制。
+卖成 USDT、提到自己的钱包、换成银行法币是三件不同的事，卖掉不等于钱进了银行。
 
-保存交易记录与资金来源凭证。所在地监管、申报与税务要求，请从官方监管、税务机关或合适的专业服务查询。
+新手很容易把这三步看成一件事：
+
+**卖币**：把 BTC 换成 USDT 等报价资产。
+
+**提现币**：把交易所资产转到外部链上地址，涉及网络、地址和可能的 Memo / Tag。
+
+**法币出金**：按当地可用方式把资产兑换、结算为法币，再提到银行等收款账户。
+
+教学模拟：你卖出 0.001 BTC 得到约 50 USDT。
+此时如果点「链上提现」，输入的是钱包地址，不是银行账户；
+如果想收到马币，应查找平台或服务商是否提供当地允许的法币出金路径，并比较汇率、费用、到账时间。
+
+**别踩坑：** 提现时核对资产、网络、地址、Memo / Tag、收款平台是否支持；
+大额转账前先做小额测试，但测试成功也不保证后续绝对安全。
+保存交易与资金来源记录，按所在地要求处理税务和合规事项。
 
 小提醒：第一次操作的目标是理解流程，不是证明自己会抓涨幅。
 
+<div class="ch03-lab ch04-lab" data-lab="goals">
+<h3>三种卖和提</h3>
+<p class="lab-kicker">教学模拟。点每个目标下的去处。手机上直接点，不用拖动。</p>
+<div class="ch04-card" data-row>
+<p>想把 BTC 换成 USDT</p>
+<div class="lab-choices">
+<button type="button" data-goal="swap" data-to="spot">现货卖出</button>
+<button type="button" data-goal="swap" data-to="chain">链上提现</button>
+<button type="button" data-goal="swap" data-to="fiat">法币出金</button>
+</div>
+<p class="lab-feedback" hidden aria-live="polite"></p>
+</div>
+<div class="ch04-card" data-row>
+<p>想把 USDT 转到自己的钱包</p>
+<div class="lab-choices">
+<button type="button" data-goal="wallet" data-to="spot">现货卖出</button>
+<button type="button" data-goal="wallet" data-to="chain">链上提现</button>
+<button type="button" data-goal="wallet" data-to="fiat">法币出金</button>
+</div>
+<p class="lab-feedback" hidden aria-live="polite"></p>
+</div>
+<div class="ch04-card" data-row>
+<p>想把价值换成银行法币</p>
+<div class="lab-choices">
+<button type="button" data-goal="bank" data-to="spot">现货卖出</button>
+<button type="button" data-goal="bank" data-to="chain">链上提现</button>
+<button type="button" data-goal="bank" data-to="fiat">法币出金</button>
+</div>
+<p class="lab-feedback" hidden aria-live="polite"></p>
+</div>
+<button type="button" class="lab-reset" data-reset>重置</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。USDT 还在交易所。要收到银行法币，还得走支持的兑换和出金。" data-bad="答错了。交易所里的 USDT 不是银行存款，币价也不能把它变成银行存款。"><h3>想一想</h3><p>卖出 BTC 得到 USDT 后，USDT 自动变成银行存款了吗？</p><button type="button" class="option" data-answer="a" data-note="答错了。交易所里的 USDT 不是银行里的存款。">A. 是</button><button type="button" class="option" data-answer="b" data-note="答错了。币价不能把交易所资产变成银行存款。">B. 取决于币价</button><button type="button" class="option" data-answer="c">C. 没有，还需完成支持的法币兑换及出金流程</button><div class="feedback"></div></div>
+
 ## 交易所里的几个账户
 
-**平台内划转和链上转账是两回事。**
 
-很多交易所会把资产分放在不同账户里，常见的有：
+现货页显示没有余额时，先看币是不是在别的账户，平台内部划转通常不上链。
 
-| 账户 / 操作 | 用来做什么 | 要注意 |
+你明明有 100 USDT，为什么下单页面显示余额不足？
+
+很多时候不是币不见了，而是它在**资金账户**，你却打开了**现货交易**；
+或者你有资产在**合约账户**，不能直接用于当前现货订单。
+
+可以把同一交易所的账户理解成几个用途不同的抽屉：
+
+| 位置 | 主要用途 | 常见提醒 |
 |---|---|---|
-| 资金账户 | 充值到账、P2P 买卖、提现常用这里 | 多数平台上，放在这里的币不能直接下现货或合约单 |
-| 现货账户 | 现货买卖、快捷兑换 | 要提现时，可能需要先划回资金账户 |
-| 合约账户 | 作为合约交易的保证金 | 有持仓时，划出可能受限；亏损会直接扣这里的余额 |
-| 账户间划转 | 在同一平台的不同账户之间挪资产 | 只是平台内部记账，不上链，通常不收网络费，几乎即时到账 |
-| 链上提现 | 把币从交易所转到外部钱包或其他平台的地址 | 真正上链，要选网络、填地址，付提现费，到账后无法撤回 |
+| 资金账户 | 充值、P2P、提现等 | 具体功能因平台而异 |
+| 现货账户 | 现货买卖 | 下单前确认可用余额 |
+| 合约账户 | 衍生品保证金 | 可能面临强平、费用及账户模式风险 |
+| 统一交易账户 | 合并部分交易功能 | 不同平台规则不同 |
+| 账户间划转 | 在同一平台的不同账户之间挪资产 | 通常不上链，不收区块链网络费 |
+| 链上提现 | 把币送到外部地址 | 要核对网络和地址，到账后无法撤回 |
 
-「余额不见了」时，先看看是不是放在了别的账户里；「下单显示余额不足」时，可能需要先把资产划转到对应账户。
+**账户间划转**通常是同一平台内部记账，不是链上转账，一般不产生区块链网络费；
+**链上提现**则把资产送往外部网络，涉及真实地址和网络确认。
 
-账户名称与划转规则因平台而异，有的平台用「统一账户」合并了现货和合约，以你所用平台的 App 页面和官方说明为准。
+教学模拟：100 USDT 显示在资金账户，现货页可用余额 0。
+你确认平台内部划转页面的「从资金到现货」，划转成功后再检查现货可用余额。
+有些平台使用统一账户，不一定有相同入口。
+
+**别踩坑：** 不要因为看到「余额不足」就盲目重新充值；
+先检查账户分类、冻结订单、借贷抵押和可用余额。
+更不要把「划转」误当成「给另一平台 UID 转账」。
+
+<div class="ch03-lab ch04-lab" data-lab="drawers">
+<h3>账户抽屉</h3>
+<p class="lab-kicker">教学模拟。内部划转和链上提现是两个按钮。金额不能小于 0，也不能超过可用余额。</p>
+<div class="lab-stats">
+<div><span>资金账户</span><b data-fund>100 USDT</b></div>
+<div><span>现货账户</span><b data-spot>0 USDT</b></div>
+<div><span>合约账户</span><b data-perp>0 USDT</b></div>
+</div>
+<div class="lab-choices">
+<button type="button" data-move>内部划转 40 USDT 到现货</button>
+<button type="button" data-undo>撤销上一步</button>
+<button type="button" data-chain>链上提现（单独核对）</button>
+</div>
+<p class="lab-result" aria-live="polite"></p>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。先看是不是还在资金账户，再决定要不要在平台内部划转。" data-bad="答错了。先核对账户。不要重复充值，也不要把币发给客服。"><h3>想一想</h3><p>交易所现货页显示 0 USDT，但资金账户有 100 USDT，第一步应该？</p><button type="button" class="option" data-answer="a" data-note="答错了。可能只是放在另一个账户，再充会重复入金。">A. 再充值 100</button><button type="button" class="option" data-answer="b">B. 核对账户类型和是否需要内部划转</button><button type="button" class="option" data-answer="c" data-note="答错了。不要把币发给客服。那是把资产交出去。">C. 把币发给客服 UID</button><div class="feedback"></div></div>
 
 # 05｜CEX 交易所导航 🏦
 
@@ -481,25 +991,38 @@ P2P：与其他用户交易，通过平台规定的流程结算法币和数字�
 
 **交易所账户里的币归平台保管，不是你自己的钱包。**
 
-CEX 通常提供账户、充提币与交易服务，部分平台还有法币渠道、衍生品或其他产品。是否开放给你，要看地区、身份与具体产品规则。
+CEX 通常提供账户、充提币与交易服务，部分平台还有法币渠道、衍生品或其他产品。
+是否开放给你，要看地区、身份与具体产品规则。
 
-平台账户余额通常是平台内部记录。你需要依赖运营方保管资产和处理提现，不能把它当成自己控制私钥的钱包。
+平台账户余额通常是平台内部记录。
+你需要依赖运营方保管资产和处理提现，不能把它当成自己控制私钥的钱包。
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。CEX余额通常谁保管资产：平台。" data-bad="答错了。CEX余额通常谁保管资产：平台。"><h3>想一想</h3><p>CEX余额通常谁保管资产？</p><button type="button" class="option" data-answer="a">A. 平台</button><button type="button" class="option" data-answer="b">B. 用户独立私钥</button><button type="button" class="option" data-answer="c">C. 矿工</button><div class="feedback"></div></div>
 
 ## CEX 与 DEX 有什么不同？
 
 **CEX 是公司帮你管账，DEX 是你用钱包直接在链上交易。**
 
-CEX 是中心化交易所。通常由运营方管理账户、订单和平台内资产记录，用户通过平台交易。
+CEX 是中心化交易所。
+通常由运营方管理账户、订单和平台内资产记录，用户通过平台交易。
 
-DEX 是去中心化交易协议或场所。很多 DEX 通过智能合约完成链上兑换，用户从钱包签署交易，也存在不同的撮合与结算方式。
+DEX 是去中心化交易协议或场所。
+很多 DEX 通过智能合约完成链上兑换，用户从钱包签署交易，也存在不同的撮合与结算方式。
 
-DEX 也有中心化环节。前端、管理员、预言机和其他组件同样会带来风险。
+DEX 也有中心化环节。
+前端、管理员、预言机和其他组件同样会带来风险。
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。DEX可能存在合约风险吗：可能。" data-bad="答错了。DEX可能存在合约风险吗：可能。"><h3>想一想</h3><p>DEX可能存在合约风险吗？</p><button type="button" class="option" data-answer="a">A. 可能</button><button type="button" class="option" data-answer="b">B. 绝不可能</button><button type="button" class="option" data-answer="c">C. 没有权限风险</button><div class="feedback"></div></div>
 
 ## 邀请注册导航
 
 **注册时留意平台对你所在地区是否开放服务，再从下面的入口注册。**
 
-这里只展示 Binance、Bybit、Gate 与 HTX。排序不代表安全性或推荐程度，使用前确认所在地是否支持注册及相关服务。
+这里只展示 Binance、Bybit、Gate 与 HTX。<br>
+排序不代表安全性或推荐程度。<br>
+使用前确认所在地是否支持注册及相关服务。
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。推广链接是安全担保吗：不是。" data-bad="答错了。推广链接是安全担保吗：不是。"><h3>想一想</h3><p>推广链接是安全担保吗？</p><button type="button" class="option" data-answer="a">A. 不是</button><button type="button" class="option" data-answer="b">B. 是</button><button type="button" class="option" data-answer="c">C. 免核对</button><div class="feedback"></div></div>
 
 | 平台 | 邀请注册链接 |
 |---|---|
@@ -513,21 +1036,31 @@ DEX 也有中心化环节。前端、管理员、预言机和其他组件同样�
 
 ## 链上交易工具
 
+
+DeBot 和币安 Web3 钱包用来买卖已经发行的代币，不是一级认购，链上新币风险很高。
+
 **想直接在链上买卖代币，可以用这两个工具。**
 
-DeBot 与币安 Web3 钱包都用于在链上买卖已经发行的代币（二级市场），不是一级市场认购。链上新币风险很高，先读第 09 章再动手。
+DeBot 与币安 Web3 钱包都用于在链上买卖已经发行的代币（二级市场），不是一级市场认购。<br>
+链上新币风险很高，先读第 09 章再动手。
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。DEX买已发行代币属于什么：一般是二级交易。" data-bad="答错了。DEX买已发行代币属于什么：一般是二级交易。"><h3>想一想</h3><p>DEX买已发行代币属于什么？</p><button type="button" class="option" data-answer="a">A. 一般是二级交易</button><button type="button" class="option" data-answer="b">B. 一定私募</button><button type="button" class="option" data-answer="c">C. 银行存款</button><div class="feedback"></div></div>
 
 ## 怎么选择？
 
 **先看能不能用，再看安全、费用和提现，别只看注册奖励。**
 
-先检查所在地能否使用，再看交易需求、入金方式、相关市场深度、费用、安全设置、提现规则和客服渠道。不要仅因为注册奖励或某个 KOL 推荐就决定。
+先检查所在地能否使用，再看交易需求、入金方式、相关市场深度、费用、安全设置、提现规则和客服渠道。
+不要仅因为注册奖励或某个 KOL 推荐就决定。
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。选平台先看什么：地区可用和提现。" data-bad="答错了。选平台先看什么：地区可用和提现。"><h3>想一想</h3><p>选平台先看什么？</p><button type="button" class="option" data-answer="a">A. 地区可用和提现</button><button type="button" class="option" data-answer="b">B. 返佣口号</button><button type="button" class="option" data-answer="c">C. KOL排名</button><div class="feedback"></div></div>
 
 ## 储备证明代表什么？
 
 **储备证明只是某一时刻的快照，不等于平台永远安全。**
 
-储备证明可以提供特定时点、特定范围的资产或负债核验信息，具体价值取决于方法与覆盖范围。它不必然等于完整财务审计，也不能保证未来不会出事或随时能提款。
+储备证明可以提供特定时点、特定范围的资产或负债核验信息，具体价值取决于方法与覆盖范围。
+它不必然等于完整财务审计，也不能保证未来不会出事或随时能提款。
 
 > 📰 **真实案例：FTX 爆雷（2022 年）**
 > 2022 年破产前，FTX 曾按交易量排全球第三（据 The Verge 当年 11 月报道）。2022 年 11 月 2 日被曝出资产负债表问题，6 天后（11 月 8 日）就停止了所有加密资产提现，前 72 小时用户已提走约 60 亿美元；11 月 11 日申请破产保护。创始人 SBF 后来被判 25 年。
@@ -535,15 +1068,20 @@ DeBot 与币安 Web3 钱包都用于在链上买卖已经发行的代币（二�
 
 小提醒：点击之前看域名，开户之前看规则，存钱之前想清楚平台风险。
 
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。储备证明保证随时提现吗：不能保证。" data-bad="答错了。储备证明保证随时提现吗：不能保证。"><h3>想一想</h3><p>储备证明保证随时提现吗？</p><button type="button" class="option" data-answer="a">A. 不能保证</button><button type="button" class="option" data-answer="b">B. 一定保证</button><button type="button" class="option" data-answer="c">C. 等于存款保险</button><div class="feedback"></div></div>
+
 # 06｜现货下单入门 🧾
 
 ## 现货是什么？
 
 **现货就是直接买币，不借钱、不加杠杆。**
 
-现货就是直接买卖资产。普通、无借贷的现货持仓不会因价格下跌被强平，但资产价格仍可能接近归零。
+现货就是直接买卖资产。
+普通、无借贷的现货持仓不会因价格下跌被强平，但资产价格仍可能接近归零。
 
 想了解杠杆和合约，见[第 07 章「进阶：杠杆与风险管理」](#/c/07)。
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。无杠杆现货会因跌价自动强平吗：通常不会。" data-bad="答错了。无杠杆现货会因跌价自动强平吗：通常不会。"><h3>想一想</h3><p>无杠杆现货会因跌价自动强平吗？</p><button type="button" class="option" data-answer="a">A. 通常不会</button><button type="button" class="option" data-answer="b">B. 一定会</button><button type="button" class="option" data-answer="c">C. 没有亏损</button><div class="feedback"></div></div>
 
 ## 订单类型
 
@@ -556,15 +1094,26 @@ DeBot 与币安 Web3 钱包都用于在链上买卖已经发行的代币（二�
 | 止损市价单 | 达到触发条件后提交市价单 | 极端行情可能较大滑点 |
 | 止损限价单 | 达到条件后提交限价单 | 触发了也可能无法成交 |
 
-不同平台支持的订单与触发价格不同，提交前阅读说明。
+不同平台支持的订单与触发价格不同。
+提交前阅读说明。
+
+**教学虚构：** 市价单扫盘口、限价单等待成交两条时间线。
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。限价单一定成交吗：不一定。" data-bad="答错了。限价单一定成交吗：不一定。"><h3>想一想</h3><p>限价单一定成交吗？</p><button type="button" class="option" data-answer="a">A. 不一定</button><button type="button" class="option" data-answer="b">B. 一定</button><button type="button" class="option" data-answer="c">C. 无需对手盘</button><div class="feedback"></div></div>
 
 ## K 线基础
 
 **一根 K 线记录一段时间的开、高、低、收四个价格。**
 
-一根 K 线通常记录该周期的开盘、最高、最低与收盘价。1 分钟、15 分钟、1 小时、1 天描述不同观察尺度。
+一根 K 线通常记录该周期的开盘、最高、最低与收盘价。
+1 分钟、15 分钟、1 小时、1 天描述不同观察尺度。
 
-同一资产在不同周期可能呈现不同趋势。涨跌颜色可以由平台设置，不要仅凭红绿判断。
+同一资产在不同周期可能呈现不同趋势。
+涨跌颜色可以由平台设置，不要仅凭红绿判断。
+
+**教学虚构：** OHLC四个标注的K线，切换1分钟和日线。
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。K线四价是什么：开高低收。" data-bad="答错了。K线四价是什么：开高低收。"><h3>想一想</h3><p>K线四价是什么？</p><button type="button" class="option" data-answer="a">A. 开高低收</button><button type="button" class="option" data-answer="b">B. 资金费率</button><button type="button" class="option" data-answer="c">C. 合约杠杆</button><div class="feedback"></div></div>
 
 ## 交易日志
 
@@ -573,7 +1122,10 @@ DeBot 与币安 Web3 钱包都用于在链上买卖已经发行的代币（二�
 下单前写：为什么买、什么条件说明判断错了、计划退出位置、仓位、费用和可能损失。
 交易后写：执行是否符合计划、哪里出现偏差、结果来自策略还是偶然。
 
-先用模拟交易练习。模拟收益也不能直接代表真实交易表现，真实资金有情绪、深度与执行成本。
+先用模拟交易练习。
+模拟收益也不能直接代表真实交易表现，真实资金有情绪、深度与执行成本。
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。交易日志要记录什么：计划和执行偏差。" data-bad="答错了。交易日志要记录什么：计划和执行偏差。"><h3>想一想</h3><p>交易日志要记录什么？</p><button type="button" class="option" data-answer="a">A. 计划和执行偏差</button><button type="button" class="option" data-answer="b">B. 只记盈利</button><button type="button" class="option" data-answer="c">C. 只记币名</button><div class="feedback"></div></div>
 
 ## 三种容易上头的时刻
 
@@ -585,61 +1137,105 @@ DeBot 与币安 Web3 钱包都用于在链上买卖已经发行的代币（二�
 
 遇到这些状态，暂停交易、复查计划，比多找一个指标更有帮助。
 
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。亏损后急着加仓有什么风险：放大损失。" data-bad="答错了。亏损后急着加仓有什么风险：放大损失。"><h3>想一想</h3><p>亏损后急着加仓有什么风险？</p><button type="button" class="option" data-answer="a">A. 放大损失</button><button type="button" class="option" data-answer="b">B. 保证回本</button><button type="button" class="option" data-answer="c">C. 没有风险</button><div class="feedback"></div></div>
+
 # 07｜进阶：杠杆与风险管理 ⚖️
 
 ## 杠杆和合约
 
 **杠杆把赚和亏一起放大，新手先别碰。**
 
-杠杆交易通过借款或保证金机制扩大风险敞口。收益和亏损都会放大，还有借贷成本与强平风险。
+杠杆交易通过借款或保证金机制扩大风险敞口。
+收益和亏损都会放大，还有借贷成本与强平风险。
 
-合约交易是交易衍生品敞口，不一定持有对应现货资产。永续合约没有传统的固定到期日，常用资金费率等机制帮助其价格接近参考价格。
+合约交易是交易衍生品敞口，不一定持有对应现货资产。
+永续合约没有传统的固定到期日，常用资金费率等机制帮助其价格接近参考价格。
+
+**教学虚构：** 同样1000 USDT名义仓位，1倍与10倍保证金占用对照。
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。杠杆放大什么：相对保证金的盈亏。" data-bad="答错了。杠杆放大什么：相对保证金的盈亏。"><h3>想一想</h3><p>杠杆放大什么？</p><button type="button" class="option" data-answer="a">A. 相对保证金的盈亏</button><button type="button" class="option" data-answer="b">B. 胜率</button><button type="button" class="option" data-answer="c">C. 币价本身</button><div class="feedback"></div></div>
 
 ## 做多与做空
 
 **做多赌涨，做空赌跌，做空往往要借币或用合约。**
 
-做多是希望价格上涨获利；做空是希望价格下跌获利。做空不是把自己已有的现货卖掉这么简单，往往涉及借贷或衍生品机制。
+做多是希望价格上涨获利；
+做空是希望价格下跌获利。
+做空不是把自己已有的现货卖掉这么简单，往往涉及借贷或衍生品机制。
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。做空可能涉及什么：借贷或强平。" data-bad="答错了。做空可能涉及什么：借贷或强平。"><h3>想一想</h3><p>做空可能涉及什么？</p><button type="button" class="option" data-answer="a">A. 借贷或强平</button><button type="button" class="option" data-answer="b">B. 永不亏损</button><button type="button" class="option" data-answer="c">C. 没有费用</button><div class="feedback"></div></div>
 
 ## 保证金、全仓与逐仓
 
 **全仓会拖累整个账户，逐仓只亏这一单的保证金。**
 
-保证金是支持相关头寸的资金。逐仓把保证金限定在特定仓位；全仓让账户内更多可用资金支持仓位。具体规则看平台与账户模式。
+保证金是支持相关头寸的资金。
+逐仓把保证金限定在特定仓位；
+全仓让账户内更多可用资金支持仓位。
+具体规则看平台与账户模式。
 
-全仓可能让更多账户资金受影响；逐仓也不是没有风险。
+全仓可能让更多账户资金受影响；
+逐仓也不是没有风险。
+
+**教学虚构：** 逐仓保证金单盒与全仓账户共享盒，标出风险边界。
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。全仓可能影响什么：更多账户资金。" data-bad="答错了。全仓可能影响什么：更多账户资金。"><h3>想一想</h3><p>全仓可能影响什么？</p><button type="button" class="option" data-answer="a">A. 更多账户资金</button><button type="button" class="option" data-answer="b">B. 只有单笔固定额</button><button type="button" class="option" data-answer="c">C. 零风险</button><div class="feedback"></div></div>
 
 ## 强平与爆仓
 
+
+强平看的是保证金够不够，不是只看杠杆倍数，平台会在保证金不足时把仓位平掉。
+
 **保证金不够时，平台会强行帮你平仓，这就是爆仓。**
 
-当保证金等条件低于平台要求时，系统可能减少或关闭仓位。强平触发往往依据标记价格等规则，而不是你看到的最后成交价。
+当保证金等条件低于平台要求时，系统可能减少或关闭仓位。
+强平触发往往依据标记价格等规则，而不是你看到的最后成交价。
 
-不要把「10 倍杠杆，跌 10% 才爆仓」当成准确公式。维持保证金、手续费、仓位大小与平台规则都会影响结果。
+不要把「10 倍杠杆，跌 10% 才爆仓」当成准确公式。
+维持保证金、手续费、仓位大小与平台规则都会影响结果。
+
+**教学虚构：** 标记价格、维持保证金、手续费共同影响强平线。
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。强平只看杠杆倍数吗：不是。" data-bad="答错了。强平只看杠杆倍数吗：不是。"><h3>想一想</h3><p>强平只看杠杆倍数吗？</p><button type="button" class="option" data-answer="a">A. 不是</button><button type="button" class="option" data-answer="b">B. 是</button><button type="button" class="option" data-answer="c">C. 只看K线颜色</button><div class="feedback"></div></div>
 
 ## 资金费率
 
+
+资金费的方向不固定，合约拿久了，这笔费用会继续改变余额。
+
 **永续合约拿久了，资金费可能一直吃掉利润（有时也是你收钱）。**
 
-永续合约会定期在多空持仓者之间结算资金费用。方向、间隔与规则依平台而异。长期持仓时，这笔费用会明显影响结果。
+永续合约会定期在多空持仓者之间结算资金费用。
+方向、间隔与规则依平台而异。
+长期持仓时，这笔费用会明显影响结果。
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。资金费支付方向固定吗：不固定。" data-bad="答错了。资金费支付方向固定吗：不固定。"><h3>想一想</h3><p>资金费支付方向固定吗？</p><button type="button" class="option" data-answer="a">A. 不固定</button><button type="button" class="option" data-answer="b">B. 永远多付空</button><button type="button" class="option" data-answer="c">C. 平台总付用户</button><div class="feedback"></div></div>
 
 ## 仓位与风险预算
 
 **先想好这单最多亏多少，再算买多少。**
 
-先确定「这次判断错了，我准备承受多少损失」，再算买多少。这里的风险金额不是投入金额，也不是保证金。
+先确定「这次判断错了，我准备承受多少损失」，再算买多少。
+这里的风险金额不是投入金额，也不是保证金。
 
-**学习用的风险规则示例：单笔计划风险设为账户资金的 1%；更激进时把 2% 作为上限。** 这不是人人适用的安全标准，不确定时可以采用更低比例或不交易。
+假设账户有 **10,000 USDT（口语里常写 10,000 U）**，这一单的计划风险比例为 1%。
+分三步算：
 
-假设账户有 **10,000 USDT（口语里常写 10,000 U）**，这一单的计划风险比例为 1%。分三步算：
+**学习用的风险规则示例：单笔计划风险设为账户资金的 1%；
+更激进时把 2% 作为上限。** 这不是人人适用的安全标准，不确定时可以采用更低比例或不交易。
+
+假设账户有 **10,000 USDT（口语里常写 10,000 U）**，这一单的计划风险比例为 1%。
+分三步算：
 
 **第一步：允许亏多少？**
-10,000 × 1% = **100 USDT**。也就是按计划止损时，希望本次亏损控制在约 100 USDT。
+10,000 × 1% = **100 USDT**。
+也就是按计划止损时，希望本次亏损控制在约 100 USDT。
 
 **第二步：买一整枚 BTC，跌到止损会亏多少？**
 计划在 60,000 USDT 买入，在 59,000 USDT 止损。
 每枚 BTC 的价差是 60,000 − 59,000 = **1,000 USDT**。
-因此，买 1 BTC，按这两个价格买卖会亏 1,000 USDT；买 0.1 BTC，则亏 100 USDT。
+因此，买 1 BTC，按这两个价格买卖会亏 1,000 USDT；
+买 0.1 BTC，则亏 100 USDT。
 
 **第三步：所以该买多少？**
 允许亏 100 USDT，每枚可能亏 1,000 USDT。
@@ -647,20 +1243,31 @@ DeBot 与币安 Web3 钱包都用于在链上买卖已经发行的代币（二�
 这笔仓位在入场时的名义价值是 0.1 × 60,000 = **6,000 USDT**。
 
 **公式：仓位数量 =（账户资金 × 单笔计划风险比例）÷ |入场价 − 止损价|。**
-公式结果是资产数量，例如 BTC 枚数；再乘入场价，才得到仓位名义金额。绝对值让买入与卖空的价差都为正。此处适用于简化现货或线性合约计算，反向合约等产品需另按规则计算。
+公式结果是资产数量，例如 BTC 枚数；
+再乘入场价，才得到仓位名义金额。
+绝对值让买入与卖空的价差都为正。
+此处适用于简化现货或线性合约计算，反向合约等产品需另按规则计算。
 
 **杠杆在这里改变什么？**
-同样是 0.1 BTC 的仓位，简化情况下，2 倍杠杆约需 3,000 USDT 初始保证金，10 倍约需 600 USDT。仓位数量和买卖价格相同，价格变动带来的盈亏仍一样，不会因为只占用 600 USDT 保证金，就把这次损失变小。
+同样是 0.1 BTC 的仓位，简化情况下，2 倍杠杆约需 3,000 USDT 初始保证金，10 倍约需 600 USDT。
+仓位数量和买卖价格相同，价格变动带来的盈亏仍一样，不会因为只占用 600 USDT 保证金，就把这次损失变小。
 
-但高杠杆会使强平更接近。只有仓位不变、未提前强平、止损按预期成交时，上面的计划风险才成立。手续费、资金费用、滑点与执行失败也会改变实际亏损。要把成本留进预算，并检查强平位置，不能把「100 U」当成保证不超出的损失上限。
+但高杠杆会使强平更接近。
+只有仓位不变、未提前强平、止损按预期成交时，上面的计划风险才成立。
+手续费、资金费用、滑点与执行失败也会改变实际亏损。
+要把成本留进预算，并检查强平位置，不能把「100 U」当成保证不超出的损失上限。
 
-分散持仓也要看相关性。持有多个高度相关的币，未必真的分散风险。
+**教学虚构：** 10000×1%=100；
+60000入、59000止，仓位0.1 BTC。
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。示例仓位是多少：0.1 BTC。" data-bad="答错了。示例仓位是多少：0.1 BTC。"><h3>想一想</h3><p>示例仓位是多少？</p><button type="button" class="option" data-answer="a">A. 0.1 BTC</button><button type="button" class="option" data-answer="b">B. 1 BTC</button><button type="button" class="option" data-answer="c">C. 10 BTC</button><div class="feedback"></div></div>
 
 ## 技术指标
 
 **指标只是看过去的数据，不能预测明天。**
 
-成交量帮助观察参与程度。支撑与阻力是市场曾出现或可能出现买卖反应的区域，不是保证价格转向的墙。
+成交量帮助观察参与程度。
+支撑与阻力是市场曾出现或可能出现买卖反应的区域，不是保证价格转向的墙。
 
 一次突破、一根大阳线或一次反弹都不能单独确认未来走势。
 
@@ -669,13 +1276,7 @@ RSI：相对强弱指标，观察一段时期价格变化的相对强度。
 MACD：通过均线关系等观察趋势与动量变化。
 Stoch RSI：对 RSI 再做随机指标处理，通常更敏感。
 
-布林带（Bollinger Bands）：常由中轨与上下轨组成，用于观察价格相对位置与波动变化。通道收窄表示近期波动减小，不直接说明接下来涨还是跌；触及上轨也不等于马上下跌。
-
-斐波那契回撤 / 扩展：选择一段走势的高低点，按比例标出可能的回撤区域或延伸目标。常见回撤比例有 38.2%、61.8%，工具也常显示 50%。画线起点不同，结果也会不同，不能把线当成价格必到的位置。
-
-背离：价格与某个指标没有同步创出高点或低点。例如价格创新高，RSI 没有创新高，提示上涨动量在变弱；价格创新低，RSI 没有创新低，提示下跌动量在变弱。背离是一种分析现象，不是独立指标，也不保证立即反转。
-
-指标是对历史数据的加工。RSI 高不代表马上跌，金叉也不是稳赚。学会说明它在什么环境会失效，比背口诀有用。
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。RSI高就必然马上下跌吗：不一定。" data-bad="答错了。RSI高就必然马上下跌吗：不一定。"><h3>想一想</h3><p>RSI高就必然马上下跌吗？</p><button type="button" class="option" data-answer="a">A. 不一定</button><button type="button" class="option" data-answer="b">B. 一定</button><button type="button" class="option" data-answer="c">C. 无法显示历史</button><div class="feedback"></div></div>
 
 # 08｜钱包、冷钱包与 CEX 👛
 
@@ -1530,6 +2131,8 @@ Ethereum 安全资料：https://ethereum.org/security/
 # 15｜出问题了怎么办？🆘
 ## 充值没到账
 
+链上显示成功还不等于交易所入账，先核对网络、Memo 和确认数，再走官方渠道，不要再转一次，也不要交出助记词。
+
 **钱转出去了，交易所却没显示余额。**
 先别急着再转一次。
 
@@ -1545,6 +2148,8 @@ Ethereum 安全资料：https://ethereum.org/security/
 
 ## 提现一直处理中
 
+提现一直处理中时，先看订单和有没有 TxID，没有 TxID 就走官方入口，不要向私信付加速费。
+
 **提现页面一直转圈。先看订单状态，再找 TxID。**
 
 没有 TxID，通常说明你还不能确认交易已经广播到链上。
@@ -1556,6 +2161,8 @@ Ethereum 安全资料：https://ethereum.org/security/
 <div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。没有 TxID 时，先看平台订单和公告，再走官方入口。不要向私信支付加速费。" data-bad="答错了。没有 TxID 就还不能确认已经上链。猜哈希或付加速费都不能代替官方订单。"><h3>想一想</h3><p>教学虚构：订单显示处理中，而且没有 TxID。下一步更稳妥的是哪一个？</p><button type="button" class="option" data-answer="a">A. 到区块浏览器里猜一个哈希去查</button><button type="button" class="option" data-answer="b">B. 查看平台订单和公告，并联系官方支持</button><button type="button" class="option" data-answer="c">C. 给私信里的客服付一笔加速费</button><div class="feedback"></div></div>
 
 ## 转错地址或网络
+
+转错地址或转错网络时，把 TxID 交给收款方的官方渠道询问能否恢复，恢复不能保证，不要再转一次或交出助记词。
 
 **转错地址和转错网络不是同一种问题。**
 
@@ -1572,6 +2179,8 @@ Ethereum 安全资料：https://ethereum.org/security/
 
 ## 忘填 Memo / Tag
 
+漏填 Memo 或 Tag 时，留下 TxID 和订单走官方流程，能否找回按平台规则，不能保证。
+
 **有些平台的充值地址由多个用户共用。Memo 或 Tag 用来识别这笔钱属于哪个账户。**
 
 地址和网络都正确，链上也成功，但忘了填 Memo，钱可能已经到达平台地址，却没有自动记到你的账户。
@@ -1582,6 +2191,8 @@ Ethereum 安全资料：https://ethereum.org/security/
 <div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。漏填 Memo 要留下 TxID 和订单，走平台官方流程。能否找回按平台规则，不能保证。" data-bad="答错了。再充一笔不能补上上一笔的 Memo。区块浏览器上的记录也不能由你改掉。"><h3>想一想</h3><p>教学虚构：充值地址正确，但 Memo 留空，链上已经成功。接下来该怎么做？</p><button type="button" class="option" data-answer="a">A. 立刻再充一笔，把 Memo 补在下一笔里</button><button type="button" class="option" data-answer="b">B. 整理 TxID 和订单，按官方的漏填流程提交</button><button type="button" class="option" data-answer="c">C. 去区块浏览器里把记录改掉</button><div class="feedback"></div></div>
 
 ## 钱包里看不到资产
+
+钱包界面显示没有币时，先核对账户、网络和这枚代币有没有被显示出来，不要上传助记词。
 
 **钱包里突然看不到币，不代表币一定不见了。**
 
@@ -1596,6 +2207,8 @@ Ethereum 安全资料：https://ethereum.org/security/
 
 ## 交易失败或卡住
 
+交易失败或卡住时，先分清它是待确认、失败还是没广播，失败了网络费也可能已经扣掉，不要连续盲点。
+
 **一笔链上交易迟迟没完成。先查它是待确认、失败，还是根本没有广播。**
 
 待确认时，部分网络和钱包可以加速或替换交易，但并不是每条链都一样。
@@ -1607,6 +2220,8 @@ Ethereum 安全资料：https://ethereum.org/security/
 <div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。失败的交易仍可能已经消耗网络费。先看原因和官方说明，不要盲目连点。" data-bad="答错了。失败不等于网络费会退回。连续提交也不能保证下一笔成功。"><h3>想一想</h3><p>教学虚构：浏览器显示这笔交易失败，网络费已经扣了。这时该怎么做？</p><button type="button" class="option" data-answer="a">A. 失败了就一定会把网络费退回来</button><button type="button" class="option" data-answer="b">B. 先查失败原因，再决定要不要重试</button><button type="button" class="option" data-answer="c">C. 连续提交，直到有一笔成功</button><div class="feedback"></div></div>
 
 ## 怀疑恶意授权或签名
+
+怀疑签错或授错时先停止操作，断开连接不等于撤销授权，要检查并撤销后再判断剩余风险。
 
 **刚在陌生网站点了签名或授权，先停止继续操作，不要再点网站弹窗。**
 
@@ -1621,17 +2236,23 @@ Ethereum 安全资料：https://ethereum.org/security/
 
 ## 助记词 / 私钥泄露
 
+助记词或私钥一旦泄露，改密码和重装都不能让旧钥匙失效，要换一套新钱包再考虑转移剩余资产。
+
 **助记词或私钥已经交给别人、上传到网页，或暴露在不可信的环境里，这个钱包就不再安全。**
 
-先在可信设备上，用全新的密钥创建一个钱包。
-再评估怎样把剩余资产安全转过去。
-只改 App 密码、卸载钱包或撤销授权，都不能让已经泄露的私钥失效。
-如果怀疑有自动转走资产的程序，再向旧钱包充网络费，也可能马上被转走。
-这种情况下，先寻求可信的专业协助。
+<p class="keep-lines">先在可信设备上，用全新的密钥创建一个钱包。<br>
+再评估怎样把剩余资产安全转过去。<br>
+只改 App 密码、卸载钱包或撤销授权，<br>
+都不能让已经泄露的私钥失效。<br>
+如果怀疑有自动转走资产的程序，再向旧钱包充网络费，<br>
+也可能马上被转走。<br>
+这种情况下，先寻求可信的专业协助。</p>
 
 <div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。泄露的私钥不会因为改密码或重装而失效。先用新密钥，再考虑怎样转移剩余资产。" data-bad="答错了。改密码和卸载都不能让旧私钥失效。不要再把这个地址当成安全钱包。"><h3>想一想</h3><p>教学虚构：助记词已经发给假客服。旧地址还能不能继续当安全钱包用？</p><button type="button" class="option" data-answer="a">A. 能。改掉登录密码就可以继续用</button><button type="button" class="option" data-answer="b">B. 不能。要创建全新钱包，再评估怎样安全转移剩余资产</button><button type="button" class="option" data-answer="c">C. 卸载重装之后，旧私钥就失效了</button><div class="feedback"></div></div>
 
 ## 交易所账号疑似被盗
+
+怀疑交易所账号被盗时，先从官方入口限制账户，再检查邮箱、API 和提现设置，不要把验证码交给私信。
 
 **发现陌生登录、提现记录或 API 操作，先通过交易所官方入口限制账户。**
 
@@ -1647,6 +2268,8 @@ Ethereum 安全资料：https://ethereum.org/security/
 
 ## 防止二次诈骗
 
+有人让你先付钱、交出助记词或远程控制来追回资金，那不是可靠办法，只走官方渠道。
+
 **刚遇到资金问题时，最容易被「追回专家」「技术客服」或「付费解冻」盯上。**
 
 主动私信承诺百分之百追回、要求先付保证金、索要助记词，或要求远程控制设备，都要高度警惕。
@@ -1657,6 +2280,8 @@ Ethereum 安全资料：https://ethereum.org/security/
 <div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。先收费、要助记词或要远程控制，都不是可靠的追回方式。只走官方渠道。" data-bad="答错了。不要先付款，也不要把私钥交给私信里的人。想快点找回，也不能把剩余资产再交出去。"><h3>想一想</h3><p>教学虚构：有人私信说，先付 50 USDT 就能把丢失的币追回。该怎么做？</p><button type="button" class="option" data-answer="a">A. 先付款，免得错过追回窗口</button><button type="button" class="option" data-answer="b">B. 拒绝付款，并只通过官方渠道核对</button><button type="button" class="option" data-answer="c">C. 把私钥发给对方，用来证明这是你的地址</button><div class="feedback"></div></div>
 
 ## 求助时准备什么？
+
+求助时准备好 TxID、订单号和发生了什么，走官方渠道，助记词和私钥永远不要提供。
 
 **联系客服前，先整理一份简短的问题记录。**
 
