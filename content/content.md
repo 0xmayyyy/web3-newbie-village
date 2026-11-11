@@ -60,80 +60,129 @@
 
 **币圈就是围绕加密货币的市场和圈子，买币只是参与方式之一。**
 
-「币圈」是一个口语说法，泛指围绕加密货币、区块链及相关应用形成的市场与社区。有人做交易，有人开发应用，也有人研究技术、支付、游戏、数字收藏品和链上金融。
+「币圈」是一个口语说法，泛指围绕加密货币、区块链及相关应用形成的市场与社区。
+有人做交易，有人开发应用，也有人研究技术、支付、游戏、数字收藏品和链上金融。
 
-买币只是其中一种参与方式。你也可以先学知识、观察项目、体验测试网络，不投入真实资金。
+买币只是其中一种参与方式。
+你也可以先学知识、观察项目、体验测试网络，不投入真实资金。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。币圈是市场和社区。买币只是其中一种参与方式。" data-bad="答错了。买币不是唯一方式。学习和观察项目、试用测试网，也可以先参与，而且不必投入真实资金。"><h3>想一想</h3><p>买币是不是参与币圈的唯一方式？</p><button type="button" class="option" data-answer="a">A. 是，不买就不算参与</button><button type="button" class="option" data-answer="b">B. 不是，学习和观察也是参与</button><button type="button" class="option" data-answer="c">C. 只有自己开发应用才算参与</button><div class="feedback"></div></div>
 
 ## 区块链是什么？
 
 **区块链是一本大家一起记、很难偷偷改的公共账本。**
 
-可以把区块链理解为一套由多方共同维护的记录系统。交易按规则被确认并写入记录，参与者通过共识机制对记录达成一致。
+可以把区块链理解为一套由多方共同维护的记录系统。
+交易按规则被确认并写入记录，参与者通过共识机制对记录达成一致。
 
-区块链的一个重要特点是「防篡改」：在网络正常运行、共识与安全假设成立的条件下，已经充分确认的记录不能由某个人随意修改。
+区块链的一个重要特点是「防篡改」。
+在网络正常运行，并且共识与安全假设成立的条件下，已经充分确认的记录不能由某个人随意修改。
 
 「记录防篡改」也不等于输入的信息、项目宣传和交易对象一定真实。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。记录很难被改，只说明确认后的记录不易被某个人偷偷改掉。写进去的内容仍可能不真实。" data-bad="答错了。防篡改不等于内容真实。项目宣传和交易对象，仍要单独核对。"><h3>想一想</h3><p>记录很难被偷偷改，是不是就说明写进去的内容一定是真的？</p><button type="button" class="option" data-answer="a">A. 是，记进区块链就等于真实</button><button type="button" class="option" data-answer="b">B. 不是，防篡改不等于内容真实</button><button type="button" class="option" data-answer="c">C. 只有一家公司记账才可能真实</button><div class="feedback"></div></div>
 
 ## 加密货币是什么？
 
 **加密货币是链上的数字资产，种类很多，风险各不相同。**
 
-加密货币是使用密码学和相关网络规则管理的数字资产。不同资产的用途、发行方式和风险差别很大，不能把它们都当成同一种投资。
+加密货币是使用密码学和相关网络规则管理的数字资产。
+不同资产的用途、发行方式和风险差别很大，不能把它们都当成同一种投资。
 
-BTC 是比特币网络的原生资产。ETH 是以太坊网络的原生资产，可以用于支付网络费用等。很多代币则通过已有链上的合约发行。
+BTC 是比特币网络的原生资产。
+ETH 是以太坊网络的原生资产，可以用于支付网络费用等。
+很多代币则通过已有链上的合约发行。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。BTC 是比特币网络的原生资产。很多代币是在已有链上用合约发行的，不能因为都叫币就当成同一种。" data-bad="答错了。都叫币，不代表发行方式和风险相同。BTC 属于比特币网络本身。很多代币由已有链上的合约发行。"><h3>想一想</h3><p>BTC 和通过合约发行的代币，是同一种东西吗？</p><button type="button" class="option" data-answer="a">A. 是，名字里都有币就一样</button><button type="button" class="option" data-answer="b">B. 不是。BTC 是比特币网络的原生资产，很多代币由合约发行</button><button type="button" class="option" data-answer="c">C. 只有价格一样，才是同一种</button><div class="feedback"></div></div>
 
 ## BTC 的起源：币圈从哪里开始？
 
 **比特币是第一个加密货币，2009 年开始运行，总量约 2,100 万枚。**
 
-2008 年 10 月 31 日，一位使用「Satoshi Nakamoto（中本聪）」名字的作者公布了比特币白皮书《Bitcoin: A Peer-to-Peer Electronic Cash System》，中文通常译为《比特币：一种点对点的电子现金系统》。
+2008 年 10 月 31 日
+一位使用「Satoshi Nakamoto（中本聪）」名字的作者公布了比特币白皮书 ：
+《Bitcoin: A Peer-to-Peer Electronic Cash System》
+中文通常译为《比特币：一种点对点的电子现金系统》
 
-白皮书提出的问题很直接：能不能让两个人在网上直接付款，不必依赖金融机构替双方防止同一笔钱被重复花掉？它将数字签名、工作量证明与网络共识等机制结合起来，设计了一种点对点电子现金方案。
+白皮书提出的问题很直接：能不能让两个人在网上直接付款，不必依赖金融机构替双方防止同一笔钱被重复花掉？
+它将数字签名、工作量证明与网络共识等机制结合起来，设计了一种点对点电子现金方案。
 
-2009 年 1 月 3 日，比特币创世区块诞生，比特币网络开始运行。中本聪的真实身份至今没有得到公认的确认。
+2009 年 1 月 3 日，比特币创世区块诞生，比特币网络开始运行。
+中本聪的真实身份至今没有得到公认的确认。
 
-按现行共识规则，BTC 的发行总量上限约为 2,100 万枚。它不由某家公司按需发行，而是按网络规则逐步产生。稀缺性是它的一个特点，但不保证价格只涨不跌。
+按现行共识规则，BTC 的发行总量上限约为 2,100 万枚。
+它不由某家公司按需发行，而是按网络规则逐步产生。
+稀缺性是它的一个特点，但不保证价格只涨不跌。
 
 📄 想读白皮书原文？从 bitcoin.org 官方入口开始：
 
 - 英文原文 PDF：https://bitcoin.org/bitcoin.pdf
 - 多语言版本：https://bitcoin.org/en/bitcoin-paper
 
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。按现行共识规则，上限约为 2,100 万枚。这是发行规则，不保证价格只涨不跌。" data-bad="答错了。BTC 不由某家公司按需加印。上限约为 2,100 万枚，而且稀缺不等于价格只涨。"><h3>想一想</h3><p>按现行规则，BTC 大约最多发行多少？</p><button type="button" class="option" data-answer="a">A. 约 2,100 万枚，而且不保证价格只涨</button><button type="button" class="option" data-answer="b">B. 由某家公司看着需求加印</button><button type="button" class="option" data-answer="c">C. 没有上限，可以无限增发</button><div class="feedback"></div></div>
+
 ## 币与代币有什么区别？
 
 **原生币属于一条链本身，代币是在别人的链上发行的。**
 
-常见区分是：原生币属于某条网络本身；代币通过已有网络发行。例如 ETH 与以太坊上的 ERC-20 代币。日常交流里，大家经常统称它们为「币」。
+常见区分是：原生币属于某条网络本身。
+代币通过已有网络发行。
+例如 ETH 与以太坊上的 ERC-20 代币。
+
+日常交流里，大家经常统称它们为「币」。
+称呼相同，也不表示发行方式相同。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。ETH 属于以太坊网络本身。ERC-20 代币是在这条已有网络上发行的。" data-bad="答错了。统称「币」只是口头说法。ETH 是原生币。ERC-20 代币不是这条链本身。"><h3>想一想</h3><p>ETH 和以太坊上的 ERC-20 代币，主要差别是什么？</p><button type="button" class="option" data-answer="a">A. 没有差别，都在以太坊上就一样</button><button type="button" class="option" data-answer="b">B. ETH 属于这条网络本身，ERC-20 代币是在已有网络上发行的</button><button type="button" class="option" data-answer="c">C. ERC-20 才是以太坊的原生币</button><div class="feedback"></div></div>
 
 ## 公链是什么？
 
 **公链是谁都能用的区块链，不同链之间不能乱转。**
 
-公链通常是开放参与的区块链网络，例如 Bitcoin、Ethereum、TRON、BNB Chain、Solana。不同链的费用、速度、应用和安全假设不同。
+公链通常是开放参与的区块链网络，例如 Bitcoin、Ethereum、TRON、BNB Chain、Solana。
+不同链的费用、速度、应用和安全假设不同。
 
-可以把不同网络想成不同的交通系统。地址长得一样，也不代表目的地与资产兼容。转账需要收款方明确支持相应网络。
+可以把不同网络想成不同的交通系统。
+地址长得一样，也不代表目的地与资产兼容。
+转账需要收款方明确支持相应网络。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。地址像，也不代表网络和资产兼容。要收款方明确支持相应网络。" data-bad="答错了。不能因为地址看起来像，或两边都叫公链，就直接转。先确认收款方支持的网络。"><h3>想一想</h3><p>地址看起来一样，能不能直接转到另一条链？</p><button type="button" class="option" data-answer="a">A. 能，地址像就能转</button><button type="button" class="option" data-answer="b">B. 不能默认，要收款方明确支持相应网络</button><button type="button" class="option" data-answer="c">C. 只要都叫公链，就可以互转</button><div class="feedback"></div></div>
 
 ## Web3 是什么？
 
 **Web3 就是用钱包登录、在链上使用的互联网应用。**
 
-Web3 常被用来描述利用区块链、钱包和智能合约构建的互联网应用。用户可以通过钱包管理数字资产、签署操作、使用链上应用。
+Web3 常被用来描述利用区块链、钱包和智能合约构建的互联网应用。
+用户可以通过钱包管理数字资产、签署操作、使用链上应用。
 
-但「Web3」标签不保证项目真的去中心化，也不保证好用或安全。
+但「Web3」标签不保证项目真的去中心化。
+它也不保证好用或安全。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。Web3 只是一种叫法。它不保证去中心化，也不保证好用或安全。" data-bad="答错了。贴了 Web3，或用了钱包登录，都不能单独证明安全或已经去中心化。"><h3>想一想</h3><p>一个应用贴了 Web3，能不能说明它已经去中心化并且安全？</p><button type="button" class="option" data-answer="a">A. 能，标签就是证明</button><button type="button" class="option" data-answer="b">B. 不能。标签不保证去中心化、好用或安全</button><button type="button" class="option" data-answer="c">C. 只要能用钱包登录，就一定安全</button><div class="feedback"></div></div>
 
 ## 智能合约是什么？
 
 **智能合约是链上自动执行的程序，代码有漏洞就会出事。**
 
-智能合约是部署在区块链上、按代码规则执行的程序。兑换、借贷、代币发行等功能常由它完成。代码会有漏洞，也会被设置管理员权限，不能因为叫「智能」就默认可靠。
+智能合约是部署在区块链上、按代码规则执行的程序。
+兑换、借贷、代币发行等功能常由它完成。
+
+代码会有漏洞，也会被设置管理员权限。
+不能因为叫「智能」就默认可靠。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。它是按代码执行的程序。代码会有漏洞，也可能设有管理员权限。" data-bad="答错了。叫「智能」不表示不会出错。兑换合约和其他合约都可能有漏洞或管理员权限。"><h3>想一想</h3><p>智能合约可以默认当成不会出错吗？</p><button type="button" class="option" data-answer="a">A. 可以，因为它叫智能</button><button type="button" class="option" data-answer="b">B. 不可以。代码会有漏洞，也可能设有管理员权限</button><button type="button" class="option" data-answer="c">C. 只有兑换合约才可能出错</button><div class="feedback"></div></div>
 
 ## 稳定币是什么？
 
 **稳定币想跟美元保持 1:1，但它不是银行存款，也会脱锚。**
 
-稳定币的目标是尽量跟踪某个参考价值，常见的是 1 美元，例如 USDT、USDC。不同稳定币可能使用法币储备、加密资产抵押或其他机制。
+稳定币的目标是尽量跟踪某个参考价值，常见的是 1 美元，例如 USDT、USDC。
+不同稳定币可能使用法币储备、加密资产抵押或其他机制。
 
-稳定币可以用于计价、转账与交易结算，但不是银行存款，也不保证始终能按 1 美元兑换。需要了解储备、赎回条件、冻结权限和脱锚风险。
+稳定币可以用于计价、转账与交易结算。
+但它不是银行存款，也不保证始终能按 1 美元兑换。
+需要了解储备、赎回条件、冻结权限和脱锚风险。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。它想跟踪参考价值，例如 1 美元。它不是银行存款，也可能脱锚。" data-bad="答错了。名字里有 USD，也不表示它是银行存款，或一定始终等于 1 美元。"><h3>想一想</h3><p>稳定币是银行存款，并且一定始终等于 1 美元吗？</p><button type="button" class="option" data-answer="a">A. 是，所以可以当成存款</button><button type="button" class="option" data-answer="b">B. 不是。它想跟踪参考价值，但不是银行存款，也可能脱锚</button><button type="button" class="option" data-answer="c">C. 只要名字里有 USD，就一定始终等于 1 美元</button><div class="feedback"></div></div>
 
 ## 一张关系表
 
@@ -147,13 +196,24 @@ Web3 常被用来描述利用区块链、钱包和智能合约构建的互联网
 | 交易所 | 买卖或兑换资产 | CEX、DEX |
 | DApp | 区块链应用 | 兑换、借贷、游戏应用 |
 
+钱包管理的是账户和签署。
+它不代替区块链记账，也不保证交易所上的价格。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。钱包主要管理账户，并用来签署操作。" data-bad="答错了。记账是区块链网络的事。交易所价格也不是钱包保证的。钱包管的是账户和签署。"><h3>想一想</h3><p>钱包主要管什么？</p><button type="button" class="option" data-answer="a">A. 代替区块链把账记下来</button><button type="button" class="option" data-answer="b">B. 管理账户，并签署操作</button><button type="button" class="option" data-answer="c">C. 保证交易所上的价格不会变</button><div class="feedback"></div></div>
+
 ## 价格为什么会涨跌？
 
 **价格由买卖双方决定，涨了不代表更值钱，跌了不代表更便宜。**
 
-交易价格由市场买卖形成，可能受需求、流动性、预期、供应变化、杠杆、宏观环境与消息影响。价格上涨不一定代表项目更有价值，价格下跌也不能自动证明「便宜了」。
+交易价格由市场买卖形成。
+它可能受需求、流动性、预期、供应变化、杠杆、宏观环境与消息影响。
+
+价格上涨不一定代表项目更有价值。
+价格下跌也不能自动证明「便宜了」。
 
 小提醒：先看它是什么、为什么存在，再考虑是否参与。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。价格由买卖形成。上涨不等于项目更有价值，下跌也不自动等于便宜。" data-bad="答错了。价格涨跌本身不能单独证明项目更有价值，或已经便宜。"><h3>想一想</h3><p>价格涨了，是不是就说明这个项目更有价值？</p><button type="button" class="option" data-answer="a">A. 是，涨了就更有价值</button><button type="button" class="option" data-answer="b">B. 不一定。价格由买卖形成，上涨不等于项目更有价值</button><button type="button" class="option" data-answer="c">C. 只有跌了，才能说明没有价值</button><div class="feedback"></div></div>
 
 # 02｜一级市场与二级市场 🌱
 
@@ -161,19 +221,31 @@ Web3 常被用来描述利用区块链、钱包和智能合约构建的互联网
 
 **一级市场是币刚发行时的认购，早不等于更好赚。**
 
-一级市场通常指资产首次发行、融资或认购等环节。加密行业中，常见形式包括私募、公募、代币发行与部分 Launchpad 活动。具体分类需要看参与者购买的是什么、卖方是谁以及交易结构。
+一级市场通常指资产首次发行、融资或认购等环节。
+加密行业中，常见形式包括私募、公募、代币发行与部分 Launchpad 活动。
+具体分类需要看参与者购买的是什么、卖方是谁以及交易结构。
 
-例子：某项目首次发行代币，向参与者开放认购。参与者从发行方获得代币，这通常属于一级发行环节。
+教学虚构：某项目第一次向参与者开放代币认购，参与者从发行方获得代币。
+这通常属于一级发行环节。
+它不是真实项目，也不表示这样参与就能赚钱。
 
-早期参与可能有更长锁仓、更少公开信息与更难退出的问题。「早」只表示时间靠前，不表示更容易赚钱。
+早期参与可能有更长锁仓、更少公开信息与更难退出的问题。
+「早」只表示时间靠前，不表示更容易赚钱。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。早只表示时间靠前。它还可能意味着锁仓更长、信息更少、更难退出。" data-bad="答错了。早不等于更容易赚钱。私募也不因为更早就更赚。"><h3>想一想</h3><p>「早」是不是表示更容易赚钱？</p><button type="button" class="option" data-answer="a">A. 是，越早越容易赚</button><button type="button" class="option" data-answer="b">B. 不是。早只表示时间靠前，还可能更难退出</button><button type="button" class="option" data-answer="c">C. 只有私募才因为更早而更容易赚钱</button><div class="feedback"></div></div>
 
 ## 二级市场：买卖已发行资产
 
 **二级市场就是买卖别人手里已经发行的币。**
 
-二级市场通常指已经发行的资产在持有人之间流转。你在交易所买别人卖出的 BTC，或在 DEX 兑换已发行代币，一般都属于二级交易。
+二级市场通常指已经发行的资产在持有人之间流转。
+你在交易所买别人卖出的 BTC，或在 DEX 兑换已发行代币，一般都属于二级交易。
 
-所以，一级 / 二级描述的是发行与流转阶段；CEX / DEX 描述的是交易场所与机制。它们不是同一组分类。
+所以，一级 / 二级描述的是发行与流转阶段。
+CEX / DEX 描述的是交易场所与机制。
+它们不是同一组分类。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。买别人已经持有的 BTC，一般是二级交易。它不因为发生在 CEX 就变成一级发行。" data-bad="答错了。一级是发行环节。在交易所买已发行的 BTC，一般是二级交易。CEX 说的是场所，不是一级或二级。"><h3>想一想</h3><p>在交易所买别人卖出的 BTC，一般属于哪一类？</p><button type="button" class="option" data-answer="a">A. 一级发行</button><button type="button" class="option" data-answer="b">B. 二级交易</button><button type="button" class="option" data-answer="c">C. 和一级、二级无关，只看是不是 CEX</button><div class="feedback"></div></div>
 
 ## 常见早期参与方式
 
@@ -189,23 +261,35 @@ Web3 常被用来描述利用区块链、钱包和智能合约构建的互联网
 | 测试网 | 用测试网络体验产品 | 测试资产通常不等于真实资产 |
 | 积分活动 | 记录用户活动的积分机制 | 是否可兑换、规则是否可变 |
 
-空投、积分与测试网并不天然等于一级投资，也不保证未来发币或给奖励。
+空投、积分与测试网并不天然等于一级投资。
+它们也不保证未来发币或给奖励。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。测试网用来体验产品。测试资产通常不等于真实资产。" data-bad="答错了。测试资产通常不能当成真资产。积分高，也不表示测试资产已经变成真资产。"><h3>想一想</h3><p>测试网里的测试资产，通常等于真实资产吗？</p><button type="button" class="option" data-answer="a">A. 等于，测试通过就能当真资产用</button><button type="button" class="option" data-answer="b">B. 通常不等于</button><button type="button" class="option" data-answer="c">C. 只要积分够高，就等于真实资产</button><div class="feedback"></div></div>
 
 ## 什么是锁仓与解锁？
 
 **锁仓是暂时不能卖，解锁后可卖的币变多。**
 
-锁仓表示资产在一定条件下暂时不能转让或提取。解锁表示限制按计划解除。早期认购可能分批交付，不是认购完成后立刻就能卖。
+锁仓表示资产在一定条件下暂时不能转让或提取。
+解锁表示限制按计划解除。
+早期认购可能分批交付，不是认购完成后立刻就能卖。
 
-解锁会改变可流通供应，但实际价格影响还取决于持有人行为、需求和市场流动性。
+解锁会改变可流通供应。
+但实际价格影响还取决于持有人行为、需求和市场流动性。
+解锁不等于价格一定上涨。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。锁仓期间可能暂时不能转让。认购完成，也不等于马上能卖。" data-bad="答错了。认购完成不一定能立刻卖。解锁会增加可卖的数量，但不保证价格上涨。"><h3>想一想</h3><p>认购完成，是不是就能立刻卖掉？</p><button type="button" class="option" data-answer="a">A. 是，付完就能卖</button><button type="button" class="option" data-answer="b">B. 不一定。锁仓期间可能暂时不能转让</button><button type="button" class="option" data-answer="c">C. 解锁之后价格一定上涨</button><div class="feedback"></div></div>
 
 ## CEX 与 DEX
 
 **CEX / DEX 讲的是在哪里交易，和一级 / 二级市场是两回事。**
 
-CEX 和 DEX 是交易场所的分类，和一级 / 二级市场不是一回事。两者的区别见[第 05 章「CEX 与 DEX 有什么不同？」](#/c/05)。
+CEX 和 DEX 是交易场所的分类，和一级 / 二级市场不是一回事。
+两者的区别见[第 05 章「CEX 与 DEX 有什么不同？」](#/c/05)。
 
 小提醒：先说清楚「我买的是谁发行的什么资产」，再谈一级或二级。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。CEX 和 DEX 区分的是交易场所与机制。一级和二级区分的是发行与流转。" data-bad="答错了。CEX / DEX 不是一级和二级，也不是币和代币的区分。它们说的是在哪里、用什么机制交易。"><h3>想一想</h3><p>CEX 和 DEX 这组词，主要在区分什么？</p><button type="button" class="option" data-answer="a">A. 一级市场和二级市场</button><button type="button" class="option" data-answer="b">B. 交易场所和机制</button><button type="button" class="option" data-answer="c">C. 原生币和代币</button><div class="feedback"></div></div>
 
 # 03｜买币前的必修知识 📚
 
@@ -1107,6 +1191,12 @@ DePIN 常指通过网络与激励组织现实基础设施，如算力、通信�
 
 ## 正经术语
 
+**正经术语是社区缩写，知道意思，才能分清口号和事实。**
+
+下面这张表按原有说法列出常见词。
+知道意思，是为了听懂别人在说什么。
+它不把口号变成事实。
+
 | 术语 | 大白话解释 |
 |---|---|
 | DYOR | 自己研究和核验，不把别人意见当作结论 |
@@ -1148,9 +1238,15 @@ DePIN 常指通过网络与激励组织现实基础设施，如算力、通信�
 | MPC 钱包 | 多方计算钱包，把密钥分成多个分片分开保存，创建时通常不用抄写传统助记词（例如币安钱包（无私钥））；仍要完成备份并确认恢复方式 |
 | WAGMI | 「我们都会成功」的社区口号，不是回报保证 |
 
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。DYOR 是自己研究和核验。别人的意见不能直接当成结论。" data-bad="答错了。DYOR 不是「别人看好就可以买」，也不是看见 FOMO 就行动。它是自己去核对。"><h3>想一想</h3><p>DYOR 是在说什么？</p><button type="button" class="option" data-answer="a">A. 别人看好，就可以当成结论</button><button type="button" class="option" data-answer="b">B. 自己研究和核验，不把别人的意见当成结论</button><button type="button" class="option" data-answer="c">C. 看见 FOMO，就要马上买</button><div class="feedback"></div></div>
+
 ## 社区玩梗翻译
 
-以下是调侃，不是对所有人的真实意图判断，也不是交易建议。
+**社区玩梗是调侃，不是交易建议。**
+
+以下是调侃。
+它不是对所有人的真实意图判断。
+也不是交易建议。
 
 | 社区话术 | 玩梗翻译 |
 |---|---|
@@ -1170,6 +1266,8 @@ DePIN 常指通过网络与激励组织现实基础设施，如算力、通信�
 | 上车 / 下车 | 买入 / 卖出，别因为这个比喻就追赶 |
 | 报单 / 喊单 | 有人告诉你买什么，涨了是他眼光好，亏了算你的 |
 | 接盘 | 买下别人卖出的资产，常用于调侃买在高位 |
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。「健康回调」在这张对照里是把下跌说得好听。它不是还会涨的证明，也不是价格保证。" data-bad="答错了。这是调侃。它没有证明价格还会涨，也不是官方保证。"><h3>想一想</h3><p>「健康回调」在这张对照里，更接近哪种意思？</p><button type="button" class="option" data-answer="a">A. 已经证明后面还会涨</button><button type="button" class="option" data-answer="b">B. 跌了，但说得比较好听</button><button type="button" class="option" data-answer="c">C. 官方给出的价格保证</button><div class="feedback"></div></div>
 
 按钮：查一个词。切换：正经解释 / 社区玩梗。
 
