@@ -594,55 +594,52 @@ Stoch RSI：对 RSI 再做随机指标处理，通常更敏感。
 指标是对历史数据的加工。RSI 高不代表马上跌，金叉也不是稳赚。学会说明它在什么环境会失效，比背口诀有用。
 
 # 08｜钱包、冷钱包与 CEX 👛
+
 ## 钱包是什么？
 
-**钱包不装币。它管的是能动用这些币的钥匙。**
+**钱包不装币，它管的是能动你币的那把钥匙。**
 
-钱包用来管理账户、查看资产和签署操作。
-资产记录在对应的链上。
-钱包通常保管的是访问和签署这些资产的凭证。
-币并没有装进手机里。
+钱包是帮助你管理账户、查看资产和签署操作的工具。
+资产记录在相应链上，钱包通常管理的是访问与签署这些资产的凭证，不是把币装进手机里。
 
-不同钱包可能用助记词、智能账户、多方计算或其他恢复方式。
-先弄清自己用的是哪一种。
+不同钱包可能使用助记词、智能账户、多方计算或其他恢复方式，需要了解自己的具体方案。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。链上记录资产。钱包管理的是访问和签署这些资产的凭证。" data-bad="答错了。卸载 App 不等于链上的记录消失。钱包管的是钥匙，不是把币装进手机。"><h3>想一想</h3><p>钱包装在手机里，是不是表示币也存放在这部手机里？</p><button type="button" class="option" data-answer="a">A. 是，卸载 App 币就没了</button><button type="button" class="option" data-answer="b">B. 不是。币记在链上，钱包管的是签署用的凭证</button><button type="button" class="option" data-answer="c">C. 只有硬件钱包才把币存在设备里</button><div class="feedback"></div></div>
+**教学虚构：** 链上账本与手机钱包分离，箭头标读取余额/签名。
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。删除App就等于删除链上资产吗：不是。" data-bad="答错了。删除App就等于删除链上资产吗：不是。"><h3>想一想</h3><p>删除App就等于删除链上资产吗？</p><button type="button" class="option" data-answer="a">A. 不是</button><button type="button" class="option" data-answer="b">B. 是</button><button type="button" class="option" data-answer="c">C. 一定归零</button><div class="feedback"></div></div>
 
 ## 地址、私钥、助记词
 
-**地址可以给别人。私钥和助记词谁都不能给。**
+**地址可以给别人，私钥和助记词谁都不能给。**
 
-地址用来接收资产，也可以用来识别链上账户。
-它可以分享。
-分享之后，别人可能把你的余额和操作关联起来。
+地址：用于接收或识别链上账户，可以分享，但会带来隐私关联。
+私钥：用于授权账户操作的秘密信息，不能分享。
+助记词：部分钱包用来生成、恢复一组密钥的词序列。
+泄露可能影响该助记词下的多个账户。
 
-私钥是授权账户操作的秘密。
-不能分享。
+钱包密码只保护本地应用或文件，不是链上的控制权。
+更改 App 密码不能使已经泄露的助记词失效。
 
-助记词是一部分钱包用来生成和恢复一组密钥的词。
-它泄露之后，可能影响这组词下面的多个账户。
+**教学虚构：** 公开地址、秘密私钥、助记词恢复、App密码四层。
 
-钱包密码只保护这台设备上的应用或文件。
-它不是链上的控制权。
-改掉 App 密码，不能让已经泄露的助记词失效。
-
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。App 密码不是链上的控制权。助记词泄露后，改密码不能让它失效。地址可以用于收款。" data-bad="答错了。改密码不能收回已经泄露的助记词。地址本身是可以交给收款对方的。"><h3>想一想</h3><p>助记词已经发给别人。把钱包 App 的密码改掉，能让旧助记词失效吗？</p><button type="button" class="option" data-answer="a">A. 能，改密码就换了一把新钥匙</button><button type="button" class="option" data-answer="b">B. 不能。密码只保护本地应用，助记词仍然能恢复账户</button><button type="button" class="option" data-answer="c">C. 地址也不能告诉任何人，否则对方就能转走资产</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。改App密码能使泄露助记词失效吗：不能。" data-bad="答错了。改App密码能使泄露助记词失效吗：不能。"><h3>想一想</h3><p>改App密码能使泄露助记词失效吗？</p><button type="button" class="option" data-answer="a">A. 不能</button><button type="button" class="option" data-answer="b">B. 能</button><button type="button" class="option" data-answer="c">C. 卸载即可</button><div class="feedback"></div></div>
 
 ## 两组不同的分类
 
-**托管看谁拿着钥匙。冷和热，看这把钥匙联不联网。**
+**托管看谁拿钥匙，冷热看钥匙联不联网。**
 
-托管还是自托管，问的是谁控制密钥和资产操作。
-热钱包还是冷钱包，问的是密钥是否处在联网环境里。
+托管 / 自托管：重点是谁控制密钥与资产操作。
+热 / 冷钱包：重点是密钥是否处于联网环境中。
 
-硬件钱包是常见的冷存储和签名工具。
-不能把任意一台硬件设备都当成可靠的冷钱包。
+硬件钱包是常见的冷存储与签名工具，但不能把「任何硬件设备」自动视为可靠冷钱包。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。冷和热看的是联网环境。托管和自托管看的是谁控制密钥。硬件设备也不会自动可靠。" data-bad="答错了。这是两组分类。硬件本身也不能代替你确认它是不是可靠的冷钱包。"><h3>想一想</h3><p>「冷钱包」和「自托管」是在区分同一件事吗？</p><button type="button" class="option" data-answer="a">A. 是，两个词可以互换</button><button type="button" class="option" data-answer="b">B. 不是。一个看钥匙联不联网，一个看谁控制钥匙</button><button type="button" class="option" data-answer="c">C. 只要是硬件，就自动又冷又自托管</button><div class="feedback"></div></div>
+**教学虚构：** 托管/自托管横轴、热/冷纵轴，硬件单独标签。
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。冷热主要按什么区分：密钥联网环境。" data-bad="答错了。冷热主要按什么区分：密钥联网环境。"><h3>想一想</h3><p>冷热主要按什么区分？</p><button type="button" class="option" data-answer="a">A. 密钥联网环境</button><button type="button" class="option" data-answer="b">B. 币价</button><button type="button" class="option" data-answer="c">C. 平台大小</button><div class="feedback"></div></div>
 
 ## CEX、软件钱包与硬件钱包对比
 
-**平台账户省事，但要靠平台。自己保管更自由，责任也在自己。**
+**平台账户省心但靠平台，自托管自由但责任自己担。**
 
 | 项目 | CEX 账户 | 自托管软件钱包 | 自托管硬件钱包 |
 |---|---|---|---|
@@ -652,22 +649,20 @@ Stoch RSI：对 RSI 再做随机指标处理，通常更敏感。
 | 主要风险 | 平台、账户、提现限制等 | 恶意软件、钓鱼、备份与误签 | 供应链、备份、误签与设备操作 |
 | 需要承担的责任 | 账户安全与平台选择 | 密钥、备份、交互安全 | 密钥、备份、设备与交互安全 |
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。CEX 账户通常由平台保管。你要承担的是账户安全和对平台的选择。" data-bad="答错了。平台账户不是你自己拿着助记词。硬件钱包的风险也不只是设备丢失。"><h3>想一想</h3><p>把币放在 CEX 账户里，主要承担的是哪一种责任？</p><button type="button" class="option" data-answer="a">A. 自己保管助记词，平台丢了也能自己恢复</button><button type="button" class="option" data-answer="b">B. 账户安全和平台选择。资产通常由平台保管</button><button type="button" class="option" data-answer="c">C. 和硬件钱包一样，只怕设备丢失</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。硬件钱包能杜绝恶意签名吗：不能。" data-bad="答错了。硬件钱包能杜绝恶意签名吗：不能。"><h3>想一想</h3><p>硬件钱包能杜绝恶意签名吗？</p><button type="button" class="option" data-answer="a">A. 不能</button><button type="button" class="option" data-answer="b">B. 能</button><button type="button" class="option" data-answer="c">C. 无需备份</button><div class="feedback"></div></div>
 
 ## 无私钥钱包：新手也能轻松开始 🧸
 
-**不想抄写助记词时，可以了解把钥匙拆开保存的无私钥钱包。**
+**不想抄助记词？无私钥钱包把钥匙拆成三份，更适合新手。**
 
-担心不会保管私钥、弄丢助记词，可以了解一下币安钱包（无私钥）。
+担心不会保管私钥、弄丢助记词？可以了解一下 币安钱包（无私钥）。
 
-它用 MPC（多方计算），把钥匙拆成 3 个分片：你的设备一份，你的个人云盘备份一份，币安一份。
-任意两份凑在一起才能用这个钱包。
-其中两份在你手里，所以币安单独动不了你的钱。
+它采用 MPC（多方计算）技术，把钥匙拆成 3 个分片：你的设备一份、你的个人云盘备份一份、币安一份。
+任意两份凑在一起才能用钱包，其中两份在你手里，所以**币安单独动不了你的钱**。
 创建时不用抄写传统助记词。
 
-创建币安钱包（无私钥），需要已经完成身份认证的币安账户。
-它也支持导入已有的助记词或私钥钱包。
-还可以把无私钥钱包转换成私钥钱包，改由自己保管。
+创建币安钱包（无私钥）需要已完成身份认证的币安账户。
+它也支持导入已有的助记词 / 私钥钱包，还可以把无私钥钱包转换成私钥钱包，自己保管。
 
 ### 它和币安交易所账户有什么区别？
 
@@ -679,7 +674,8 @@ Stoch RSI：对 RSI 再做随机指标处理，通常更敏感。
 
 1. 打开官方币安 App，进入「钱包」。
 2. 选择「创建钱包」，按提示创建无私钥钱包。
-3. 完成备份：币安官方提供快捷备份、云备份和二维码备份。按 App 提示完成所选备份，确认恢复需要哪些账户、密码或材料，再存入资产。
+3. 完成备份：币安官方提供快捷备份、云备份和二维码备份。
+按 App 提示完成所选备份，确认恢复需要哪些账户、密码或材料，再存入资产。
 4. 先用小额资金练习收款、转账和链上操作。
 
 注意：钱包官方流程里的加密备份，不等于把助记词截图上传到网盘。
@@ -689,54 +685,45 @@ Stoch RSI：对 RSI 再做随机指标处理，通常更敏感。
 
 按钮：注册币安 / 币安钱包
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。两边都能在币安 App 里打开，但管的不是同一种资产方式。分片里有两份在你手里。" data-bad="答错了。同在一个 App 里，也不等于同一个账户。币安单独拿不到凑齐钱包所需的分片。"><h3>想一想</h3><p>币安钱包（无私钥）和币安交易所账户，是同一个资金池吗？</p><button type="button" class="option" data-answer="a">A. 是，都在币安 App 里就是同一个账户</button><button type="button" class="option" data-answer="b">B. 不是。一个用于平台内买卖，一个用于链上资产和 Web3 应用</button><button type="button" class="option" data-answer="c">C. 币安拿着全部分片，可以单独转走链上的币</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。MPC钱包还需要确认什么：恢复条件。" data-bad="答错了。MPC钱包还需要确认什么：恢复条件。"><h3>想一想</h3><p>MPC钱包还需要确认什么？</p><button type="button" class="option" data-answer="a">A. 恢复条件</button><button type="button" class="option" data-answer="b">B. K线颜色</button><button type="button" class="option" data-answer="c">C. 收益保证</button><div class="feedback"></div></div>
 
 ## 有没有必要买硬件钱包？
 
-**刚开始不必急着买硬件钱包。先学会备份，并看懂自己在签什么。**
+**刚入门不用急着买硬件钱包，先学会备份和看懂签名。**
 
-只是用少量资金学习，或者交易比较频繁，未必需要马上买硬件钱包。
-可以先按用途选择平台账户或软件钱包，并弄清各自的托管和设备风险。
+只是用少量资金学习、交易比较频繁，未必需要立刻购买硬件钱包。
+可以先根据用途选择平台账户或软件钱包，并理解各自的托管与设备风险。
 
-要不要买，不适合用「资产是不是上亿」来一刀切。
-如果一笔资产对你已经很重要，而且准备长期自己保管，即使金额远低于一亿，也值得研究硬件钱包是否合适。
+但有没有必要，不适合用「资产是否上亿」一刀切。
+如果一笔资产对你已经很重要、准备长期自托管，即使金额远低于一亿，也值得研究硬件钱包是否适合。
 
-硬件钱包可以减少密钥接触联网环境的一些风险。
-它不是万能保险箱。
-备份泄露、设备被掉包，或者你自己签了恶意操作，资产仍可能损失。
+硬件钱包可以减少某些密钥接触联网环境的风险，但不是万能保险箱。
+备份泄露、设备被替换或主动签署恶意操作，仍可能损失资产。
 
-决定因素是这笔资产对你有多重要、打算放多久，以及你能不能完成备份和核对。
-不是一个统一的金额门槛。
-
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。没有统一的金额门槛。硬件钱包也挡不住备份泄露和你自己签下的恶意操作。" data-bad="答错了。金额不是唯一标准。硬件钱包也不是签什么都不会损失。"><h3>想一想</h3><p>资产还远不到一亿。是不是就一定不需要研究硬件钱包？</p><button type="button" class="option" data-answer="a">A. 是，不到一亿就不用考虑</button><button type="button" class="option" data-answer="b">B. 不是。要看这笔钱对你重不重要、放多久，以及你能不能做好备份</button><button type="button" class="option" data-answer="c">C. 买了硬件钱包之后，误签也没有损失</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。硬件钱包要按统一金额门槛选吗：不必。" data-bad="答错了。硬件钱包要按统一金额门槛选吗：不必。"><h3>想一想</h3><p>硬件钱包要按统一金额门槛选吗？</p><button type="button" class="option" data-answer="a">A. 不必</button><button type="button" class="option" data-answer="b">B. 必须</button><button type="button" class="option" data-answer="c">C. 只看热度</button><div class="feedback"></div></div>
 
 ## 如何分开管理？
 
-**练手、日常交易和长期存放，分开用不同的钱包。**
+**练手、交易、长期存放分成不同钱包，别放一起。**
 
-学习或交互用的钱包：只放你承受得起损失的小额资金，用来体验应用。
-日常交易资金：按需要放在交易场所，并理解托管风险。
-长期存放的钱包：减少不必要的交互，用适合自己的保管方案。
+学习 / 交互钱包：放可承受损失的小额资金，体验应用。
+日常交易资金：按需要放在交易场所，理解托管风险。
+长期储蓄钱包：减少不必要交互，使用适合自己的保管方案。
 
-用同一条助记词再开几个账户，不能隔开助记词泄露的风险。
-要隔开这种风险，需要另一套独立的密钥或恢复方案。
+同一助记词下创建多个账户，不能隔离助记词泄露风险。
+为了分隔这类风险，需要独立的密钥 / 恢复方案。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。同一条助记词下的账户，会一起暴露在这条助记词的泄露风险里。" data-bad="答错了。改名字或分账户，不能隔开同一条助记词的风险。"><h3>想一想</h3><p>同一条助记词下面开了三个账户。助记词泄露后，这三个账户会怎样？</p><button type="button" class="option" data-answer="a">A. 只有第一个账户有风险</button><button type="button" class="option" data-answer="b">B. 三个账户都可能受影响。分隔这种风险需要另一套密钥</button><button type="button" class="option" data-answer="c">C. 把它们命名成不同用途，风险就分开了</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。同助记词多账户隔离泄露风险吗：不能。" data-bad="答错了。同助记词多账户隔离泄露风险吗：不能。"><h3>想一想</h3><p>同助记词多账户隔离泄露风险吗？</p><button type="button" class="option" data-answer="a">A. 不能</button><button type="button" class="option" data-answer="b">B. 能</button><button type="button" class="option" data-answer="c">C. 改名即可</button><div class="feedback"></div></div>
 
 ## 设备丢失怎么办？
 
-**手机丢了，不一定等于币丢了。没有备份，才恢复不了。**
+**手机丢了不可怕，没备份才可怕。**
 
-设备丢失不一定等于资产丢失。
-能不能恢复，要看备份和钱包方案。
-所以创建钱包时就要完成备份，并按官方方法确认这份备份真的能恢复。
-不要等手机坏了或设备丢了才想起来。
+设备丢失不一定等于资产丢失，能否恢复要看备份与钱包方案。**所以创建钱包时就要完成备份，并按官方方法确认备份可用于恢复，不能等手机坏了或设备丢了才想起来。** 对使用助记词的钱包，备份的词语、顺序和相关恢复信息都需要准确。
+按官方说明在可信环境中恢复；
+怀疑设备或备份已被他人获取时，考虑把剩余资产转到使用全新密钥的账户。
 
-使用助记词的钱包，词语、顺序和相关恢复信息都要准确。
-按官方说明，在可信的环境里恢复。
-如果怀疑设备或备份已经到了别人手里，考虑把剩余资产转到使用全新密钥的账户。
-
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。恢复靠的是备份和钱包方案，不是手机本身。怀疑备份已被别人拿到时，要考虑换一套新密钥。" data-bad="答错了。资产记在链上。没有可用的备份，才是恢复不了的原因。"><h3>想一想</h3><p>手机刚刚丢失。什么情况下才更可能把资产恢复出来？</p><button type="button" class="option" data-answer="a">A. 只要记得 App 的登录界面长什么样</button><button type="button" class="option" data-answer="b">B. 创建时已经按官方方法做好备份，并能用它恢复</button><button type="button" class="option" data-answer="c">C. 手机丢了，链上资产一定同时消失</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。丢设备能否恢复取决于什么：备份与钱包方案。" data-bad="答错了。丢设备能否恢复取决于什么：备份与钱包方案。"><h3>想一想</h3><p>丢设备能否恢复取决于什么？</p><button type="button" class="option" data-answer="a">A. 备份与钱包方案</button><button type="button" class="option" data-answer="b">B. 币价</button><button type="button" class="option" data-answer="c">C. 手机品牌</button><div class="feedback"></div></div>
 
 # 09｜安全与防骗指南 🛡️
 
@@ -854,127 +841,132 @@ API 密钥也是秘密。未来需要自动化时，使用最小权限；交易�
 小提醒：安全不只是一只冷钱包，而是一套长期的操作习惯。
 
 # 10｜第一次链上操作 🔗
+
 ## 收币
 
 **收币只需要给出地址和网络，不需要助记词。**
 
-打开可信的钱包或平台。
-选择正确的资产和网络，再复制收款地址。
-如果对方要求 Memo 或 Tag，一并提供。
-确认发款方支持这种资产和这条网络。
+打开可信钱包或平台，选择正确资产与网络，复制收款地址；
+如果需要 Memo / Tag，一并提供。
+确认发款方支持该资产和网络。
 
-不要为了收款把助记词交给任何人。
-收币通常只需要公开的收款信息。
+不要为了收款向任何人提供助记词。
+收币通常只需要公开收款信息。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。收款使用公开的地址和网络。助记词和私钥都不要给。" data-bad="答错了。收币不需要助记词或私钥。给错网络，币也可能到不了这个账户。"><h3>想一想</h3><p>别人要给你转币。你需要交给对方什么？</p><button type="button" class="option" data-answer="a">A. 助记词，否则对方无法转入</button><button type="button" class="option" data-answer="b">B. 正确的收款地址和网络。需要时再加 Memo 或 Tag</button><button type="button" class="option" data-answer="c">C. 私钥截图，用来证明这是你的地址</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。收币要给助记词吗：不要。" data-bad="答错了。收币要给助记词吗：不要。"><h3>想一想</h3><p>收币要给助记词吗？</p><button type="button" class="option" data-answer="a">A. 不要</button><button type="button" class="option" data-answer="b">B. 要</button><button type="button" class="option" data-answer="c">C. 看转账金额</button><div class="feedback"></div></div>
 
 ## 转币前四项检查
 
-**转币前核对四样：资产、网络、地址、Memo。**
+**转币前查四样：资产、网络、地址、Memo。**
 
-1. 资产：名称和实际的合约或原生资产是否正确。
-2. 网络：收款方明确支持你选的网络。
-3. 地址：按可信来源核对完整地址，防止剪贴板被替换。复制后检查粘贴结果，并在钱包或交易所的最终确认页再核对一次。只看前后几位不够，相似地址可能是刻意模仿。不放心时，可以扫描收款方从可信渠道提供的收款二维码，减少复制粘贴。扫码后仍要核对完整地址、网络，以及二维码有没有预填金额或其他操作。扫码不能排除假二维码。
-4. Memo 或 Tag：收款平台要求时必须填对。
+1. 资产：名称与实际合约 / 原生资产是否正确。
+2. 网络：收款方明确支持所选网络。
+3. 地址：按可信来源核对完整地址，防止剪贴板被替换。
+复制后要检查粘贴结果，并在钱包 / 交易所最终确认页再核对；
+只看前后几位不够，相似地址可能刻意模仿。
+不放心时，可以扫描由收款方可信渠道提供的收款二维码，减少复制粘贴环节。
+扫码后仍要核对完整地址、网络，以及二维码是否预填了金额或其他操作。
+扫码不能排除假二维码或恶意二维码风险。
+4. Memo / Tag：收款平台要求时必须正确填写。
 
 > 📰 **真实案例：地址投毒，一次转错 6800 万美元（2024 年 5 月）**
 > 骗子先给受害人转一笔小额交易，让一个**前 6 位和后 6 位都和真地址一样**的假地址混进转账记录。受害人复制了这个假地址，把 1,155 枚 WBTC（约 6800 万美元）转了过去。后来经过谈判，骗子退回了大部分资金——这是极少见的幸运，绝大多数情况追不回来。
 > **教训：不要从转账记录里复制地址，每次都核对完整地址。**
 
-同时检查最低充值额、费用、网络是否暂停，以及需要多少确认。
-小额试转要高于相关的最低要求。
-确认到账后，再处理剩下的金额。
+同时检查最低充值额、费用、网络暂停与确认要求。
+小额试转需高于相关最低要求，到账后再处理剩余金额。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。相似的前后几位不能代替完整地址。假二维码也要在确认页再核对一遍。" data-bad="答错了。地址投毒就是靠相似地址混进记录。每次都核对完整地址。"><h3>想一想</h3><p>转账记录里有一个前几位和后几位都像收款地址的地址。可以直接复制它吗？</p><button type="button" class="option" data-answer="a">A. 可以，前后几位一样就是同一个地址</button><button type="button" class="option" data-answer="b">B. 不可以。要按可信来源核对完整地址，不要从转账记录里复制</button><button type="button" class="option" data-answer="c">C. 扫到任何二维码都可以直接转，不必再看地址</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。只核对地址前后几位够吗：不够。" data-bad="答错了。只核对地址前后几位够吗：不够。"><h3>想一想</h3><p>只核对地址前后几位够吗？</p><button type="button" class="option" data-answer="a">A. 不够</button><button type="button" class="option" data-answer="b">B. 够</button><button type="button" class="option" data-answer="c">C. 不用核对</button><div class="feedback"></div></div>
 
 ## 同一种币为什么有不同网络？
 
-**同样叫 USDT，不同网络就是不同的转账路径。**
+**同样叫 USDT，不同网络就是不同的东西，别选错。**
 
-同样是 USDT，也可以走不同的转账网络。
-收款方选哪条网络，你就选哪条网络。
-不能只因为手续费更便宜就随便换一条。
+同样是 USDT，
+也有不同的转账网络。
 
-同名资产会在不同链上发行，也有桥接或封装的版本。
-名字相同，不表示合约、发行方或赎回路径相同。
+收款方选什么网络，
+你就选什么网络。
 
-TRON 上的 TRC-20 和以太坊上的 ERC-20，是不同网络上的代币标准。
+不能只看哪个手续费便宜，
+就随便选。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。同名不等于同一条网络。手续费便宜不能代替收款方支持的网络。" data-bad="答错了。TRC-20 和 ERC-20 不是同一条网络。选错网络，收款方可能无法按原计划入账。"><h3>想一想</h3><p>收款方要的是 TRON 上的 USDT。你因为另一条网络手续费更低，可以改选那条吗？</p><button type="button" class="option" data-answer="a">A. 可以，USDT 到了就是同一种币</button><button type="button" class="option" data-answer="b">B. 不可以。要按收款方明确支持的网络来选</button><button type="button" class="option" data-answer="c">C. TRC-20 和 ERC-20 是同一个标准的两种写法</button><div class="feedback"></div></div>
+**教学虚构：** TRC20/ERC20两条独立网络，收款方支持清单。
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。选转账网络主要看什么：收款方支持。" data-bad="答错了。选转账网络主要看什么：收款方支持。"><h3>想一想</h3><p>选转账网络主要看什么？</p><button type="button" class="option" data-answer="a">A. 收款方支持</button><button type="button" class="option" data-answer="b">B. 哪条便宜</button><button type="button" class="option" data-answer="c">C. 朋友说都一样</button><div class="feedback"></div></div>
 
 ## 地址与合约地址
 
-**合约地址用来识别代币。它不是你的收款地址。**
+**合约地址是代币的身份证，不是你的收款地址。**
 
 收款地址是收款账户。
-合约地址用来识别某个代币或某份合约。
-买代币时，可能要用合约地址核对它是不是你要的那个资产。
-普通转账不能把代币的合约地址当成自己的收款地址。
+合约地址用于识别某个代币或合约。
+购买代币时可能用到合约地址核验身份，但普通转账不能直接把代币合约地址当成自己的收款地址。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。收款填的是对方的账户地址。合约地址是代币或合约的标识。" data-bad="答错了。把合约地址当成收款地址，不是一笔普通的转给朋友。"><h3>想一想</h3><p>想把代币转给朋友。该填哪一种地址？</p><button type="button" class="option" data-answer="a">A. 这种代币的合约地址</button><button type="button" class="option" data-answer="b">B. 朋友的收款地址。合约地址用来核对代币，不是收款账户</button><button type="button" class="option" data-answer="c">C. 两种地址可以互换，结果一样</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。合约地址等于用户收款地址吗：不等于。" data-bad="答错了。合约地址等于用户收款地址吗：不等于。"><h3>想一想</h3><p>合约地址等于用户收款地址吗？</p><button type="button" class="option" data-answer="a">A. 不等于</button><button type="button" class="option" data-answer="b">B. 等于</button><button type="button" class="option" data-answer="c">C. 完全通用</button><div class="feedback"></div></div>
 
 ## Gas 与网络资源
 
-**转币要付网络费。钱包里只有代币、没有用来付费的资产，也可能转不出去。**
+**转币要付网络费，只有代币没有 Gas 也转不动。**
 
-### 为什么钱包有币，却转不出去？
+转币也要付「路费」，
+也就是网络费。
 
-转币也要付「路费」，也就是网络费。
-比如在以太坊上转 USDT，通常还需要一点 ETH 来付这笔费用。
-有的钱包可以代付。
+比如在以太坊上转 USDT，
+通常还需要一点 ETH 来付路费。
+
+有些钱包可以帮你代付，
 具体看钱包里的提示。
 
-网络费是执行交易的成本。
-很多链用原生资产支付。
-例如以太坊常用 ETH，Solana 常用 SOL，BNB Chain 常用 BNB。
-TRON 会涉及带宽、能量，以及可能的 TRX 消耗。
+**教学虚构：** 以太坊转USDT需要ETH网络费或受支持的代付；
+TRON另有资源模型。
 
-有的钱包或应用支持代付、资源租赁或其他支付方式。
-规则取决于这项服务。
-
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。代币和付网络费的资产常常不是同一种。没有 ETH，又没有代付，转账可能发不出去。" data-bad="答错了。有 USDT 不等于有支付网络费的 ETH。先看钱包是否支持代付。"><h3>想一想</h3><p>以太坊地址里有 USDT，但没有 ETH。为什么可能转不出去？</p><button type="button" class="option" data-answer="a">A. USDT 本身就能支付以太坊的网络费</button><button type="button" class="option" data-answer="b">B. 这笔转账通常还需要 ETH 来付网络费，除非钱包提供代付</button><button type="button" class="option" data-answer="c">C. 没有 ETH 时，网络会免费帮你转</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。以太坊转USDT通常用什么付网络费：ETH或受支持代付。" data-bad="答错了。以太坊转USDT通常用什么付网络费：ETH或受支持代付。"><h3>想一想</h3><p>以太坊转USDT通常用什么付网络费？</p><button type="button" class="option" data-answer="a">A. ETH或受支持代付</button><button type="button" class="option" data-answer="b">B. 一定只用USDT</button><button type="button" class="option" data-answer="c">C. BTC</button><div class="feedback"></div></div>
 
 ## 如何看交易状态？
 
-**用 TxID 到这条网络的区块浏览器查看，才知道交易有没有成功。**
+**拿 TxID 去区块浏览器查，就知道交易成没成。**
 
-交易哈希，也叫 TxID，是查询某一笔交易的标识。
-用对应网络的区块浏览器看交易是否成功、接收地址、资产、费用和确认情况。
+交易哈希 / TxID 是查询某笔交易的标识。
+用相应网络的区块浏览器查看交易是否成功、接收地址、资产、费用与确认情况。
 
-链上成功，和交易所入账，是两件事。
-平台还可能要求更多确认、最低金额，或者人工处理。
+链上成功与交易所入账是两件事。
+平台还可能有确认数、最低金额或人工处理要求。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。链上成功只说明这笔交易在该网络上完成。平台入账是另一步。" data-bad="答错了。TxID 正是拿到区块浏览器上查的标识。平台入账还要看它自己的规则。"><h3>想一想</h3><p>区块浏览器显示交易成功。交易所账户是不是就一定已经入账？</p><button type="button" class="option" data-answer="a">A. 是，链上成功等于平台余额已经更新</button><button type="button" class="option" data-answer="b">B. 不一定。平台还可能要求更多确认、最低金额或人工处理</button><button type="button" class="option" data-answer="c">C. TxID 只能在交易所里查，区块浏览器看不了</button><div class="feedback"></div></div>
+**教学虚构：** TxID→链上确认→交易所平台确认数→入账，两个状态独立。
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。链上成功等于平台即时入账吗：不等于。" data-bad="答错了。链上成功等于平台即时入账吗：不等于。"><h3>想一想</h3><p>链上成功等于平台即时入账吗？</p><button type="button" class="option" data-answer="a">A. 不等于</button><button type="button" class="option" data-answer="b">B. 等于</button><button type="button" class="option" data-answer="c">C. 不用TxID</button><div class="feedback"></div></div>
 
 ## Swap：链上兑换
 
-**兑换之前，先看清能收到多少、滑点是多少，再签名。**
+**Swap 前看清收到多少、滑点多少，再签名。**
 
 Swap 是把一种资产换成另一种。
-先确认代币合约、交易路径、预计收到的数量、价格影响、滑点和网络费。
-然后再决定签不签。
+确认代币合约、交易路径、预计收到数量、价格影响、滑点与网络费，再决定是否签署。
 
-在一部分协议里，先授权、再兑换，是两笔独立操作。
-授权成功，不等于兑换已经完成。
-把滑点调高，也不表示交易更安全。
-滑点设得太高，会接受很差的成交结果。
+在部分协议中，先授权再兑换是两笔独立操作。
+授权成功不等于兑换完成。
+提高滑点也不保证交易安全，设置过高会接受很差的成交结果。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。授权只是允许后续使用资产。兑换是否完成，要单独确认数量、路径和滑点。" data-bad="答错了。授权成功不等于兑换完成。滑点过高会接受更差的价格。"><h3>想一想</h3><p>授权已经成功。这笔兑换是不是也就完成了？</p><button type="button" class="option" data-answer="a">A. 是，授权成功就是已经换成新币</button><button type="button" class="option" data-answer="b">B. 不是。授权和兑换可以是两笔操作，还要看收到的数量和滑点</button><button type="button" class="option" data-answer="c">C. 滑点调得越高越安全</button><div class="feedback"></div></div>
+**教学虚构：** 授权与兑换两个步骤、预计收到量、滑点、费用。
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。授权成功等于Swap完成吗：不等于。" data-bad="答错了。授权成功等于Swap完成吗：不等于。"><h3>想一想</h3><p>授权成功等于Swap完成吗？</p><button type="button" class="option" data-answer="a">A. 不等于</button><button type="button" class="option" data-answer="b">B. 等于</button><button type="button" class="option" data-answer="c">C. 没有网络费</button><div class="feedback"></div></div>
 
 ## 跨链桥
 
-**跨链比普通转账多一层风险。第一次练习，先不要急着跨。**
+**跨链风险比普通转账大，第一次先别急着跨。**
 
-跨链桥把资产或消息转到另一条网络。
-桥接之后的资产，可能是某种封装或映射版本。
-要弄清它信任什么、怎样赎回。
+跨链桥帮助资产或消息在不同网络间转移。
+桥接后资产可能是某种封装或映射版本，背后的信任与赎回方式需要理解。
 
-检查出发链、目标链、桥的协议、资产版本、费用、等待时间，以及目标链的网络费。
+检查出发链、目标链、桥协议、资产版本、费用、等待时间与目标链 Gas。
 跨链可能涉及合约、验证机制、托管、流动性或前端风险。
 
 小提醒：第一次链上练习，先完成一笔正确的小额收转，比急着跨链更重要。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。先把地址、网络和到账核对清楚。跨链还要理解封装资产和桥的风险。" data-bad="答错了。跨链不是第一次练习的捷径。桥接后的资产也不一定按原路赎回。"><h3>想一想</h3><p>第一次在链上练习，更稳妥的顺序是哪一种？</p><button type="button" class="option" data-answer="a">A. 先用跨链桥把资产转到手续费最低的网络</button><button type="button" class="option" data-answer="b">B. 先完成一笔核对过网络和地址的小额收转</button><button type="button" class="option" data-answer="c">C. 桥接后的币和原来的币一定可以按同样方式赎回</button><div class="feedback"></div></div>
+**教学虚构：** 源链→桥协议→目标链，封装版本与赎回风险。
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。跨链资产权利必然完全一样吗：不一定。" data-bad="答错了。跨链资产权利必然完全一样吗：不一定。"><h3>想一想</h3><p>跨链资产权利必然完全一样吗？</p><button type="button" class="option" data-answer="a">A. 不一定</button><button type="button" class="option" data-answer="b">B. 一定</button><button type="button" class="option" data-answer="c">C. 不用检查</button><div class="feedback"></div></div>
 
 # 11｜如何研究一个项目？🔍
 
