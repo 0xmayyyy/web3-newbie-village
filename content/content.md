@@ -1357,138 +1357,147 @@ Ethereum 安全资料：https://ethereum.org/security/
 任何工具都只回答一部分问题。查到数据后，还需要理解它是什么、如何统计、有哪些缺失。
 
 # 15｜出问题了怎么办？🆘
-
 ## 充值没到账
 
-**充值没到，先用 TxID 到对应网络的区块浏览器核对。**
+**钱转出去了，交易所却没显示余额。**
+先别急着再转一次。
 
-先看发送方的提现是否完成，有没有 TxID。
-再用这条网络对应的浏览器查看链上状态。
-核对资产、网络、地址、Memo、最低充值额、需要的确认数，以及平台是否暂停充值。
+第一步，打开提现记录，看看平台是否已经发出交易、有没有 TxID。
+第二步，用对应网络的区块浏览器查询。
+如果还没上链，找发送平台。
+如果链上仍待确认，先看确认状态。
+如果链上成功却未入账，再核对收款地址、Memo / Tag、币种、网络、最低充值额，以及平台要求的确认数。
+资料都对仍没到账，就拿 TxID 和订单记录，联系收款平台的官方客服。
+链上成功和平台入账是两件事，不能保证一定到账。
 
-链上已经成功、平台还没入账时，按官方帮助中心提交 TxID、网络、金额、地址和订单信息。
-不要提供助记词或账户验证码。
-
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。提交 TxID、网络、金额、地址和订单信息。助记词和验证码不要给。" data-bad="答错了。不要交出助记词或验证码。要提交的是 TxID、网络、金额、地址和订单信息。"><h3>想一想</h3><p>链上显示成功，平台还没入账。向官方求助时，该提供哪些信息？</p><button type="button" class="option" data-answer="a">A. 助记词和账户验证码</button><button type="button" class="option" data-answer="b">B. TxID、网络、金额、地址和订单信息，不提供助记词或验证码</button><button type="button" class="option" data-answer="c">C. 什么都不用留，等它自己到账</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。链上成功还不等于平台入账。先核对网络、Memo 和确认数，再按官方渠道提交 TxID。" data-bad="答错了。再转一次可能扩大损失。把助记词发给客服会交出钱包控制权。"><h3>想一想</h3><p>教学虚构：TxID 已显示成功，但交易所余额仍是 0。这时该怎么做？</p><button type="button" class="option" data-answer="a">A. 继续往同一个地址再转一笔</button><button type="button" class="option" data-answer="b">B. 核对网络、Memo 和平台要求的确认数</button><button type="button" class="option" data-answer="c">C. 把助记词发给客服，让对方查余额</button><div class="feedback"></div></div>
 
 ## 提现一直处理中
 
-**没有 TxID，就是平台还没发出去。找官方客服，不要信私信。**
+**提现页面一直转圈。先看订单状态，再找 TxID。**
 
-没有 TxID：可能还在审核、排队或处理。
-看订单说明，并联系官方客服。
+没有 TxID，通常说明你还不能确认交易已经广播到链上。
+它可能仍在审核、排队或处理。
+这时查看平台公告和订单说明，并通过官方入口求助。
+有 TxID，就到对应网络的浏览器核对确认状态。
+不要因为有人私信说能加速提现，就向对方转所谓手续费。
 
-有 TxID：再去看链上状态。
-不要因为着急，向私信里的「客服」支付所谓加速费。
-
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。没有 TxID 时，先看订单说明，再走官方客服。不要向私信支付加速费。" data-bad="答错了。私信里的加速费，以及再提一笔更大的，都不是处理办法。联系官方客服。"><h3>想一想</h3><p>提现订单还没有 TxID。这时该找谁？</p><button type="button" class="option" data-answer="a">A. 私信里让你先付加速费的客服</button><button type="button" class="option" data-answer="b">B. 看订单说明，联系官方客服</button><button type="button" class="option" data-answer="c">C. 立刻再提交一笔更大的提现</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。没有 TxID 时，先看平台订单和公告，再走官方入口。不要向私信支付加速费。" data-bad="答错了。没有 TxID 就还不能确认已经上链。猜哈希或付加速费都不能代替官方订单。"><h3>想一想</h3><p>教学虚构：订单显示处理中，而且没有 TxID。下一步更稳妥的是哪一个？</p><button type="button" class="option" data-answer="a">A. 到区块浏览器里猜一个哈希去查</button><button type="button" class="option" data-answer="b">B. 查看平台订单和公告，并联系官方支持</button><button type="button" class="option" data-answer="c">C. 给私信里的客服付一笔加速费</button><div class="feedback"></div></div>
 
 ## 转错地址或网络
 
-**链上转错通常不能像银行卡那样撤销。能不能找回，要看谁控制那个地址。**
+**转错地址和转错网络不是同一种问题。**
 
-链上交易确认后，不能默认撤销。
-能否找回，取决于谁控制收款地址、用的是哪条网络，以及平台有没有恢复服务。
-这些都不能事先保证。
+先停止继续转账。
+保存 TxID、收款地址、币种、网络和时间。
+转到了不认识的地址，链上交易一般不能撤销。
+能否追回，取决于对方是否配合。
+转到交易所不支持的网络，联系收款平台，确认是否有恢复服务。
+如果是自己控制的地址，先确认钱包和密钥是否支持对应网络。
+别随便把私钥导入陌生工具。
+任何情形都不能保证找回。
 
-转到交易所不支持的网络，联系该平台的官方客服。
-转到自己保管的地址，还要看钱包和密钥方案。
-不要为了找回，把私钥导出到陌生工具。
-
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。链上确认后不能默认撤销。找回没有保证，也不要把私钥交给陌生工具。" data-bad="答错了。不能默认自动退回，也不要导出私钥。能否找回取决于地址、网络和平台规则。"><h3>想一想</h3><p>币已经转到错误地址或错误网络。能不能像银行卡转账一样直接撤销？</p><button type="button" class="option" data-answer="a">A. 能，24 小时内会自动退回</button><button type="button" class="option" data-answer="b">B. 不能默认撤销。能否找回，要看谁控制地址、哪条网络，以及平台是否提供恢复</button><button type="button" class="option" data-answer="c">C. 把私钥导出到陌生工具，就能保证找回</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。网络不被支持时，把 TxID 交给收款平台的官方渠道，询问能否恢复。不能保证找回。" data-bad="答错了。再转一次不能改正上一笔。助记词不要交给陌生网站。"><h3>想一想</h3><p>教学虚构：TxID 显示成功，但收款交易所不支持你选的网络。这时该怎么做？</p><button type="button" class="option" data-answer="a">A. 再转一次，换一条更便宜的网络</button><button type="button" class="option" data-answer="b">B. 向官方提供 TxID，询问是否有恢复服务</button><button type="button" class="option" data-answer="c">C. 把助记词输入陌生的恢复网站</button><div class="feedback"></div></div>
 
 ## 忘填 Memo / Tag
 
-**忘了 Memo 或 Tag，保留 TxID，按平台的官方流程申请处理。**
+**有些平台的充值地址由多个用户共用。Memo 或 Tag 用来识别这笔钱属于哪个账户。**
 
-收款平台可能无法自动认出这笔钱属于哪个账户。
-保存交易记录，走官方申请。
-能不能恢复、要不要收费，按平台规则，不能事先保证。
+地址和网络都正确，链上也成功，但忘了填 Memo，钱可能已经到达平台地址，却没有自动记到你的账户。
+先保存 TxID、币种、金额、网络和充值订单。
+再通过平台官方的漏填 Memo / Tag 流程申请处理。
+是否支持找回、要多久、是否收费，都看平台规则，不能保证。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。留下交易记录，走官方申请。能否恢复按平台规则，助记词不要发。" data-bad="答错了。不要丢弃记录，也不要发助记词。保存 TxID，按官方流程申请。"><h3>想一想</h3><p>充值忘了填 Memo。接下来更稳妥的做法是哪一种？</p><button type="button" class="option" data-answer="a">A. 记录不用留，这笔就算没了</button><button type="button" class="option" data-answer="b">B. 保存 TxID 和交易记录，按平台官方流程申请处理</button><button type="button" class="option" data-answer="c">C. 把助记词发给客服，让对方更快找回</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。漏填 Memo 要留下 TxID 和订单，走平台官方流程。能否找回按平台规则，不能保证。" data-bad="答错了。再充一笔不能补上上一笔的 Memo。区块浏览器上的记录也不能由你改掉。"><h3>想一想</h3><p>教学虚构：充值地址正确，但 Memo 留空，链上已经成功。接下来该怎么做？</p><button type="button" class="option" data-answer="a">A. 立刻再充一笔，把 Memo 补在下一笔里</button><button type="button" class="option" data-answer="b">B. 整理 TxID 和订单，按官方的漏填流程提交</button><button type="button" class="option" data-answer="c">C. 去区块浏览器里把记录改掉</button><div class="feedback"></div></div>
 
 ## 钱包里看不到资产
 
-**钱包里看不到，先核对是不是账户或网络选错了。**
+**钱包里突然看不到币，不代表币一定不见了。**
 
-检查当前账户和网络。
-到区块浏览器看这笔资产在不在。
-再看钱包是否要手动添加正确的代币合约。
-不要为了「显示余额」，把助记词填进网页。
+先确认是不是切换了账户或网络。
+再用可信的区块浏览器，查看该地址在对应网络上的余额和转账记录。
+如果链上余额还在，可能只是钱包没有显示这枚代币。
+从可信来源核对合约地址，再添加到钱包里显示。
+如果链上记录显示资产已经转出，就按可疑交易处理。
+任何人说「输入助记词才能同步余额」，都不要信。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。先核对账户、网络和代币合约。助记词不要填进网页。" data-bad="答错了。看不到余额，不是交出助记词的理由。先核对账户、网络和合约。"><h3>想一想</h3><p>余额不显示。为了让网页显示出余额，该不该填入助记词？</p><button type="button" class="option" data-answer="a">A. 该填，不然余额出不来</button><button type="button" class="option" data-answer="b">B. 不该。先核对账户、网络，以及要不要添加正确的代币合约</button><button type="button" class="option" data-answer="c">C. 只要网站说能显示余额，填进去就安全</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。链上还有余额时，先核对账户、网络和代币显示。助记词不能用来「同步余额」。" data-bad="答错了。界面显示 0，不代表链上一定没有。不要上传助记词，也不要只凭界面就断定被盗。"><h3>想一想</h3><p>教学虚构：区块浏览器显示这个地址有 100 USDT，钱包 App 显示 0。更可能先做哪一步？</p><button type="button" class="option" data-answer="a">A. 核对账户、网络，以及这枚代币有没有被显示出来</button><button type="button" class="option" data-answer="b">B. 把助记词上传，让网站同步余额</button><button type="button" class="option" data-answer="c">C. 立刻断定资产已经被盗</button><div class="feedback"></div></div>
 
 ## 交易失败或卡住
 
-**交易失败，网络费仍可能已经产生。不要盲目反复提交。**
+**一笔链上交易迟迟没完成。先查它是待确认、失败，还是根本没有广播。**
 
-先看交易有没有上链、网络费够不够、是回滚了还是还在等待。
-失败的交易仍可能产生网络费。
+待确认时，部分网络和钱包可以加速或替换交易，但并不是每条链都一样。
+已经失败的交易，仍可能已经消耗网络费。
+没有广播成功，就要检查余额、网络和钱包提示。
+不要连续点很多次提交。
+先看交易记录和官方说明，再决定要不要重试。
 
-有的钱包和网络可以加速或取消待处理交易。
-规则不一样，也可能失败。
-按官方说明操作，不要反复盲目提交。
-
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。失败交易仍可能产生网络费。加速或取消要按官方说明，不能盲目连点。" data-bad="答错了。失败不等于不扣费，连点也不能保证取消。先看状态，再按官方说明处理。"><h3>想一想</h3><p>一笔交易失败了。网络费是不是一定不会扣？</p><button type="button" class="option" data-answer="a">A. 一定不扣，失败就等于没发生</button><button type="button" class="option" data-answer="b">B. 仍可能扣。不要因为失败就盲目反复提交</button><button type="button" class="option" data-answer="c">C. 连续多点几次，就一定能取消</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。失败的交易仍可能已经消耗网络费。先看原因和官方说明，不要盲目连点。" data-bad="答错了。失败不等于网络费会退回。连续提交也不能保证下一笔成功。"><h3>想一想</h3><p>教学虚构：浏览器显示这笔交易失败，网络费已经扣了。这时该怎么做？</p><button type="button" class="option" data-answer="a">A. 失败了就一定会把网络费退回来</button><button type="button" class="option" data-answer="b">B. 先查失败原因，再决定要不要重试</button><button type="button" class="option" data-answer="c">C. 连续提交，直到有一笔成功</button><div class="feedback"></div></div>
 
 ## 怀疑恶意授权或签名
 
-**怀疑自己签错了，先停止操作，再在可信环境里处理剩余资产。**
+**刚在陌生网站点了签名或授权，先停止继续操作，不要再点网站弹窗。**
 
-不要再和可疑网站交互。
-把相关记录留下来。
-在可信环境里检查权限，按情况撤销，或把剩余资产转到安全的新账户。
+保存网站地址、交易哈希或签名内容。
+换到可信的设备或环境再核查。
+如果是代币授权，可以通过可信工具检查，并按需要撤销。
+如果涉及其他签名权限或账户控制风险，撤销普通授权未必足够。
+这时可能需要把剩余资产转到一个全新的安全钱包。
+不要把「断开网站连接」当成风险已经解除。
 
-恶意签名不一定是普通授权。
-撤销工具也不一定覆盖得了。
-情况不清楚时，从钱包官方支持或可信的安全渠道寻求针对这件事的帮助。
-
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。恶意签名不一定是普通授权。先停下来，再在可信环境里检查或转移剩余资产。" data-bad="答错了。撤销工具不能覆盖所有情况。不要回到可疑网站继续签。"><h3>想一想</h3><p>怀疑刚刚的签名有问题。撤销工具是不是一定能把风险清掉？</p><button type="button" class="option" data-answer="a">A. 一定能，所有恶意签名都能撤销</button><button type="button" class="option" data-answer="b">B. 不一定。先停止交互，情况不清就找钱包官方或可信渠道</button><button type="button" class="option" data-answer="c">C. 回到那个网站再签一次，就能查清</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。断开连接不会取消已经给出的授权。要检查并撤销，并判断是否还要转移剩余资产。" data-bad="答错了。断开连接不等于撤销。也不要回到那个网站继续签名。"><h3>想一想</h3><p>教学虚构：你给一个陌生合约授了无限额度。只断开网站连接够不够？</p><button type="button" class="option" data-answer="a">A. 够了，断开连接就等于撤销授权</button><button type="button" class="option" data-answer="b">B. 不够。要检查并撤销相关授权，再评估剩下的风险</button><button type="button" class="option" data-answer="c">C. 再签一次，用来验证刚才那笔没有问题</button><div class="feedback"></div></div>
 
 ## 助记词 / 私钥泄露
 
-**助记词或私钥已经泄露，这个钱包就不要再当安全钱包用。**
+**助记词或私钥已经交给别人、上传到网页，或暴露在不可信的环境里，这个钱包就不再安全。**
 
-把相关账户看成不再安全。
-在可信设备上，用全新的密钥建立一个钱包。
-再按情况把还在的资产转过去。
-只改密码、卸载 App 或撤销授权，不能让旧私钥失效。
+先在可信设备上，用全新的密钥创建一个钱包。
+再评估怎样把剩余资产安全转过去。
+只改 App 密码、卸载钱包或撤销授权，都不能让已经泄露的私钥失效。
+如果怀疑有自动转走资产的程序，再向旧钱包充网络费，也可能马上被转走。
+这种情况下，先寻求可信的专业协助。
 
-如果对方有自动转走资产的程序，再往旧地址充网络费，也可能立刻被转走。
-不要继续往泄露的地址送资金。
-需要判断时，找可信的专业协助，不要自己反复试。
-
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。旧私钥不会因为改密码或撤销授权而失效。用新密钥，并且不要再往泄露地址送资金。" data-bad="答错了。改密码、卸载或撤销都不能让旧私钥失效。也不要再往旧地址充网络费。"><h3>想一想</h3><p>助记词已经发到别人手里。改掉密码并撤销授权，旧私钥还会不会失效？</p><button type="button" class="option" data-answer="a">A. 会失效，这个钱包还能继续用</button><button type="button" class="option" data-answer="b">B. 不会。要在可信设备上用全新密钥建钱包，再按情况转移剩余资产</button><button type="button" class="option" data-answer="c">C. 再往旧地址充一笔网络费，就能把币抢回来</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。泄露的私钥不会因为改密码或重装而失效。先用新密钥，再考虑怎样转移剩余资产。" data-bad="答错了。改密码和卸载都不能让旧私钥失效。不要再把这个地址当成安全钱包。"><h3>想一想</h3><p>教学虚构：助记词已经发给假客服。旧地址还能不能继续当安全钱包用？</p><button type="button" class="option" data-answer="a">A. 能。改掉登录密码就可以继续用</button><button type="button" class="option" data-answer="b">B. 不能。要创建全新钱包，再评估怎样安全转移剩余资产</button><button type="button" class="option" data-answer="c">C. 卸载重装之后，旧私钥就失效了</button><div class="feedback"></div></div>
 
 ## 交易所账号疑似被盗
 
-**怀疑交易所账号被盗，先走官方渠道限制账户。**
+**发现陌生登录、提现记录或 API 操作，先通过交易所官方入口限制账户。**
 
-通过官方渠道冻结或限制账户。
-同时保护邮箱。
-检查登录会话、设备、API 和提现记录。
-更新相关凭证。
-资金已经损失的，留下证据，并按所在地的渠道报案。
+不要再点击短信或邮件里的可疑链接。
+同时保护绑定邮箱。
+检查登录设备、会话、API 密钥和提现白名单。
+按官方流程更新密码和验证方式。
+如果已经有资金损失，保存通知、订单、地址和时间。
+再按所在地的正规渠道报案。
+处理顺序以先拦住继续损失为先。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。先走官方渠道限制账户，保护邮箱，再检查会话、设备和提现记录。" data-bad="答错了。不要公开密码，也不要把 API 密钥交给陌生人。先通过官方渠道限制账户。"><h3>想一想</h3><p>交易所账号出现陌生提现。第一步更稳妥的是哪一个？</p><button type="button" class="option" data-answer="a">A. 在群里公开密码，请别人登录查看</button><button type="button" class="option" data-answer="b">B. 通过官方渠道限制账户，并保护邮箱</button><button type="button" class="option" data-answer="c">C. 把 API 密钥发给愿意帮忙的陌生人</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。先从官方入口限制账户，保护邮箱，再检查 API、设备和提现设置。" data-bad="答错了。只改交易密码拦不住未知 API。验证码和登录信息不要交给私信里的人。"><h3>想一想</h3><p>教学虚构：邮箱提示异地登录，账户里还出现了你没创建过的 API。第一步该做什么？</p><button type="button" class="option" data-answer="a">A. 只改交易密码，其他先不用管</button><button type="button" class="option" data-answer="b">B. 从官方入口限制账户，并排查邮箱和 API</button><button type="button" class="option" data-answer="c">C. 回复发来提示的陌生客服，把验证码交给对方</button><div class="feedback"></div></div>
 
 ## 防止二次诈骗
 
-**说能保证追回、而且要先收钱的，按二次诈骗来处理。**
+**刚遇到资金问题时，最容易被「追回专家」「技术客服」或「付费解冻」盯上。**
 
-没有陌生人能凭一句「有内部关系」保证追回链上资产。
-先收费、让你再充值、索要助记词，或要求远程控制电脑的所谓追回服务，要特别警惕。
+主动私信承诺百分之百追回、要求先付保证金、索要助记词，或要求远程控制设备，都要高度警惕。
+核对官方渠道，并把证据留下来。
+真正的官方客服也不该要求你交出助记词。
+不要因为想快点找回钱，再把剩余资产交给陌生人。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。保证追回并先收费，是二次诈骗里常见的说法。助记词和远程控制也不要给。" data-bad="答错了。不要先付款，也不要再充值到对方指定的地方。这种保证追回的说法要停下来。"><h3>想一想</h3><p>有人说自己有内部关系，先付一笔费用就能把被盗的币追回。该怎么判断？</p><button type="button" class="option" data-answer="a">A. 先付款，内部关系更可靠</button><button type="button" class="option" data-answer="b">B. 特别警惕。没有陌生人能保证追回，先收费或索要助记词就要停</button><button type="button" class="option" data-answer="c">C. 再充一笔到对方指定的地址，证明诚意</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。先收费、要助记词或要远程控制，都不是可靠的追回方式。只走官方渠道。" data-bad="答错了。不要先付款，也不要把私钥交给私信里的人。想快点找回，也不能把剩余资产再交出去。"><h3>想一想</h3><p>教学虚构：有人私信说，先付 50 USDT 就能把丢失的币追回。该怎么做？</p><button type="button" class="option" data-answer="a">A. 先付款，免得错过追回窗口</button><button type="button" class="option" data-answer="b">B. 拒绝付款，并只通过官方渠道核对</button><button type="button" class="option" data-answer="c">C. 把私钥发给对方，用来证明这是你的地址</button><div class="feedback"></div></div>
 
 ## 求助时准备什么？
 
-**求助时带上订单号和 TxID。密码、验证码和助记词不要出现在材料里。**
+**联系客服前，先整理一份简短的问题记录。**
 
-可以准备：平台订单号、资产、网络、时间和时区、金额、TxID、公开地址、错误提示，以及必要的截图。
-截图里藏起身份证、银行信息、密码、验证码、API 密钥和恢复信息。
+写上发生时间、币种与金额、发送和接收的网络、地址、TxID、平台订单号、错误提示，以及你已经检查过什么。
+这样能减少来回沟通。
+截图前遮住密码、验证码和身份证号码。
+助记词和私钥绝不能提供。
+如果事情发生在平台账户里，使用官方工单。
+不要在公开群里晒出完整的个人资料。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。订单号、TxID、公开地址和错误提示可以提供。密码、验证码、API 密钥和助记词不要出现。" data-bad="答错了。密码、助记词和 API 密钥不是求助材料。留下订单号、TxID 和公开地址即可。"><h3>想一想</h3><p>向官方求助的截图里，该不该带上密码和助记词？</p><button type="button" class="option" data-answer="a">A. 该带，客服需要全部秘密才能查</button><button type="button" class="option" data-answer="b">B. 不该。带订单号、TxID、公开地址和错误提示，藏起密码和恢复信息</button><button type="button" class="option" data-answer="c">C. 把 API 密钥也贴上，处理会更快</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。TxID 和订单号可以帮助官方核对。助记词和私钥不能出现在求助材料里。" data-bad="答错了。助记词不能提供，也不要在公开群里晒完整资料。TxID 和订单号走官方工单即可。"><h3>想一想</h3><p>客服同时要 TxID、订单号和助记词。哪一种做法是对的？</p><button type="button" class="option" data-answer="a">A. 三样都发到公开群里，让大家一起看</button><button type="button" class="option" data-answer="b">B. TxID 和订单号可以按官方流程提供，助记词绝不提供</button><button type="button" class="option" data-answer="c">C. 只把助记词发给对方，订单号不用留</button><div class="feedback"></div></div>
+
 # 16｜新手常见问题与练习 ✅
 
 ## 我需要先买币，才能学 Web3 吗？
