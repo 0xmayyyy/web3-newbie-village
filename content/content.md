@@ -295,141 +295,300 @@ CEX 和 DEX 是交易场所的分类，和一级 / 二级市场不是一回事�
 
 ## 交易对
 
-**BTC/USDT 就是用 USDT 买 BTC，不用买一整枚。**
+你在交易所看到「BTC/USDT：60,000」，是不是以为买一枚 BTC 才能交易？
 
-BTC/USDT 表示用 USDT 给 BTC 报价。
-假设价格为 60,000，意思是 1 BTC 约对应 60,000 USDT。
-买入 BTC/USDT 通常是用 USDT 买 BTC，卖出则反过来。
+其实不用。
+**BTC/USDT 的意思是：用 USDT 给 BTC 标价。**
+左边 BTC 是你买卖的资产，右边 USDT 是报价资产。
+教学虚构：60,000 表示按这个报价，1 BTC 约值 60,000 USDT。
 
-不需要买完整一枚 BTC，很多资产可以按小数份额购买，但平台有最小订单要求。
+教学虚构：假设你只想买 0.01 BTC。
+60,000 × 0.01 = **600 USDT**，还没算手续费。
+卖出时方向反过来，你卖 BTC，通常收到 USDT。
+交易所往往允许买小数份额，但会设置最小交易金额或数量。
 
-**教学虚构：** BTC/USDT 60,000，买0.01 BTC约需600 USDT，不计费。
+**容易搞错：** BTC/USDT 和 BTC/USD 不一定是同一个交易市场；
+USDT 是稳定币，不是银行账户里的美元。
+交易前看清楚右边的报价资产。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。BTC/USDT里USDT是什么：报价资产。" data-bad="答错了。BTC/USDT里USDT是什么：报价资产。"><h3>想一想</h3><p>BTC/USDT里USDT是什么？</p><button type="button" class="option" data-answer="a">A. 报价资产</button><button type="button" class="option" data-answer="b">B. 网络</button><button type="button" class="option" data-answer="c">C. 矿工</button><div class="feedback"></div></div>
+<div class="ch03-lab" data-lab="pair">
+<h3>拆交易对</h3>
+<p class="lab-kicker">教学虚构。价格固定为 60,000，不是真实行情。</p>
+<div class="lab-tabs" role="group" aria-label="选择交易对">
+<button type="button" data-pair="BTC/USDT" data-base="BTC" data-quote="USDT" data-price="60000" aria-pressed="true">BTC/USDT</button>
+<button type="button" data-pair="ETH/BTC" data-base="ETH" data-quote="BTC" aria-pressed="false">ETH/BTC</button>
+<button type="button" data-pair="SOL/USDT" data-base="SOL" data-quote="USDT" aria-pressed="false">SOL/USDT</button>
+</div>
+<div class="lab-cols">
+<div><span>买卖资产</span><strong data-base>BTC</strong></div>
+<div><span>报价资产</span><strong data-quote>USDT</strong></div>
+</div>
+<label data-qty-wrap>买入数量（BTC）
+<input data-qty type="number" min="0" step="0.01" value="0.01" inputmode="decimal">
+</label>
+<p class="lab-result" aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>重置</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。ETH/BTC 里，买入 ETH 通常花的是右边的 BTC。" data-bad="答错了。看交易对右边的报价资产。"><h3>想一想</h3><p>ETH/BTC 交易对里，买入 ETH 通常花什么？</p><button type="button" class="option" data-answer="a" data-note="答错了。看右侧报价资产。ETH/BTC 的报价资产是 BTC，不是 USDT。">A. USDT</button><button type="button" class="option" data-answer="b">B. BTC</button><button type="button" class="option" data-answer="c" data-note="答错了。ETH 是你买到的资产，不是你花出去的报价资产。">C. ETH</button><div class="feedback"></div></div>
 
 ## 币价、市值和 FDV
 
-**单价低不等于便宜，要看市值和总供应量。**
+A 币卖 0.01 美元，B 币卖 100 美元。
+哪个更便宜？
+**光看单价，根本判断不了。**
 
-币价：一单位资产的市场价格。
-流通市值：常见计算是价格 × 流通供应量。
-FDV：完全稀释估值，常见计算使用价格 × 总供应量或最大供应量；
-数据平台口径可能不同。
+先看市值。
+常见算法是：**流通市值 = 当前价格 × 流通供应量。**
 
-假设某币价格 0.01 美元，流通 100 亿枚，它的流通市值约为 1 亿美元。
-另一个币单价 100 美元，流通 10 万枚，市值约为 1,000 万美元。
+教学虚构：A 币流通 100 亿枚。
+0.01 × 100 亿 = **1 亿美元**。
+B 币流通 10 万枚。
+100 × 10 万 = **1,000 万美元**。
+A 单价更低，流通市值反而是 B 的十倍。
 
-所以，单价低不等于估值低。
-市值也不是所有人实际投入资金的总额。
+再看 **FDV（完全稀释估值）**：通常用当前价格乘总供应量或最大供应量，具体看数据平台口径。
+教学虚构：假设 A 币目前流通 100 亿枚，未来总供应量可能到 1,000 亿枚，按 0.01 美元算，FDV 约 **10 亿美元**。
+这是一个估值口径，**不是说真有 10 亿美元流进项目**。
 
-**教学虚构：** A价0.01×100亿枚=1亿美元市值；
-B价100×10万枚=1000万美元市值。
+**容易搞错：** 市值不是「所有持币人投入的现金总额」；
+FDV 也不是未来一定会达到的价格或规模。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。币价低一定代表市值低吗：不一定。" data-bad="答错了。币价低一定代表市值低吗：不一定。"><h3>想一想</h3><p>币价低一定代表市值低吗？</p><button type="button" class="option" data-answer="a">A. 不一定</button><button type="button" class="option" data-answer="b">B. 一定</button><button type="button" class="option" data-answer="c">C. 永远相同</button><div class="feedback"></div></div>
+<div class="ch03-lab" data-lab="mcap">
+<h3>币价错觉实验</h3>
+<p class="lab-kicker">教学虚构。先猜谁的流通市值更高，点一下就看到计算。单位是美元和枚。</p>
+<div class="lab-stats">
+<div><span>A：单价 0.01 美元</span><b>流通 100 亿枚</b><span>总量 1,000 亿枚</span></div>
+<div><span>B：单价 100 美元</span><b>流通 10 万枚</b><span>总量 20 万枚</span></div>
+</div>
+<div class="lab-choices" role="group" aria-label="谁的流通市值更高">
+<button type="button" data-guess="a" aria-pressed="false">A 的市值更高</button>
+<button type="button" data-guess="b" aria-pressed="false">B 的市值更高</button>
+<button type="button" data-guess="tie" aria-pressed="false">两边一样</button>
+</div>
+<p class="lab-feedback" hidden aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>重置</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。单价变低，不等于被低估。还要看供应、用途和风险。" data-bad="答错了。不能只看单价，也不能只看 FDV。"><h3>想一想</h3><p>一个币单价跌到 0.001 美元，就一定被低估了吗？</p><button type="button" class="option" data-answer="a" data-note="答错了。这是把价格当成了估值。">A. 是</button><button type="button" class="option" data-answer="b">B. 不一定，还要看供应、用途和风险</button><button type="button" class="option" data-answer="c" data-note="答错了。只看 FDV，会忽略需求和实际流通。">C. 只看 FDV 就够</button><div class="feedback"></div></div>
 
 ## 供应量
 
-**先看会不会增发、什么时候解锁，再看数量。**
+想象一块蛋糕原本切成 100 份，你有 1 份，占 1%。
+后来按项目规则又新增 100 份，而你仍只有 1 份，你的占比就变成了 0.5%。
 
-流通供应量是按特定口径已经进入流通的数量。
-总供应量通常是已经发行、扣除部分销毁后的数量。
-最大供应量是规则允许的上限，但并非每种资产都有固定上限。
+代币也要看数量变化，但要区分三个概念：
 
-检查是否能增发、谁有权限、团队与投资者何时解锁，比单看一个数字更有帮助。
+- **流通供应量：** 按数据平台口径，当前被计入市场流通的数量。
+- **总供应量：** 通常是已发行数量扣除某些销毁数量后的规模，口径可能不同。
+- **最大供应量：** 如果协议设定了发行上限，就是允许发行的最大数量；
+有些币没有固定上限。
 
-**教学虚构：** 流通量、总供应量、最大供应量三个独立容器，解锁箭头指向流通量。
+还要分清**增发**与**解锁**。
+增发是新代币进入供应体系；
+解锁通常是已经分配或发行的代币解除转让限制。
+两者可能都改变市场可卖的数量，但不是同一件事。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。解锁最可能影响什么：可流通供应。" data-bad="答错了。解锁最可能影响什么：可流通供应。"><h3>想一想</h3><p>解锁最可能影响什么？</p><button type="button" class="option" data-answer="a">A. 可流通供应</button><button type="button" class="option" data-answer="b">B. 历史价格</button><button type="button" class="option" data-answer="c">C. 私钥</button><div class="feedback"></div></div>
+**你要查的不是「总共有多少枚」这么简单，而是：谁能增发？谁手里的币什么时候解锁？解锁后可能卖给谁？**
+
+<div class="ch03-lab" data-lab="supply">
+<h3>供应量时间轴</h3>
+<p class="lab-kicker">教学虚构。两个按钮可以按不同顺序点，重置后重来。最大供应量 1 亿枚。</p>
+<div class="lab-stats">
+<div><span>当前流通</span><b data-circ>2,000 万枚</b></div>
+<div><span>仍在锁仓</span><b data-locked>3,000 万枚</b></div>
+<div><span>已发行总量</span><b data-issued>5,000 万枚</b></div>
+<div><span>最大供应量</span><b>1 亿枚</b></div>
+</div>
+<div class="lab-choices">
+<button type="button" data-unlock>解锁 500 万</button>
+<button type="button" data-mint>增发 1,000 万并立即流通</button>
+</div>
+<p class="lab-result" hidden aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>重置</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。解锁可以只改变流通状态，已发行总量不一定增加。" data-bad="答错了。解锁不等于新发行，也不保证价格下跌。"><h3>想一想</h3><p>500 万枚锁仓币解锁后，已发行总量必然增加 500 万吗？</p><button type="button" class="option" data-answer="a" data-note="答错了。这是把发行和解锁混成了一件事。">A. 必然</button><button type="button" class="option" data-answer="b">B. 不必然，可能只是流通状态改变</button><button type="button" class="option" data-answer="c" data-note="答错了。供应变化不是价格保证。">C. 币价必然跌</button><div class="feedback"></div></div>
 
 ## 流动性与成交量
 
-**流动性好，买卖时价格才不容易被你砸歪。**
+你想卖 5 万美元的币，页面显示「24 小时成交量 1 亿美元」，听起来很热闹。
+但你点开盘口，发现现在愿意接你卖单的人很少。
 
-流动性描述在较小价格影响下买卖资产的能力。
-成交量描述一定时间内完成的交易数量或金额。
+**成交量说的是过去一段时间成交了多少；流动性说的是现在能不能以较小的价格影响完成交易。**
+这两个数字有关，却不是一回事。
 
-成交量大，不一定每个时刻都有足够流动性；
-数据也可能受到刷量影响。
+教学虚构：例如某币最近 24 小时累计成交 1 亿美元，但当前最优买价附近只有 2,000 美元的买单。
+你直接市价卖出 5 万美元，订单可能一路吃到更低的买价，最终成交均价比屏幕上显示的价格差很多。
 
-**教学虚构：** 24小时成交量卡片与实时买盘深度图并列。
+有些交易对还可能出现刷量或不可靠的成交统计。
+成交量大，不代表市场真实深度足够。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。成交量大就保证大单能成交吗：不保证。" data-bad="答错了。成交量大就保证大单能成交吗：不保证。"><h3>想一想</h3><p>成交量大就保证大单能成交吗？</p><button type="button" class="option" data-answer="a">A. 不保证</button><button type="button" class="option" data-answer="b">B. 保证</button><button type="button" class="option" data-answer="c">C. 无需盘口</button><div class="feedback"></div></div>
+<div class="ch03-lab" data-lab="book">
+<h3>盘口承接测试</h3>
+<p class="lab-kicker">教学虚构。不是真实订单簿。点一个数量，立刻看到成交金额和均价。</p>
+<ul class="lab-book">
+<li data-px="1"><span>1.00 美元</span><span>1,000 枚</span></li>
+<li data-px="0.98"><span>0.98 美元</span><span>2,000 枚</span></li>
+<li data-px="0.95"><span>0.95 美元</span><span>5,000 枚</span></li>
+</ul>
+<div class="lab-choices" role="group" aria-label="选择卖出数量">
+<button type="button" data-qty="500" aria-pressed="false">卖出 500 枚</button>
+<button type="button" data-qty="2500" aria-pressed="false">卖出 2,500 枚</button>
+<button type="button" data-qty="6000" aria-pressed="false">卖出 6,000 枚</button>
+</div>
+<p class="lab-result" hidden aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>重置</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。大额能不能成交，要看当前盘口深度和可承接数量。" data-bad="答错了。涨幅和粉丝数都不能代替现在的买卖深度。"><h3>想一想</h3><p>判断大额订单是否容易成交，最该看什么？</p><button type="button" class="option" data-answer="a" data-note="答错了。昨天的涨幅不能代替现在的买卖深度。">A. 昨天的涨幅</button><button type="button" class="option" data-answer="b" data-note="答错了。粉丝数不能代替现在的买卖深度。">B. 项目粉丝数</button><button type="button" class="option" data-answer="c">C. 当前盘口深度与可承接数量</button><div class="feedback"></div></div>
 
 ## 买卖价差、价格影响与滑点
 
-**屏幕上的价格不一定是你最后成交的价格。**
+打开交易页面，最好的买价可能是 0.99 美元，最好的卖价是 1.00 美元。
+两者差的 0.01 美元叫**买卖价差**。
 
-买卖价差是最佳卖价与最佳买价的差距。
-价格影响是你的订单对成交价格造成的影响，常见于深度不足或池子较小的市场。
-滑点是预期与实际成交价格之间的差异，可能来自市场变化、深度等因素。
+如果你想买很多，最便宜的一档卖单不够，你就得继续买下一档更贵的币。
+这种因为订单规模与市场深度造成的成交价格变化，叫**价格影响**。
 
-例子：屏幕显示约 1 美元，不代表一笔很大的市价单都能以 1 美元成交。
+**滑点**则是预期成交价格和实际成交价格之间的偏差，可能来自行情变化、流动性不足等原因。
+三者有关，但不能当成同一个词。
 
-**教学虚构：** 卖盘100枚@1.00、100枚@1.05，买150枚均价1.0167。
+教学虚构：卖盘只有两档，100 枚挂 1.00 美元，100 枚挂 1.05 美元。
+你市价买 150 枚，需要付 100 × 1.00 + 50 × 1.05 = **152.50 美元**，均价约 **1.0167 美元**，而不是全部按 1 美元买到。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。买150枚时能全按1美元成交吗：不能。" data-bad="答错了。买150枚时能全按1美元成交吗：不能。"><h3>想一想</h3><p>买150枚时能全按1美元成交吗？</p><button type="button" class="option" data-answer="a">A. 不能</button><button type="button" class="option" data-answer="b">B. 能</button><button type="button" class="option" data-answer="c">C. 没有价差</button><div class="feedback"></div></div>
+<div class="ch03-lab" data-lab="sweep">
+<h3>市价单扫单</h3>
+<p class="lab-kicker">教学虚构。点一个数量，高亮被吃掉的卖单。偏离不等于「全部都是滑点」。</p>
+<ul class="lab-book">
+<li data-px="1"><span>1.00 美元</span><span>100 枚</span></li>
+<li data-px="1.05"><span>1.05 美元</span><span>100 枚</span></li>
+</ul>
+<div class="lab-choices" role="group" aria-label="选择买入数量">
+<button type="button" data-qty="50" aria-pressed="false">买入 50 枚</button>
+<button type="button" data-qty="100" aria-pressed="false">买入 100 枚</button>
+<button type="button" data-qty="150" aria-pressed="false">买入 150 枚</button>
+<button type="button" data-qty="200" aria-pressed="false">买入 200 枚</button>
+</div>
+<p class="lab-result" hidden aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>重置</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。限价买单有最高价。深度不够时，可能只成交一部分，或暂时等不到。" data-bad="答错了。限价不能保证立刻买满，也不会自动把价格提到 1.05。"><h3>想一想</h3><p>限价买单设置最高 1.00 美元，能保证立刻买到 150 枚吗？</p><button type="button" class="option" data-answer="a">A. 不能，可能只成交部分或等不到</button><button type="button" class="option" data-answer="b" data-note="答错了。这忽略了盘口深度。">B. 能保证</button><button type="button" class="option" data-answer="c" data-note="答错了。限价买单不会自动把价格提到 1.05，那会违反你设的最高价。">C. 可以自动把价格提到 1.05</button><div class="feedback"></div></div>
 
 ## 手续费与网络费
 
-**算成本要把手续费、价差、滑点、提现费都加上。**
+刚入圈最容易忽略的不是涨跌，而是每一步的成本。
 
-交易手续费由平台或协议收取。
-链上网络费通常用于交易执行与网络资源。
-交易所提现费不一定等于当时链上实际成本。
+你买币可能有支付渠道报价差和交易手续费；
+在交易所买卖可能有价差和滑点；
+从交易所提币可能有提现费；
+到链上授权、兑换，还可能产生网络费或协议费用。
 
-计算成本时一起看：交易费、价差、滑点、提现费、网络费、汇率和支付渠道费用。
+注意：**交易所提现费不一定等于链上网络费**。
+平台内部划转通常不是链上转账，费用结构也不同。
 
-币价几乎没动，账面却少了约 4%。
-这就是「币价没怎么动，余额却少了」的原因：每一步都有一点成本。
-如果还开了合约，持仓期间的资金费用也会继续增减余额。
-### 一笔交易到底花了多少钱
+用一组**纯教学的假设**算算：
 
-| 成本 | 新手容易漏看的地方 |
-|---|---|
-| 买币成本 | 支付渠道报价、汇率和价差 |
-| 交易成本 | 手续费与滑点 |
-| 提币成本 | 平台提现费 |
-| 链上操作 | 授权、兑换等网络费 |
-| 合约持仓 | 资金费用等 |
+| 步骤 | 费用假设 | 剩余等值 |
+|---|---:|---:|
+| 起点 | — | 100 USDT |
+| 买币报价差 | 1 USDT | 99 USDT |
+| 交易费与滑点 | 0.5 USDT | 98.5 USDT |
+| 交易所提现费 | 1 USDT | 97.5 USDT |
+| 链上授权和兑换网络费 | 1.5 USDT | 96 USDT |
 
-**示例（教学虚构。
-数字为方便计算编的整数，不代表任何平台的真实费率）：**
+教学虚构：这里把不同费用统一折算成 USDT 等值，只是为了教你算成本。
+现实中网络费常用原生币支付，资产价值也可能随行情变化。
 
-| 步骤 | 假设的成本 | 剩下 |
-|---|---|---|
-| 准备买入 100 USDT 的币 | — | 100 USDT |
-| 买币时的报价与价差 | 约 1 USDT | 99 USDT |
-| 交易手续费与滑点 | 约 0.5 USDT | 98.5 USDT |
-| 提币到自己的钱包 | 提现费约 1 USDT | 97.5 USDT |
-| 在链上授权 + 兑换 | 网络费约 1.5 USDT | 96 USDT |
+<div class="ch03-lab" data-lab="fees">
+<h3>成本剥洋葱</h3>
+<p class="lab-kicker">教学虚构。起点 100 USDT。点开一项，余额立刻变。四项都打开是 96 USDT，损耗 4%。</p>
+<div class="lab-choices" role="group" aria-label="打开或关掉一项费用">
+<button type="button" data-fee="1" aria-pressed="false">报价差 1</button>
+<button type="button" data-fee="0.5" aria-pressed="false">交易费及滑点 0.5</button>
+<button type="button" data-fee="1" aria-pressed="false">提现费 1</button>
+<button type="button" data-fee="1.5" aria-pressed="false">网络费 1.5</button>
+</div>
+<p class="lab-result" aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>重置</button>
+</div>
 
-金额越小、操作越多，成本占比越高。
-
-**教学虚构：** 100扣价差1、手续费滑点0.5、提现1、网络费1.5→96。
-
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。模拟扣费后剩多少：96 USDT。" data-bad="答错了。模拟扣费后剩多少：96 USDT。"><h3>想一想</h3><p>模拟扣费后剩多少？</p><button type="button" class="option" data-answer="a">A. 96 USDT</button><button type="button" class="option" data-answer="b">B. 100 USDT</button><button type="button" class="option" data-answer="c">C. 99 USDT</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。同一平台里的账户划转，通常是内部记账，不是链上转账。" data-bad="答错了。内部划转通常不是链上转账，也不是跨链。"><h3>想一想</h3><p>在交易所内部把资金账户划转到现货账户，必然要支付区块链网络费吗？</p><button type="button" class="option" data-answer="a" data-note="答错了。内部划转和链上转账不是一回事。">A. 必然</button><button type="button" class="option" data-answer="b">B. 不必然，通常属于平台内部记账</button><button type="button" class="option" data-answer="c" data-note="答错了。同一平台的账户划转，通常也不是跨链。">C. 必然产生跨链费</button><div class="feedback"></div></div>
 
 ## 盈亏怎么算？
 
-**跌 50% 要涨 100% 才能回本。**
+教学虚构：你用 100 USDT 买币，跌了 50%，只剩 50 USDT。
+这时它再涨 50%，也只是 50 × 1.5 = **75 USDT**，还差 25 USDT。
 
-简单现货示例：投入 100 USDT，卖出得到 110 USDT，未计费用盈利 10 USDT，收益率 10%。
+因为**涨跌百分比的计算基数变了**。
+从 50 回到 100，需要涨 50 ÷ 50 = **100%**。
 
-跌 50% 后，需要涨 100% 才能回到原价：100 → 50 → 100。
+最简单的现货盈亏算法：
 
-多次买入、部分卖出、合约与多币种计价需要更完整的计算，不能只看最后一笔价格。
+**未计费用盈亏 = 卖出所得 − 买入成本。**
 
-**教学虚构：** 100跌至50再涨50%只有75，需涨100%才回本。
+**未计费用收益率 = 盈亏 ÷ 买入成本 × 100%。**
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。跌50%后回本需涨多少：100%。" data-bad="答错了。跌50%后回本需涨多少：100%。"><h3>想一想</h3><p>跌50%后回本需涨多少？</p><button type="button" class="option" data-answer="a">A. 100%</button><button type="button" class="option" data-answer="b">B. 50%</button><button type="button" class="option" data-answer="c">C. 25%</button><div class="feedback"></div></div>
+教学虚构：投入 100 USDT，卖出得到 110 USDT，未计费用赚 10 USDT，收益率 10%。
+但真正到手多少，还要扣交易费、提现费等。
+多次分批买卖、不同币种计价或合约仓位，需要另外算。
+
+<div class="ch03-lab" data-lab="recover">
+<h3>回本计算器</h3>
+<p class="lab-kicker">教学虚构。起点固定为 100。跌幅 100% 时价值归零，按百分比公式无法从 0 恢复。</p>
+<div class="lab-choices" role="group" aria-label="选择跌幅">
+<button type="button" data-drop="0.1" aria-pressed="false">跌 10%</button>
+<button type="button" data-drop="0.2" aria-pressed="false">跌 20%</button>
+<button type="button" data-drop="0.5" aria-pressed="false">跌 50%</button>
+<button type="button" data-drop="0.8" aria-pressed="false">跌 80%</button>
+</div>
+<p class="lab-result" hidden aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>重置</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。教学虚构：从 20 回到 100，要涨 80，80÷20 = 400%。" data-bad="答错了。回本涨幅要用剩下的 20 当基数，不是把原来的跌幅直接拿来用。"><h3>想一想</h3><p>教学虚构：100 跌到 20，要回到 100 需要涨多少？</p><button type="button" class="option" data-answer="a" data-note="答错了。80% 是把原来的跌幅直接当成了回本涨幅。">A. 80%</button><button type="button" class="option" data-answer="b" data-note="答错了。100% 没有按剩下的 20 当基数。">B. 100%</button><button type="button" class="option" data-answer="c">C. 400%</button><div class="feedback"></div></div>
 
 ## 学交易之前，至少能回答
 
-**说不清买的是什么、最多亏多少，就先别买。**
+你不需要先学会十几个技术指标，才有资格买第一笔币。
+但在按下「买入」之前，至少要能说清楚四件事：
 
-这节先讲清学交易之前，至少能回答的基本用途，再通过实际场景理解它的限制与风险。
+**第一，我买的是什么？**
+是 BTC、稳定币，还是某个陌生项目代币？
+它用什么币报价？
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。下单前最该确认什么：最坏可能损失。" data-bad="答错了。下单前最该确认什么：最坏可能损失。"><h3>想一想</h3><p>下单前最该确认什么？</p><button type="button" class="option" data-answer="a">A. 最坏可能损失</button><button type="button" class="option" data-answer="b">B. 别人赚多少</button><button type="button" class="option" data-answer="c">C. 热搜排名</button><div class="feedback"></div></div>
+**第二，我到底花多少钱？**
+除了币价，还有没有手续费、价差、滑点、提现费或网络费？
+
+**第三，我能不能退出？**
+是否有锁仓、解锁、平台提现限制、低流动性，或者合约权限风险？
+
+**第四，最坏会怎样？**
+这笔钱是否可能全部损失？
+如果亏光，会不会影响生活？
+
+如果其中一个问题答不上来，先去查，不需要为了赶行情勉强下单。
+
+<div class="ch03-lab" data-lab="check">
+<h3>模拟下单前检查</h3>
+<p class="lab-kicker">教学虚构项目 ABC。这里没有真实买入按钮，也不会连接交易所。</p>
+<ul class="lab-facts">
+<li>报价 ABC/USDT，单价 0.1 美元</li>
+<li>流通 1 亿枚</li>
+<li data-miss>三天后解锁 5,000 万枚</li>
+<li data-miss>当前盘口很浅</li>
+<li data-miss>提现暂时维护</li>
+</ul>
+<div class="lab-choices">
+<button type="button" data-buy>立即买入</button>
+<button type="button" data-check>先检查</button>
+</div>
+<p class="lab-feedback" hidden aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>重置</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。先回答能不能退出，再决定买不买。" data-bad="答错了。暴涨和 K 线都没有回答能不能退出。"><h3>想一想</h3><p>某币正在暴涨，但交易所暂停提现、盘口很浅。最稳妥的下一步？</p><button type="button" class="option" data-answer="a" data-note="答错了。还没回答能不能退出。">A. 先满仓</button><button type="button" class="option" data-answer="b">B. 查明退出限制和流动性再决定</button><button type="button" class="option" data-answer="c" data-note="答错了。K 线突破没有回答能不能退出。">C. 只看 K 线突破</button><div class="feedback"></div></div>
 
 # 04｜第一次买币与出入金 🛒
 

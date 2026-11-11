@@ -501,11 +501,244 @@
     br.className = 'clause-br';
     node.parentNode.insertBefore(br, node);
   }
+  function labNum(n, digits) {
+    var p = Math.pow(10, digits);
+    var x = Math.round(n * p) / p;
+    return x.toLocaleString('en-US', { maximumFractionDigits: digits });
+  }
+  function labMoney(n) {
+    var whole = Math.abs(n - Math.round(n)) < 1e-9;
+    return n.toLocaleString('en-US', { minimumFractionDigits: whole ? 0 : 2, maximumFractionDigits: 2 });
+  }
+  function labSay(lab, text, bad) {
+    var el = lab.querySelector('.lab-feedback');
+    if (!el) return;
+    el.hidden = false;
+    el.classList.toggle('wrong', !!bad);
+    el.textContent = text;
+  }
+  function labQuiet(lab) {
+    var el = lab.querySelector('.lab-feedback');
+    if (!el) return;
+    el.hidden = true;
+    el.textContent = '';
+    el.classList.remove('wrong');
+  }
+  function labResult(lab, text) {
+    var el = lab.querySelector('.lab-result');
+    if (!el) return;
+    el.hidden = false;
+    el.textContent = text;
+  }
+  function mountTradeLabs(root) {
+    if (!root) return;
+    root.querySelectorAll('.ch03-lab').forEach(function (lab) {
+      var kind = lab.getAttribute('data-lab');
+      if (kind === 'pair') mountPairLab(lab);
+      else if (kind === 'mcap') mountMcapLab(lab);
+      else if (kind === 'supply') mountSupplyLab(lab);
+      else if (kind === 'book') mountBookLab(lab);
+      else if (kind === 'sweep') mountSweepLab(lab);
+      else if (kind === 'fees') mountFeeLab(lab);
+      else if (kind === 'recover') mountRecoverLab(lab);
+      else if (kind === 'check') mountCheckLab(lab);
+    });
+  }
+  function mountPairLab(lab) {
+    var tabs = lab.querySelectorAll('[data-pair]');
+    var qtyWrap = lab.querySelector('[data-qty-wrap]');
+    var qty = lab.querySelector('[data-qty]');
+    function show(btn) {
+      tabs.forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+      lab.querySelector('[data-base]').textContent = btn.getAttribute('data-base');
+      lab.querySelector('[data-quote]').textContent = btn.getAttribute('data-quote');
+      var price = btn.getAttribute('data-price');
+      qtyWrap.hidden = !price;
+      if (!price) {
+        labResult(lab, '左边「' + btn.getAttribute('data-base') + '」是买卖资产，右边「' + btn.getAttribute('data-quote') + '」是报价资产。这一对没有固定的教学价格。');
+        return;
+      }
+      var n = Number(qty.value);
+      if (!(n >= 0)) {
+        labResult(lab, '请输入不小于 0 的数量。');
+        return;
+      }
+      labResult(lab, '教学虚构：' + labNum(n, 4) + ' ' + btn.getAttribute('data-base') + ' × ' + labNum(Number(price), 0) + ' = ' + labNum(n * Number(price), 4) + ' ' + btn.getAttribute('data-quote') + '。还没算手续费。');
+    }
+    tabs.forEach(function (b) { b.addEventListener('click', function () { show(b); }); });
+    qty.addEventListener('input', function () {
+      var on = lab.querySelector('[aria-pressed="true"]');
+      if (on) show(on);
+    });
+    lab.querySelector('[data-reset]').addEventListener('click', function () {
+      qty.value = '0.01';
+      show(tabs[0]);
+    });
+    show(tabs[0]);
+  }
+  function mountMcapLab(lab) {
+    lab.querySelectorAll('[data-guess]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        lab.querySelectorAll('[data-guess]').forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+        var good = btn.getAttribute('data-guess') === 'a';
+        labSay(lab, (good ? '答对了。' : '答错了。') + '教学虚构：A 流通市值 1 亿美元，FDV 10 亿美元。B 流通市值 1,000 万美元，FDV 2,000 万美元。单位是美元和枚。A 的单价更低，流通市值更高。', !good);
+      });
+    });
+    lab.querySelector('[data-reset]').addEventListener('click', function () {
+      lab.querySelectorAll('[data-guess]').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+      labQuiet(lab);
+    });
+  }
+  function mountSupplyLab(lab) {
+    var start = { circ: 2000, locked: 3000, issued: 5000, unlocked: false, minted: false };
+    var s = Object.assign({}, start);
+    function paint() {
+      lab.querySelector('[data-circ]').textContent = labNum(s.circ, 0) + ' 万枚';
+      lab.querySelector('[data-locked]').textContent = labNum(s.locked, 0) + ' 万枚';
+      lab.querySelector('[data-issued]').textContent = labNum(s.issued, 0) + ' 万枚';
+    }
+    function note(text) { labResult(lab, text); }
+    lab.querySelector('[data-unlock]').addEventListener('click', function () {
+      if (s.unlocked) { note('解锁这一步已经做过。已发行总量仍是 ' + labNum(s.issued, 0) + ' 万枚。可以重置后再试另一种顺序。'); return; }
+      s.unlocked = true;
+      s.circ += 500;
+      s.locked -= 500;
+      paint();
+      note('教学虚构：解锁 500 万枚后，流通是 ' + labNum(s.circ, 0) + ' 万枚，已发行总量仍是 ' + labNum(s.issued, 0) + ' 万枚。解锁没有新发行代币。');
+    });
+    lab.querySelector('[data-mint]').addEventListener('click', function () {
+      if (s.minted) { note('增发这一步已经做过。已发行总量是 ' + labNum(s.issued, 0) + ' 万枚。可以重置后再试另一种顺序。'); return; }
+      s.minted = true;
+      s.issued += 1000;
+      s.circ += 1000;
+      paint();
+      note('教学虚构：增发 1,000 万枚并立即流通后，已发行总量是 ' + labNum(s.issued, 0) + ' 万枚，流通是 ' + labNum(s.circ, 0) + ' 万枚。');
+    });
+    lab.querySelector('[data-reset]').addEventListener('click', function () {
+      s = Object.assign({}, start);
+      paint();
+      var el = lab.querySelector('.lab-result');
+      if (el) { el.hidden = true; el.textContent = ''; }
+    });
+    paint();
+  }
+  function takeBook(levels, qty) {
+    var left = qty, cost = 0, used = [];
+    levels.forEach(function (lv) {
+      if (left <= 0) return;
+      var n = Math.min(left, lv.sz);
+      cost += n * lv.px;
+      left -= n;
+      used.push(lv.px);
+    });
+    return { cost: cost, avg: qty ? cost / qty : 0, used: used };
+  }
+  function markLevels(lab, used) {
+    lab.querySelectorAll('[data-px]').forEach(function (row) {
+      row.classList.toggle('is-hit', used.indexOf(Number(row.getAttribute('data-px'))) >= 0);
+    });
+  }
+  function mountBookLab(lab) {
+    var levels = [
+      { px: 1, sz: 1000 },
+      { px: 0.98, sz: 2000 },
+      { px: 0.95, sz: 5000 }
+    ];
+    lab.querySelectorAll('[data-qty]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var qty = Number(btn.getAttribute('data-qty'));
+        var got = takeBook(levels, qty);
+        markLevels(lab, got.used);
+        lab.querySelectorAll('[data-qty]').forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+        labResult(lab, '教学虚构：卖出 ' + labNum(qty, 0) + ' 枚，收到 ' + labMoney(got.cost) + ' 美元。最优买价 1.00 美元，实际均价 ' + labNum(got.avg, 4) + ' 美元。');
+      });
+    });
+    lab.querySelector('[data-reset]').addEventListener('click', function () {
+      markLevels(lab, []);
+      lab.querySelectorAll('[data-qty]').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+      var el = lab.querySelector('.lab-result');
+      if (el) { el.hidden = true; el.textContent = ''; }
+    });
+  }
+  function mountSweepLab(lab) {
+    var levels = [
+      { px: 1, sz: 100 },
+      { px: 1.05, sz: 100 }
+    ];
+    lab.querySelectorAll('[data-qty]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var qty = Number(btn.getAttribute('data-qty'));
+        var got = takeBook(levels, qty);
+        markLevels(lab, got.used);
+        lab.querySelectorAll('[data-qty]').forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+        var gap = (got.avg - 1) * 100;
+        labResult(lab, '教学虚构：买入 ' + labNum(qty, 0) + ' 枚，总成本 ' + labMoney(got.cost) + ' 美元，均价 ' + labNum(got.avg, 4) + ' 美元。相对 1 美元偏离约 ' + labNum(gap, 2) + '%。这是扫到更贵档位造成的价格影响，不要把整段偏离都叫成滑点。');
+      });
+    });
+    lab.querySelector('[data-reset]').addEventListener('click', function () {
+      markLevels(lab, []);
+      lab.querySelectorAll('[data-qty]').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+      var el = lab.querySelector('.lab-result');
+      if (el) { el.hidden = true; el.textContent = ''; }
+    });
+  }
+  function mountFeeLab(lab) {
+    var items = lab.querySelectorAll('[data-fee]');
+    function paint() {
+      var spent = 0;
+      items.forEach(function (btn) { if (btn.getAttribute('aria-pressed') === 'true') spent += Number(btn.getAttribute('data-fee')); });
+      var left = Math.round((100 - spent) * 10) / 10;
+      var loss = Math.round(spent * 10) / 10;
+      labResult(lab, '教学虚构：剩余 ' + labNum(left, 1) + ' USDT，损耗 ' + labNum(loss, 1) + '%。币价可以完全没动。');
+    }
+    items.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        btn.setAttribute('aria-pressed', btn.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+        paint();
+      });
+    });
+    lab.querySelector('[data-reset]').addEventListener('click', function () {
+      items.forEach(function (btn) { btn.setAttribute('aria-pressed', 'false'); });
+      paint();
+    });
+    paint();
+  }
+  function mountRecoverLab(lab) {
+    lab.querySelectorAll('[data-drop]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var d = Number(btn.getAttribute('data-drop'));
+        var left = 100 * (1 - d);
+        var need = d / (1 - d) * 100;
+        lab.querySelectorAll('[data-drop]').forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+        labResult(lab, '教学虚构：100 跌掉 ' + labNum(d * 100, 0) + '% 后剩 ' + labNum(left, 2) + '。回到 100 需要再涨 ' + labNum(need, 2) + '%。公式：回本涨幅 = 跌幅 ÷ (1 − 跌幅)。');
+      });
+    });
+    lab.querySelector('[data-reset]').addEventListener('click', function () {
+      lab.querySelectorAll('[data-drop]').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+      var el = lab.querySelector('.lab-result');
+      if (el) { el.hidden = true; el.textContent = ''; }
+    });
+  }
+  function mountCheckLab(lab) {
+    var facts = lab.querySelectorAll('.lab-facts [data-miss]');
+    lab.querySelector('[data-buy]').addEventListener('click', function () {
+      facts.forEach(function (li) { li.classList.remove('is-hit'); });
+      labSay(lab, '答错了。还没确认三天后解锁 5,000 万枚、盘口很浅，以及提现暂时维护。这不是真实买入。', true);
+    });
+    lab.querySelector('[data-check]').addEventListener('click', function () {
+      facts.forEach(function (li) { li.classList.add('is-hit'); });
+      labSay(lab, '答对了。先看还没确认的事：三天后解锁 5,000 万枚、当前盘口很浅、提现暂时维护。', false);
+    });
+    lab.querySelector('[data-reset]').addEventListener('click', function () {
+      facts.forEach(function (li) { li.classList.remove('is-hit'); });
+      labQuiet(lab);
+    });
+  }
   function balanceProse(prose) {
     if (!prose) return;
     var keepSentences = prose.getAttribute('data-keep-sentences') === '1';
     prose.querySelectorAll('p').forEach(function (p) {
-      if (p.closest('.uid-compare, .diagram, .cosmic-scene, .orbit-scene, .quiz, .checklist, .steps, .step, .compare, .key, .teach-status, table, thead, tbody, pre, .summary, .tool-card, .tool-grid, button')) return;
+      if (p.closest('.uid-compare, .diagram, .cosmic-scene, .orbit-scene, .quiz, .checklist, .steps, .step, .compare, .key, .teach-status, table, thead, tbody, pre, .summary, .tool-card, .tool-grid, .ch03-lab, button')) return;
       if (p.querySelector('table, pre, code, button, img, svg, .uid-compare, .tool-card')) return;
       p.querySelectorAll('br.clause-br').forEach(function (br) { br.remove(); });
       if (keepSentences && p.querySelector('br:not(.clause-br)')) return;
@@ -945,6 +1178,7 @@
       step(1);
     });
     if (window.TEACH && prose) TEACH.mount(prose, id, cur.i, unlockTeachNext);
+    mountTradeLabs(prose);
     bindLessonSpeech();
     $$('.course-reader [data-tool]').forEach(function (b) {
       b.addEventListener('click', function () { goHash(b.getAttribute('data-tool'), null); });
