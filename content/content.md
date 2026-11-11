@@ -621,8 +621,8 @@ FDV 也不是未来一定会达到的价格或规模。
 
 入金是把钱放进交易所，卖掉币不等于法币到账，链上提币和提到银行是两条不同的路。
 
-你银行卡里有 100 马币，想买第一笔 BTC。
-把马币支付给合规渠道，最终在交易所账户拿到资产，这个过程常被叫作**入金**。
+你银行卡里有 100 块钱法币，想买第一笔 BTC。
+把法币支付给合规渠道，最终在交易所账户拿到资产，这个过程常被叫作**入金**。
 之后你把币卖掉，再按当地支持的渠道把法币提回银行，才算走完**出金**流程。
 
 但「出金」也可能被用来指**提币**：把交易所里的 USDT 转到自己钱包。
@@ -666,7 +666,7 @@ FDV 也不是未来一定会达到的价格或规模。
 <button type="button" class="lab-reset" data-reset>重置</button>
 </div>
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。想收到银行里的马币，要走所在地支持的法币兑换和出金渠道。" data-bad="答错了。USDT 不会自动变成马币，也不能直接转到银行账号。"><h3>想一想</h3><p>你卖出 BTC 后得到 USDT，下一步想收到银行里的马币，应该？</p><button type="button" class="option" data-answer="a" data-note="答错了。USDT 不会自动变成马币。">A. 等待 USDT 自动变马币</button><button type="button" class="option" data-answer="b">B. 使用所在地支持的法币兑换及出金渠道</button><button type="button" class="option" data-answer="c" data-note="答错了。银行账号通常不是链上收款地址。">C. 直接把 USDT 转到银行账号</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。想收到银行里的法币，要走所在地支持的法币兑换和出金渠道。" data-bad="答错了。USDT 不会自动变成法币，也不能直接转到银行账号。"><h3>想一想</h3><p>你卖出 BTC 后得到 USDT，下一步想收到银行里的法币，应该？</p><button type="button" class="option" data-answer="a" data-note="答错了。USDT 不会自动变成法币。">A. 等待 USDT 自动变法币</button><button type="button" class="option" data-answer="b">B. 使用所在地支持的法币兑换及出金渠道</button><button type="button" class="option" data-answer="c" data-note="答错了。银行账号通常不是链上收款地址。">C. 直接把 USDT 转到银行账号</button><div class="feedback"></div></div>
 
 ## 第一步：确认平台与地区
 
@@ -719,8 +719,10 @@ FDV 也不是未来一定会达到的价格或规模。
 4. **设置提款保护**：按平台功能启用提现地址白名单、防钓鱼码、设备管理及异常提醒。
 5. **完成必要 KYC**：只在已确认的官方流程提交身份材料，不向私信「客服」发送证件。
 
-教学模拟：你收到「账户异常，请立即重新验证」的短信。
-正确动作不是点短信链接，而是自己打开已安装并核对过的官方 App 检查通知。
+教学模拟
+你收到「账户异常，请立即重新验证」的短信。
+正确动作不是点短信链接，
+而是自己打开已安装并核对过的官方 App 检查通知。
 
 **别踩坑：** 短信验证码不能交给别人；
 开启双重验证也不意味着可以忽略钓鱼链接和设备安全。
