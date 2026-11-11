@@ -1164,39 +1164,54 @@ TVL 是按特定规则统计的锁定资产价值，会受币价和重复计算�
 
 **玩 DeFi、空投、NFT、Meme，第一步都是先有一个链上钱包。**
 
-下面这些玩法，都需要用链上钱包来连接应用、签名确认和存放资产。交易所账户不能直接替代它。
+下面这些玩法，都需要用链上钱包来连接应用、签名确认和存放资产。
+交易所账户不能直接替代它。
 
 新手可以先从币安钱包（无私钥）开始，它对新手更友好：
 
 - 不用抄写传统助记词。
-- 采用 MPC 技术，钥匙拆成 3 个分片，任意两份凑齐才能用，币安单独动不了你的钱。
+- 采用 MPC 技术，把钥匙拆成 3 个分片，任意两份凑齐才能用，币安单独动不了你的钱。
 - 转账前会给出风险提醒，帮你多一道检查。
-
-> 💬 站长亲历：我之前差点把钱转到合约地址，币安钱包弹出提醒拦了下来。对新手来说，这种提醒真的很有用。
 
 想详细了解它怎么工作、怎么备份，见[第 08 章「无私钥钱包：新手也能轻松开始」](#/c/08/4)。
 
 币安钱包（无私钥）：https://web3.binance.com/referral?ref=0XMAY
 用途：适合新手的自托管链上钱包，可用于连接 DApp、签名和存放链上资产。和交易所账户不是一回事。
 
+> 💬 站长亲历：我之前差点把钱转到合约地址，币安钱包弹出提醒拦了下来。对新手来说，这种提醒真的很有用。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。交易所账户不能代替链上钱包。币安钱包（无私钥）和交易所账户不是一回事。" data-bad="答错了。平台里的买卖账户不能直接拿去连接 DApp。链上钱包才负责签名和存放链上资产。"><h3>想一想</h3><p>用交易所账户，能不能直接代替链上钱包去连接这些玩法？</p><button type="button" class="option" data-answer="a">A. 能，同一个品牌的账户都能签名</button><button type="button" class="option" data-answer="b">B. 不能。连接应用、签名和存放链上资产，要用链上钱包</button><button type="button" class="option" data-answer="c">C. 币安钱包（无私钥）就是交易所里的资金账户</button><div class="feedback"></div></div>
+
 ## DeFi：链上金融应用
 
 **DeFi 是链上的银行和交易所，没有客服兜底。**
 
-DeFi 指利用智能合约提供兑换、借贷等金融功能的应用。常通过钱包交互，成本包括网络费、协议费等。风险可能来自代码、抵押资产、预言机、治理权限与经济机制。
+DeFi 指利用智能合约提供兑换、借贷等金融功能的应用。
+常通过钱包交互，成本包括网络费、协议费等。
+风险可能来自代码、抵押资产、预言机、治理权限与经济机制。
 
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。DeFi 靠智能合约执行。网络费和协议费不是一份保底承诺。" data-bad="答错了。没有客服兜底。付了费用，也不等于协议会赔偿。"><h3>想一想</h3><p>DeFi 里出了问题，是不是一定有客服把损失补回来？</p><button type="button" class="option" data-answer="a">A. 是，链上应用都有客服兜底</button><button type="button" class="option" data-answer="b">B. 不是。损失可能来自代码、抵押品、预言机或权限，没有客服保证补回</button><button type="button" class="option" data-answer="c">C. 只要付了网络费，协议就保证结果</button><div class="feedback"></div></div>
 
 ## 借贷
 
 **借贷看的是抵押和清算，不能只看收益率。**
 
-存入资产可能获得收益；借入资产需要抵押并支付利息。抵押品价格下跌会触发清算。存款端也存在坏账、流动性与合约风险，不能只看收益率。
+存入资产可能获得收益；
+借入资产需要抵押并支付利息。
+抵押品价格下跌会触发清算。
+存款端也存在坏账、流动性与合约风险，不能只看收益率。
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。抵押品跌价可能触发什么：清算。" data-bad="答错了。抵押品跌价可能触发什么：清算。"><h3>想一想</h3><p>抵押品跌价可能触发什么？</p><button type="button" class="option" data-answer="a">A. 清算</button><button type="button" class="option" data-answer="b">B. 保证收益</button><button type="button" class="option" data-answer="c">C. 免债</button><div class="feedback"></div></div>
 
 ## 流动性池
 
 **做流动性赚手续费，也要承担无常损失。**
 
-提供资产给池子，可能获得交易费或奖励。除了资产价格波动，还有无常损失、奖励贬值与合约风险。无常损失描述相对直接持有资产的价值差异，不保证最终会恢复。
+提供资产给池子，可能获得交易费或奖励。
+除了资产价格波动，还有无常损失、奖励贬值与合约风险。
+无常损失描述相对直接持有资产的价值差异，不保证最终会恢复。
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。LP赚手续费保证跑赢持币吗：不保证。" data-bad="答错了。LP赚手续费保证跑赢持币吗：不保证。"><h3>想一想</h3><p>LP赚手续费保证跑赢持币吗？</p><button type="button" class="option" data-answer="a">A. 不保证</button><button type="button" class="option" data-answer="b">B. 保证</button><button type="button" class="option" data-answer="c">C. 无风险</button><div class="feedback"></div></div>
 
 ## 质押与理财
 
@@ -1204,9 +1219,14 @@ DeFi 指利用智能合约提供兑换、借贷等金融功能的应用。常通
 
 PoS 网络原生质押是支持网络验证并获得奖励，会有退出等待、验证者风险或惩罚机制。
 
-平台标为「质押」「Earn」的产品，也可能实际是借贷或其他收益策略。必须看资金用途、赎回规则和风险承担方，不能只看产品名称。
+平台标为「质押」「Earn」的产品，也可能实际是借贷或其他收益策略。
+必须看资金用途、赎回规则和风险承担方，不能只看产品名称。
 
-APR 是年化利率，不算复利；APY 包含复利假设。年化显示不是未来一年的保证回报。
+APR 是年化利率，不算复利；
+APY 包含复利假设。
+年化显示不是未来一年的保证回报。
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。APY通常包含什么：复利假设。" data-bad="答错了。APY通常包含什么：复利假设。"><h3>想一想</h3><p>APY通常包含什么？</p><button type="button" class="option" data-answer="a">A. 复利假设</button><button type="button" class="option" data-answer="b">B. 本金保证</button><button type="button" class="option" data-answer="c">C. 无风险</button><div class="feedback"></div></div>
 
 ## 空投、积分与测试网
 
@@ -1218,14 +1238,22 @@ APR 是年化利率，不算复利；APY 包含复利假设。年化显示不是
 
 **买 NFT 不等于买到了图片版权。**
 
-NFT 是用于表示独特标识等信息的代币。购买 NFT 不自动获得图像版权或其他法律权利，具体权利看授权与条款。价格、流动性、元数据与项目延续都有风险。
+NFT 是用于表示独特标识等信息的代币。
+购买 NFT 不自动获得图像版权或其他法律权利，具体权利看授权与条款。
+价格、流动性、元数据与项目延续都有风险。
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。买NFT自动获得图片版权吗：不自动。" data-bad="答错了。买NFT自动获得图片版权吗：不自动。"><h3>想一想</h3><p>买NFT自动获得图片版权吗？</p><button type="button" class="option" data-answer="a">A. 不自动</button><button type="button" class="option" data-answer="b">B. 自动</button><button type="button" class="option" data-answer="c">C. 等于公司股份</button><div class="feedback"></div></div>
 
 ## 链游与 DAO
 
 **链游要好玩才长久，持有治理币不等于当股东。**
 
-链游把部分游戏资产或机制放到链上。游戏是否好玩、代币经济能否持续，需要分别判断。
-DAO 是一种以规则与治理机制组织协作的形式。持有治理币不代表拥有公司股权，治理权也可能高度集中。
+链游把部分游戏资产或机制放到链上。
+游戏是否好玩、代币经济能否持续，需要分别判断。
+DAO 是一种以规则与治理机制组织协作的形式。
+持有治理币不代表拥有公司股权，治理权也可能高度集中。
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。治理币等于公司股权吗：不一定。" data-bad="答错了。治理币等于公司股权吗：不一定。"><h3>想一想</h3><p>治理币等于公司股权吗？</p><button type="button" class="option" data-answer="a">A. 不一定</button><button type="button" class="option" data-answer="b">B. 一定</button><button type="button" class="option" data-answer="c">C. 银行存款</button><div class="feedback"></div></div>
 
 ## Meme 币
 
