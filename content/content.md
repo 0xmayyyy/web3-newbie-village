@@ -1135,6 +1135,8 @@ Swap 是把一种资产换成另一种。确认代币合约、交易路径、预
 
 ## 第四问：数据说了什么？
 
+看数据要先确认口径、时间和有没有重复计算，一个数字不能单独下结论。
+
 **看数据先看口径。宣传截图要找到原始来源。**
 
 TVL 是按某种规则统计的锁定资产价值。
@@ -1187,6 +1189,8 @@ TVL 是按某种规则统计的锁定资产价值。
 <div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。返佣、推广费和持仓都会影响说法。它们也不是盈利保证。" data-bad="答错了。有返佣不能当成无风险。先看官方文档、链上记录和独立数据。"><h3>想一想</h3><p>一位 KOL 强烈推荐，而且用了返佣链接。该怎么看待这条内容？</p><button type="button" class="option" data-answer="a">A. 当成独立研究结论</button><button type="button" class="option" data-answer="b">B. 先核对官方和链上资料，并记住对方可能有推广或持仓关系</button><button type="button" class="option" data-answer="c">C. 返佣链接说明项目已经没有风险</button><div class="feedback"></div></div>
 
 ## 一页研究记录
+
+把项目做什么、谁拿着币、数据和退出风险写在一页上，看不懂就先别买。
 
 **用一页纸写下研究结果。写不出来，就是还没想清楚。**
 
