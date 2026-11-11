@@ -915,10 +915,11 @@
     var prevBtn = $('#reader-prev'), nextBtn = $('#reader-next');
     if (prevBtn) prevBtn.addEventListener('click', function () { step(-1); });
     function unlockTeachNext() {
-      if (!nextBtn || nextBtn.getAttribute('data-end') === '1') return;
-      nextBtn.disabled = false;
+      if (!nextBtn) return;
+      var ended = nextBtn.getAttribute('data-end') === '1';
       nextBtn.classList.remove('is-locked');
-      nextBtn.textContent = t('reader.next');
+      nextBtn.disabled = false;
+      nextBtn.textContent = ended ? t('reader.finish') : t('reader.next');
       $$('.course-reader [data-sec]').forEach(function (b) {
         b.classList.toggle('is-locked', !teachCanEnter(id, +b.getAttribute('data-sec')));
       });
@@ -934,6 +935,11 @@
     }
     if (nextBtn) nextBtn.addEventListener('click', function () {
       if (nextBtn.disabled || nextBtn.classList.contains('is-locked')) return;
+      if (nextBtn.getAttribute('data-end') === '1') {
+        var home = planetIndex >= 0 ? planetEntryHash(planetIndex) : '#/';
+        if (home) location.hash = home;
+        return;
+      }
       step(1);
     });
     if (window.TEACH && prose) TEACH.mount(prose, id, cur.i, unlockTeachNext);
