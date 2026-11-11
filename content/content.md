@@ -594,104 +594,346 @@ FDV 也不是未来一定会达到的价格或规模。
 
 ## 什么是入金和出金？
 
-**入金是把钱放进平台，出金是把钱拿出来，两件事规则不同。**
+你银行卡里有 100 马币，想买第一笔 BTC。
+把马币支付给合规渠道，最终在交易所账户拿到资产，这个过程常被叫作**入金**。
+之后你把币卖掉，再按当地支持的渠道把法币提回银行，才算走完**出金**流程。
 
-入金是把法币或数字资产转入平台；
-出金是把资金转出，比如提币到钱包，或卖币后提取法币到银行。
+但「出金」也可能被用来指**提币**：把交易所里的 USDT 转到自己钱包。
+它和提现到银行完全不是一回事。
 
-「提币成功」不等于「法币已经进入银行」。
-两种操作的规则、费用和风险不同。
+记住三种位置：
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。卖币后一定已提现到银行吗：不一定。" data-bad="答错了。卖币后一定已提现到银行吗：不一定。"><h3>想一想</h3><p>卖币后一定已提现到银行吗？</p><button type="button" class="option" data-answer="a">A. 不一定</button><button type="button" class="option" data-answer="b">B. 一定</button><button type="button" class="option" data-answer="c">C. 不用渠道</button><div class="feedback"></div></div>
+- **银行账户**：持有法币，由银行及相关支付体系处理。
+- **交易所账户**：平台记录你的资产余额；
+平台保管相应资产。
+- **自托管钱包**：你通过密钥控制链上资产，转错或泄露密钥往往无法撤销。
+
+教学模拟：你在交易所卖掉 BTC，得到 100 USDT。
+此时你持有的仍是 USDT，**不是银行里已经到账的 100 美元**。
+还需要找到当地允许使用的法币兑换、提款渠道，检查汇率、费用和限制。
+
+**别踩坑：** 「交易所显示提现成功」不等于「银行已入账」；
+「币已经卖掉」也不等于「法币已到账」。
+
+<div class="ch03-lab ch04-lab" data-lab="route">
+<h3>资金旅程双路线</h3>
+<p class="lab-kicker">教学模拟。点每个节点。路线 A 和路线 B 分开，没有合并成一个提现按钮。</p>
+<div class="lab-choices" role="group" aria-label="从银行到交易所">
+<button type="button" data-node="bank">银行法币</button>
+<button type="button" data-node="channel">支持的入金渠道</button>
+<button type="button" data-node="ex">交易所资金 / 现货账户</button>
+</div>
+<p class="lab-kicker">路线 A：卖出后走法币</p>
+<div class="lab-choices" role="group" aria-label="法币出金路线">
+<button type="button" data-node="sell">卖出</button>
+<button type="button" data-node="fiat">法币出金渠道</button>
+<button type="button" data-node="bank2">银行</button>
+</div>
+<p class="lab-kicker">路线 B：链上提现</p>
+<div class="lab-choices" role="group" aria-label="链上提现路线">
+<button type="button" data-node="net">选择网络</button>
+<button type="button" data-node="chain">链上提现</button>
+<button type="button" data-node="wallet">自托管钱包</button>
+</div>
+<p class="lab-result" hidden aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>重置</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。想收到银行里的马币，要走所在地支持的法币兑换和出金渠道。" data-bad="答错了。USDT 不会自动变成马币，也不能直接转到银行账号。"><h3>想一想</h3><p>你卖出 BTC 后得到 USDT，下一步想收到银行里的马币，应该？</p><button type="button" class="option" data-answer="a" data-note="答错了。USDT 不会自动变成马币。">A. 等待 USDT 自动变马币</button><button type="button" class="option" data-answer="b">B. 使用所在地支持的法币兑换及出金渠道</button><button type="button" class="option" data-answer="c" data-note="答错了。银行账号通常不是链上收款地址。">C. 直接把 USDT 转到银行账号</button><div class="feedback"></div></div>
 
 ## 第一步：确认平台与地区
 
-**注册时留意平台对你所在地区是否开放服务，注册页一般会有提示。**
+有些交易所品牌在不同国家由不同公司经营。
+名字相似、Logo 相似，不代表账户、UID、充值系统或客服互通。
 
-一个品牌可能由不同地区实体提供服务，产品并不完全相同。
+你准备注册时，先问自己：**这是哪个运营主体提供的服务？支持我实际居住的地区吗？能用什么方式入金和提现？**
 
-无法使用时，不通过虚假身份、虚报居住地等方式绕过限制。
+教学模拟：朋友给你一个和 Binance 相关的应用收款 UID。
+你不能只看品牌，就认定它和你登录的交易所属于同一账户系统。
+**UID 只在对应平台系统内有意义**；
+即使数字恰好相同，也可能指向不同的人。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。不同地区站UID相同能默认互转吗：不能。" data-bad="答错了。不同地区站UID相同能默认互转吗：不能。"><h3>想一想</h3><p>不同地区站UID相同能默认互转吗？</p><button type="button" class="option" data-answer="a">A. 不能</button><button type="button" class="option" data-answer="b">B. 能</button><button type="button" class="option" data-answer="c">C. 不需要核对</button><div class="feedback"></div></div>
+**别踩坑：** 不要使用虚假身份、虚报居住地绕过地区限制；
+不要为了赶活动跳过运营主体和官方域名核对。
+
+<div class="ch03-lab ch04-lab" data-lab="uid">
+<h3>真假互通判断</h3>
+<p class="lab-kicker">教学模拟。Alpha Global 和 Alpha Local 不是真实平台。两边都显示 UID 123456，Logo 看起来一样。</p>
+<div class="lab-stats">
+<div><span>Alpha Global</span><b>UID 123456</b><span>运营主体：Global Learn Ltd</span></div>
+<div><span>Alpha Local</span><b>UID 123456</b><span>运营主体：Local Learn Pte</span></div>
+</div>
+<div class="lab-choices">
+<button type="button" data-uid="move">把 UID 123456 拿到另一边</button>
+<button type="button" data-uid="check">先核对官方是否互通</button>
+</div>
+<p class="lab-feedback" hidden aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>重置</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。UID 只在对应平台里有意义。数字相同，也不能断定是同一个人。" data-bad="答错了。相同数字和相同品牌，都不能当成跨系统的身份凭证。"><h3>想一想</h3><p>两个不同地区的交易所应用都显示 UID 123456，能断定是同一人吗？</p><button type="button" class="option" data-answer="a" data-note="答错了。相同数字不能当成跨系统的身份凭证。">A. 能</button><button type="button" class="option" data-answer="b" data-note="答错了。品牌相同也不代表账户系统互通。">B. 只要品牌相同就能</button><button type="button" class="option" data-answer="c">C. 不能，须核对平台主体与收款身份</button><div class="feedback"></div></div>
 
 ## 第二步：注册与安全设置
 
-**注册后第一件事：强密码 + 双重验证。**
+刚注册完就充值，等于新房钥匙还没保管好，就把贵重物品搬进去。
 
-使用独立强密码，保护注册邮箱，按平台支持情况设置通行密钥或验证器等双重验证。
-妥善保存恢复方式，检查设备与登录记录，开启可用的提现保护措施。
+按照这个顺序：
 
-KYC 是身份验证。
-只在确认的官方应用或官网流程提交材料，不把身份证发给主动私信的「客服」。
+1. **确认官方入口**：从可靠的官方渠道进入，核对完整域名、应用开发者及平台提示；
+广告排名不等于官方认证。
+2. **保护邮箱**：邮箱是账户恢复的重要入口，使用独立强密码，启用支持的双重验证。
+3. **保护交易所登录**：设置不同于邮箱的强密码，优先使用平台支持的通行密钥或验证器，安全保存恢复方式。
+4. **设置提款保护**：按平台功能启用提现地址白名单、防钓鱼码、设备管理及异常提醒。
+5. **完成必要 KYC**：只在已确认的官方流程提交身份材料，不向私信「客服」发送证件。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。KYC应通过什么渠道：核实的官方流程。" data-bad="答错了。KYC应通过什么渠道：核实的官方流程。"><h3>想一想</h3><p>KYC应通过什么渠道？</p><button type="button" class="option" data-answer="a">A. 核实的官方流程</button><button type="button" class="option" data-answer="b">B. 私信客服</button><button type="button" class="option" data-answer="c">C. 陌生链接</button><div class="feedback"></div></div>
+教学模拟：你收到「账户异常，请立即重新验证」的短信。
+正确动作不是点短信链接，而是自己打开已安装并核对过的官方 App 检查通知。
+
+**别踩坑：** 短信验证码不能交给别人；
+开启双重验证也不意味着可以忽略钓鱼链接和设备安全。
+
+<div class="ch03-lab ch04-lab" data-lab="secure">
+<h3>安全设置清单</h3>
+<p class="lab-kicker">点开一项，看为什么重要、如何确认、常见误区。完成度只代表学习，不代表账户 100% 安全。这里不收集密码、验证码或证件。</p>
+<div class="lab-choices" role="group" aria-label="五项安全设置">
+<button type="button" data-sec="0" aria-pressed="false">官方入口</button>
+<button type="button" data-sec="1" aria-pressed="false">邮箱安全</button>
+<button type="button" data-sec="2" aria-pressed="false">账户二次验证</button>
+<button type="button" data-sec="3" aria-pressed="false">提现保护</button>
+<button type="button" data-sec="4" aria-pressed="false">恢复方式</button>
+</div>
+<p class="lab-result" hidden aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>重置</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。验证码不要交出去。自己打开核对过的官方 App 看通知。" data-bad="答错了。验证码不能交给对方，转币也不能证明对方是客服。"><h3>想一想</h3><p>有人自称客服要求你发送登录验证码以「解除风控」，应该？</p><button type="button" class="option" data-answer="a">A. 拒绝，改从官方 App 内核实</button><button type="button" class="option" data-answer="b" data-note="答错了。验证码本身就可能被用来接管账户。">B. 发给对方但不发密码</button><button type="button" class="option" data-answer="c" data-note="答错了。转币不能证明对方是客服。">C. 先转少量币验证</button><div class="feedback"></div></div>
 
 ## 第三步：选择入金方式
 
-**入金前看清支持的银行、费用和到账时间。**
+买币时常见三类入口：平台支持的银行卡或银行转账、第三方支付服务商、P2P。
+你也可能已经持有数字资产，选择直接充值到交易所。
 
-银行卡或银行转账：检查支持银行、币种、付款人要求、到账时间与费用。
-第三方买币渠道：检查服务商身份、报价与费用。
-P2P：与其他用户交易，通过平台规定的流程结算法币和数字资产。
-已有数字资产充值：选择双方都支持的资产与网络，填写必要的 Memo / Tag。
+比较入金方式时，不要只看「手续费 0%」。
+真正要看**支付金额、最终拿到多少币、到账时间、能否退款、资金来源要求和当地限制**。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。链上充值最重要核对什么：资产和网络。" data-bad="答错了。链上充值最重要核对什么：资产和网络。"><h3>想一想</h3><p>链上充值最重要核对什么？</p><button type="button" class="option" data-answer="a">A. 资产和网络</button><button type="button" class="option" data-answer="b">B. 价格涨幅</button><button type="button" class="option" data-answer="c">C. 社群人数</button><div class="feedback"></div></div>
+教学模拟：你准备支付 100 单位法币。
+
+- 渠道 A：标称零手续费，但最终得到 19.6 USDT。
+- 渠道 B：明示收取 2 单位法币费用，但最终得到 20.1 USDT。
+
+在其他条件相同的前提下，B 虽然标注收费，实际到手反而更多。
+这里只比较模拟最终数量，不代表某种渠道总是更好。
+
+**已有币充值尤其要注意：** 充值地址、资产、网络、Memo / Tag 都要按**收款平台页面**确认。
+交易所支持 USDT，不代表支持每一条 USDT 网络。
+
+<div class="ch03-lab ch04-lab" data-lab="quote">
+<h3>报价比较</h3>
+<p class="lab-kicker">教学模拟。点两种排序。顺序会反过来。任何一边都不标最佳。</p>
+<div class="lab-stats" data-rows></div>
+<div class="lab-choices">
+<button type="button" data-sort="fee">按明示费用排序</button>
+<button type="button" data-sort="got">按最终到账数量排序</button>
+</div>
+<p class="lab-result" aria-live="polite"></p>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。要看你一共付多少、最后拿到多少，以及限制和风险。" data-bad="答错了。0 手续费和到账快，都不能单独决定哪个更划算。"><h3>想一想</h3><p>两个渠道一个写 0 手续费，一个写有手续费，怎样比较更合理？</p><button type="button" class="option" data-answer="a" data-note="答错了。0 手续费可能藏着更差的报价。">A. 只选 0 手续费</button><button type="button" class="option" data-answer="b" data-note="答错了。快不代表成本低，也不代表你能用。">B. 只选最快的</button><button type="button" class="option" data-answer="c">C. 核对总支付、实际到账、限制和风险</button><div class="feedback"></div></div>
 
 ## P2P 特别注意
 
-**P2P 只认本人账户和真实到账，别看截图。**
+P2P 常见场景是：你和另一位用户交易，平台按规则提供订单与托管机制。
+**但托管不等于银行转账没有风险。**
 
-这节先讲清P2P 特别注意的基本用途，再通过实际场景理解它的限制与风险。
+如果你是卖币方，对方发来一张「转账成功」截图，不要因为着急就放币。
+截图能伪造，短信能冒充，甚至某些入账还可能涉及后续争议。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。P2P卖币何时放币：确认真实到账后。" data-bad="答错了。P2P卖币何时放币：确认真实到账后。"><h3>想一想</h3><p>P2P卖币何时放币？</p><button type="button" class="option" data-answer="a">A. 确认真实到账后</button><button type="button" class="option" data-answer="b">B. 看到截图后</button><button type="button" class="option" data-answer="c">C. 对方催促时</button><div class="feedback"></div></div>
+安全操作顺序：
+
+1. 只在平台订单内沟通，核对交易对象和收款要求。
+2. 按平台规则使用本人名下账户；
+对第三方付款、账户姓名不符保持警惕。
+3. 自己登录银行官方渠道，核对真实可用余额、交易详情和付款人信息。
+4. 核实符合订单规则后，才按平台流程确认放币。
+5. 有争议就停止操作，保留订单、聊天和银行记录，走平台申诉。
+
+**别踩坑：** 对方催你「先放币，我马上补款」，或者要求转到站外聊天软件，都是暂停交易的理由。
+也不要把银行冻结、拒付、涉诈资金风险理解成「只要钱显示到账就绝对安全」。
+
+<div class="ch03-lab ch04-lab" data-lab="p2p">
+<h3>三张 P2P 消息</h3>
+<p class="lab-kicker">教学模拟。三张卡都在这一屏。没有一键放币。</p>
+<div class="ch04-card">
+<p>① 对方发来转账截图，你的银行还没入账。</p>
+<div class="lab-choices">
+<button type="button" data-card="shot" data-act="check">继续核验</button>
+<button type="button" data-card="shot" data-act="pause">暂停申诉</button>
+<button type="button" data-card="shot" data-act="rule">按平台规则处理</button>
+</div>
+<p class="lab-feedback" hidden aria-live="polite"></p>
+</div>
+<div class="ch04-card">
+<p>② 银行显示入账，但付款人姓名和订单不符。</p>
+<div class="lab-choices">
+<button type="button" data-card="name" data-act="check">继续核验</button>
+<button type="button" data-card="name" data-act="pause">暂停申诉</button>
+<button type="button" data-card="name" data-act="rule">按平台规则处理</button>
+</div>
+<p class="lab-feedback" hidden aria-live="polite"></p>
+</div>
+<div class="ch04-card">
+<p>③ 银行官方渠道已核实到账，付款人与订单一致。</p>
+<div class="lab-choices">
+<button type="button" data-card="paid" data-act="check">继续核验</button>
+<button type="button" data-card="paid" data-act="pause">暂停申诉</button>
+<button type="button" data-card="paid" data-act="rule">按平台规则处理</button>
+</div>
+<p class="lab-feedback" hidden aria-live="polite"></p>
+</div>
+<button type="button" class="lab-reset" data-reset>重置</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。银行还没看到款，就不要放币。在订单里核实。" data-bad="答错了。截图不能证明付款，离开订单也会丢掉平台里的记录。"><h3>想一想</h3><p>买家发来付款截图，但你银行账户没看到款，应该？</p><button type="button" class="option" data-answer="a" data-note="答错了。截图不能证明钱已经到账。">A. 先放币表示信任</button><button type="button" class="option" data-answer="b">B. 不放币，核实并按订单规则处理</button><button type="button" class="option" data-answer="c" data-note="答错了。离开订单会丢掉平台里的记录和保护。">C. 去站外聊天确认</button><div class="feedback"></div></div>
 
 ## 第四步：小额买入现货
 
-**第一次只用小钱买现货，先把流程走通。**
+第一次操作的目标，是**把整个流程看明白**，不是用第一笔交易赚多少钱。
 
-先看交易对和订单类型，核对支付资产、预计获得数量与费用。
-完成后检查订单是否成交，资产是否进入正确账户。
+教学模拟：假设你计划用 20 USDT 试操作。
 
-「快捷兑换」和「现货下单」报价方式可能不同，要比较最终到账数量，而不是只比较标称手续费。
+1. 打开**现货**，确认交易对，例如 BTC/USDT。
+2. 确认是买入 BTC、花费 USDT，而不是方向反了。
+3. 查看订单类型：市价单可能滑点；
+限价单可能无法成交。
+4. 输入金额，检查预计数量、最小下单要求和费用。
+5. 提交前再读一遍确认页；
+成交后检查**实际成交数量与费用**。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。快捷兑换要比较什么：最终到账数量和成本。" data-bad="答错了。快捷兑换要比较什么：最终到账数量和成本。"><h3>想一想</h3><p>快捷兑换要比较什么？</p><button type="button" class="option" data-answer="a">A. 最终到账数量和成本</button><button type="button" class="option" data-answer="b">B. 按钮颜色</button><button type="button" class="option" data-answer="c">C. 广告口号</button><div class="feedback"></div></div>
+教学模拟：假设 BTC 报价 50,000 USDT，20 USDT 在不计费用时约能买到 0.0004 BTC。
+真实成交数量可能因费用、价格变动和平台精度规则不同。
+
+**别踩坑：** 「委托成功」不等于「已全部成交」；
+限价单可能挂在订单簿里，资产处于冻结状态。
+
+<div class="ch03-lab ch04-lab" data-lab="order">
+<h3>无资金模拟下单</h3>
+<p class="lab-kicker">教学模拟。不连接交易接口，也不要求登录。点市价或限价，再点一种状态。</p>
+<div class="lab-choices" role="group" aria-label="订单类型">
+<button type="button" data-side="market" aria-pressed="true">市价</button>
+<button type="button" data-side="limit" aria-pressed="false">限价</button>
+</div>
+<div class="lab-choices" role="group" aria-label="模拟状态">
+<button type="button" data-state="filled">已成交</button>
+<button type="button" data-state="partial">部分成交</button>
+<button type="button" data-state="open">未成交</button>
+</div>
+<p class="lab-result" aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>重置</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。未成交通常是还在等对手盘，不是已经买到，也不等于钱丢了。" data-bad="答错了。未成交不等于钱丢了，也不等于已经买到。"><h3>想一想</h3><p>你提交限价买单，页面显示「未成交」，最合理的理解是？</p><button type="button" class="option" data-answer="a">A. 订单可能仍在等待匹配</button><button type="button" class="option" data-answer="b" data-note="答错了。未成交不等于资产消失。限价单可能还挂着。">B. 钱一定丢了</button><button type="button" class="option" data-answer="c" data-note="答错了。未成交就是还没买到。">C. 已经买到币只是没显示</button><div class="feedback"></div></div>
 
 ## 第五步：理解卖出与提现
 
-**卖出后拿到什么，取决于交易对；
-换回银行里的法币，还要看出金渠道。**
+新手很容易把这三步看成一件事：
 
-卖出后通常先得到交易对的报价资产。
-需要法币时，再使用所在地允许的法币交易与提现渠道。
-检查收款账户、费用与平台限制。
+**卖币**：把 BTC 换成 USDT 等报价资产。
 
-保存交易记录与资金来源凭证。
-所在地监管、申报与税务要求，请从官方监管、税务机关或合适的专业服务查询。
+**提现币**：把交易所资产转到外部链上地址，涉及网络、地址和可能的 Memo / Tag。
+
+**法币出金**：按当地可用方式把资产兑换、结算为法币，再提到银行等收款账户。
+
+教学模拟：你卖出 0.001 BTC 得到约 50 USDT。
+此时如果点「链上提现」，输入的是钱包地址，不是银行账户；
+如果想收到马币，应查找平台或服务商是否提供当地允许的法币出金路径，并比较汇率、费用、到账时间。
+
+**别踩坑：** 提现时核对资产、网络、地址、Memo / Tag、收款平台是否支持；
+大额转账前先做小额测试，但测试成功也不保证后续绝对安全。
+保存交易与资金来源记录，按所在地要求处理税务和合规事项。
 
 小提醒：第一次操作的目标是理解流程，不是证明自己会抓涨幅。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。卖BTC/USDT通常先得到什么：USDT。" data-bad="答错了。卖BTC/USDT通常先得到什么：USDT。"><h3>想一想</h3><p>卖BTC/USDT通常先得到什么？</p><button type="button" class="option" data-answer="a">A. USDT</button><button type="button" class="option" data-answer="b">B. 银行法币</button><button type="button" class="option" data-answer="c">C. 更多BTC</button><div class="feedback"></div></div>
+<div class="ch03-lab ch04-lab" data-lab="goals">
+<h3>三种卖和提</h3>
+<p class="lab-kicker">教学模拟。点每个目标下的去处。手机上直接点，不用拖动。</p>
+<div class="ch04-card" data-row>
+<p>想把 BTC 换成 USDT</p>
+<div class="lab-choices">
+<button type="button" data-goal="swap" data-to="spot">现货卖出</button>
+<button type="button" data-goal="swap" data-to="chain">链上提现</button>
+<button type="button" data-goal="swap" data-to="fiat">法币出金</button>
+</div>
+<p class="lab-feedback" hidden aria-live="polite"></p>
+</div>
+<div class="ch04-card" data-row>
+<p>想把 USDT 转到自己的钱包</p>
+<div class="lab-choices">
+<button type="button" data-goal="wallet" data-to="spot">现货卖出</button>
+<button type="button" data-goal="wallet" data-to="chain">链上提现</button>
+<button type="button" data-goal="wallet" data-to="fiat">法币出金</button>
+</div>
+<p class="lab-feedback" hidden aria-live="polite"></p>
+</div>
+<div class="ch04-card" data-row>
+<p>想把价值换成银行法币</p>
+<div class="lab-choices">
+<button type="button" data-goal="bank" data-to="spot">现货卖出</button>
+<button type="button" data-goal="bank" data-to="chain">链上提现</button>
+<button type="button" data-goal="bank" data-to="fiat">法币出金</button>
+</div>
+<p class="lab-feedback" hidden aria-live="polite"></p>
+</div>
+<button type="button" class="lab-reset" data-reset>重置</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。USDT 还在交易所。要收到银行法币，还得走支持的兑换和出金。" data-bad="答错了。交易所里的 USDT 不是银行存款，币价也不能把它变成银行存款。"><h3>想一想</h3><p>卖出 BTC 得到 USDT 后，USDT 自动变成银行存款了吗？</p><button type="button" class="option" data-answer="a" data-note="答错了。交易所里的 USDT 不是银行里的存款。">A. 是</button><button type="button" class="option" data-answer="b" data-note="答错了。币价不能把交易所资产变成银行存款。">B. 取决于币价</button><button type="button" class="option" data-answer="c">C. 没有，还需完成支持的法币兑换及出金流程</button><div class="feedback"></div></div>
 
 ## 交易所里的几个账户
 
-**平台内划转和链上转账是两回事。**
+你明明有 100 USDT，为什么下单页面显示余额不足？
 
-很多交易所会把资产分放在不同账户里，常见的有：
+很多时候不是币不见了，而是它在**资金账户**，你却打开了**现货交易**；
+或者你有资产在**合约账户**，不能直接用于当前现货订单。
 
-| 账户 / 操作 | 用来做什么 | 要注意 |
+可以把同一交易所的账户理解成几个用途不同的抽屉：
+
+| 位置 | 主要用途 | 常见提醒 |
 |---|---|---|
-| 资金账户 | 充值到账、P2P 买卖、提现常用这里 | 多数平台上，放在这里的币不能直接下现货或合约单 |
-| 现货账户 | 现货买卖、快捷兑换 | 要提现时，可能需要先划回资金账户 |
-| 合约账户 | 作为合约交易的保证金 | 有持仓时，划出可能受限；亏损会直接扣这里的余额 |
-| 账户间划转 | 在同一平台的不同账户之间挪资产 | 只是平台内部记账，不上链，通常不收网络费，几乎即时到账 |
-| 链上提现 | 把币从交易所转到外部钱包或其他平台的地址 | 真正上链，要选网络、填地址，付提现费，到账后无法撤回 |
+| 资金账户 | 充值、P2P、提现等 | 具体功能因平台而异 |
+| 现货账户 | 现货买卖 | 下单前确认可用余额 |
+| 合约账户 | 衍生品保证金 | 可能面临强平、费用及账户模式风险 |
+| 统一交易账户 | 合并部分交易功能 | 不同平台规则不同 |
+| 账户间划转 | 在同一平台的不同账户之间挪资产 | 通常不上链，不收区块链网络费 |
+| 链上提现 | 把币送到外部地址 | 要核对网络和地址，到账后无法撤回 |
 
-「余额不见了」时，先看看是不是放在了别的账户里；
-「下单显示余额不足」时，可能需要先把资产划转到对应账户。
+**账户间划转**通常是同一平台内部记账，不是链上转账，一般不产生区块链网络费；
+**链上提现**则把资产送往外部网络，涉及真实地址和网络确认。
 
-账户名称与划转规则因平台而异，有的平台用「统一账户」合并了现货和合约，以你所用平台的 App 页面和官方说明为准。
+教学模拟：100 USDT 显示在资金账户，现货页可用余额 0。
+你确认平台内部划转页面的「从资金到现货」，划转成功后再检查现货可用余额。
+有些平台使用统一账户，不一定有相同入口。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。同平台账户划转一般上链吗：通常不上链。" data-bad="答错了。同平台账户划转一般上链吗：通常不上链。"><h3>想一想</h3><p>同平台账户划转一般上链吗？</p><button type="button" class="option" data-answer="a">A. 通常不上链</button><button type="button" class="option" data-answer="b">B. 一定上链</button><button type="button" class="option" data-answer="c">C. 一定跨链</button><div class="feedback"></div></div>
+**别踩坑：** 不要因为看到「余额不足」就盲目重新充值；
+先检查账户分类、冻结订单、借贷抵押和可用余额。
+更不要把「划转」误当成「给另一平台 UID 转账」。
+
+<div class="ch03-lab ch04-lab" data-lab="drawers">
+<h3>账户抽屉</h3>
+<p class="lab-kicker">教学模拟。内部划转和链上提现是两个按钮。金额不能小于 0，也不能超过可用余额。</p>
+<div class="lab-stats">
+<div><span>资金账户</span><b data-fund>100 USDT</b></div>
+<div><span>现货账户</span><b data-spot>0 USDT</b></div>
+<div><span>合约账户</span><b data-perp>0 USDT</b></div>
+</div>
+<div class="lab-choices">
+<button type="button" data-move>内部划转 40 USDT 到现货</button>
+<button type="button" data-undo>撤销上一步</button>
+<button type="button" data-chain>链上提现（单独核对）</button>
+</div>
+<p class="lab-result" aria-live="polite"></p>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。先看是不是还在资金账户，再决定要不要在平台内部划转。" data-bad="答错了。先核对账户。不要重复充值，也不要把币发给客服。"><h3>想一想</h3><p>交易所现货页显示 0 USDT，但资金账户有 100 USDT，第一步应该？</p><button type="button" class="option" data-answer="a" data-note="答错了。可能只是放在另一个账户，再充会重复入金。">A. 再充值 100</button><button type="button" class="option" data-answer="b">B. 核对账户类型和是否需要内部划转</button><button type="button" class="option" data-answer="c" data-note="答错了。不要把币发给客服。那是把资产交出去。">C. 把币发给客服 UID</button><div class="feedback"></div></div>
 
 # 05｜CEX 交易所导航 🏦
 

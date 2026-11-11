@@ -542,7 +542,244 @@
       else if (kind === 'fees') mountFeeLab(lab);
       else if (kind === 'recover') mountRecoverLab(lab);
       else if (kind === 'check') mountCheckLab(lab);
+      else if (kind === 'route') mountRouteLab(lab);
+      else if (kind === 'uid') mountUidLab(lab);
+      else if (kind === 'secure') mountSecureLab(lab);
+      else if (kind === 'quote') mountQuoteLab(lab);
+      else if (kind === 'p2p') mountP2pLab(lab);
+      else if (kind === 'order') mountOrderLab(lab);
+      else if (kind === 'goals') mountGoalsLab(lab);
+      else if (kind === 'drawers') mountDrawerLab(lab);
     });
+  }
+  function mountRouteLab(lab) {
+    var notes = {
+      bank: '教学模拟：这是银行账户里的法币，由银行和支付体系处理。',
+      channel: '教学模拟：入金渠道处理的是法币支付。钱还没变成你钱包里的币。',
+      ex: '教学模拟：这是交易所账户。平台记账，资产由平台保管。它不是自托管钱包。',
+      sell: '教学模拟：卖出后你拿到的是报价资产，例如 USDT。它还不是银行里的法币。',
+      fiat: '教学模拟：法币出金渠道才把价值换成当地法币。不是每个地区都开放。',
+      bank2: '教学模拟：走到这里，你持有的才是银行里的法币。交易所显示成功，不等于银行已入账。',
+      net: '教学模拟：链上提现要先选网络。这条路和法币出金不是同一个按钮。',
+      chain: '教学模拟：链上提现把资产送到外部地址。输入的是链上地址，不是银行账号。',
+      wallet: '教学模拟：自托管钱包里是链上资产。转错或泄露密钥，往往无法撤销。'
+    };
+    lab.querySelectorAll('[data-node]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        lab.querySelectorAll('[data-node]').forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+        labResult(lab, notes[btn.getAttribute('data-node')]);
+      });
+    });
+    lab.querySelector('[data-reset]').addEventListener('click', function () {
+      lab.querySelectorAll('[data-node]').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+      var el = lab.querySelector('.lab-result');
+      if (el) { el.hidden = true; el.textContent = ''; }
+    });
+  }
+  function mountUidLab(lab) {
+    var box = lab.querySelector('.lab-feedback');
+    lab.querySelector('[data-uid="move"]').addEventListener('click', function () {
+      labSayEl(box, '答错了。教学模拟：UID 123456 从 Alpha Global 拿到 Alpha Local，不能由相同数字推断为同一用户。', true);
+    });
+    lab.querySelector('[data-uid="check"]').addEventListener('click', function () {
+      labSayEl(box, '答对了。教学模拟：只有平台官方文档确认互通，并且收款人信息核对完整，才可以考虑平台内转账。', false);
+    });
+    lab.querySelector('[data-reset]').addEventListener('click', function () { labQuietEl(box); });
+  }
+  function labSayEl(el, text, bad) {
+    if (!el) return;
+    el.hidden = false;
+    el.classList.toggle('wrong', !!bad);
+    el.textContent = text;
+  }
+  function labQuietEl(el) {
+    if (!el) return;
+    el.hidden = true;
+    el.textContent = '';
+    el.classList.remove('wrong');
+  }
+  function mountSecureLab(lab) {
+    var items = [
+      { why: '广告排名不等于官方认证。', how: '核对完整域名、应用开发者和平台提示。', bad: '把搜索结果的第一条当成官网。' },
+      { why: '邮箱是账户恢复的重要入口。', how: '用独立强密码，并打开邮箱支持的双重验证。', bad: '和交易所共用一个弱密码。' },
+      { why: '登录被拿走，资产就可能被动。', how: '优先用平台支持的通行密钥或验证器。', bad: '开了双重验证就去点短信里的链接。' },
+      { why: '提款是资产离开账户的门。', how: '按平台功能打开地址白名单、防钓鱼码和设备提醒。', bad: '先把钱充进去，保护以后再说。' },
+      { why: '手机丢了还要能恢复账户。', how: '按官方方式保存恢复材料，不发给任何人。', bad: '把恢复码或证件发给私信里的客服。' }
+    ];
+    var seen = {};
+    lab.querySelectorAll('[data-sec]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var i = Number(btn.getAttribute('data-sec'));
+        seen[i] = true;
+        var it = items[i];
+        var n = Object.keys(seen).length;
+        lab.querySelectorAll('[data-sec]').forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+        labResult(lab, '为什么重要：' + it.why + ' 如何确认：' + it.how + ' 常见误区：' + it.bad + ' 已查看 ' + n + ' / 5。这只是学习进度，不代表账户 100% 安全。');
+      });
+    });
+    lab.querySelector('[data-reset]').addEventListener('click', function () {
+      seen = {};
+      lab.querySelectorAll('[data-sec]').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+      var el = lab.querySelector('.lab-result');
+      if (el) { el.hidden = true; el.textContent = ''; }
+    });
+  }
+  function mountQuoteLab(lab) {
+    var rows = [
+      { name: '渠道 A', fee: 0, feeText: '明示费用 0', got: 19.6 },
+      { name: '渠道 B', fee: 2, feeText: '明示费用 2 单位法币', got: 20.1 }
+    ];
+    var box = lab.querySelector('[data-rows]');
+    function draw(list, note) {
+      box.innerHTML = list.map(function (r) {
+        return '<div><span>' + r.name + ' · 支付 100 单位法币</span><b>' + r.got + ' USDT</b><span>' + r.feeText + '</span><span>到账时间未知。退款政策需核对。不标最佳。</span></div>';
+      }).join('');
+      labResult(lab, note);
+    }
+    lab.querySelector('[data-sort="fee"]').addEventListener('click', function () {
+      draw(rows.slice().sort(function (a, b) { return a.fee - b.fee; }), '教学模拟：按明示费用，渠道 A 排在前面。A 最终只有 19.6 USDT，B 有 20.1 USDT。费用写着 0，不一定到手更多。两边都不标最佳。');
+    });
+    lab.querySelector('[data-sort="got"]').addEventListener('click', function () {
+      draw(rows.slice().sort(function (a, b) { return b.got - a.got; }), '教学模拟：按最终到账，渠道 B 排到前面，顺序反过来了。20.1 USDT 多于 19.6 USDT。这仍不是最佳标签，还要核对时间和退款。');
+    });
+    draw(rows, '教学模拟：两边都支付 100 单位法币。点一种排序，看顺序会不会反过来。');
+  }
+  function mountP2pLab(lab) {
+    var book = {
+      shot: {
+        check: ['答对了。截图不是到账。银行还没入账，继续在订单里核验，不要放币。', false],
+        pause: ['答错了。可以停下来，但这一步要先看银行官方渠道。截图仍然不能放币。', true],
+        rule: ['答错了。银行还没看到款，不能按已付款处理，更不能放币。', true]
+      },
+      name: {
+        check: ['答错了。付款人姓名已经和订单不符，不要当作还要再等一等就放币。', true],
+        pause: ['答对了。姓名不符。先暂停，保留订单、聊天和银行记录，走平台申诉。', false],
+        rule: ['答错了。姓名不符时，不能按“钱显示到了就放币”处理。', true]
+      },
+      paid: {
+        check: ['答错了。官方渠道已经核实到账。下一步是按平台规则处理，不要改去站外。', true],
+        pause: ['答错了。付款人和订单一致，不必因为一张截图去申诉。仍要按平台规则操作。', true],
+        rule: ['答对了。银行官方渠道已核实，付款人与订单一致。按平台流程处理。不同地区的规则仍要以平台为准。', false]
+      }
+    };
+    lab.querySelectorAll('[data-card]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var card = btn.closest('.ch04-card');
+        var pair = book[btn.getAttribute('data-card')][btn.getAttribute('data-act')];
+        card.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+        labSayEl(card.querySelector('.lab-feedback'), pair[0], pair[1]);
+      });
+    });
+    lab.querySelector('[data-reset]').addEventListener('click', function () {
+      lab.querySelectorAll('.ch04-card').forEach(function (card) {
+        card.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+        labQuietEl(card.querySelector('.lab-feedback'));
+      });
+    });
+  }
+  function mountOrderLab(lab) {
+    var mode = 'market';
+    var state = '';
+    var modeText = {
+      market: '市价：成交价格不保证，可能有滑点。',
+      limit: '限价：成交不保证。可能只成交一部分，或一直挂着。'
+    };
+    var stateText = {
+      filled: '状态：已成交。教学模拟，20 USDT 按 50,000 的报价、不计费用，约 0.0004 BTC。真实数量还要看费用和精度。',
+      partial: '状态：部分成交。教学模拟。只买到一部分，剩下的委托还在。委托成功不等于全部成交。',
+      open: '状态：未成交。教学模拟。订单可能仍在等待匹配。钱不一定丢了，币也还没买到。'
+    };
+    function paint() {
+      var text = '教学模拟：BTC/USDT = 50,000。花费 20 USDT，不计费用约 0.0004 BTC。' + modeText[mode];
+      if (state) text += stateText[state];
+      labResult(lab, text);
+    }
+    lab.querySelectorAll('[data-side]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        mode = btn.getAttribute('data-side');
+        lab.querySelectorAll('[data-side]').forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+        paint();
+      });
+    });
+    lab.querySelectorAll('[data-state]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        state = btn.getAttribute('data-state');
+        lab.querySelectorAll('[data-state]').forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+        paint();
+      });
+    });
+    lab.querySelector('[data-reset]').addEventListener('click', function () {
+      mode = 'market';
+      state = '';
+      lab.querySelectorAll('[data-side], [data-state]').forEach(function (b) {
+        b.setAttribute('aria-pressed', b.getAttribute('data-side') === 'market' ? 'true' : 'false');
+      });
+      paint();
+    });
+    paint();
+  }
+  function mountGoalsLab(lab) {
+    var book = {
+      swap: {
+        spot: ['答对了。现货卖出把 BTC 换成 USDT。USDT 还在交易所里，不是银行存款。', false],
+        chain: ['答错了。链上提现是把币送到钱包地址，不是把 BTC 换成 USDT。', true],
+        fiat: ['答错了。法币出金去的是银行。这一步你要的是交易所里的 USDT。', true]
+      },
+      wallet: {
+        spot: ['答错了。现货卖出只是换成报价资产，USDT 还在交易所。', true],
+        chain: ['答对了。链上提现才把 USDT 送到你自己的钱包。要核对网络和地址。', false],
+        fiat: ['答错了。法币出金去的是银行，不是你的链上钱包。', true]
+      },
+      bank: {
+        spot: ['答错了。卖掉只得到交易所里的报价资产，不是银行存款。', true],
+        chain: ['答错了。链上地址不是银行账户。资产会停在链上。', true],
+        fiat: ['答对了。想换成银行法币，要走当地支持的法币兑换和出金。不是每个地区都开放。', false]
+      }
+    };
+    lab.querySelectorAll('[data-goal]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var row = btn.closest('[data-row]');
+        var pair = book[btn.getAttribute('data-goal')][btn.getAttribute('data-to')];
+        row.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+        labSayEl(row.querySelector('.lab-feedback'), pair[0], pair[1]);
+      });
+    });
+    lab.querySelector('[data-reset]').addEventListener('click', function () {
+      lab.querySelectorAll('[data-row]').forEach(function (row) {
+        row.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+        labQuietEl(row.querySelector('.lab-feedback'));
+      });
+    });
+  }
+  function mountDrawerLab(lab) {
+    var fund = 100, spot = 0, perp = 0;
+    var stack = [];
+    function paint(note) {
+      lab.querySelector('[data-fund]').textContent = fund + ' USDT';
+      lab.querySelector('[data-spot]').textContent = spot + ' USDT';
+      lab.querySelector('[data-perp]').textContent = perp + ' USDT';
+      labResult(lab, note);
+    }
+    lab.querySelector('[data-move]').addEventListener('click', function () {
+      if (fund < 40) {
+        paint('教学模拟：资金账户可用 ' + fund + ' USDT，不能划转 40。余额不能小于 0，也不能超过可用余额。');
+        return;
+      }
+      stack.push({ fund: fund, spot: spot, perp: perp });
+      fund -= 40;
+      spot += 40;
+      paint('教学模拟：内部划转 40 USDT 到现货。现在是资金 ' + fund + ' / 现货 ' + spot + ' / 合约 ' + perp + '。无链上网络费（模拟）。这不是给另一个平台转账。');
+    });
+    lab.querySelector('[data-undo]').addEventListener('click', function () {
+      var prev = stack.pop();
+      if (!prev) { paint('教学模拟：没有可以撤销的划转。现在是资金 ' + fund + ' / 现货 ' + spot + ' / 合约 ' + perp + '。'); return; }
+      fund = prev.fund; spot = prev.spot; perp = prev.perp;
+      paint('教学模拟：已撤销上一步。现在是资金 ' + fund + ' / 现货 ' + spot + ' / 合约 ' + perp + '。');
+    });
+    lab.querySelector('[data-chain]').addEventListener('click', function () {
+      paint('教学模拟：链上提现要单独核对网络和地址。它不是刚才的内部划转，这里不会移动余额，也不会真的提现。现在仍是资金 ' + fund + ' / 现货 ' + spot + ' / 合约 ' + perp + '。');
+    });
+    paint('教学模拟：资金账户 100 USDT，现货 0，合约 0。');
   }
   function mountPairLab(lab) {
     var tabs = lab.querySelectorAll('[data-pair]');

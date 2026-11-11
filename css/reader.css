@@ -254,6 +254,9 @@ body.is-reader .course-reader .tools{border:1px solid rgba(230,199,158,.28);bord
 .course-reader .ch03-lab .lab-book,.course-reader .ch03-lab .lab-facts{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:8px}
 .course-reader .ch03-lab .lab-book li{display:flex;justify-content:space-between;gap:8px}
 .course-reader .ch03-lab .lab-facts li.is-hit{outline:1px solid #e6c79e}
+.course-reader .ch04-card{background:#120f1d;border-radius:12px;padding:12px;margin:8px 0}
+.course-reader .ch04-card p{margin:0 0 8px;color:#e5dce9;line-height:1.6}
+.course-reader .ch04-card .lab-choices button{flex:1 1 140px}
 @media(max-width:420px){
   .course-reader .ch03-lab{padding:14px}
   .course-reader .ch03-lab .lab-cols,.course-reader .ch03-lab .lab-stats{grid-template-columns:1fr}
