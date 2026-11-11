@@ -62,7 +62,7 @@ Focus on custody, seed phrases, approvals, and transfer checks.
 
 ## What is the crypto scene?
 
-**The crypto scene is the market and community around cryptocurrency. Buying coins is only one way to take part.**
+**The crypto scene is the market and community around cryptocurrency, and buying coins is only one way to take part.**
 
 "Crypto scene" is an everyday way of talking about the market and community around cryptocurrency, blockchains, and related apps.
 Some people trade, some build apps, and some study the technology, payments, games, digital collectibles, and on-chain finance.
@@ -88,7 +88,7 @@ A record that resists tampering does not mean the information that was entered, 
 
 ## What is a cryptocurrency?
 
-**A cryptocurrency is a digital asset on a chain. There are many kinds, and the risks are not the same.**
+**A cryptocurrency is a digital asset on a chain; there are many kinds, and their risks differ.**
 
 Cryptocurrencies are digital assets managed with cryptography and the rules of a network.
 Uses, how they are issued, and risks differ a lot. Do not treat them all as the same kind of investment.
@@ -101,7 +101,7 @@ Many tokens are issued by contracts on a chain that already exists.
 
 ## Where BTC came from
 
-**Bitcoin was the first cryptocurrency. It started running in 2009, and the cap is about 21 million coins.**
+**Bitcoin was the first cryptocurrency; it started running in 2009, and its supply is capped at about 21 million coins.**
 
 October 31, 2008
 An author using the name "Satoshi Nakamoto" published the Bitcoin white paper :
@@ -127,7 +127,7 @@ Scarcity is one of its properties. It does not guarantee that the price only ris
 
 ## Coin or token?
 
-**A native coin belongs to a chain itself. A token is issued on someone else's chain.**
+**A native coin belongs to a chain itself, and a token is issued on someone else's chain.**
 
 A common distinction: a native coin belongs to a network itself.
 A token is issued on a network that already exists.
@@ -140,7 +140,7 @@ The same name does not mean they were issued the same way.
 
 ## What is a public chain?
 
-**A public chain is a blockchain anyone can use. You cannot send between chains as if they were the same place.**
+**A public chain is a blockchain anyone can use, and you cannot send between chains as if they were the same place.**
 
 A public chain is usually an open blockchain network, for example Bitcoin, Ethereum, TRON, BNB Chain, and Solana.
 Fees, speed, apps, and security assumptions differ from chain to chain.
@@ -165,7 +165,7 @@ It also does not mean the app is usable or safe.
 
 ## What is a smart contract?
 
-**A smart contract is a program on a chain that runs by its code. If the code has a bug, things can go wrong.**
+**A smart contract is a program on a chain that runs by its code, and if the code has a bug, things can go wrong.**
 
 A smart contract is a program deployed on a blockchain that executes by its code.
 Swaps, lending, and token issuance are often done by one.
@@ -177,7 +177,7 @@ Do not assume it is reliable just because it is called smart.
 
 ## What is a stablecoin?
 
-**A stablecoin aims to stay 1:1 with the dollar. It is not a bank deposit, and it can lose that peg.**
+**A stablecoin aims to stay 1:1 with the dollar, but it is not a bank deposit, and it can lose that peg.**
 
 A stablecoin aims to track a reference value, often 1 US dollar, for example USDT and USDC.
 Different stablecoins may use fiat reserves, crypto collateral, or other mechanisms.
@@ -207,7 +207,7 @@ It does not keep the blockchain's books, and it does not guarantee the price on 
 
 ## Why do prices move?
 
-**The price is set by buyers and sellers. A rise does not mean it is worth more, and a drop does not mean it is cheaper.**
+**The price is set by buyers and sellers; a rise does not mean it is worth more, and a drop does not mean it is cheaper.**
 
 The trading price is formed by buying and selling in the market.
 It can be moved by demand, liquidity, expectations, changes in supply, leverage, the broader economy, and news.
@@ -223,7 +223,7 @@ Note: Look at what it is and why it exists before you decide to take part.
 
 ## Primary market: issuance and early funding
 
-**The primary market is the subscription when a coin is first issued. Early does not mean easier money.**
+**The primary market is the subscription when a coin is first issued, and early does not mean easier money.**
 
 The primary market usually means the first issuance, the funding, or the subscription.
 In crypto, common forms include private sales, public sales, token issuances, and some Launchpad events.
@@ -272,7 +272,7 @@ They also do not guarantee a future token or a reward.
 
 ## What are lockups and unlocks?
 
-**A lockup means you cannot sell for a while. After the unlock, more of the coin can be sold.**
+**A lockup means you cannot sell for a while, and after the unlock, more of the coin can be sold.**
 
 A lockup means the asset cannot be transferred or withdrawn for a time, under certain conditions.
 An unlock means the restriction is lifted on a schedule.
@@ -286,7 +286,7 @@ An unlock does not mean the price will definitely rise.
 
 ## CEX and DEX
 
-**CEX / DEX is about where you trade. It is not the same thing as a primary or secondary market.**
+**CEX / DEX is about where you trade, and it is not the same thing as a primary or secondary market.**
 
 CEX and DEX classify the venue. They are not the primary / secondary distinction.
 The difference is in [Chapter 05, "How is a CEX different from a DEX?"](#/c/05).
@@ -783,7 +783,7 @@ Losing the device does not automatically mean the assets are gone. Whether you c
 
 ## Seed phrase and private key: do not share, do not upload
 
-**Do not give a seed phrase or a private key to anyone. Real support will not ask for it either.**
+**Do not give a seed phrase or a private key to anyone, and real support will not ask for it either.**
 
 Do not send it to support, to a friend, to a project, or to an AI.
 Do not type it into any web form.
@@ -799,7 +799,7 @@ If anyone asks for it, stop, and do not keep talking.
 
 ## Fake sites and fake apps
 
-**Links in search results and ads can be fake. Use only an official entrance you have already checked.**
+**Links in search results and ads can be fake, so use only an official entrance you have already checked.**
 
 Search results, ads, social accounts, and pinned group messages can all carry lookalike links.
 Read the full domain first, then cross-check it with a trusted official channel.
@@ -814,7 +814,7 @@ Do not use a seed phrase that someone else set up in advance.
 
 ## Connecting, signing, and approving are not the same thing
 
-**Connecting a wallet does not usually move the coins. A careless signature or a careless approval can.**
+**Connecting a wallet does not usually move the coins, but a careless signature or a careless approval can.**
 
 Connecting a wallet usually lets an app see the address and request a permission.
 That does not by itself mean the assets have already been moved.
@@ -842,7 +842,7 @@ A page titled "log in" does not mean it is only a login.
 
 ## What can help you inspect a signature?
 
-**A security extension can warn you. You still have to understand the request yourself.**
+**A security extension can warn you, and you still have to understand the request yourself.**
 
 GoPlus can help check tokens, approvals, and some on-chain risks.
 The result is only a reference. It cannot guarantee that assets are absolutely safe.
@@ -865,7 +865,7 @@ No check requires you to give the tool your seed phrase.
 
 ## Disconnecting is not the same as revoking
 
-**After you disconnect a site, an approval you already gave is still there. It has to be revoked separately.**
+**After you disconnect a site, an approval you already gave is still there, and it has to be revoked separately.**
 
 Disconnecting only changes the current connection.
 An approval already written on-chain is still valid.
@@ -879,7 +879,7 @@ If the seed phrase or private key has already leaked, revoking an approval is no
 
 ## Unlimited approval
 
-**An unlimited approval saves one confirmation. If something goes wrong, a large amount of that coin can be moved.**
+**An unlimited approval saves one confirmation, and if something goes wrong, a large amount of that coin can be moved.**
 
 An unlimited approval lets the other side use a very large token allowance, without a new approval each time.
 It is more convenient, and it also magnifies the loss from a contract bug or a malicious permission.
@@ -973,7 +973,7 @@ Do not send the key to a stranger's bot, and do not publish it in a code reposit
 
 ## Privacy needs protecting too
 
-**Many people can look up an on-chain transfer. A wallet that does not show a real name does not mean you cannot be found.**
+**Many people can look up an on-chain transfer, and a wallet that does not show a real name does not mean you cannot be found.**
 
 Transactions on many public chains can be looked up in public.
 A public address can be tied to a balance, to habits, and to an identity.
@@ -1283,7 +1283,7 @@ Note: For every activity, ask four things: what it is, how you take part, what i
 
 ## Serious terms
 
-**Serious terms are community shorthand. You need the meaning before you can tell a slogan from a fact.**
+**Serious terms are community shorthand, and you need the meaning before you can tell a slogan from a fact.**
 
 The table below lists common words in their existing wording.
 Knowing the meaning is so you can understand what other people are saying.
@@ -1334,7 +1334,7 @@ It does not turn a slogan into a fact.
 
 ## Community jokes
 
-**Community jokes are teasing. They are not trading advice.**
+**Community jokes are teasing, and they are not trading advice.**
 
 The lines below are teasing.
 They are not a judgment of everyone's real intent.
@@ -1462,6 +1462,8 @@ Every tool answers only part of the question. After you find a number, you still
 
 ## A deposit has not arrived
 
+Success on-chain is not the same as a credit at the exchange: check the network, the Memo, and the confirmations, then use the official channel, and do not send again or hand over a seed phrase.
+
 **The money has been sent, and the exchange is not showing a balance.**
 Do not rush to send it again.
 
@@ -1477,6 +1479,8 @@ A success on-chain and a credit on the platform are two different things. Arriva
 
 ## A withdrawal stays on "processing"
 
+While a withdrawal stays on processing, read the order and look for a TxID; if there is none, use the official entrance, and do not pay a speed-up fee to a private message.
+
 **The withdrawal page keeps spinning. Look at the order status first, then look for a TxID.**
 
 No TxID usually means you cannot yet confirm that the transaction has been broadcast to the chain.
@@ -1488,6 +1492,8 @@ Do not send a so-called fee to someone who messages you and says they can speed 
 <div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. When there is no TxID, read the platform order and notices first, then use the official entrance. Do not pay a speed-up fee to a private message." data-bad="Not quite. Without a TxID you cannot yet confirm it is on-chain. Guessing a hash, or paying a speed-up fee, does not replace the official order."><h3>Think it through</h3><p>Fictional teaching example: the order says processing, and there is no TxID. Which next step is the steadier one?</p><button type="button" class="option" data-answer="a">A. Guess a hash in a block explorer and look that up</button><button type="button" class="option" data-answer="b">B. Read the platform order and notices, and contact official support</button><button type="button" class="option" data-answer="c">C. Pay a speed-up fee to the support account that messaged you</button><div class="feedback"></div></div>
 
 ## Sent to the wrong address or the wrong network
+
+If you sent to the wrong address or the wrong network, give the TxID to the receiver's official channel and ask whether recovery is possible; recovery is not guaranteed, and do not send again or give away a seed phrase.
 
 **Sending to the wrong address and sending on the wrong network are not the same problem.**
 
@@ -1504,6 +1510,8 @@ In every case, recovery is not guaranteed.
 
 ## You forgot the Memo / Tag
 
+If the Memo or Tag was left blank, keep the TxID and the order and use the official process; recovery follows the platform's rules and is not guaranteed.
+
 **Some platforms share one deposit address among many users. The Memo or Tag is what says which account the money belongs to.**
 
 The address and the network can both be right, and the chain can show success, and a missing Memo can still mean the money reached the platform's address without being credited to your account.
@@ -1514,6 +1522,8 @@ Whether recovery is offered, how long it takes, and whether it costs money all d
 <div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. A missing Memo means you keep the TxID and the order, and you use the platform's official process. Whether it can be recovered depends on the platform's rules, and it is not guaranteed." data-bad="Not quite. Another deposit does not fill in the Memo on the previous one. You also cannot edit the record on a block explorer."><h3>Think it through</h3><p>Fictional teaching example: the deposit address is correct, the Memo was left blank, and the chain already shows success. What next?</p><button type="button" class="option" data-answer="a">A. Deposit again immediately, and put the Memo on the next transfer</button><button type="button" class="option" data-answer="b">B. Gather the TxID and the order, and submit them through the official missing-Memo process</button><button type="button" class="option" data-answer="c">C. Edit the record on the block explorer</button><div class="feedback"></div></div>
 
 ## The wallet does not show the asset
+
+When the wallet screen shows no coins, check the account, the network, and whether this token is displayed, and do not upload a seed phrase.
 
 **A coin suddenly missing from the wallet screen does not mean the coin is definitely gone.**
 
@@ -1528,6 +1538,8 @@ Do not believe anyone who says you must enter a seed phrase to sync the balance.
 
 ## A transaction failed or is stuck
 
+When a transaction fails or sticks, first check whether it is pending, failed, or never broadcast; a failure may already have spent the network fee, so do not keep tapping blindly.
+
 **An on-chain transaction has not finished. First find out whether it is pending, failed, or never broadcast.**
 
 While it is pending, some networks and wallets can speed it up or replace it, but not every chain works the same way.
@@ -1539,6 +1551,8 @@ Read the transaction record and the official instructions first, then decide whe
 <div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. A failed transaction may already have spent the network fee. Read the reason and the official instructions first, and do not keep tapping." data-bad="Not quite. A failure does not mean the network fee comes back. Submitting again and again does not guarantee the next one succeeds."><h3>Think it through</h3><p>Fictional teaching example: the explorer shows this transaction failed, and the network fee was already charged. What should you do?</p><button type="button" class="option" data-answer="a">A. A failure always refunds the network fee</button><button type="button" class="option" data-answer="b">B. Look up why it failed, then decide whether to try again</button><button type="button" class="option" data-answer="c">C. Keep submitting until one succeeds</button><div class="feedback"></div></div>
 
 ## You suspect a bad approval or a bad signature
+
+If you suspect a bad signature or approval, stop first; disconnecting is not the same as revoking, so check and revoke it, then judge the risk that remains.
 
 **If you just signed or approved something on a site you do not know, stop. Do not click another popup on that site.**
 
@@ -1553,17 +1567,23 @@ Do not treat "I disconnected the site" as "the risk is gone".
 
 ## The seed phrase or private key leaked
 
+Once a seed phrase or private key has leaked, changing a password or reinstalling does not retire the old key, so create a new wallet before you judge how to move what remains.
+
 **If a seed phrase or private key has been given to someone else, uploaded to a web page, or exposed in an environment you do not trust, that wallet is no longer safe.**
 
-First, on a device you trust, create a wallet with a brand-new key.
-Then judge how to move any remaining assets there safely.
-Changing the app password, uninstalling the wallet, or revoking an approval cannot make a leaked private key stop working.
-If you suspect a program is automatically sweeping assets, sending more network fee to the old wallet can be swept immediately too.
-In that situation, get help from a professional source you trust first.
+<p class="keep-lines">First, on a device you trust, create a wallet with a brand-new key.<br>
+Then judge how to move any remaining assets there safely.<br>
+Changing only the app password, uninstalling the wallet, or revoking an approval<br>
+cannot make a private key that has already leaked stop working.<br>
+If you suspect a program is automatically sweeping assets, and you add network fee to the old wallet,<br>
+that fee may be swept away immediately too.<br>
+In that situation, seek trusted professional help first.</p>
 
 <div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. A leaked private key does not stop working because you changed a password or reinstalled. Use a new key first, then consider how to move what remains." data-bad="Not quite. Changing a password and uninstalling cannot make the old private key stop working. Do not keep treating that address as a safe wallet."><h3>Think it through</h3><p>Fictional teaching example: the seed phrase was already sent to fake support. Can the old address still be used as a safe wallet?</p><button type="button" class="option" data-answer="a">A. Yes. Change the login password and keep using it</button><button type="button" class="option" data-answer="b">B. No. Create a brand-new wallet, then judge how to move the remaining assets safely</button><button type="button" class="option" data-answer="c">C. After you uninstall and reinstall, the old private key stops working</button><div class="feedback"></div></div>
 
 ## The exchange account may have been taken over
+
+If the exchange account may have been taken over, restrict it from the official entrance first, then check the email, the API, and the withdrawal settings, and do not give a verification code to a private message.
 
 **If you see an unfamiliar login, a withdrawal record, or an API action, restrict the account through the exchange's official entrance first.**
 
@@ -1579,6 +1599,8 @@ The order of work is to stop further loss first.
 
 ## A second scam, after the first
 
+If someone asks you to pay first, hand over a seed phrase, or give remote control to recover funds, that is not a reliable method, so use only the official channel.
+
 **Right after a funds problem, you are easiest for a "recovery expert", "technical support", or a "paid unfreeze" pitch to find.**
 
 Be very wary of a private message that promises a one-hundred-percent recovery, asks for a deposit first, asks for a seed phrase, or asks to control your device remotely.
@@ -1589,6 +1611,8 @@ Do not hand the remaining assets to a stranger just because you want the money b
 <div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. Paying first, asking for a seed phrase, or asking for remote control is not a reliable way to recover funds. Use only the official channel." data-bad="Not quite. Do not pay first, and do not give a private key to someone in a private message. Wanting it back quickly is not a reason to hand over what remains."><h3>Think it through</h3><p>Fictional teaching example: someone messages you and says that paying 50 USDT first will recover the lost coins. What should you do?</p><button type="button" class="option" data-answer="a">A. Pay first, so you do not miss the recovery window</button><button type="button" class="option" data-answer="b">B. Refuse to pay, and check only through the official channel</button><button type="button" class="option" data-answer="c">C. Send them the private key, to prove the address is yours</button><div class="feedback"></div></div>
 
 ## What to have ready when you ask for help
+
+When you ask for help, have the TxID, the order number, and what happened ready; use the official channel, and never provide a seed phrase or a private key.
 
 **Before you contact support, write down a short record of the problem.**
 
@@ -1742,7 +1766,7 @@ Because they are two independent accounts, you have to confirm before a transfer
 
 ## The UID is right — why can the transfer still go wrong?
 
-**A UID is only a user number inside one platform. It is not a receiving identity for the whole industry.**
+**A UID is only a user number inside one platform, not a receiving identity for the whole industry.**
 
 <div class="diagram"><h3>The same number does not mean the same recipient</h3>
 <div class="orbit-scene" aria-label="Two platforms each manage their own UIDs. The same number does not mean the same recipient"><div class="space-glow"></div><div class="orbit-ring ring-a"></div><div class="orbit-ring ring-b"></div>
@@ -1757,8 +1781,7 @@ Because they are two independent accounts, you have to confirm before a transfer
 
 ## Before you transfer, get used to a three-step check
 
-**Before a transfer, confirm the platform, then confirm the receiving details and the network.**
-Especially the first time you transfer somewhere, test a small amount before you send a large one.
+**Before a transfer, confirm the platform, then the receiving details and the network; the first time you send somewhere, test a small amount before a large one.**
 
 <div class="diagram"><h3>The safety check before a transfer</h3>
 <div class="cosmic-scene check-scene" role="img" aria-label="Three stages: confirm the platform, check the receiving details and the network, then test a small amount"><div class="check-track"><div class="track-line"></div>

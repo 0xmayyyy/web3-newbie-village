@@ -1457,6 +1457,8 @@ Ethereum 安全资料：https://ethereum.org/security/
 # 15｜出问题了怎么办？🆘
 ## 充值没到账
 
+链上显示成功还不等于交易所入账，先核对网络、Memo 和确认数，再走官方渠道，不要再转一次，也不要交出助记词。
+
 **钱转出去了，交易所却没显示余额。**
 先别急着再转一次。
 
@@ -1472,6 +1474,8 @@ Ethereum 安全资料：https://ethereum.org/security/
 
 ## 提现一直处理中
 
+提现一直处理中时，先看订单和有没有 TxID，没有 TxID 就走官方入口，不要向私信付加速费。
+
 **提现页面一直转圈。先看订单状态，再找 TxID。**
 
 没有 TxID，通常说明你还不能确认交易已经广播到链上。
@@ -1483,6 +1487,8 @@ Ethereum 安全资料：https://ethereum.org/security/
 <div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。没有 TxID 时，先看平台订单和公告，再走官方入口。不要向私信支付加速费。" data-bad="答错了。没有 TxID 就还不能确认已经上链。猜哈希或付加速费都不能代替官方订单。"><h3>想一想</h3><p>教学虚构：订单显示处理中，而且没有 TxID。下一步更稳妥的是哪一个？</p><button type="button" class="option" data-answer="a">A. 到区块浏览器里猜一个哈希去查</button><button type="button" class="option" data-answer="b">B. 查看平台订单和公告，并联系官方支持</button><button type="button" class="option" data-answer="c">C. 给私信里的客服付一笔加速费</button><div class="feedback"></div></div>
 
 ## 转错地址或网络
+
+转错地址或转错网络时，把 TxID 交给收款方的官方渠道询问能否恢复，恢复不能保证，不要再转一次或交出助记词。
 
 **转错地址和转错网络不是同一种问题。**
 
@@ -1499,6 +1505,8 @@ Ethereum 安全资料：https://ethereum.org/security/
 
 ## 忘填 Memo / Tag
 
+漏填 Memo 或 Tag 时，留下 TxID 和订单走官方流程，能否找回按平台规则，不能保证。
+
 **有些平台的充值地址由多个用户共用。Memo 或 Tag 用来识别这笔钱属于哪个账户。**
 
 地址和网络都正确，链上也成功，但忘了填 Memo，钱可能已经到达平台地址，却没有自动记到你的账户。
@@ -1509,6 +1517,8 @@ Ethereum 安全资料：https://ethereum.org/security/
 <div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。漏填 Memo 要留下 TxID 和订单，走平台官方流程。能否找回按平台规则，不能保证。" data-bad="答错了。再充一笔不能补上上一笔的 Memo。区块浏览器上的记录也不能由你改掉。"><h3>想一想</h3><p>教学虚构：充值地址正确，但 Memo 留空，链上已经成功。接下来该怎么做？</p><button type="button" class="option" data-answer="a">A. 立刻再充一笔，把 Memo 补在下一笔里</button><button type="button" class="option" data-answer="b">B. 整理 TxID 和订单，按官方的漏填流程提交</button><button type="button" class="option" data-answer="c">C. 去区块浏览器里把记录改掉</button><div class="feedback"></div></div>
 
 ## 钱包里看不到资产
+
+钱包界面显示没有币时，先核对账户、网络和这枚代币有没有被显示出来，不要上传助记词。
 
 **钱包里突然看不到币，不代表币一定不见了。**
 
@@ -1523,6 +1533,8 @@ Ethereum 安全资料：https://ethereum.org/security/
 
 ## 交易失败或卡住
 
+交易失败或卡住时，先分清它是待确认、失败还是没广播，失败了网络费也可能已经扣掉，不要连续盲点。
+
 **一笔链上交易迟迟没完成。先查它是待确认、失败，还是根本没有广播。**
 
 待确认时，部分网络和钱包可以加速或替换交易，但并不是每条链都一样。
@@ -1534,6 +1546,8 @@ Ethereum 安全资料：https://ethereum.org/security/
 <div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。失败的交易仍可能已经消耗网络费。先看原因和官方说明，不要盲目连点。" data-bad="答错了。失败不等于网络费会退回。连续提交也不能保证下一笔成功。"><h3>想一想</h3><p>教学虚构：浏览器显示这笔交易失败，网络费已经扣了。这时该怎么做？</p><button type="button" class="option" data-answer="a">A. 失败了就一定会把网络费退回来</button><button type="button" class="option" data-answer="b">B. 先查失败原因，再决定要不要重试</button><button type="button" class="option" data-answer="c">C. 连续提交，直到有一笔成功</button><div class="feedback"></div></div>
 
 ## 怀疑恶意授权或签名
+
+怀疑签错或授错时先停止操作，断开连接不等于撤销授权，要检查并撤销后再判断剩余风险。
 
 **刚在陌生网站点了签名或授权，先停止继续操作，不要再点网站弹窗。**
 
@@ -1548,17 +1562,23 @@ Ethereum 安全资料：https://ethereum.org/security/
 
 ## 助记词 / 私钥泄露
 
+助记词或私钥一旦泄露，改密码和重装都不能让旧钥匙失效，要换一套新钱包再考虑转移剩余资产。
+
 **助记词或私钥已经交给别人、上传到网页，或暴露在不可信的环境里，这个钱包就不再安全。**
 
-先在可信设备上，用全新的密钥创建一个钱包。
-再评估怎样把剩余资产安全转过去。
-只改 App 密码、卸载钱包或撤销授权，都不能让已经泄露的私钥失效。
-如果怀疑有自动转走资产的程序，再向旧钱包充网络费，也可能马上被转走。
-这种情况下，先寻求可信的专业协助。
+<p class="keep-lines">先在可信设备上，用全新的密钥创建一个钱包。<br>
+再评估怎样把剩余资产安全转过去。<br>
+只改 App 密码、卸载钱包或撤销授权，<br>
+都不能让已经泄露的私钥失效。<br>
+如果怀疑有自动转走资产的程序，再向旧钱包充网络费，<br>
+也可能马上被转走。<br>
+这种情况下，先寻求可信的专业协助。</p>
 
 <div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。泄露的私钥不会因为改密码或重装而失效。先用新密钥，再考虑怎样转移剩余资产。" data-bad="答错了。改密码和卸载都不能让旧私钥失效。不要再把这个地址当成安全钱包。"><h3>想一想</h3><p>教学虚构：助记词已经发给假客服。旧地址还能不能继续当安全钱包用？</p><button type="button" class="option" data-answer="a">A. 能。改掉登录密码就可以继续用</button><button type="button" class="option" data-answer="b">B. 不能。要创建全新钱包，再评估怎样安全转移剩余资产</button><button type="button" class="option" data-answer="c">C. 卸载重装之后，旧私钥就失效了</button><div class="feedback"></div></div>
 
 ## 交易所账号疑似被盗
+
+怀疑交易所账号被盗时，先从官方入口限制账户，再检查邮箱、API 和提现设置，不要把验证码交给私信。
 
 **发现陌生登录、提现记录或 API 操作，先通过交易所官方入口限制账户。**
 
@@ -1574,6 +1594,8 @@ Ethereum 安全资料：https://ethereum.org/security/
 
 ## 防止二次诈骗
 
+有人让你先付钱、交出助记词或远程控制来追回资金，那不是可靠办法，只走官方渠道。
+
 **刚遇到资金问题时，最容易被「追回专家」「技术客服」或「付费解冻」盯上。**
 
 主动私信承诺百分之百追回、要求先付保证金、索要助记词，或要求远程控制设备，都要高度警惕。
@@ -1584,6 +1606,8 @@ Ethereum 安全资料：https://ethereum.org/security/
 <div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。先收费、要助记词或要远程控制，都不是可靠的追回方式。只走官方渠道。" data-bad="答错了。不要先付款，也不要把私钥交给私信里的人。想快点找回，也不能把剩余资产再交出去。"><h3>想一想</h3><p>教学虚构：有人私信说，先付 50 USDT 就能把丢失的币追回。该怎么做？</p><button type="button" class="option" data-answer="a">A. 先付款，免得错过追回窗口</button><button type="button" class="option" data-answer="b">B. 拒绝付款，并只通过官方渠道核对</button><button type="button" class="option" data-answer="c">C. 把私钥发给对方，用来证明这是你的地址</button><div class="feedback"></div></div>
 
 ## 求助时准备什么？
+
+求助时准备好 TxID、订单号和发生了什么，走官方渠道，助记词和私钥永远不要提供。
 
 **联系客服前，先整理一份简短的问题记录。**
 
