@@ -690,15 +690,15 @@ Stoch RSI：对 RSI 再做随机指标处理，通常更敏感。
 
 **教学虚构：** 链上账本与手机钱包分离，箭头标读取余额/签名。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。删除App就等于删除链上资产吗：不是。" data-bad="答错了。删除App就等于删除链上资产吗：不是。"><h3>想一想</h3><p>删除App就等于删除链上资产吗？</p><button type="button" class="option" data-answer="a">A. 不是</button><button type="button" class="option" data-answer="b">B. 是</button><button type="button" class="option" data-answer="c">C. 一定归零</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。删除 App 不等于删掉链上资产。但如果没备份私钥，就无法找回。" data-bad="答错了。删除 App 不等于删掉链上资产。没备份私钥时，资产也找不回来。"><h3>想一想</h3><p>删除App就等于删除链上资产吗？</p><button type="button" class="option" data-answer="a">A. 不是，但如果没备份私钥就无法找回</button><button type="button" class="option" data-answer="b">B. 是</button><button type="button" class="option" data-answer="c">C. 一定归零</button><div class="feedback"></div></div>
 
 ## 地址、私钥、助记词
 
 **地址可以给别人，私钥和助记词谁都不能给。**
 
-地址：用于接收或识别链上账户，可以分享，但会带来隐私关联。
-私钥：用于授权账户操作的秘密信息，不能分享。
-助记词：部分钱包用来生成、恢复一组密钥的词序列。
+**地址**：用于接收或识别链上账户，可以分享，但会带来隐私关联。
+**私钥**：用于授权账户操作的秘密信息，不能分享。
+**助记词**：部分钱包用来生成、恢复一组密钥的词序列。
 泄露可能影响该助记词下的多个账户。
 
 钱包密码只保护本地应用或文件，不是链上的控制权。
@@ -712,8 +712,9 @@ Stoch RSI：对 RSI 再做随机指标处理，通常更敏感。
 
 **托管看谁拿钥匙，冷热看钥匙联不联网。**
 
-托管 / 自托管：重点是谁控制密钥与资产操作。
-热 / 冷钱包：重点是密钥是否处于联网环境中。
+<p class="keep-lines"><strong>托管 / 自托管：</strong>重点是谁控制密钥与资产操作。<br>
+<strong>热 / 冷钱包：</strong><br>
+重点是密钥是否处于联网环境中。</p>
 
 硬件钱包是常见的冷存储与签名工具，但不能把「任何硬件设备」自动视为可靠冷钱包。
 
