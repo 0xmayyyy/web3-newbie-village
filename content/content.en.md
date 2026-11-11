@@ -783,116 +783,205 @@ Losing the device does not automatically mean the assets are gone. Whether you c
 
 ## Seed phrase and private key: do not share, do not upload
 
-**Whoever asks for the seed phrase, the answer is no. Support will not ask for it either.**
+**Do not give a seed phrase or a private key to anyone. Real support will not ask for it either.**
 
-Do not send it to support, a friend, a project, an AI, or any form. Do not photograph it and upload it to a cloud drive. Do not paste it into a chat or an online note. Use the offline backup method the wallet officially supports, and think about fire, water, loss, and other people getting near it.
+Do not send it to support, to a friend, to a project, or to an AI.
+Do not type it into any web form.
+Do not photograph it and upload it to a cloud drive, and do not paste it into a chat tool or an online note.
 
-Real support does not need your seed phrase to look up a transaction. If anyone asks for it, stop talking to them.
+Back it up with the offline method the wallet officially supports.
+Also think about fire, water, loss, and the chance that someone else could reach that backup.
+
+Real support does not need your seed phrase to look up a transaction.
+If anyone asks for it, stop, and do not keep talking.
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. Real support does not need a seed phrase. If someone asks, stop the conversation." data-bad="Not quite. Do not give a seed phrase to support, and do not photograph it and upload it first. If someone asks, stop."><h3>Think it through</h3><p>Someone claiming to be support says they must have your seed phrase before they can look up your transaction. Should you give it?</p><button type="button" class="option" data-answer="a">A. Yes, or they cannot look it up</button><button type="button" class="option" data-answer="b">B. No. Real support does not need a seed phrase</button><button type="button" class="option" data-answer="c">C. Photograph it, upload it to a cloud drive, then send it</button><div class="feedback"></div></div>
 
 ## Fake sites and fake apps
 
-**Links in search results and ads can be fake. Use an official entrance you have already saved.**
+**Links in search results and ads can be fake. Use only an official entrance you have already checked.**
 
-Search results, ad slots, social accounts, and pinned group messages can all carry lookalike links. Check the full domain. Cross-check it from an official channel you trust. Bookmark the entrance after you have checked it.
+Search results, ads, social accounts, and pinned group messages can all carry lookalike links.
+Read the full domain first, then cross-check it with a trusted official channel.
+Once an entrance is confirmed, save it and use that one later.
 
-When you download an app, check the developer and the source. Do not install a package a stranger sent you. Buy a hardware wallet from the official shop or a channel you can verify. Do not use a seed phrase that someone else set up for you in advance.
+When you download an app, check the developer and the source.
+Do not install a package a stranger sends you in private.
+Buy a hardware wallet from the official channel, or from a channel you can verify.
+Do not use a seed phrase that someone else set up in advance.
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. An ad rank or a search rank does not prove it is official. Check the domain and the developer, and use an entrance you have already verified." data-bad="Not quite. Ranking first, or a package sent in private, does not make it official. Check the full domain and the developer first."><h3>Think it through</h3><p>An "official download" sits at the top of a search ad. Can you install it directly?</p><button type="button" class="option" data-answer="a">A. Yes. First place means it is official</button><button type="button" class="option" data-answer="b">B. No. Check the full domain and the developer, and use only an entrance you have already verified</button><button type="button" class="option" data-answer="c">C. An installer a stranger sends you is safer</button><div class="feedback"></div></div>
 
 ## Connecting, signing, and approving are not the same thing
 
-**Connecting a wallet, by itself, usually does not lose the coins. Signing blindly, and approving blindly, can.**
+**Connecting a wallet does not usually move the coins. A careless signature or a careless approval can.**
 
-Connecting a wallet usually lets an app see the address and request permissions. It does not automatically mean assets have been sent away.
-A signature confirms a message or an action. Some off-chain signatures can also authorize a later transfer. "It costs no gas" is not the same as "it has no risk".
-An approval lets a contract use an asset under stated conditions, for example an ERC-20 allowance. Different networks and assets use different permission mechanisms.
+Connecting a wallet usually lets an app see the address and request a permission.
+That does not by itself mean the assets have already been moved.
 
-If you do not understand the request, do not confirm it. Do not blind-sign. Do not trust a page titled "Log in" to be only a login.
+A signature confirms a piece of information or one action.
+Some off-chain signatures can also authorize a later transfer of assets.
+Do not treat "no gas fee" as "no risk".
 
-> 📰 **A real case: one signature, about 1.39 million dollars gone (October 2024)**
-> A PEPE holder signed an off-chain Uniswap Permit2 signature on a phishing site (no gas). About an hour later, PEPE and other tokens in the wallet, worth about 1.39 million dollars, were taken. Around the 10th of that same month, someone else lost 15,079 fwDETH (worth about 35 to 36 million dollars at the time) to a Permit phishing signature.
-> **The lesson: a signature that charges no gas can still move the coins. If you do not understand it, do not sign.**
+An approval lets a contract use an asset under conditions, for example an ERC-20 token allowance.
+Different networks and different assets use different permission mechanisms.
+
+If you cannot read what the request is asking, do not confirm it.
+Do not sign blindly.
+A page titled "log in" does not mean it is only a login.
+
+> 📰 **A reported case: one signature, and about 1.39 million dollars was gone (October 2024)**
+>
+> A PEPE holder signed an off-chain Uniswap Permit2 signature on a phishing site (it cost no gas).
+> About an hour later, PEPE and other tokens in the wallet, worth about 1.39 million dollars, were transferred out.
+> Around October 10 of the same month, someone else lost 15,079 fwDETH to a Permit phishing signature (then worth about 35 to 36 million dollars).
+>
+> **The lesson: a signature that costs no gas can still move the coins. If you cannot read it, do not sign.**
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. No gas fee does not mean no risk. If you cannot read the request, do not confirm it." data-bad="Not quite. No gas fee, or a title that says log in, does not prove it is safe. If you cannot read it, do not sign."><h3>Think it through</h3><p>A signature costs no gas. Can you treat it as safe?</p><button type="button" class="option" data-answer="a">A. Yes. If it costs no gas, it cannot touch the coins</button><button type="button" class="option" data-answer="b">B. No. Some off-chain signatures can still authorize assets to be moved</button><button type="button" class="option" data-answer="c">C. If the page title says log in, it is definitely only a login</button><div class="feedback"></div></div>
 
 ## What can help you inspect a signature?
 
-**A safety extension can warn you. You still have to understand the request yourself.**
+**A security extension can warn you. You still have to understand the request yourself.**
 
-GoPlus can help you check tokens, approvals, and some on-chain safety risks, but the results are for reference only and cannot guarantee that assets are absolutely safe. It also offers a browser extension that, where supported, can flag suspicious requests. A wallet's own transaction simulation and risk warnings are also worth reading.
+GoPlus can help check tokens, approvals, and some on-chain risks.
+The result is only a reference. It cannot guarantee that assets are absolutely safe.
+It also offers a browser extension that, in the situations it supports, flags suspicious requests.
+The wallet's own transaction preview and risk warnings are worth reading too.
 
-**GoPlus site:** https://gopluslabs.io/en
+**GoPlus official entrance:** https://gopluslabs.io/en
 
-From the official site, open the browser-extension page. Check the publisher, which wallets it works with, the networks, the permissions, and what it supports right now. The signature-decoding API and the browser extension are not the same feature. Do not assume the extension supports every chain and every kind of signature.
+From the official site, open the browser-extension page.
+Check the publisher, the wallets it works with, the networks, the permissions, and what it currently supports.
+A signature-decoding API and a browser extension are not the same feature.
+Do not assume the extension supports every chain and every kind of signature.
 
-A tool's warning is only a helper. No warning does not mean it is safe. You still check the counterparty, the change in assets, and the scope of the approval. No check requires you to hand the tool your seed phrase.
+A tool's warning is only a helper.
+No warning does not mean it is definitely safe.
+You still have to check the counterparty, the change in assets, and the scope of the approval.
+No check requires you to give the tool your seed phrase.
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. No warning is only a helper. You still have to check the counterparty, the change in assets, and the scope of the approval yourself." data-bad="Not quite. No warning does not mean it is safe. Do not give a seed phrase to a checking tool."><h3>Think it through</h3><p>The checking extension showed no warning. Is this signature definitely safe?</p><button type="button" class="option" data-answer="a">A. Yes. No warning means you can sign</button><button type="button" class="option" data-answer="b">B. No. The tool is only a helper, and no warning does not mean it is definitely safe</button><button type="button" class="option" data-answer="c">C. Give the extension your seed phrase, and then it can check thoroughly</button><div class="feedback"></div></div>
 
 ## Disconnecting is not the same as revoking
 
-**After you disconnect, the approval is still there. Revoke it separately.**
+**After you disconnect a site, an approval you already gave is still there. It has to be revoked separately.**
 
-Disconnecting a site only changes the connection. An on-chain approval that already exists is still valid. You have to check and revoke it by the method for that chain and that wallet.
+Disconnecting only changes the current connection.
+An approval already written on-chain is still valid.
+Check it and revoke it on the matching chain, in the matching wallet.
 
-Revoking may cost a network fee. It does not guarantee you get back assets that were already moved. If the seed phrase or private key has leaked, revoking approvals is not enough.
+A revoke may cost a network fee.
+It also cannot guarantee that assets already moved will come back.
+If the seed phrase or private key has already leaked, revoking an approval is not enough.
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. Disconnecting does not cancel an on-chain approval. The approval has to be revoked on its own. If the private key has leaked, revoking alone is not enough." data-bad="Not quite. Disconnecting is not the same as revoking an approval. After a private key leaks, revoking an approval does not solve it."><h3>Think it through</h3><p>After you disconnect a site in the wallet, is the old approval still there?</p><button type="button" class="option" data-answer="a">A. No. Disconnecting is the same as revoking</button><button type="button" class="option" data-answer="b">B. Yes. An approval has to be revoked separately, on the matching chain and in the matching wallet</button><button type="button" class="option" data-answer="c">C. If the private key has already leaked, revoking the approval is enough</button><div class="feedback"></div></div>
 
 ## Unlimited approval
 
-**An unlimited approval is convenient. If something goes wrong, that coin may be transferred away in full.**
+**An unlimited approval saves one confirmation. If something goes wrong, a large amount of that coin can be moved.**
 
-An unlimited approval lets the approved party use a very large token allowance, so you do not approve again each time. It is more convenient. It can also widen the loss from a contract bug or a malicious permission. Understand the scope, and approve what you actually need.
+An unlimited approval lets the other side use a very large token allowance, without a new approval each time.
+It is more convenient, and it also magnifies the loss from a contract bug or a malicious permission.
+Read the scope of the permission first, then approve only the amount you need.
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. The convenience costs you a very large allowance. The other side, or a contract with a bug, may use far more than this one trade." data-bad="Not quite. An unlimited approval is not risk-free, and it does not revoke itself. It lets the other side use a very large allowance."><h3>Think it through</h3><p>What is the main difference between an unlimited approval and approving a specific amount each time?</p><button type="button" class="option" data-answer="a">A. It only saves one click, with no extra risk</button><button type="button" class="option" data-answer="b">B. It saves one approval, but the other side may use a very large allowance</button><button type="button" class="option" data-answer="c">C. An unlimited approval revokes itself the same day</button><div class="feedback"></div></div>
 
 ## Common scams
 
-**If a stranger, or an activity you cannot trace, first asks you to sign, pay, or hand over a seed phrase, it is usually a scam.**
+**If a stranger starts by asking you to sign, to pay, or to hand over a seed phrase, treat it as a scam first.**
 
 - Fake airdrop: it asks you to sign, approve, or pay a fee first.
-- Fake support: they message you first and ask you to install remote-control software or hand over recovery information.
-- Fake investment group: profit screenshots, then a request to deposit on a named platform.
-- Cannot withdraw: you are told to pay more tax, an unfreeze fee, or a deposit before you can withdraw.
-- Fake recovery: they promise stolen funds can definitely be traced, and they charge you first.
-- Address poisoning: a lookalike address is planted in your history so you copy it.
-- Malicious tokens and NFTs: the name or the memo contains a claim URL, to get you to visit it.
-- Clipboard hijacking (often also called paste interception): malware replaces a receiving address you just copied with the attacker's address.
-- Another app reading the clipboard: an app or extension can read what you copied. If that includes recovery information, a password, or a key, it leaks. Permission prompts differ by system.
+- Fake support: they message you first, then ask you to install remote software or hand over recovery information.
+- Fake investment group: they show profit screenshots and ask you to send funds to a named platform.
+- Cannot withdraw: they say you must pay more tax, an unfreeze fee, or a deposit before you can withdraw.
+- Fake recovery: they claim stolen funds can definitely be recovered, and they want to be paid first.
+- Address poisoning: a lookalike address is placed in your history so you will copy it.
+- Malicious tokens and NFTs: the name or the note contains a claim link, and it pushes you to open it.
+- Clipboard hijack: malware replaces the address you just copied with someone else's address.
+- A third party reading the clipboard: an app or extension may read recovery information, a password, or a key you copied. Permissions and prompts differ by system.
 
-A strange asset showing up in the wallet does not mean you have to do anything with it. Do not visit a link inside it just because it displays a high "value".
+A strange asset showing up in the wallet does not mean you have to do something with it.
+Do not open a link inside it just because the page shows a high value.
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. A strange asset can sit there. A high displayed value is not a reason to open the link." data-bad="Not quite. Do not open the link in the note, and do not approve it just to see a balance. A strange asset can be left alone."><h3>Think it through</h3><p>A strange coin suddenly appears in the wallet, shows a high value, and includes a claim link. What should you do?</p><button type="button" class="option" data-answer="a">A. Open the link and claim the coin</button><button type="button" class="option" data-answer="b">B. Leave it alone, and do not open the link just because the value looks high</button><button type="button" class="option" data-answer="c">C. Give that coin an unlimited approval immediately, or you cannot see the real balance</button><div class="feedback"></div></div>
 
 ## Three traps that show up constantly in crypto
 
-**Tainted USDT and a frozen bank card, the pig-butchering scam, and letting someone use your account to move money are three of the most common traps in crypto.**
+**Dirty-money freezes, pig-butchering scams, and letting someone use your account to collect funds are three of the most common traps.**
 
-**1. Tainted USDT (黑 U) and a frozen card**
-In a P2P trade you may receive money with a dirty source. The bank card can be frozen, and you can be pulled into a case. Trade only with merchants the platform has verified. Do not accept a third party's payment. Do not collect money on someone else's behalf.
+**1. Dirty money and a frozen card**
 
-**2. Pig-butchering (杀猪盘)**
-They start with a relationship, or pull you into a "signals group", then steer you to deposit on a fake platform. Early on they let you make a little. After you put in more, you cannot withdraw. If someone you met online wants to invest with you, treat it as a scam.
+In a P2P trade, if the money you receive has a dirty source, the bank card can be frozen, and you can be pulled into a case.
+Trade only with merchants the platform has verified.
+Do not take a payment from a third party, and do not collect money for someone else.
 
-**3. Buying your USDT at a premium, and "running points" (跑分)**
-Someone offers to buy your USDT above the market, or asks to borrow your bank card or account to receive and forward money. They are using your account to launder money. Helping someone move funds this way, or lending a bank card to receive USDT, may constitute the offense of assisting information-network criminal activity (帮信罪). In serious cases it may also constitute concealing or disguising criminal proceeds (掩饰、隐瞒犯罪所得罪).
+**2. Pig-butchering**
+
+The other person starts with a personal relationship, or pulls you into a "signals group", and then steers you to deposit on a platform.
+At first you see a small profit. Once the amount is larger, you cannot withdraw.
+If someone you met online offers to invest for you, treat it as a scam first.
+
+**3. Buying your coins at a premium, and running funds through your account**
+
+Someone offers a high price for your coins, or asks to borrow your bank card or account to receive and forward money.
+That can be using your account to move money from a bad source.
+Helping move funds, or lending a bank card to receive coins, can be the crime of assisting a criminal information network.
+In a serious case it can also be concealing or hiding criminal proceeds.
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. A premium offer for your coins, plus lending a bank card to receive funds, is not a normal trade. It can be the crime of assisting a criminal network, and in a serious case it can involve concealing criminal proceeds." data-bad="Not quite. This is not a normal P2P trade with a verified merchant, and it is not a risk-free favor. Lending an account to receive funds can be illegal."><h3>Think it through</h3><p>Someone offers a high price for your coins and also asks to borrow your bank card to receive the money. Which situation is this closer to?</p><button type="button" class="option" data-answer="a">A. A normal P2P trade with a merchant the platform verified</button><button type="button" class="option" data-answer="b">B. The risk of letting someone run funds through your account. Lending an account to receive money can involve assisting a crime</button><button type="button" class="option" data-answer="c">C. Just helping a friend, with no legal risk</button><div class="feedback"></div></div>
 
 ## Stop the clipboard from leaking
 
-**Never copy and paste a seed phrase or a private key.**
+**Do not copy a seed phrase or a private key, and do not paste one into any chat or web page.**
 
-Do not put a seed phrase, a private key, an API key, or similar secrets on the clipboard. Do not paste them into chat, an AI, an online note, or a web page. For passwords, prefer autofill from a password manager you trust.
+Do not copy a seed phrase, a private key, or an API key onto the clipboard.
+Do not paste them into a chat, an AI, an online note, or a web page.
+For passwords, prefer autofill from a password manager you trust.
 
-Remove apps, keyboards, and browser extensions you do not need or cannot trace. Check clipboard, accessibility, and device permissions where the system lets you. Turn off clipboard history, cloud sync, or sharing across devices if you do not need them. Keep the system updated.
+Remove apps, keyboards, and browser extensions you do not need or cannot trace.
+Check clipboard, accessibility, and device permissions.
+Turn off clipboard history, cloud sync, and sharing across devices when you do not need them.
+Keep the system updated.
 
-Clearing the clipboard can reduce later reads. It cannot un-read something that was already read. If you suspect a secret leaked, rotate that credential. If a seed phrase or private key leaked, follow chapter 15.
+Clearing the clipboard only reduces the chance it will be read again later.
+It cannot take back something that has already been read.
+If you suspect a secret has leaked, update the matching credential.
+If a seed phrase or private key has leaked, handle it as in Chapter 15.
 
-The steps that reduce a swapped address are in chapter 10, "Four checks before you send".
+For how to guard against a replaced address, see Chapter 10, "Four checks before you send".
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. Clearing the clipboard cannot take back something that was already read. A leaked seed phrase has to be handled as in Chapter 15." data-bad="Not quite. Clearing it cannot undo a leak that already happened. Do not paste the seed phrase into a chat or a web page again."><h3>Think it through</h3><p>Someone already read the seed phrase from the clipboard. If you clear the clipboard now, does that undo the leak?</p><button type="button" class="option" data-answer="a">A. Yes. Clearing it means it never leaked</button><button type="button" class="option" data-answer="b">B. No. Clearing it only reduces the chance it will be read again later</button><button type="button" class="option" data-answer="c">C. Paste the seed phrase into a chat once more, to check it, and that is safer</button><div class="feedback"></div></div>
 
 ## Protect the account and the device
 
-**Protect the email and the phone, and you have protected most of the account.**
+**If the email and the phone are held, the account has lost most of its front doors.**
 
-Protect the email. Use a unique password and a solid second factor. Update the system and the wallet. Do not install unknown extensions. Do not share recovery information that is on the screen. On an exchange, turn on a withdrawal allowlist and login alerts if they exist.
+Protect the email.
+Use a password that is not reused, and turn on a reliable second factor.
+Update the system and the wallet.
+Do not install a plugin you cannot trace.
+Do not show recovery information on a shared screen.
+If the exchange offers a withdrawal allowlist and login alerts, turn them on.
 
-An API key is a secret too. If you later need automation, use the smallest permission. A trading bot usually does not need withdrawal permission. Do not send a key to a stranger's bot, or commit it to a code repository.
+An API key is a secret too.
+If you automate later, use the smallest permission.
+A trading bot usually does not need withdrawal permission.
+Do not send the key to a stranger's bot, and do not publish it in a code repository.
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. A trading bot usually does not need withdrawal permission. Do not give the key to a stranger's bot, and do not publish it in a repository." data-bad="Not quite. Do not turn on withdrawal permission just to save trouble, and do not publish the key or give it to a stranger's bot."><h3>Think it through</h3><p>Does an API key used by a trading bot usually need withdrawal permission turned on?</p><button type="button" class="option" data-answer="a">A. Yes, or the bot cannot be used</button><button type="button" class="option" data-answer="b">B. Usually not. Use the smallest permission, and do not send the key to a stranger's bot</button><button type="button" class="option" data-answer="c">C. Publish the key in a code repository, so you have a backup</button><div class="feedback"></div></div>
 
 ## Privacy needs protecting too
 
-**On-chain transfers are visible. A wallet with no real name on it can still be traced.**
+**Many people can look up an on-chain transfer. A wallet that does not show a real name does not mean you cannot be found.**
 
-On many public chains, transactions can be looked up by anyone. A public address can be linked to balances, behavior, and identity. A wallet that does not display a legal name is not the same as "cannot be traced".
+Transactions on many public chains can be looked up in public.
+A public address can be tied to a balance, to habits, and to an identity.
+The wallet screen not showing a real name does not mean the record cannot be traced.
 
-Note: Safety is not one cold wallet. It is a set of habits you keep.
+Note: Safety is not just one cold wallet. It is a set of habits you keep.
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. No real name on the screen does not mean the on-chain record is private. A public address can still be tied to behavior and to a person." data-bad="Not quite. Many records on a public chain can be looked up. A wallet that does not show a real name is not the same as being untraceable."><h3>Think it through</h3><p>The wallet does not show a real name. Does that mean an on-chain transfer cannot be traced?</p><button type="button" class="option" data-answer="a">A. Yes. No real name means it cannot be found</button><button type="button" class="option" data-answer="b">B. No. The record can be looked up in public, and the address can still be tied to a person</button><button type="button" class="option" data-answer="c">C. Only an exchange account's records can be seen by anyone else</button><div class="feedback"></div></div>
 
 # 10｜Your first on-chain actions 🔗
 
@@ -1373,80 +1462,144 @@ Every tool answers only part of the question. After you find a number, you still
 
 ## A deposit has not arrived
 
-**If a deposit has not landed, take the TxID to a block explorer first.**
+**The money has been sent, and the exchange is not showing a balance.**
+Do not rush to send it again.
 
-Check whether the sender finished the withdrawal and whether there is a TxID. Then use the explorer for the correct network and look at the on-chain status. Check the asset, the network, the address, the Memo, the minimum deposit, the confirmations, and whether the platform has paused deposits.
+First, open the withdrawal record and see whether the platform has already sent the transaction, and whether there is a TxID.
+Second, look it up in the block explorer for that network.
+If it is not on-chain yet, go to the platform that sent it.
+If it is on-chain and still waiting for confirmations, look at the confirmation status first.
+If it succeeded on-chain but has not been credited, check the receiving address, the Memo / Tag, the coin, the network, the minimum deposit, and the number of confirmations the platform requires.
+If the details are right and it still has not arrived, take the TxID and the order record to the receiving platform's official support.
+A success on-chain and a credit on the platform are two different things. Arrival is not guaranteed.
 
-If it succeeded on-chain and the platform has not credited it, submit the TxID, network, amount, address, and order details through the official help center. Do not provide a seed phrase or an account verification code.
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. A success on-chain is not the same as a credit on the platform. Check the network, the Memo, and the confirmations first, then submit the TxID through the official channel." data-bad="Not quite. Sending again can make the loss larger. Giving a seed phrase to support hands over control of the wallet."><h3>Think it through</h3><p>Fictional teaching example: the TxID already shows success, but the exchange balance is still 0. What should you do?</p><button type="button" class="option" data-answer="a">A. Send another transfer to the same address</button><button type="button" class="option" data-answer="b">B. Check the network, the Memo, and the confirmations the platform requires</button><button type="button" class="option" data-answer="c">C. Send the seed phrase to support so they can check the balance</button><div class="feedback"></div></div>
 
 ## A withdrawal stays on "processing"
 
-**No TxID means the platform has not sent it yet. Use official support. Do not trust a private message.**
+**The withdrawal page keeps spinning. Look at the order status first, then look for a TxID.**
 
-No TxID: it may still be in the platform's review, queue, or processing. Read the order notes and contact official support.
-There is a TxID: then check the on-chain status. Do not pay a so-called speed-up fee to a support agent who messaged you privately, just because you are in a hurry.
+No TxID usually means you cannot yet confirm that the transaction has been broadcast to the chain.
+It may still be in review, in a queue, or being processed.
+In that case, read the platform notice and the order notes, and ask for help through the official entrance.
+If there is a TxID, check the confirmation status in the explorer for that network.
+Do not send a so-called fee to someone who messages you and says they can speed the withdrawal up.
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. When there is no TxID, read the platform order and notices first, then use the official entrance. Do not pay a speed-up fee to a private message." data-bad="Not quite. Without a TxID you cannot yet confirm it is on-chain. Guessing a hash, or paying a speed-up fee, does not replace the official order."><h3>Think it through</h3><p>Fictional teaching example: the order says processing, and there is no TxID. Which next step is the steadier one?</p><button type="button" class="option" data-answer="a">A. Guess a hash in a block explorer and look that up</button><button type="button" class="option" data-answer="b">B. Read the platform order and notices, and contact official support</button><button type="button" class="option" data-answer="c">C. Pay a speed-up fee to the support account that messaged you</button><div class="feedback"></div></div>
 
 ## Sent to the wrong address or the wrong network
 
-**Most wrong sends cannot be pulled back. Whether anything comes back depends on the other side.**
+**Sending to the wrong address and sending on the wrong network are not the same problem.**
 
-An on-chain transaction cannot be reversed the way a bank transfer sometimes can. Whether it can be recovered depends on who controls the receiving address, which network was used, and whether a platform offers a recovery service. Nothing is guaranteed.
+Stop sending anything further.
+Save the TxID, the receiving address, the coin, the network, and the time.
+If it went to an address you do not recognize, an on-chain transaction generally cannot be undone.
+Whether it can be recovered depends on whether the other side cooperates.
+If it went to a network the exchange does not support, contact the receiving platform and ask whether a recovery service exists.
+If it is an address you control, first confirm that the wallet and the key support that network.
+Do not casually import the private key into a tool you do not know.
+In every case, recovery is not guaranteed.
 
-If you sent on a network the exchange does not support, contact that platform's official support. If you sent to a self-custody address, you also have to judge it against the wallet and the key scheme. Do not casually export a private key into a tool you do not know.
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. When the network is not supported, give the TxID to the receiving platform's official channel and ask whether recovery is possible. Recovery is not guaranteed." data-bad="Not quite. Sending again does not fix the previous transfer. Do not give a seed phrase to a site you do not know."><h3>Think it through</h3><p>Fictional teaching example: the TxID shows success, but the receiving exchange does not support the network you chose. What should you do?</p><button type="button" class="option" data-answer="a">A. Send again, on a cheaper network</button><button type="button" class="option" data-answer="b">B. Give the official channel the TxID and ask whether a recovery service exists</button><button type="button" class="option" data-answer="c">C. Type the seed phrase into an unfamiliar recovery site</button><div class="feedback"></div></div>
 
 ## You forgot the Memo / Tag
 
-**If you forgot the Memo, take the TxID to the platform's official support and ask about recovery.**
+**Some platforms share one deposit address among many users. The Memo or Tag is what says which account the money belongs to.**
 
-The receiving platform may not be able to tell which account the transfer belongs to. Keep the transaction record and apply through the official process. Whether it can be recovered, and whether there is a fee, follows the platform's rules.
+The address and the network can both be right, and the chain can show success, and a missing Memo can still mean the money reached the platform's address without being credited to your account.
+Save the TxID, the coin, the amount, the network, and the deposit order first.
+Then apply through the platform's official process for a missing Memo / Tag.
+Whether recovery is offered, how long it takes, and whether it costs money all depend on the platform's rules. It is not guaranteed.
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. A missing Memo means you keep the TxID and the order, and you use the platform's official process. Whether it can be recovered depends on the platform's rules, and it is not guaranteed." data-bad="Not quite. Another deposit does not fill in the Memo on the previous one. You also cannot edit the record on a block explorer."><h3>Think it through</h3><p>Fictional teaching example: the deposit address is correct, the Memo was left blank, and the chain already shows success. What next?</p><button type="button" class="option" data-answer="a">A. Deposit again immediately, and put the Memo on the next transfer</button><button type="button" class="option" data-answer="b">B. Gather the TxID and the order, and submit them through the official missing-Memo process</button><button type="button" class="option" data-answer="c">C. Edit the record on the block explorer</button><div class="feedback"></div></div>
 
 ## The wallet does not show the asset
 
-**If you cannot see the coin, first check that you picked the right network and the right account.**
+**A coin suddenly missing from the wallet screen does not mean the coin is definitely gone.**
 
-Check whether you selected the wrong account or network, whether a block explorer shows the asset, and whether the wallet needs the correct token contract added. Do not type a seed phrase into a web page in order to "display the balance".
+First check whether you switched account or network.
+Then use a block explorer you trust and look at that address's balance and transfers on the matching network.
+If the balance is still on-chain, the wallet may simply not be displaying that token.
+Check the contract address from a trusted source, then add it so the wallet can show it.
+If the on-chain record shows the asset already left, treat it as a suspicious transaction.
+Do not believe anyone who says you must enter a seed phrase to sync the balance.
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. When the balance is still on-chain, check the account, the network, and whether the token is displayed. A seed phrase cannot be used to sync a balance." data-bad="Not quite. A screen showing 0 does not mean the chain is empty. Do not upload a seed phrase, and do not decide it was stolen from the screen alone."><h3>Think it through</h3><p>Fictional teaching example: the block explorer shows 100 USDT at this address, and the wallet app shows 0. Which step is the more likely first one?</p><button type="button" class="option" data-answer="a">A. Check the account, the network, and whether this token is being displayed</button><button type="button" class="option" data-answer="b">B. Upload the seed phrase so a site can sync the balance</button><button type="button" class="option" data-answer="c">C. Decide immediately that the asset was stolen</button><div class="feedback"></div></div>
 
 ## A transaction failed or is stuck
 
-**A failed transaction can still charge gas. Do not keep clicking at random.**
+**An on-chain transaction has not finished. First find out whether it is pending, failed, or never broadcast.**
 
-Check whether it is already on-chain, whether the network fee was enough, and whether the transaction reverted or is still waiting. A failed transaction can still cost a network fee.
+While it is pending, some networks and wallets can speed it up or replace it, but not every chain works the same way.
+A transaction that already failed may still have spent the network fee.
+If it was never broadcast, check the balance, the network, and the wallet's message.
+Do not tap submit many times in a row.
+Read the transaction record and the official instructions first, then decide whether to try again.
 
-Some wallets and networks let you speed up or cancel a pending transaction. The rules differ, and it can still fail. Follow the official instructions. Do not resubmit blindly over and over.
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. A failed transaction may already have spent the network fee. Read the reason and the official instructions first, and do not keep tapping." data-bad="Not quite. A failure does not mean the network fee comes back. Submitting again and again does not guarantee the next one succeeds."><h3>Think it through</h3><p>Fictional teaching example: the explorer shows this transaction failed, and the network fee was already charged. What should you do?</p><button type="button" class="option" data-answer="a">A. A failure always refunds the network fee</button><button type="button" class="option" data-answer="b">B. Look up why it failed, then decide whether to try again</button><button type="button" class="option" data-answer="c">C. Keep submitting until one succeeds</button><div class="feedback"></div></div>
 
 ## You suspect a bad approval or a bad signature
 
-**If you think you signed the wrong thing, revoke the approval or move the coins now.**
+**If you just signed or approved something on a site you do not know, stop. Do not click another popup on that site.**
 
-Stop interacting with the suspicious site. Save the records. In an environment you trust, check the permissions. Depending on the case, revoke them, or move what remains to a new account that is safe.
+Save the site address, the transaction hash, or the contents of the signature.
+Check again from a device or an environment you trust.
+If it was a token approval, you can check it with a tool you trust and revoke it if you need to.
+If some other signature permission or control of the account is involved, revoking an ordinary approval may not be enough.
+You may then need to move the remaining assets to a new wallet that is safe.
+Do not treat "I disconnected the site" as "the risk is gone".
 
-A malicious signature is not always an ordinary approval, and a revoke tool may not cover it. If the situation is unclear, get specific help from the wallet's official support or from a security channel you trust.
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. Disconnecting does not cancel an approval you already gave. Check it and revoke it, and decide whether the remaining assets should be moved." data-bad="Not quite. Disconnecting is not the same as revoking. Do not go back to that site and sign again."><h3>Think it through</h3><p>Fictional teaching example: you gave an unknown contract an unlimited allowance. Is disconnecting the site enough?</p><button type="button" class="option" data-answer="a">A. Yes. Disconnecting is the same as revoking the approval</button><button type="button" class="option" data-answer="b">B. No. Check and revoke the approval, then judge the risk that remains</button><button type="button" class="option" data-answer="c">C. Sign once more, to verify that the earlier one was fine</button><div class="feedback"></div></div>
 
 ## The seed phrase or private key leaked
 
-**If the seed phrase leaked, that wallet is finished. Move to a new one now.**
+**If a seed phrase or private key has been given to someone else, uploaded to a web page, or exposed in an environment you do not trust, that wallet is no longer safe.**
 
-Treat the related accounts as no longer safe. On a trusted device, create a wallet that uses a brand-new key, and move what remains as the situation allows. Changing a password, uninstalling the app, or revoking approvals does not invalidate the old private key.
+First, on a device you trust, create a wallet with a brand-new key.
+Then judge how to move any remaining assets there safely.
+Changing the app password, uninstalling the wallet, or revoking an approval cannot make a leaked private key stop working.
+If you suspect a program is automatically sweeping assets, sending more network fee to the old wallet can be swept immediately too.
+In that situation, get help from a professional source you trust first.
 
-If an automated drainer is watching, blindly sending gas to the old address can be stolen too. Do not send more funds to the leaked address. Get a trustworthy professional to help you assess it.
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. A leaked private key does not stop working because you changed a password or reinstalled. Use a new key first, then consider how to move what remains." data-bad="Not quite. Changing a password and uninstalling cannot make the old private key stop working. Do not keep treating that address as a safe wallet."><h3>Think it through</h3><p>Fictional teaching example: the seed phrase was already sent to fake support. Can the old address still be used as a safe wallet?</p><button type="button" class="option" data-answer="a">A. Yes. Change the login password and keep using it</button><button type="button" class="option" data-answer="b">B. No. Create a brand-new wallet, then judge how to move the remaining assets safely</button><button type="button" class="option" data-answer="c">C. After you uninstall and reinstall, the old private key stops working</button><div class="feedback"></div></div>
 
 ## The exchange account may have been taken over
 
-**If the account was taken over, freeze it through an official channel first.**
+**If you see an unfamiliar login, a withdrawal record, or an API action, restrict the account through the exchange's official entrance first.**
 
-Freeze or restrict the account through an official channel. Protect the email. Check login sessions, devices, API keys, and withdrawal history. Update the related credentials. If funds were lost, keep the evidence and report it through the channels where you live.
+Do not click a suspicious link in a text or an email.
+Protect the linked email at the same time.
+Check login devices, sessions, API keys, and the withdrawal allowlist.
+Update the password and the verification method through the official process.
+If funds are already gone, save the notices, the orders, the addresses, and the times.
+Then report it through a proper channel where you live.
+The order of work is to stop further loss first.
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. Restrict the account from the official entrance first, protect the email, then check the API, the devices, and the withdrawal settings." data-bad="Not quite. Changing only the trading password does not stop an unknown API. Do not give a verification code or login details to someone in a private message."><h3>Think it through</h3><p>Fictional teaching example: the email warns of a login from somewhere else, and the account also shows an API you never created. What is the first step?</p><button type="button" class="option" data-answer="a">A. Change only the trading password, and leave the rest</button><button type="button" class="option" data-answer="b">B. Restrict the account from the official entrance, and check the email and the API</button><button type="button" class="option" data-answer="c">C. Reply to the stranger who sent the alert, and give them the verification code</button><div class="feedback"></div></div>
 
 ## A second scam, after the first
 
-**Anyone who says they can get the coins back, and asks to be paid first, is usually a second scam.**
+**Right after a funds problem, you are easiest for a "recovery expert", "technical support", or a "paid unfreeze" pitch to find.**
 
-No stranger can guarantee recovery of on-chain assets because they "have an inside connection". Be especially wary of a so-called recovery service that charges first, tells you to deposit again, asks for the seed phrase, or wants remote control of your device.
+Be very wary of a private message that promises a one-hundred-percent recovery, asks for a deposit first, asks for a seed phrase, or asks to control your device remotely.
+Check the official channel, and keep the evidence.
+Real official support should not ask you to hand over a seed phrase either.
+Do not hand the remaining assets to a stranger just because you want the money back quickly.
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. Paying first, asking for a seed phrase, or asking for remote control is not a reliable way to recover funds. Use only the official channel." data-bad="Not quite. Do not pay first, and do not give a private key to someone in a private message. Wanting it back quickly is not a reason to hand over what remains."><h3>Think it through</h3><p>Fictional teaching example: someone messages you and says that paying 50 USDT first will recover the lost coins. What should you do?</p><button type="button" class="option" data-answer="a">A. Pay first, so you do not miss the recovery window</button><button type="button" class="option" data-answer="b">B. Refuse to pay, and check only through the official channel</button><button type="button" class="option" data-answer="c">C. Send them the private key, to prove the address is yours</button><div class="feedback"></div></div>
 
 ## What to have ready when you ask for help
 
-**Bring the order id and the TxID. Never send a password or a seed phrase.**
+**Before you contact support, write down a short record of the problem.**
 
-The platform order id, the asset, the network, the time and the time zone, the amount, the TxID, the public address, the error text, and screenshots you actually need. Hide identity documents, bank details, passwords, verification codes, API keys, and recovery information.
+Write the time, the coin and the amount, the sending and receiving networks, the address, the TxID, the platform order number, the error message, and what you have already checked.
+That cuts down the back and forth.
+Before a screenshot, cover the password, the verification code, and the ID number.
+A seed phrase and a private key must never be provided.
+If this happened inside a platform account, use the official ticket.
+Do not post a full set of personal details in a public group.
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. A TxID and an order number can help the official side check. A seed phrase and a private key must not appear in the material you send for help." data-bad="Not quite. A seed phrase must not be provided, and do not post full details in a public group. A TxID and an order number go through an official ticket."><h3>Think it through</h3><p>Support asks for the TxID, the order number, and the seed phrase at the same time. Which choice is right?</p><button type="button" class="option" data-answer="a">A. Send all three into a public group so everyone can look</button><button type="button" class="option" data-answer="b">B. The TxID and the order number can be given through the official process. The seed phrase is never given</button><button type="button" class="option" data-answer="c">C. Send only the seed phrase, and do not keep the order number</button><div class="feedback"></div></div>
 
 # 16｜Common questions and practice ✅
 
@@ -1557,131 +1710,134 @@ Done message: "Check finished. Check once more on the final confirmation screen.
 
 ## The same brand is not the same account
 
-**Platforms under the same brand do not necessarily share one account system.**
+**Platforms under the same brand do not mean they use the same account system.**
 
-<div class="diagram"><h3>See it first: the same brand is not a shared account</h3>
-<div class="cosmic-scene compare-scene" role="img" aria-label="Two separate platform accounts under one brand. Do not assume an internal transfer."><div class="scene-halo halo-violet"></div><div class="scene-halo halo-cyan"></div>
-<div class="brand-constellation"><span class="star-glyph">✦</span><span>One brand · different account systems</span></div>
+<div class="diagram"><h3>See this first: a brand relationship is not shared accounts</h3>
+<div class="cosmic-scene compare-scene" role="img" aria-label="Two independent platform accounts under one brand. Do not assume an internal transfer between them"><div class="scene-halo halo-violet"></div><div class="scene-halo halo-cyan"></div>
+<div class="brand-constellation"><span class="star-glyph">✦</span><span>Same brand · different account systems</span></div>
 <div class="account-worlds"><div class="world"><div class="planet planet-violet"><img class="platform-app-icon" src="assets/teach/binance-intl.png?v=20261108130000" alt="Binance international app icon"></div><div class="world-card"><b>Binance international</b></div></div>
 <div class="world"><div class="planet planet-cyan"><img class="platform-app-icon" src="assets/teach/binance-th.png?v=20261108130000" alt="Binance TH app icon"></div><div class="world-card"><b>Binance TH</b></div></div></div>
-<div class="scene-divider"><i></i><span>Do not assume an internal transfer</span><i></i></div>
-<div class="scene-bottom">Same brand ≠ same account · Follow the platform's official rules</div></div>
-<div class="caption">A sketch of the structure, not the platforms' actual databases.</div></div>
+<div class="scene-divider"><i></i><span>Do not assume they transfer internally</span><i></i></div>
+<div class="scene-bottom">Same brand is not the same account · the transfer method follows the official rules</div></div>
+<div class="caption">A diagram of the structure. It does not describe how the platform's database is actually built.</div></div>
 
-A recent case: someone wanted to move assets from Binance international to Binance TH (the Thailand version). They assumed the two platforms shared one account, and the transfer went wrong.
+A recent case: a user wanted to move assets from Binance international to Binance TH (the Thailand version). The transfer went wrong because they assumed the two platforms' accounts were connected.
 
-They did check the receiving UID. What they missed was this: **Platforms under the same brand do not necessarily share one account system.**
+The person had not failed to check the receiving UID. They missed a different point: **platforms under the same brand do not mean they use the same account system.**
 
-Take Binance international and Binance TH.
+Take Binance international and Binance TH as the example.
 
-Both use the Binance brand, but they are different services. Their accounts do not connect directly.
+They both use the Binance brand, but they are different services, and the account systems do not connect directly.
 
-There is a simple way to tell:
+There is a simple way to judge it:
 
-If you already registered on platform A, and you try to register the same email on the same account system, you usually see "this email is already registered".
+If you already registered on platform A, and you try to register the same account system again with the same email, it usually says this email is already registered.
 
-If the same email can register separately in two apps under one brand, and you even have to complete KYC (identity verification) again, that is already a clear signal: the two platforms do not share one account system.
+If the same email can register an account in two apps under the same brand, and you even have to complete KYC again, that is already a clear signal: these two platforms' account systems do not connect directly.
 
-They are two separate accounts. Before you transfer, confirm that the platforms support moving funds between them. Do not look only at the brand name.
+Because they are two independent accounts, you have to confirm before a transfer whether the platforms support moving funds between them. Do not look only at the brand name.
 
-<div class="key"><strong>Remember:</strong> Since these are two independent systems, you cannot transfer by UID unless the official platform explicitly provides a dedicated transfer channel.</div>
-<div class="quiz" data-correct="b" data-ok="Correct. This question is passed." data-bad="Not yet. Look again at the platforms and the transfer path the official rules support."><h3>Check your judgment</h3><p>You registered on Binance international and on Binance TH. Both use the same email, and both finished KYC. Since both are Binance platforms, can you transfer between the two accounts by UID?</p><button type="button" class="option" data-answer="a">A. Yes. The same brand means you can transfer.</button><button type="button" class="option" data-answer="b">B. Don't assume it is supported. Check the official transfer path first.</button><div class="feedback"></div></div>
+<div class="key"><strong>Remember:</strong> two independent systems cannot send by UID, unless the official side has explicitly provided a dedicated transfer route.</div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. The same brand and the same email do not mean the two platforms can send to each other directly by UID. Check first whether the official side offers that route." data-bad="Not quite. The same brand, the same email, and KYC on both still do not mean you can send by UID by default. Check the transfer route the official side supports."><h3>Decide</h3><p>I registered on Binance international and on Binance TH. Both accounts use the same email, and both completed KYC. Since both are Binance platforms, can I move funds between the two accounts directly by UID?</p><button type="button" class="option" data-answer="a">A. Yes. The same brand means you can transfer</button><button type="button" class="option" data-answer="b">B. Do not assume it is supported. Check the official transfer route first</button><div class="feedback"></div></div>
 
 ## The UID is right — why can the transfer still go wrong?
 
-**A UID is only an in-platform user number, not an industry-wide receiving identity.**
+**A UID is only a user number inside one platform. It is not a receiving identity for the whole industry.**
 
-<div class="diagram"><h3>The same number is not the same recipient</h3>
-<div class="orbit-scene" aria-label="Each platform keeps its own UID. The same number does not prove the same recipient."><div class="space-glow"></div><div class="orbit-ring ring-a"></div><div class="orbit-ring ring-b"></div>
+<div class="diagram"><h3>The same number does not mean the same recipient</h3>
+<div class="orbit-scene" aria-label="Two platforms each manage their own UIDs. The same number does not mean the same recipient"><div class="space-glow"></div><div class="orbit-ring ring-a"></div><div class="orbit-ring ring-b"></div>
 <div class="orbit-account account-left"><div class="orb orb-a"><img class="platform-app-icon" src="assets/teach/binance-intl.png?v=20261108130000" alt="Binance international app icon"></div><div class="glass-account"><span class="micro">PLATFORM A</span><strong>Binance international</strong><span class="uid">UID · 123456</span><span class="identity"><i></i> Separate account system</span></div></div>
 <div class="orbit-account account-right"><div class="orb orb-b"><img class="platform-app-icon" src="assets/teach/binance-th.png?v=20261108130000" alt="Binance TH app icon"></div><div class="glass-account"><span class="micro">PLATFORM B</span><strong>Binance TH</strong><span class="uid">UID · 123456</span><span class="identity"><i></i> Separate account system</span></div></div>
-<div class="broken-route"><span class="route-line"></span><div class="route-lock"><span class="lock-symbol">✕</span><b>Same UID ≠ same recipient</b><small>A number alone does not identify someone across platforms</small></div><span class="route-line"></span></div>
-<div class="orbit-foot"><div><span class="tiny-dot"></span> Check identity inside each platform</div><div><span class="tiny-dot"></span> Confirm the path that platform supports</div></div>
-</div><p class="diagram-caption">Sample numbers only, to show that the accounts are separate. Not a real UID or a real transfer.</p></div>
-<div class="steps"><div class="step"><span class="num">01 / PLATFORM</span><b>Look at the platform first</b><p>Are the sender and the recipient on the same system?</p></div><div class="step"><span class="num">02 / IDENTITY</span><b>Then look at the recipient</b><p>Do the UID, username, and avatar match what you expect?</p></div><div class="step"><span class="num">03 / ROUTE</span><b>Then look at the path</b><p>Does the platform clearly support this kind of transfer?</p></div></div>
-<div class="key"><strong>The point:</strong> A correct UID only means you checked a number. It does not prove the transfer path is right.</div>
-<div class="quiz" data-correct="c" data-ok="Correct. This question is passed." data-bad="Not yet. Look again at the platforms and the transfer path the official rules support."><h3>What would you do?</h3><p>The receiving UID matches the number you were sent, but you are not sure the two apps connect.</p><button type="button" class="option" data-answer="a">A. Send it. The number is right.</button><button type="button" class="option" data-answer="b">B. Only check whether the avatar looks right.</button><button type="button" class="option" data-answer="c">C. Stop and confirm the platform and the receiving method it supports.</button><div class="feedback"></div></div>
+<div class="broken-route"><span class="route-line"></span><div class="route-lock"><span class="lock-symbol">✕</span><b>Same UID is not the same recipient</b><small>Across platforms, a number alone does not identify the person</small></div><span class="route-line"></span></div>
+<div class="orbit-foot"><div><span class="tiny-dot"></span> Check identity inside each platform</div><div><span class="tiny-dot"></span> Confirm the transfer route the platform supports</div></div>
+</div><p class="diagram-caption">The sample number only explains that the accounts are separate. It is not a real user's UID or a real transfer result.</p></div>
+<div class="steps"><div class="step"><span class="num">01 / PLATFORM</span><b>Look at the platform first</b><p>Are the sender and the receiver on the same system?</p></div><div class="step"><span class="num">02 / IDENTITY</span><b>Then look at the recipient</b><p>Do the UID, the username, and the avatar match what you expect?</p></div><div class="step"><span class="num">03 / ROUTE</span><b>Then look at the route</b><p>Does the platform explicitly support this kind of transfer?</p></div></div>
+<div class="key"><strong>The core:</strong> a correct UID only means you checked one number. It does not prove the transfer route is right.</div>
+<div class="quiz" data-tone="box" data-correct="c" data-ok="Correct. Matching UID digits only means the number matches. You still have to confirm that both sides are the same system, and that the platform supports this way of receiving." data-bad="Not quite. Matching digits, or an avatar that looks similar, cannot replace confirming the platform and the receiving method the official side supports."><h3>How would you judge this?</h3><p>The receiving UID matches the number you were sent, but you are not sure the two apps connect.</p><button type="button" class="option" data-answer="a">A. Send it. The number is right</button><button type="button" class="option" data-answer="b">B. Only check whether the avatar looks right</button><button type="button" class="option" data-answer="c">C. Stop and confirm the platform and the receiving method it supports</button><div class="feedback"></div></div>
 
 ## Before you transfer, get used to a three-step check
 
-**Before you transfer, confirm the platforms, then the recipient details and network; especially on a first transfer, send a small test before the rest.**
+**Before a transfer, confirm the platform, then confirm the receiving details and the network.**
+Especially the first time you transfer somewhere, test a small amount before you send a large one.
 
-<div class="diagram"><h3>The transfer safety check</h3>
-<div class="cosmic-scene check-scene" role="img" aria-label="Three stages: confirm the platform, check the recipient and network, then send a small test."><div class="check-track"><div class="track-line"></div>
-<div class="check-node"><div class="node-orb orb-blue"><span class="planet-texture" aria-hidden="true"></span><span class="orb-number">01</span></div><b>Confirm the platform</b><small>Does it support the transfer?</small></div>
+<div class="diagram"><h3>The safety check before a transfer</h3>
+<div class="cosmic-scene check-scene" role="img" aria-label="Three stages: confirm the platform, check the receiving details and the network, then test a small amount"><div class="check-track"><div class="track-line"></div>
+<div class="check-node"><div class="node-orb orb-blue"><span class="planet-texture" aria-hidden="true"></span><span class="orb-number">01</span></div><b>Confirm the platform</b><small>Does it support the transfer</small></div>
 <div class="check-node"><div class="node-orb orb-rose"><span class="planet-texture" aria-hidden="true"></span><span class="orb-number">02</span></div><b>Check the details</b><small>Identity · coin · network</small></div>
-<div class="check-node"><div class="node-orb orb-gold"><span class="planet-texture" aria-hidden="true"></span><span class="orb-number">03</span></div><b>Small test</b><small>Confirm it arrived</small></div>
-</div><div class="scene-bottom">Finish the checks in order before you send the rest</div></div></div>
+<div class="check-node"><div class="node-orb orb-gold"><span class="planet-texture" aria-hidden="true"></span><span class="orb-number">03</span></div><b>Small test</b><small>Confirm it actually arrived</small></div>
+</div><div class="scene-bottom">Finish the checks in order before you consider the real transfer</div></div></div>
 
 **Step 1: confirm the platform**
 
-See clearly which platform is sending and which platform is receiving.
+See clearly which platform the sender belongs to, and which platform the receiver belongs to.
 
-In general, different app entries mean different account systems and databases, especially when the platforms serve different countries or regions.
+In general, different app entrances correspond to different account systems and databases, especially platforms run for different countries or regions.
 
-So do not go by the brand logo alone. Even when the names look alike, confirm the specific platform, whether the accounts connect, and whether an internal transfer is supported.
+So do not recognize only the brand logo.
+Even if the names are similar, confirm the specific platform, whether the accounts connect, and whether an internal transfer is supported.
 
-**Step 2: confirm the payment details and the network**
+**Step 2: confirm the receiving details and the network**
 
-For an internal transfer, besides checking the UID, email, or other receiving ID, also check that the recipient's **username and avatar** match what you expect.
+For an internal transfer, besides the UID, the email, and other receiving identifiers, also check whether the **username and avatar** shown for the recipient match what you expect.
 
-A username and an avatar are only extra checks. On their own, they do not prove who the recipient is.
+But a username and an avatar are only extra checks. They cannot by themselves prove who the recipient is.
 
 For an on-chain transfer, check the coin, the receiving address, and the blockchain network.
 
-For example, USDT on TRC20 and USDT on ERC20 are not networks you can mix as you like.
+For example, USDT on TRC20 and USDT on ERC20 are not networks you can mix freely.
 
-**Step 3: test a small amount, then send the rest**
+**Step 3: test a small amount, then send the large one**
 
-Especially the first time you send to a platform, an address, or an account, test with a small amount first.
+Especially the first time you transfer to a platform, an address, or an account, test with a small amount first.
 
-Confirm the other side actually received it, and that the coin and the network are right, then send the rest.
+Confirm that the other side actually received it, and that the coin and the network are right, before you send the rest.
 
-A small test does not guarantee later transfers are completely safe. It does keep one mistake from costing the whole amount.
+A small test cannot guarantee that later transfers are absolutely safe, but it can at least stop one mistake from losing the whole amount.
 
-<div class="checklist"><label class="checkrow"><input type="checkbox"><span><b>Confirm the platform</b><small>Do not trust the brand logo alone. Check the platform name and whether it supports this transfer.</small></span></label><label class="checkrow"><input type="checkbox"><span><b>Confirm the recipient and the network</b><small>On an internal transfer, check the UID, username, and avatar. On-chain, check the address, coin, and network. An avatar is only a hint.</small></span></label><label class="checkrow"><input type="checkbox"><span><b>Test a small amount first</b><small>The first time, send a small test, confirm it really arrived, then consider the rest.</small></span></label></div>
-<p class="teach-status" data-tpl="Checked {n} / {m} · scenario {quiz}" data-yes="passed" data-no="not passed yet">Checked 0 / 3 · scenario not passed yet</p>
-<div class="quiz" data-correct="b" data-ok="Correct. This question is passed." data-bad="Not yet. Look again at the platforms and the transfer path the official rules support."><h3>Pass check · a scenario</h3><p>You checked the UID, username, and avatar, but you are not sure whether the two apps support a direct transfer. What should you do?</p><button type="button" class="option" data-answer="a">A. Send a large amount and see if it arrives.</button><button type="button" class="option" data-answer="b">B. Pause the transfer and check the method the official rules support.</button><button type="button" class="option" data-answer="c">C. If the avatar matches, you can send it.</button><div class="feedback"></div></div>
-<div class="key"><strong>Note:</strong> A small test does not replace checking the platform and the recipient, and it does not make later transfers safe.</div>
+<div class="checklist"><label class="checkrow"><input type="checkbox"><span><b>Confirm the platform</b><small>Do not look only at the brand logo. Check the platform name and whether it supports this transfer.</small></span></label><label class="checkrow"><input type="checkbox"><span><b>Confirm the receiving details and the network</b><small>Internally, check the UID, username, avatar, and so on. On-chain, check the address, the coin, and the network. The avatar is only an extra check.</small></span></label><label class="checkrow"><input type="checkbox"><span><b>Test a small amount first</b><small>The first transfer to a place should be a small test. Confirm it really arrived before you consider the rest.</small></span></label></div>
+<p class="teach-status" data-tpl="Checks {n} / {m} · scenario {quiz}" data-yes="Passed" data-no="Not yet">Checks 0 / 3 · scenario Not yet</p>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. Even after the UID, the username, and the avatar match, you still have to confirm that the two apps can transfer directly. If you are not sure, pause first." data-bad="Not quite. Do not send a large amount as a test, and do not look only at the avatar. If you are not sure they connect, stop and check the method the official side supports."><h3>Check · scenario</h3><p>You have checked the UID, the username, and the avatar, and you are not sure the two apps can transfer directly. What should you do?</p><button type="button" class="option" data-answer="a">A. Send a large amount first, and see whether it arrives</button><button type="button" class="option" data-answer="b">B. Pause the transfer, and check the transfer method the official side supports</button><button type="button" class="option" data-answer="c">C. If the avatars match, you can send</button><div class="feedback"></div></div>
+<div class="key"><strong>Note:</strong> a small test does not replace checking the platform and the recipient, and it does not guarantee that later transfers are absolutely safe.</div>
 
 ## What if you already sent it to the wrong place?
 
-**If a transfer already went wrong, save the records and contact official support, but do not count on fixing it afterwards.**
+**After a wrong transfer, save the record and contact official support, but do not put your hope in fixing it afterward.**
 
-<div class="diagram"><h3>Sent to the wrong account inside a platform: what usually happens?</h3>
-<div class="cosmic-scene recovery-scene" role="img" aria-label="Steps after an internal mis-transfer: keep evidence, contact official support, the platform checks, you talk it through, then the rules decide."><div class="recovery-track"><div class="track-line"></div>
+<div class="diagram"><h3>A wrong internal transfer: which steps usually come next?</h3>
+<div class="cosmic-scene recovery-scene" role="img" aria-label="Steps after a wrong internal transfer: keep evidence, an official appeal, the platform checks, talk with the recipient, handle it under the rules"><div class="recovery-track"><div class="track-line"></div>
 <div class="recovery-node"><div class="recovery-orb">01</div><b>Keep evidence</b><small>Records and screenshots</small></div>
-<div class="recovery-node"><div class="recovery-orb">02</div><b>Official appeal</b><small>Send the documents</small></div>
-<div class="recovery-node"><div class="recovery-orb">03</div><b>Platform review</b><small>Check the transfer</small></div>
-<div class="recovery-node"><div class="recovery-orb">04</div><b>Talk it through</b><small>Reach the recipient</small></div>
-<div class="recovery-node"><div class="recovery-orb">05</div><b>Follow the rules</b><small>No guaranteed result</small></div>
-</div><div class="scene-bottom">The platform cannot take another user's assets on one person's word alone</div></div></div>
+<div class="recovery-node"><div class="recovery-orb">02</div><b>Official appeal</b><small>Submit the details</small></div>
+<div class="recovery-node"><div class="recovery-orb">03</div><b>Platform check</b><small>Verify the trade</small></div>
+<div class="recovery-node"><div class="recovery-orb">04</div><b>Talk it through</b><small>Contact the recipient</small></div>
+<div class="recovery-node"><div class="recovery-orb">05</div><b>Follow the rules</b><small>The result is not guaranteed</small></div>
+</div><div class="scene-bottom">The platform cannot move another user's assets on one person's word alone</div></div></div>
 
-First, save the transfer record, the order number, the receiving UID, the transaction hash (if there is one), and the screenshots. Contact official support as soon as you can.
+First save the transfer record, the order number, the receiving UID, the transaction hash if there is one, and the related screenshots, and contact official support as soon as you can.
 
-If it was an internal transfer to the wrong account, you usually file an appeal or a report under the platform's rules. The platform checks the record and, depending on the case, helps you reach the person who actually received the funds so you can talk it through.
+If it was a wrong internal transfer, you usually have to file an appeal or a report under the platform's rules. The platform checks the transaction record and, depending on the case, helps contact the actual recipient to talk it through.
 
-One basic rule:
+One basic principle:
 
-**Once the funds are in another user's account, the exchange cannot take them out of that account on the sender's word alone.**
+**Once the funds are in another user's account, the exchange cannot take them back out of that account on the sender's word alone.**
 
-Even when the transfer really was a mistake, it still goes through identity checks, a review of the transaction, and the platform's process.
+Even if the transfer really was a mistake, it still has to go through identity checks, an investigation of the transaction, and the matching process.
 
-If the other person will not cooperate, getting the money back can be very hard. You may need a legal path.
+If the other side will not cooperate, recovering the funds can be very hard, and you may need a legal route.
 
-If it was an on-chain transfer to the wrong place, a confirmed transaction usually cannot be undone. If it went to an address you do not control, or onto the wrong network, the chance of getting it back can be very small.
+If it was a wrong on-chain transfer, a transaction that is already confirmed usually cannot be undone.
+In particular, if it went to an address you cannot control, or onto the wrong network, the chance of recovery can be very small.
 
-So do not count on fixing it afterward.
+So do not put your hope in fixing it afterward.
 
 A last reminder
 
-The easiest place for a crypto transfer to go wrong is sometimes not a complicated technique. It is a bit of common sense you treated as obvious.
+The easiest place for a crypto transfer to go wrong is sometimes not a complicated technique. It is a piece of common sense you thought was obvious.
 
-Two extra minutes of checking before you send is much easier than spending days looking for a fix after the funds go to the wrong place.
+Two extra minutes of checking before you send is much easier than several days of looking for a fix after it is wrong.
 
-<div class="compare"><div><b>Internal mis-transfer</b><p>The platform can check the record and follow its rules. It cannot take another user's assets just because the sender says so. Someone else's account usually needs a review, a conversation, and the proper process.</p></div><div><b>On-chain mis-transfer</b><p>A confirmed on-chain transaction usually cannot be undone. If it went to an address you do not control, or onto the wrong network, getting it back can be extremely hard, or impossible.</p></div></div>
-<div class="key"><strong>A realistic note:</strong> There is no one-click undo. What you can do is use the official channel quickly. Do not treat a later fix as a safety net.</div>
-<div class="quiz" data-correct="b" data-ok="Correct. This question is passed." data-bad="Not yet. Look again at the platforms and the transfer path the official rules support."><h3>If the funds are already in a stranger's account?</h3><p>Can the exchange take the money back from that account just because you explain it was a mistake?</p><button type="button" class="option" data-answer="a">A. Yes, if you explain it was a mistake.</button><button type="button" class="option" data-answer="b">B. No. It has to check and follow the proper process.</button><div class="feedback"></div></div>
+<div class="compare"><div><b>Wrong internal transfer</b><p>The platform can check the record and handle it under the rules, but it cannot take another user's assets on the sender's word alone. Another person's account usually needs verification, contact, and the proper process.</p></div><div><b>Wrong on-chain transfer</b><p>A transaction that is confirmed on-chain usually cannot be undone. If it went to an address you cannot control, or onto the wrong network, recovery can be extremely hard, or impossible.</p></div></div>
+<div class="key"><strong>A plain reminder:</strong> after a wrong transfer there is no one-tap undo. What you can do is use the formal channel quickly. Fixing it afterward is not a safety net.</div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. Once the money is in someone else's account, the exchange cannot pull it back just because you described what happened. It has to be checked, and it has to follow the process." data-bad="Not quite. Explaining that it was a mistake does not mean the platform can pull the funds straight back from the other account. It has to be checked, and it has to follow the process."><h3>If the funds are already in someone else's account?</h3><p>Can the exchange pull the money back from the other account on your description alone?</p><button type="button" class="option" data-answer="a">A. Yes, as long as you explain it was a mistake</button><button type="button" class="option" data-answer="b">B. No. It has to be checked, and it has to follow the relevant process</button><div class="feedback"></div></div>
 
 # Footer
 
