@@ -64,152 +64,236 @@ Focus on custody, seed phrases, approvals, and transfer checks.
 
 **The crypto scene is the market and community around cryptocurrency. Buying coins is only one way to take part.**
 
-"Crypto scene" is a plain way to talk about the market and community around cryptocurrency, blockchains, and related apps. Some people trade. Some build apps. Others study the technology, payments, games, digital collectibles, or on-chain finance.
+"Crypto scene" is an everyday way of talking about the market and community around cryptocurrency, blockchains, and related apps.
+Some people trade, some build apps, and some study the technology, payments, games, digital collectibles, and on-chain finance.
 
-Buying coins is only one way in. You can also learn, watch projects, and try test networks without putting in real money.
+Buying coins is only one way to take part.
+You can also study first, watch projects, and try a test network, without putting in real money.
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. The crypto scene is a market and a community. Buying coins is only one way to take part." data-bad="Not quite. Buying is not the only way. You can also learn, watch projects, and try a testnet before you put in real money."><h3>Think it through</h3><p>Is buying coins the only way to take part in the crypto scene?</p><button type="button" class="option" data-answer="a">A. Yes. If you do not buy, you are not taking part</button><button type="button" class="option" data-answer="b">B. No. Learning and watching also count as taking part</button><button type="button" class="option" data-answer="c">C. Only building an app yourself counts</button><div class="feedback"></div></div>
 
 ## What is a blockchain?
 
-**A blockchain is a shared ledger that many parties keep, and that is hard for any one person to quietly rewrite.**
+**A blockchain is a public ledger that many people keep together, and that is hard for one person to quietly change.**
 
-Think of a blockchain as a record system maintained by more than one party. Transactions are confirmed by the rules and written into the record. Participants agree on the record through a consensus mechanism.
+You can think of a blockchain as a record system maintained by more than one party.
+Transactions are confirmed by the rules and written into the record. Participants agree on the record through a consensus mechanism.
 
-One important property is that it resists tampering: when the network is operating normally and its consensus and security assumptions hold, a record that is already well confirmed cannot be changed on a whim by one person.
+One important property is that it resists tampering.
+When the network is running normally, and its consensus and security assumptions hold, a record that is already well confirmed cannot be changed on a whim by one person.
 
-A tamper-resistant record does not mean the information someone typed in, a project's marketing, or the other side of a trade is true.
+A record that resists tampering does not mean the information that was entered, a project's marketing, or the other side of a trade is true.
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. A record that is hard to change only means a confirmed record is hard for one person to quietly rewrite. What was written can still be untrue." data-bad="Not quite. Resisting tampering is not the same as the content being true. A project's marketing and the other side of a trade still have to be checked on their own."><h3>Think it through</h3><p>If a record is hard to change in secret, does that mean what was written is definitely true?</p><button type="button" class="option" data-answer="a">A. Yes. Once it is on a blockchain, it is true</button><button type="button" class="option" data-answer="b">B. No. Resisting tampering is not the same as the content being true</button><button type="button" class="option" data-answer="c">C. Only a record kept by one company can be true</button><div class="feedback"></div></div>
 
 ## What is a cryptocurrency?
 
 **A cryptocurrency is a digital asset on a chain. There are many kinds, and the risks are not the same.**
 
-Cryptocurrencies are digital assets managed with cryptography and the rules of a network. Uses, how they are issued, and risks differ a lot. Do not treat them all as the same kind of investment.
+Cryptocurrencies are digital assets managed with cryptography and the rules of a network.
+Uses, how they are issued, and risks differ a lot. Do not treat them all as the same kind of investment.
 
-BTC is the native asset of the Bitcoin network. ETH is the native asset of the Ethereum network and can be used to pay network fees, among other things. Many tokens are issued by contracts on a chain that already exists.
+BTC is the native asset of the Bitcoin network.
+ETH is the native asset of the Ethereum network, and it can be used to pay network fees, among other things.
+Many tokens are issued by contracts on a chain that already exists.
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. BTC is the native asset of the Bitcoin network. Many tokens are issued by contracts on a chain that already exists. Sharing the word coin does not make them the same thing." data-bad="Not quite. Sharing the word coin does not mean the same issuance or the same risk. BTC belongs to the Bitcoin network itself. Many tokens are issued by contracts on a chain that already exists."><h3>Think it through</h3><p>Are BTC and a token issued by a contract the same kind of thing?</p><button type="button" class="option" data-answer="a">A. Yes. If the name says coin, they are the same</button><button type="button" class="option" data-answer="b">B. No. BTC is the Bitcoin network's native asset, and many tokens are issued by contracts</button><button type="button" class="option" data-answer="c">C. They are the same only when the price is the same</button><div class="feedback"></div></div>
 
 ## Where BTC came from
 
-**Bitcoin was the first cryptocurrency. The network started in 2009. The supply cap is about 21 million.**
+**Bitcoin was the first cryptocurrency. It started running in 2009, and the cap is about 21 million coins.**
 
-On 31 October 2008, an author using the name Satoshi Nakamoto (中本聪) published the Bitcoin white paper, *Bitcoin: A Peer-to-Peer Electronic Cash System*. In Chinese it is usually called 《比特币：一种点对点的电子现金系统》.
+October 31, 2008
+An author using the name "Satoshi Nakamoto" published the Bitcoin white paper :
+《Bitcoin: A Peer-to-Peer Electronic Cash System》
+The usual Chinese translation is "Bitcoin: A Peer-to-Peer Electronic Cash System"
 
-The question in the paper is direct: can two people pay each other online without a financial institution standing between them to stop the same money being spent twice? It combines digital signatures, proof of work, and network consensus into a peer-to-peer electronic cash design.
+The question in the white paper is direct: can two people pay each other online without relying on a financial institution to stop the same money from being spent twice?
+It combines digital signatures, proof of work, and network consensus, and designs a peer-to-peer electronic cash system.
 
-On 3 January 2009 the Bitcoin genesis block was created and the network started running. Satoshi's real identity has never been publicly confirmed.
+On January 3, 2009, the Bitcoin genesis block was created, and the Bitcoin network started running.
+Satoshi Nakamoto's real identity has never been confirmed in a way people agree on.
 
-Under the current consensus rules, the issuance cap for BTC is about 21 million. No company issues more on demand. New coins come out gradually under the network's rules. Scarcity is one of its features. It does not guarantee that the price only goes up.
+Under the current consensus rules, the issuance cap for BTC is about 21 million coins.
+It is not issued by a company whenever the company wants more. It is produced gradually under the network's rules.
+Scarcity is one of its properties. It does not guarantee that the price only rises.
 
-📄 Want the white paper itself? Start at the official bitcoin.org pages:
+📄 Want to read the white paper? Start from the official bitcoin.org pages:
 
 - English PDF: https://bitcoin.org/bitcoin.pdf
-- Versions in other languages: https://bitcoin.org/en/bitcoin-paper
+- Other languages: https://bitcoin.org/en/bitcoin-paper
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. Under the current consensus rules, the cap is about 21 million. That is an issuance rule. It does not guarantee that the price only rises." data-bad="Not quite. BTC is not printed by a company on demand. The cap is about 21 million, and scarcity does not mean the price only rises."><h3>Think it through</h3><p>Under the current rules, about how many BTC can be issued at most?</p><button type="button" class="option" data-answer="a">A. About 21 million, and the price is not guaranteed to only rise</button><button type="button" class="option" data-answer="b">B. A company prints more when demand rises</button><button type="button" class="option" data-answer="c">C. There is no cap. It can be issued without limit</button><div class="feedback"></div></div>
 
 ## Coin or token?
 
 **A native coin belongs to a chain itself. A token is issued on someone else's chain.**
 
-A common distinction: a native coin belongs to a given network; a token is issued on a network that already exists. ETH and an ERC-20 token on Ethereum are the usual example. In everyday talk, people often call all of them "coins".
+A common distinction: a native coin belongs to a network itself.
+A token is issued on a network that already exists.
+ETH and an ERC-20 token on Ethereum are the example.
+
+In everyday talk, people often call all of them coins.
+The same name does not mean they were issued the same way.
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. ETH belongs to the Ethereum network itself. An ERC-20 token is issued on that existing network." data-bad="Not quite. Calling them all coins is only a way of speaking. ETH is the native coin. An ERC-20 token is not the chain itself."><h3>Think it through</h3><p>What is the main difference between ETH and an ERC-20 token on Ethereum?</p><button type="button" class="option" data-answer="a">A. There is no difference. Being on Ethereum makes them the same</button><button type="button" class="option" data-answer="b">B. ETH belongs to the network itself. An ERC-20 token is issued on a network that already exists</button><button type="button" class="option" data-answer="c">C. ERC-20 is Ethereum's native coin</button><div class="feedback"></div></div>
 
 ## What is a public chain?
 
-**A public chain is a blockchain anyone can use. You cannot send between chains at random.**
+**A public chain is a blockchain anyone can use. You cannot send between chains as if they were the same place.**
 
-A public chain is usually an open blockchain network, for example Bitcoin, Ethereum, TRON, BNB Chain, or Solana. Fees, speed, apps, and security assumptions differ.
+A public chain is usually an open blockchain network, for example Bitcoin, Ethereum, TRON, BNB Chain, and Solana.
+Fees, speed, apps, and security assumptions differ from chain to chain.
 
-Think of different networks as different transport systems. Addresses that look alike do not mean the destination or the asset is compatible. The recipient has to support that network explicitly.
+You can think of different networks as different transport systems.
+An address that looks the same does not mean the destination and the asset are compatible.
+A transfer needs the recipient to explicitly support that network.
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. A similar-looking address does not mean the network and the asset are compatible. The recipient has to explicitly support that network." data-bad="Not quite. Do not send just because the address looks similar, or because both sides are called public chains. Confirm the network the recipient supports first."><h3>Think it through</h3><p>If an address looks the same, can you send it straight onto another chain?</p><button type="button" class="option" data-answer="a">A. Yes. If the address looks the same, you can send</button><button type="button" class="option" data-answer="b">B. Not by default. The recipient has to explicitly support that network</button><button type="button" class="option" data-answer="c">C. If both are called public chains, they can send to each other</button><div class="feedback"></div></div>
 
 ## What is Web3?
 
-**Web3 is internet apps you open with a wallet and use on a chain.**
+**Web3 means internet apps you sign in to with a wallet and use on a chain.**
 
-Web3 is often used for internet apps built with blockchains, wallets, and smart contracts. A wallet can hold digital assets, sign actions, and use on-chain apps.
+Web3 is often used for internet apps built with blockchains, wallets, and smart contracts.
+A user can manage digital assets, sign actions, and use on-chain apps through a wallet.
 
-A "Web3" label does not mean a project is actually decentralized, usable, or safe.
+But a Web3 label does not mean the project is actually decentralized.
+It also does not mean the app is usable or safe.
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. Web3 is only a label. It does not guarantee decentralization, and it does not guarantee that something is usable or safe." data-bad="Not quite. A Web3 label, or a wallet sign-in, does not by itself prove safety or decentralization."><h3>Think it through</h3><p>If an app is labeled Web3, does that mean it is already decentralized and safe?</p><button type="button" class="option" data-answer="a">A. Yes. The label is the proof</button><button type="button" class="option" data-answer="b">B. No. The label does not guarantee decentralization, usability, or safety</button><button type="button" class="option" data-answer="c">C. If you can sign in with a wallet, it is definitely safe</button><div class="feedback"></div></div>
 
 ## What is a smart contract?
 
-**A smart contract is a program that runs on a chain. If the code has a bug, things break.**
+**A smart contract is a program on a chain that runs by its code. If the code has a bug, things can go wrong.**
 
-A smart contract is a program deployed on a blockchain that executes by its code. Swaps, lending, and token issuance are often done this way. Code can have bugs, and it can also give an admin special powers. The word "smart" does not make it reliable.
+A smart contract is a program deployed on a blockchain that executes by its code.
+Swaps, lending, and token issuance are often done by one.
+
+Code can have bugs, and it can also be given admin permissions.
+Do not assume it is reliable just because it is called smart.
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. It is a program that runs by its code. The code can have bugs, and it may also have admin permissions." data-bad="Not quite. Calling it smart does not mean it cannot fail. A swap contract and other contracts can both have bugs or admin permissions."><h3>Think it through</h3><p>Can a smart contract be treated as something that will not go wrong?</p><button type="button" class="option" data-answer="a">A. Yes, because it is called smart</button><button type="button" class="option" data-answer="b">B. No. The code can have bugs, and it may also have admin permissions</button><button type="button" class="option" data-answer="c">C. Only swap contracts can go wrong</button><div class="feedback"></div></div>
 
 ## What is a stablecoin?
 
-**A stablecoin tries to stay near 1:1 with the dollar. It is not a bank deposit, and it can lose that peg.**
+**A stablecoin aims to stay 1:1 with the dollar. It is not a bank deposit, and it can lose that peg.**
 
-A stablecoin aims to track a reference value, often 1 US dollar. USDT and USDC are examples. Different stablecoins may use fiat reserves, crypto collateral, or other mechanisms.
+A stablecoin aims to track a reference value, often 1 US dollar, for example USDT and USDC.
+Different stablecoins may use fiat reserves, crypto collateral, or other mechanisms.
 
-Stablecoins are used for pricing, transfers, and settlement. They are not bank deposits, and they are not guaranteed to redeem at 1 dollar forever. You need to understand reserves, redemption terms, freeze powers, and depeg risk.
+A stablecoin can be used for pricing, transfers, and settling trades.
+It is not a bank deposit, and it is not guaranteed to stay redeemable at 1 dollar.
+You need to understand the reserves, the redemption terms, freeze permissions, and the risk of losing the peg.
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. It aims to track a reference value, such as 1 dollar. It is not a bank deposit, and it can lose the peg." data-bad="Not quite. USD in the name does not mean it is a bank deposit, or that it will always equal 1 dollar."><h3>Think it through</h3><p>Is a stablecoin a bank deposit, and is it guaranteed to always equal 1 US dollar?</p><button type="button" class="option" data-answer="a">A. Yes, so it can be treated as a deposit</button><button type="button" class="option" data-answer="b">B. No. It aims to track a reference value, but it is not a bank deposit, and it can lose the peg</button><button type="button" class="option" data-answer="c">C. If the name contains USD, it always equals 1 dollar</button><div class="feedback"></div></div>
 
 ## One table of how the pieces fit
 
 **One table: what the chain, the coin, the wallet, the exchange, and the app each do.**
 
-| Term | Main job | Simple examples |
+| Name | Main job | Simple example |
 |---|---|---|
-| Blockchain | Record and carry out network activity | Ethereum, TRON |
-| Coin / token | A digital asset on a network | BTC, ETH, USDT |
-| Wallet | Manage an account and sign actions | Software wallet, hardware wallet |
-| Exchange | Buy, sell, or swap assets | CEX, DEX |
-| DApp | An application on a blockchain | Swap, lending, game |
+| Blockchain | Records and carries out network activity | Ethereum, TRON |
+| Coin / token | A digital asset inside a network | BTC, ETH, USDT |
+| Wallet | Manages the account and signs actions | Software wallet, hardware wallet |
+| Exchange | Buys, sells, or swaps assets | CEX, DEX |
+| DApp | An application on a blockchain | Swap, lending, or game apps |
+
+A wallet manages the account and the signing.
+It does not keep the blockchain's books, and it does not guarantee the price on an exchange.
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. A wallet mainly manages the account, and it is what you use to sign actions." data-bad="Not quite. Keeping the books is the blockchain network's job. An exchange price is not guaranteed by the wallet. The wallet manages the account and the signing."><h3>Think it through</h3><p>What does a wallet mainly do?</p><button type="button" class="option" data-answer="a">A. Keep the books in place of the blockchain</button><button type="button" class="option" data-answer="b">B. Manage the account, and sign actions</button><button type="button" class="option" data-answer="c">C. Guarantee that the price on an exchange will not change</button><div class="feedback"></div></div>
 
 ## Why do prices move?
 
-**Price is set by buyers and sellers. Up does not mean it is "worth more". Down does not mean it is "cheap".**
+**The price is set by buyers and sellers. A rise does not mean it is worth more, and a drop does not mean it is cheaper.**
 
-The traded price is formed by buying and selling. It can move with demand, liquidity, expectations, supply changes, leverage, the macro environment, and news. A rising price does not by itself mean the project is more valuable. A falling price does not by itself prove it is cheap.
+The trading price is formed by buying and selling in the market.
+It can be moved by demand, liquidity, expectations, changes in supply, leverage, the broader economy, and news.
+
+A rising price does not necessarily mean the project is more valuable.
+A falling price does not automatically prove that it is cheap.
 
 Note: Look at what it is and why it exists before you decide to take part.
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. The price is formed by buying and selling. A rise does not mean the project is more valuable, and a drop does not automatically mean it is cheap." data-bad="Not quite. A price move by itself cannot prove that a project is more valuable, or that it is already cheap."><h3>Think it through</h3><p>If the price rises, does that mean the project is more valuable?</p><button type="button" class="option" data-answer="a">A. Yes. If it rose, it is more valuable</button><button type="button" class="option" data-answer="b">B. Not necessarily. The price is formed by buying and selling, and a rise does not mean the project is more valuable</button><button type="button" class="option" data-answer="c">C. Only a drop can show that it has no value</button><div class="feedback"></div></div>
 
 # 02｜Primary and secondary markets 🌱
 
 ## Primary market: issuance and early funding
 
-**The primary market is when a coin is first offered. Early does not mean easier money.**
+**The primary market is the subscription when a coin is first issued. Early does not mean easier money.**
 
-The primary market usually means the first issuance, fundraising, or subscription. In crypto that often includes private sales, public sales, token launches, and some launchpad events. The right label depends on what the buyer is getting, who the seller is, and how the deal is structured.
+The primary market usually means the first issuance, the funding, or the subscription.
+In crypto, common forms include private sales, public sales, token issuances, and some Launchpad events.
+The exact category depends on what the participant is buying, who the seller is, and how the deal is structured.
 
-Example: a project issues a token for the first time and opens a subscription. Buyers receive tokens from the issuer. That is usually a primary issuance.
+Fictional teaching example: a project opens a token subscription to participants for the first time, and the participants receive the tokens from the issuer.
+That is usually a primary issuance.
+It is not a real project, and it does not mean taking part this way will make money.
 
-Early participation can mean a longer lockup, less public information, and a harder exit. "Early" only means earlier in time. It does not mean it is easier to make money.
+Early participation can mean a longer lockup, less public information, and a harder exit.
+"Early" only means earlier in time. It does not mean easier money.
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. Early only means earlier in time. It can also mean a longer lockup, less information, and a harder exit." data-bad="Not quite. Early does not mean easier money. A private sale is not more profitable just because it is earlier."><h3>Think it through</h3><p>Does "early" mean it is easier to make money?</p><button type="button" class="option" data-answer="a">A. Yes. The earlier it is, the easier it is to profit</button><button type="button" class="option" data-answer="b">B. No. Early only means earlier in time, and the exit can be harder</button><button type="button" class="option" data-answer="c">C. Only a private sale is easier money because it is earlier</button><div class="feedback"></div></div>
 
 ## Secondary market: trading coins already issued
 
 **The secondary market is buying and selling coins that someone else already holds.**
 
-The secondary market usually means assets that have already been issued, moving from one holder to another. Buying BTC that someone else is selling on an exchange, or swapping an already issued token on a DEX, is generally secondary trading.
+The secondary market usually means assets that have already been issued, moving between holders.
+Buying BTC that someone else is selling on an exchange, or swapping an already issued token on a DEX, is generally a secondary trade.
 
-So primary / secondary describes issuance versus later trading. CEX / DEX describes the venue and the mechanism. They are not the same pair of categories.
+So primary / secondary describes issuance and later circulation.
+CEX / DEX describes the venue and the mechanism.
+They are not the same classification.
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. Buying BTC that someone else already holds is generally a secondary trade. It does not become a primary issuance just because it happens on a CEX." data-bad="Not quite. Primary is the issuance step. Buying already issued BTC on an exchange is generally a secondary trade. CEX names the venue, not primary or secondary."><h3>Think it through</h3><p>Buying BTC that someone else is selling on an exchange is generally which kind?</p><button type="button" class="option" data-answer="a">A. A primary issuance</button><button type="button" class="option" data-answer="b">B. A secondary trade</button><button type="button" class="option" data-answer="c">C. Unrelated to primary or secondary. It only matters whether it is a CEX</button><div class="feedback"></div></div>
 
 ## Common ways to take part early
 
-**Private sales, IDOs, airdrops, and testnets are all early paths, and each has its own traps.**
+**Private sales, IDOs, airdrops, and testnets are all early ways to take part, and each has its own trap.**
 
-| Path | Meaning | Check carefully |
+| Way | Meaning | Check carefully |
 |---|---|---|
-| Private sale | Fundraising from specific participants | Eligibility, contract, price, lockup, and delivery |
-| Public sale | Open to people who qualify | Region limits, subscription rules, and how issuance is arranged |
-| IDO | Issuance organized through a decentralized platform | Whether it is real, the contract, liquidity, and allocation rules |
-| Launchpad | A platform-run token sale | Platform rules, cost to join, allocation, and unlocks |
-| Airdrop | Assets sent to addresses or users who qualify | Conditions, claim cost, and approval risk |
+| Private sale | Raising money from specific participants | Eligibility, the contract, the price, the lockup, and delivery |
+| Public sale | A raise open to people who qualify | Regional limits, subscription rules, and the issuance plan |
+| IDO | An issuance organized through a decentralized platform | Whether it is genuine, the contract, liquidity, and the allocation rules |
+| Launchpad | A project issuance organized by a platform | Platform rules, the cost of taking part, the allocation, and the unlock |
+| Airdrop | Assets allocated to addresses or users who qualify | The conditions, the cost of claiming, and approval risk |
 | Testnet | Trying a product on a test network | Test assets are usually not real assets |
-| Points campaign | Points that record activity | Whether they can be redeemed, and whether the rules can change |
+| Points campaign | A points system that records user activity | Whether points can be redeemed, and whether the rules can change |
 
-Airdrops, points, and testnets are not automatically a primary investment. They do not guarantee a future token or a reward.
+An airdrop, points, and a testnet are not automatically a primary investment.
+They also do not guarantee a future token or a reward.
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. A testnet is for trying the product. Test assets are usually not real assets." data-bad="Not quite. Test assets usually cannot be treated as real assets. A high points score does not mean the test assets have become real assets."><h3>Think it through</h3><p>Are test assets on a testnet usually the same as real assets?</p><button type="button" class="option" data-answer="a">A. Yes. Once the test passes, you can use them as real assets</button><button type="button" class="option" data-answer="b">B. Usually not</button><button type="button" class="option" data-answer="c">C. If the points are high enough, they are real assets</button><div class="feedback"></div></div>
 
 ## What are lockups and unlocks?
 
-**A lockup means you cannot sell yet. After an unlock, more coins can be sold.**
+**A lockup means you cannot sell for a while. After the unlock, more of the coin can be sold.**
 
-A lockup means an asset cannot be transferred or withdrawn for a while, under stated conditions. An unlock means those limits lift on a schedule. An early purchase may be delivered in batches. You cannot always sell the moment the sale ends.
+A lockup means the asset cannot be transferred or withdrawn for a time, under certain conditions.
+An unlock means the restriction is lifted on a schedule.
+An early subscription may be delivered in batches. Finishing the subscription does not mean you can sell immediately.
 
-Unlocks change the supply that can circulate. The price effect still depends on what holders do, on demand, and on market liquidity.
+An unlock changes the supply that can circulate.
+The actual effect on price still depends on what holders do, on demand, and on market liquidity.
+An unlock does not mean the price will definitely rise.
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. During a lockup you may be unable to transfer for a while. Finishing the subscription does not mean you can sell right away." data-bad="Not quite. Finishing the subscription does not mean you can sell immediately. An unlock increases the amount that can be sold, but it does not guarantee a higher price."><h3>Think it through</h3><p>Once the subscription is finished, can you sell immediately?</p><button type="button" class="option" data-answer="a">A. Yes. Once you have paid, you can sell</button><button type="button" class="option" data-answer="b">B. Not necessarily. During a lockup you may be unable to transfer for a while</button><button type="button" class="option" data-answer="c">C. After the unlock, the price definitely rises</button><div class="feedback"></div></div>
 
 ## CEX and DEX
 
-**CEX / DEX is about where you trade. It is not the same thing as primary / secondary.**
+**CEX / DEX is about where you trade. It is not the same thing as a primary or secondary market.**
 
-CEX and DEX classify the venue. They are not the primary / secondary distinction. The difference is in [Chapter 05, "How is a CEX different from a DEX?"](#/c/05).
+CEX and DEX classify the venue. They are not the primary / secondary distinction.
+The difference is in [Chapter 05, "How is a CEX different from a DEX?"](#/c/05).
 
-Note: First be able to say "I am buying this asset, issued by this party." Then talk about primary or secondary.
+Note: First say which asset you are buying, and who issued it, before you talk about primary or secondary.
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. CEX and DEX distinguish the venue and the mechanism. Primary and secondary distinguish issuance and later circulation." data-bad="Not quite. CEX / DEX is not primary versus secondary, and it is not coin versus token. It says where you trade, and by what mechanism."><h3>Think it through</h3><p>What do the words CEX and DEX mainly distinguish?</p><button type="button" class="option" data-answer="a">A. The primary market and the secondary market</button><button type="button" class="option" data-answer="b">B. The venue and the mechanism</button><button type="button" class="option" data-answer="c">C. A native coin and a token</button><div class="feedback"></div></div>
 
 # 03｜What to know before you buy 📚
 
@@ -1110,6 +1194,12 @@ Note: For every activity, ask four things: what it is, how you take part, what i
 
 ## Serious terms
 
+**Serious terms are community shorthand. You need the meaning before you can tell a slogan from a fact.**
+
+The table below lists common words in their existing wording.
+Knowing the meaning is so you can understand what other people are saying.
+It does not turn a slogan into a fact.
+
 | Term | Plain explanation |
 |---|---|
 | DYOR | Do your own research and check it yourself. Do not treat someone else's opinion as the conclusion. |
@@ -1151,9 +1241,15 @@ Note: For every activity, ask four things: what it is, how you take part, what i
 | MPC wallet | A multi-party computation wallet. The key is split into shares kept apart. Creating one usually does not mean writing down a traditional seed phrase (Binance Wallet (keyless) is an example). You still have to finish the backup and confirm how recovery works. |
 | WAGMI | A community slogan, "we're all gonna make it". It is not a promise of a return. |
 
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. DYOR means you research and check it yourself. Someone else's opinion cannot be treated as the conclusion." data-bad="Not quite. DYOR is not 'if someone is bullish, you can buy,' and it is not acting because you see FOMO. It means you check it yourself."><h3>Think it through</h3><p>What is DYOR saying?</p><button type="button" class="option" data-answer="a">A. If someone else is bullish, you can treat that as the conclusion</button><button type="button" class="option" data-answer="b">B. Research and check it yourself, and do not treat someone else's opinion as the conclusion</button><button type="button" class="option" data-answer="c">C. If you see FOMO, you should buy immediately</button><div class="feedback"></div></div>
+
 ## Community jokes
 
-These lines are jokes about how people talk. They are not a judgment of anyone's real intent, and they are not trading advice. The Chinese phrase is the thing being translated.
+**Community jokes are teasing. They are not trading advice.**
+
+The lines below are teasing.
+They are not a judgment of everyone's real intent.
+They are also not trading advice.
 
 | Phrase | The joke, in plain words |
 |---|---|
@@ -1173,6 +1269,8 @@ These lines are jokes about how people talk. They are not a judgment of anyone's
 | 上车 / 下车 (get on / get off) | Buy / sell. Don't chase just because of the metaphor. |
 | 报单 / 喊单 (calling a trade) | Someone tells you what to buy. If it rises, it was their eye. If it loses, it is yours. |
 | 接盘 (catching the bag) | Buying what someone else is selling. Often a joke about buying the top. |
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. In this comparison, a healthy pullback is a nicer way of saying the price dropped. It is not proof that the price will rise, and it is not a price guarantee." data-bad="Not quite. This is teasing. It does not prove the price will rise, and it is not an official guarantee."><h3>Think it through</h3><p>In this comparison, which meaning is closer to "healthy pullback"?</p><button type="button" class="option" data-answer="a">A. It already proves the price will rise afterward</button><button type="button" class="option" data-answer="b">B. It dropped, but the wording makes it sound nicer</button><button type="button" class="option" data-answer="c">C. An official price guarantee</button><div class="feedback"></div></div>
 
 Buttons: slang
 
