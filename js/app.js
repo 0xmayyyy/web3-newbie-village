@@ -503,10 +503,12 @@
   }
   function balanceProse(prose) {
     if (!prose) return;
+    var keepSentences = prose.getAttribute('data-keep-sentences') === '1';
     prose.querySelectorAll('p').forEach(function (p) {
       if (p.closest('.uid-compare, .diagram, .cosmic-scene, .orbit-scene, .quiz, .checklist, .steps, .step, .compare, .key, .teach-status, table, thead, tbody, pre, .summary, .tool-card, .tool-grid, button')) return;
       if (p.querySelector('table, pre, code, button, img, svg, .uid-compare, .tool-card')) return;
       p.querySelectorAll('br.clause-br').forEach(function (br) { br.remove(); });
+      if (keepSentences && p.querySelector('br:not(.clause-br)')) return;
       var text = p.textContent;
       var cuts = clauseCuts(text);
       if (cuts.length < 2) return;
@@ -827,7 +829,7 @@
     if (sec != null && !teachCanEnter(id, sec)) {
       var dest = 0;
       for (var ti = 0; ti < sec; ti++) if (teachCanEnter(id, ti)) dest = ti;
-      var back = '#/c/' + id + (dest ? '/' + dest : '');
+      var back = '#/c/' + id + ((dest || id === '13') ? '/' + dest : '');
       if (location.hash !== back) location.hash = back;
       return;
     }
@@ -841,7 +843,7 @@
     if (!visible.length) return renderHome();
     var cur = visible[pos];
     var ids = readerChapterIds(planetIndex, id);
-    var glossary = id === '13';
+    var glossary = id === '13' && sec == null;
     var highlight = glossary ? '' : firstExcerpt(cur.s.text || '');
     document.title = t('title.ch', { id: c.id, title: c.title });
     if (glossary) {
@@ -856,7 +858,7 @@
       '<article class="reading"><div class="meta"><span>CHAPTER ' + c.id + ' / LESSON ' + ('0' + (pos + 1)).slice(-2) + '</span><span>' + (pos + 1) + ' / ' + visible.length + '</span></div>' +
       listenBarHtml() +
       '<h2>' + esc(cur.s.title) + '</h2>' + (highlight ? '<div class="summary">' + esc(highlight) + '</div>' : '') +
-      '<div class="prose" id="reader-prose">' + cur.s.html + '</div>' +
+      '<div class="prose" id="reader-prose"' + (c.id === '01' || c.id === '02' || c.id === '13' ? ' data-keep-sentences="1"' : '') + '>' + cur.s.html + '</div>' +
       '<div class="reading-footer"><button type="button" class="navbtn" id="reader-prev"' + (pos === 0 && ids.indexOf(id) <= 0 ? ' disabled' : '') + '>' + esc(t('reader.prev')) + '</button>' +
       '<button type="button" class="done-link" id="done-btn" aria-pressed="' + isDone(c.id) + '">' + esc(isDone(c.id) ? t('ch.done') : t('ch.done.set')) + '</button>' +
       '<button type="button" class="navbtn primary" id="reader-next"' + (pos === visible.length - 1 && ids.indexOf(id) === ids.length - 1 ? ' disabled' : '') + '>' + esc(t('reader.next')) + '</button></div></article></div>';
@@ -915,10 +917,11 @@
     var prevBtn = $('#reader-prev'), nextBtn = $('#reader-next');
     if (prevBtn) prevBtn.addEventListener('click', function () { step(-1); });
     function unlockTeachNext() {
-      if (!nextBtn || nextBtn.getAttribute('data-end') === '1') return;
-      nextBtn.disabled = false;
+      if (!nextBtn) return;
+      var ended = nextBtn.getAttribute('data-end') === '1';
       nextBtn.classList.remove('is-locked');
-      nextBtn.textContent = t('reader.next');
+      nextBtn.disabled = false;
+      nextBtn.textContent = ended ? t('reader.finish') : t('reader.next');
       $$('.course-reader [data-sec]').forEach(function (b) {
         b.classList.toggle('is-locked', !teachCanEnter(id, +b.getAttribute('data-sec')));
       });
@@ -934,6 +937,11 @@
     }
     if (nextBtn) nextBtn.addEventListener('click', function () {
       if (nextBtn.disabled || nextBtn.classList.contains('is-locked')) return;
+      if (nextBtn.getAttribute('data-end') === '1') {
+        var home = planetIndex >= 0 ? planetEntryHash(planetIndex) : '#/';
+        if (home) location.hash = home;
+        return;
+      }
       step(1);
     });
     if (window.TEACH && prose) TEACH.mount(prose, id, cur.i, unlockTeachNext);
@@ -1219,7 +1227,7 @@
   function mountWidgets(root) {
     $$('[data-widget]', root).forEach(function (el) { var f = W[el.dataset.widget]; if (f) f(el); });
     // 话术翻译器挂在第 13 章开头；表格里的玩梗行加「社区调侃」标记
-    if (location.hash.indexOf('#/c/13') === 0 && !$('.slang', root)) {
+    if (/^#\/c\/13(?:\?|$)/.test(location.hash) && !$('.slang', root)) {
       var w = document.createElement('div'); w.dataset.widget = 'slang';
       var first = $('details.sec', root);
       if (first) {
