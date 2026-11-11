@@ -299,211 +299,718 @@ Note: First say which asset you are buying, and who issued it, before you talk a
 
 ## Trading pairs
 
-**BTC/USDT means you buy BTC with USDT. You do not have to buy a whole coin.**
+BTC/USDT prices the BTC on the left in the USDT on the right; you can buy a fraction, and a sale usually pays you the quote asset.
 
-BTC/USDT means BTC is priced in USDT. If the price is 60,000, 1 BTC corresponds to about 60,000 USDT. Buying BTC/USDT usually means spending USDT to buy BTC. Selling is the reverse.
+You see "BTC/USDT: 60,000" on an exchange and wonder whether you must buy a whole BTC.
 
-You do not need a whole BTC. Many assets can be bought in fractions, but platforms have a minimum order size.
+You do not.
+**BTC/USDT means the BTC is priced in USDT.**
+The BTC on the left is the asset you buy or sell, and the USDT on the right is the quote asset.
+Fictional teaching example: 60,000 means that, at this quote, 1 BTC is about 60,000 USDT.
+
+Fictional teaching example: suppose you only want 0.01 BTC.
+60,000 × 0.01 = **600 USDT**, before fees.
+A sale reverses the direction: you sell BTC and usually receive USDT.
+Exchanges often allow a fractional amount, but they set a minimum order size or value.
+
+**Easy to mix up:** BTC/USDT and BTC/USD are not necessarily the same market;
+USDT is a stablecoin, not dollars in a bank account.
+Before you trade, look at the quote asset on the right.
+
+<div class="ch03-lab" data-lab="pair">
+<h3>Split the pair</h3>
+<p class="lab-kicker">Fictional teaching example. BTC/USDT uses 60,000, ETH/BTC uses 0.05, and SOL/USDT uses 150. None of these is a live price.</p>
+<div class="lab-tabs" role="group" aria-label="Choose a pair">
+<button type="button" data-pair="BTC/USDT" data-base="BTC" data-quote="USDT" data-price="60000" aria-pressed="true">BTC/USDT</button>
+<button type="button" data-pair="ETH/BTC" data-base="ETH" data-quote="BTC" data-price="0.05" aria-pressed="false">ETH/BTC</button>
+<button type="button" data-pair="SOL/USDT" data-base="SOL" data-quote="USDT" data-price="150" aria-pressed="false">SOL/USDT</button>
+</div>
+<div class="lab-cols">
+<div><span>Asset traded</span><strong data-base>BTC</strong></div>
+<div><span>Quote asset</span><strong data-quote>USDT</strong></div>
+</div>
+<label data-qty-wrap>Quantity to buy (<span data-unit>BTC</span>)
+<input data-qty type="number" min="0" step="any" value="0.01" inputmode="decimal">
+</label>
+<p class="lab-result" aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>Reset</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. In ETH/BTC, buying ETH usually spends the BTC on the right." data-bad="Not quite. Look at the quote asset on the right of the pair."><h3>Think it through</h3><p>In the ETH/BTC pair, what do you usually spend to buy ETH?</p><button type="button" class="option" data-answer="a" data-note="Not quite. Look at the quote asset on the right. The quote asset of ETH/BTC is BTC, not USDT.">A. USDT</button><button type="button" class="option" data-answer="b">B. BTC</button><button type="button" class="option" data-answer="c" data-note="Not quite. ETH is the asset you receive, not the quote asset you spend.">C. ETH</button><div class="feedback"></div></div>
 
 ## Price, market cap, and FDV
 
-**A low unit price is not "cheap". Look at market cap and total supply.**
+A low unit price is not the same as cheap; look at circulating market cap and fully diluted valuation together, and neither number is the cash people actually put in.
 
-Price: the market price of one unit.
-Circulating market cap: commonly price × circulating supply.
-FDV: fully diluted valuation, commonly price × total supply or max supply. Data sites do not all use the same definition.
+Coin A sells for 0.01 dollars, and coin B sells for 100 dollars.
+Which one is cheaper?
+**The unit price alone cannot tell you.**
 
-Suppose a coin is priced at 0.01 dollar and 10 billion are circulating. Circulating market cap is about 100 million dollars. Another coin is 100 dollars each, with 100,000 circulating. Market cap is about 10 million dollars.
+Start with market cap.
+A common formula is: **circulating market cap = current price × circulating supply.**
 
-So a low unit price is not a low valuation. Market cap is also not the total cash everyone actually put in.
+Fictional teaching example: coin A has 10 billion coins in circulation.
+0.01 × 10 billion = **100 million dollars**.
+Coin B has 100,000 coins in circulation.
+100 × 100,000 = **10 million dollars**.
+A has the lower unit price, and its circulating market cap is ten times B's.
+
+Then look at **FDV (fully diluted valuation)**: it usually multiplies the current price by total supply or max supply, and the data site decides the exact definition.
+Fictional teaching example: suppose coin A now has 10 billion circulating, and the future total supply might reach 100 billion. At 0.01 dollars, the FDV is about **1 billion dollars**.
+That is a valuation measure. **It does not mean 1 billion dollars actually flowed into the project.**
+
+**Easy to mix up:** market cap is not "the total cash every holder put in";
+FDV is not a price or a size the project is guaranteed to reach.
+
+<div class="ch03-lab" data-lab="mcap">
+<h3>The cheap-price test</h3>
+<p class="lab-kicker">Fictional teaching example. Guess which circulating market cap is higher, and the tap shows the math. The units are dollars and coins.</p>
+<div class="lab-stats">
+<div><span>A: unit price 0.01 dollars</span><b>Circulating 10 billion</b><span>Total 100 billion</span></div>
+<div><span>B: unit price 100 dollars</span><b>Circulating 100,000</b><span>Total 200,000</span></div>
+</div>
+<div class="lab-choices" role="group" aria-label="Which circulating market cap is higher">
+<button type="button" data-guess="a" aria-pressed="false">A has the higher market cap</button>
+<button type="button" data-guess="b" aria-pressed="false">B has the higher market cap</button>
+<button type="button" data-guess="tie" aria-pressed="false">They are the same</button>
+</div>
+<p class="lab-feedback" hidden aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>Reset</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. A lower unit price is not the same as undervalued. Also look at supply, use, and risk." data-bad="Not quite. Do not look only at the unit price, and do not look only at FDV."><h3>Think it through</h3><p>If a coin's unit price falls to 0.001 dollars, is it certainly undervalued?</p><button type="button" class="option" data-answer="a" data-note="Not quite. That treats the price as the valuation.">A. Yes</button><button type="button" class="option" data-answer="b">B. Not necessarily. Also look at supply, use, and risk</button><button type="button" class="option" data-answer="c" data-note="Not quite. Looking only at FDV ignores demand and what is actually circulating.">C. FDV alone is enough</button><div class="feedback"></div></div>
 
 ## Supply
 
-**Before you stare at the number, ask whether more can be issued, and when unlocks happen.**
+Separate circulating supply, total supply, and max supply; an unlock changes whether coins can be sold, and issuance is what adds new coins to supply.
 
-Circulating supply is the amount already in circulation under a given definition. Total supply is usually what has been issued, minus some burned amount. Max supply is the ceiling the rules allow. Not every asset has a fixed ceiling.
+Imagine a cake cut into 100 slices. You hold 1 slice, which is 1%.
+The project rules later add another 100 slices, and you still hold 1, so your share becomes 0.5%.
 
-Whether supply can increase, who has that power, and when the team and investors unlock is more useful than one number on its own.
+Tokens also change in quantity, and three ideas have to stay separate:
+
+- **Circulating supply:** by a data site's definition, the amount currently counted as circulating in the market.
+- **Total supply:** usually the issued amount after some burned amount is removed, and the definition can differ.
+- **Max supply:** if the protocol sets a cap, that is the most that can be issued;
+some coins have no fixed cap.
+
+Also separate **issuance** and **unlock**.
+Issuance puts new tokens into the supply;
+an unlock usually removes a transfer restriction from tokens that were already allocated or issued.
+Both can change how much can be sold, and they are not the same event.
+
+**What you need to check is not simply "how many coins exist." Who can issue more? Whose coins unlock, and when? Who might they sell to after the unlock?**
+
+<div class="ch03-lab" data-lab="supply">
+<h3>Supply timeline</h3>
+<p class="lab-kicker">Fictional teaching example. The two buttons can be tapped in either order. Reset to start again. Max supply is 100 million coins.</p>
+<div class="lab-stats">
+<div><span>Circulating now</span><b data-circ>20 million</b></div>
+<div><span>Still locked</span><b data-locked>30 million</b></div>
+<div><span>Issued total</span><b data-issued>50 million</b></div>
+<div><span>Max supply</span><b>100 million</b></div>
+</div>
+<div class="lab-choices">
+<button type="button" data-unlock>Unlock 5 million</button>
+<button type="button" data-mint>Issue 10 million into circulation</button>
+</div>
+<p class="lab-result" hidden aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>Reset</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. An unlock can change only what is circulating. Issued supply does not have to increase." data-bad="Not quite. An unlock is not a new issue, and it does not guarantee a price drop."><h3>Think it through</h3><p>After 5 million locked coins unlock, must issued supply rise by 5 million?</p><button type="button" class="option" data-answer="a" data-note="Not quite. That mixes issuance and unlock into one event.">A. It must</button><button type="button" class="option" data-answer="b">B. Not necessarily. It may only change what can circulate</button><button type="button" class="option" data-answer="c" data-note="Not quite. A supply change is not a price guarantee.">C. The price must fall</button><div class="feedback"></div></div>
 
 ## Liquidity and volume
 
-**When liquidity is good, your own trade is less likely to shove the price around.**
+Volume is how much already traded, and liquidity is whether a large order now would punch through the price.
 
-Liquidity is how easily you can buy or sell without moving the price much. Volume is how much traded over a period of time, in amount or in value.
+You want to sell 50,000 dollars of a coin, and the page says "24-hour volume 100 million dollars," which sounds busy.
+You open the book and find very few people willing to take your sell order right now.
 
-High volume does not mean every moment has deep liquidity. Volume can also be faked.
+**Volume is how much traded over a past period; liquidity is whether you can trade now without moving the price much.**
+The two numbers are related, and they are not the same thing.
+
+Fictional teaching example: a coin traded 100 million dollars over the last 24 hours, but only 2,000 dollars of bids sit near the best bid.
+A market sell of 50,000 dollars may walk down into cheaper bids, and the average fill can be far from the price on the screen.
+
+Some pairs can also show wash trading or unreliable volume statistics.
+A large volume does not mean the book is deep enough.
+
+<div class="ch03-lab" data-lab="book">
+<h3>Can the book take the order?</h3>
+<p class="lab-kicker">Fictional teaching example. This is not a live order book. Tap a size and see the proceeds and the average price at once.</p>
+<ul class="lab-book">
+<li data-px="1"><span>1.00 dollars</span><span>1,000 coins</span></li>
+<li data-px="0.98"><span>0.98 dollars</span><span>2,000 coins</span></li>
+<li data-px="0.95"><span>0.95 dollars</span><span>5,000 coins</span></li>
+</ul>
+<div class="lab-choices" role="group" aria-label="Choose a sell size">
+<button type="button" data-qty="500" aria-pressed="false">Sell 500</button>
+<button type="button" data-qty="2500" aria-pressed="false">Sell 2,500</button>
+<button type="button" data-qty="6000" aria-pressed="false">Sell 6,000</button>
+</div>
+<p class="lab-result" hidden aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>Reset</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="c" data-ok="Correct. Whether a large order can fill depends on the current book depth and how much it can take." data-bad="Not quite. Yesterday's rise and a fan count cannot replace the bids and asks that are there now."><h3>Think it through</h3><p>What should you look at first to judge whether a large order can fill easily?</p><button type="button" class="option" data-answer="a" data-note="Not quite. Yesterday's rise cannot replace the depth of the book right now.">A. Yesterday's rise</button><button type="button" class="option" data-answer="b" data-note="Not quite. A fan count cannot replace the depth of the book right now.">B. The project's fan count</button><button type="button" class="option" data-answer="c">C. Current book depth and how much it can take</button><div class="feedback"></div></div>
 
 ## Spread, price impact, and slippage
 
-**The price on the screen is not always the price you get.**
+The spread, price impact, and slippage are three related but different things, and the price on the screen is not necessarily your fill.
 
-The spread is the gap between the best ask and the best bid.
-Price impact is how much your own order moves the fill price. It shows up when the book is thin or the pool is small.
-Slippage is the gap between the price you expected and the price you got. It can come from the market moving, from depth, and from other factors.
+On the trade page, the best bid might be 0.99 dollars and the best ask 1.00 dollars.
+The 0.01 dollar gap is the **bid-ask spread**.
 
-Example: the screen says about 1 dollar. That does not mean a very large market order will all fill at 1 dollar.
+If you want to buy a lot, the cheapest ask is not enough, so you keep buying the next, more expensive level.
+That change in fill price, caused by order size and book depth, is **price impact**.
+
+**Slippage** is the gap between the price you expected and the price you actually got. It can come from the market moving, thin liquidity, and other causes.
+The three are related, and they are not one word.
+
+Fictional teaching example: the ask book has two levels, 100 coins at 1.00 dollars and 100 coins at 1.05 dollars.
+A market buy of 150 coins costs 100 × 1.00 + 50 × 1.05 = **152.50 dollars**, about **1.0167 dollars** on average, not 1 dollar for every coin.
+
+<div class="ch03-lab" data-lab="sweep">
+<h3>A market order walking the book</h3>
+<p class="lab-kicker">Fictional teaching example. Tap a size and the asks that get taken light up. The gap is not "all slippage."</p>
+<ul class="lab-book">
+<li data-px="1"><span>1.00 dollars</span><span>100 coins</span></li>
+<li data-px="1.05"><span>1.05 dollars</span><span>100 coins</span></li>
+</ul>
+<div class="lab-choices" role="group" aria-label="Choose a buy size">
+<button type="button" data-qty="50" aria-pressed="false">Buy 50</button>
+<button type="button" data-qty="100" aria-pressed="false">Buy 100</button>
+<button type="button" data-qty="150" aria-pressed="false">Buy 150</button>
+<button type="button" data-qty="200" aria-pressed="false">Buy 200</button>
+</div>
+<p class="lab-result" hidden aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>Reset</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. A limit buy has a maximum price. If the book is not deep enough, it may fill only in part, or not yet." data-bad="Not quite. A limit does not guarantee an immediate full fill, and it will not raise your price to 1.05 by itself."><h3>Think it through</h3><p>A limit buy is set at a maximum of 1.00 dollars. Does that guarantee you immediately buy 150 coins?</p><button type="button" class="option" data-answer="a">A. No. It may fill only in part, or keep waiting</button><button type="button" class="option" data-answer="b" data-note="Not quite. That ignores the depth of the book.">B. Yes, it is guaranteed</button><button type="button" class="option" data-answer="c" data-note="Not quite. A limit buy will not raise the price to 1.05 by itself. That would break the maximum you set.">C. It can automatically raise the price to 1.05</button><div class="feedback"></div></div>
 
 ## Trading fees and network fees
 
-**To know the cost, add the trading fee, the spread, slippage, and the withdrawal fee.**
+The price can stay still while fees, the spread, slippage, a withdrawal fee, and network fees still eat the balance a little at a time.
 
-A trading fee is charged by the platform or the protocol. An on-chain network fee usually pays for executing the transaction and for network resources. An exchange withdrawal fee is not necessarily the chain's real cost at that moment.
+What beginners most often miss is not the rise or the fall. It is the cost of each step.
 
-Look at them together: trading fee, spread, slippage, withdrawal fee, network fee, exchange rate, and payment-channel fees.
+Buying can include a payment-channel quote gap and a trading fee;
+trading on an exchange can include the spread and slippage;
+withdrawing from an exchange can include a withdrawal fee;
+an on-chain approval or swap can also create a network fee or a protocol fee.
 
-### What one round trip actually costs
+Note: **an exchange withdrawal fee is not necessarily the on-chain network fee**.
+An internal transfer on the platform is usually not an on-chain transfer, and the fee structure is different.
 
-| Cost | What beginners skip |
-|---|---|
-| Buying the coin | The payment channel's quote, the exchange rate, and the spread |
-| The trade | Fees and slippage |
-| Withdrawing the coin | The platform withdrawal fee |
-| On-chain actions | Network fees for approvals, swaps, and similar steps |
-| A contract position | Funding fees and similar costs |
+Here is a **purely fictional teaching** calculation:
 
-**Example (round numbers chosen so the arithmetic is easy, not any platform's real fees):**
+| Step | Assumed fee | Value left |
+|---|---:|---:|
+| Start | — | 100 USDT |
+| Quote gap on the buy | 1 USDT | 99 USDT |
+| Trading fee and slippage | 0.5 USDT | 98.5 USDT |
+| Exchange withdrawal fee | 1 USDT | 97.5 USDT |
+| On-chain approval and swap network fee | 1.5 USDT | 96 USDT |
 
-| Step | Assumed cost | Left |
-|---|---|---|
-| Ready to buy 100 USDT of a coin | — | 100 USDT |
-| Quote and spread when buying | about 1 USDT | 99 USDT |
-| Trading fee and slippage | about 0.5 USDT | 98.5 USDT |
-| Withdraw to your own wallet | withdrawal fee about 1 USDT | 97.5 USDT |
-| Approve and swap on-chain | network fee about 1.5 USDT | 96 USDT |
+Fictional teaching example: the different fees are all converted into a USDT equivalent so you can practice the cost.
+In real life the network fee is often paid in the chain's native coin, and asset value can also move with the market.
 
-The coin price barely moved, and the balance is down about 4%. That is why "the price hardly moved, but I have less": every step takes a little. If you also open a contract, funding while you hold keeps changing the balance. The smaller the amount and the more steps you take, the larger the cost as a share of the money.
+<div class="ch03-lab" data-lab="fees">
+<h3>Peel the costs</h3>
+<p class="lab-kicker">Fictional teaching example. Start at 100 USDT. Turn an item on and the balance changes at once. All four on leaves 96 USDT, a 4% cost.</p>
+<div class="lab-choices" role="group" aria-label="Turn a fee on or off">
+<button type="button" data-fee="1" aria-pressed="false">Quote gap 1</button>
+<button type="button" data-fee="0.5" aria-pressed="false">Trade fee and slippage 0.5</button>
+<button type="button" data-fee="1" aria-pressed="false">Withdrawal fee 1</button>
+<button type="button" data-fee="1.5" aria-pressed="false">Network fee 1.5</button>
+</div>
+<p class="lab-result" aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>Reset</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. Moving from the funding account to the spot account on the same platform is usually an internal book entry, not an on-chain transfer." data-bad="Not quite. An internal transfer is usually not an on-chain transfer, and it is not a cross-chain transfer."><h3>Think it through</h3><p>If you move funds from the funding account to the spot account inside an exchange, must you pay a blockchain network fee?</p><button type="button" class="option" data-answer="a" data-note="Not quite. An internal transfer and an on-chain transfer are not the same thing.">A. You must</button><button type="button" class="option" data-answer="b">B. Not necessarily. It is usually an internal book entry</button><button type="button" class="option" data-answer="c" data-note="Not quite. A transfer between accounts on the same platform is usually not cross-chain either.">C. It must create a cross-chain fee</button><div class="feedback"></div></div>
 
 ## How do profit and loss work?
 
-**After a 50% drop, you need a 100% rise to get back to the start.**
+After a drop, the percentage rise needed to get back is larger than the drop, because the base of the calculation is already smaller.
 
-A simple spot example: you put in 100 USDT and sell for 110 USDT. Ignoring fees, profit is 10 USDT, a 10% return.
+Fictional teaching example: you buy a coin with 100 USDT, it falls 50%, and 50 USDT is left.
+If it then rises 50%, that is only 50 × 1.5 = **75 USDT**, still 25 USDT short.
 
-After a 50% drop you need a 100% rise to get back to the old price: 100 → 50 → 100.
+That is because **the base of the percentage changed**.
+To get from 50 back to 100, it has to rise 50 ÷ 50 = **100%**.
 
-Several buys, partial sells, contracts, and prices quoted in more than one coin need a fuller calculation. The last price alone is not enough.
+The simplest spot profit and loss, before fees:
+
+**Profit before fees = proceeds of the sale − cost of the buy.**
+
+**Return before fees = profit ÷ cost of the buy × 100%.**
+
+Fictional teaching example: you put in 100 USDT and sell for 110 USDT. Before fees you made 10 USDT, a 10% return.
+What you actually keep still has to subtract trading fees, withdrawal fees, and the rest.
+Buys and sells in several lots, a different quote asset, or a contract position need a separate calculation.
+
+<div class="ch03-lab" data-lab="recover">
+<h3>Recovery calculator</h3>
+<p class="lab-kicker">Fictional teaching example. The start is fixed at 100. A 100% drop leaves a value of zero, and the percentage formula cannot recover from 0.</p>
+<div class="lab-choices" role="group" aria-label="Choose a drop">
+<button type="button" data-drop="0.1" aria-pressed="false">Down 10%</button>
+<button type="button" data-drop="0.2" aria-pressed="false">Down 20%</button>
+<button type="button" data-drop="0.5" aria-pressed="false">Down 50%</button>
+<button type="button" data-drop="0.8" aria-pressed="false">Down 80%</button>
+</div>
+<p class="lab-result" hidden aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>Reset</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="c" data-ok="Correct. Fictional teaching example: getting from 20 back to 100 takes a rise of 80, and 80 ÷ 20 = 400%." data-bad="Not quite. The rise to recover uses the remaining 20 as the base. Do not reuse the original drop as that rise."><h3>Think it through</h3><p>Fictional teaching example: 100 falls to 20. What rise is needed to get back to 100?</p><button type="button" class="option" data-answer="a" data-note="Not quite. 80% treats the original drop as the rise needed to recover.">A. 80%</button><button type="button" class="option" data-answer="b" data-note="Not quite. 100% does not use the remaining 20 as the base.">B. 100%</button><button type="button" class="option" data-answer="c">C. 400%</button><div class="feedback"></div></div>
 
 ## Before you trade, you should be able to answer
 
-**If you cannot say what you are buying, or how much you can lose, do not buy yet.**
+Before you press buy, say what you are buying, what it costs in total, whether you can get out, and whether a total loss would affect your life.
 
-- What am I buying? What coin is the price quoted in?
-- Which fees do I pay? Can I sell or withdraw normally?
-- Is there a lockup, extra issuance, an unlock, or admin power in the contract?
-- What is the worst loss? Can I afford to lose this money entirely?
+You do not need a dozen indicators before you are allowed to buy a first coin.
+Before you press "buy," you should be able to say four things:
+
+**First, what am I buying?**
+Is it BTC, a stablecoin, or a token from a project you do not know?
+What is it quoted in?
+
+**Second, what do I actually pay?**
+Besides the coin price, are there fees, a spread, slippage, a withdrawal fee, or a network fee?
+
+**Third, can I get out?**
+Is there a lockup, an unlock, a platform withdrawal limit, thin liquidity, or a contract-permission risk?
+
+**Fourth, what is the worst case?**
+Can this money be lost entirely?
+If it is, would that affect your life?
+
+If you cannot answer one of them, look it up first. You do not have to force an order to chase the market.
+
+<div class="ch03-lab" data-lab="check">
+<h3>A check before a simulated order</h3>
+<p class="lab-kicker">Fictional teaching project ABC. There is no real buy button, and this does not connect to an exchange.</p>
+<ul class="lab-facts">
+<li>Quoted as ABC/USDT, unit price 0.1 dollars</li>
+<li>Circulating supply 100 million</li>
+<li data-miss>50 million unlock in three days</li>
+<li data-miss>The book is thin right now</li>
+<li data-miss>Withdrawals are in maintenance</li>
+</ul>
+<div class="lab-choices">
+<button type="button" data-buy>Buy now</button>
+<button type="button" data-check>Check first</button>
+</div>
+<p class="lab-feedback" hidden aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>Reset</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. Answer whether you can get out before you decide to buy." data-bad="Not quite. A rally and a candle break do not answer whether you can get out."><h3>Think it through</h3><p>A coin is rallying, but the exchange has paused withdrawals and the book is thin. What is the steadier next step?</p><button type="button" class="option" data-answer="a" data-note="Not quite. You have not answered whether you can get out.">A. Go all in first</button><button type="button" class="option" data-answer="b">B. Find out the exit limits and the liquidity, then decide</button><button type="button" class="option" data-answer="c" data-note="Not quite. A candle break does not answer whether you can get out.">C. Look only at the candle break</button><div class="feedback"></div></div>
 
 # 04｜A first buy, and moving money in and out 🛒
 
 ## What are deposits and withdrawals?
 
-**A deposit puts money onto the platform. A withdrawal takes it out. The rules are not the same.**
+A deposit puts money onto an exchange; selling a coin is not fiat in the bank, and an on-chain withdrawal and a bank withdrawal are two different paths.
 
-A deposit moves fiat or a digital asset onto the platform. A withdrawal moves funds out: withdrawing coins to a wallet, or selling coins and sending fiat to a bank.
+Your bank account has 100 units of fiat, and you want a first BTC.
+Paying that fiat through a compliant channel, and ending with an asset in the exchange account, is what people usually call a **deposit**.
+Later you sell the coin and, through a channel your location supports, withdraw the fiat back to the bank. That completes a **fiat withdrawal**.
 
-"The coin withdrawal succeeded" does not mean "the fiat is already in the bank". The rules, fees, and risks are different.
+"Withdrawal" can also mean **withdrawing the coin**: sending the exchange's USDT to your own wallet.
+That is not the same thing as withdrawing to a bank.
+
+Keep three places in mind:
+
+- **Bank account:** holds fiat, handled by the bank and the payment system.
+- **Exchange account:** the platform records your balance;
+the platform holds the matching assets.
+- **Self-custody wallet:** you control the on-chain assets with a key. A wrong transfer or a leaked key often cannot be undone.
+
+Teaching simulation: you sell BTC on the exchange and receive 100 USDT.
+What you hold is still USDT, **not 100 dollars that have already arrived in the bank**.
+You still need a fiat conversion and withdrawal channel your location allows, and you check the rate, the fees, and the limits.
+
+**Easy to miss:** "the exchange says the withdrawal succeeded" is not "the bank has credited it";
+"the coin has been sold" is not "the fiat has arrived."
+
+<div class="ch03-lab ch04-lab" data-lab="route">
+<h3>Two routes for the money</h3>
+<p class="lab-kicker">Teaching simulation. Tap each node. Route A and route B stay separate. There is no single withdrawal button.</p>
+<div class="lab-choices" role="group" aria-label="From the bank to the exchange">
+<button type="button" data-node="bank">Bank fiat</button>
+<button type="button" data-node="channel">A supported deposit channel</button>
+<button type="button" data-node="ex">Exchange funding / spot account</button>
+</div>
+<p class="lab-kicker">Route A: sell, then fiat</p>
+<div class="lab-choices" role="group" aria-label="Fiat withdrawal route">
+<button type="button" data-node="sell">Sell</button>
+<button type="button" data-node="fiat">Fiat withdrawal channel</button>
+<button type="button" data-node="bank2">Bank</button>
+</div>
+<p class="lab-kicker">Route B: on-chain withdrawal</p>
+<div class="lab-choices" role="group" aria-label="On-chain withdrawal route">
+<button type="button" data-node="net">Choose a network</button>
+<button type="button" data-node="chain">On-chain withdrawal</button>
+<button type="button" data-node="wallet">Self-custody wallet</button>
+</div>
+<p class="lab-result" hidden aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>Reset</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. To receive fiat in the bank, use a fiat conversion and withdrawal channel your location supports." data-bad="Not quite. USDT does not turn into fiat by itself, and it cannot be sent straight to a bank account number."><h3>Think it through</h3><p>You sold BTC and received USDT. You next want fiat in the bank. What should you do?</p><button type="button" class="option" data-answer="a" data-note="Not quite. USDT does not turn into fiat by itself.">A. Wait for the USDT to become fiat on its own</button><button type="button" class="option" data-answer="b">B. Use a fiat conversion and withdrawal channel your location supports</button><button type="button" class="option" data-answer="c" data-note="Not quite. A bank account number is usually not an on-chain receiving address.">C. Send the USDT straight to the bank account number</button><div class="feedback"></div></div>
 
 ## Step 1: platform and region
 
-**When you sign up, check whether the platform serves your region. The sign-up page usually says.**
+Exchanges that share a name in different regions may not share one account system, and the same UID is not the same person.
 
-One brand may be operated by different legal entities in different places. The products are not identical.
+Some exchange brands are run by different companies in different countries.
+A similar name and a similar logo do not mean the accounts, UIDs, deposit systems, or support desks connect.
 
-**How to choose an exchange:**
+Before you register, ask: **which operating company is offering this service? Does it support the place where I actually live? How can I deposit and withdraw?**
 
-- Look at the size of funds on the platform. That stock of user funds is one common reference.
-- Look at proof of reserves. It can be a reference, but it is a snapshot at one moment. It does not guarantee the platform will not fail (see chapter 05).
+Teaching simulation: a friend sends you a receiving UID for an app related to Binance.
+You cannot look only at the brand and decide it is the same account system as the exchange you are logged into.
+**A UID means something only inside its own platform**;
+even when the digits match, they can point to different people.
 
-If you cannot use a platform, do not get around the limit with a fake identity or a false place of residence.
+**Easy to miss:** do not use a fake identity or a fake residence to get around a regional limit;
+do not skip the operating company and the official domain because an event is ending.
+
+<div class="ch03-lab ch04-lab" data-lab="uid">
+<h3>Do these systems connect?</h3>
+<p class="lab-kicker">Teaching simulation. Alpha Global and Alpha Local are not real platforms. Both show UID 123456, and the logos look the same.</p>
+<div class="lab-stats">
+<div><span>Alpha Global</span><b>UID 123456</b><span>Operator: Global Learn Ltd</span></div>
+<div><span>Alpha Local</span><b>UID 123456</b><span>Operator: Local Learn Pte</span></div>
+</div>
+<div class="lab-choices">
+<button type="button" data-uid="move">Take UID 123456 to the other side</button>
+<button type="button" data-uid="check">Check the official docs first</button>
+</div>
+<p class="lab-feedback" hidden aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>Reset</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="c" data-ok="Correct. A UID means something only inside its own platform. Matching digits still do not prove it is the same person." data-bad="Not quite. Matching digits and a matching brand are not an identity that works across systems."><h3>Think it through</h3><p>Two exchange apps in different regions both show UID 123456. Can you conclude it is the same person?</p><button type="button" class="option" data-answer="a" data-note="Not quite. Matching digits are not an identity credential across systems.">A. Yes</button><button type="button" class="option" data-answer="b" data-note="Not quite. The same brand does not mean the account systems connect.">B. Yes, if the brand is the same</button><button type="button" class="option" data-answer="c">C. No. Check the operating company and the payee's identity</button><div class="feedback"></div></div>
 
 ## Step 2: sign up and lock the account down
 
-**The first thing after sign-up: a strong password, plus two-factor authentication.**
+Lock the official entrance, the email, the login, withdrawals, and recovery before you put money into a new account.
 
-Use a strong password you do not reuse. Protect the sign-up email. Where the platform supports it, turn on a passkey, an authenticator, or another second factor. Keep the recovery method safe. Check devices and login history. Turn on withdrawal protection if it is available.
+Depositing the moment you finish registering is like moving valuables into a new house before the keys are stored.
 
-KYC is identity verification. Submit documents only in the official app or on the official site after you have confirmed it. Do not send an ID card to a "support agent" who messaged you first.
+Follow this order:
+
+1. **Confirm the official entrance:** enter through a reliable official channel, and check the full domain, the app developer, and the platform prompt;
+an ad ranking is not an official certification.
+2. **Protect the email:** email is an important way back into the account. Use a separate strong password, and turn on the two-factor option the email supports.
+3. **Protect the exchange login:** set a strong password that is different from the email. Prefer a passkey or authenticator the platform supports, and store the recovery method safely.
+4. **Set withdrawal protection:** turn on an address allowlist, an anti-phishing code, device management, and unusual-activity alerts when the platform offers them.
+5. **Complete any required KYC:** submit identity documents only in an official flow you have confirmed. Do not send an ID to "support" that messaged you first.
+
+<p class="keep-lines">Teaching simulation<br>
+You receive a text: "Account unusual. Verify again now."<br>
+The right move is not to tap the link in the text.<br>
+Open the official app you already installed and checked, and look at the notice there.</p>
+
+**Easy to miss:** do not give a text-message code to anyone;
+turning on two-factor does not mean you can ignore phishing links and device security.
+
+<div class="ch03-lab ch04-lab" data-lab="secure">
+<h3>Security setup list</h3>
+<p class="lab-kicker">Open an item to see why it matters, how to check it, and the common mistake. The count is only study progress, not a 100% safe account. This collects no password, code, or ID.</p>
+<div class="lab-choices" role="group" aria-label="Five security settings">
+<button type="button" data-sec="0" aria-pressed="false">Official entrance</button>
+<button type="button" data-sec="1" aria-pressed="false">Email security</button>
+<button type="button" data-sec="2" aria-pressed="false">Account two-factor</button>
+<button type="button" data-sec="3" aria-pressed="false">Withdrawal protection</button>
+<button type="button" data-sec="4" aria-pressed="false">Recovery</button>
+</div>
+<p class="lab-result" hidden aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>Reset</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. Do not hand over the code. Open the official app you already checked, and look at the notice." data-bad="Not quite. Do not give the code to the other person, and sending coins does not prove they are support."><h3>Think it through</h3><p>Someone claiming to be support asks you to send a login code to "lift a risk control." What should you do?</p><button type="button" class="option" data-answer="a">A. Refuse, and check inside the official app instead</button><button type="button" class="option" data-answer="b" data-note="Not quite. The code itself can be used to take over the account.">B. Send the code, but not the password</button><button type="button" class="option" data-answer="c" data-note="Not quite. Sending coins does not prove the other person is support.">C. Send a small amount of coins to test them</button><div class="feedback"></div></div>
 
 ## Step 3: how you will deposit
 
-**Before you deposit, read which banks are supported, the fees, and how long it takes.**
+Do not compare deposits by whether the fee says 0; look at what you finally receive, plus time, refunds, and limits.
 
-Card or bank transfer: check supported banks, currency, who must be the payer, arrival time, and fees.
-A third-party buy channel: check who the provider is, the quote, and the fees.
-P2P: you trade with another user. Fiat and the digital asset settle through the platform's process.
-Depositing crypto you already hold: pick an asset and a network both sides support, and fill in Memo / Tag if it is required.
+Common ways in are a bank card or bank transfer the platform supports, a third-party payment provider, and P2P.
+You may already hold a digital asset and deposit that straight to the exchange.
+
+When you compare ways to deposit, do not look only at "0% fee."
+What matters is **what you pay, how many coins you finally receive, how long it takes, whether it can be refunded, source-of-funds rules, and local limits**.
+
+Teaching simulation: you plan to pay 100 units of fiat.
+
+- Channel A: the stated fee is zero, but you finally receive 19.6 USDT.
+- Channel B: it openly charges 2 units of fiat, but you finally receive 20.1 USDT.
+
+If everything else is the same, B shows a fee and you still receive more.
+This only compares a simulated final amount. It does not mean one kind of channel is always better.
+
+**If you already hold coins, be especially careful:** confirm the deposit address, the asset, the network, and any Memo / Tag on the **receiving platform's own page**.
+An exchange that supports USDT does not support every USDT network.
+
+<div class="ch03-lab ch04-lab" data-lab="quote">
+<h3>Compare the quotes</h3>
+<p class="lab-kicker">Teaching simulation. Tap the two sorts. The order flips. Neither side is labeled best.</p>
+<div class="lab-stats" data-rows></div>
+<div class="lab-choices">
+<button type="button" data-sort="fee">Sort by stated fee</button>
+<button type="button" data-sort="got">Sort by final USDT</button>
+</div>
+<p class="lab-result" aria-live="polite"></p>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="c" data-ok="Correct. Look at what you pay in total, what you finally receive, and the limits and risks." data-bad="Not quite. A 0 fee and a fast arrival cannot, by themselves, decide which one is the better deal."><h3>Think it through</h3><p>One channel says 0 fee and the other says it charges a fee. What is the more reasonable comparison?</p><button type="button" class="option" data-answer="a" data-note="Not quite. A 0 fee can hide a worse quote.">A. Always pick the 0 fee</button><button type="button" class="option" data-answer="b" data-note="Not quite. Faster does not mean cheaper, and it does not mean you are allowed to use it.">B. Always pick the fastest</button><button type="button" class="option" data-answer="c">C. Check the total paid, the amount received, the limits, and the risk</button><div class="feedback"></div></div>
 
 ## P2P, in particular
 
-**In P2P, only your own account and a real arrival count. Do not trust a screenshot.**
+In P2P a screenshot is not a credit; check the real bank credit and the payer inside the order, then follow the platform's rules.
 
-- Use an account in your own name, as the platform requires. Check the order and the payment details.
-- Do not send funds to an off-platform address or a chat link the other person just sent.
-- When you sell coins, the record that matters is the real arrival in your own bank. Do not rely only on a payment screenshot or a text message.
-- If a third party pays, or someone asks you to split the order or change the process, pause and follow the platform's rules.
-- If there is a dispute, use the platform's appeal and keep the chat, the order, and the payment proof.
-- Platform custody does not remove the risk of fraud, chargebacks, a frozen bank account, or tainted funds.
+A common P2P case is you trading with another user while the platform provides the order and an escrow mechanism under its rules.
+**Escrow does not mean a bank transfer has no risk.**
+
+If you are the one selling coins and the other person sends a "transfer succeeded" screenshot, do not release the coins just because you are in a hurry.
+A screenshot can be forged, a text can be faked, and some credits can still be disputed later.
+
+A safer order of steps:
+
+1. Talk only inside the platform order, and check who you are trading with and what the payment requires.
+2. Use an account in your own name, as the platform rules require;
+stay alert to a third-party payment or a name that does not match.
+3. Log in to the bank's official channel yourself, and check the real available balance, the transfer details, and the payer.
+4. Only after that matches the order rules do you confirm the release, through the platform's process.
+5. If there is a dispute, stop, keep the order, the chat, and the bank record, and appeal on the platform.
+
+**Easy to miss:** "release first, I will pay in a moment," or a request to move the chat off the platform, is a reason to pause.
+Do not read a freeze, a chargeback, or fraud-related funds as "if the balance shows the money, it is absolutely safe."
+
+<div class="ch03-lab ch04-lab" data-lab="p2p">
+<h3>Three P2P messages</h3>
+<p class="lab-kicker">Teaching simulation. All three cards are on this screen. There is no one-tap release.</p>
+<div class="ch04-card">
+<p>1. They send a transfer screenshot, and your bank has not received it.</p>
+<div class="lab-choices">
+<button type="button" data-card="shot" data-act="check">Keep checking</button>
+<button type="button" data-card="shot" data-act="pause">Pause and appeal</button>
+<button type="button" data-card="shot" data-act="rule">Follow the platform rules</button>
+</div>
+<p class="lab-feedback" hidden aria-live="polite"></p>
+</div>
+<div class="ch04-card">
+<p>2. The bank shows a credit, but the payer's name does not match the order.</p>
+<div class="lab-choices">
+<button type="button" data-card="name" data-act="check">Keep checking</button>
+<button type="button" data-card="name" data-act="pause">Pause and appeal</button>
+<button type="button" data-card="name" data-act="rule">Follow the platform rules</button>
+</div>
+<p class="lab-feedback" hidden aria-live="polite"></p>
+</div>
+<div class="ch04-card">
+<p>3. The bank's official channel confirms the credit, and the payer matches the order.</p>
+<div class="lab-choices">
+<button type="button" data-card="paid" data-act="check">Keep checking</button>
+<button type="button" data-card="paid" data-act="pause">Pause and appeal</button>
+<button type="button" data-card="paid" data-act="rule">Follow the platform rules</button>
+</div>
+<p class="lab-feedback" hidden aria-live="polite"></p>
+</div>
+<button type="button" class="lab-reset" data-reset>Reset</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. The bank has not seen the money, so do not release the coins. Check inside the order." data-bad="Not quite. A screenshot does not prove payment, and leaving the order also loses the record the platform holds."><h3>Think it through</h3><p>The buyer sends a payment screenshot, but you do not see the money in your bank account. What should you do?</p><button type="button" class="option" data-answer="a" data-note="Not quite. A screenshot does not prove the money has arrived.">A. Release the coins to show trust</button><button type="button" class="option" data-answer="b">B. Do not release them. Check, and follow the order rules</button><button type="button" class="option" data-answer="c" data-note="Not quite. Leaving the order loses the record and the protection inside the platform.">C. Confirm in a chat outside the platform</button><div class="feedback"></div></div>
 
 ## Step 4: buy a little spot
 
-**The first time, buy spot with a small amount. Learn the path.**
+A first spot buy is for learning the flow; a market order does not guarantee the fill price, and a limit order is not guaranteed to fill.
 
-Look at the pair and the order type. Check the asset you pay, the amount you expect to receive, and the fees. Afterward, check that the order filled and that the asset is in the right account.
+The goal of the first trade is to **understand the whole flow**, not to make money on that first order.
 
-"Instant convert" and "spot order" may be quoted differently. Compare how much you actually receive, not only the advertised fee.
+Teaching simulation: suppose you plan to try with 20 USDT.
+
+1. Open **spot**, and confirm the pair, for example BTC/USDT.
+2. Confirm you are buying BTC and spending USDT, not the reverse.
+3. Look at the order type: a market order can slip;
+a limit order may not fill.
+4. Enter the amount, and check the estimated quantity, the minimum order, and the fees.
+5. Read the confirmation page once more before you submit;
+after it fills, check the **actual quantity and the fee**.
+
+Teaching simulation: suppose BTC is quoted at 50,000 USDT. Before fees, 20 USDT buys about 0.0004 BTC.
+The real quantity can differ because of fees, price moves, and the platform's precision rules.
+
+**Easy to miss:** "the order was submitted" is not "it filled completely";
+a limit order can sit in the book, with the asset frozen.
+
+<div class="ch03-lab ch04-lab" data-lab="order">
+<h3>A simulated order, with no funds</h3>
+<p class="lab-kicker">Teaching simulation. It does not connect to a trading API, and it does not ask you to log in. Tap market or limit, then tap a state.</p>
+<div class="lab-choices" role="group" aria-label="Order type">
+<button type="button" data-side="market" aria-pressed="true">Market</button>
+<button type="button" data-side="limit" aria-pressed="false">Limit</button>
+</div>
+<div class="lab-choices" role="group" aria-label="Simulated state">
+<button type="button" data-state="filled">Filled</button>
+<button type="button" data-state="partial">Partially filled</button>
+<button type="button" data-state="open">Unfilled</button>
+</div>
+<p class="lab-result" aria-live="polite"></p>
+<button type="button" class="lab-reset" data-reset>Reset</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. Unfilled usually means it is still waiting for the other side. It is not already bought, and it does not mean the money is lost." data-bad="Not quite. Unfilled does not mean the money is lost, and it does not mean the coins are already bought."><h3>Think it through</h3><p>You submit a limit buy, and the page says "unfilled." What is the more reasonable reading?</p><button type="button" class="option" data-answer="a">A. The order may still be waiting for a match</button><button type="button" class="option" data-answer="b" data-note="Not quite. Unfilled does not mean the assets disappeared. The limit order may still be open.">B. The money is certainly lost</button><button type="button" class="option" data-answer="c" data-note="Not quite. Unfilled means it has not been bought.">C. The coins are bought and the screen just hides them</button><div class="feedback"></div></div>
 
 ## Step 5: selling and withdrawing
 
-**What you receive after a sale depends on the pair. Getting fiat back into a bank also depends on the cash-out channel.**
+Selling into USDT, withdrawing to your own wallet, and converting to fiat in the bank are three different things, and a sale does not put money in the bank.
 
-A sale usually pays you the quote asset of the pair first. If you need fiat, use a fiat trade and withdrawal channel that your location allows. Check the receiving account, the fees, and the platform's limits.
+Beginners often treat these three steps as one thing:
 
-Keep trade records and records of where the funds came from. For local regulation, reporting, and tax, check official regulators, the tax authority, or a suitable professional.
+**Selling:** turn BTC into a quote asset such as USDT.
 
-Note: The goal of a first try is to understand the process, not to prove you can catch a rally.
+**Withdrawing the coin:** send the exchange asset to an external chain address. That involves the network, the address, and possibly a Memo / Tag.
+
+**Fiat withdrawal:** convert and settle into fiat by a method your location allows, then send it to a bank or another receiving account.
+
+Teaching simulation: you sell 0.001 BTC and receive about 50 USDT.
+If you then tap "on-chain withdrawal," you enter a wallet address, not a bank account;
+if you want fiat, look for whether the platform or a provider offers a local fiat withdrawal path, and compare the rate, the fees, and the time.
+
+**Easy to miss:** when you withdraw, check the asset, the network, the address, any Memo / Tag, and whether the receiving platform supports it;
+test a small amount before a large transfer, and a successful test still does not guarantee the next one is safe.
+Keep the trade record and the record of where the funds came from, and handle tax and compliance the way your location requires.
+
+Note: The goal of the first trade is to understand the process, not to prove you can catch a rally.
+
+<div class="ch03-lab ch04-lab" data-lab="goals">
+<h3>Three kinds of sell and withdraw</h3>
+<p class="lab-kicker">Teaching simulation. Tap a destination under each goal. On a phone, tap. There is nothing to drag.</p>
+<div class="ch04-card" data-row>
+<p>I want to turn BTC into USDT</p>
+<div class="lab-choices">
+<button type="button" data-goal="swap" data-to="spot">Spot sale</button>
+<button type="button" data-goal="swap" data-to="chain">On-chain withdrawal</button>
+<button type="button" data-goal="swap" data-to="fiat">Fiat withdrawal</button>
+</div>
+<p class="lab-feedback" hidden aria-live="polite"></p>
+</div>
+<div class="ch04-card" data-row>
+<p>I want to send USDT to my own wallet</p>
+<div class="lab-choices">
+<button type="button" data-goal="wallet" data-to="spot">Spot sale</button>
+<button type="button" data-goal="wallet" data-to="chain">On-chain withdrawal</button>
+<button type="button" data-goal="wallet" data-to="fiat">Fiat withdrawal</button>
+</div>
+<p class="lab-feedback" hidden aria-live="polite"></p>
+</div>
+<div class="ch04-card" data-row>
+<p>I want the value as fiat in the bank</p>
+<div class="lab-choices">
+<button type="button" data-goal="bank" data-to="spot">Spot sale</button>
+<button type="button" data-goal="bank" data-to="chain">On-chain withdrawal</button>
+<button type="button" data-goal="bank" data-to="fiat">Fiat withdrawal</button>
+</div>
+<p class="lab-feedback" hidden aria-live="polite"></p>
+</div>
+<button type="button" class="lab-reset" data-reset>Reset</button>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="c" data-ok="Correct. The USDT is still on the exchange. To receive fiat in the bank, you still need a supported conversion and withdrawal." data-bad="Not quite. USDT on an exchange is not a bank deposit, and the coin price cannot turn it into one."><h3>Think it through</h3><p>After you sell BTC and receive USDT, has the USDT automatically become a bank deposit?</p><button type="button" class="option" data-answer="a" data-note="Not quite. USDT on an exchange is not a deposit in the bank.">A. Yes</button><button type="button" class="option" data-answer="b" data-note="Not quite. The coin price cannot turn an exchange asset into a bank deposit.">B. It depends on the coin price</button><button type="button" class="option" data-answer="c">C. No. You still need a supported fiat conversion and withdrawal</button><div class="feedback"></div></div>
 
 ## The accounts inside an exchange
 
-**Moving funds between accounts on the platform is not the same as an on-chain transfer.**
+When the spot page shows no balance, check whether the coins are in another account; an internal transfer on the platform usually does not go on-chain.
 
-Many exchanges split assets across accounts. Common ones:
+You clearly have 100 USDT. Why does the order page say the balance is not enough?
 
-| Account / action | What it is for | Watch out |
+Often the coins are not gone. They are in the **funding account**, and you opened **spot trading**;
+or they are in the **contract account**, and they cannot be used for this spot order.
+
+Think of the accounts on one exchange as drawers with different jobs:
+
+| Place | Main use | A common reminder |
 |---|---|---|
-| Funding account | Deposits landing, P2P buys and sells, and withdrawals often use this | On most platforms, coins kept here cannot be used directly for a spot or contract order |
-| Spot account | Spot trades and instant convert | To withdraw, you may need to move funds back to the funding account first |
-| Contract account | Margin for contract trading | Open positions can limit transfers out. Losses are taken from this balance |
-| Transfer between accounts | Moving assets between accounts on the same platform | Internal bookkeeping. It does not go on-chain, usually has no network fee, and arrives almost at once |
-| On-chain withdrawal | Sending coins from the exchange to an external wallet or another platform's address | This really goes on-chain. You choose a network, enter an address, pay a withdrawal fee, and cannot undo it after it arrives |
+| Funding account | Deposits, P2P, withdrawals, and similar | The exact features differ by platform |
+| Spot account | Spot buys and sells | Confirm the available balance before you order |
+| Contract account | Margin for derivatives | Liquidation, fees, and the account mode can apply |
+| Unified trading account | Some trading functions combined | The rules differ by platform |
+| Transfer between accounts | Move assets between accounts on the same platform | Usually not on-chain, and usually no blockchain network fee |
+| On-chain withdrawal | Send coins to an external address | Check the network and the address. After it arrives, it cannot be undone |
 
-If "the balance disappeared", check whether it is sitting in another account. If an order says "insufficient balance", you may need to move the asset into the account that order uses.
+**A transfer between accounts** is usually an internal book entry on the same platform, not an on-chain transfer, and it generally does not create a blockchain network fee;
+**an on-chain withdrawal** sends the asset onto an external network, with a real address and network confirmations.
 
-Names and transfer rules differ by platform. Some platforms merge spot and contracts into a "unified account". Follow the app screen and the official explanation of the platform you use.
+Teaching simulation: 100 USDT shows in the funding account, and the spot page shows 0 available.
+You confirm "from funding to spot" on the platform's internal transfer page, and after it succeeds you check the spot available balance again.
+Some platforms use a unified account and do not have the same entrance.
+
+**Easy to miss:** do not deposit again just because you see "insufficient balance";
+first check the account type, frozen orders, collateral for a loan, and the available balance.
+Do not mistake "transfer" for "send to a UID on another platform."
+
+<div class="ch03-lab ch04-lab" data-lab="drawers">
+<h3>Account drawers</h3>
+<p class="lab-kicker">Teaching simulation. Internal transfer and on-chain withdrawal are two buttons. The amount cannot go below 0, and it cannot exceed the available balance.</p>
+<div class="lab-stats">
+<div><span>Funding</span><b data-fund>100 USDT</b></div>
+<div><span>Spot</span><b data-spot>0 USDT</b></div>
+<div><span>Contract</span><b data-perp>0 USDT</b></div>
+</div>
+<div class="lab-choices">
+<button type="button" data-move>Transfer 40 USDT internally to spot</button>
+<button type="button" data-undo>Undo the last step</button>
+<button type="button" data-chain>On-chain withdrawal (check separately)</button>
+</div>
+<p class="lab-result" aria-live="polite"></p>
+</div>
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="Correct. First see whether it is still in the funding account, then decide whether an internal transfer is needed." data-bad="Not quite. Check the account first. Do not deposit again, and do not send the coins to support."><h3>Think it through</h3><p>The exchange spot page shows 0 USDT, but the funding account has 100 USDT. What is the first step?</p><button type="button" class="option" data-answer="a" data-note="Not quite. It may only be sitting in another account. Depositing again can double the deposit.">A. Deposit another 100</button><button type="button" class="option" data-answer="b">B. Check the account type, and whether an internal transfer is needed</button><button type="button" class="option" data-answer="c" data-note="Not quite. Do not send the coins to support. That hands the assets over.">C. Send the coins to support's UID</button><div class="feedback"></div></div>
 
 # 05｜CEX exchange guide 🏦
 
 ## What can a CEX do for you?
 
-**Coins in an exchange account are held by the platform. That account is not your own wallet.**
+An exchange account's coins are held by the platform, not in a wallet you control yourself.
 
-A CEX usually offers accounts, deposits, withdrawals, and trading. Some also offer fiat channels, derivatives, or other products. Whether it is open to you depends on region, identity, and the rules of the specific product.
+A CEX usually offers accounts, deposits and withdrawals, and trading. Some platforms also offer fiat channels, derivatives, or other products.
+Whether it is open to you depends on the region, identity, and the rules of the specific product.
 
-A balance in a platform account is usually the platform's internal record. You rely on the operator to hold the assets and to process withdrawals. Do not treat it as a wallet whose private key you control.
+A platform account balance is usually an internal record of the platform.
+You rely on the operator to hold the assets and process withdrawals. Do not treat it as a wallet whose private key you control.
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. On a CEX, the platform usually holds the assets." data-bad="Not quite. On a CEX, the platform usually holds the assets."><h3>Think it through</h3><p>Who usually holds the assets behind a CEX balance?</p><button type="button" class="option" data-answer="a">A. The platform</button><button type="button" class="option" data-answer="b">B. The user's own private key</button><button type="button" class="option" data-answer="c">C. Miners</button><div class="feedback"></div></div>
 
 ## How is a CEX different from a DEX?
 
-**A CEX is a company keeping the books for you. A DEX is you trading on-chain from your wallet.**
+A CEX is a company keeping the books for you, and a DEX is you trading on-chain directly from a wallet.
 
-A CEX is a centralized exchange. The operator usually manages accounts, orders, and the platform's internal asset records. You trade through the platform.
+A CEX is a centralized exchange.
+The operator usually manages accounts, orders, and the asset records inside the platform, and users trade through the platform.
 
-A DEX is a decentralized trading protocol or venue. Many DEXs swap on-chain through smart contracts. You sign from your wallet. Matching and settlement can still work in different ways.
+A DEX is a decentralized trading protocol or venue.
+Many DEXes complete an on-chain swap through a smart contract. The user signs from a wallet, and matching and settlement can work in different ways.
 
-A DEX still has centralized pieces. The front end, admins, oracles, and other components can add risk.
+A DEX still has centralized pieces.
+The front end, an admin, an oracle, and other components can create risk too.
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. A DEX can have contract risk." data-bad="Not quite. A DEX can have contract risk."><h3>Think it through</h3><p>Can a DEX have smart-contract risk?</p><button type="button" class="option" data-answer="a">A. It can</button><button type="button" class="option" data-answer="b">B. It never can</button><button type="button" class="option" data-answer="c">C. There is no permission risk</button><div class="feedback"></div></div>
 
 ## Referral sign-up links
 
-**When you sign up, check whether the platform serves your region, then use the entrances below.**
+Check whether the platform is open in your region before you register, then enter from the links below.
 
-Only Binance, Bybit, Gate, and HTX are shown here. The order is not a safety ranking or a recommendation. Before you use one, confirm that registration and the related services are available where you are.
+Only Binance, Bybit, Gate, and HTX are shown here.<br>
+The order is not a safety ranking or a recommendation.<br>
+Before you use one, confirm that registration and the related services are supported where you are.
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. A referral link is not a safety guarantee." data-bad="Not quite. A referral link is not a safety guarantee."><h3>Think it through</h3><p>Is a referral link a safety guarantee?</p><button type="button" class="option" data-answer="a">A. No</button><button type="button" class="option" data-answer="b">B. Yes</button><button type="button" class="option" data-answer="c">C. No need to check</button><div class="feedback"></div></div>
 
 | Platform | Referral sign-up link |
 |---|---|
@@ -512,174 +1019,248 @@ Only Binance, Bybit, Gate, and HTX are shown here. The order is not a safety ran
 | Gate | https://www.gatewebsite.app/share/u1dgb10j |
 | HTX | https://www.htx.com/invite/zh-cn/1h?invite_code=jdz98223 |
 
-Card label: referral link.
+Card label: a dedicated referral link.
 Card note: this is the platform's promotional sign-up domain. After you register, check the account in the official app.
 
 ## On-chain trading tools
 
-**If you want to buy and sell tokens directly on-chain, these two tools are the ones shown here.**
+DeBot and Binance Web3 Wallet are for buying and selling tokens that are already issued; they are not a primary subscription, and new on-chain tokens are high risk.
 
-DeBot and Binance Web3 Wallet are both for buying and selling tokens that have already been issued (the secondary market). They are not a primary-market subscription. New on-chain coins are very risky. Read chapter 09 before you touch them.
+**If you want to buy and sell tokens directly on-chain, these two tools can do that.**
+
+DeBot and Binance Web3 Wallet are both for buying and selling tokens that are already issued on-chain (the secondary market), not a primary-market subscription.<br>
+New on-chain tokens are high risk. Read chapter 09 before you act.
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. Buying an already issued token on a DEX is generally secondary-market trading." data-bad="Not quite. Buying an already issued token on a DEX is generally secondary-market trading."><h3>Think it through</h3><p>What is buying an already issued token on a DEX?</p><button type="button" class="option" data-answer="a">A. Generally secondary-market trading</button><button type="button" class="option" data-answer="b">B. Always a private sale</button><button type="button" class="option" data-answer="c">C. A bank deposit</button><div class="feedback"></div></div>
 
 ## How do you choose?
 
-**First check that you can use it. Then look at safety, fees, and withdrawals. Do not choose only for a sign-up bonus.**
+Look first at whether you can use it, then at safety, fees, and withdrawals, not only at a sign-up reward.
 
-Check whether your location can use it. Then look at what you need to trade, how you will deposit, depth in the markets you care about, fees, security settings, withdrawal rules, and support channels. Do not decide only because of a sign-up reward or because a KOL recommended it.
+First check whether your location can use it, then the trading you need, the deposit method, the depth of the market you care about, the fees, the security settings, the withdrawal rules, and the support channel.
+Do not decide only because of a sign-up reward or one KOL's recommendation.
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. First check whether your region can use it, and how withdrawals work." data-bad="Not quite. First check whether your region can use it, and how withdrawals work."><h3>Think it through</h3><p>What should you look at first when choosing a platform?</p><button type="button" class="option" data-answer="a">A. Whether your region can use it, and withdrawals</button><button type="button" class="option" data-answer="b">B. A rebate slogan</button><button type="button" class="option" data-answer="c">C. A KOL ranking</button><div class="feedback"></div></div>
 
 ## What does proof of reserves mean?
 
-**Proof of reserves is a snapshot at one moment. It does not mean the platform is safe forever.**
+Proof of reserves is a snapshot of one moment, not proof that the platform is safe forever.
 
-Proof of reserves can show assets or liabilities checked at a specific time and within a specific scope. How much that is worth depends on the method and what it covers. It is not automatically a full financial audit. It cannot guarantee that nothing will go wrong later, or that you can withdraw whenever you want.
+Proof of reserves can provide a check of assets or liabilities at a specific time and within a specific scope. What it is worth depends on the method and the coverage.
+It is not necessarily a full financial audit, and it cannot guarantee that nothing will go wrong later or that you can withdraw at any time.
 
 > 📰 **A real case: the FTX collapse (2022)**
-> Before its 2022 bankruptcy, FTX ranked third in the world by trading volume (according to a November report that year by The Verge). On 2 November 2022, problems in its balance sheet were reported. Six days later (8 November) it stopped all crypto withdrawals. In the first 72 hours, users had already withdrawn about 6 billion dollars. On 11 November it filed for bankruptcy protection. Founder SBF was later sentenced to 25 years.
-> **The lesson: a large platform can still fail. Watch an exchange's news and announcements. If withdrawals slow down or bad news piles up, consider moving assets out while you still can. That is not always possible, and moving them is not a guarantee of safety.**
+> Before the 2022 bankruptcy, FTX had ranked about third in the world by volume (according to a November report that year by The Verge). On November 2, 2022, balance-sheet problems were reported. Six days later, on November 8, it stopped all crypto withdrawals. Users had withdrawn about 6 billion dollars in the first 72 hours. On November 11 it filed for bankruptcy protection. Founder SBF was later sentenced to 25 years.
+> **The lesson: a large platform can fail too. Keep an eye on exchange news and announcements. If withdrawals slow down or the bad news piles up, move the assets out first.**
 
-Note: Look at the domain before you click, the rules before you open an account, and platform risk before you deposit.
+Note: Check the domain before you click, read the rules before you open an account, and think about platform risk before you deposit.
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. Proof of reserves does not guarantee you can withdraw at any time." data-bad="Not quite. Proof of reserves does not guarantee you can withdraw at any time."><h3>Think it through</h3><p>Does proof of reserves guarantee you can withdraw at any time?</p><button type="button" class="option" data-answer="a">A. It cannot guarantee that</button><button type="button" class="option" data-answer="b">B. It certainly guarantees that</button><button type="button" class="option" data-answer="c">C. It is the same as deposit insurance</button><div class="feedback"></div></div>
 
 # 06｜Spot orders for beginners 🧾
 
 ## What is spot?
 
-**Spot means you buy the coin outright. You are not borrowing, and you are not using leverage.**
+Spot is buying the coin directly, without borrowing and without leverage.
 
-Spot is buying and selling the asset itself. An ordinary spot position with no borrowing is not liquidated just because the price falls. The asset's price can still go close to zero.
+Spot is buying and selling the asset itself.
+An ordinary spot position with no loan is not liquidated because the price falls, but the price can still fall close to zero.
 
 For leverage and contracts, see [Chapter 07, "Going further: leverage and risk"](#/c/07).
 
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. Unlevered spot is not usually liquidated automatically because the price fell." data-bad="Not quite. Unlevered spot is not usually liquidated automatically because the price fell."><h3>Think it through</h3><p>Will unlevered spot be liquidated automatically because the price fell?</p><button type="button" class="option" data-answer="a">A. Usually not</button><button type="button" class="option" data-answer="b">B. Always</button><button type="button" class="option" data-answer="c">C. There is no loss</button><div class="feedback"></div></div>
+
 ## Order types
 
-**A market order fills quickly, at an uncertain price. A limit order sets the price, and may not fill.**
+A market order fills soon but does not fix the price, and a limit order fixes the price but may not fill.
 
-| Type | What it does | Easy to misunderstand |
+| Type | What it does | An easy misunderstanding |
 |---|---|---|
-| Market | Fills as soon as it can, at the available quote | It does not guarantee one fixed price |
-| Limit | Sets the highest buy price or the lowest sell price | It may not fill, or it may fill only in part |
-| Stop-market | After the trigger, it submits a market order | In a violent move, slippage can be large |
-| Stop-limit | After the trigger, it submits a limit order | It can trigger and still fail to fill |
+| Market | Fills as soon as it can at the available quote | It does not guarantee one fixed price |
+| Limit | Sets a maximum buy price or a minimum sell price | It may not fill, or it may fill only in part |
+| Stop market | Submits a market order after a trigger | An extreme move can create large slippage |
+| Stop limit | Submits a limit order after a trigger | A trigger still may not produce a fill |
 
-Platforms differ in which orders they offer and which price triggers them. Read the description before you submit.
+The orders and trigger prices a platform supports differ.
+Read the description before you submit.
+
+**Fictional teaching example:** a market order walks the book, and a limit order waits for a fill. Those are two timelines.
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. A limit order is not guaranteed to fill." data-bad="Not quite. A limit order is not guaranteed to fill."><h3>Think it through</h3><p>Is a limit order guaranteed to fill?</p><button type="button" class="option" data-answer="a">A. Not necessarily</button><button type="button" class="option" data-answer="b">B. Always</button><button type="button" class="option" data-answer="c">C. It needs no other side</button><div class="feedback"></div></div>
 
 ## Candle basics
 
-**One candle records four prices for a stretch of time: open, high, low, and close.**
+One candle records the open, high, low, and close of a period.
 
-A candle usually records the open, high, low, and close of that interval. 1 minute, 15 minutes, 1 hour, and 1 day are different scales.
+A candle usually records the open, the high, the low, and the close of that period.
+1 minute, 15 minutes, 1 hour, and 1 day are different scales of looking.
 
-The same asset can look like a different trend on a different timeframe. Up and down colors are a platform setting. Do not judge only by red and green.
+The same asset can show a different trend on a different timeframe.
+The platform can set which color means up or down, so do not judge by red and green alone.
+
+**Fictional teaching example:** an OHLC candle with four labels, switching between 1 minute and the daily.
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. The four candle prices are open, high, low, and close." data-bad="Not quite. The four candle prices are open, high, low, and close."><h3>Think it through</h3><p>What are the four prices of a candle?</p><button type="button" class="option" data-answer="a">A. Open, high, low, close</button><button type="button" class="option" data-answer="b">B. The funding rate</button><button type="button" class="option" data-answer="c">C. Contract leverage</button><div class="feedback"></div></div>
 
 ## A trade log
 
-**Write the reason before the order, and the review after. That beats staring at one more indicator.**
+Write the reason before the order and the review after it; that helps more than watching one more indicator.
 
-Before the order, write: why you are buying, what would show the idea was wrong, where you plan to exit, the size, the fees, and the loss you might take.
-After the trade, write: whether you followed the plan, where it drifted, and whether the result came from the plan or from luck.
+Before the order, write why you are buying, what would show the judgment was wrong, where you plan to exit, the size, the fees, and the possible loss.
+After the trade, write whether the execution matched the plan, where it drifted, and whether the result came from the strategy or from luck.
 
-Practice with a paper trade first. Paper profits are not real-trading results. Real money brings emotion, depth, and execution cost.
+Practice first with a simulated trade.
+Simulated profit also does not directly represent real trading. Real money adds emotion, depth, and execution cost.
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. A trade log should record the plan and where execution drifted." data-bad="Not quite. A trade log should record the plan and where execution drifted."><h3>Think it through</h3><p>What should a trade log record?</p><button type="button" class="option" data-answer="a">A. The plan and where execution drifted</button><button type="button" class="option" data-answer="b">B. Only the profits</button><button type="button" class="option" data-answer="c">C. Only the coin name</button><div class="feedback"></div></div>
 
 ## Three moments when people lose their head
 
-**Fear of missing out, rushing to get back to even, and a winning streak are when impulses show up.**
+Fear of missing out, rushing to get back to even, and a winning streak are when impulse is easiest.
 
-Fear of missing out: other people are making money, and you chase.
-Rushing to get back to even: after a loss, you size up or add leverage.
-A winning streak: you treat a short run of luck as a stable skill.
+Fear of missing out: other people are making money, and you rush to chase.
+Rushing to get back to even: after a loss, you increase the size or the leverage.
+A winning streak: you treat short-term luck as a stable skill.
 
-When you notice one of these, pause and reread the plan. That helps more than hunting for another indicator.
+When you are in one of these states, pausing and rereading the plan helps more than hunting for one more indicator.
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. Rushing to add size after a loss can magnify the loss." data-bad="Not quite. Rushing to add size after a loss can magnify the loss."><h3>Think it through</h3><p>What is the risk of rushing to add size after a loss?</p><button type="button" class="option" data-answer="a">A. It magnifies the loss</button><button type="button" class="option" data-answer="b">B. It guarantees you get back to even</button><button type="button" class="option" data-answer="c">C. There is no risk</button><div class="feedback"></div></div>
 
 # 07｜Going further: leverage and risk ⚖️
 
 ## Leverage and contracts
 
-**Leverage magnifies both gains and losses. Beginners should leave it alone.**
+Leverage magnifies both gains and losses, so beginners should leave it alone at first.
 
-Leveraged trading uses borrowing or margin to make the exposure larger. Gains and losses both get bigger. There is also a borrowing cost and liquidation risk.
+Leveraged trading widens the risk through borrowing or margin.
+Both gains and losses get larger, and there are borrowing costs and liquidation risk.
 
-Contract trading is a bet on a derivative exposure. You do not necessarily hold the underlying spot asset. A perpetual contract has no traditional fixed expiry. Funding rates and similar mechanisms are commonly used to keep its price near a reference price.
+Contract trading is a derivatives exposure. You do not necessarily hold the matching spot asset.
+A perpetual contract has no traditional fixed expiry. A funding fee and similar mechanisms are often used to keep its price near a reference price.
+
+**Fictional teaching example:** the same 1,000 USDT notional position, comparing the margin used at 1x and at 10x.
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. Leverage magnifies profit and loss relative to the margin." data-bad="Not quite. Leverage magnifies profit and loss relative to the margin."><h3>Think it through</h3><p>What does leverage magnify?</p><button type="button" class="option" data-answer="a">A. Profit and loss relative to the margin</button><button type="button" class="option" data-answer="b">B. The win rate</button><button type="button" class="option" data-answer="c">C. The coin price itself</button><div class="feedback"></div></div>
 
 ## Long and short
 
-**Long bets on a rise. Short bets on a fall. A short often means borrowing the coin or using a contract.**
+A long bets on a rise, a short bets on a fall, and a short often means borrowing the coin or using a contract.
 
-A long position hopes to profit if the price rises. A short hopes to profit if it falls. Shorting is not as simple as selling spot you already hold. It often involves borrowing or a derivative.
+A long hopes to profit if the price rises;
+a short hopes to profit if the price falls.
+A short is not as simple as selling spot you already hold. It often involves borrowing or a derivatives mechanism.
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. A short can involve borrowing or liquidation." data-bad="Not quite. A short can involve borrowing or liquidation."><h3>Think it through</h3><p>What can a short involve?</p><button type="button" class="option" data-answer="a">A. Borrowing or liquidation</button><button type="button" class="option" data-answer="b">B. A loss that can never happen</button><button type="button" class="option" data-answer="c">C. No fees</button><div class="feedback"></div></div>
 
 ## Margin, cross, and isolated
 
-**Cross margin can drag in the rest of the account. Isolated margin loses only the margin on that position.**
+Cross can drag in the whole account, and isolated can lose only that position's margin.
 
-Margin is the funds backing a position. Isolated margin limits that backing to one position. Cross margin lets more of the account's available funds support the position. The exact rules depend on the platform and the account mode.
+Margin is the funds supporting a position.
+Isolated margin limits the margin to a specific position;
+cross margin lets more of the account's available funds support the position.
+The exact rules depend on the platform and the account mode.
 
-Cross margin can put more of the account at risk. Isolated margin is not risk-free either.
+Cross can put more of the account's funds at risk;
+isolated is not risk-free either.
+
+**Fictional teaching example:** one box for isolated margin, and a shared box for the cross account, with the risk boundary marked.
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. Cross margin can affect more of the account's funds." data-bad="Not quite. Cross margin can affect more of the account's funds."><h3>Think it through</h3><p>What can cross margin affect?</p><button type="button" class="option" data-answer="a">A. More of the account's funds</button><button type="button" class="option" data-answer="b">B. Only one fixed amount</button><button type="button" class="option" data-answer="c">C. Zero risk</button><div class="feedback"></div></div>
 
 ## Liquidation
 
-**When margin is not enough, the platform closes the position for you. That is liquidation.**
+Liquidation depends on whether the margin is enough, not on the leverage multiple alone; the platform closes the position when margin is insufficient.
 
-When margin or other conditions fall below what the platform requires, the system may shrink or close the position. The trigger often uses a mark price and other rules, not the last traded price you are looking at.
+**When the margin is not enough, the platform closes the position for you. That is a liquidation.**
 
-Do not treat "10x leverage means it liquidates only after a 10% drop" as an exact formula. Maintenance margin, fees, position size, and the platform's rules all change the result.
+When margin and the other conditions fall below what the platform requires, the system may reduce or close the position.
+A liquidation trigger usually follows rules such as the mark price, not the last trade price you happen to see.
+
+Do not treat "10x leverage means a 10% drop liquidates you" as an exact formula.
+Maintenance margin, fees, position size, and the platform's rules all change the result.
+
+**Fictional teaching example:** the mark price, maintenance margin, and fees together move the liquidation line.
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. Liquidation is not judged by the leverage multiple alone." data-bad="Not quite. Liquidation is not judged by the leverage multiple alone."><h3>Think it through</h3><p>Is liquidation judged only by the leverage multiple?</p><button type="button" class="option" data-answer="a">A. No</button><button type="button" class="option" data-answer="b">B. Yes</button><button type="button" class="option" data-answer="c">C. Only by the candle color</button><div class="feedback"></div></div>
 
 ## Funding rate
 
-**Hold a perpetual for a long time, and funding can keep eating the profit (sometimes you are the one getting paid).**
+The direction of the funding fee is not fixed, and if you hold a contract for a long time that fee keeps changing the balance.
 
-A perpetual periodically settles a funding payment between long and short holders. Direction, interval, and rules differ by platform. On a position you hold for a long time, that fee changes the result in a real way.
+**Hold a perpetual for a long time, and the funding fee can keep eating the profit (sometimes you are the one who receives it).**
+
+A perpetual settles a funding fee on a schedule between long and short holders.
+The direction, the interval, and the rules differ by platform.
+On a long hold, that fee clearly changes the result.
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. The direction of the funding fee is not fixed." data-bad="Not quite. The direction of the funding fee is not fixed."><h3>Think it through</h3><p>Is the direction of the funding payment fixed?</p><button type="button" class="option" data-answer="a">A. It is not fixed</button><button type="button" class="option" data-answer="b">B. Longs always pay shorts</button><button type="button" class="option" data-answer="c">C. The platform always pays the user</button><div class="feedback"></div></div>
 
 ## Position size and a risk budget
 
-**Decide the most this idea is allowed to lose. Then work out how much to buy.**
+Decide the most this trade may lose, then work out how much to buy.
 
-First decide "if this idea is wrong, how much am I prepared to lose?" Then work out the size. That risk amount is not the money you put in, and it is not the margin.
+First decide "if this judgment is wrong, how much loss am I prepared to take," then work out how much to buy.
+The risk amount here is not the amount you invest, and it is not the margin.
 
-**A learning example of a risk rule: plan to risk 1% of account funds on one idea. If you want to be more aggressive, treat 2% as the ceiling.** This is not a safety standard that fits everyone. If you are unsure, use a lower share, or do not trade.
+Suppose the account has **10,000 USDT (often written 10,000 U)**, and the planned risk for this trade is 1%.
+The calculation has three steps:
 
-Suppose the account has **10,000 USDT (often written 10,000 U)**, and the planned risk on this idea is 1%. Three steps:
+**A study rule for risk: set the planned risk of one trade at 1% of the account; a more aggressive cap is 2%.** This is not a safety standard that fits everyone. If you are unsure, use a lower share or do not trade.
+
+Suppose the account has **10,000 USDT (often written 10,000 U)**, and the planned risk for this trade is 1%.
+The calculation has three steps:
 
 **Step 1: how much are you allowed to lose?**
-10,000 × 1% = **100 USDT**. If the stop is hit as planned, you want the loss on this idea kept near 100 USDT.
+10,000 × 1% = **100 USDT**.
+That is the loss you hope to keep this trade near, if the planned stop is hit.
 
-**Step 2: if you buy a whole BTC, how much do you lose at the stop?**
-Plan to buy at 60,000 USDT and stop at 59,000 USDT.
+**Step 2: if you buy a whole BTC, how much do you lose down to the stop?**
+The plan is to buy at 60,000 USDT and stop at 59,000 USDT.
 The gap per BTC is 60,000 − 59,000 = **1,000 USDT**.
-So 1 BTC, bought and sold at those two prices, loses 1,000 USDT. 0.1 BTC loses 100 USDT.
+So 1 BTC, bought and sold at those two prices, loses 1,000 USDT;
+0.1 BTC loses 100 USDT.
 
-**Step 3: so how much do you buy?**
-You can lose 100 USDT. Each coin might lose 1,000 USDT.
+**Step 3: so how much should you buy?**
+You are allowed to lose 100 USDT, and each coin might lose 1,000 USDT.
 100 ÷ 1,000 = **0.1 BTC**.
-At entry, the notional value of that position is 0.1 × 60,000 = **6,000 USDT**.
+At entry, the notional value of this position is 0.1 × 60,000 = **6,000 USDT**.
 
-**Formula: position size = (account funds × planned risk share) ÷ |entry price − stop price|.**
-The result is a quantity of the asset, for example a number of BTC. Multiply by the entry price to get the notional value. The absolute value keeps the gap positive for both a buy and a short. This fits a simplified spot trade or a linear contract. An inverse contract has to be calculated under its own rules.
+**Formula: position size = (account funds × planned risk share for one trade) ÷ |entry price − stop price|.**
+The result is a quantity of the asset, for example a number of BTC;
+multiply by the entry price to get the notional amount.
+The absolute value keeps the gap positive for both a buy and a short.
+This fits a simplified spot or linear-contract calculation. An inverse contract and similar products need their own rules.
 
 **What does leverage change here?**
-The same 0.1 BTC position, simplified: about 3,000 USDT of initial margin at 2x, and about 600 USDT at 10x. The quantity and the buy and sell prices are the same, so the profit or loss from the price move is still the same. Using only 600 USDT of margin does not make this loss smaller.
+For the same 0.1 BTC position, in a simplified case, 2x needs about 3,000 USDT of initial margin, and 10x needs about 600 USDT.
+The position size and the buy and sell prices are the same, so the profit and loss from the price move is the same. Using only 600 USDT of margin does not make this loss smaller.
 
-But higher leverage pulls liquidation closer. The planned risk above holds only if the position stays the same, you are not liquidated early, and the stop fills as expected. Fees, funding, slippage, and a failed execution also change the real loss. Leave room in the budget for costs, and check where liquidation sits. Do not treat "100 U" as a guaranteed ceiling you cannot go past.
+Higher leverage also brings liquidation closer.
+The planned risk above holds only if the position stays the same, it is not liquidated early, and the stop fills as expected.
+Fees, funding, slippage, and a failed execution also change the real loss.
+Leave room in the budget for costs, and check where liquidation sits. Do not treat "100 U" as a guaranteed ceiling.
 
-Diversifying still depends on correlation. Holding several coins that move together may not actually spread the risk.
+**Fictional teaching example:** 10,000 × 1% = 100;
+enter at 60,000, stop at 59,000, position 0.1 BTC.
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. The example position is 0.1 BTC." data-bad="Not quite. The example position is 0.1 BTC."><h3>Think it through</h3><p>What is the example position?</p><button type="button" class="option" data-answer="a">A. 0.1 BTC</button><button type="button" class="option" data-answer="b">B. 1 BTC</button><button type="button" class="option" data-answer="c">C. 10 BTC</button><div class="feedback"></div></div>
 
 ## Indicators
 
-**Indicators only describe past data. They do not predict tomorrow.**
+An indicator only looks at past data, and it cannot predict tomorrow.
 
-Volume helps you see how much participation there was. Support and resistance are areas where buying or selling has shown up, or might. They are not a wall that guarantees a turn.
+Volume helps you see how much participation there was.
+Support and resistance are areas where the market has shown, or might show, buying or selling. They are not a wall that guarantees a turn.
 
-One breakout, one big green candle, or one bounce cannot by itself confirm what comes next.
+One breakout, one large up candle, or one bounce cannot by itself confirm the future path.
 
-EMA: exponential moving average. A weighted way to watch the price trend.
-RSI: relative strength index. It looks at the relative strength of price changes over a period.
-MACD: watches trend and momentum through moving-average relationships and related calculations.
-Stoch RSI: a stochastic calculation applied to RSI. It is usually more sensitive.
+EMA: an exponential moving average, a weighted way to watch the price trend.
+RSI: the relative strength index, watching the relative strength of price changes over a period.
+MACD: watching trend and momentum through the relationship of averages and similar inputs.
+Stoch RSI: a stochastic calculation applied to RSI, and it is usually more sensitive.
 
-Bollinger Bands: often a middle band plus upper and lower bands, used to see where price sits and how volatility is changing. A narrow band means recent volatility shrank. It does not by itself say the next move is up or down. Touching the upper band does not mean the price is about to fall.
-
-Fibonacci retracement / extension: pick the high and low of a move, then mark possible pullback zones or extension targets by ratio. Common retracement ratios include 38.2% and 61.8%. Tools often also show 50%. A different start point gives a different result. The line is not a price the market must reach.
-
-Divergence: price and an indicator do not make a new high or a new low together. For example, price makes a new high and RSI does not, which suggests upside momentum is weakening. Price makes a new low and RSI does not, which suggests downside momentum is weakening. Divergence is an observation, not a standalone indicator, and it does not guarantee an immediate reversal.
-
-An indicator is a processing of historical data. A high RSI does not mean the price is about to fall. A golden cross is not a sure profit. Being able to say when it fails, in which conditions, is more useful than memorizing a slogan.
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. A high RSI does not mean the price must fall immediately." data-bad="Not quite. A high RSI does not mean the price must fall immediately."><h3>Think it through</h3><p>If RSI is high, must the price fall immediately?</p><button type="button" class="option" data-answer="a">A. Not necessarily</button><button type="button" class="option" data-answer="b">B. Always</button><button type="button" class="option" data-answer="c">C. It cannot show history</button><div class="feedback"></div></div>
 
 # 08｜Wallets, cold wallets, and CEX 👛
 

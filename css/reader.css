@@ -234,3 +234,31 @@ body.is-reader .course-reader .tools{border:1px solid rgba(230,199,158,.28);bord
 }
 .course-reader .quiz[data-tone="box"] .feedback{background:#1f8a4d;color:#fff}
 .course-reader .quiz[data-tone="box"] .feedback.wrong{background:#6e2c32;color:#fff}
+.course-reader .ch03-lab{background:radial-gradient(ellipse at 83% 8%,#65508045,transparent 50%),linear-gradient(160deg,#2b2342ee,#16182eea);border:1px solid #b79aab5c;border-radius:20px;padding:18px;margin:18px 0;color:#e5dce9}
+.course-reader .ch03-lab h3{margin:0 0 8px;color:#f1d8b9;font-size:17px}
+.course-reader .ch03-lab .lab-kicker{margin:0 0 12px;color:#afa0bd;font-size:13px;line-height:1.6}
+.course-reader .ch03-lab .lab-choices,.course-reader .ch03-lab .lab-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.course-reader .ch03-lab button{appearance:none;background:#241e38;color:#f4e9da;border:1px solid #a98a9966;border-radius:14px;min-height:44px;padding:8px 12px;cursor:pointer;font:inherit}
+.course-reader .ch03-lab button[aria-pressed="true"],.course-reader .ch03-lab .is-hit{border-color:#e6c79e;color:#fff8e9}
+.course-reader .ch03-lab .lab-cols,.course-reader .ch03-lab .lab-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.course-reader .ch03-lab .lab-cols div,.course-reader .ch03-lab .lab-stats div,.course-reader .ch03-lab .lab-book li,.course-reader .ch03-lab .lab-facts li{background:#120f1d;border-radius:12px;padding:10px 12px}
+.course-reader .ch03-lab .lab-cols strong,.course-reader .ch03-lab .lab-stats b{display:block;color:#fff;font-size:18px}
+.course-reader .ch03-lab .lab-cols span,.course-reader .ch03-lab .lab-book span,.course-reader .ch03-lab .lab-stats span{color:#afa0bd;font-size:12px}
+.course-reader .ch03-lab label{display:block;margin:10px 0;color:#f1d8b9}
+.course-reader .ch03-lab input{display:block;width:100%;max-width:220px;margin-top:6px;background:#120f1d;color:#fff;border:1px solid #a98a9966;border-radius:10px;min-height:44px;padding:8px 10px}
+.course-reader .ch03-lab .lab-feedback,.course-reader .ch03-lab .lab-result{margin:12px 0 0;padding:12px 14px;border-radius:12px;line-height:1.65}
+.course-reader .ch03-lab .lab-feedback{background:#1f8a4d;color:#fff}
+.course-reader .ch03-lab .lab-feedback.wrong{background:#6e2c32;color:#fff}
+.course-reader .ch03-lab .lab-result{background:#120f1d;color:#f4e9da;border:1px solid #a98a9966}
+.course-reader .ch03-lab .lab-reset{margin-top:10px;background:transparent}
+.course-reader .ch03-lab .lab-book,.course-reader .ch03-lab .lab-facts{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:8px}
+.course-reader .ch03-lab .lab-book li{display:flex;justify-content:space-between;gap:8px}
+.course-reader .ch03-lab .lab-facts li.is-hit{outline:1px solid #e6c79e}
+.course-reader .ch04-card{background:#120f1d;border-radius:12px;padding:12px;margin:8px 0}
+.course-reader .ch04-card p{margin:0 0 8px;color:#e5dce9;line-height:1.6}
+.course-reader .ch04-card .lab-choices button{flex:1 1 140px}
+@media(max-width:420px){
+  .course-reader .ch03-lab{padding:14px}
+  .course-reader .ch03-lab .lab-cols,.course-reader .ch03-lab .lab-stats{grid-template-columns:1fr}
+  .course-reader .ch03-lab .lab-choices button,.course-reader .ch03-lab .lab-tabs button{flex:1 1 100%}
+}
