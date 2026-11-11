@@ -783,29 +783,34 @@
   }
   function mountPairLab(lab) {
     var tabs = lab.querySelectorAll('[data-pair]');
-    var qtyWrap = lab.querySelector('[data-qty-wrap]');
     var qty = lab.querySelector('[data-qty]');
+    var unit = lab.querySelector('[data-unit]');
+    var baseCard = lab.querySelector('.lab-cols [data-base]');
+    var quoteCard = lab.querySelector('.lab-cols [data-quote]');
     function show(btn) {
+      if (!btn) return;
       tabs.forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
-      lab.querySelector('[data-base]').textContent = btn.getAttribute('data-base');
-      lab.querySelector('[data-quote]').textContent = btn.getAttribute('data-quote');
-      var price = btn.getAttribute('data-price');
-      qtyWrap.hidden = !price;
-      if (!price) {
-        labResult(lab, '左边「' + btn.getAttribute('data-base') + '」是买卖资产，右边「' + btn.getAttribute('data-quote') + '」是报价资产。这一对没有固定的教学价格。');
+      var base = btn.getAttribute('data-base');
+      var quote = btn.getAttribute('data-quote');
+      var price = Number(btn.getAttribute('data-price'));
+      if (baseCard) baseCard.textContent = base;
+      if (quoteCard) quoteCard.textContent = quote;
+      if (unit) unit.textContent = base;
+      var raw = String(qty.value == null ? '' : qty.value).trim();
+      if (raw === '') {
+        labResult(lab, '请输入数量。');
         return;
       }
-      var n = Number(qty.value);
-      if (!(n >= 0)) {
+      var n = Number(raw);
+      if (!isFinite(n) || n < 0 || !isFinite(price) || price < 0) {
         labResult(lab, '请输入不小于 0 的数量。');
         return;
       }
-      labResult(lab, '教学虚构：' + labNum(n, 4) + ' ' + btn.getAttribute('data-base') + ' × ' + labNum(Number(price), 0) + ' = ' + labNum(n * Number(price), 4) + ' ' + btn.getAttribute('data-quote') + '。还没算手续费。');
+      labResult(lab, '教学虚构：买 ' + labNum(n, 8) + ' ' + base + ' 需要支付 ' + labNum(n * price, 8) + ' ' + quote + '。');
     }
     tabs.forEach(function (b) { b.addEventListener('click', function () { show(b); }); });
     qty.addEventListener('input', function () {
-      var on = lab.querySelector('[aria-pressed="true"]');
-      if (on) show(on);
+      show(lab.querySelector('[data-pair][aria-pressed="true"]'));
     });
     lab.querySelector('[data-reset]').addEventListener('click', function () {
       qty.value = '0.01';

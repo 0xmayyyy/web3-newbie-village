@@ -295,6 +295,9 @@ CEX 和 DEX 是交易场所的分类，和一级 / 二级市场不是一回事�
 
 ## 交易对
 
+
+BTC/USDT 用右边的 USDT 给左边的 BTC 标价，可以买小数份额，卖出通常收回报价资产。
+
 你在交易所看到「BTC/USDT：60,000」，是不是以为买一枚 BTC 才能交易？
 
 其实不用。
@@ -313,18 +316,18 @@ USDT 是稳定币，不是银行账户里的美元。
 
 <div class="ch03-lab" data-lab="pair">
 <h3>拆交易对</h3>
-<p class="lab-kicker">教学虚构。价格固定为 60,000，不是真实行情。</p>
+<p class="lab-kicker">教学虚构。BTC/USDT 按 60,000，ETH/BTC 按 0.05，SOL/USDT 按 150，都不是真实行情。</p>
 <div class="lab-tabs" role="group" aria-label="选择交易对">
 <button type="button" data-pair="BTC/USDT" data-base="BTC" data-quote="USDT" data-price="60000" aria-pressed="true">BTC/USDT</button>
-<button type="button" data-pair="ETH/BTC" data-base="ETH" data-quote="BTC" aria-pressed="false">ETH/BTC</button>
-<button type="button" data-pair="SOL/USDT" data-base="SOL" data-quote="USDT" aria-pressed="false">SOL/USDT</button>
+<button type="button" data-pair="ETH/BTC" data-base="ETH" data-quote="BTC" data-price="0.05" aria-pressed="false">ETH/BTC</button>
+<button type="button" data-pair="SOL/USDT" data-base="SOL" data-quote="USDT" data-price="150" aria-pressed="false">SOL/USDT</button>
 </div>
 <div class="lab-cols">
 <div><span>买卖资产</span><strong data-base>BTC</strong></div>
 <div><span>报价资产</span><strong data-quote>USDT</strong></div>
 </div>
-<label data-qty-wrap>买入数量（BTC）
-<input data-qty type="number" min="0" step="0.01" value="0.01" inputmode="decimal">
+<label data-qty-wrap>买入数量（<span data-unit>BTC</span>）
+<input data-qty type="number" min="0" step="any" value="0.01" inputmode="decimal">
 </label>
 <p class="lab-result" aria-live="polite"></p>
 <button type="button" class="lab-reset" data-reset>重置</button>
@@ -333,6 +336,9 @@ USDT 是稳定币，不是银行账户里的美元。
 <div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。ETH/BTC 里，买入 ETH 通常花的是右边的 BTC。" data-bad="答错了。看交易对右边的报价资产。"><h3>想一想</h3><p>ETH/BTC 交易对里，买入 ETH 通常花什么？</p><button type="button" class="option" data-answer="a" data-note="答错了。看右侧报价资产。ETH/BTC 的报价资产是 BTC，不是 USDT。">A. USDT</button><button type="button" class="option" data-answer="b">B. BTC</button><button type="button" class="option" data-answer="c" data-note="答错了。ETH 是你买到的资产，不是你花出去的报价资产。">C. ETH</button><div class="feedback"></div></div>
 
 ## 币价、市值和 FDV
+
+
+单价低不等于便宜，要一起看流通市值和完全稀释估值，这两个数也不是实际投入的现金。
 
 A 币卖 0.01 美元，B 币卖 100 美元。
 哪个更便宜？
@@ -374,6 +380,9 @@ FDV 也不是未来一定会达到的价格或规模。
 
 ## 供应量
 
+
+先分清流通量、总供应和最大供应，解锁改变的是能不能卖，增发才是新币进入供应。
+
 想象一块蛋糕原本切成 100 份，你有 1 份，占 1%。
 后来按项目规则又新增 100 份，而你仍只有 1 份，你的占比就变成了 0.5%。
 
@@ -412,6 +421,9 @@ FDV 也不是未来一定会达到的价格或规模。
 
 ## 流动性与成交量
 
+
+成交量说的是过去成交了多少，流动性说的是现在大单会不会把价格打穿。
+
 你想卖 5 万美元的币，页面显示「24 小时成交量 1 亿美元」，听起来很热闹。
 但你点开盘口，发现现在愿意接你卖单的人很少。
 
@@ -445,6 +457,9 @@ FDV 也不是未来一定会达到的价格或规模。
 
 ## 买卖价差、价格影响与滑点
 
+
+买卖价差、价格影响和滑点是三件相关但不同的事，屏幕上的价格不一定是你的成交价。
+
 打开交易页面，最好的买价可能是 0.99 美元，最好的卖价是 1.00 美元。
 两者差的 0.01 美元叫**买卖价差**。
 
@@ -477,6 +492,9 @@ FDV 也不是未来一定会达到的价格或规模。
 <div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。限价买单有最高价。深度不够时，可能只成交一部分，或暂时等不到。" data-bad="答错了。限价不能保证立刻买满，也不会自动把价格提到 1.05。"><h3>想一想</h3><p>限价买单设置最高 1.00 美元，能保证立刻买到 150 枚吗？</p><button type="button" class="option" data-answer="a">A. 不能，可能只成交部分或等不到</button><button type="button" class="option" data-answer="b" data-note="答错了。这忽略了盘口深度。">B. 能保证</button><button type="button" class="option" data-answer="c" data-note="答错了。限价买单不会自动把价格提到 1.05，那会违反你设的最高价。">C. 可以自动把价格提到 1.05</button><div class="feedback"></div></div>
 
 ## 手续费与网络费
+
+
+币价可以不动，手续费、价差、滑点、提现费和网络费仍会把余额一点点吃掉。
 
 刚入圈最容易忽略的不是涨跌，而是每一步的成本。
 
@@ -518,6 +536,9 @@ FDV 也不是未来一定会达到的价格或规模。
 
 ## 盈亏怎么算？
 
+
+跌下去之后，要涨回原价所需的百分比比跌幅更大，因为计算的基数已经变小。
+
 教学虚构：你用 100 USDT 买币，跌了 50%，只剩 50 USDT。
 这时它再涨 50%，也只是 50 × 1.5 = **75 USDT**，还差 25 USDT。
 
@@ -550,6 +571,9 @@ FDV 也不是未来一定会达到的价格或规模。
 <div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。教学虚构：从 20 回到 100，要涨 80，80÷20 = 400%。" data-bad="答错了。回本涨幅要用剩下的 20 当基数，不是把原来的跌幅直接拿来用。"><h3>想一想</h3><p>教学虚构：100 跌到 20，要回到 100 需要涨多少？</p><button type="button" class="option" data-answer="a" data-note="答错了。80% 是把原来的跌幅直接当成了回本涨幅。">A. 80%</button><button type="button" class="option" data-answer="b" data-note="答错了。100% 没有按剩下的 20 当基数。">B. 100%</button><button type="button" class="option" data-answer="c">C. 400%</button><div class="feedback"></div></div>
 
 ## 学交易之前，至少能回答
+
+
+按下买入之前，先说清买的是什么、一共花多少、能不能退出，以及亏光会不会影响生活。
 
 你不需要先学会十几个技术指标，才有资格买第一笔币。
 但在按下「买入」之前，至少要能说清楚四件事：
@@ -593,6 +617,9 @@ FDV 也不是未来一定会达到的价格或规模。
 # 04｜第一次买币与出入金 🛒
 
 ## 什么是入金和出金？
+
+
+入金是把钱放进交易所，卖掉币不等于法币到账，链上提币和提到银行是两条不同的路。
 
 你银行卡里有 100 马币，想买第一笔 BTC。
 把马币支付给合规渠道，最终在交易所账户拿到资产，这个过程常被叫作**入金**。
@@ -643,6 +670,9 @@ FDV 也不是未来一定会达到的价格或规模。
 
 ## 第一步：确认平台与地区
 
+
+同名交易所在不同地区可能不是同一套账户，相同的 UID 也不能当成同一个人。
+
 有些交易所品牌在不同国家由不同公司经营。
 名字相似、Logo 相似，不代表账户、UID、充值系统或客服互通。
 
@@ -674,6 +704,9 @@ FDV 也不是未来一定会达到的价格或规模。
 <div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。UID 只在对应平台里有意义。数字相同，也不能断定是同一个人。" data-bad="答错了。相同数字和相同品牌，都不能当成跨系统的身份凭证。"><h3>想一想</h3><p>两个不同地区的交易所应用都显示 UID 123456，能断定是同一人吗？</p><button type="button" class="option" data-answer="a" data-note="答错了。相同数字不能当成跨系统的身份凭证。">A. 能</button><button type="button" class="option" data-answer="b" data-note="答错了。品牌相同也不代表账户系统互通。">B. 只要品牌相同就能</button><button type="button" class="option" data-answer="c">C. 不能，须核对平台主体与收款身份</button><div class="feedback"></div></div>
 
 ## 第二步：注册与安全设置
+
+
+先锁好官方入口、邮箱、登录、提款和恢复方式，再把钱放进新账户。
 
 刚注册完就充值，等于新房钥匙还没保管好，就把贵重物品搬进去。
 
@@ -710,6 +743,9 @@ FDV 也不是未来一定会达到的价格或规模。
 
 ## 第三步：选择入金方式
 
+
+比较入金不能只看手续费写没写 0，要看最终拿到多少，以及时间、退款和限制。
+
 买币时常见三类入口：平台支持的银行卡或银行转账、第三方支付服务商、P2P。
 你也可能已经持有数字资产，选择直接充值到交易所。
 
@@ -741,6 +777,9 @@ FDV 也不是未来一定会达到的价格或规模。
 <div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。要看你一共付多少、最后拿到多少，以及限制和风险。" data-bad="答错了。0 手续费和到账快，都不能单独决定哪个更划算。"><h3>想一想</h3><p>两个渠道一个写 0 手续费，一个写有手续费，怎样比较更合理？</p><button type="button" class="option" data-answer="a" data-note="答错了。0 手续费可能藏着更差的报价。">A. 只选 0 手续费</button><button type="button" class="option" data-answer="b" data-note="答错了。快不代表成本低，也不代表你能用。">B. 只选最快的</button><button type="button" class="option" data-answer="c">C. 核对总支付、实际到账、限制和风险</button><div class="feedback"></div></div>
 
 ## P2P 特别注意
+
+
+P2P 里截图不是到账，要在订单内核对银行真实入账和付款人，再按平台规则处理。
 
 P2P 常见场景是：你和另一位用户交易，平台按规则提供订单与托管机制。
 **但托管不等于银行转账没有风险。**
@@ -797,6 +836,9 @@ P2P 常见场景是：你和另一位用户交易，平台按规则提供订单�
 
 ## 第四步：小额买入现货
 
+
+第一次买现货是为了看懂流程，市价不保证成交价格，限价不保证一定成交。
+
 第一次操作的目标，是**把整个流程看明白**，不是用第一笔交易赚多少钱。
 
 教学模拟：假设你计划用 20 USDT 试操作。
@@ -834,6 +876,9 @@ P2P 常见场景是：你和另一位用户交易，平台按规则提供订单�
 <div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。未成交通常是还在等对手盘，不是已经买到，也不等于钱丢了。" data-bad="答错了。未成交不等于钱丢了，也不等于已经买到。"><h3>想一想</h3><p>你提交限价买单，页面显示「未成交」，最合理的理解是？</p><button type="button" class="option" data-answer="a">A. 订单可能仍在等待匹配</button><button type="button" class="option" data-answer="b" data-note="答错了。未成交不等于资产消失。限价单可能还挂着。">B. 钱一定丢了</button><button type="button" class="option" data-answer="c" data-note="答错了。未成交就是还没买到。">C. 已经买到币只是没显示</button><div class="feedback"></div></div>
 
 ## 第五步：理解卖出与提现
+
+
+卖成 USDT、提到自己的钱包、换成银行法币是三件不同的事，卖掉不等于钱进了银行。
 
 新手很容易把这三步看成一件事：
 
@@ -889,6 +934,9 @@ P2P 常见场景是：你和另一位用户交易，平台按规则提供订单�
 <div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。USDT 还在交易所。要收到银行法币，还得走支持的兑换和出金。" data-bad="答错了。交易所里的 USDT 不是银行存款，币价也不能把它变成银行存款。"><h3>想一想</h3><p>卖出 BTC 得到 USDT 后，USDT 自动变成银行存款了吗？</p><button type="button" class="option" data-answer="a" data-note="答错了。交易所里的 USDT 不是银行里的存款。">A. 是</button><button type="button" class="option" data-answer="b" data-note="答错了。币价不能把交易所资产变成银行存款。">B. 取决于币价</button><button type="button" class="option" data-answer="c">C. 没有，还需完成支持的法币兑换及出金流程</button><div class="feedback"></div></div>
 
 ## 交易所里的几个账户
+
+
+现货页显示没有余额时，先看币是不是在别的账户，平台内部划转通常不上链。
 
 你明明有 100 USDT，为什么下单页面显示余额不足？
 
@@ -985,6 +1033,9 @@ DEX 也有中心化环节。
 卡片提示：这是平台的推广注册域名，注册后请在官方 App 里核对账户。
 
 ## 链上交易工具
+
+
+DeBot 和币安 Web3 钱包用来买卖已经发行的代币，不是一级认购，链上新币风险很高。
 
 **想直接在链上买卖代币，可以用这两个工具。**
 
@@ -1130,6 +1181,9 @@ DeBot 与币安 Web3 钱包都用于在链上买卖已经发行的代币（二�
 
 ## 强平与爆仓
 
+
+强平看的是保证金够不够，不是只看杠杆倍数，平台会在保证金不足时把仓位平掉。
+
 **保证金不够时，平台会强行帮你平仓，这就是爆仓。**
 
 当保证金等条件低于平台要求时，系统可能减少或关闭仓位。
@@ -1143,6 +1197,9 @@ DeBot 与币安 Web3 钱包都用于在链上买卖已经发行的代币（二�
 <div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。强平只看杠杆倍数吗：不是。" data-bad="答错了。强平只看杠杆倍数吗：不是。"><h3>想一想</h3><p>强平只看杠杆倍数吗？</p><button type="button" class="option" data-answer="a">A. 不是</button><button type="button" class="option" data-answer="b">B. 是</button><button type="button" class="option" data-answer="c">C. 只看K线颜色</button><div class="feedback"></div></div>
 
 ## 资金费率
+
+
+资金费的方向不固定，合约拿久了，这笔费用会继续改变余额。
 
 **永续合约拿久了，资金费可能一直吃掉利润（有时也是你收钱）。**
 
