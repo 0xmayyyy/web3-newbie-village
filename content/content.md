@@ -1568,8 +1568,10 @@ Ethereum 安全资料：https://ethereum.org/security/
 
 先在可信设备上，用全新的密钥创建一个钱包。
 再评估怎样把剩余资产安全转过去。
-只改 App 密码、卸载钱包或撤销授权，都不能让已经泄露的私钥失效。
-如果怀疑有自动转走资产的程序，再向旧钱包充网络费，也可能马上被转走。
+只改 App 密码、卸载钱包或撤销授权，
+都不能让已经泄露的私钥失效。
+如果怀疑有自动转走资产的程序，再向旧钱包充网络费，
+也可能马上被转走。
 这种情况下，先寻求可信的专业协助。
 
 <div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。泄露的私钥不会因为改密码或重装而失效。先用新密钥，再考虑怎样转移剩余资产。" data-bad="答错了。改密码和卸载都不能让旧私钥失效。不要再把这个地址当成安全钱包。"><h3>想一想</h3><p>教学虚构：助记词已经发给假客服。旧地址还能不能继续当安全钱包用？</p><button type="button" class="option" data-answer="a">A. 能。改掉登录密码就可以继续用</button><button type="button" class="option" data-answer="b">B. 不能。要创建全新钱包，再评估怎样安全转移剩余资产</button><button type="button" class="option" data-answer="c">C. 卸载重装之后，旧私钥就失效了</button><div class="feedback"></div></div>
