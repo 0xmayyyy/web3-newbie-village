@@ -60,80 +60,129 @@
 
 **币圈就是围绕加密货币的市场和圈子，买币只是参与方式之一。**
 
-「币圈」是一个口语说法，泛指围绕加密货币、区块链及相关应用形成的市场与社区。有人做交易，有人开发应用，也有人研究技术、支付、游戏、数字收藏品和链上金融。
+「币圈」是一个口语说法，泛指围绕加密货币、区块链及相关应用形成的市场与社区。
+有人做交易，有人开发应用，也有人研究技术、支付、游戏、数字收藏品和链上金融。
 
-买币只是其中一种参与方式。你也可以先学知识、观察项目、体验测试网络，不投入真实资金。
+买币只是其中一种参与方式。
+你也可以先学知识、观察项目、体验测试网络，不投入真实资金。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。币圈是市场和社区。买币只是其中一种参与方式。" data-bad="答错了。买币不是唯一方式。学习和观察项目、试用测试网，也可以先参与，而且不必投入真实资金。"><h3>想一想</h3><p>买币是不是参与币圈的唯一方式？</p><button type="button" class="option" data-answer="a">A. 是，不买就不算参与</button><button type="button" class="option" data-answer="b">B. 不是，学习和观察也是参与</button><button type="button" class="option" data-answer="c">C. 只有自己开发应用才算参与</button><div class="feedback"></div></div>
 
 ## 区块链是什么？
 
 **区块链是一本大家一起记、很难偷偷改的公共账本。**
 
-可以把区块链理解为一套由多方共同维护的记录系统。交易按规则被确认并写入记录，参与者通过共识机制对记录达成一致。
+可以把区块链理解为一套由多方共同维护的记录系统。
+交易按规则被确认并写入记录，参与者通过共识机制对记录达成一致。
 
-区块链的一个重要特点是「防篡改」：在网络正常运行、共识与安全假设成立的条件下，已经充分确认的记录不能由某个人随意修改。
+区块链的一个重要特点是「防篡改」。
+在网络正常运行，并且共识与安全假设成立的条件下，已经充分确认的记录不能由某个人随意修改。
 
 「记录防篡改」也不等于输入的信息、项目宣传和交易对象一定真实。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。记录很难被改，只说明确认后的记录不易被某个人偷偷改掉。写进去的内容仍可能不真实。" data-bad="答错了。防篡改不等于内容真实。项目宣传和交易对象，仍要单独核对。"><h3>想一想</h3><p>记录很难被偷偷改，是不是就说明写进去的内容一定是真的？</p><button type="button" class="option" data-answer="a">A. 是，记进区块链就等于真实</button><button type="button" class="option" data-answer="b">B. 不是，防篡改不等于内容真实</button><button type="button" class="option" data-answer="c">C. 只有一家公司记账才可能真实</button><div class="feedback"></div></div>
 
 ## 加密货币是什么？
 
 **加密货币是链上的数字资产，种类很多，风险各不相同。**
 
-加密货币是使用密码学和相关网络规则管理的数字资产。不同资产的用途、发行方式和风险差别很大，不能把它们都当成同一种投资。
+加密货币是使用密码学和相关网络规则管理的数字资产。
+不同资产的用途、发行方式和风险差别很大，不能把它们都当成同一种投资。
 
-BTC 是比特币网络的原生资产。ETH 是以太坊网络的原生资产，可以用于支付网络费用等。很多代币则通过已有链上的合约发行。
+BTC 是比特币网络的原生资产。
+ETH 是以太坊网络的原生资产，可以用于支付网络费用等。
+很多代币则通过已有链上的合约发行。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。BTC 是比特币网络的原生资产。很多代币是在已有链上用合约发行的，不能因为都叫币就当成同一种。" data-bad="答错了。都叫币，不代表发行方式和风险相同。BTC 属于比特币网络本身。很多代币由已有链上的合约发行。"><h3>想一想</h3><p>BTC 和通过合约发行的代币，是同一种东西吗？</p><button type="button" class="option" data-answer="a">A. 是，名字里都有币就一样</button><button type="button" class="option" data-answer="b">B. 不是。BTC 是比特币网络的原生资产，很多代币由合约发行</button><button type="button" class="option" data-answer="c">C. 只有价格一样，才是同一种</button><div class="feedback"></div></div>
 
 ## BTC 的起源：币圈从哪里开始？
 
 **比特币是第一个加密货币，2009 年开始运行，总量约 2,100 万枚。**
 
-2008 年 10 月 31 日，一位使用「Satoshi Nakamoto（中本聪）」名字的作者公布了比特币白皮书《Bitcoin: A Peer-to-Peer Electronic Cash System》，中文通常译为《比特币：一种点对点的电子现金系统》。
+2008 年 10 月 31 日
+一位使用「Satoshi Nakamoto（中本聪）」名字的作者公布了比特币白皮书 ：
+《Bitcoin: A Peer-to-Peer Electronic Cash System》
+中文通常译为《比特币：一种点对点的电子现金系统》
 
-白皮书提出的问题很直接：能不能让两个人在网上直接付款，不必依赖金融机构替双方防止同一笔钱被重复花掉？它将数字签名、工作量证明与网络共识等机制结合起来，设计了一种点对点电子现金方案。
+白皮书提出的问题很直接：能不能让两个人在网上直接付款，不必依赖金融机构替双方防止同一笔钱被重复花掉？
+它将数字签名、工作量证明与网络共识等机制结合起来，设计了一种点对点电子现金方案。
 
-2009 年 1 月 3 日，比特币创世区块诞生，比特币网络开始运行。中本聪的真实身份至今没有得到公认的确认。
+2009 年 1 月 3 日，比特币创世区块诞生，比特币网络开始运行。
+中本聪的真实身份至今没有得到公认的确认。
 
-按现行共识规则，BTC 的发行总量上限约为 2,100 万枚。它不由某家公司按需发行，而是按网络规则逐步产生。稀缺性是它的一个特点，但不保证价格只涨不跌。
+按现行共识规则，BTC 的发行总量上限约为 2,100 万枚。
+它不由某家公司按需发行，而是按网络规则逐步产生。
+稀缺性是它的一个特点，但不保证价格只涨不跌。
 
 📄 想读白皮书原文？从 bitcoin.org 官方入口开始：
 
 - 英文原文 PDF：https://bitcoin.org/bitcoin.pdf
 - 多语言版本：https://bitcoin.org/en/bitcoin-paper
 
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。按现行共识规则，上限约为 2,100 万枚。这是发行规则，不保证价格只涨不跌。" data-bad="答错了。BTC 不由某家公司按需加印。上限约为 2,100 万枚，而且稀缺不等于价格只涨。"><h3>想一想</h3><p>按现行规则，BTC 大约最多发行多少？</p><button type="button" class="option" data-answer="a">A. 约 2,100 万枚，而且不保证价格只涨</button><button type="button" class="option" data-answer="b">B. 由某家公司看着需求加印</button><button type="button" class="option" data-answer="c">C. 没有上限，可以无限增发</button><div class="feedback"></div></div>
+
 ## 币与代币有什么区别？
 
 **原生币属于一条链本身，代币是在别人的链上发行的。**
 
-常见区分是：原生币属于某条网络本身；代币通过已有网络发行。例如 ETH 与以太坊上的 ERC-20 代币。日常交流里，大家经常统称它们为「币」。
+常见区分是：原生币属于某条网络本身。
+代币通过已有网络发行。
+例如 ETH 与以太坊上的 ERC-20 代币。
+
+日常交流里，大家经常统称它们为「币」。
+称呼相同，也不表示发行方式相同。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。ETH 属于以太坊网络本身。ERC-20 代币是在这条已有网络上发行的。" data-bad="答错了。统称「币」只是口头说法。ETH 是原生币。ERC-20 代币不是这条链本身。"><h3>想一想</h3><p>ETH 和以太坊上的 ERC-20 代币，主要差别是什么？</p><button type="button" class="option" data-answer="a">A. 没有差别，都在以太坊上就一样</button><button type="button" class="option" data-answer="b">B. ETH 属于这条网络本身，ERC-20 代币是在已有网络上发行的</button><button type="button" class="option" data-answer="c">C. ERC-20 才是以太坊的原生币</button><div class="feedback"></div></div>
 
 ## 公链是什么？
 
 **公链是谁都能用的区块链，不同链之间不能乱转。**
 
-公链通常是开放参与的区块链网络，例如 Bitcoin、Ethereum、TRON、BNB Chain、Solana。不同链的费用、速度、应用和安全假设不同。
+公链通常是开放参与的区块链网络，例如 Bitcoin、Ethereum、TRON、BNB Chain、Solana。
+不同链的费用、速度、应用和安全假设不同。
 
-可以把不同网络想成不同的交通系统。地址长得一样，也不代表目的地与资产兼容。转账需要收款方明确支持相应网络。
+可以把不同网络想成不同的交通系统。
+地址长得一样，也不代表目的地与资产兼容。
+转账需要收款方明确支持相应网络。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。地址像，也不代表网络和资产兼容。要收款方明确支持相应网络。" data-bad="答错了。不能因为地址看起来像，或两边都叫公链，就直接转。先确认收款方支持的网络。"><h3>想一想</h3><p>地址看起来一样，能不能直接转到另一条链？</p><button type="button" class="option" data-answer="a">A. 能，地址像就能转</button><button type="button" class="option" data-answer="b">B. 不能默认，要收款方明确支持相应网络</button><button type="button" class="option" data-answer="c">C. 只要都叫公链，就可以互转</button><div class="feedback"></div></div>
 
 ## Web3 是什么？
 
 **Web3 就是用钱包登录、在链上使用的互联网应用。**
 
-Web3 常被用来描述利用区块链、钱包和智能合约构建的互联网应用。用户可以通过钱包管理数字资产、签署操作、使用链上应用。
+Web3 常被用来描述利用区块链、钱包和智能合约构建的互联网应用。
+用户可以通过钱包管理数字资产、签署操作、使用链上应用。
 
-但「Web3」标签不保证项目真的去中心化，也不保证好用或安全。
+但「Web3」标签不保证项目真的去中心化。
+它也不保证好用或安全。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。Web3 只是一种叫法。它不保证去中心化，也不保证好用或安全。" data-bad="答错了。贴了 Web3，或用了钱包登录，都不能单独证明安全或已经去中心化。"><h3>想一想</h3><p>一个应用贴了 Web3，能不能说明它已经去中心化并且安全？</p><button type="button" class="option" data-answer="a">A. 能，标签就是证明</button><button type="button" class="option" data-answer="b">B. 不能。标签不保证去中心化、好用或安全</button><button type="button" class="option" data-answer="c">C. 只要能用钱包登录，就一定安全</button><div class="feedback"></div></div>
 
 ## 智能合约是什么？
 
 **智能合约是链上自动执行的程序，代码有漏洞就会出事。**
 
-智能合约是部署在区块链上、按代码规则执行的程序。兑换、借贷、代币发行等功能常由它完成。代码会有漏洞，也会被设置管理员权限，不能因为叫「智能」就默认可靠。
+智能合约是部署在区块链上、按代码规则执行的程序。
+兑换、借贷、代币发行等功能常由它完成。
+
+代码会有漏洞，也会被设置管理员权限。
+不能因为叫「智能」就默认可靠。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。它是按代码执行的程序。代码会有漏洞，也可能设有管理员权限。" data-bad="答错了。叫「智能」不表示不会出错。兑换合约和其他合约都可能有漏洞或管理员权限。"><h3>想一想</h3><p>智能合约可以默认当成不会出错吗？</p><button type="button" class="option" data-answer="a">A. 可以，因为它叫智能</button><button type="button" class="option" data-answer="b">B. 不可以。代码会有漏洞，也可能设有管理员权限</button><button type="button" class="option" data-answer="c">C. 只有兑换合约才可能出错</button><div class="feedback"></div></div>
 
 ## 稳定币是什么？
 
 **稳定币想跟美元保持 1:1，但它不是银行存款，也会脱锚。**
 
-稳定币的目标是尽量跟踪某个参考价值，常见的是 1 美元，例如 USDT、USDC。不同稳定币可能使用法币储备、加密资产抵押或其他机制。
+稳定币的目标是尽量跟踪某个参考价值，常见的是 1 美元，例如 USDT、USDC。
+不同稳定币可能使用法币储备、加密资产抵押或其他机制。
 
-稳定币可以用于计价、转账与交易结算，但不是银行存款，也不保证始终能按 1 美元兑换。需要了解储备、赎回条件、冻结权限和脱锚风险。
+稳定币可以用于计价、转账与交易结算。
+但它不是银行存款，也不保证始终能按 1 美元兑换。
+需要了解储备、赎回条件、冻结权限和脱锚风险。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。它想跟踪参考价值，例如 1 美元。它不是银行存款，也可能脱锚。" data-bad="答错了。名字里有 USD，也不表示它是银行存款，或一定始终等于 1 美元。"><h3>想一想</h3><p>稳定币是银行存款，并且一定始终等于 1 美元吗？</p><button type="button" class="option" data-answer="a">A. 是，所以可以当成存款</button><button type="button" class="option" data-answer="b">B. 不是。它想跟踪参考价值，但不是银行存款，也可能脱锚</button><button type="button" class="option" data-answer="c">C. 只要名字里有 USD，就一定始终等于 1 美元</button><div class="feedback"></div></div>
 
 ## 一张关系表
 
@@ -147,13 +196,24 @@ Web3 常被用来描述利用区块链、钱包和智能合约构建的互联网
 | 交易所 | 买卖或兑换资产 | CEX、DEX |
 | DApp | 区块链应用 | 兑换、借贷、游戏应用 |
 
+钱包管理的是账户和签署。
+它不代替区块链记账，也不保证交易所上的价格。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。钱包主要管理账户，并用来签署操作。" data-bad="答错了。记账是区块链网络的事。交易所价格也不是钱包保证的。钱包管的是账户和签署。"><h3>想一想</h3><p>钱包主要管什么？</p><button type="button" class="option" data-answer="a">A. 代替区块链把账记下来</button><button type="button" class="option" data-answer="b">B. 管理账户，并签署操作</button><button type="button" class="option" data-answer="c">C. 保证交易所上的价格不会变</button><div class="feedback"></div></div>
+
 ## 价格为什么会涨跌？
 
 **价格由买卖双方决定，涨了不代表更值钱，跌了不代表更便宜。**
 
-交易价格由市场买卖形成，可能受需求、流动性、预期、供应变化、杠杆、宏观环境与消息影响。价格上涨不一定代表项目更有价值，价格下跌也不能自动证明「便宜了」。
+交易价格由市场买卖形成。
+它可能受需求、流动性、预期、供应变化、杠杆、宏观环境与消息影响。
+
+价格上涨不一定代表项目更有价值。
+价格下跌也不能自动证明「便宜了」。
 
 小提醒：先看它是什么、为什么存在，再考虑是否参与。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。价格由买卖形成。上涨不等于项目更有价值，下跌也不自动等于便宜。" data-bad="答错了。价格涨跌本身不能单独证明项目更有价值，或已经便宜。"><h3>想一想</h3><p>价格涨了，是不是就说明这个项目更有价值？</p><button type="button" class="option" data-answer="a">A. 是，涨了就更有价值</button><button type="button" class="option" data-answer="b">B. 不一定。价格由买卖形成，上涨不等于项目更有价值</button><button type="button" class="option" data-answer="c">C. 只有跌了，才能说明没有价值</button><div class="feedback"></div></div>
 
 # 02｜一级市场与二级市场 🌱
 
@@ -161,19 +221,31 @@ Web3 常被用来描述利用区块链、钱包和智能合约构建的互联网
 
 **一级市场是币刚发行时的认购，早不等于更好赚。**
 
-一级市场通常指资产首次发行、融资或认购等环节。加密行业中，常见形式包括私募、公募、代币发行与部分 Launchpad 活动。具体分类需要看参与者购买的是什么、卖方是谁以及交易结构。
+一级市场通常指资产首次发行、融资或认购等环节。
+加密行业中，常见形式包括私募、公募、代币发行与部分 Launchpad 活动。
+具体分类需要看参与者购买的是什么、卖方是谁以及交易结构。
 
-例子：某项目首次发行代币，向参与者开放认购。参与者从发行方获得代币，这通常属于一级发行环节。
+教学虚构：某项目第一次向参与者开放代币认购，参与者从发行方获得代币。
+这通常属于一级发行环节。
+它不是真实项目，也不表示这样参与就能赚钱。
 
-早期参与可能有更长锁仓、更少公开信息与更难退出的问题。「早」只表示时间靠前，不表示更容易赚钱。
+早期参与可能有更长锁仓、更少公开信息与更难退出的问题。
+「早」只表示时间靠前，不表示更容易赚钱。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。早只表示时间靠前。它还可能意味着锁仓更长、信息更少、更难退出。" data-bad="答错了。早不等于更容易赚钱。私募也不因为更早就更赚。"><h3>想一想</h3><p>「早」是不是表示更容易赚钱？</p><button type="button" class="option" data-answer="a">A. 是，越早越容易赚</button><button type="button" class="option" data-answer="b">B. 不是。早只表示时间靠前，还可能更难退出</button><button type="button" class="option" data-answer="c">C. 只有私募才因为更早而更容易赚钱</button><div class="feedback"></div></div>
 
 ## 二级市场：买卖已发行资产
 
 **二级市场就是买卖别人手里已经发行的币。**
 
-二级市场通常指已经发行的资产在持有人之间流转。你在交易所买别人卖出的 BTC，或在 DEX 兑换已发行代币，一般都属于二级交易。
+二级市场通常指已经发行的资产在持有人之间流转。
+你在交易所买别人卖出的 BTC，或在 DEX 兑换已发行代币，一般都属于二级交易。
 
-所以，一级 / 二级描述的是发行与流转阶段；CEX / DEX 描述的是交易场所与机制。它们不是同一组分类。
+所以，一级 / 二级描述的是发行与流转阶段。
+CEX / DEX 描述的是交易场所与机制。
+它们不是同一组分类。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。买别人已经持有的 BTC，一般是二级交易。它不因为发生在 CEX 就变成一级发行。" data-bad="答错了。一级是发行环节。在交易所买已发行的 BTC，一般是二级交易。CEX 说的是场所，不是一级或二级。"><h3>想一想</h3><p>在交易所买别人卖出的 BTC，一般属于哪一类？</p><button type="button" class="option" data-answer="a">A. 一级发行</button><button type="button" class="option" data-answer="b">B. 二级交易</button><button type="button" class="option" data-answer="c">C. 和一级、二级无关，只看是不是 CEX</button><div class="feedback"></div></div>
 
 ## 常见早期参与方式
 
@@ -189,23 +261,35 @@ Web3 常被用来描述利用区块链、钱包和智能合约构建的互联网
 | 测试网 | 用测试网络体验产品 | 测试资产通常不等于真实资产 |
 | 积分活动 | 记录用户活动的积分机制 | 是否可兑换、规则是否可变 |
 
-空投、积分与测试网并不天然等于一级投资，也不保证未来发币或给奖励。
+空投、积分与测试网并不天然等于一级投资。
+它们也不保证未来发币或给奖励。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。测试网用来体验产品。测试资产通常不等于真实资产。" data-bad="答错了。测试资产通常不能当成真资产。积分高，也不表示测试资产已经变成真资产。"><h3>想一想</h3><p>测试网里的测试资产，通常等于真实资产吗？</p><button type="button" class="option" data-answer="a">A. 等于，测试通过就能当真资产用</button><button type="button" class="option" data-answer="b">B. 通常不等于</button><button type="button" class="option" data-answer="c">C. 只要积分够高，就等于真实资产</button><div class="feedback"></div></div>
 
 ## 什么是锁仓与解锁？
 
 **锁仓是暂时不能卖，解锁后可卖的币变多。**
 
-锁仓表示资产在一定条件下暂时不能转让或提取。解锁表示限制按计划解除。早期认购可能分批交付，不是认购完成后立刻就能卖。
+锁仓表示资产在一定条件下暂时不能转让或提取。
+解锁表示限制按计划解除。
+早期认购可能分批交付，不是认购完成后立刻就能卖。
 
-解锁会改变可流通供应，但实际价格影响还取决于持有人行为、需求和市场流动性。
+解锁会改变可流通供应。
+但实际价格影响还取决于持有人行为、需求和市场流动性。
+解锁不等于价格一定上涨。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。锁仓期间可能暂时不能转让。认购完成，也不等于马上能卖。" data-bad="答错了。认购完成不一定能立刻卖。解锁会增加可卖的数量，但不保证价格上涨。"><h3>想一想</h3><p>认购完成，是不是就能立刻卖掉？</p><button type="button" class="option" data-answer="a">A. 是，付完就能卖</button><button type="button" class="option" data-answer="b">B. 不一定。锁仓期间可能暂时不能转让</button><button type="button" class="option" data-answer="c">C. 解锁之后价格一定上涨</button><div class="feedback"></div></div>
 
 ## CEX 与 DEX
 
 **CEX / DEX 讲的是在哪里交易，和一级 / 二级市场是两回事。**
 
-CEX 和 DEX 是交易场所的分类，和一级 / 二级市场不是一回事。两者的区别见[第 05 章「CEX 与 DEX 有什么不同？」](#/c/05)。
+CEX 和 DEX 是交易场所的分类，和一级 / 二级市场不是一回事。
+两者的区别见[第 05 章「CEX 与 DEX 有什么不同？」](#/c/05)。
 
 小提醒：先说清楚「我买的是谁发行的什么资产」，再谈一级或二级。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。CEX 和 DEX 区分的是交易场所与机制。一级和二级区分的是发行与流转。" data-bad="答错了。CEX / DEX 不是一级和二级，也不是币和代币的区分。它们说的是在哪里、用什么机制交易。"><h3>想一想</h3><p>CEX 和 DEX 这组词，主要在区分什么？</p><button type="button" class="option" data-answer="a">A. 一级市场和二级市场</button><button type="button" class="option" data-answer="b">B. 交易场所和机制</button><button type="button" class="option" data-answer="c">C. 原生币和代币</button><div class="feedback"></div></div>
 
 # 03｜买币前的必修知识 📚
 
@@ -695,117 +779,205 @@ Stoch RSI：对 RSI 再做随机指标处理，通常更敏感。
 
 ## 助记词与私钥：不分享、不上传
 
-**助记词谁要都不给，客服也不会要。**
+**助记词和私钥谁要都别给，正规客服也不会要。**
 
-不发送给客服、朋友、项目方、AI 或任何表单。不拍照上传网盘，不复制到聊天工具或在线笔记。使用钱包官方支持的离线备份方法，并考虑火灾、进水、遗失与他人接触风险。
+不要发给客服、朋友、项目方或 AI。
+也不要填进任何网页表单。
+不要拍照上传到网盘，不要复制到聊天工具或在线笔记。
 
-正规客服不需要你的助记词来帮你查交易。任何人索要它，都应停止沟通。
+备份用钱包官方支持的离线方法。
+同时要想到火灾、进水、遗失，以及别人可能碰到这份备份。
+
+正规客服不需要助记词来帮你查交易。
+任何人索要它，就停下来，不要再继续沟通。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。正规客服不需要助记词。谁要，就停止沟通。" data-bad="答错了。助记词不能交给客服，也不能先拍照上传再转发。谁要，就停下来。"><h3>想一想</h3><p>有人自称客服，说必须拿到助记词才能帮你查交易。该不该给？</p><button type="button" class="option" data-answer="a">A. 给，不然对方查不了</button><button type="button" class="option" data-answer="b">B. 不给。正规客服不需要助记词</button><button type="button" class="option" data-answer="c">C. 先拍照传到网盘，再发给对方</button><div class="feedback"></div></div>
 
 ## 假官网与假 App
 
-**搜索和广告里的链接可能是假的，只用收藏好的官方入口。**
+**搜索结果和广告里的链接可能是假的，只用已经核对过的官方入口。**
 
-搜索结果、广告位、社交账号和群置顶都可能出现仿冒链接。检查完整域名，从可信的官方渠道交叉确认，收藏已核验入口。
+搜索结果、广告、社交账号和群置顶，都可能放仿冒链接。
+先看完整域名，再用可信的官方渠道交叉确认。
+确认过的入口，收藏起来以后用。
 
-下载应用检查开发者与来源，不安装陌生人私发的安装包。硬件钱包从官方或可核验渠道购买，不使用别人预先设置好的助记词。
+下载应用时核对开发者和来源。
+不要安装陌生人私发的安装包。
+硬件钱包从官方或可以核验的渠道购买。
+不要使用别人预先设置好的助记词。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。广告和搜索名次不能证明是官方。要核对域名、开发者，并用已经核验的入口。" data-bad="答错了。排第一或私人发来的安装包，都不能当成官方。先核对完整域名和开发者。"><h3>想一想</h3><p>搜索广告里排在前面的「官方下载」，能不能直接安装？</p><button type="button" class="option" data-answer="a">A. 能，排第一就是官方</button><button type="button" class="option" data-answer="b">B. 不能。先核对完整域名和开发者，只用已核验的入口</button><button type="button" class="option" data-answer="c">C. 陌生人私发的安装包更安全</button><div class="feedback"></div></div>
 
 ## 连接、签名与授权不是一回事
 
-**连接钱包本身一般不会丢币，乱签名和乱授权才会。**
+**连接钱包本身一般不会把币转走，乱签名和乱授权才会。**
 
-连接钱包通常是让应用识别地址与请求权限，并不自动意味着资产被转走。
-签名是对信息或操作的确认；有些链下签名也可以授权后续资产转移，不能把「不收 Gas」当作无风险。
-授权是允许某个合约按条件使用资产，例如 ERC-20 代币额度。不同网络与资产有不同权限机制。
+连接钱包，通常是让应用识别地址并请求权限。
+这并不自动表示资产已经被转走。
 
-看不懂请求内容，就不确认。不要盲签，也不要相信页面标题写着「登录」就一定只是登录。
+签名是对一段信息或一次操作的确认。
+有些链下签名也可以授权之后的资产转移。
+不能把「不收 Gas」当成没有风险。
+
+授权是允许某个合约按条件使用资产，例如 ERC-20 的代币额度。
+不同网络和不同资产，权限机制不一样。
+
+看不懂请求内容，就不确认。
+不要盲签。
+页面标题写着「登录」，也不表示它一定只是登录。
 
 > 📰 **真实案例：一个签名，约 139 万美元没了（2024 年 10 月）**
-> 一位 PEPE 持有人在钓鱼网站上签了一个 Uniswap Permit2 链下签名（不花 Gas），大约一小时后，钱包里的 PEPE 等代币价值约 139 万美元就被转走。同月 10 日前后，还有人因 Permit 钓鱼签名损失 15,079 枚 fwDETH（当时约值 3500 万～3600 万美元）。
+>
+> 一位 PEPE 持有人在钓鱼网站上签了一个 Uniswap Permit2 链下签名（不花 Gas）。
+> 大约一小时后，钱包里的 PEPE 等代币价值约 139 万美元就被转走。
+> 同月 10 日前后，还有人因 Permit 钓鱼签名损失 15,079 枚 fwDETH（当时约值 3500 万～3600 万美元）。
+>
 > **教训：「不收 Gas」的签名也能把币转走，看不懂就别签。**
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。不收 Gas 不等于没有风险。看不懂请求，就不要确认。" data-bad="答错了。不收 Gas，或标题写着登录，都不能证明安全。看不懂就不要签。"><h3>想一想</h3><p>一个签名不收 Gas，是不是就可以当成安全？</p><button type="button" class="option" data-answer="a">A. 是，不收 Gas 就不会动到币</button><button type="button" class="option" data-answer="b">B. 不是。有些链下签名也能授权把资产转走</button><button type="button" class="option" data-answer="c">C. 只要页面标题写着登录，就一定只是登录</button><div class="feedback"></div></div>
 
 ## 用什么工具辅助检查签名？
 
-**安全插件能帮你提醒，但最后还是要自己看懂。**
+**安全插件可以提醒你，最后仍要自己看懂这笔请求。**
 
-GoPlus 可以帮助你检查代币、授权及部分链上安全风险，但检测结果仅供参考，不能保证资产绝对安全。它也提供浏览器扩展，在支持的场景中辅助提示可疑请求。钱包自身提供的模拟交易与风险提示，也值得查看。
+GoPlus 可以帮助检查代币、授权，以及一部分链上风险。
+检测结果只供参考，不能保证资产绝对安全。
+它也提供浏览器扩展，在支持的场景里提示可疑请求。
+钱包自己的模拟交易和风险提示，也值得看。
 
 **GoPlus 官网入口：** https://gopluslabs.io/en
 
-从官网进入浏览器扩展页面，核对发布者、兼容钱包、网络、权限与当前支持范围。签名解码 API 与浏览器插件不是同一个功能，不能假设插件支持每条链、每种签名。
+从官网进入浏览器扩展页面。
+核对发布者、兼容的钱包、网络、权限，以及当前支持范围。
+签名解码 API 和浏览器插件不是同一个功能。
+不能假设插件支持每一条链、每一种签名。
 
-工具提示只是辅助判断，没有出现警告也不代表一定安全。仍需核对交易对象、资产变化与授权范围，任何检查都不需要把助记词交给工具。
+工具提示只是辅助。
+没有出现警告，也不代表一定安全。
+仍要核对交易对象、资产变化和授权范围。
+任何检查都不需要把助记词交给工具。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。没有警告只是辅助信息。仍要自己核对对象、资产变化和授权范围。" data-bad="答错了。没警告不等于安全。助记词也不要交给检查工具。"><h3>想一想</h3><p>检查插件没有弹出警告，这笔签名是不是就一定安全？</p><button type="button" class="option" data-answer="a">A. 是，没警告就可以签</button><button type="button" class="option" data-answer="b">B. 不是。工具只是辅助，没有警告也不代表一定安全</button><button type="button" class="option" data-answer="c">C. 把助记词交给插件，才能彻底检查</button><div class="feedback"></div></div>
 
 ## 断开连接不等于撤销授权
 
-**断开连接后，授权还在，要单独撤销。**
+**断开网站连接之后，已经给出的授权还在，要另外撤销。**
 
-断开网站连接只改变连接关系。已存在的链上授权仍然有效，需要按对应链与钱包的方法单独检查和撤销。
+断开连接，只是改变现在的连接关系。
+已经写在链上的授权仍然有效。
+要按对应的链和钱包，单独检查并撤销。
 
-撤销可能需要网络费，也不保证恢复已经转走的资产。如果助记词或私钥泄露，仅撤销授权不足以解决问题。
+撤销可能要付网络费。
+它也不能保证把已经转走的资产追回来。
+如果助记词或私钥已经泄露，只撤销授权解决不了问题。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。断开连接不会取消链上授权。授权要单独撤销。私钥泄露时，只撤销也不够。" data-bad="答错了。断开连接不等于撤销授权。私钥泄露后，只撤销授权也解决不了。"><h3>想一想</h3><p>在钱包里断开某个网站之后，以前的授权还在吗？</p><button type="button" class="option" data-answer="a">A. 不在，断开就等于撤销</button><button type="button" class="option" data-answer="b">B. 还在。授权要按对应的链和钱包单独撤销</button><button type="button" class="option" data-answer="c">C. 私钥已经泄露时，撤销授权就够了</button><div class="feedback"></div></div>
 
 ## 无限授权
 
-**无限授权图方便，出事时这种币可能被全部转走。**
+**无限授权少点一次批准，出事时这种币可能被转走很多。**
 
-无限授权允许被授权对象使用很大的代币额度，不必每次重新批准。它更方便，也可能扩大合约漏洞或恶意权限造成的损失。优先理解权限范围，按需求授权。
+无限授权允许对方使用很大的代币额度，不必每次重新批准。
+它更省事，也会把合约漏洞或恶意权限的损失放大。
+先看清权限范围，再按自己需要的数量授权。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。方便的代价是额度很大。对方或有漏洞的合约，可能用掉远超这一次的数量。" data-bad="答错了。无限授权不是没有风险，也不会自动撤销。它允许对方使用很大的额度。"><h3>想一想</h3><p>无限授权和每次按数量批准，主要差别是什么？</p><button type="button" class="option" data-answer="a">A. 只是少点一次，没有额外风险</button><button type="button" class="option" data-answer="b">B. 少一次批准，但对方可能用掉很大的额度</button><button type="button" class="option" data-answer="c">C. 无限授权会在当天自动撤销</button><div class="feedback"></div></div>
 
 ## 常见骗局
 
-**陌生人或来路不明的活动，先让你签名、付费或交助记词的，基本都是骗局。**
+**陌生人先让你签名、付费或交出助记词，先按骗局来处理。**
 
 - 假空投：先让你签名、授权或支付费用。
 - 假客服：主动私信，让你下载远程软件或交出恢复信息。
 - 假投资群：展示盈利截图，要求转入指定平台。
-- 不能提现：让你继续缴税、解冻费、保证金才能提现。
-- 假回收与找回：宣称被盗资金一定能追回，先收钱。
-- 地址投毒：在交易记录里放相似地址，诱导复制。
-- 恶意代币与 NFT：名称或备注里带领取网址，诱导访问。
-- 剪贴板劫持（也常被叫作粘贴板拦截）：恶意程序把刚复制的收款地址换成攻击者地址。
-- 第三方应用读取剪贴板：应用或插件会读取你复制过的内容；若其中有恢复信息、密码或密钥，就会泄露。不同系统的权限和提示机制不同。
+- 不能提现：让你继续缴税、解冻费或保证金，才说能提现。
+- 假回收：声称被盗资金一定能追回，而且要先收钱。
+- 地址投毒：在交易记录里放一个很像的地址，诱导你复制。
+- 恶意代币和 NFT：名称或备注里放领取网址，诱导你打开。
+- 剪贴板劫持：恶意程序把刚复制的收款地址换成别人的地址。
+- 第三方读取剪贴板：应用或插件可能读到你复制过的恢复信息、密码或密钥。不同系统的权限和提示不一样。
 
-陌生资产出现在钱包里，不等于你必须处理。不要因为显示「价值很高」就访问其中的链接。
+陌生资产出现在钱包里，不等于你必须处理它。
+不要因为页面显示「价值很高」，就去打开里面的链接。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。陌生资产可以先放着。显示价值高，也不能当成打开链接的理由。" data-bad="答错了。不要打开备注里的链接，也不要为了看余额去授权。陌生资产可以先不处理。"><h3>想一想</h3><p>钱包里突然多了一枚显示「价值很高」的陌生币，并附了领取链接。该怎么办？</p><button type="button" class="option" data-answer="a">A. 打开链接，把币领出来</button><button type="button" class="option" data-answer="b">B. 先不要处理，也不要因为显示价值高就打开链接</button><button type="button" class="option" data-answer="c">C. 立刻给这个币做无限授权，才能看到真余额</button><div class="feedback"></div></div>
 
 ## 币圈最常见的三个坑
 
-**黑 U 冻卡、杀猪盘、跑分收 U，是币圈最常见的三个坑。**
+**黑 U 冻卡、杀猪盘、跑分收 U，是最常见的三类坑。**
 
 **1. 黑 U 和冻卡**
-P2P 买卖时收到来源不干净的钱，银行卡可能被冻结，甚至被卷进案件。只和平台认证商家交易，不接第三方付款，不帮别人代收。
+
+P2P 买卖时，如果收到来源不干净的钱，银行卡可能被冻结，甚至被卷进案件。
+只和平台认证商家交易。
+不接第三方付款，也不帮别人代收。
 
 **2. 杀猪盘**
-先和你聊感情，或拉你进「带单群」，再引导你到假平台充值。前期让你小赚，等你加大投入后就提不了现。网上认识的人带你投资，一律当骗局。
+
+对方先和你聊感情，或把你拉进「带单群」，再引导你到一个平台充值。
+前期让你看到小赚，等投入变大就提不出来。
+网上认识的人带你去投资，一律先当骗局来看。
 
 **3. 高价收 U 和跑分**
-有人高价收你的 U，或让你出借银行卡、账户帮忙收款转账，其实是借你的账户洗钱。帮人跑分、出借银行卡收 U，可能构成帮信罪，情节严重的还可能构成掩饰、隐瞒犯罪所得罪。
+
+有人用高价收你的 U，或让你出借银行卡、账户去帮忙收款转账。
+这可能是借你的账户转移来源不正的资金。
+帮人跑分、出借银行卡收 U，可能构成帮信罪。
+情节严重的，还可能构成掩饰、隐瞒犯罪所得罪。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。高价收 U 并出借银行卡收款，不是正常交易。可能构成帮信罪，严重时还可能涉及掩饰、隐瞒犯罪所得。" data-bad="答错了。这不是认证商家的正常 P2P，也不是没有风险的帮忙。出借账户收款可能违法。"><h3>想一想</h3><p>有人出高价收 U，还让你把银行卡借给他收款。这更接近哪一种情况？</p><button type="button" class="option" data-answer="a">A. 平台认证商家的正常 P2P</button><button type="button" class="option" data-answer="b">B. 跑分风险。出借账户收款，可能牵涉帮信等相关犯罪</button><button type="button" class="option" data-answer="c">C. 只是帮朋友的忙，没有法律风险</button><div class="feedback"></div></div>
 
 ## 防止剪贴板泄露
 
-**助记词和私钥永远不要复制粘贴。**
+**助记词和私钥不要复制，也不要粘贴到任何聊天或网页里。**
 
-不要把助记词、私钥、API 密钥等复制到剪贴板，不粘贴进聊天、AI、在线笔记或网页。密码优先使用可信密码管理器的自动填充方案。
+不要把助记词、私钥、API 密钥复制到剪贴板。
+不要把它们粘贴进聊天、AI、在线笔记或网页。
+密码优先用可信密码管理器的自动填充。
 
-移除不需要或来源不明的应用、键盘和浏览器扩展，检查可用的剪贴板、辅助功能及设备权限。关闭不需要的剪贴板历史、云同步或跨设备共享，保持系统更新。
+卸掉不需要或来源不明的应用、键盘和浏览器扩展。
+检查剪贴板、辅助功能和设备权限。
+关掉不需要的剪贴板历史、云同步和跨设备共享。
+系统保持更新。
 
-清空剪贴板可以减少后续读取，但不能撤回已经被读取的信息。怀疑秘密信息泄露时，需要更新相应凭证；助记词或私钥泄露则应按第 15 章处理。
+清空剪贴板，只能减少以后再被读取。
+它不能撤回已经被读走的内容。
+怀疑秘密已经泄露，就要更新相应凭证。
+助记词或私钥泄露，按第 15 章处理。
 
-地址被替换的防范步骤，见第 10 章「转币前四项检查」。
+地址被替换怎么防，见第 10 章「转币前四项检查」。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。清空剪贴板不能收回已经读走的内容。助记词泄露要按第 15 章处理。" data-bad="答错了。清空不能撤回已经泄露的内容。助记词也不要再粘贴到聊天或网页里。"><h3>想一想</h3><p>助记词已经被人从剪贴板读走了。现在把剪贴板清空，能把泄露撤回吗？</p><button type="button" class="option" data-answer="a">A. 能，清空就等于没泄露</button><button type="button" class="option" data-answer="b">B. 不能。清空只能减少以后再被读取</button><button type="button" class="option" data-answer="c">C. 把助记词再粘贴到聊天里核对一遍更安全</button><div class="feedback"></div></div>
 
 ## 账户与设备保护
 
-**保护好邮箱和手机，就保护了大半个账户。**
+**邮箱和手机守住了，账户就少了一大半入口。**
 
-保护邮箱、使用独立密码与可靠的双重验证，更新系统和钱包，不安装不明插件，不共享屏幕上的恢复信息。交易所开启可用的提现白名单与登录提醒。
+保护邮箱。
+密码单独设置，并打开可靠的双重验证。
+更新系统和钱包。
+不安装来历不明的插件。
+不在共享屏幕时露出恢复信息。
+交易所如果提供提现白名单和登录提醒，就打开。
 
-API 密钥也是秘密。未来需要自动化时，使用最小权限；交易机器人通常不需要提现权限。不要把密钥发给陌生机器人或公开到代码仓库。
+API 密钥也是秘密。
+以后要做自动化，就用最小权限。
+交易机器人通常不需要提现权限。
+不要把密钥发给陌生机器人，也不要公开到代码仓库。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。交易机器人通常不需要提现权限。密钥不要交给陌生机器人，也不要公开到仓库。" data-bad="答错了。不要为了省事打开提现权限，也不要把密钥公开或交给陌生机器人。"><h3>想一想</h3><p>给交易机器人使用的 API 密钥，通常需要打开提现权限吗？</p><button type="button" class="option" data-answer="a">A. 需要，不然机器人不能用</button><button type="button" class="option" data-answer="b">B. 通常不需要。用最小权限，也不要把密钥发给陌生机器人</button><button type="button" class="option" data-answer="c">C. 把密钥公开到代码仓库，方便自己备份</button><div class="feedback"></div></div>
 
 ## 隐私也需要保护
 
-**链上转账大家都看得到，钱包没有实名也能被追踪。**
+**链上转账很多人都能查到，钱包没有显示实名，也不等于查不到你。**
 
-链上交易在很多公链上可公开查询。公开地址可能关联余额、行为和身份。钱包不显示实名，不代表无法追踪。
+很多公链上的交易可以公开查询。
+一个公开地址，可能连到余额、操作习惯和身份。
+钱包界面不显示实名，不代表这笔记录无法被追踪。
 
 小提醒：安全不只是一只冷钱包，而是一套长期的操作习惯。
 
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。没显示实名，不代表链上记录是私密的。公开地址仍可能连到行为和身份。" data-bad="答错了。公链上的很多记录可以公开查询。钱包不显示实名，也不等于无法追踪。"><h3>想一想</h3><p>钱包没有显示真实姓名，链上转账是不是就不会被追踪？</p><button type="button" class="option" data-answer="a">A. 是，没实名就查不到</button><button type="button" class="option" data-answer="b">B. 不是。交易记录可以公开查询，地址仍可能被关联到人</button><button type="button" class="option" data-answer="c">C. 只有交易所账户的记录才能被别人看到</button><div class="feedback"></div></div>
 # 10｜第一次链上操作 🔗
 
 ## 收币
@@ -1178,6 +1350,12 @@ AI 和 Web3 的项目，可能涉及算力、数据或自动化代理。
 
 ## 正经术语
 
+**正经术语是社区缩写，知道意思，才能分清口号和事实。**
+
+下面这张表按原有说法列出常见词。
+知道意思，是为了听懂别人在说什么。
+它不把口号变成事实。
+
 | 术语 | 大白话解释 |
 |---|---|
 | DYOR | 自己研究和核验，不把别人意见当作结论 |
@@ -1219,9 +1397,15 @@ AI 和 Web3 的项目，可能涉及算力、数据或自动化代理。
 | MPC 钱包 | 多方计算钱包，把密钥分成多个分片分开保存，创建时通常不用抄写传统助记词（例如币安钱包（无私钥））；仍要完成备份并确认恢复方式 |
 | WAGMI | 「我们都会成功」的社区口号，不是回报保证 |
 
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。DYOR 是自己研究和核验。别人的意见不能直接当成结论。" data-bad="答错了。DYOR 不是「别人看好就可以买」，也不是看见 FOMO 就行动。它是自己去核对。"><h3>想一想</h3><p>DYOR 是在说什么？</p><button type="button" class="option" data-answer="a">A. 别人看好，就可以当成结论</button><button type="button" class="option" data-answer="b">B. 自己研究和核验，不把别人的意见当成结论</button><button type="button" class="option" data-answer="c">C. 看见 FOMO，就要马上买</button><div class="feedback"></div></div>
+
 ## 社区玩梗翻译
 
-以下是调侃，不是对所有人的真实意图判断，也不是交易建议。
+**社区玩梗是调侃，不是交易建议。**
+
+以下是调侃。
+它不是对所有人的真实意图判断。
+也不是交易建议。
 
 | 社区话术 | 玩梗翻译 |
 |---|---|
@@ -1241,6 +1425,8 @@ AI 和 Web3 的项目，可能涉及算力、数据或自动化代理。
 | 上车 / 下车 | 买入 / 卖出，别因为这个比喻就追赶 |
 | 报单 / 喊单 | 有人告诉你买什么，涨了是他眼光好，亏了算你的 |
 | 接盘 | 买下别人卖出的资产，常用于调侃买在高位 |
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。「健康回调」在这张对照里是把下跌说得好听。它不是还会涨的证明，也不是价格保证。" data-bad="答错了。这是调侃。它没有证明价格还会涨，也不是官方保证。"><h3>想一想</h3><p>「健康回调」在这张对照里，更接近哪种意思？</p><button type="button" class="option" data-answer="a">A. 已经证明后面还会涨</button><button type="button" class="option" data-answer="b">B. 跌了，但说得比较好听</button><button type="button" class="option" data-answer="c">C. 官方给出的价格保证</button><div class="feedback"></div></div>
 
 按钮：查一个词。切换：正经解释 / 社区玩梗。
 
@@ -1340,83 +1526,146 @@ Ethereum 安全资料：https://ethereum.org/security/
 任何工具都只回答一部分问题。查到数据后，还需要理解它是什么、如何统计、有哪些缺失。
 
 # 15｜出问题了怎么办？🆘
-
 ## 充值没到账
 
-**充值没到，先拿 TxID 去区块浏览器查。**
+**钱转出去了，交易所却没显示余额。**
+先别急着再转一次。
 
-先查看发送方是否完成提现、是否有 TxID，再用正确网络的浏览器检查链上状态。核对资产、网络、地址、Memo、最低充值额、确认数与平台是否暂停充值。
+第一步，打开提现记录，看看平台是否已经发出交易、有没有 TxID。
+第二步，用对应网络的区块浏览器查询。
+如果还没上链，找发送平台。
+如果链上仍待确认，先看确认状态。
+如果链上成功却未入账，再核对收款地址、Memo / Tag、币种、网络、最低充值额，以及平台要求的确认数。
+资料都对仍没到账，就拿 TxID 和订单记录，联系收款平台的官方客服。
+链上成功和平台入账是两件事，不能保证一定到账。
 
-链上成功但平台未入账，按官方帮助中心提交 TxID、网络、金额、地址与订单信息。不要提供助记词或账户验证码。
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。链上成功还不等于平台入账。先核对网络、Memo 和确认数，再按官方渠道提交 TxID。" data-bad="答错了。再转一次可能扩大损失。把助记词发给客服会交出钱包控制权。"><h3>想一想</h3><p>教学虚构：TxID 已显示成功，但交易所余额仍是 0。这时该怎么做？</p><button type="button" class="option" data-answer="a">A. 继续往同一个地址再转一笔</button><button type="button" class="option" data-answer="b">B. 核对网络、Memo 和平台要求的确认数</button><button type="button" class="option" data-answer="c">C. 把助记词发给客服，让对方查余额</button><div class="feedback"></div></div>
 
 ## 提现一直处理中
 
-**没有 TxID 就是平台还没发，找官方客服，别信私信。**
+**提现页面一直转圈。先看订单状态，再找 TxID。**
 
-没有 TxID：可能仍处于平台审核、排队或处理阶段，查看订单说明并联系官方客服。
-有 TxID：再检查链上交易状态。不要因为着急向私信客服支付所谓加速费。
+没有 TxID，通常说明你还不能确认交易已经广播到链上。
+它可能仍在审核、排队或处理。
+这时查看平台公告和订单说明，并通过官方入口求助。
+有 TxID，就到对应网络的浏览器核对确认状态。
+不要因为有人私信说能加速提现，就向对方转所谓手续费。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。没有 TxID 时，先看平台订单和公告，再走官方入口。不要向私信支付加速费。" data-bad="答错了。没有 TxID 就还不能确认已经上链。猜哈希或付加速费都不能代替官方订单。"><h3>想一想</h3><p>教学虚构：订单显示处理中，而且没有 TxID。下一步更稳妥的是哪一个？</p><button type="button" class="option" data-answer="a">A. 到区块浏览器里猜一个哈希去查</button><button type="button" class="option" data-answer="b">B. 查看平台订单和公告，并联系官方支持</button><button type="button" class="option" data-answer="c">C. 给私信里的客服付一笔加速费</button><div class="feedback"></div></div>
 
 ## 转错地址或网络
 
-**转错了大多追不回，能不能找回看对方愿不愿意。**
+**转错地址和转错网络不是同一种问题。**
 
-链上交易无法像银行卡转账一样撤销。能否找回要看谁控制收款地址、所用网络和平台是否提供恢复服务，不能保证。
+先停止继续转账。
+保存 TxID、收款地址、币种、网络和时间。
+转到了不认识的地址，链上交易一般不能撤销。
+能否追回，取决于对方是否配合。
+转到交易所不支持的网络，联系收款平台，确认是否有恢复服务。
+如果是自己控制的地址，先确认钱包和密钥是否支持对应网络。
+别随便把私钥导入陌生工具。
+任何情形都不能保证找回。
 
-转到交易所不支持的网络，联系该平台官方客服；转到自托管地址，也需要结合钱包与密钥方案评估。不要贸然导出私钥到陌生工具。
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。网络不被支持时，把 TxID 交给收款平台的官方渠道，询问能否恢复。不能保证找回。" data-bad="答错了。再转一次不能改正上一笔。助记词不要交给陌生网站。"><h3>想一想</h3><p>教学虚构：TxID 显示成功，但收款交易所不支持你选的网络。这时该怎么做？</p><button type="button" class="option" data-answer="a">A. 再转一次，换一条更便宜的网络</button><button type="button" class="option" data-answer="b">B. 向官方提供 TxID，询问是否有恢复服务</button><button type="button" class="option" data-answer="c">C. 把助记词输入陌生的恢复网站</button><div class="feedback"></div></div>
 
 ## 忘填 Memo / Tag
 
-**忘填 Memo，带着 TxID 找平台官方客服申请找回。**
+**有些平台的充值地址由多个用户共用。Memo 或 Tag 用来识别这笔钱属于哪个账户。**
 
-收款平台可能无法自动识别属于哪个账户。保存交易记录，通过官方流程申请处理，是否可恢复与是否收费按平台规则。
+地址和网络都正确，链上也成功，但忘了填 Memo，钱可能已经到达平台地址，却没有自动记到你的账户。
+先保存 TxID、币种、金额、网络和充值订单。
+再通过平台官方的漏填 Memo / Tag 流程申请处理。
+是否支持找回、要多久、是否收费，都看平台规则，不能保证。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。漏填 Memo 要留下 TxID 和订单，走平台官方流程。能否找回按平台规则，不能保证。" data-bad="答错了。再充一笔不能补上上一笔的 Memo。区块浏览器上的记录也不能由你改掉。"><h3>想一想</h3><p>教学虚构：充值地址正确，但 Memo 留空，链上已经成功。接下来该怎么做？</p><button type="button" class="option" data-answer="a">A. 立刻再充一笔，把 Memo 补在下一笔里</button><button type="button" class="option" data-answer="b">B. 整理 TxID 和订单，按官方的漏填流程提交</button><button type="button" class="option" data-answer="c">C. 去区块浏览器里把记录改掉</button><div class="feedback"></div></div>
 
 ## 钱包里看不到资产
 
-**看不到币，先检查是不是选错网络或账户。**
+**钱包里突然看不到币，不代表币一定不见了。**
 
-检查是否选错账户或网络，区块浏览器是否显示资产，以及钱包是否需要添加正确代币合约。不要为「显示余额」把助记词填进网页。
+先确认是不是切换了账户或网络。
+再用可信的区块浏览器，查看该地址在对应网络上的余额和转账记录。
+如果链上余额还在，可能只是钱包没有显示这枚代币。
+从可信来源核对合约地址，再添加到钱包里显示。
+如果链上记录显示资产已经转出，就按可疑交易处理。
+任何人说「输入助记词才能同步余额」，都不要信。
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。链上还有余额时，先核对账户、网络和代币显示。助记词不能用来「同步余额」。" data-bad="答错了。界面显示 0，不代表链上一定没有。不要上传助记词，也不要只凭界面就断定被盗。"><h3>想一想</h3><p>教学虚构：区块浏览器显示这个地址有 100 USDT，钱包 App 显示 0。更可能先做哪一步？</p><button type="button" class="option" data-answer="a">A. 核对账户、网络，以及这枚代币有没有被显示出来</button><button type="button" class="option" data-answer="b">B. 把助记词上传，让网站同步余额</button><button type="button" class="option" data-answer="c">C. 立刻断定资产已经被盗</button><div class="feedback"></div></div>
 
 ## 交易失败或卡住
 
-**交易失败也可能扣了 Gas，别反复乱点。**
+**一笔链上交易迟迟没完成。先查它是待确认、失败，还是根本没有广播。**
 
-查看是否已经上链、网络费是否足够、交易是否回滚或等待。失败交易可能仍产生网络费。
+待确认时，部分网络和钱包可以加速或替换交易，但并不是每条链都一样。
+已经失败的交易，仍可能已经消耗网络费。
+没有广播成功，就要检查余额、网络和钱包提示。
+不要连续点很多次提交。
+先看交易记录和官方说明，再决定要不要重试。
 
-部分钱包和网络支持加速或取消待处理交易，但规则不同，也可能失败。按官方说明操作，不反复盲目提交。
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。失败的交易仍可能已经消耗网络费。先看原因和官方说明，不要盲目连点。" data-bad="答错了。失败不等于网络费会退回。连续提交也不能保证下一笔成功。"><h3>想一想</h3><p>教学虚构：浏览器显示这笔交易失败，网络费已经扣了。这时该怎么做？</p><button type="button" class="option" data-answer="a">A. 失败了就一定会把网络费退回来</button><button type="button" class="option" data-answer="b">B. 先查失败原因，再决定要不要重试</button><button type="button" class="option" data-answer="c">C. 连续提交，直到有一笔成功</button><div class="feedback"></div></div>
 
 ## 怀疑恶意授权或签名
 
-**怀疑签错了，马上撤销授权或把币转走。**
+**刚在陌生网站点了签名或授权，先停止继续操作，不要再点网站弹窗。**
 
-停止与可疑网站交互，保存相关记录。在可信环境里检查权限，按情况撤销或把剩余资产转到安全的新账户。
+保存网站地址、交易哈希或签名内容。
+换到可信的设备或环境再核查。
+如果是代币授权，可以通过可信工具检查，并按需要撤销。
+如果涉及其他签名权限或账户控制风险，撤销普通授权未必足够。
+这时可能需要把剩余资产转到一个全新的安全钱包。
+不要把「断开网站连接」当成风险已经解除。
 
-恶意签名未必是普通授权，撤销工具也未必能覆盖。情况不明确时，从钱包官方支持或可信安全渠道寻求针对性帮助。
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。断开连接不会取消已经给出的授权。要检查并撤销，并判断是否还要转移剩余资产。" data-bad="答错了。断开连接不等于撤销。也不要回到那个网站继续签名。"><h3>想一想</h3><p>教学虚构：你给一个陌生合约授了无限额度。只断开网站连接够不够？</p><button type="button" class="option" data-answer="a">A. 够了，断开连接就等于撤销授权</button><button type="button" class="option" data-answer="b">B. 不够。要检查并撤销相关授权，再评估剩下的风险</button><button type="button" class="option" data-answer="c">C. 再签一次，用来验证刚才那笔没有问题</button><div class="feedback"></div></div>
 
 ## 助记词 / 私钥泄露
 
-**助记词泄露，这个钱包就不能再用了，马上换新钱包。**
+**助记词或私钥已经交给别人、上传到网页，或暴露在不可信的环境里，这个钱包就不再安全。**
 
-把相关账户视为不再安全。在可信设备上创建使用全新密钥的钱包，按情况转移剩余资产。仅改密码、卸载 App 或撤销授权不能使旧私钥失效。
+先在可信设备上，用全新的密钥创建一个钱包。
+再评估怎样把剩余资产安全转过去。
+只改 App 密码、卸载钱包或撤销授权，都不能让已经泄露的私钥失效。
+如果怀疑有自动转走资产的程序，再向旧钱包充网络费，也可能马上被转走。
+这种情况下，先寻求可信的专业协助。
 
-若存在自动盗币程序，盲目往旧地址充值 Gas 也可能被盗；不要继续往泄露地址发送资金，寻求可信的专业协助评估。
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。泄露的私钥不会因为改密码或重装而失效。先用新密钥，再考虑怎样转移剩余资产。" data-bad="答错了。改密码和卸载都不能让旧私钥失效。不要再把这个地址当成安全钱包。"><h3>想一想</h3><p>教学虚构：助记词已经发给假客服。旧地址还能不能继续当安全钱包用？</p><button type="button" class="option" data-answer="a">A. 能。改掉登录密码就可以继续用</button><button type="button" class="option" data-answer="b">B. 不能。要创建全新钱包，再评估怎样安全转移剩余资产</button><button type="button" class="option" data-answer="c">C. 卸载重装之后，旧私钥就失效了</button><div class="feedback"></div></div>
 
 ## 交易所账号疑似被盗
 
-**账号被盗，先通过官方渠道冻结账户。**
+**发现陌生登录、提现记录或 API 操作，先通过交易所官方入口限制账户。**
 
-通过官方渠道冻结或限制账户，保护邮箱，检查登录会话、设备、API 和提现记录，更新相关凭证。资金损失时保存证据，按所在地渠道报案。
+不要再点击短信或邮件里的可疑链接。
+同时保护绑定邮箱。
+检查登录设备、会话、API 密钥和提现白名单。
+按官方流程更新密码和验证方式。
+如果已经有资金损失，保存通知、订单、地址和时间。
+再按所在地的正规渠道报案。
+处理顺序以先拦住继续损失为先。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。先从官方入口限制账户，保护邮箱，再检查 API、设备和提现设置。" data-bad="答错了。只改交易密码拦不住未知 API。验证码和登录信息不要交给私信里的人。"><h3>想一想</h3><p>教学虚构：邮箱提示异地登录，账户里还出现了你没创建过的 API。第一步该做什么？</p><button type="button" class="option" data-answer="a">A. 只改交易密码，其他先不用管</button><button type="button" class="option" data-answer="b">B. 从官方入口限制账户，并排查邮箱和 API</button><button type="button" class="option" data-answer="c">C. 回复发来提示的陌生客服，把验证码交给对方</button><div class="feedback"></div></div>
 
 ## 防止二次诈骗
 
-**说能帮你追回币、先收钱的，基本是二次诈骗。**
+**刚遇到资金问题时，最容易被「追回专家」「技术客服」或「付费解冻」盯上。**
 
-没有陌生人能凭一句「有内部关系」保证追回链上资产。先收费、让你再次充值、索要助记词或要求远程控制的所谓追回服务，要特别警惕。
+主动私信承诺百分之百追回、要求先付保证金、索要助记词，或要求远程控制设备，都要高度警惕。
+核对官方渠道，并把证据留下来。
+真正的官方客服也不该要求你交出助记词。
+不要因为想快点找回钱，再把剩余资产交给陌生人。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。先收费、要助记词或要远程控制，都不是可靠的追回方式。只走官方渠道。" data-bad="答错了。不要先付款，也不要把私钥交给私信里的人。想快点找回，也不能把剩余资产再交出去。"><h3>想一想</h3><p>教学虚构：有人私信说，先付 50 USDT 就能把丢失的币追回。该怎么做？</p><button type="button" class="option" data-answer="a">A. 先付款，免得错过追回窗口</button><button type="button" class="option" data-answer="b">B. 拒绝付款，并只通过官方渠道核对</button><button type="button" class="option" data-answer="c">C. 把私钥发给对方，用来证明这是你的地址</button><div class="feedback"></div></div>
 
 ## 求助时准备什么？
 
-**求助时带上订单号和 TxID，绝不发密码和助记词。**
+**联系客服前，先整理一份简短的问题记录。**
 
-平台订单号、资产、网络、时间与时区、金额、TxID、公开地址、错误提示和必要截图。隐藏身份证、银行隐私、密码、验证码、API 密钥与恢复信息。
+写上发生时间、币种与金额、发送和接收的网络、地址、TxID、平台订单号、错误提示，以及你已经检查过什么。
+这样能减少来回沟通。
+截图前遮住密码、验证码和身份证号码。
+助记词和私钥绝不能提供。
+如果事情发生在平台账户里，使用官方工单。
+不要在公开群里晒出完整的个人资料。
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。TxID 和订单号可以帮助官方核对。助记词和私钥不能出现在求助材料里。" data-bad="答错了。助记词不能提供，也不要在公开群里晒完整资料。TxID 和订单号走官方工单即可。"><h3>想一想</h3><p>客服同时要 TxID、订单号和助记词。哪一种做法是对的？</p><button type="button" class="option" data-answer="a">A. 三样都发到公开群里，让大家一起看</button><button type="button" class="option" data-answer="b">B. TxID 和订单号可以按官方流程提供，助记词绝不提供</button><button type="button" class="option" data-answer="c">C. 只把助记词发给对方，订单号不用留</button><div class="feedback"></div></div>
 
 # 16｜新手常见问题与练习 ✅
 
@@ -1555,7 +1804,7 @@ Ethereum 安全资料：https://ethereum.org/security/
 既然是两个独立账户，转账前就必须先确认平台之间是否支持资金互转，而不是只看品牌名称。
 
 <div class="key"><strong>记住：</strong>既然是两个独立的系统，就不能用 UID 互转，除非官方明确提供了专门的转账通道。</div>
-<div class="quiz" data-correct="b" data-ok="✓ 回答正确！本题已通过。" data-bad="还不对，请重新判断平台及官方支持的转账路径。"><h3>判断一下</h3><p>我分别在 Binance 国际版和 Binance TH 注册了账号，两个平台使用同一个邮箱，也都完成了 KYC。既然都是 Binance 旗下的平台，可以直接通过 UID 在两个账户之间互转资金吗？</p><button type="button" class="option" data-answer="a">A. 可以，品牌一样就能转</button><button type="button" class="option" data-answer="b">B. 不能默认支持，先核对官方转账路径</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。同一个品牌、同一个邮箱，也不表示两个平台可以用 UID 直接互转。先核对官方是否提供这条路径。" data-bad="答错了。品牌一样、邮箱一样、都完成了 KYC，仍不能默认用 UID 互转。先核对官方支持的转账路径。"><h3>判断一下</h3><p>我分别在 Binance 国际版和 Binance TH 注册了账号，两个平台使用同一个邮箱，也都完成了 KYC。既然都是 Binance 旗下的平台，可以直接通过 UID 在两个账户之间互转资金吗？</p><button type="button" class="option" data-answer="a">A. 可以，品牌一样就能转</button><button type="button" class="option" data-answer="b">B. 不能默认支持，先核对官方转账路径</button><div class="feedback"></div></div>
 
 ## UID 对了，钱为什么还是可能转错？
 
@@ -1570,11 +1819,12 @@ Ethereum 安全资料：https://ethereum.org/security/
 </div><p class="diagram-caption">示意编号仅用于解释账户隔离，不代表真实用户 UID 或具体交易结果。</p></div>
 <div class="steps"><div class="step"><span class="num">01 / PLATFORM</span><b>先看平台</b><p>发送方和接收方是不是同一套系统？</p></div><div class="step"><span class="num">02 / IDENTITY</span><b>再看收款人</b><p>UID、用户名和头像是否符合预期？</p></div><div class="step"><span class="num">03 / ROUTE</span><b>最后看路径</b><p>平台是否明确支持该种转账方式？</p></div></div>
 <div class="key"><strong>核心：</strong>UID 对了，只能说明你核对了一个编号，不能证明转账路径正确。</div>
-<div class="quiz" data-correct="c" data-ok="✓ 回答正确！本题已通过。" data-bad="还不对，请重新判断平台及官方支持的转账路径。"><h3>你会怎么判断？</h3><p>收款 UID 与对方发来的数字一致，但你不确定两边 App 是否互通。</p><button type="button" class="option" data-answer="a">A. 直接转，数字没错</button><button type="button" class="option" data-answer="b">B. 只看头像像不像</button><button type="button" class="option" data-answer="c">C. 停下来确认平台及支持的收款方式</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。UID 数字一致，只说明编号对上了。还要确认两边是不是同一套系统，以及平台是否支持这种收款方式。" data-bad="答错了。数字一致，或头像看起来像，都不能代替确认平台和官方支持的收款方式。"><h3>你会怎么判断？</h3><p>收款 UID 与对方发来的数字一致，但你不确定两边 App 是否互通。</p><button type="button" class="option" data-answer="a">A. 直接转，数字没错</button><button type="button" class="option" data-answer="b">B. 只看头像像不像</button><button type="button" class="option" data-answer="c">C. 停下来确认平台及支持的收款方式</button><div class="feedback"></div></div>
 
 ## 转账前，养成三步自检习惯
 
-**转账前先确认平台，再确认收款信息与网络；尤其是第一次转账时，先小额测试，再转大额。**
+**转账前先确认平台，再确认收款信息与网络；**
+尤其是第一次转账时，先小额测试，再转大额。
 
 <div class="diagram"><h3>转账安全检查路径</h3>
 <div class="cosmic-scene check-scene" role="img" aria-label="确认平台、核对收款信息与网络、小额测试三个阶段"><div class="check-track"><div class="track-line"></div>
@@ -1589,7 +1839,8 @@ Ethereum 安全资料：https://ethereum.org/security/
 
 一般情况下，不同的 APP 入口对应不同的账户系统和数据库，尤其是面向不同国家或地区运营的平台。
 
-所以不要只认品牌 Logo。即使名称相似，也要确认具体平台、账户是否互通，以及是否支持站内转账。
+所以不要只认品牌 Logo。
+即使名称相似，也要确认具体平台、账户是否互通，以及是否支持站内转账。
 
 **第二步：确认收款信息与网络**
 
@@ -1611,7 +1862,7 @@ Ethereum 安全资料：https://ethereum.org/security/
 
 <div class="checklist"><label class="checkrow"><input type="checkbox"><span><b>确认平台</b><small>不只看品牌 Logo；核对平台名称及是否支持该转账方式。</small></span></label><label class="checkrow"><input type="checkbox"><span><b>确认收款信息与网络</b><small>站内核对 UID、用户名、头像等；链上核对地址、币种和网络。头像只是辅助信息。</small></span></label><label class="checkrow"><input type="checkbox"><span><b>先做小额测试</b><small>首次转账先用小额试转，确认真实到账，再考虑剩余资金。</small></span></label></div>
 <p class="teach-status" data-tpl="自检 {n} / {m} 项 · 情景题{quiz}" data-yes="已答对" data-no="待通过">自检 0 / 3 项 · 情景题待通过</p>
-<div class="quiz" data-correct="b" data-ok="✓ 回答正确！本题已通过。" data-bad="还不对，请重新判断平台及官方支持的转账路径。"><h3>通关验证 · 情景题</h3><p>你已核对 UID、用户名和头像，不确定两个 App 是否支持直接互转。这时应该？</p><button type="button" class="option" data-answer="a">A. 先转一大笔，看看是否到账</button><button type="button" class="option" data-answer="b">B. 暂停转账，先核对官方支持的转账方式</button><button type="button" class="option" data-answer="c">C. 只要头像一致就可以转</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。UID、用户名和头像都核对过，仍要先确认两个 App 是否支持直接互转。不确定就先暂停。" data-bad="答错了。不要先转一大笔试水，也不要只看头像。不确定是否互通，就先停下来核对官方支持的方式。"><h3>通关验证 · 情景题</h3><p>你已核对 UID、用户名和头像，不确定两个 App 是否支持直接互转。这时应该？</p><button type="button" class="option" data-answer="a">A. 先转一大笔，看看是否到账</button><button type="button" class="option" data-answer="b">B. 暂停转账，先核对官方支持的转账方式</button><button type="button" class="option" data-answer="c">C. 只要头像一致就可以转</button><div class="feedback"></div></div>
 <div class="key"><strong>注意：</strong>小额测试不能代替核对平台和收款人，也不能保证后续交易绝对安全。</div>
 
 ## 如果已经转错了怎么办？
@@ -1639,7 +1890,8 @@ Ethereum 安全资料：https://ethereum.org/security/
 
 如果对方不愿意配合，追回资金可能非常困难，必要时还需要通过法律途径处理。
 
-如果是链上误转，交易一旦确认，通常无法撤销。尤其是转入无法控制的地址或错误网络时，追回的机会可能非常渺茫。
+如果是链上误转，交易一旦确认，通常无法撤销。
+尤其是转入无法控制的地址或错误网络时，追回的机会可能非常渺茫。
 
 因此，不要把希望寄托在事后补救上。
 
@@ -1647,11 +1899,11 @@ Ethereum 安全资料：https://ethereum.org/security/
 
 币圈转账最容易出问题的地方，有时不是复杂的技术，而是那些我们以为理所当然的常识。
 
-转账前多花两分钟确认核对 ，远比转错后花几天寻找解决办法轻松。
+转账前多花两分钟确认核对，远比转错后花几天寻找解决办法轻松。
 
 <div class="compare"><div><b>站内误转</b><p>平台可核查记录并依规则处理，但不能仅凭转出方单方面说法，随意划走另一用户的资产。涉及他人账户通常需要核实、沟通及适当程序。</p></div><div><b>链上误转</b><p>链上确认后的交易通常不可撤销。若转至无法控制的地址或错误网络，追回可能极其困难，甚至无法追回。</p></div></div>
 <div class="key"><strong>现实提醒：</strong>误转后没有「一键撤销」。能做的是尽快走正式渠道，不能把事后补救当成安全保障。</div>
-<div class="quiz" data-correct="b" data-ok="✓ 回答正确！本题已通过。" data-bad="还不对，请重新判断平台及官方支持的转账路径。"><h3>如果资金已进入陌生账户？</h3><p>交易所能否仅凭你的描述，就直接把对方账户的钱划回来？</p><button type="button" class="option" data-answer="a">A. 能，只要说清楚是误转</button><button type="button" class="option" data-answer="b">B. 不能，需要核查并遵循相关处理程序</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。钱进了别人的账户后，交易所不能只听你的描述就把钱划回来。需要核查，并按处理程序来。" data-bad="答错了。说清楚是误转，也不等于平台能直接从对方账户划回资金。需要核查并遵循处理程序。"><h3>如果资金已进入陌生账户？</h3><p>交易所能否仅凭你的描述，就直接把对方账户的钱划回来？</p><button type="button" class="option" data-answer="a">A. 能，只要说清楚是误转</button><button type="button" class="option" data-answer="b">B. 不能，需要核查并遵循相关处理程序</button><div class="feedback"></div></div>
 
 # 页脚
 
