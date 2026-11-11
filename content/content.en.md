@@ -1266,99 +1266,138 @@ Stoch RSI: a stochastic calculation applied to RSI, and it is usually more sensi
 
 ## What is a wallet?
 
-**A wallet does not hold the coins. It holds the keys that can move them.**
+**A wallet does not hold the coins; it holds the keys that can move them.**
 
-A wallet helps you manage an account, see assets, and sign actions. The asset record lives on the relevant chain. What the wallet usually manages is the credential that accesses and signs for those assets, not a pile of coins stored inside the phone.
+A wallet is a tool that helps you manage an account, view assets, and sign actions.
+The record of the assets lives on the relevant chain. What a wallet usually manages is the credential for accessing and signing those assets, not coins packed into the phone.
 
 Different wallets may use a seed phrase, a smart account, multi-party computation, or another recovery method. You need to understand the specific scheme you are using.
 
-## Address, private key, seed phrase
+**Fictional teaching example:** the on-chain ledger sits apart from the phone wallet, and the arrows are marked read balance / sign.
 
-**You can give someone an address. You cannot give anyone a private key or a seed phrase.**
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. Deleting the app is not the same as deleting the assets on the chain. But if you did not back up the private key, you cannot get them back." data-bad="Not quite. Deleting the app is not the same as deleting the assets on the chain. Without a private-key backup, the assets cannot be recovered either."><h3>Think it through</h3><p>Does deleting the app mean the assets on the chain are deleted?</p><button type="button" class="option" data-answer="a">A. No, but if you did not back up the private key, you cannot get them back</button><button type="button" class="option" data-answer="b">B. Yes</button><button type="button" class="option" data-answer="c">C. They definitely go to zero</button><div class="feedback"></div></div>
 
-Address: used to receive funds or to identify an on-chain account. You can share it, but that creates a privacy link.
-Private key: the secret that authorizes actions on the account. Do not share it.
-Seed phrase: on some wallets, the word list that generates and restores a set of keys. If it leaks, it can affect several accounts under that phrase.
+## Address, private key, and seed phrase
 
-A wallet password only protects the local app or file. It is not control of the chain. Changing the app password does not invalidate a seed phrase that has already leaked.
+**You can give an address to someone else, and you cannot give a private key or a seed phrase to anyone.**
 
-## Two different ways to classify wallets
+**Address**: used to receive funds or to identify an on-chain account. You can share it, but that creates a privacy link.
+**Private key**: the secret used to authorize actions on the account. Do not share it.
+**Seed phrase**: on some wallets, the word sequence used to generate and restore a set of keys.
+A leak can affect several accounts under that seed phrase.
 
-**Custody is about who holds the keys. Hot and cold are about whether those keys are online.**
+A wallet password only protects the local app or file. It is not control of the chain.
+Changing the app password cannot invalidate a seed phrase that has already leaked.
 
-Custodial / self-custody: the question is who controls the keys and the actions on the assets.
-Hot / cold wallet: the question is whether the keys are in an environment that is online.
+**Fictional teaching example:** four layers, a public address, a secret private key, seed-phrase recovery, and the app password.
 
-A hardware wallet is a common cold-storage and signing tool. Do not treat "any hardware device" as automatically a trustworthy cold wallet.
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. Changing the app password cannot invalidate a leaked seed phrase." data-bad="Not quite. Changing the app password cannot invalidate a leaked seed phrase."><h3>Think it through</h3><p>Can changing the app password invalidate a leaked seed phrase?</p><button type="button" class="option" data-answer="a">A. No</button><button type="button" class="option" data-answer="b">B. Yes</button><button type="button" class="option" data-answer="c">C. Uninstalling is enough</button><div class="feedback"></div></div>
 
-## CEX, software wallet, hardware wallet
+## Two different classifications
 
-**A platform account is convenient, and you depend on the platform. Self-custody is freer, and the responsibility is yours.**
+**Custody is about who holds the keys, and hot or cold is about whether the keys are online.**
+
+<p class="keep-lines"><strong>Custodial / self-custody:</strong> The point is who controls the keys and the actions on the assets.<br>
+<strong>Hot / cold wallet:</strong><br>
+The point is whether the keys are in an environment that is online.</p>
+
+A hardware wallet is a common tool for cold storage and signing, but you cannot treat "any hardware device" as automatically a reliable cold wallet.
+
+**Fictional teaching example:** custodial / self-custody on the horizontal axis, hot / cold on the vertical axis, and hardware as its own label.
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. Hot and cold are mainly separated by whether the keys are in an online environment." data-bad="Not quite. Hot and cold are mainly separated by whether the keys are in an online environment."><h3>Think it through</h3><p>What mainly separates hot and cold?</p><button type="button" class="option" data-answer="a">A. Whether the keys are online</button><button type="button" class="option" data-answer="b">B. The coin price</button><button type="button" class="option" data-answer="c">C. The size of the platform</button><div class="feedback"></div></div>
+
+## Comparing a CEX, a software wallet, and a hardware wallet
+
+**A platform account is more convenient, but you rely on the platform; self-custody is freer, but the responsibility is yours.**
 
 | Item | CEX account | Self-custody software wallet | Self-custody hardware wallet |
 |---|---|---|---|
-| Who is in control | Usually the platform holds the assets | You manage the keys under that wallet's scheme | You manage them; the device helps you sign |
-| Day to day | Trading inside the platform is relatively convenient | On-chain use is relatively convenient | Signing has an extra check on the device |
-| How you recover | The platform's account recovery and review | A seed phrase, or that wallet's own recovery | A backup, plus recovery that is specific to the device |
-| Main risks | The platform, the account, withdrawal limits, and similar | Malware, phishing, the backup, and signing the wrong thing | Supply chain, the backup, a bad signature, and using the device wrong |
-| What you are responsible for | Account security and choosing the platform | Keys, backup, and safe interaction | Keys, backup, the device, and safe interaction |
+| Who is in control | Usually held by the platform | You manage the keys under the wallet's own scheme | You manage them, and the device helps you sign |
+| Day-to-day use | Trading inside the platform is more convenient | On-chain use is more convenient | Signing has an extra check on the device |
+| How you recover | Platform account recovery and review | A seed phrase, or a recovery scheme specific to the wallet | A backup, plus a recovery scheme specific to the device |
+| Main risks | The platform, the account, withdrawal limits, and similar | Malware, phishing, the backup, and signing the wrong thing | Supply chain, the backup, a bad signature, and operating the device |
+| What you are responsible for | Account security and choosing the platform | The keys, the backup, and safe interaction | The keys, the backup, the device, and safe interaction |
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. A hardware wallet cannot rule out a malicious signature." data-bad="Not quite. A hardware wallet cannot rule out a malicious signature."><h3>Think it through</h3><p>Can a hardware wallet rule out a malicious signature?</p><button type="button" class="option" data-answer="a">A. No</button><button type="button" class="option" data-answer="b">B. Yes</button><button type="button" class="option" data-answer="c">C. No backup is needed</button><div class="feedback"></div></div>
 
 ## A keyless wallet beginners can start with 🧸
 
-**Don't want to write down a seed phrase? A keyless wallet splits the key into three shares. That can be easier for a beginner.**
+A keyless wallet stores the key in separate shares, usually without copying down a traditional seed phrase when you create it, but it is not the same pool of funds as an exchange account.
 
-Worried you will mishandle a private key, or lose a seed phrase? Look at Binance Wallet (keyless).
+**Don't want to copy down a seed phrase? A keyless wallet splits the key into three shares, which suits a beginner better.**
 
-It uses MPC (multi-party computation). The key is split into 3 shares: one on your device, one in a personal cloud backup, and one held by Binance. Any two shares together can use the wallet. Two of them are in your hands, so **Binance alone cannot move your money**. You do not write down a traditional seed phrase when you create it.
+Worried you will not be able to look after a private key, or that you will lose a seed phrase? You can look at Binance Wallet (keyless).
 
-Creating Binance Wallet (keyless) requires a Binance account that has already passed identity checks. It can also import an existing seed phrase or private-key wallet, and you can convert the keyless wallet into a private-key wallet and hold that yourself.
+It uses MPC (multi-party computation) and splits the key into 3 shares: one on your device, one in your personal cloud backup, and one with Binance.
+Any two shares together can use the wallet, and two of them are in your hands, so **Binance alone cannot move your money**.
+You do not copy down a traditional seed phrase when you create it.
+
+Creating Binance Wallet (keyless) requires a Binance account that has already completed identity verification.
+It can also import an existing seed-phrase or private-key wallet, and you can convert the keyless wallet into a private-key wallet and hold that yourself.
 
 ### How is it different from a Binance exchange account?
 
-The exchange account is for buying, selling, and managing funds inside the platform. Binance Wallet (keyless) is for holding on-chain assets, transferring them, and using Web3 apps. You can reach both from the Binance app. They are different ways of holding assets.
+An exchange account is for buying, selling, and managing funds inside the platform.
+Binance Wallet (keyless) is for holding on-chain assets, transferring them, and using Web3 apps.
+You can open both inside the Binance app, and they are different ways of managing assets.
 
 ### How do you start?
 
-1. Open the official Binance app and go to Wallet.
-2. Choose Create wallet, and follow the prompts to create a keyless wallet.
-3. Finish the backup. Binance officially offers quick backup, cloud backup, and QR backup. Finish the one you chose as the app instructs. Confirm which accounts, passwords, or materials recovery needs. Then deposit assets.
-4. Practice receiving, sending, and on-chain actions with a small amount first.
+1. Open the official Binance app and go to “Wallet”.
+2. Choose “Create wallet”, and follow the prompts to create a keyless wallet.
+3. Finish the backup: Binance officially offers quick backup, cloud backup, and QR backup.
+Finish the backup you chose as the app instructs, confirm which accounts, passwords, or materials recovery needs, and only then deposit assets.
+4. First practice receiving, transferring, and on-chain actions with a small amount.
 
-Note: an encrypted backup in the wallet's official flow is not the same as screenshotting a seed phrase and uploading it to a cloud drive. Still do not photograph, screenshot, or upload a seed phrase or a private key.
+Note: an encrypted backup in the wallet's official flow is not the same as screenshotting a seed phrase and uploading it to a cloud drive.
+Still do not photograph, screenshot, or upload a seed phrase or a private key.
 
-Sources: [Binance FAQ: What is Binance Wallet](https://www.binance.com/en/support/faq/detail/048ee79532494c03918dc4004214ad11), [Binance blog: self-custody Web3 wallet](https://www.binance.com/en/blog/ecosystem/7898832595548730429)
+Sources: [Binance FAQ: What is Binance Wallet](https://www.binance.com/en/support/faq/detail/048ee79532494c03918dc4004214ad11), [Binance blog: a self-custody Web3 wallet](https://www.binance.com/en/blog/ecosystem/7898832595548730429)
 
 Buttons: binance-wallet
 
-## Do you need a hardware wallet?
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. An MPC wallet still requires you to confirm the recovery conditions." data-bad="Not quite. An MPC wallet still requires you to confirm the recovery conditions."><h3>Think it through</h3><p>What else does an MPC wallet require you to confirm?</p><button type="button" class="option" data-answer="a">A. The recovery conditions</button><button type="button" class="option" data-answer="b">B. The color of the candlesticks</button><button type="button" class="option" data-answer="c">C. A guaranteed return</button><div class="feedback"></div></div>
 
-**You do not have to buy a hardware wallet on day one. Learn to back up, and learn to read what you are signing.**
+## Do you need to buy a hardware wallet?
 
-**You do not need to buy one the moment you arrive. Protecting the account, backing up correctly, and understanding signatures matter more at the start.**
+There is no single amount that decides whether to buy a hardware wallet, and it also cannot stop a leaked backup or a malicious action you sign yourself.
 
-If you are only learning with a small amount, and you trade fairly often, you may not need a hardware wallet immediately. You can start with a platform account or a software wallet that fits the job, and understand the custody and device risks of each.
+**When you are just starting, do not rush to buy a hardware wallet; first learn to back up and to read what you are signing.**
 
-Whether you need one should not be decided by a single line like "only if you are worth hundreds of millions". If an amount already matters a lot to you, and you plan to self-custody it for a long time, it is worth studying a hardware wallet even when the amount is far below that.
+If you are only learning with a small amount, and you trade fairly often, you may not need to buy a hardware wallet right away.
+You can first choose a platform account or a software wallet for the job, and understand the custody risk and the device risk of each.
 
-A hardware wallet can reduce some of the risk of keys touching an online environment. It is not a magic safe. A leaked backup, a swapped device, or you actively signing a malicious action can still lose the assets.
+Whether you need one should not be decided by one hard cutoff, such as whether the assets are worth hundreds of millions.
+If an amount already matters a lot to you, and you plan to self-custody it for a long time, it is worth studying whether a hardware wallet fits, even when the amount is far below hundreds of millions.
 
-**What decides it is how much that sum matters to you, how long you will hold it, and whether you can operate the setup. Not one universal money threshold.**
+A hardware wallet can reduce some of the risk of keys touching an online environment, but it is not a magic safe.
+A leaked backup, a swapped device, or actively signing a malicious action can still lose the assets.
 
-## How do you separate funds?
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. A hardware wallet does not have to be chosen by one shared amount." data-bad="Not quite. A hardware wallet does not have to be chosen by one shared amount."><h3>Think it through</h3><p>Does a hardware wallet have to be chosen by one shared amount?</p><button type="button" class="option" data-answer="a">A. No</button><button type="button" class="option" data-answer="b">B. It must</button><button type="button" class="option" data-answer="c">C. Only by how popular it is</button><div class="feedback"></div></div>
 
-**Practice, trading, and long-term storage belong in different wallets. Do not keep them together.**
+## How do you keep them separate?
+
+**Funds for practice, for trading, and for long-term storage belong in different wallets, so do not keep them together.**
 
 Learning / interaction wallet: a small amount you can afford to lose, for trying apps.
-Everyday trading funds: kept where you trade, with the custody risk understood.
-Long-term savings wallet: fewer interactions, and a storage setup that fits you.
+Everyday trading funds: keep them where you trade, as needed, and understand the custody risk.
+Long-term savings wallet: cut down unnecessary interaction, and use a storage scheme that fits you.
 
-Creating several accounts under the same seed phrase does not isolate you from a leaked phrase. To separate that risk, you need an independent key or recovery scheme.
+Creating several accounts under the same seed phrase does not isolate the risk of a leaked seed phrase.
+To separate that kind of risk, you need an independent key or recovery scheme.
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. Several accounts under the same seed phrase do not isolate the risk of a leak." data-bad="Not quite. Several accounts under the same seed phrase do not isolate the risk of a leak."><h3>Think it through</h3><p>Do several accounts under the same seed phrase isolate the risk of a leak?</p><button type="button" class="option" data-answer="a">A. No</button><button type="button" class="option" data-answer="b">B. Yes</button><button type="button" class="option" data-answer="c">C. Renaming them is enough</button><div class="feedback"></div></div>
 
 ## What if the device is lost?
 
-**A lost phone is not the scary part. Having no backup is.**
+**A lost phone is not the scary part; having no backup is.**
 
-Losing the device does not automatically mean the assets are gone. Whether you can recover depends on the backup and the wallet's scheme. **So finish the backup when you create the wallet, and confirm by the official method that the backup can actually restore it. Do not wait until the phone breaks or the device is gone.** For a seed-phrase wallet, the words, the order, and the related recovery details all have to be exact. Restore in a trusted environment, following the official instructions. If you suspect someone else has the device or the backup, consider moving what remains to an account that uses a brand-new key.
+Losing the device does not automatically mean the assets are lost, and whether you can recover depends on the backup and the wallet's scheme. **So finish the backup when you create the wallet, confirm by the official method that the backup can restore it, and do not wait until the phone breaks or the device is gone.** For a seed-phrase wallet, the words, their order, and the related recovery details all have to be exact.
+Restore in a trusted environment, following the official instructions;
+if you suspect someone else already has the device or the backup, consider moving the remaining assets to an account that uses a brand-new key.
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. Whether a lost device can be recovered depends on the backup and the wallet's scheme." data-bad="Not quite. Whether a lost device can be recovered depends on the backup and the wallet's scheme."><h3>Think it through</h3><p>What decides whether a lost device can be recovered?</p><button type="button" class="option" data-answer="a">A. The backup and the wallet's scheme</button><button type="button" class="option" data-answer="b">B. The coin price</button><button type="button" class="option" data-answer="c">C. The phone brand</button><div class="feedback"></div></div>
 
 # 09｜Safety and scam guide 🛡️
 
@@ -1568,95 +1607,129 @@ Note: Safety is not just one cold wallet. It is a set of habits you keep.
 
 ## Receiving
 
-**To receive, you give an address and a network. You do not give a seed phrase.**
+**To receive, you only give an address and a network, and you do not give a seed phrase.**
 
-Open a wallet or platform you trust. Select the correct asset and network. Copy the receiving address. If a Memo / Tag is required, give that too. Confirm the sender supports that asset and that network.
+Open a wallet or platform you trust, choose the correct asset and network, and copy the receiving address;
+if a Memo / Tag is required, provide that too.
+Confirm the sender supports that asset and that network.
 
-Do not give anyone a seed phrase in order to receive funds. Receiving usually needs only the public receiving details.
+Do not give a seed phrase to anyone in order to receive.
+Receiving usually needs only the public receiving details.
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. You do not give a seed phrase in order to receive." data-bad="Not quite. You do not give a seed phrase in order to receive."><h3>Think it through</h3><p>Do you give a seed phrase in order to receive?</p><button type="button" class="option" data-answer="a">A. No</button><button type="button" class="option" data-answer="b">B. Yes</button><button type="button" class="option" data-answer="c">C. It depends on the amount</button><div class="feedback"></div></div>
 
 ## Four checks before you send
 
-**Before you send, check four things: asset, network, address, and Memo.**
+**Before you send, check four things: the asset, the network, the address, and the Memo.**
 
-1. Asset: the name matches the real contract or the real native asset.
+1. Asset: whether the name matches the real contract or the real native asset.
 2. Network: the recipient explicitly supports the network you selected.
-3. Address: check the full address against a source you trust, so a swapped clipboard does not win. After you paste, check the pasted result, and check again on the wallet or exchange confirmation screen. The first and last few characters are not enough. A lookalike address can copy those on purpose.
-   If you are unsure, you can scan a receiving QR code from a channel the recipient actually controls, which skips some copy-and-paste. After the scan, still check the full address, the network, and whether the code prefilled an amount or some other action. Scanning does not rule out a fake or malicious QR code.
-4. Memo / Tag: if the receiving platform requires it, it has to be correct.
+3. Address: check the full address against a source you trust, so a swapped clipboard address does not get through.
+After you copy, check what was pasted, and check again on the final confirmation page in the wallet or on the exchange;
+looking only at the first and last few characters is not enough, because a similar address may copy them on purpose.
+If you are not sure, you can scan a receiving QR code from a channel the recipient controls, which skips some of the copy and paste.
+After the scan, still check the full address, the network, and whether the code prefilled an amount or some other action.
+A scan cannot rule out a fake QR code or a malicious QR code.
+4. Memo / Tag: if the receiving platform requires it, you must fill it in correctly.
 
-> 📰 **A real case: address poisoning, one wrong send of 68 million dollars (May 2024)**
-> The scammer first sent the victim a tiny transfer, so a fake address with **the same first 6 and last 6 characters as the real one** landed in the transfer history. The victim copied that fake address and sent 1,155 WBTC (about 68 million dollars). After negotiation the scammer returned most of it. That outcome is extremely rare. In almost every other case the funds are not recovered.
-> **The lesson: do not copy an address out of your transfer history. Check the full address every time.**
+> 📰 **A real case: address poisoning, one wrong transfer of 68 million dollars (May 2024)**
+> The scammer first sent the victim a tiny transfer, so a fake address with **the same first 6 and last 6 characters as the real address** landed in the transfer history. The victim copied that fake address and sent 1,155 WBTC (about 68 million dollars). After negotiation, the scammer returned most of the funds. That is extremely rare luck, and in almost every other case the money is not recovered.
+> **The lesson: do not copy an address out of the transfer history, and check the full address every time.**
 
-Also check the minimum deposit, the fees, whether the network is paused, and how many confirmations are required. A small test transfer has to be above the relevant minimum. Move the rest only after it arrives.
+Also check the minimum deposit, the fees, whether the network is paused, and how many confirmations are required.
+A small test transfer has to be above the relevant minimum. Move the rest only after it arrives.
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. Checking only the first and last characters of an address is not enough." data-bad="Not quite. Checking only the first and last characters of an address is not enough."><h3>Think it through</h3><p>Is checking only the first and last characters of an address enough?</p><button type="button" class="option" data-answer="a">A. No</button><button type="button" class="option" data-answer="b">B. Yes</button><button type="button" class="option" data-answer="c">C. There is no need to check</button><div class="feedback"></div></div>
 
 ## Why does the same coin have different networks?
 
-**USDT with the same name on a different network is a different thing. Do not pick the wrong one.**
+**USDT with the same name on a different network is a different thing, so do not pick the wrong one.**
 
-The name can be USDT,  
-and the network can still differ.
+The name can still be USDT,
+and the transfer network can still differ.
 
-Whichever network the recipient chose,  
+Whichever network the recipient chose,
 that is the network you choose.
 
-Do not pick one  
-only because the fee looks cheaper.
+Do not look only at which fee is cheaper,
+and then pick one at random.
 
-An asset with the same name can be issued on different chains, and there are bridged or wrapped versions. The same name does not mean the same contract, the same issuer, or the same redemption path.
+**Fictional teaching example:** TRC-20 and ERC-20 are two separate networks, with a list of what the recipient supports.
 
-TRON's TRC-20 and Ethereum's ERC-20 are token standards on different networks.
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. You choose a transfer network mainly by what the recipient supports." data-bad="Not quite. You choose a transfer network mainly by what the recipient supports."><h3>Think it through</h3><p>What do you mainly look at when you choose a transfer network?</p><button type="button" class="option" data-answer="a">A. What the recipient supports</button><button type="button" class="option" data-answer="b">B. Whichever is cheaper</button><button type="button" class="option" data-answer="c">C. A friend says they are all the same</button><div class="feedback"></div></div>
 
-## Address and contract address
+## An address and a contract address
 
-**A contract address is the token's identity. It is not your receiving address.**
+**A contract address is a token's identity card, not your receiving address.**
 
-A receiving address is the account that receives funds. A contract address identifies a token or a contract. When you buy a token you may use the contract address to check identity. For an ordinary transfer, do not paste the token's contract address in as if it were your own receiving address.
+A receiving address is the account that receives.
+A contract address identifies a token or a contract.
+When you buy a token you may use the contract address to check its identity, but in an ordinary transfer you cannot treat the token's contract address as your own receiving address.
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. A contract address is not the same as a user's receiving address." data-bad="Not quite. A contract address is not the same as a user's receiving address."><h3>Think it through</h3><p>Is a contract address the same as a user's receiving address?</p><button type="button" class="option" data-answer="a">A. No</button><button type="button" class="option" data-answer="b">B. Yes</button><button type="button" class="option" data-answer="c">C. They are fully interchangeable</button><div class="feedback"></div></div>
 
 ## Gas and network resources
 
-**Sending costs a network fee. Tokens with no gas beside them still cannot move.**
+**A transfer costs a network fee, and tokens with no gas beside them still cannot move.**
 
-### Why does the wallet show coins, and still refuse to send?
-
-Sending also pays a "fare",  
+A transfer also pays a “fare”,
 which is the network fee.
 
-To send USDT on Ethereum,  
-you usually also need a little ETH for that fare.
+To send USDT on Ethereum, for example,
+you usually also need a little ETH to pay that fare.
 
-Some wallets can pay it for you.  
+Some wallets can pay it for you.
 Read the prompt in the wallet.
 
-A network fee is the cost of executing the transaction. Many chains pay it in the native asset: Ethereum commonly uses ETH, Solana commonly uses SOL, BNB Chain commonly uses BNB. TRON involves bandwidth, energy, and possibly TRX.
+**Fictional teaching example:** sending USDT on Ethereum needs an ETH network fee, or a supported sponsored payment;
+TRON has a separate resource model.
 
-Some wallets or apps support sponsored gas, resource rental, or another way to pay. The rules depend on that service.
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. Sending USDT on Ethereum usually pays the network fee with ETH, or with a supported sponsored payment." data-bad="Not quite. Sending USDT on Ethereum usually pays the network fee with ETH, or with a supported sponsored payment."><h3>Think it through</h3><p>What usually pays the network fee when you send USDT on Ethereum?</p><button type="button" class="option" data-answer="a">A. ETH, or a supported sponsored payment</button><button type="button" class="option" data-answer="b">B. It has to be USDT only</button><button type="button" class="option" data-answer="c">C. BTC</button><div class="feedback"></div></div>
 
-## How do you see whether a transaction went through?
+## How do you check a transaction's status?
 
-**Take the TxID to a block explorer. That tells you whether it succeeded.**
+**Take the TxID to a block explorer, and you can see whether the transaction went through.**
 
-A transaction hash / TxID is the identifier you use to look up one transaction. On the explorer for that network, check whether it succeeded, the receiving address, the asset, the fee, and the confirmations.
+A transaction hash / TxID is the identifier for looking up one transaction.
+Use the block explorer for that network to see whether it succeeded, the receiving address, the asset, the fee, and the confirmations.
 
-Success on-chain and a credit on an exchange are two different events. The platform may also require a number of confirmations, a minimum amount, or manual processing.
+Success on the chain and a credit on an exchange are two different things.
+The platform may also require a number of confirmations, a minimum amount, or manual processing.
+
+**Fictional teaching example:** TxID, then confirmation on the chain, then the exchange's confirmation count, then the credit, with the two statuses kept separate.
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. Success on the chain does not mean the platform credits you immediately." data-bad="Not quite. Success on the chain does not mean the platform credits you immediately."><h3>Think it through</h3><p>Does success on the chain mean the platform credits you immediately?</p><button type="button" class="option" data-answer="a">A. No</button><button type="button" class="option" data-answer="b">B. Yes</button><button type="button" class="option" data-answer="c">C. You do not need a TxID</button><div class="feedback"></div></div>
 
 ## Swap: exchanging on-chain
 
-**Before a swap, read how much you will receive and the slippage. Then sign.**
+**Before a swap, read how much you will receive and how much slippage there is, then sign.**
 
-A swap exchanges one asset for another. Confirm the token contract, the route, the amount you expect to receive, the price impact, the slippage, and the network fee before you decide to sign.
+A swap exchanges one asset for another.
+Confirm the token contract, the route, the amount you expect to receive, the price impact, the slippage, and the network fee before you decide whether to sign.
 
-On some protocols, approving and then swapping are two separate transactions. A successful approval is not a completed swap. Raising slippage does not make the trade safe. Set it too high and you accept a very bad fill.
+On some protocols, approving and then swapping are two separate actions.
+A successful approval is not a completed swap.
+Raising the slippage does not make the trade safe, and setting it too high means you accept a very bad fill.
 
-## Bridges
+**Fictional teaching example:** two steps, the approval and the swap, plus the amount you expect to receive, the slippage, and the fee.
 
-**A bridge is riskier than an ordinary transfer. Do not rush one on your first try.**
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. A successful approval does not mean the swap is finished." data-bad="Not quite. A successful approval does not mean the swap is finished."><h3>Think it through</h3><p>Does a successful approval mean the swap is finished?</p><button type="button" class="option" data-answer="a">A. No</button><button type="button" class="option" data-answer="b">B. Yes</button><button type="button" class="option" data-answer="c">C. There is no network fee</button><div class="feedback"></div></div>
 
-A bridge moves assets or messages between networks. After the bridge, the asset may be a wrapped or mapped version. You need to understand who you are trusting and how redemption works.
+## Cross-chain bridge
 
-Check the source chain, the destination chain, the bridge protocol, the asset version, the fees, the wait, and gas on the destination chain. A bridge can involve contract risk, the verification mechanism, custody, liquidity, or the front end.
+**Bridging is riskier than an ordinary transfer, so do not rush to bridge on your first try.**
 
-Note: For a first on-chain practice, one correct small receive and one correct small send matter more than rushing to bridge.
+A bridge moves assets or messages between different networks.
+After the bridge, the asset may be a wrapped or mapped version, and you need to understand the trust behind it and how redemption works.
+
+Check the source chain, the destination chain, the bridge protocol, the asset version, the fees, the waiting time, and gas on the destination chain.
+Bridging can involve contract risk, the verification mechanism, custody, liquidity, or the front end.
+
+Note: For a first on-chain practice, finishing one correct small receive and one correct small send matters more than rushing to bridge.
+
+**Fictional teaching example:** source chain, then the bridge protocol, then the destination chain, with the wrapped version and the redemption risk.
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="Correct. The rights in a bridged asset are not necessarily exactly the same." data-bad="Not quite. The rights in a bridged asset are not necessarily exactly the same."><h3>Think it through</h3><p>Are the rights in a bridged asset necessarily exactly the same?</p><button type="button" class="option" data-answer="a">A. Not necessarily</button><button type="button" class="option" data-answer="b">B. Definitely</button><button type="button" class="option" data-answer="c">C. There is nothing to check</button><div class="feedback"></div></div>
 
 # 11｜How to research a project 🔍
 
