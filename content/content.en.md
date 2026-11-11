@@ -88,7 +88,7 @@ A record that resists tampering does not mean the information that was entered, 
 
 ## What is a cryptocurrency?
 
-**A cryptocurrency is a digital asset on a chain, there are many kinds, and the risks are not the same.**
+**A cryptocurrency is a digital asset on a chain; there are many kinds, and their risks differ.**
 
 Cryptocurrencies are digital assets managed with cryptography and the rules of a network.
 Uses, how they are issued, and risks differ a lot. Do not treat them all as the same kind of investment.
@@ -101,7 +101,7 @@ Many tokens are issued by contracts on a chain that already exists.
 
 ## Where BTC came from
 
-**Bitcoin was the first cryptocurrency, it started running in 2009, and the cap is about 21 million coins.**
+**Bitcoin was the first cryptocurrency; it started running in 2009, and its supply is capped at about 21 million coins.**
 
 October 31, 2008
 An author using the name "Satoshi Nakamoto" published the Bitcoin white paper :
@@ -207,7 +207,7 @@ It does not keep the blockchain's books, and it does not guarantee the price on 
 
 ## Why do prices move?
 
-**The price is set by buyers and sellers, a rise does not mean it is worth more, and a drop does not mean it is cheaper.**
+**The price is set by buyers and sellers; a rise does not mean it is worth more, and a drop does not mean it is cheaper.**
 
 The trading price is formed by buying and selling in the market.
 It can be moved by demand, liquidity, expectations, changes in supply, leverage, the broader economy, and news.
@@ -272,7 +272,7 @@ They also do not guarantee a future token or a reward.
 
 ## What are lockups and unlocks?
 
-**A lockup means you cannot sell for a while, and after the unlock more of the coin can be sold.**
+**A lockup means you cannot sell for a while, and after the unlock, more of the coin can be sold.**
 
 A lockup means the asset cannot be transferred or withdrawn for a time, under certain conditions.
 An unlock means the restriction is lifted on a schedule.
@@ -879,7 +879,7 @@ If the seed phrase or private key has already leaked, revoking an approval is no
 
 ## Unlimited approval
 
-**An unlimited approval saves one confirmation, and if something goes wrong a large amount of that coin can be moved.**
+**An unlimited approval saves one confirmation, and if something goes wrong, a large amount of that coin can be moved.**
 
 An unlimited approval lets the other side use a very large token allowance, without a new approval each time.
 It is more convenient, and it also magnifies the loss from a contract bug or a malicious permission.
@@ -1462,7 +1462,7 @@ Every tool answers only part of the question. After you find a number, you still
 
 ## A deposit has not arrived
 
-A success on-chain is not the same as a credit at the exchange: check the network, the Memo, and the confirmations, then use the official channel, and do not send again or hand over a seed phrase.
+Success on-chain is not the same as a credit at the exchange: check the network, the Memo, and the confirmations, then use the official channel, and do not send again or hand over a seed phrase.
 
 **The money has been sent, and the exchange is not showing a balance.**
 Do not rush to send it again.
@@ -1479,7 +1479,7 @@ A success on-chain and a credit on the platform are two different things. Arriva
 
 ## A withdrawal stays on "processing"
 
-While a withdrawal stays on processing, read the order and look for a TxID, use the official entrance if there is none, and do not pay a speed-up fee to a private message.
+While a withdrawal stays on processing, read the order and look for a TxID; if there is none, use the official entrance, and do not pay a speed-up fee to a private message.
 
 **The withdrawal page keeps spinning. Look at the order status first, then look for a TxID.**
 
@@ -1510,7 +1510,7 @@ In every case, recovery is not guaranteed.
 
 ## You forgot the Memo / Tag
 
-If the Memo or Tag was left blank, keep the TxID and the order and use the official process, and recovery follows the platform's rules and is not guaranteed.
+If the Memo or Tag was left blank, keep the TxID and the order and use the official process; recovery follows the platform's rules and is not guaranteed.
 
 **Some platforms share one deposit address among many users. The Memo or Tag is what says which account the money belongs to.**
 
@@ -1538,7 +1538,7 @@ Do not believe anyone who says you must enter a seed phrase to sync the balance.
 
 ## A transaction failed or is stuck
 
-When a transaction fails or sticks, first tell whether it is pending, failed, or never broadcast, because a failure may already have spent the network fee, and do not keep tapping blindly.
+When a transaction fails or sticks, first check whether it is pending, failed, or never broadcast; a failure may already have spent the network fee, so do not keep tapping blindly.
 
 **An on-chain transaction has not finished. First find out whether it is pending, failed, or never broadcast.**
 
@@ -1552,7 +1552,7 @@ Read the transaction record and the official instructions first, then decide whe
 
 ## You suspect a bad approval or a bad signature
 
-If you suspect a bad signature or approval, stop first, because disconnecting is not the same as revoking, then check and revoke it and judge the risk that remains.
+If you suspect a bad signature or approval, stop first; disconnecting is not the same as revoking, so check and revoke it, then judge the risk that remains.
 
 **If you just signed or approved something on a site you do not know, stop. Do not click another popup on that site.**
 
@@ -1610,7 +1610,7 @@ Do not hand the remaining assets to a stranger just because you want the money b
 
 ## What to have ready when you ask for help
 
-When you ask for help, have the TxID, the order number, and what happened ready, use the official channel, and never provide a seed phrase or a private key.
+When you ask for help, have the TxID, the order number, and what happened ready; use the official channel, and never provide a seed phrase or a private key.
 
 **Before you contact support, write down a short record of the problem.**
 
@@ -1779,7 +1779,7 @@ Because they are two independent accounts, you have to confirm before a transfer
 
 ## Before you transfer, get used to a three-step check
 
-**Before a transfer, confirm the platform, then the receiving details and the network, and the first time you send somewhere, test a small amount before a large one.**
+**Before a transfer, confirm the platform, then the receiving details and the network; the first time you send somewhere, test a small amount before a large one.**
 
 <div class="diagram"><h3>The safety check before a transfer</h3>
 <div class="cosmic-scene check-scene" role="img" aria-label="Three stages: confirm the platform, check the receiving details and the network, then test a small amount"><div class="check-track"><div class="track-line"></div>
