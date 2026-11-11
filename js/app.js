@@ -827,7 +827,7 @@
     if (sec != null && !teachCanEnter(id, sec)) {
       var dest = 0;
       for (var ti = 0; ti < sec; ti++) if (teachCanEnter(id, ti)) dest = ti;
-      var back = '#/c/' + id + (dest ? '/' + dest : '');
+      var back = '#/c/' + id + ((dest || id === '13') ? '/' + dest : '');
       if (location.hash !== back) location.hash = back;
       return;
     }
@@ -841,7 +841,7 @@
     if (!visible.length) return renderHome();
     var cur = visible[pos];
     var ids = readerChapterIds(planetIndex, id);
-    var glossary = id === '13';
+    var glossary = id === '13' && sec == null;
     var highlight = glossary ? '' : firstExcerpt(cur.s.text || '');
     document.title = t('title.ch', { id: c.id, title: c.title });
     if (glossary) {
@@ -1219,7 +1219,7 @@
   function mountWidgets(root) {
     $$('[data-widget]', root).forEach(function (el) { var f = W[el.dataset.widget]; if (f) f(el); });
     // 话术翻译器挂在第 13 章开头；表格里的玩梗行加「社区调侃」标记
-    if (location.hash.indexOf('#/c/13') === 0 && !$('.slang', root)) {
+    if (/^#\/c\/13(?:\?|$)/.test(location.hash) && !$('.slang', root)) {
       var w = document.createElement('div'); w.dataset.widget = 'slang';
       var first = $('details.sec', root);
       if (first) {
