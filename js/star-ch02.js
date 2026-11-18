@@ -256,14 +256,14 @@
         id: '07',
         title: bi('SMC：结构标签不等于机构证据', 'SMC: a structure label is not evidence of an institution'),
         scene: bi('图上标了订单块，是不是已经证明有机构在买？', 'The chart labels an order block. Does that prove an institution is buying?'),
-        one: bi('FVG、订单块这些标签来自定义好的价格规则。它们描述价格留下的空档或候选区域，不证明是谁在交易。', 'Labels such as FVG and order block come from price rules you defined. They describe a gap price left, or a candidate zone, and they do not prove who traded.'),
-        explain: bi('公允价值缺口看的是三根 K 线之间没有重叠的价格带。\n例如第一根高点 103，第三根低点 106，中间带是 103 到 106。\n这不是“这段没有任何人成交”。\n订单块只是按规则挑出的候选区，不是机构买单的证据。\n结构标签也不保证后面的路径。', 'A fair value gap is a price band with no overlap across three candles.\nIf the first high is 103 and the third low is 106, the band is 103 to 106.\nThat is not “nobody traded there.”\nAn order block is only a candidate zone picked by a rule. It is not evidence of an institutional buy.\nA structure label also does not guarantee the later path.'),
-        example: bi('A 高 103，C 低 106，缺口带为 103–106。\n价格后来可以回补，也可以不回补。\n把这块区域叫订单块，仍然只是候选，不是成交身份证明。', 'A’s high is 103 and C’s low is 106, so the gap band is 103–106.\nPrice may fill it later, or it may not.\nCalling the zone an order block is still only a candidate. It is not proof of who traded.'),
+        one: bi('FVG 和订单块只是按本课规则标出的价格区域，不证明是谁在交易，也不保证后面的走势。', 'An FVG and an order block are only price zones marked by this lesson’s rules, so they do not prove who traded and they do not guarantee the later path.'),
+        explain: bi('左右各 2 根都出现，摆动高点或低点才算确认。\nBOS 是收盘价顺着原来的方向越过最近一个已确认高低点。\n影线刺穿但收盘没过，不算 BOS。\nCHoCH 是收盘价反向跌破或升破保护性的高低点。\n它只表示结构可能在变，不是反转已经完成，也不能和 BOS 贴在同一根上。\n扫荡是影线越过前高或前低，收盘又回到内侧。\n本课只说它符合这个形态，不说真有人在扫单。\n看涨 FVG：第三根低点高于第一根高点，区间是第一根高点到第三根低点。\n教学模拟：第一根高点 103，第三根低点 106，区间 103–106。\n这不是这段没有成交。\n订单块是突破前最后一根反向 K 线的实体，只是候选。\n这些标签都不保证后面的路径。', 'A swing high or low is confirmed only after 2 bars exist on each side.\nA BOS is a close that passes the latest confirmed high or low in the existing direction.\nA wick through that level does not count when the close stays back.\nA CHoCH is a close that breaks the protective high or low the other way.\nIt only says the structure may be changing. It is not a finished reversal, and it is not placed on the same bar as a BOS.\nA sweep is a wick beyond a prior high or low with the close back inside.\nThis lesson only says the shape matches. It does not say someone swept orders.\nA bullish FVG means the third low is above the first high, and the zone runs from that high to that low.\nTeaching simulation: the first high is 103 and the third low is 106, so the zone is 103–106.\nThat is not “nobody traded there.”\nAn order block is the body of the last opposite candle before the break. It is only a candidate.\nNone of these labels guarantees the later path.'),
+        example: bi('教学模拟：A 高 103，C 低 106。\n106 高于 103，所以看涨缺口是 103–106。\n价格后来可以回到这个区间，也可以不回。\n订单块仍只是候选，不是机构买单的证据。', 'Teaching simulation: A’s high is 103 and C’s low is 106.\n106 is above 103, so the bullish gap is 103–106.\nPrice may come back into that zone later, or it may not.\nAn order block is still only a candidate. It is not proof of an institutional buy.'),
         pitfalls: [
           bi('把缺口理解成零成交', 'Reading a gap as zero trades'),
           bi('把订单块理解成机构已经买入的证据', 'Reading an order block as proof an institution already bought')
         ],
-        practice: bi('看图上的色带，说出它的上沿和下沿，并说明它不能证明的事情。', 'Look at the shaded band, name its top and bottom, and say what it cannot prove.'),
+        practice: bi('点出收盘价突破结构的那根 K 线。影线刺穿但收盘没过，不算。', 'Tap the candle whose close breaks the structure. A wick through it does not count if the close does not.'),
         check: {
           ask: bi('103 到 106 的缺口等于这段没有成交吗？', 'Does a 103 to 106 gap mean nothing traded there?'),
           options: [opt('A', '等于', 'Yes'), opt('B', '不是', 'No'), opt('C', '只在模拟盘等于', 'Only on a demo account')],
@@ -271,31 +271,32 @@
           miss: bi('缺口是三根 K 线的价格带没有重叠，不是成交量为零。', 'A gap means the price bands of three candles do not overlap. It does not mean volume was zero.')
         },
         quizzes: [
-          quiz('FVG 是不是表示这个区间没有成交？', 'Does an FVG mean there were no trades in that zone?', [opt('A', '是', 'Yes'), opt('B', '不是', 'No'), opt('C', '只有实体没有成交', 'Only the body had no trades')], 'B', {
-            A: ['K 线只给出高低区间，给不出“这段价格无人成交”的证明。', 'A candle only gives a high-low range. It cannot prove nobody traded at those prices.'],
-            B: ['103–106 只是第一根高点和第三根低点之间没有重叠的带。', '103–106 is only the band with no overlap between the first high and the third low.'],
-            C: ['规则看的是高低区间的重叠，不是实体内部有没有成交。', 'The rule looks at overlap of the high-low ranges, not whether trades happened inside the body.']
+          quiz('FVG 说明这个区域绝对没有交易吗？', 'Does an FVG mean the zone had absolutely no trades?', [opt('A', '是', 'Yes'), opt('B', '不是', 'No'), opt('C', '必然', 'It must')], 'B', {
+            A: ['三根 K 线只比较高低是否重叠，给不出无人成交的证明。', 'Three candles only compare whether the highs and lows overlap. They cannot prove nobody traded.'],
+            B: ['103–106 只是第一根高点到第三根低点之间没有重叠。', '103–106 is only the band with no overlap from the first high to the third low.'],
+            C: ['没有“必然没有成交”这条规则。', 'There is no rule that says trades were necessarily absent.']
           }),
-          quiz('订单块能证明机构在买吗？', 'Can an order block prove an institution is buying?', [opt('A', '能', 'Yes'), opt('B', '不能', 'No'), opt('C', '标注成英文就能', 'Yes, if the label is in English')], 'B', {
-            A: ['规则只能挑出候选 K 线，不能识别下单的人。', 'A rule can only pick a candidate candle. It cannot identify who placed the order.'],
-            B: ['它是候选区，不是机构行为的证据。', 'It is a candidate zone, not evidence of institutional behavior.'],
-            C: ['换成英文标签也不会增加证据。', 'Translating the label into English does not add evidence.']
+          quiz('订单块标签能证明机构在买入吗？', 'Can an order-block label prove an institution is buying?', [opt('A', '能', 'Yes'), opt('B', '不能', 'No'), opt('C', '只有 BTC 能', 'Only BTC can')], 'B', {
+            A: ['规则只挑出突破前的一根反向 K 线，不知道是谁下的单。', 'The rule only picks the opposite candle before the break. It does not know who placed the order.'],
+            B: ['它是候选区，不是机构行为的证据。', 'It is a candidate zone, not evidence of an institution.'],
+            C: ['换成 BTC 这个名字，证据也不会多出来。', 'The name BTC does not add evidence.']
           }),
-          quiz('这些结构标签保证后面的走势吗？', 'Do these structure labels guarantee the later path?', [opt('A', '保证', 'They do'), opt('B', '不保证', 'They do not'), opt('C', '回补了才保证', 'Only after a fill')], 'B', {
-            A: ['标签描述已经发生的价格结构，不锁定后面的路径。', 'A label describes price structure that already happened. It does not lock the later path.'],
-            B: ['回补、延续或不碰这个区域都可能发生。', 'A fill, a continuation, or never touching the zone can all happen.'],
-            C: ['回补只是后来的一种走法，不是保证条款。', 'A fill is one later path, not a guarantee clause.']
+          quiz('结构标签保证后面的走势吗？', 'Do structure labels guarantee the later path?', [opt('A', '保证', 'They do'), opt('B', '不保证', 'They do not'), opt('C', '只做多保证', 'Only longs are guaranteed')], 'B', {
+            A: ['标签描述已经确认的结构，不锁定后面的路径。', 'A label describes structure that is already confirmed. It does not lock the later path.'],
+            B: ['延续、转向或不回到这个区域都可能发生。', 'Continuation, a turn, or never returning to the zone can all happen.'],
+            C: ['做多这个方向同样没有保证条款。', 'The long side has no guarantee clause either.']
           })
         ],
         study: {
           kind: 'zone',
+          lessonChart: 'smc-full',
           bars: [
             { o: 100, h: 103, l: 99, c: 102 },
-            { o: 104, h: 109, l: 103.5, c: 108 },
-            { o: 108, h: 112, l: 106, c: 110 }
+            { o: 102, h: 109, l: 101, c: 108 },
+            { o: 108, h: 112, l: 106, c: 111 }
           ],
           zone: { low: 103, high: 106 },
-          caption: bi('色带 103–106：第一根高点到第三根低点之间没有重叠。', 'Band 103–106: no overlap between the first high and the third low.'),
+          caption: bi('色带 103–106：第三根低点高于第一根高点。', 'Band 103–106: the third low is above the first high.'),
           start: 3
         }
       })
@@ -2785,4 +2786,252 @@
     study._fibWrapped = true;
   }
   global.STAR_CH02_FIB = { levels: levels, tape: tape, mount: mount };
+})(typeof window !== 'undefined' ? window : global);
+
+/* SMC lesson chart. Structure rules live here, not in the lab. */
+(function (global) {
+  function bar(o, h, l, c) { return { o: o, h: h, l: l, c: c, v: 40 }; }
+  var BARS = [
+    bar(100, 103, 98, 102), bar(102, 105, 101, 104), bar(104, 108, 103, 107), bar(107, 109, 105, 106),
+    bar(106, 112, 105, 111), bar(111, 111.5, 106, 107), bar(107, 108, 104, 105), bar(105, 110, 105, 109),
+    bar(109, 113, 108, 112), bar(112, 116, 111, 115), bar(115, 118, 114, 117), bar(117, 120, 116, 119),
+    bar(119, 119.5, 114, 115), bar(115, 116, 112, 113), bar(113, 114, 112.4, 113), bar(113, 113.2, 112.2, 112.8),
+    bar(112.8, 113, 109, 110), bar(110, 111, 108, 109), bar(109, 112, 108, 109), bar(109, 121, 108, 110),
+    bar(110, 112, 109, 111), bar(111, 118, 110, 117), bar(117, 122, 116, 120), bar(120, 124, 118, 123),
+    bar(123, 127, 121, 125)
+  ].map(function (item, i) { item.t = i; item.v = 30 + ((i * 17) % 23); return item; });
+  var EXAMPLE = [bar(100, 103, 99, 102), bar(102, 109, 101, 108), bar(108, 112, 106, 111)];
+  function swings(bars) {
+    var highs = [];
+    var lows = [];
+    var i;
+    var k;
+    for (i = 2; i < bars.length - 2; i++) {
+      var hi = true;
+      var lo = true;
+      for (k = 1; k <= 2; k++) {
+        if (bars[i].h < bars[i - k].h || bars[i].h < bars[i + k].h) hi = false;
+        if (bars[i].l > bars[i - k].l || bars[i].l > bars[i + k].l) lo = false;
+      }
+      if (hi) highs.push(i);
+      if (lo) lows.push(i);
+    }
+    return { highs: highs, lows: lows };
+  }
+  function read(bars) {
+    var sw = swings(bars);
+    var bos = [];
+    var choch = [];
+    var sweeps = [];
+    var trend = 0;
+    var i;
+    function latest(list, before) {
+      var found = null;
+      list.forEach(function (index) { if (index < before) found = index; });
+      return found;
+    }
+    for (i = 0; i < bars.length; i++) {
+      var high = latest(sw.highs, i);
+      var low = latest(sw.lows, i);
+      var close = bars[i].c;
+      if (trend >= 0 && high != null && close > bars[high].h) {
+        bos.push({ i: i, price: bars[high].h, dir: 'up' });
+        trend = 1;
+      } else if (trend <= 0 && low != null && close < bars[low].l) {
+        bos.push({ i: i, price: bars[low].l, dir: 'down' });
+        trend = -1;
+      } else if (trend === 1 && low != null && close < bars[low].l) {
+        choch.push({ i: i, price: bars[low].l, dir: 'down' });
+        trend = 0;
+      } else if (trend === -1 && high != null && close > bars[high].h) {
+        choch.push({ i: i, price: bars[high].h, dir: 'up' });
+        trend = 0;
+      }
+      if (high != null && bars[i].h > bars[high].h && close <= bars[high].h) sweeps.push({ i: i, price: bars[high].h, dir: 'up' });
+      if (low != null && bars[i].l < bars[low].l && close >= bars[low].l) sweeps.push({ i: i, price: bars[low].l, dir: 'down' });
+    }
+    var fvgs = [];
+    for (i = 2; i < bars.length; i++) {
+      if (bars[i].l > bars[i - 2].h) fvgs.push({ i: i, low: bars[i - 2].h, high: bars[i].l, dir: 'up' });
+      if (bars[i].h < bars[i - 2].l) fvgs.push({ i: i, low: bars[i].h, high: bars[i - 2].l, dir: 'down' });
+    }
+    var obs = bos.map(function (item) {
+      var j;
+      for (j = item.i - 1; j >= 0; j--) {
+        var bull = bars[j].c >= bars[j].o;
+        if (item.dir === 'up' && !bull) return { i: j, bos: item.i, low: Math.min(bars[j].o, bars[j].c), high: Math.max(bars[j].o, bars[j].c) };
+        if (item.dir === 'down' && bull) return { i: j, bos: item.i, low: Math.min(bars[j].o, bars[j].c), high: Math.max(bars[j].o, bars[j].c) };
+      }
+      return null;
+    }).filter(Boolean);
+    return { swings: sw, bos: bos, choch: choch, sweeps: sweeps, fvgs: fvgs, obs: obs };
+  }
+  function fvgExample(bars) {
+    if (bars.length < 3) return null;
+    if (!(bars[2].l > bars[0].h)) return null;
+    return { low: bars[0].h, high: bars[2].l };
+  }
+  function mount(root, lesson, lang) {
+    var zh = lang !== 'en';
+    var state = { shown: 10, cursor: null, playing: false, structure: true, sweep: false, fvg: false, ob: false, note: '', tone: '' };
+    if (root._smcTimer) clearInterval(root._smcTimer);
+    function stop() { state.playing = false; if (root._smcTimer) clearInterval(root._smcTimer); root._smcTimer = null; }
+    function pack() { return read(BARS.slice(0, state.shown)); }
+    function paint() {
+      var draw = BARS.slice(0, state.shown);
+      var info = read(draw);
+      var w = 980;
+      var h = 420;
+      var padL = 12;
+      var padR = 64;
+      var top = 16;
+      var plotH = 360;
+      var vals = [];
+      draw.forEach(function (b) { vals.push(b.h, b.l); });
+      var min = Math.min.apply(null, vals);
+      var max = Math.max.apply(null, vals);
+      var span = max - min || 1;
+      min -= span * 0.08;
+      max += span * 0.08;
+      function y(p) { return top + (max - p) / (max - min) * plotH; }
+      var slot = (w - padL - padR) / Math.max(draw.length, 1);
+      var bits = ['<svg viewBox="0 0 ' + w + ' ' + h + '" role="img">'];
+      bits.push('<rect width="' + w + '" height="' + h + '" fill="#120e21"></rect>');
+      if (state.fvg) info.fvgs.forEach(function (zone) {
+        var y1 = y(zone.high);
+        var y2 = y(zone.low);
+        bits.push('<rect x="' + padL + '" y="' + Math.min(y1, y2) + '" width="' + (w - padL - padR) + '" height="' + Math.abs(y2 - y1) + '" fill="rgba(142,180,255,.22)"></rect>');
+        bits.push('<text x="' + (padL + 8) + '" y="' + (Math.min(y1, y2) + 14) + '" fill="#d7e4ff" font-size="13">FVG ' + zone.low + '–' + zone.high + '</text>');
+      });
+      if (state.ob) info.obs.forEach(function (zone) {
+        var x = padL + zone.i * slot;
+        bits.push('<rect x="' + x + '" y="' + y(zone.high) + '" width="' + Math.max(8, slot) + '" height="' + Math.max(2, Math.abs(y(zone.low) - y(zone.high))) + '" fill="rgba(244,203,130,.35)"></rect>');
+      });
+      draw.forEach(function (b, i) {
+        var up = b.c >= b.o;
+        var color = up ? '#1f8a4d' : '#d4534e';
+        var xc = padL + i * slot + slot / 2;
+        var bw = Math.max(3, slot * 0.55);
+        bits.push('<line x1="' + xc + '" y1="' + y(b.h) + '" x2="' + xc + '" y2="' + y(b.l) + '" stroke="' + color + '"></line>');
+        bits.push('<rect x="' + (xc - bw / 2) + '" y="' + Math.min(y(b.o), y(b.c)) + '" width="' + bw + '" height="' + Math.max(1.4, Math.abs(y(b.c) - y(b.o))) + '" fill="' + color + '"></rect>');
+        if (i % 4 === 0) bits.push('<text x="' + xc + '" y="408" fill="#b7aac8" font-size="12">' + (i + 1) + '</text>');
+        bits.push('<rect data-bar="' + i + '" x="' + (padL + i * slot) + '" y="' + top + '" width="' + slot + '" height="' + plotH + '" fill="transparent"></rect>');
+      });
+      if (state.structure) {
+        info.bos.forEach(function (item) {
+          var yy = y(item.price);
+          bits.push('<line x1="' + padL + '" y1="' + yy + '" x2="' + (w - padR) + '" y2="' + yy + '" stroke="#8eb4ff"></line>');
+          bits.push('<text x="' + (padL + item.i * slot) + '" y="' + (yy - 6) + '" fill="#8eb4ff" font-size="13">BOS</text>');
+        });
+        info.choch.forEach(function (item) {
+          var yy = y(item.price);
+          bits.push('<line x1="' + padL + '" y1="' + yy + '" x2="' + (w - padR) + '" y2="' + yy + '" stroke="#f4cb82" stroke-dasharray="5 3"></line>');
+          bits.push('<text x="' + (padL + item.i * slot) + '" y="' + (yy - 6) + '" fill="#f4cb82" font-size="13">CHoCH</text>');
+        });
+      }
+      if (state.sweep) info.sweeps.forEach(function (item) {
+        bits.push('<text x="' + (padL + item.i * slot) + '" y="32" fill="#ffb4c0" font-size="13">' + (zh ? '扫荡' : 'Sweep') + '</text>');
+      });
+      bits.push('</svg>');
+      root.innerHTML =
+        '<div class="a1"><p class="a1-flag">' + (zh ? '模拟行情·非实时' : 'Simulated tape · not live') + '</p>' +
+        '<p class="a1-checks"><label><input type="checkbox" data-layer="structure"' + (state.structure ? ' checked' : '') + '> ' + (zh ? '结构' : 'Structure') + '</label> <label><input type="checkbox" data-layer="sweep"' + (state.sweep ? ' checked' : '') + '> ' + (zh ? '扫荡' : 'Sweep') + '</label> <label><input type="checkbox" data-layer="fvg"' + (state.fvg ? ' checked' : '') + '> FVG</label> <label><input type="checkbox" data-layer="ob"' + (state.ob ? ' checked' : '') + '> OB</label></p>' +
+        '<p>' + (zh ? '这些名字是本课的价格规则。不同人的画法可以不同。标签不是机构一定在买卖的证据。' : 'These names are this lesson’s price rules. Other people may draw them differently. A label is not proof that an institution is buying or selling.') + '</p>' +
+        '<div class="smc-scroll">' + bits.join('') + '</div>' +
+        '<p>' + (zh ? '小练习：点出收盘价突破前高的那根。影线过了但收盘没过，不算 BOS。' : 'Short practice: tap the candle whose close breaks the prior high. A wick through it is not a BOS if the close stays back.') + '</p>' +
+        '<div class="a1-modes"><button type="button" data-move="play">' + (state.playing ? (zh ? '暂停' : 'Pause') : (zh ? '播放' : 'Play')) + '</button><button type="button" data-move="reset">' + (zh ? '重新开始' : 'Start again') + '</button><button type="button" data-more="1">' + (zh ? '再看一个反例' : 'See a counterexample') + '</button><span>' + state.shown + ' / ' + BARS.length + '</span></div>' +
+        '<p class="a2-readout ' + state.tone + '">' + (state.note || (zh ? '先看结构。其他图层默认关着。' : 'Structure is on. The other layers start off.')) + '</p>' +
+        '<p class="ema-note">' + (zh ? 'BOS 和 CHoCH 都看收盘价。看涨 FVG 是第三根低点高于第一根高点。订单块是突破前最后一根反向 K 线的实体。' : 'BOS and CHoCH both use the close. A bullish FVG is a third low above the first high. An order block is the body of the last opposite candle before the break.') + '</p></div>';
+    }
+    function explain(index) {
+      var info = pack();
+      var b = BARS[index];
+      var bos = info.bos.filter(function (item) { return item.i === index; })[0];
+      var ch = info.choch.filter(function (item) { return item.i === index; })[0];
+      var sw = info.sweeps.filter(function (item) { return item.i === index; })[0];
+      var gap = info.fvgs.filter(function (item) { return item.i === index; })[0];
+      var ob = info.obs.filter(function (item) { return item.i === index; })[0];
+      if (bos) return { tone: 'is-right', text: zh ? '这根收盘越过了已确认的结构位，所以是 BOS。它不是影线刺穿，也不保证后面继续涨。' : 'This close passed a confirmed structure level, so it is a BOS. It is not a wick poke, and it does not guarantee the later move.' };
+      if (ch) return { tone: 'is-right', text: zh ? '这根收盘反向破了保护位，所以是 CHoCH。它不是 BOS，也不是反转已经完成。' : 'This close broke the protective level the other way, so it is a CHoCH. It is not a BOS, and the reversal is not finished.' };
+      if (sw && state.sweep) return { tone: 'is-right', text: zh ? '影线越过了前高，收盘回到内侧。这是本课的扫荡形态，不证明有人在扫单。' : 'The wick went beyond the prior high and the close came back inside. That matches this lesson’s sweep. It does not prove someone swept orders.' };
+      if (sw && !state.sweep) return { tone: '', text: zh ? '这根影线过了但收盘没过。打开“扫荡”才能看见这个标签。它不是 BOS。' : 'The wick went through, but the close did not. Turn on Sweep to see that label. It is not a BOS.' };
+      if (gap) return { tone: 'is-right', text: zh ? '第三根低点 ' + gap.high + ' 高于第一根高点 ' + gap.low + '。区间是 ' + gap.low + '–' + gap.high + '。这不是无人成交，也不保证回补。' : 'The third low ' + gap.high + ' is above the first high ' + gap.low + '. The zone is ' + gap.low + '–' + gap.high + '. That is not zero trades, and it does not have to be filled.' };
+      if (ob) return { tone: 'is-right', text: zh ? '这是突破前最后一根反向 K 线，实体在 ' + ob.low + '–' + ob.high + '。它是候选，不证明机构在买。' : 'This is the last opposite candle before the break. Its body is ' + ob.low + '–' + ob.high + '. It is a candidate, not proof an institution is buying.' };
+      return { tone: '', text: zh ? '第 ' + (index + 1) + ' 根，收盘 ' + b.c + '。再点收盘真正越过结构的那根。' : 'Bar ' + (index + 1) + ', close ' + b.c + '. Tap the bar whose close actually passes the structure.' };
+    }
+    if (root._smcClick) root.removeEventListener('click', root._smcClick);
+    root._smcClick = function (ev) {
+      var el = ev.target.closest ? ev.target.closest('[data-move],[data-more],[data-bar]') : null;
+      if (!el || !root.contains(el)) return;
+      if (el.getAttribute('data-more')) {
+        stop();
+        state.shown = BARS.length;
+        state.fvg = true;
+        state.note = zh ? '反例：缺口 112–116 后面的 K 线没有回到这个区间。不回补也是一种走法。' : 'Counterexample: later candles do not return to the 112–116 gap. Never filling it is one possible path.';
+        state.tone = 'is-right';
+        paint();
+        return;
+      }
+      if (el.getAttribute('data-move') === 'play') {
+        if (state.playing) { stop(); paint(); return; }
+        state.playing = true;
+        root._smcTimer = setInterval(function () {
+          if (!root.isConnected || state.shown >= BARS.length) { stop(); paint(); return; }
+          state.shown += 1;
+          paint();
+        }, 320);
+        paint();
+        return;
+      }
+      if (el.getAttribute('data-move') === 'reset') {
+        stop();
+        state.shown = 10;
+        state.cursor = null;
+        state.note = '';
+        state.tone = '';
+        state.structure = true;
+        state.sweep = false;
+        state.fvg = false;
+        state.ob = false;
+        paint();
+        return;
+      }
+      var index = Number(el.getAttribute('data-bar'));
+      state.cursor = index;
+      var said = explain(index);
+      state.note = said.text;
+      state.tone = said.tone;
+      paint();
+    };
+    root.addEventListener('click', root._smcClick);
+    if (root._smcChange) root.removeEventListener('change', root._smcChange);
+    root._smcChange = function (ev) {
+      var input = ev.target;
+      var key = input && input.getAttribute && input.getAttribute('data-layer');
+      if (!key) return;
+      state[key] = !!input.checked;
+      paint();
+    };
+    root.addEventListener('change', root._smcChange);
+    if (root._smcKey) root.removeEventListener('keydown', root._smcKey);
+    root.tabIndex = 0;
+    root._smcKey = function (ev) {
+      if (ev.key !== 'ArrowRight' && ev.key !== 'ArrowLeft') return;
+      ev.preventDefault();
+      state.shown = Math.max(4, Math.min(BARS.length, state.shown + (ev.key === 'ArrowRight' ? 1 : -1)));
+      paint();
+    };
+    root.addEventListener('keydown', root._smcKey);
+    paint();
+  }
+  var study = global.STAR_STUDY;
+  if (study && !study._smcWrapped) {
+    var inner = study.mount;
+    study.mount = function (root, lesson, lang) {
+      if (lesson && lesson.study && lesson.study.lessonChart === 'smc-full') return mount(root, lesson, lang);
+      return inner.apply(this, arguments);
+    };
+    study._smcWrapped = true;
+  }
+  global.STAR_CH02_SMC = { bars: BARS, example: EXAMPLE, read: read, fvgExample: fvgExample, mount: mount };
 })(typeof window !== 'undefined' ? window : global);
