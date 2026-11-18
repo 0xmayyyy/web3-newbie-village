@@ -126,7 +126,273 @@
     return '<p class="a2-window"><span style="color:#1f8a4d">' + up + '</span> · <span style="color:#d4534e">' + down + '</span></p>';
   }
 
+  function emaSeed(closes, n) {
+    var out = closes.map(function () { return null; });
+    if (closes.length < n || n < 1) return out;
+    var sum = 0;
+    var i;
+    for (i = 0; i < n; i++) sum += closes[i];
+    var prev = sum / n;
+    out[n - 1] = prev;
+    var alpha = 2 / (n + 1);
+    for (i = n; i < closes.length; i++) {
+      prev = alpha * closes[i] + (1 - alpha) * prev;
+      out[i] = prev;
+    }
+    return out;
+  }
+  function macdSeed(closes) {
+    var e12 = emaSeed(closes, 12);
+    var e26 = emaSeed(closes, 26);
+    var dif = closes.map(function (_, i) {
+      return e12[i] == null || e26[i] == null ? null : e12[i] - e26[i];
+    });
+    var valid = [];
+    dif.forEach(function (v, i) { if (v != null) valid.push([i, v]); });
+    var dea = closes.map(function () { return null; });
+    if (valid.length >= 9) {
+      var seed = 0;
+      var k;
+      for (k = 0; k < 9; k++) seed += valid[k][1];
+      var prev = seed / 9;
+      dea[valid[8][0]] = prev;
+      var alpha = 2 / 10;
+      for (k = 9; k < valid.length; k++) {
+        prev = alpha * valid[k][1] + (1 - alpha) * prev;
+        dea[valid[k][0]] = prev;
+      }
+    }
+    var hist = dif.map(function (v, i) {
+      return v == null || dea[i] == null ? null : v - dea[i];
+    });
+    return { e12: e12, e26: e26, dif: dif, dea: dea, hist: hist };
+  }
+  function seqCloses(start, parts) {
+    var price = start;
+    var out = [];
+    parts.forEach(function (part) {
+      var i;
+      for (i = 0; i < part[0]; i++) {
+        price += part[1];
+        out.push(Math.round(price * 100) / 100);
+      }
+    });
+    return out;
+  }
+  function packOf(kind, closes) {
+    var bars = M().barsFromCloses(closes);
+    bars.forEach(function (bar, i) { bar.v = Math.round(800 + Math.abs(closes[i] - (closes[i - 1] || closes[i])) * 12); });
+    if (kind === 'ema') {
+      return { bars: bars, closes: closes, e20: emaSeed(closes, 20), e50: emaSeed(closes, 50) };
+    }
+    if (kind === 'macd') return { bars: bars, closes: closes, macd: macdSeed(closes) };
+    return { bars: bars, closes: closes, rsi: M().rsiWilder(closes, 14) };
+  }
+  function crossIndexes(fast, slow) {
+    var out = [];
+    var i;
+    for (i = 1; i < fast.length; i++) {
+      if (fast[i] == null || slow[i] == null || fast[i - 1] == null || slow[i - 1] == null) continue;
+      var before = fast[i - 1] - slow[i - 1];
+      var after = fast[i] - slow[i];
+      if (before <= 0 && after > 0) out.push(i);
+      if (before >= 0 && after < 0) out.push(i);
+    }
+    return out;
+  }
+  function renderPractical(root, study, lang) {
+    var zh = lang !== 'en';
+    var kind = study.practical;
+    var scenes = kind === 'ema' ? [
+      { id: 'trend', zh: '上行与回踩', en: 'Uptrend and a touch', closes: seqCloses(60000, [[55, 80], [10, -35], [25, 45]]) },
+      { id: 'range', zh: '横盘假交叉', en: 'Range and fake crosses', closes: (function () {
+        var price = 62000;
+        var out = [];
+        var i;
+        for (i = 0; i < 96; i++) {
+          price += Math.floor(i / 12) % 2 ? -70 : 75;
+          out.push(price);
+        }
+        return out;
+      })() },
+      { id: 'crash', zh: '大阴线滞后', en: 'A sharp drop lags', closes: seqCloses(64000, [[40, 30], [1, -900], [49, -15]]) }
+    ] : kind === 'macd' ? [
+      { id: 'above', zh: '零轴上金叉', en: 'Golden cross above zero', closes: seqCloses(50000, [[45, 90], [12, -40], [30, 80]]) },
+      { id: 'fail', zh: '零轴下金叉失败', en: 'Golden cross below zero fails', closes: seqCloses(70000, [[40, -80], [12, 90], [40, -70]]) },
+      { id: 'shrink', zh: '负柱缩短仍在跌', en: 'Negative bars shrink while price falls', closes: seqCloses(80000, [[20, 80], [18, -180], [40, -20]]) }
+    ] : [
+      { id: 'hot', zh: '超买仍上涨', en: 'Overbought and still rising', closes: seqCloses(100, [[40, 3]]) },
+      { id: 'cold', zh: '超卖仍下跌', en: 'Oversold and still falling', closes: seqCloses(200, [[40, -3]]) },
+      { id: 'fake', zh: '看起来像背离', en: 'Looks like divergence', closes: seqCloses(100, [[18, 2], [8, -0.4], [8, 1.2]]) }
+    ];
+    var state = { scene: scenes[0].id, shown: scenes[0].closes.length, cursor: null, fast: true, slow: true, note: '', tone: '' };
+    function current() {
+      var scene = scenes.filter(function (item) { return item.id === state.scene; })[0];
+      var closes = scene.closes.slice(0, state.shown);
+      return { scene: scene, pack: packOf(kind, closes), full: scene.closes.length };
+    }
+    function judge(index, pack) {
+      var bar = pack.bars[index];
+      if (!bar) return { tone: '', text: '' };
+      var head = zh ? '教学模拟。第 ' + (index + 1) + ' 根，收盘 ' + fmt(bar.c, 2) + '。' : 'Teaching simulation. Bar ' + (index + 1) + ', close ' + fmt(bar.c, 2) + '. ';
+      if (kind === 'ema') {
+        var e20 = pack.e20[index];
+        var e50 = pack.e50[index];
+        var extra = (e20 == null ? (zh ? 'EMA20 数据不足。' : 'EMA20 is not ready. ') : (zh ? 'EMA20 ' + fmt(e20, 2) + '。' : 'EMA20 ' + fmt(e20, 2) + '. '));
+        extra += e50 == null ? (zh ? 'EMA50 数据不足。' : 'EMA50 is not ready.') : (zh ? 'EMA50 ' + fmt(e50, 2) + '。' : 'EMA50 ' + fmt(e50, 2) + '.');
+        if (state.scene === 'trend' && e20 != null && Math.abs(bar.c - e20) / e20 <= 0.003) {
+          return { tone: 'is-right', text: head + extra + (zh ? '这根靠近 EMA20。靠近均线还不是确认反弹。' : 'This bar is near EMA20. Being near the line is not a confirmed bounce.') };
+        }
+        if (state.scene === 'range' && crossIndexes(pack.e20, pack.e50).indexOf(index) >= 0) {
+          return { tone: 'is-bad', text: head + extra + (zh ? '这是一次交叉。横盘里交叉会反复出现，不能当成后面一定涨。' : 'This is a cross. Crosses repeat in a range, so it is not a promise of a rise.') };
+        }
+        if (state.scene === 'crash' && index === 40) {
+          return { tone: 'is-right', text: head + extra + (zh ? '价格先穿过去了，均线还在慢慢变。EMA 不能预测这根突发下跌。' : 'Price moved first. The average is still catching up. EMA does not predict this drop.') };
+        }
+        return { tone: '', text: head + extra + (zh ? '再点一根更符合本剧情的 K 线。' : 'Pick a bar that matches this scene.') };
+      }
+      if (kind === 'macd') {
+        var m = pack.macd;
+        var dif = m.dif[index];
+        var dea = m.dea[index];
+        var hist = m.hist[index];
+        var extra = dif == null ? (zh ? 'DIF 还不能计算。' : 'DIF is not ready.') : (zh ? 'DIF ' + fmt(dif, 2) + '，DEA ' + fmt(dea, 2) + '，柱 ' + fmt(hist, 2) + '。' : 'DIF ' + fmt(dif, 2) + ', DEA ' + fmt(dea, 2) + ', bar ' + fmt(hist, 2) + '.');
+        var gold = dif != null && m.dif[index - 1] != null && m.dea[index - 1] != null && (m.dif[index - 1] - m.dea[index - 1]) < 0 && (dif - dea) > 0;
+        if (state.scene === 'above' && gold && dif > 0) return { tone: 'is-right', text: head + extra + (zh ? '这是零轴上方的金叉，只是延续候选，不是买入保证。' : 'This golden cross is above zero. It is a continuation candidate, not a buy order.') };
+        if (state.scene === 'fail' && gold && dif <= 0) return { tone: 'is-bad', text: head + extra + (zh ? '这次金叉在零轴下方。交叉可以和大趋势矛盾，后面仍可能创新低。' : 'This golden cross is below zero. A cross can disagree with the larger trend.') };
+        if (state.scene === 'shrink' && hist != null && m.hist[index - 1] != null && hist < 0 && hist > m.hist[index - 1] && bar.c < pack.bars[index - 1].c) {
+          return { tone: 'is-bad', text: head + extra + (zh ? '负柱在收窄，但收盘仍在跌。这不能单独证明价格已经反转。' : 'The negative bar is narrowing, but the close is still falling. That alone does not prove a reversal.') };
+        }
+        if (gold) return { tone: '', text: head + extra + (zh ? '这根是金叉，但请对照当前剧情看它在零轴的哪一侧。' : 'This bar is a golden cross. Check which side of zero it is on.') };
+        return { tone: '', text: head + extra };
+      }
+      var rsi = pack.rsi[index];
+      var extraR = rsi == null ? (zh ? 'RSI 数据不足，不显示 0。' : 'RSI is not ready. Do not show 0.') : (zh ? 'RSI(14) ' + fmt(rsi, 2) + '。' : 'RSI(14) ' + fmt(rsi, 2) + '.');
+      if (state.scene === 'hot' && rsi > 70) return { tone: 'is-right', text: head + extraR + (zh ? '高于 70 只说明最近涨得强，不是立刻做空的命令。' : 'Above 70 only says the recent rise is strong. It is not an order to short.') };
+      if (state.scene === 'cold' && rsi != null && rsi < 30) return { tone: 'is-bad', text: head + extraR + (zh ? '低于 30 也不等于马上要涨。强下跌里它可以一直停在低位。' : 'Below 30 does not mean price must rise. A strong decline can stay oversold.') };
+      if (state.scene === 'fake') return { tone: 'is-bad', text: head + extraR + (zh ? 'RSI 自己回落还不是背离。背离必须有两个对应的价格高低点。' : 'An RSI dip by itself is not divergence. Divergence needs two matching price swings.') };
+      return { tone: '', text: head + extraR };
+    }
+    function paint() {
+      var view = current();
+      var pack = view.pack;
+      var bars = pack.bars;
+      var w = 360;
+      var h = kind === 'ema' ? 300 : 500;
+      var bits = [openSvg(w, h, zh ? '教学模拟 K 线' : 'Teaching simulation candles')];
+      var highs = [];
+      bars.forEach(function (bar) { highs.push(bar.l, bar.h); });
+      if (kind === 'ema') {
+        pack.e20.forEach(function (v) { if (v != null) highs.push(v); });
+        pack.e50.forEach(function (v) { if (v != null) highs.push(v); });
+      }
+      var min = Math.min.apply(null, highs);
+      var max = Math.max.apply(null, highs);
+      var span = max - min || 1;
+      var priceH = kind === 'ema' ? 250 : 180;
+      var geom = { bits: bits, w: w, h: h, padL: 8, padR: kind === 'ema' ? 58 : 16, top: 16, plotH: priceH, n: bars.length, min: min - span * 0.08, max: max + span * 0.12, centers: true, series: [] };
+      var plot = lineSvg(geom);
+      drawCandles(bits, bars, plot.x, plot.y, plot.slot);
+      var maxVol = 1;
+      bars.forEach(function (bar) { if (bar.v > maxVol) maxVol = bar.v; });
+      bars.forEach(function (bar, i) {
+        var vh = bar.v / maxVol * 18;
+        bits.push('<rect x="' + (plot.x(i) - Math.max(1, plot.slot * 0.3)).toFixed(1) + '" y="' + (16 + priceH - vh).toFixed(1) + '" width="' + Math.max(1.4, plot.slot * 0.45).toFixed(1) + '" height="' + vh.toFixed(1) + '" fill="rgba(230,199,158,.35)"></rect>');
+        bits.push('<rect data-bar="' + i + '" x="' + (plot.x(i) - plot.slot / 2).toFixed(1) + '" y="16" width="' + plot.slot.toFixed(1) + '" height="' + priceH + '" fill="' + (state.cursor === i ? 'rgba(240,213,154,.18)' : 'transparent') + '"></rect>');
+      });
+      if (state.cursor != null) {
+        var cx = plot.x(state.cursor);
+        bits.push('<line x1="' + cx.toFixed(1) + '" y1="16" x2="' + cx.toFixed(1) + '" y2="' + (h - 12) + '" stroke="rgba(240,213,154,.8)" stroke-dasharray="3 3"></line>');
+      }
+      if (kind === 'ema') {
+        var lines = [];
+        if (state.fast) lines.push({ values: pack.e20, color: '#f4cb82', width: 2.6, label: 'EMA20' });
+        if (state.slow) lines.push({ values: pack.e50, color: '#8eb4ff', width: 2.4, label: 'EMA50', dash: true });
+        lineSvg({ bits: bits, w: w, h: h, padL: 8, padR: 58, top: 16, plotH: priceH, n: bars.length, min: geom.min, max: geom.max, centers: true, series: lines });
+      } else if (kind === 'macd') {
+        var pool = pack.macd.dif.concat(pack.macd.dea, pack.macd.hist, [0]).filter(function (v) { return v != null; });
+        var pmin = Math.min.apply(null, pool);
+        var pmax = Math.max.apply(null, pool);
+        var pspan = pmax - pmin || 1;
+        lineSvg({
+          bits: bits, w: w, h: h, padL: 8, padR: 52, top: 214, plotH: 250, n: bars.length,
+          min: pmin - pspan * 0.16, max: pmax + pspan * 0.2, centers: true,
+          guides: [{ value: 0, label: zh ? '0 零轴' : '0 zero' }],
+          series: [
+            { values: pack.macd.hist, bars: true },
+            { values: state.fast ? pack.macd.dif : [], color: '#f4cb82', width: 2.4, label: 'DIF' },
+            { values: state.slow ? pack.macd.dea : [], color: '#8eb4ff', width: 2.2, label: 'DEA' }
+          ]
+        });
+      } else {
+        lineSvg({
+          bits: bits, w: w, h: h, padL: 8, padR: 64, top: 214, plotH: 250, n: bars.length,
+          min: 0, max: 100, centers: true, labelSide: 'right',
+          guides: [
+            { value: 70, label: zh ? '70 超买' : '70 overbought' },
+            { value: 50, label: '50' },
+            { value: 30, label: zh ? '30 超卖' : '30 oversold' }
+          ],
+          series: [{ values: pack.rsi, color: '#f4cb82', width: 2.6, label: 'RSI(14)' }]
+        });
+      }
+      bits.push('</svg>');
+      var keys = kind === 'ema'
+        ? [{ color: '#1f8a4d', label: zh ? '绿色 K 线（涨）' : 'Green candle, up' }, { color: '#d4534e', label: zh ? '红色 K 线（跌）' : 'Red candle, down' }, { color: '#f4cb82', label: zh ? 'EMA20（快线，实线）' : 'EMA20 (fast, solid)' }, { color: '#8eb4ff', label: zh ? 'EMA50（慢线，虚线）' : 'EMA50 (slow, dashed)' }]
+        : kind === 'macd'
+          ? [{ color: '#f4cb82', label: zh ? 'DIF（12/26）' : 'DIF (12/26)' }, { color: '#8eb4ff', label: zh ? 'DEA（9）' : 'DEA (9)' }, { color: '#1f8a4d', label: zh ? '柱子 DIF−DEA' : 'Histogram DIF−DEA' }]
+          : [{ color: '#f4cb82', label: 'RSI(14)' }, { color: '#f0d59a', label: zh ? '30 / 50 / 70 参考线' : '30 / 50 / 70 guides' }];
+      var buttons = scenes.map(function (item) {
+        return '<button type="button" data-scene="' + item.id + '" aria-pressed="' + (item.id === state.scene) + '">' + (zh ? item.zh : item.en) + '</button>';
+      }).join('');
+      root.innerHTML = '<div class="a1"><p class="a1-flag">' + (zh ? '教学模拟 · 不是实时行情 · 数据不足时不画 0' : 'Teaching simulation · not a live price · no fake zero when data is short') + '</p>' +
+        '<div class="a1-modes">' + buttons + '</div>' +
+        '<div class="a1-modes"><button type="button" data-move="-1">' + (zh ? '上一根' : 'Previous bar') + '</button><button type="button" data-move="1">' + (zh ? '下一根' : 'Next bar') + '</button><button type="button" data-move="all">' + (zh ? '看到最后' : 'Show all') + '</button>' + (kind === 'rsi' ? '' : '<button type="button" data-layer="fast">' + (kind === 'macd' ? 'DIF' : 'EMA20') + '</button><button type="button" data-layer="slow">' + (kind === 'macd' ? 'DEA' : 'EMA50') + '</button>') + '<span>' + state.shown + ' / ' + view.full + '</span></div>' +
+        bits.join('') + keyRow(keys) + '<p class="a2-readout' + (state.tone ? ' ' + state.tone : '') + '">' + esc(state.note || (zh ? '点一根 K 线，上下图会对齐到同一根。' : 'Tap a candle. Both panels use that same bar.')) + '</p></div>';
+      root.querySelectorAll('[data-scene]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          state.scene = btn.getAttribute('data-scene');
+          state.shown = current().full;
+          state.cursor = null;
+          state.note = '';
+          state.tone = '';
+          paint();
+        });
+      });
+      root.querySelectorAll('[data-move]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var move = btn.getAttribute('data-move');
+          var full = current().full;
+          if (move === 'all') state.shown = full;
+          else state.shown = Math.max(8, Math.min(full, state.shown + Number(move)));
+          if (state.cursor != null && state.cursor >= state.shown) state.cursor = state.shown - 1;
+          paint();
+        });
+      });
+      root.querySelectorAll('[data-layer]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var layer = btn.getAttribute('data-layer');
+          state[layer] = !state[layer];
+          paint();
+        });
+      });
+      root.querySelectorAll('[data-bar]').forEach(function (bar) {
+        bar.addEventListener('click', function () {
+          state.cursor = Number(bar.getAttribute('data-bar'));
+          var result = judge(state.cursor, current().pack);
+          state.note = result.text;
+          state.tone = result.tone;
+          paint();
+        });
+      });
+    }
+    paint();
+  }
   function mount(root, lesson, lang, t) {
+    if (lesson.study && lesson.study.practical) {
+      renderPractical(root, lesson.study, lang, t);
+      return;
+    }
     var study = lesson.study || { kind: 'note' };
     var shown = 1;
     var state = {};
@@ -224,7 +490,7 @@
       series.values.forEach(function (v, i) {
         if (v != null) pts.push(x(i).toFixed(1) + ',' + y(v).toFixed(1));
       });
-      if (pts.length > 1) bits.push('<polyline points="' + pts.join(' ') + '" fill="none" stroke="' + series.color + '" stroke-width="' + (series.width || 2.4) + '"></polyline>');
+      if (pts.length > 1) bits.push('<polyline points="' + pts.join(' ') + '" fill="none" stroke="' + series.color + '" stroke-width="' + (series.width || 2.4) + '"' + (series.dash ? ' stroke-dasharray="7 4"' : '') + '></polyline>');
     });
     var tags = [];
     (opts.series || []).forEach(function (series) {

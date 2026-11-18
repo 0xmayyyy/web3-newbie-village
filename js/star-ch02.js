@@ -9,8 +9,8 @@
         id: '01',
         title: bi('EMA：均线为什么追着价格跑', 'EMA: why the average chases price'),
         scene: bi('价格刚跌下来，均线会不会马上跳到最新价？', 'Price just fell. Does the average jump to the latest price right away?'),
-        one: bi('均线会跟着价格慢慢走，但不会一下子跳到最新价。', 'An average follows price slowly, and it does not jump to the latest price in one step.'),
-        explain: bi('均线是一条跟着蜡烛收盘走的平滑线。\n图上黄线是 EMA20。\nEMA20 看的是最近 20 根 K 线，越近的越重要。\n蓝线是 EMA50。\nEMA50 看的是最近 50 根 K 线，走得更慢。\n它不是用来预言下一根会到哪里。\n价格突然跌下来，均线还停在上面。\n你可以把它想成跟在身后的人。\n你停下了，他还要再走几步才到。\n追得快，不等于看得更准。', 'An average is a smooth line that follows candle closes.\nThe gold line is EMA20.\nEMA20 looks at the last 20 bars, and the nearer ones matter more.\nThe blue line is EMA50.\nEMA50 looks at the last 50 bars, and it moves more slowly.\nIt is not there to predict where the next bar will go.\nWhen price drops suddenly, the average is still up above it.\nYou can think of it as a person walking behind you.\nYou stop, and he still needs a few more steps to arrive.\nFollowing faster does not mean seeing more clearly.'),
+        one: bi('EMA 更重视最近的收盘，所以会跟着价格走，但不会在一根大阴线时瞬间跳下去。', 'An EMA weights recent closes more, so it follows price, but it does not jump down on one large red candle.'),
+        explain: bi('均线是一条跟着蜡烛收盘走的平滑线。\n图上黄线是 EMA20。\nEMA20 看的是最近 20 根 K 线，越近的越重要。\n看 1 小时图时，这 20 根是小时 K 线，不是 20 天。\n蓝线是 EMA50。\nEMA50 看的是最近 50 根 K 线，走得更慢。\n它不是用来预言下一根会到哪里。\n价格突然跌下来，均线还停在上面。\n你可以把它想成跟在身后的人。\n你停下了，他还要再走几步才到。\n追得快，不等于看得更准。', 'An average is a smooth line that follows candle closes.\nThe gold line is EMA20.\nEMA20 looks at the last 20 bars, and the nearer ones matter more.\nOn a 1-hour chart those 20 bars are hours, not 20 days.\nThe blue line is EMA50.\nEMA50 looks at the last 50 bars, and it moves more slowly.\nIt is not there to predict where the next bar will go.\nWhen price drops suddenly, the average is still up above it.\nYou can think of it as a person walking behind you.\nYou stop, and he still needs a few more steps to arrive.\nFollowing faster does not mean seeing more clearly.'),
         example: bi('教学模拟：价格从大约 101 涨到大约 137，再跌到大约 107。\nEMA20 贴得更近。\nEMA50 还留在更高的地方。\n最新收盘已经下来了，两条均线都还在它上面。', 'Teaching simulation: price rises from about 101 to about 137, then falls to about 107.\nEMA20 stays closer.\nEMA50 is still higher up.\nThe latest close has already come down, and both averages are still above it.'),
         pitfalls: [
           bi('把均线当成下一根的预测价', 'Treating the average as the predicted price of the next bar'),
@@ -24,10 +24,10 @@
           miss: bi('收盘价是这根 K 线的价格，不是均线。\nEMA20 还停在更高的地方。', 'The close is this candle’s price, not the average.\nEMA20 is still higher up.')
         },
         quizzes: [
-          quiz('价格刚跌下来，均线会马上跳到新价格吗？', 'Price just fell. Does the average jump to the new price right away?', [opt('A', '会', 'Yes'), opt('B', '不会', 'No'), opt('C', '只在 BTC 会', 'Only on BTC')], 'B', {
-            A: ['均线是跟着走的，不是一下子跳过去。', 'The average follows. It does not jump there in one step.'],
-            B: ['价格先到，均线还要再走几步才跟上。', 'Price arrives first. The average still needs a few more steps to catch up.'],
-            C: ['换一个币，也不会让均线突然跳到最新价。', 'Changing the coin does not make the average jump to the latest price.']
+          quiz('1 小时图上的 EMA20 是什么意思？', 'What does EMA20 mean on a 1-hour chart?', [opt('A', '过去 20 天的简单平均', 'A simple average of the past 20 days'), opt('B', '20 根小时 K 线收盘价的指数加权均线', 'An exponentially weighted average of 20 hourly closes'), opt('C', '未来 20 小时的预测价', 'The predicted price for the next 20 hours')], 'B', {
+            A: ['20 根不等于 20 天。1 小时图上的一根是一小时。', '20 bars are not 20 days. On a 1-hour chart, one bar is one hour.'],
+            B: ['它把最近 20 根小时收盘做指数加权。越近的越重要。', 'It exponentially weights the last 20 hourly closes. Nearer closes matter more.'],
+            C: ['EMA 是已经发生的价格的平滑，不是未来价格。', 'An EMA smooths prices that already happened. It is not a future price.']
           }),
           quiz('均线是拿来预测下一根价格的吗？', 'Is an average used to predict the next price?', [opt('A', '是', 'Yes'), opt('B', '不是', 'No'), opt('C', '只在上涨时是', 'Only while price is rising')], 'B', {
             A: ['它只描述价格已经走过的位置，不预言下一根。', 'It only describes where price has already been. It does not predict the next bar.'],
@@ -40,7 +40,7 @@
             C: ['交叉只说明两条线换了上下位置，不保证下一根上涨。', 'A cross only says the two lines swapped places. It does not guarantee the next bar rises.']
           })
         ],
-        study: { kind: 'ema', closes: [101.1, 102.2, 103.3, 104.4, 105.5, 106.6, 107.7, 108.8, 109.9, 111, 112.1, 113.2, 114.3, 115.4, 116.5, 117.6, 118.7, 119.8, 120.9, 122, 123.1, 124.2, 125.3, 126.4, 127.5, 128.6, 129.7, 130.8, 131.1, 131.5, 131.8, 132.2, 132.5, 132.9, 133.2, 133.6, 133.9, 134.3, 134.6, 135, 135.3, 135.7, 136, 136.4, 136.7, 137.1, 135.7, 134.4, 133, 131.7, 130.3, 129, 127.6, 126.3, 124.9, 123.6, 122.2, 120.9, 119.5, 118.2, 116.8, 115.5, 114.1, 112.8, 111.4, 110.1, 108.7, 107.4], periods: [20, 50], start: 68 }
+        study: { kind: 'ema', practical: 'ema', closes: [100, 102, 104, 100, 98], periods: [20, 50] }
       }),
       lesson({
         id: '02',
@@ -76,10 +76,10 @@
             B: ['上穿是金叉，不是死叉。', 'A cross above is a golden cross, not a death cross.'],
             C: ['死叉只说明两条线换了位置，不保证价格马上跌。', 'A death cross only says the two lines swapped places. It does not guarantee that price falls at once.']
           }),
-          quiz('教学虚构：DIF 2.4、DEA 1.9，柱子是多少？', 'Teaching fiction: DIF is 2.4 and DEA is 1.9. What is the bar?', [opt('A', '0.5', '0.5'), opt('B', '4.3', '4.3'), opt('C', '1.9', '1.9')], 'A', {
-            A: ['本课柱子等于 2.4 减去 1.9，是 0.5。', 'In this lesson the bar equals 2.4 minus 1.9, which is 0.5.'],
-            B: ['4.3 是 2.4 加上 1.9，不是相减。', '4.3 is 2.4 plus 1.9, not the difference.'],
-            C: ['1.9 是 DEA 本身，还没有减去。', '1.9 is DEA itself. It has not been subtracted.']
+          quiz('教学模拟：MACD 柱从 -120 变成 -40，但收盘价仍在下跌。最准确的说法是？', 'Teaching simulation: the MACD bar goes from -120 to -40, but the close is still falling. What is the most accurate statement?', [opt('A', '价格已经确认上涨', 'Price has confirmed a rise'), opt('B', '下一根一定会反弹', 'The next bar must bounce'), opt('C', '负差值在收窄，不能单独证明反转', 'The negative gap is narrowing, which alone does not prove a reversal')], 'C', {
+            A: ['柱子变短只说明 DIF 和 DEA 在靠近，不是价格已经上涨。', 'A shorter bar only means DIF and DEA are closer. It is not proof that price has risen.'],
+            B: ['没有“下一根必须反弹”这条规则。', 'There is no rule that the next bar must bounce.'],
+            C: ['-120 到 -40 是负的差距变小。还要看上面的 K 线。', '-120 to -40 means the negative gap got smaller. You still have to look at the candles.']
           }),
           quiz('柱子缩短是不是价格一定下跌？', 'If the bars get shorter, must price fall?', [opt('A', '一定', 'It must'), opt('B', '否', 'No'), opt('C', '只在日线一定', 'Only on the daily chart')], 'B', {
             A: ['柱子变短只说明两条线在靠近，价格仍可以继续涨。', 'Shorter bars only mean the two lines are getting closer. Price can still keep rising.'],
@@ -87,7 +87,7 @@
             C: ['换成日线，也不保证下跌。', 'Switching to the daily chart does not guarantee a fall either.']
           })
         ],
-        study: { kind: 'macd', closes: macdCloses, start: 60 }
+        study: { kind: 'macd', practical: 'macd', closes: macdCloses }
       }),
       lesson({
         id: '03',
@@ -108,10 +108,10 @@
           miss: bi('RSI 用的是涨跌幅，不是成交量，也不下卖出命令。', 'RSI uses price changes, not volume, and it does not issue a sell order.')
         },
         quizzes: [
-          quiz('RSI 75 表示什么？', 'What does RSI 75 mean?', [opt('A', '必须立刻卖出', 'You must sell immediately'), opt('B', '近期上涨相对强', 'The recent rise is relatively strong'), opt('C', '成交量一定放大', 'Volume must have expanded')], 'B', {
-            A: ['70 以上只是强弱刻度，强趋势可以继续涨。', 'Above 70 is a strength scale. A strong trend can keep rising.'],
-            B: ['RSI 高，说明这段时间上涨幅度相对下跌幅度更大。', 'A high RSI means gains in this window are larger relative to losses.'],
-            C: ['RSI 公式里没有成交量。', 'The RSI formula does not contain volume.']
+          quiz('教学模拟：BTC 的 RSI(14) 等于 78，最准确的说法是？', 'Teaching simulation: BTC RSI(14) is 78. What is the most accurate statement?', [opt('A', '最近上涨相对强，可能停在高位，不能单凭 78 判断马上下跌', 'The recent rise is relatively strong and can stay high. 78 alone does not mean a drop is imminent'), opt('B', '一定要立刻做空', 'You must short immediately'), opt('C', '价格已经确定到顶', 'Price has definitely topped')], 'A', {
+            A: ['78 只说明最近涨得相对强。强趋势里它可以一直高于 70。', '78 only says the recent rise is relatively strong. A strong trend can stay above 70.'],
+            B: ['超买不是做空命令。', 'Overbought is not an order to short.'],
+            C: ['没有“到了 78 就到顶”这条规则。', 'There is no rule that 78 means the top is in.']
           }),
           quiz('强趋势可以一直停在超买区吗？', 'Can a strong trend stay in the overbought zone?', [opt('A', '能', 'Yes'), opt('B', '不能', 'No'), opt('C', '只能停一根', 'Only for one bar')], 'A', {
             A: ['价格连续上涨时，平均涨幅会压过平均跌幅，RSI 可以在高位停留。', 'When price keeps rising, average gain outweighs average loss, so RSI can stay high.'],
@@ -124,7 +124,7 @@
             C: ['持仓量是合约未平仓数量，不是 RSI 的输入。', 'Open interest is outstanding contracts, not an RSI input.']
           })
         ],
-        study: { kind: 'rsi', main: 'rsi', closes: rsi75, start: 30 }
+        study: { kind: 'rsi', main: 'rsi', practical: 'rsi', closes: rsi75 }
       }),
       lesson({
         id: '04',
