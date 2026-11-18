@@ -47,18 +47,18 @@
         title: bi('MACD：柱子缩短意味着什么', 'MACD: what a shrinking histogram means'),
         scene: bi('柱子变短的时候，价格是不是一定马上跌？', 'When the histogram shrinks, must price fall right away?'),
         one: bi('金叉是快线 DIF 上穿慢线 DEA，死叉是下穿，柱子变短也不等于价格马上跌。', 'A golden cross is the fast DIF line crossing above the slow DEA line, a death cross is a cross below, and a shorter histogram still does not mean price falls at once.'),
-        explain: bi('图的上半部分是蜡烛 K 线。\n下半部分才是 MACD（12、26、9）。\n黄线 DIF 是 EMA12 减去 EMA26。\n蓝线 DEA 是 DIF 的 9 根平均，也叫信号线。\n柱子画的是两条线差多远。\n本课的柱子等于 DIF 减去 DEA，不乘 2。\n有的软件把柱子画成两倍。\n数值就可以差一倍。\n那是画法不同，不是算错。\n最前面大约 26 根还在预热。\n早期的线还不稳。\n金叉不是买入按钮。', 'The top half is candlesticks.\nThe bottom half is MACD (12, 26, 9).\nThe gold DIF line is EMA12 minus EMA26.\nThe blue DEA line is the 9-bar average of DIF, also called the signal line.\nThe bars show how far apart the two lines are.\nIn this lesson a bar equals DIF minus DEA, and it is not multiplied by 2.\nSome software draws the bar at twice that size.\nThe number can then differ by a factor of two.\nThat is a different way of drawing it, not a wrong calculation.\nAbout the first 26 bars are still warming up.\nThe early lines are not steady yet.\nA golden cross is not a buy button.'),
+        explain: bi('图的上半部分是蜡烛 K 线。\n下半部分才是 MACD（12、26、9）。\n黄线 DIF 是 EMA12 减去 EMA26。\n蓝线 DEA 是 DIF 的 9 根平均，也叫信号线。\n柱子画的是两条线差多远。\n本课的柱子等于 DIF 减去 DEA，不乘 2。\n有的软件把柱子画成两倍。\n数值就可以差一倍。\n那是画法不同，不是算错。\n金叉是 DIF 由下向上穿过 DEA。\n死叉是 DIF 由上向下穿过 DEA。\n两根相等不算穿过。\n不够预热就写数据不足，不画 0。\n图上至少 90 根模拟 K 线。\n后面的 K 线先藏着。\n顶背离要价格的第二个高点更高，而且同一时间的 DIF 高点更低。\n只看到 DIF 下降，还不是背离。\n金叉不是买入按钮。', 'The top half is candlesticks.\nThe bottom half is MACD (12, 26, 9).\nThe gold DIF line is EMA12 minus EMA26.\nThe blue DEA line is the 9-bar average of DIF, also called the signal line.\nThe bars show how far apart the two lines are.\nIn this lesson a bar equals DIF minus DEA, and it is not multiplied by 2.\nSome software draws the bar at twice that size.\nThe number can then differ by a factor of two.\nThat is a different way of drawing it, not a wrong calculation.\nA golden cross is DIF crossing up through DEA.\nA death cross is DIF crossing down through DEA.\nEqual values are not a cross.\nBefore the warmup is done, the chart says the data is not ready and does not draw 0.\nThe chart has at least 90 simulated candles.\nLater candles stay hidden.\nA bearish divergence needs a higher price high and, at the same time, a lower DIF high.\nA falling DIF by itself is not divergence.\nA golden cross is not a buy button.'),
         topic: {
           title: bi('金叉和死叉', 'Golden cross and death cross'),
           body: bi('金叉，是快线 DIF 从下往上穿过慢线 DEA。\n死叉，是快线 DIF 从上往下穿过慢线 DEA。\n图上会把这两个点标成「金叉」和「死叉」。\n金叉不是必涨。\n死叉不是必跌。\n它们只说明两条线换了上下位置。', 'A golden cross is the fast DIF line crossing up through the slow DEA line.\nA death cross is the fast DIF line crossing down through the slow DEA line.\nThe chart marks these two points as “golden cross” and “death cross”.\nA golden cross is not a sure rise.\nA death cross is not a sure fall.\nThey only say the two lines have swapped which one is on top.')
         },
-        example: bi('教学虚构：DIF 是 2.4，DEA 是 1.9。\n柱子是 0.5。\n价格还在涨的时候，两条线也可以靠近。\n所以柱子变短，不等于价格必须下跌。\n图上另有一次金叉和一次死叉，都标了名字。', 'Teaching fiction: DIF is 2.4 and DEA is 1.9.\nThe bar is 0.5.\nWhile price is still rising, the two lines can also move closer.\nSo a shorter bar does not mean price must fall.\nThe chart also has one golden cross and one death cross, and both are named.'),
+        example: bi('教学模拟：DIF 是 2.4，DEA 是 1.9。\n柱子是 0.5，不乘 2。\n零轴上方有一次金叉，只是延续候选。\n零轴下方另有一次金叉，后面仍能创新低。\n负柱变短时，收盘还可以继续跌。\n价格创新高时，DIF 的高点可以更低。\n那也不保证反转。', 'Teaching simulation: DIF is 2.4 and DEA is 1.9.\nThe bar is 0.5, and it is not doubled.\nOne golden cross is above zero. It is only a continuation candidate.\nAnother golden cross is below zero, and price can still make a new low afterward.\nWhile the negative bars get shorter, the close can keep falling.\nPrice can make a new high while the DIF high is lower.\nThat still does not guarantee a reversal.'),
         pitfalls: [
           bi('把柱子缩短直接当成卖出信号', 'Taking a shrinking histogram as a sell signal by itself'),
           bi('看见金叉就当成必涨，看见死叉就当成必跌', 'Treating a golden cross as a sure rise, or a death cross as a sure fall'),
           bi('忽略平台是否把柱子乘了 2', 'Ignoring whether the platform multiplies the histogram by 2')
         ],
-        practice: bi('先在图上找到标着金叉和死叉的点，再看柱子变短时价格是不是还可能在涨。', 'First find the points marked golden cross and death cross, then see that price can still be rising when the bars get shorter.'),
+        practice: bi('自己点出金叉那根 K 线。零轴上方不是买入保证。零轴下方仍可能创新低。背离要自己点两个价格高点，再点同一时间的 DIF。', 'Mark the golden-cross candle yourself. Above zero is not a buy order. Below zero, price can still make a new low. For divergence, mark two price highs, then the DIF highs at the same time.'),
         check: {
           ask: bi('教学虚构：DIF 2.4、DEA 1.9，按本课定义柱子是多少？', 'Teaching fiction: DIF is 2.4 and DEA is 1.9. What is the bar in this lesson?'),
           options: [opt('A', '0.5', '0.5'), opt('B', '4.3', '4.3'), opt('C', '2.4', '2.4')],
@@ -87,7 +87,7 @@
             C: ['换成日线，也不保证下跌。', 'Switching to the daily chart does not guarantee a fall either.']
           })
         ],
-        study: { kind: 'macd', practical: 'macd', closes: macdCloses }
+        study: { kind: 'macd', lessonChart: 'macd-full', closes: macdCloses }
       }),
       lesson({
         id: '03',
@@ -831,4 +831,610 @@
     study._emaWrapped = true;
   }
   global.STAR_CH02_EMA = { ema: ema, crosses: crosses, nearLine: nearLine, buildScenes: buildScenes, mount: mount };
+})(typeof window !== 'undefined' ? window : global);
+
+/* MACD lesson chart. Formula and drawing live here, not in the lab engine. */
+(function (global) {
+  function ema(closes, n) {
+    var out = closes.map(function () { return null; });
+    if (n < 1 || closes.length < n) return out;
+    var sum = 0;
+    var i;
+    for (i = 0; i < n; i++) sum += closes[i];
+    var prev = sum / n;
+    out[n - 1] = prev;
+    var alpha = 2 / (n + 1);
+    for (i = n; i < closes.length; i++) {
+      prev = alpha * closes[i] + (1 - alpha) * prev;
+      out[i] = prev;
+    }
+    return out;
+  }
+  function macd(closes) {
+    var fast = ema(closes, 12);
+    var slow = ema(closes, 26);
+    var dif = closes.map(function (_, i) { return fast[i] == null || slow[i] == null ? null : fast[i] - slow[i]; });
+    var dea = dif.map(function () { return null; });
+    var idx = [];
+    dif.forEach(function (value, i) { if (value != null) idx.push(i); });
+    if (idx.length >= 9) {
+      var sum = 0;
+      var j;
+      for (j = 0; j < 9; j++) sum += dif[idx[j]];
+      var prev = sum / 9;
+      dea[idx[8]] = prev;
+      var alpha = 2 / 10;
+      for (j = 9; j < idx.length; j++) {
+        prev = alpha * dif[idx[j]] + (1 - alpha) * prev;
+        dea[idx[j]] = prev;
+      }
+    }
+    var hist = dif.map(function (value, i) { return value == null || dea[i] == null ? null : value - dea[i]; });
+    return { fast: fast, slow: slow, dif: dif, dea: dea, hist: hist };
+  }
+  function walk(start, steps) {
+    var bars = [];
+    var price = start;
+    var hour = 0;
+    steps.forEach(function (step) {
+      var i;
+      for (i = 0; i < step[0]; i++) {
+        var open = price;
+        price = Math.round((open + step[1]) * 100) / 100;
+        var wick = Math.max(12, Math.abs(step[1]) * 0.35);
+        bars.push({
+          t: hour,
+          o: open,
+          h: Math.round((Math.max(open, price) + wick) * 100) / 100,
+          l: Math.round((Math.min(open, price) - wick * 0.8) * 100) / 100,
+          c: price,
+          v: 80 + (hour % 7) * 11
+        });
+        hour += 1;
+      }
+    });
+    return bars;
+  }
+  function swingHighs(bars, from) {
+    var out = [];
+    var i;
+    for (i = Math.max(from, 3); i < bars.length - 3; i++) {
+      var ok = true;
+      var k;
+      for (k = 1; k <= 3; k++) if (bars[i].h < bars[i - k].h || bars[i].h < bars[i + k].h) ok = false;
+      if (ok) out.push(i);
+    }
+    return out;
+  }
+  function decorate(bars) {
+    var pack = macd(bars.map(function (bar) { return bar.c; }));
+    var from = 60;
+    var gold = [];
+    var death = [];
+    var shrink = [];
+    var zero = [];
+    var i;
+    for (i = from + 1; i < bars.length; i++) {
+      if (pack.hist[i] == null || pack.hist[i - 1] == null) continue;
+      var prev = pack.dif[i - 1] - pack.dea[i - 1];
+      var now = pack.dif[i] - pack.dea[i];
+      if (prev !== 0 && now !== 0 && prev < 0 && now > 0) gold.push(i);
+      if (prev !== 0 && now !== 0 && prev > 0 && now < 0) death.push(i);
+      if (pack.hist[i] < 0 && pack.hist[i - 1] < 0 && pack.hist[i] > pack.hist[i - 1] && bars[i].c < bars[i - 1].c) shrink.push(i);
+      if (pack.dif[i - 1] !== 0 && pack.dif[i] !== 0 && ((pack.dif[i - 1] < 0 && pack.dif[i] > 0) || (pack.dif[i - 1] > 0 && pack.dif[i] < 0))) zero.push(i);
+    }
+    return {
+      bars: bars,
+      visibleFrom: from,
+      visible: bars.length - from,
+      gold: gold,
+      death: death,
+      shrink: shrink,
+      zero: zero,
+      highs: swingHighs(bars, from),
+      macd: pack
+    };
+  }
+  function buildScenes() {
+    return {
+      above: Object.assign({ id: 'above', zh: '零轴上金叉', en: 'Golden cross above zero' }, decorate(walk(50000, [[70, 45], [16, -30], [40, 40], [20, 15], [12, 10]]))),
+      fail: Object.assign({ id: 'fail', zh: '零轴下金叉', en: 'Golden cross below zero' }, decorate(walk(68000, [[50, 10], [40, -80], [18, 130], [30, -70], [20, -40]]))),
+      shrink: Object.assign({ id: 'shrink', zh: '负柱缩短', en: 'Negative bars shrink' }, decorate(walk(80000, [[50, -20], [30, -90], [40, -8], [36, -6]]))),
+      div: Object.assign({ id: 'div', zh: '顶背离', en: 'Bearish divergence' }, decorate(walk(40000, [[60, 8], [28, 100], [14, -45], [24, 40], [16, -12], [14, -8]]))),
+      fake: Object.assign({ id: 'fake', zh: '假背离', en: 'Fake divergence' }, decorate(walk(42000, [[60, 8], [28, 90], [16, -50], [18, 25], [16, -10], [16, -8]]))),
+      exam: Object.assign({ id: 'exam', zh: '新行情', en: 'New tape' }, decorate(walk(46000, [[55, 12], [30, 85], [12, -35], [26, 32], [18, -70], [20, -25]])))
+    };
+  }
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function fmt(n) {
+    if (n == null || n !== n) return '—';
+    return (Math.round(n * 100) / 100).toString();
+  }
+  function mount(root, lesson, lang) {
+    var zh = lang !== 'en';
+    var scenes = buildScenes();
+    var state = {
+      scene: 'above',
+      step: 'watch',
+      shown: 28,
+      cursor: null,
+      playing: false,
+      showFast: true,
+      showSlow: false,
+      showDif: true,
+      showDea: true,
+      showHist: true,
+      showCross: true,
+      hideAnswer: false,
+      useHist: false,
+      pricePts: [],
+      macdPts: [],
+      note: '',
+      tone: '',
+      examStage: 'cross'
+    };
+    if (root._macdTimer) clearInterval(root._macdTimer);
+    root._macdTimer = null;
+    function scene() { return scenes[state.scene]; }
+    function maxShown() { return scene().bars.length - scene().visibleFrom; }
+    function stop() {
+      state.playing = false;
+      if (root._macdTimer) clearInterval(root._macdTimer);
+      root._macdTimer = null;
+    }
+    function prefix() {
+      var current = scene();
+      var end = current.visibleFrom + state.shown;
+      var bars = current.bars.slice(0, end);
+      return { current: current, end: end, bars: bars, macd: macd(bars.map(function (bar) { return bar.c; })) };
+    }
+    function kindAt(pack, index) {
+      var m = pack.macd;
+      if (index < 1 || m.hist[index] == null || m.hist[index - 1] == null) return '';
+      var prev = m.dif[index - 1] - m.dea[index - 1];
+      var now = m.dif[index] - m.dea[index];
+      if (prev === 0 || now === 0) return '';
+      if (prev < 0 && now > 0) return 'gold';
+      if (prev > 0 && now < 0) return 'death';
+      return '';
+    }
+    function shrinkAt(pack, index) {
+      var m = pack.macd;
+      var bar = pack.bars[index];
+      var prev = pack.bars[index - 1];
+      return !!(bar && prev && m.hist[index] != null && m.hist[index] < 0 && m.hist[index - 1] < 0 && m.hist[index] > m.hist[index - 1] && bar.c < prev.c);
+    }
+    function confirmedHigh(pack, index) {
+      if (index < 3 || index + 3 >= pack.bars.length) return false;
+      var k;
+      for (k = 1; k <= 3; k++) if (pack.bars[index].h < pack.bars[index - k].h || pack.bars[index].h < pack.bars[index + k].h) return false;
+      return true;
+    }
+    function taskText() {
+      if (state.step === 'exam') {
+        if (state.examStage === 'cross') return zh ? '新行情不标答案。先把 K 线放出来，点出 DIF 仍在零轴上方的那次金叉。' : 'The new tape hides the labels. Reveal the candles and mark the golden cross that is still above zero.';
+        if (state.examStage === 'zero') return zh ? '再点一根 DIF 在零轴下方的 K 线，看它从哪根穿过去。' : 'Now mark a candle whose DIF is below zero, and see where it crossed.';
+        return zh ? '再点两个价格高点，然后在副图点同一时间附近的 DIF 高点。第二处价格要更高，DIF 要更低，才是本课的顶背离。' : 'Mark two price highs, then the nearby DIF highs. The later price high must be higher and the DIF high lower.';
+      }
+      if (state.step === 'judge') return zh ? '判断这一句。点错会说明原因。' : 'Judge this statement. A wrong pick explains why.';
+      if (state.scene === 'fail') return zh ? '点出零轴下方的金叉。它和前面的下跌是矛盾的，后面仍可能创新低。' : 'Mark the golden cross below zero. It disagrees with the decline, and price can still make a new low.';
+      if (state.scene === 'shrink') return zh ? '点一根负柱比前一根短、收盘却仍在跌的 K 线。柱子变短不是价格已经上涨。' : 'Mark a candle whose negative bar is shorter while the close is still falling.';
+      if (state.scene === 'div' || state.scene === 'fake') return zh ? '先在主图点两个价格高点，再在副图点对应的 DIF 高点。时间要对上。改成比柱子时，旧的副图点会清掉。' : 'Mark two price highs, then the matching DIF highs. The times have to line up. Switching to the histogram clears the lower points.';
+      return zh ? '看懂金叉和死叉。后面的 K 线先藏着。点一根，上下一起看收盘、DIF、DEA 和柱子。' : 'Watch the golden and death crosses. Later candles stay hidden. Tap one candle to read the close, DIF, DEA, and the bar together.';
+    }
+    function gradeDivergence(pack) {
+      if (state.pricePts.length < 2 || state.macdPts.length < 2) {
+        return { tone: '', text: zh ? '价格高点 ' + state.pricePts.length + '/2，副图点 ' + state.macdPts.length + '/2。' : 'Price highs ' + state.pricePts.length + '/2, lower points ' + state.macdPts.length + '/2.' };
+      }
+      var price = state.pricePts.slice().sort(function (a, b) { return a - b; });
+      var macdPts = state.macdPts.slice().sort(function (a, b) { return a - b; });
+      if (!confirmedHigh(pack, price[0]) || !confirmedHigh(pack, price[1])) {
+        return { tone: 'is-wrong', text: zh ? '有一根还不能算摆动高点。左右各 3 根都要更低，而且右边 3 根要已经放出来。' : 'One mark is not a confirmed swing high. Three bars on each side must be lower, and the later three must already be shown.' };
+      }
+      if (Math.abs(macdPts[0] - price[0]) > 2 || Math.abs(macdPts[1] - price[1]) > 2) {
+        return { tone: 'is-wrong', text: zh ? '时间窗口不对应。副图的点要和价格高点在同一根，或左右不超过 2 根。' : 'The time windows do not match. Each lower point must be on the same bar as a price high, or within 2 bars.' };
+      }
+      if (!(pack.bars[price[1]].h > pack.bars[price[0]].h)) {
+        return { tone: state.scene === 'fake' ? 'is-right' : 'is-wrong', text: zh ? '第二价格高点没有更高，所以这不是本课的顶背离。只看到指标下降还不够。' : 'The second price high is not higher, so this is not bearish divergence in this lesson. A falling indicator is not enough.' };
+      }
+      var series = state.useHist ? pack.macd.hist : pack.macd.dif;
+      var name = state.useHist ? (zh ? '柱子' : 'histogram') : 'DIF';
+      if (series[macdPts[0]] == null || series[macdPts[1]] == null) return { tone: '', text: zh ? '这两根的' + name + '还不能计算，不显示 0。' : name + ' is not ready on one of these bars. No fake zero is shown.' };
+      if (!(series[macdPts[1]] < series[macdPts[0]])) {
+        return { tone: 'is-wrong', text: zh ? name + '没有更低高点。两个点都要比同一条线，不能一条用 DIF、一条用柱子。' : name + ' does not make a lower high. Both points must use the same line.' };
+      }
+      return { tone: 'is-right', text: zh ? '价格更高高点，' + name + ' 更低高点，时间也对齐。这是本课的顶背离，仍然不保证反转。' : 'Higher price high, lower ' + name + ' high, and the times line up. This is bearish divergence in this lesson. It still does not guarantee a reversal.' };
+    }
+    function gradeBar(pack, index) {
+      var kind = kindAt(pack, index);
+      var dif = pack.macd.dif[index];
+      if (state.step === 'exam') {
+        if (state.examStage === 'cross') {
+          if (kind === 'gold' && dif > 0) {
+            state.examStage = 'zero';
+            return { tone: 'is-right', text: zh ? '这是零轴上方的金叉，只是延续候选，不是买入保证。再找一根 DIF 落到零轴下方的 K 线。' : 'This golden cross is above zero. It is a continuation candidate, not a buy order. Next, find a candle whose DIF is below zero.' };
+          }
+          if (kind === 'gold') return { tone: 'is-wrong', text: zh ? '这次金叉在零轴下方。请找 DIF 仍大于 0 的那一次。' : 'This golden cross is below zero. Find the one where DIF is still above 0.' };
+          if (kind === 'death') return { tone: '', text: zh ? '这根是死叉。考试要先点零轴上方的金叉。' : 'This bar is a death cross. The exam asks for the golden cross above zero first.' };
+          return { tone: '', text: zh ? '这根不是金叉。金叉是 DIF 从 DEA 下方严格穿到上方。' : 'This bar is not a golden cross. DIF has to move from strictly below DEA to strictly above it.' };
+        }
+        if (state.examStage === 'zero') {
+          if (dif == null) return { tone: '', text: zh ? '这根 DIF 还不能计算。' : 'DIF is not ready on this bar.' };
+          if (dif < 0) {
+            state.examStage = 'div';
+            return { tone: 'is-right', text: zh ? 'DIF 在零轴下方，说明快均线低于慢均线。接着点两个价格高点和对应的 DIF。' : 'DIF is below zero, so the fast average is under the slow one. Next, mark two price highs and the matching DIF highs.' };
+          }
+          return { tone: '', text: zh ? '这根 DIF 还在零轴上方。请点已经穿到下方的那根。' : 'DIF is still above zero on this bar. Mark one that has crossed below.' };
+        }
+        return gradeDivergence(pack);
+      }
+      if (state.scene === 'shrink') {
+        if (shrinkAt(pack, index)) return { tone: 'is-right', text: zh ? '负柱在收窄，但收盘仍在跌。这只说明 DIF 和 DEA 的负差值变小，不能单独证明价格已经反转。' : 'The negative bar is narrowing, but the close is still falling. The gap got smaller. That alone does not prove a reversal.' };
+        return { tone: '', text: zh ? '还不是。要负柱比前一根短，而且这根收盘更低。' : 'Not yet. The negative bar must be shorter than the previous one, and this close must be lower.' };
+      }
+      if (state.scene === 'div' || state.scene === 'fake') return gradeDivergence(pack);
+      if (state.scene === 'fail') {
+        if (kind === 'gold' && dif <= 0) return { tone: 'is-right', text: zh ? '这次金叉在零轴下方。交叉和大趋势矛盾，后面仍可能创新低。它不是买入保证。' : 'This golden cross is below zero. The cross disagrees with the larger decline, and price can still make a new low.' };
+        if (kind === 'gold') return { tone: 'is-wrong', text: zh ? '这根在零轴上方。本剧情要找 DIF 小于或等于 0 的金叉。' : 'This one is above zero. This scene asks for a golden cross with DIF at or below 0.' };
+        return { tone: '', text: zh ? '这根不是零轴下方的金叉。' : 'This bar is not the golden cross below zero.' };
+      }
+      if (kind === 'gold' && dif > 0) return { tone: 'is-right', text: zh ? '这是零轴上方的金叉，只是延续候选，不是买入保证。旁边的死叉也只是两条线换了位置。' : 'This golden cross is above zero. It is a continuation candidate, not a buy order. A death cross only says the lines swapped places.' };
+      if (kind === 'gold') return { tone: 'is-wrong', text: zh ? '这次金叉在零轴下方。请换零轴上方的那一次。' : 'This golden cross is below zero. Find the one above zero.' };
+      if (kind === 'death') return { tone: '', text: zh ? '这根标的是死叉。本剧情要你点金叉。' : 'This bar is the death cross. This scene asks for the golden cross.' };
+      return { tone: '', text: zh ? '这根 DIF 没有穿过 DEA。' : 'DIF does not cross DEA on this bar.' };
+    }
+    function readout(pack) {
+      if (state.cursor == null) return '';
+      var bar = pack.bars[state.cursor];
+      if (!bar) return '';
+      var m = pack.macd;
+      var dif = m.dif[state.cursor];
+      var dea = m.dea[state.cursor];
+      var hist = m.hist[state.cursor];
+      var when = zh ? '第 ' + (state.cursor - pack.current.visibleFrom + 1) + ' 根 · 模拟 1 小时' : 'Bar ' + (state.cursor - pack.current.visibleFrom + 1) + ' · simulated 1h';
+      var cross = kindAt(pack, state.cursor);
+      var tag = cross === 'gold' ? (zh ? ' 这根是金叉。' : ' This bar is a golden cross.') : (cross === 'death' ? (zh ? ' 这根是死叉。' : ' This bar is a death cross.') : '');
+      var side = dif == null ? '' : (dif > 0 ? (zh ? ' DIF 在零轴上方。' : ' DIF is above zero.') : (dif < 0 ? (zh ? ' DIF 在零轴下方。' : ' DIF is below zero.') : (zh ? ' DIF 正在零轴上。' : ' DIF is on zero.')));
+      return when + '<br>' + (zh ? '开 ' : 'O ') + fmt(bar.o) + (zh ? ' 高 ' : ' H ') + fmt(bar.h) + (zh ? ' 低 ' : ' L ') + fmt(bar.l) + (zh ? ' 收 ' : ' C ') + fmt(bar.c) + (zh ? ' 量 ' : ' V ') + bar.v +
+        '<br>EMA12 ' + fmt(m.fast[state.cursor]) + ' · EMA26 ' + fmt(m.slow[state.cursor]) +
+        '<br>DIF ' + (dif == null ? (zh ? '数据不足' : 'not ready') : fmt(dif)) + ' · DEA ' + (dea == null ? (zh ? '数据不足' : 'not ready') : fmt(dea)) + ' · ' + (zh ? '柱 ' : 'bar ') + (hist == null ? (zh ? '数据不足' : 'not ready') : fmt(hist)) + tag + side;
+    }
+    function paint() {
+      var pack = prefix();
+      var from = pack.current.visibleFrom;
+      var draw = pack.bars.slice(from);
+      var w = 980;
+      var h = 470;
+      var padL = 10;
+      var padR = 72;
+      var top = 16;
+      var priceH = 188;
+      var vals = [];
+      draw.forEach(function (bar, i) {
+        vals.push(bar.h, bar.l);
+        var abs = from + i;
+        if (state.showFast && pack.macd.fast[abs] != null) vals.push(pack.macd.fast[abs]);
+        if (state.showSlow && pack.macd.slow[abs] != null) vals.push(pack.macd.slow[abs]);
+      });
+      var min = Math.min.apply(null, vals);
+      var max = Math.max.apply(null, vals);
+      if (min === max) { min -= 1; max += 1; }
+      var span = max - min;
+      min -= span * 0.08;
+      max += span * 0.08;
+      function y(p) { return top + (max - p) / (max - min) * priceH; }
+      var slot = (w - padL - padR) / Math.max(draw.length, 1);
+      var macTop = 292;
+      var macH = 140;
+      var macVals = [1];
+      draw.forEach(function (bar, i) {
+        var abs = from + i;
+        ['dif', 'dea', 'hist'].forEach(function (key) {
+          var value = pack.macd[key][abs];
+          if (value != null) macVals.push(Math.abs(value));
+        });
+      });
+      var macMax = Math.max.apply(null, macVals);
+      function my(v) { return macTop + macH / 2 - (v / macMax) * (macH / 2 - 10); }
+      var bits = ['<svg viewBox="0 0 ' + w + ' ' + h + '" role="img" aria-label="' + (zh ? '模拟BTC与MACD' : 'Simulated BTC and MACD') + '">'];
+      bits.push('<rect width="' + w + '" height="' + h + '" fill="#120e21"></rect>');
+      var g;
+      for (g = 0; g < 4; g++) {
+        var price = min + (max - min) * g / 3;
+        var gy = y(price);
+        bits.push('<line x1="' + padL + '" y1="' + gy + '" x2="' + (w - padR) + '" y2="' + gy + '" stroke="rgba(230,199,158,.16)"></line>');
+        bits.push('<text x="' + (w - 8) + '" y="' + (gy + 4) + '" text-anchor="end" fill="#d4bc9e" font-size="13">' + fmt(price) + '</text>');
+      }
+      var volMax = 1;
+      draw.forEach(function (bar) { if (bar.v > volMax) volMax = bar.v; });
+      draw.forEach(function (bar, i) {
+        var up = bar.c >= bar.o;
+        var color = up ? '#1f8a4d' : '#d4534e';
+        var x = padL + i * slot;
+        var xc = x + slot / 2;
+        var bw = Math.max(2.2, slot * 0.55);
+        bits.push('<line x1="' + xc + '" y1="' + y(bar.h) + '" x2="' + xc + '" y2="' + y(bar.l) + '" stroke="' + color + '" stroke-width="1.2"></line>');
+        bits.push('<rect x="' + (xc - bw / 2) + '" y="' + Math.min(y(bar.o), y(bar.c)) + '" width="' + bw + '" height="' + Math.max(1.3, Math.abs(y(bar.c) - y(bar.o))) + '" fill="' + color + '"></rect>');
+        var vh = Math.max(1, bar.v / volMax * 28);
+        bits.push('<rect x="' + (xc - bw / 2) + '" y="' + (268 - vh) + '" width="' + bw + '" height="' + vh + '" fill="' + color + '" opacity="0.8"></rect>');
+        if (i % 16 === 0) bits.push('<text x="' + xc + '" y="462" fill="#b7aac8" font-size="12">' + (zh ? '第' + (i + 1) + '根' : '#' + (i + 1)) + '</text>');
+      });
+      function priceLine(series, color, dash) {
+        var pts = [];
+        draw.forEach(function (bar, i) {
+          var value = series[from + i];
+          if (value != null) pts.push((padL + i * slot + slot / 2).toFixed(1) + ',' + y(value).toFixed(1));
+        });
+        if (pts.length > 1) bits.push('<polyline points="' + pts.join(' ') + '" fill="none" stroke="' + color + '" stroke-width="2.2"' + (dash ? ' stroke-dasharray="7 4"' : '') + '></polyline>');
+      }
+      if (state.showFast) priceLine(pack.macd.fast, '#f4cb82', false);
+      if (state.showSlow) priceLine(pack.macd.slow, '#8eb4ff', true);
+      bits.push('<line x1="' + padL + '" y1="' + my(0) + '" x2="' + (w - padR) + '" y2="' + my(0) + '" stroke="#f0d59a" stroke-dasharray="4 3"></line>');
+      bits.push('<text x="' + (w - 8) + '" y="' + (my(0) + 4) + '" text-anchor="end" fill="#f0d59a" font-size="13">0</text>');
+      draw.forEach(function (bar, i) {
+        var abs = from + i;
+        var hist = pack.macd.hist[abs];
+        if (!state.showHist || hist == null) return;
+        var xc = padL + i * slot + slot / 2;
+        var y1 = my(0);
+        var y2 = my(hist);
+        bits.push('<rect x="' + (xc - Math.max(1.6, slot * 0.36)) + '" y="' + Math.min(y1, y2) + '" width="' + Math.max(2.4, slot * 0.62) + '" height="' + Math.max(1, Math.abs(y2 - y1)) + '" fill="' + (hist >= 0 ? '#1f8a4d' : '#d4534e') + '"></rect>');
+      });
+      function macdLine(series, color, dash) {
+        var pts = [];
+        draw.forEach(function (bar, i) {
+          var value = series[from + i];
+          if (value != null) pts.push((padL + i * slot + slot / 2).toFixed(1) + ',' + my(value).toFixed(1));
+        });
+        if (pts.length > 1) bits.push('<polyline points="' + pts.join(' ') + '" fill="none" stroke="' + color + '" stroke-width="2.3"' + (dash ? ' stroke-dasharray="7 4"' : '') + '></polyline>');
+      }
+      if (state.showDif) macdLine(pack.macd.dif, '#f4cb82', false);
+      if (state.showDea) macdLine(pack.macd.dea, '#8eb4ff', true);
+      var showLabels = !state.hideAnswer && (state.step === 'watch' || state.showCross);
+      if (showLabels) {
+        draw.forEach(function (bar, i) {
+          var abs = from + i;
+          var kind = kindAt(pack, abs);
+          if (!kind) return;
+          var xc = padL + i * slot + slot / 2;
+          bits.push('<text data-cross="' + kind + '" x="' + xc + '" y="' + (my(0) - 8) + '" text-anchor="middle" fill="' + (kind === 'gold' ? '#f4cb82' : '#ffb4c0') + '" font-size="13">' + (kind === 'gold' ? (zh ? '金叉' : 'Gold') : (zh ? '死叉' : 'Death')) + '</text>');
+        });
+      }
+      function link(points, pane) {
+        if (points.length < 2) return;
+        var sorted = points.slice().sort(function (a, b) { return a - b; });
+        var pts = sorted.map(function (abs) {
+          var i = abs - from;
+          if (i < 0 || i >= draw.length) return '';
+          var xc = padL + i * slot + slot / 2;
+          var yy = pane === 'price' ? y(pack.bars[abs].h) : my((state.useHist ? pack.macd.hist[abs] : pack.macd.dif[abs]) || 0);
+          return xc.toFixed(1) + ',' + yy.toFixed(1);
+        }).filter(Boolean);
+        if (pts.length === 2) bits.push('<polyline points="' + pts.join(' ') + '" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-dasharray="4 3"></polyline>');
+      }
+      link(state.pricePts, 'price');
+      link(state.macdPts, 'macd');
+      function dots(points, pane) {
+        points.forEach(function (abs) {
+          var i = abs - from;
+          if (i < 0 || i >= draw.length) return;
+          var xc = padL + i * slot + slot / 2;
+          var yy = pane === 'price' ? y(pack.bars[abs].h) : my((state.useHist ? pack.macd.hist[abs] : pack.macd.dif[abs]) || 0);
+          bits.push('<circle cx="' + xc + '" cy="' + yy + '" r="5" fill="none" stroke="#ffffff" stroke-width="2"></circle>');
+        });
+      }
+      dots(state.pricePts, 'price');
+      dots(state.macdPts, 'macd');
+      if (state.cursor != null && state.cursor >= from && state.cursor < pack.end) {
+        var cx = padL + (state.cursor - from) * slot + slot / 2;
+        bits.push('<line x1="' + cx + '" y1="' + top + '" x2="' + cx + '" y2="' + (macTop + macH) + '" stroke="rgba(255,255,255,.4)" stroke-dasharray="3 3"></line>');
+      }
+      draw.forEach(function (bar, i) {
+        var abs = from + i;
+        var x = padL + i * slot;
+        bits.push('<rect data-bar="' + abs + '" data-pane="price" x="' + x + '" y="' + top + '" width="' + slot + '" height="250" fill="transparent" style="cursor:pointer"></rect>');
+        bits.push('<rect data-bar="' + abs + '" data-pane="macd" x="' + x + '" y="' + macTop + '" width="' + slot + '" height="' + macH + '" fill="transparent" style="cursor:pointer"></rect>');
+      });
+      bits.push('</svg>');
+      var steps = [['watch', zh ? '看懂' : 'Watch'], ['mark', zh ? '自己标记' : 'Mark'], ['judge', zh ? '判断真假' : 'True or false'], ['fail', zh ? '失败案例' : 'Failure'], ['exam', zh ? '新行情考试' : 'New tape']];
+      var sceneIds = ['above', 'fail', 'shrink', 'div', 'fake'];
+      var judge = '';
+      if (state.step === 'judge') {
+        var q = state.scene === 'fail'
+          ? { ask: zh ? '零轴下方出现金叉，能不能说明下跌趋势已经转成上涨？' : 'A golden cross below zero: does it mean the decline has turned into a rise?', answer: 'B', options: [['A', zh ? '能，金叉必涨' : 'Yes, a cross must rise'], ['B', zh ? '不能，它和大趋势矛盾' : 'No, it disagrees with the larger trend'], ['C', zh ? '只有柱子变红才算' : 'Only a red bar counts']] }
+          : state.scene === 'shrink'
+            ? { ask: zh ? '负柱缩短，但收盘仍在下跌。价格是不是已经反转？' : 'The negative bars shrink, but the close is still falling. Has price already reversed?', answer: 'B', options: [['A', zh ? '已经确认上涨' : 'The rise is confirmed'], ['B', zh ? '不能，负差值变小不是反转' : 'No. A smaller negative gap is not a reversal'], ['C', zh ? '下一根一定会反弹' : 'The next bar must bounce']] }
+            : state.scene === 'div'
+              ? { ask: zh ? '价格更高高点，DIF 更低高点。这是否保证随后反转？' : 'Price makes a higher high and DIF a lower high. Does that guarantee a reversal?', answer: 'B', options: [['A', zh ? '保证' : 'It guarantees it'], ['B', zh ? '不保证' : 'It does not'], ['C', zh ? '柱子也更低才保证' : 'Only if the bar is lower too']] }
+              : state.scene === 'fake'
+                ? { ask: zh ? '价格的第二个高点并没有更高，DIF 却在下降。这是顶背离吗？' : 'The second price high is not higher, while DIF falls. Is that bearish divergence?', answer: 'B', options: [['A', zh ? '是' : 'Yes'], ['B', zh ? '不是，价格没有更高高点' : 'No. Price did not make a higher high'], ['C', zh ? '只要 DIF 下降就是' : 'Any falling DIF counts']] }
+                : { ask: zh ? '零轴上方的金叉，是不是就可以当作买入？' : 'A golden cross above zero: is it a buy order?', answer: 'B', options: [['A', zh ? '是，金叉必涨' : 'Yes, a cross must rise'], ['B', zh ? '不是，只是延续候选' : 'No, it is only a continuation candidate'], ['C', zh ? '死叉才是买入' : 'A death cross is the buy']] };
+        judge = '<p>' + esc(q.ask) + '</p><div class="a1-modes">' + q.options.map(function (opt) {
+          return '<button type="button" data-judge="' + opt[0] + '" data-answer="' + q.answer + '">' + opt[0] + '. ' + esc(opt[1]) + '</button>';
+        }).join('') + '</div>';
+      }
+      var note = state.note || readout(pack) || taskText();
+      root.innerHTML =
+        '<div class="a1"><p class="a1-flag">' + (zh ? '模拟，不是实时行情。教学虚构，不是投资建议。' : 'Simulated, not a live price. Teaching fiction, not investment advice.') + '</p>' +
+        '<div class="a1-modes">' + steps.map(function (item) { return '<button type="button" data-step="' + item[0] + '" aria-pressed="' + (state.step === item[0]) + '">' + item[1] + '</button>'; }).join('') + '</div>' +
+        '<div class="a1-modes">' + sceneIds.map(function (id) { return '<button type="button" data-scene="' + id + '" aria-pressed="' + (state.scene === id) + '">' + esc(zh ? scenes[id].zh : scenes[id].en) + '</button>'; }).join('') + '</div>' +
+        '<p>' + esc(taskText()) + '</p>' +
+        '<div class="a1-modes"><button type="button" data-move="play" aria-pressed="' + state.playing + '">' + (state.playing ? (zh ? '暂停' : 'Pause') : (zh ? '播放' : 'Play')) + '</button>' +
+        '<button type="button" data-move="-1">' + (zh ? '上一根' : 'Previous') + '</button><button type="button" data-move="1">' + (zh ? '下一根' : 'Next') + '</button>' +
+        '<button type="button" data-move="reset">' + (zh ? '重置' : 'Reset') + '</button><span>' + state.shown + ' / ' + maxShown() + (zh ? '，后面先隐藏' : ', later bars hidden') + '</span></div>' +
+        '<div class="a1-modes">' +
+        '<button type="button" data-layer="fast" aria-pressed="' + state.showFast + '">EMA12</button>' +
+        '<button type="button" data-layer="slow" aria-pressed="' + state.showSlow + '">EMA26</button>' +
+        '<button type="button" data-layer="dif" aria-pressed="' + state.showDif + '">DIF</button>' +
+        '<button type="button" data-layer="dea" aria-pressed="' + state.showDea + '">DEA</button>' +
+        '<button type="button" data-layer="hist" aria-pressed="' + state.showHist + '">' + (zh ? '柱' : 'Bars') + '</button>' +
+        '<button type="button" data-layer="cross" aria-pressed="' + state.showCross + '">' + (zh ? '标出金叉死叉' : 'Show crosses') + '</button>' +
+        '<button type="button" data-layer="hide" aria-pressed="' + state.hideAnswer + '">' + (state.hideAnswer ? (zh ? '答案隐藏中' : 'Answers hidden') : (zh ? '答案已显示' : 'Answers shown')) + '</button>' +
+        '<button type="button" data-layer="src" aria-pressed="' + state.useHist + '">' + (state.useHist ? (zh ? '正在比柱子' : 'Comparing bars') : (zh ? '正在比 DIF' : 'Comparing DIF')) + '</button></div>' +
+        '<div class="macd-scroll">' + bits.join('') + '</div>' +
+        '<p class="star-key"><span><i style="background:#f4cb82"></i>DIF</span><span><i style="background:#8eb4ff"></i>DEA</span><span><i style="background:#1f8a4d"></i>' + (zh ? '正柱 / 阳线' : 'Positive / up') + '</span><span><i style="background:#d4534e"></i>' + (zh ? '负柱 / 阴线' : 'Negative / down') + '</span><span>0 ' + (zh ? '零轴' : 'zero') + '</span></p>' +
+        judge +
+        '<p class="a2-readout ' + state.tone + '">' + note + '</p>' +
+        '<p class="ema-note">' + (zh
+          ? '公式：DIF=EMA(收盘,12)−EMA(收盘,26)。DEA 是有效 DIF 的 9 周期 EMA，种子是前 9 个有效 DIF 的简单平均。柱=DIF−DEA，不乘 2。相等不算交叉。不够预热显示数据不足，不向前填 0。'
+          : 'Formula: DIF=EMA(close,12)−EMA(close,26). DEA is the 9-bar EMA of valid DIF values, seeded with the simple average of the first 9. Histogram=DIF−DEA, not doubled. Equality is not a cross. Before the warmup, the chart says not ready and does not fill 0.') + '</p></div>';
+    }
+    function setShown(next) {
+      state.shown = Math.max(1, Math.min(maxShown(), next));
+      if (state.cursor != null && state.cursor >= scene().visibleFrom + state.shown) state.cursor = null;
+    }
+    function enter(step) {
+      stop();
+      state.step = step;
+      state.pricePts = [];
+      state.macdPts = [];
+      state.cursor = null;
+      state.note = '';
+      state.tone = '';
+      state.examStage = 'cross';
+      if (step === 'fail') {
+        state.scene = state.scene === 'div' ? 'fake' : (state.scene === 'fake' || state.scene === 'fail' ? 'shrink' : 'fail');
+        state.hideAnswer = true;
+        state.showCross = false;
+        state.shown = 28;
+      } else if (step === 'exam') {
+        state.scene = 'exam';
+        state.hideAnswer = true;
+        state.showCross = false;
+        state.shown = 36;
+      } else {
+        if (state.scene === 'exam') state.scene = 'above';
+        state.shown = 28;
+        state.hideAnswer = step !== 'watch';
+        state.showCross = step === 'watch';
+      }
+      paint();
+    }
+    if (root._macdClick) root.removeEventListener('click', root._macdClick);
+    root._macdClick = function (ev) {
+      var el = ev.target.closest ? ev.target.closest('[data-step],[data-scene],[data-move],[data-layer],[data-bar],[data-judge]') : null;
+      if (!el || !root.contains(el)) return;
+      if (el.hasAttribute('data-step')) { enter(el.getAttribute('data-step')); return; }
+      if (el.hasAttribute('data-scene')) {
+        stop();
+        state.scene = el.getAttribute('data-scene');
+        state.step = 'mark';
+        state.pricePts = [];
+        state.macdPts = [];
+        state.note = '';
+        state.tone = '';
+        state.hideAnswer = true;
+        state.showCross = false;
+        state.shown = 28;
+        paint();
+        return;
+      }
+      if (el.hasAttribute('data-move')) {
+        var move = el.getAttribute('data-move');
+        if (move === 'play') {
+          if (state.playing) { stop(); paint(); return; }
+          state.playing = true;
+          root._macdTimer = setInterval(function () {
+            if (!root.isConnected) { stop(); return; }
+            if (state.shown >= maxShown()) { stop(); paint(); return; }
+            setShown(state.shown + 1);
+            paint();
+          }, 280);
+          paint();
+          return;
+        }
+        if (move === 'reset') {
+          stop();
+          state.pricePts = [];
+          state.macdPts = [];
+          state.cursor = null;
+          state.note = '';
+          state.tone = '';
+          state.examStage = 'cross';
+          state.shown = state.step === 'exam' ? 36 : 28;
+          paint();
+          return;
+        }
+        setShown(state.shown + Number(move));
+        paint();
+        return;
+      }
+      if (el.hasAttribute('data-layer')) {
+        var layer = el.getAttribute('data-layer');
+        if (layer === 'fast') state.showFast = !state.showFast;
+        if (layer === 'slow') state.showSlow = !state.showSlow;
+        if (layer === 'dif') state.showDif = !state.showDif;
+        if (layer === 'dea') state.showDea = !state.showDea;
+        if (layer === 'hist') state.showHist = !state.showHist;
+        if (layer === 'cross') state.showCross = !state.showCross;
+        if (layer === 'hide') state.hideAnswer = !state.hideAnswer;
+        if (layer === 'src') { state.useHist = !state.useHist; state.macdPts = []; }
+        var names = { fast: ['EMA12 是价格上较快的均线。DIF 用它减去 EMA26。', 'EMA12 is the faster average of price. DIF subtracts EMA26 from it.'], slow: ['EMA26 是较慢的均线。', 'EMA26 is the slower average.'], dif: ['DIF 是 EMA12 减 EMA26。零轴上方表示快均线更高。', 'DIF is EMA12 minus EMA26. Above zero, the fast average is higher.'], dea: ['DEA 是 DIF 的 9 周期 EMA，用来平滑 DIF。', 'DEA is the 9-bar EMA of DIF. It smooths DIF.'], hist: ['柱子等于 DIF 减 DEA，不乘 2。变短只说明两条线在靠近。', 'The bar equals DIF minus DEA, and it is not doubled. Shorter only means the lines are closer.'] };
+        if (names[layer]) { state.note = zh ? names[layer][0] : names[layer][1]; state.tone = ''; }
+        paint();
+        return;
+      }
+      if (el.hasAttribute('data-bar')) {
+        var index = Number(el.getAttribute('data-bar'));
+        var pane = el.getAttribute('data-pane');
+        state.cursor = index;
+        var marking = state.step === 'mark' || state.step === 'fail' || state.step === 'exam';
+        var divMode = state.scene === 'div' || state.scene === 'fake' || (state.step === 'exam' && state.examStage === 'div');
+        if (marking && divMode) {
+          var list = pane === 'macd' ? state.macdPts : state.pricePts;
+          var at = list.indexOf(index);
+          if (at >= 0) list.splice(at, 1);
+          else {
+            if (list.length >= 2) list.shift();
+            list.push(index);
+          }
+          var graded = gradeDivergence(prefix());
+          state.note = graded.text;
+          state.tone = graded.tone;
+        } else if (marking) {
+          var gradedBar = gradeBar(prefix(), index);
+          state.note = gradedBar.text;
+          state.tone = gradedBar.tone;
+        } else {
+          state.note = '';
+          state.tone = '';
+        }
+        paint();
+        return;
+      }
+      if (el.hasAttribute('data-judge')) {
+        var right = el.getAttribute('data-judge') === el.getAttribute('data-answer');
+        state.tone = right ? 'is-right' : 'is-wrong';
+        state.note = right
+          ? (zh ? '对。这只说明定义看清了，不是叫你下单。' : 'Correct. That only means the definition is clear. It is not an order.')
+          : (zh ? '不对。金叉、死叉和柱子变短，都不能单独证明下一根价格。' : 'No. A golden cross, a death cross, or a shorter bar cannot by itself prove the next price.');
+        paint();
+      }
+    };
+    root.addEventListener('click', root._macdClick);
+    if (root._macdKey) root.removeEventListener('keydown', root._macdKey);
+    root.tabIndex = 0;
+    root._macdKey = function (ev) {
+      if (ev.key !== 'ArrowRight' && ev.key !== 'ArrowLeft') return;
+      ev.preventDefault();
+      setShown(state.shown + (ev.key === 'ArrowRight' ? 1 : -1));
+      paint();
+    };
+    root.addEventListener('keydown', root._macdKey);
+    paint();
+  }
+  var study = global.STAR_STUDY;
+  if (study && !study._macdWrapped) {
+    var inner = study.mount;
+    study.mount = function (root, lesson, lang) {
+      if (lesson && lesson.study && lesson.study.lessonChart === 'macd-full') return mount(root, lesson, lang);
+      return inner.apply(this, arguments);
+    };
+    study._macdWrapped = true;
+  }
+  global.STAR_CH02_MACD = { ema: ema, macd: macd, buildScenes: buildScenes, mount: mount };
 })(typeof window !== 'undefined' ? window : global);
