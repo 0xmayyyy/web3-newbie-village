@@ -1162,72 +1162,179 @@ TVL 是按特定规则统计的锁定资产价值，会受币价和重复计算�
 
 ## 先有一个钱包：所有玩法的起点 👛
 
-**玩 DeFi、空投、NFT、Meme，第一步都是先有一个链上钱包。**
+**钱包帮你管理链上操作的钥匙，每次签名前先弄清楚自己究竟允许了什么。**
 
-下面这些玩法，都需要用链上钱包来连接应用、签名确认和存放资产。
-交易所账户不能直接替代它。
+在交易所买过币，不代表你已经有一个能连接链上应用的钱包。
 
-新手可以先从币安钱包（无私钥）开始，它对新手更友好：
+中心化交易所账户有点像商场储值卡：你登录平台操作，但平台控制托管的账。
 
-- 不用抄写传统助记词。
-- 采用 MPC 技术，把钥匙拆成 3 个分片，任意两份凑齐才能用，币安单独动不了你的钱。
-- 转账前会给出风险提醒，帮你多一道检查。
+自托管钱包更像你自己拿着钥匙的保险箱。
+
+资产状态记录在区块链上。
+
+钱包主要负责管理密钥、显示资产、构造交易和请求签名。
+
+手机坏了，不等于链上的币自动消失。
+
+恢复凭据丢失或泄露，可能导致你无法取回资产，或资产被别人转走。
+
+连接钱包，通常只是让应用识别地址。
+
+签名登录用来证明你控制该地址，仍要检查签名内容和来源。
+
+链上交易可能真的转币、授权合约或支付网络费。
+
+代币授权可能允许某个合约在一定额度内动用你的代币。
+
+新手可以了解币安 Web3 钱包的无传统助记词恢复体验。
+
+它曾采用 MPC 等方案。
+
+具体分片数量、恢复机制和是否无需传统助记词，必须以当前官方说明及实际界面为准。
+
+没有手抄助记词，不代表不需要备份。
+
+风险提示能帮你多看一眼，也不保证拦住所有恶意交易。
+
+> 💬 站长亲历：曾差点向合约地址转账，钱包弹出的提醒帮助及时发现风险。提醒有用，但最终仍要自己核对。
 
 想详细了解它怎么工作、怎么备份，见[第 08 章「无私钥钱包：新手也能轻松开始」](#/c/08/4)。
 
 币安钱包（无私钥）：https://web3.binance.com/referral?ref=0XMAY
+
 用途：适合新手的自托管链上钱包，可用于连接 DApp、签名和存放链上资产。和交易所账户不是一回事。
 
-> 💬 站长亲历：我之前差点把钱转到合约地址，币安钱包弹出提醒拦了下来。对新手来说，这种提醒真的很有用。
+教学模拟：陌生网站说连接钱包就送 100 U。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。交易所账户不能代替链上钱包。币安钱包（无私钥）和交易所账户不是一回事。" data-bad="答错了。平台里的买卖账户不能直接拿去连接 DApp。链上钱包才负责签名和存放链上资产。"><h3>想一想</h3><p>用交易所账户，能不能直接代替链上钱包去连接这些玩法？</p><button type="button" class="option" data-answer="a">A. 能，同一个品牌的账户都能签名</button><button type="button" class="option" data-answer="b">B. 不能。连接应用、签名和存放链上资产，要用链上钱包</button><button type="button" class="option" data-answer="c">C. 币安钱包（无私钥）就是交易所里的资金账户</button><div class="feedback"></div></div>
+连接本身不一定转走资产。
 
+随后弹出的无限授权或看不懂的签名，可能改变风险。
+
+看不懂就取消。
+
+<div class="planet-lab" data-planet-lab="wallet"><p>教学模拟。四个弹窗，不会连接真实钱包。</p><button type="button" data-k="connect">连接</button><button type="button" data-k="sign">签名登录</button><button type="button" data-k="approve">授权 100 USDT</button><button type="button" data-k="send">转账 20 USDT</button><p class="pl-out" data-out>点一个弹窗，看它会不会动到资产。</p></div>
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。看不懂就先取消。签名也可能被拿去授权。" data-bad="答错了。不是转账，也不等于安全。风险提醒也不是安全保证。"><h3>想一想</h3><p>网站要求你签署看不懂的消息，最合适的做法是什么？</p><button type="button" class="option" data-answer="a" data-note="答错了。有些签名即使不显示转账，也可能授权后续操作。">A. 反正不是转账就签</button><button type="button" class="option" data-answer="b">B. 先取消，并核实用途、来源和签名内容</button><button type="button" class="option" data-answer="c" data-note="答错了。风险提醒只是多看一眼，不能证明这笔签名安全。">C. 只要有钱包风险提醒就一定安全</button><div class="feedback"></div></div>
 ## DeFi：链上金融应用
 
-**DeFi 是链上的银行和交易所，没有客服兜底。**
+**DeFi 把部分金融操作交给代码，但代码、市场和权限的风险仍要自己承担。**
 
-DeFi 指利用智能合约提供兑换、借贷等金融功能的应用。
-常通过钱包交互，成本包括网络费、协议费等。
-风险可能来自代码、抵押资产、预言机、治理权限与经济机制。
+DeFi 不是某一家链上银行的名字。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。DeFi 靠智能合约执行。网络费和协议费不是一份保底承诺。" data-bad="答错了。没有客服兜底。付了费用，也不等于协议会赔偿。"><h3>想一想</h3><p>DeFi 里出了问题，是不是一定有客服把损失补回来？</p><button type="button" class="option" data-answer="a">A. 是，链上应用都有客服兜底</button><button type="button" class="option" data-answer="b">B. 不是。损失可能来自代码、抵押品、预言机或权限，没有客服保证补回</button><button type="button" class="option" data-answer="c">C. 只要付了网络费，协议就保证结果</button><div class="feedback"></div></div>
+它是一类用智能合约等机制提供兑换、借贷等功能的应用。
 
+你打开前端，先确认官网、合约、链和资产。
+
+连接钱包后，页面会给出预估到账、价格影响、最低可收数量、协议费和网络费。
+
+某些代币要先授权合约花费。
+
+授权不是兑换本身。
+
+交易确认后通常不能随意撤销。
+
+去中心化并不保证每个环节都去中心化。
+
+教学模拟：把 100 USDT 换成另一种币，页面显示预计收到 98 单位。
+
+不能只盯着 98。
+
+还要问能不能换回来、池子够不够深、授权了谁。
+
+<div class="planet-lab" data-planet-lab="defi"><p>教学模拟。拆开一笔交换，不会接到真实交易所。</p><button type="button" data-step="1">1 连接</button><button type="button" data-step="2">2 报价</button><button type="button" data-step="3">3 授权</button><button type="button" data-step="4">4 签名</button><button type="button" data-step="5">5 确认</button><button type="button" data-branch="low">余额不足</button><button type="button" data-branch="gas">没有网络费</button><button type="button" data-branch="min">最低到账不够</button><p class="pl-out" data-out>先点步骤，再点一种失败情况。</p></div>
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。授权是权限，不是已经兑换完成。" data-bad="答错了。授权不等于到账，也不取消网络费。"><h3>想一想</h3><p>一笔交换显示需要先授权 100 USDT，这个授权通常代表什么？</p><button type="button" class="option" data-answer="a">A. 合约获得在授权范围内使用代币的权限</button><button type="button" class="option" data-answer="b" data-note="答错了。授权成功还没有把币换成另一种。">B. 你已经收到兑换结果</button><button type="button" class="option" data-answer="c" data-note="答错了。授权和网络费是两件事。">C. 网络费从此永久免费</button><div class="feedback"></div></div>
 ## 借贷
 
-**借贷看的是抵押和清算，不能只看收益率。**
+**借贷不只看能赚多少利息，更要看抵押品跌到哪里会被清算。**
 
-存入资产可能获得收益；
-借入资产需要抵押并支付利息。
-抵押品价格下跌会触发清算。
-存款端也存在坏账、流动性与合约风险，不能只看收益率。
+存入资产可能获得利息。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。抵押品跌价可能触发什么：清算。" data-bad="答错了。抵押品跌价可能触发什么：清算。"><h3>想一想</h3><p>抵押品跌价可能触发什么？</p><button type="button" class="option" data-answer="a">A. 清算</button><button type="button" class="option" data-answer="b">B. 保证收益</button><button type="button" class="option" data-answer="c">C. 免债</button><div class="feedback"></div></div>
+借入资产通常要提供抵押，并按协议付利息。
 
+抵押品价值按协议使用的价格来源估算。
+
+借款价值可能随利息和币价变化。
+
+清算是风险指标达到阈值时，抵押品可能被卖掉来还债，并可能有罚金。
+
+教学模拟：抵押价值 1000 的 ETH，借出 400。
+
+本案例虚构清算阈值是 80%。
+
+初始债务比是 400 除以 1000，等于 40%。
+
+ETH 跌 25% 后，抵押品价值 750，比例约 53.33%。
+
+ETH 跌 50% 后，抵押品价值 500，比例达到 80%。
+
+这不是所有协议通用的公式。
+
+只存款赚利息，也有坏账、漏洞和提不出来的风险。
+
+<div class="planet-lab" data-planet-lab="lend"><p>教学模拟。借款固定 400，阈值 80%。</p><label>抵押品价格下跌 <input type="range" data-drop min="0" max="60" value="0"> <span>0% 到 60%</span></label><button type="button" data-add>追加抵押 200</button><button type="button" data-reset>重置</button><p class="pl-out" data-out></p></div>
+
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。400 除以 500 等于 80%。跌的是分母。" data-bad="答错了。不能沿用最初的 40%，也不能把跌幅本身当成债务比。"><h3>想一想</h3><p>教学模拟：借款 400，抵押品从 1000 跌到 500，债务比是多少？</p><button type="button" class="option" data-answer="a" data-note="答错了。40% 是还没跌的时候。">A. 40%</button><button type="button" class="option" data-answer="b" data-note="答错了。50% 是价格跌幅，不是 400 除以 500。">B. 50%</button><button type="button" class="option" data-answer="c">C. 80%</button><div class="feedback"></div></div>
 ## 流动性池
 
-**做流动性赚手续费，也要承担无常损失。**
+**做流动性要和原样持币比较，手续费不是白拿的。**
 
-提供资产给池子，可能获得交易费或奖励。
-除了资产价格波动，还有无常损失、奖励贬值与合约风险。
-无常损失描述相对直接持有资产的价值差异，不保证最终会恢复。
+流动性提供者把资产放进池子，让别人兑换，可能分到手续费或奖励。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。LP赚手续费保证跑赢持币吗：不保证。" data-bad="答错了。LP赚手续费保证跑赢持币吗：不保证。"><h3>想一想</h3><p>LP赚手续费保证跑赢持币吗？</p><button type="button" class="option" data-answer="a">A. 不保证</button><button type="button" class="option" data-answer="b">B. 保证</button><button type="button" class="option" data-answer="c">C. 无风险</button><div class="feedback"></div></div>
+无常损失不是说钱包余额一定变少。
 
+它是和一直持有原来那组资产相比，提供流动性后的价值可能更低。
+
+教学模拟：最初放入 1 ETH 和 100 USDT，ETH 价格 100，总价值 200。
+
+后来 ETH 涨到 200。
+
+直接持有的价值是 300。
+
+在这个不计费的简化模型里，LP 价值约 282.84。
+
+相对直接持有少约 17.16，大约少 5.72%。
+
+从 200 到 282.84，绝对金额仍然增加了。
+
+手续费和奖励有时能补上差额，但不保证。
+
+<div class="planet-lab" data-planet-lab="lp"><p>教学模拟。50/50 恒定乘积，不计真实费用。</p><label>ETH 价格 <input type="range" data-p min="50" max="300" value="200"></label><label>虚构累计手续费 <input type="range" data-fee min="0" max="40" value="0"></label><p class="pl-out" data-out></p></div>
+
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。282.84 比 200 高，但比直接持有的 300 少。" data-bad="答错了。17.16 是和持有相比的差额，不是本金亏损，也不会保证补回。"><h3>想一想</h3><p>教学模拟：直接持有价值 300，不计费的 LP 是 282.84，哪句最准确？</p><button type="button" class="option" data-answer="a">A. 相对持有少 17.16，但相比最初 200 仍升值</button><button type="button" class="option" data-answer="b" data-note="答错了。LP 从 200 升到约 282.84，没有亏掉本金。">B. LP 绝对亏了 17.16 本金</button><button type="button" class="option" data-answer="c" data-note="答错了。价格回到原处只是可能缩小差额，不是保证。">C. 只要继续放着就一定补回差额</button><div class="feedback"></div></div>
 ## 质押与理财
 
-**叫「理财」的产品，先问清钱拿去干什么了。**
+**先看收益从哪来，再看收益有多高。**
 
-PoS 网络原生质押是支持网络验证并获得奖励，会有退出等待、验证者风险或惩罚机制。
+质押、理财、Earn 都只是产品标签。
 
-平台标为「质押」「Earn」的产品，也可能实际是借贷或其他收益策略。
-必须看资金用途、赎回规则和风险承担方，不能只看产品名称。
+它们不直接说明资金去了哪里。
 
-APR 是年化利率，不算复利；
-APY 包含复利假设。
-年化显示不是未来一年的保证回报。
+PoS 网络原生质押是参与验证并可能得到协议奖励。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。APY通常包含什么：复利假设。" data-bad="答错了。APY通常包含什么：复利假设。"><h3>想一想</h3><p>APY通常包含什么？</p><button type="button" class="option" data-answer="a">A. 复利假设</button><button type="button" class="option" data-answer="b">B. 本金保证</button><button type="button" class="option" data-answer="c">C. 无风险</button><div class="feedback"></div></div>
+要看罚没、解绑等待和验证者。
 
+借贷收益来自借款人付的利息。
+
+要看清算、坏账和流动性。
+
+策略或平台产品还要看谁托管、赎回限制和交易对手。
+
+APR 通常是不计复利的年化利率。
+
+APY 通常计入按某种频率复利的假设。
+
+教学模拟：本金 1000，APR 12%，简单利息约 120。
+
+同样 12% 按月复利，理论利息约 126.83。
+
+这些数字不含币价、费用和违约。
+
+年化率可以变，不保证未来结果。
+
+<div class="planet-lab" data-planet-lab="stake"><p>教学模拟。收益率不是承诺。</p><button type="button" data-mode="apr">简单利息</button><button type="button" data-mode="apy">按月复利</button><button type="button" data-src="pos">PoS</button><button type="button" data-src="lend">借贷</button><button type="button" data-src="strat">策略产品</button><p class="pl-out" data-out></p></div>
+
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。先问钱拿去做什么，而不是看名字或整数。" data-bad="答错了。名字和数字外形都不能说明风险。"><h3>想一想</h3><p>一个产品叫 Staking Earn，你最应该先确认什么？</p><button type="button" class="option" data-answer="a" data-note="答错了。Staking 可能只是营销词。">A. 名字里有没有 Staking</button><button type="button" class="option" data-answer="b">B. 资金实际用途、托管、风险和赎回规则</button><button type="button" class="option" data-answer="c" data-note="答错了。整数年化也不更安全。">C. 年化数字是不是整数</button><div class="feedback"></div></div>
 ## 空投、积分与测试网
 
 **空投和积分不保证有回报，别为它乱授权。**
@@ -1236,25 +1343,56 @@ APY 包含复利假设。
 
 ## NFT
 
-**买 NFT 不等于买到了图片版权。**
+**NFT 证明某种链上记录，不自动送你作品版权。**
 
-NFT 是用于表示独特标识等信息的代币。
-购买 NFT 不自动获得图像版权或其他法律权利，具体权利看授权与条款。
-价格、流动性、元数据与项目延续都有风险。
+买到实体画，也不自动拿到全部复制和商用版权。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。买NFT自动获得图片版权吗：不自动。" data-bad="答错了。买NFT自动获得图片版权吗：不自动。"><h3>想一想</h3><p>买NFT自动获得图片版权吗？</p><button type="button" class="option" data-answer="a">A. 不自动</button><button type="button" class="option" data-answer="b">B. 自动</button><button type="button" class="option" data-answer="c">C. 等于公司股份</button><div class="feedback"></div></div>
+NFT 是一种链上代币记录，可以关联作品、会员或游戏物品。
 
+你通常得到的是代币，以及项目条款写明的权益。
+
+这不是自动取得图片版权或商标权。
+
+代币所有权、作品文件、许可权利、市场价值，是四件不同的事。
+
+图片可能存在链下。
+
+能不能当头像、能不能印 T 恤，要看许可。
+
+还要核实发行方是否真的有权授权。
+
+教学模拟：虚构 NFT #1024 允许个人展示，未经许可不得商业印刷。
+
+页面标价不等于能按这个价卖出去。
+
+<div class="planet-lab" data-planet-lab="nft"><p>教学模拟。只依据这道虚构条款。</p><button type="button" data-layer="token">代币</button><button type="button" data-layer="file">图片文件</button><button type="button" data-layer="license">许可</button><button type="button" data-layer="market">二级市场</button><button type="button" data-scene="avatar">设为头像</button><button type="button" data-scene="shirt">印 T 恤出售</button><button type="button" data-scene="send">转给朋友</button><p class="pl-out" data-out>先点一层，再点一个情境。</p></div>
+
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。代币不是版权。网络费也不授予商用权。" data-bad="答错了。拥有代币或付了网络费，都不自动允许印来卖。"><h3>想一想</h3><p>买到一枚关联插画的 NFT 后，能否直接印 T 恤销售？</p><button type="button" class="option" data-answer="a" data-note="答错了。持有 NFT 不等于自动取得商业印刷权。">A. 当然可以</button><button type="button" class="option" data-answer="b" data-note="答错了。网络费只是打包交易的成本。">B. 只要付了网络费就可以</button><button type="button" class="option" data-answer="c">C. 需要核对许可条款和实际权利来源</button><div class="feedback"></div></div>
 ## 链游与 DAO
 
-**链游要好玩才长久，持有治理币不等于当股东。**
+**链游先看游戏有没有真实价值，DAO 先看谁真正掌握决策权。**
 
-链游把部分游戏资产或机制放到链上。
-游戏是否好玩、代币经济能否持续，需要分别判断。
-DAO 是一种以规则与治理机制组织协作的形式。
-持有治理币不代表拥有公司股权，治理权也可能高度集中。
+道具上链，不代表游戏好玩。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。治理币等于公司股权吗：不一定。" data-bad="答错了。治理币等于公司股权吗：不一定。"><h3>想一想</h3><p>治理币等于公司股权吗？</p><button type="button" class="option" data-answer="a">A. 不一定</button><button type="button" class="option" data-answer="b">B. 一定</button><button type="button" class="option" data-answer="c">C. 银行存款</button><div class="feedback"></div></div>
+如果玩家只为赚币而来，奖励一减少就走，游戏很难长期维持。
 
+链游要分开看玩法和代币经济。
+
+奖励从哪来、新增代币会不会形成卖压，都要问。
+
+DAO 是用规则组织协作和治理的一种方式。
+
+持有治理代币不等于拥有公司股权、分红权或董事身份。
+
+投票权也可能很集中。
+
+教学模拟：100 人每人 1 票，和前 2 个地址控制 60% 票权，都可以叫社区治理。
+
+还要看提案能不能执行、有没有管理员否决、国库是否透明。
+
+<div class="planet-lab" data-planet-lab="dao"><p>教学模拟。总票数 100。甲 35，乙 25，其余 98 人共 40。</p><button type="button" data-rule="half">简单多数</button><button type="button" data-rule="two">需要三分之二</button><p class="pl-out" data-out>选一种计票规则。</p></div>
+
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。治理权和股权、分红不是同一件事。" data-bad="答错了。代币投票权不会自动变成股东或利润分配。"><h3>想一想</h3><p>买入某 DAO 的治理代币，最准确的理解是什么？</p><button type="button" class="option" data-answer="a" data-note="答错了。治理代币不是公司股东名册。">A. 自动获得该公司的股东身份</button><button type="button" class="option" data-answer="b" data-note="答错了。有没有分红要看规则，不是买到就有。">B. 一定能领取项目利润</button><button type="button" class="option" data-answer="c">C. 可能按规则获得治理参与权，但不自动拥有股权或分红权</button><div class="feedback"></div></div>
 ## Meme 币
 
 **Meme 币能暴涨也能归零，只用输得起的钱玩。**
