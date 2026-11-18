@@ -254,7 +254,7 @@
       { id: 'cold', zh: '超卖仍下跌', en: 'Oversold and still falling', closes: seqCloses(200, [[40, -3]]) },
       { id: 'fake', zh: '看起来像背离', en: 'Looks like divergence', closes: seqCloses(100, [[18, 2], [8, -0.4], [8, 1.2]]) }
     ];
-    var state = { scene: scenes[0].id, shown: scenes[0].closes.length, cursor: null, fast: true, slow: true, note: '', tone: '' };
+    var state = { scene: scenes[0].id, shown: Math.min(48, scenes[0].closes.length), cursor: null, fast: true, slow: true, note: '', tone: '' };
     function current() {
       var scene = scenes.filter(function (item) { return item.id === state.scene; })[0];
       var closes = scene.closes.slice(0, state.shown);
@@ -413,14 +413,23 @@
       var buttons = scenes.map(function (item) {
         return '<button type="button" data-scene="' + item.id + '" aria-pressed="' + (item.id === state.scene) + '">' + (zh ? item.zh : item.en) + '</button>';
       }).join('');
-      root.innerHTML = '<div class="a1"><p class="a1-flag">' + (zh ? '教学模拟 · 不是实时行情 · 数据不足时不画 0' : 'Teaching simulation · not a live price · no fake zero when data is short') + '</p>' +
-        '<div class="a1-modes">' + buttons + '</div>' +
-        '<div class="a1-modes"><button type="button" data-move="-1">' + (zh ? '上一根' : 'Previous bar') + '</button><button type="button" data-move="1">' + (zh ? '下一根' : 'Next bar') + '</button><button type="button" data-move="all">' + (zh ? '看到最后' : 'Show all') + '</button>' + (kind === 'rsi' ? '' : '<button type="button" data-layer="fast">' + (kind === 'macd' ? 'DIF' : 'EMA20') + '</button><button type="button" data-layer="slow">' + (kind === 'macd' ? 'DEA' : 'EMA50') + '</button>') + '<span>' + state.shown + ' / ' + view.full + '</span></div>' +
-        bits.join('') + keyRow(keys) + '<p class="a2-readout' + (state.tone ? ' ' + state.tone : '') + '">' + esc(state.note || (zh ? '点一根 K 线，上下图会对齐到同一根。' : 'Tap a candle. Both panels use that same bar.')) + '</p></div>';
-      root.querySelectorAll('[data-scene]').forEach(function (btn) {
+      root.innerHTML = '<div class="a1"><p class="a1-flag">' + (zh ? '模拟行情·非实时' : 'Simulated tape · not live') + '</p>' +
+        (kind === 'boll'
+          ? '<p>' + (zh ? '中轨是 20 根收盘的简单平均。上下轨是中轨加减 2 倍总体标准差。缩口不指明方向。' : 'The middle line is the simple average of 20 closes. The outer bands are the middle plus or minus 2 population standard deviations. A squeeze does not name a direction.') + '</p>'
+          : '') +
+        (kind === 'boll' ? '' : '<div class="a1-modes">' + buttons + '</div>') +
+        '<div class="a1-modes"><button type="button" data-move="1">' + (zh ? '播放一根' : 'One bar') + '</button><button type="button" data-move="reset">' + (zh ? '重新开始' : 'Start again') + '</button>' +
+        (kind === 'boll' ? '<button type="button" data-more="boll">' + (zh ? '再看一个反例' : 'See a counterexample') + '</button>' : '') +
+        '<span>' + state.shown + ' / ' + view.full + '</span></div>' +
+        bits.join('') + keyRow(keys) +
+        (kind === 'boll' ? '<p>' + (zh ? '小练习：点一根 K 线，看收盘在带内、贴着上轨，还是跑到带外。' : 'Short practice: tap a candle and see whether the close is inside the band, riding the upper band, or outside it.') + '</p>' : '') +
+        '<p class="a2-readout' + (state.tone ? ' ' + state.tone : '') + '">' + esc(state.note || (zh ? '点一根 K 线，读收盘和轨道。' : 'Tap a candle to read the close and the bands.')) + '</p></div>';
+      root.querySelectorAll('[data-more]').forEach(function (btn) {
         btn.addEventListener('click', function () {
-          state.scene = btn.getAttribute('data-scene');
-          state.shown = current().full;
+          var order = scenes.map(function (item) { return item.id; });
+          var at = order.indexOf(state.scene);
+          state.scene = order[(at + 1) % order.length];
+          state.shown = Math.min(48, current().full);
           state.cursor = null;
           state.note = '';
           state.tone = '';
@@ -431,7 +440,8 @@
         btn.addEventListener('click', function () {
           var move = btn.getAttribute('data-move');
           var full = current().full;
-          if (move === 'all') state.shown = full;
+          if (move === 'reset') state.shown = Math.min(48, full);
+          else if (move === 'all') state.shown = full;
           else state.shown = Math.max(8, Math.min(full, state.shown + Number(move)));
           if (state.cursor != null && state.cursor >= state.shown) state.cursor = state.shown - 1;
           paint();

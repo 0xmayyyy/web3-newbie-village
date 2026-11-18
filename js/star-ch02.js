@@ -667,37 +667,30 @@
       if (state.step === 'exam' && state.examOk) {
         exam = '<div class="a1-modes"><button type="button" data-lines="1" aria-pressed="' + (state.showFast && state.showSlow) + '">' + (zh ? '打开 EMA 核对' : 'Turn EMA on') + '</button></div>';
       }
-      var note = state.note || readout(pack) || taskText();
+      var note = state.note || readout(pack) || (zh ? '点一根 K 线，看收盘和两条均线。' : 'Tap a candle to read the close and both averages.');
+      var look = state.scene === 'up'
+        ? (zh ? '看这里：K 线回调时可能跌穿 EMA20，但这不代表趋势马上反转。' : 'Look here: a pullback can close through EMA20, and that still does not mean the trend reverses at once.')
+        : (zh ? '反例：横盘里两条均线会反复交叉，交叉不是必涨。' : 'Counterexample: in a range the two averages cross again and again. A cross is not a sure rise.');
       root.innerHTML =
         '<div class="a1">' +
-        '<p class="a1-flag">' + (zh ? '模拟，不是实时行情。教学虚构，不是投资建议。' : 'Simulated, not a live price. Teaching fiction, not investment advice.') + '</p>' +
-        '<div class="a1-modes">' + steps.map(function (item) {
-          return '<button type="button" data-step="' + item[0] + '" aria-pressed="' + (state.step === item[0]) + '">' + item[1] + '</button>';
-        }).join('') + '</div>' +
-        '<div class="a1-modes">' + scenesBtns + '</div>' +
-        '<p>' + esc(taskText()) + '</p>' +
+        '<p class="a1-flag">' + (zh ? '模拟行情·非实时' : 'Simulated tape · not live') + '</p>' +
+        '<p class="a1-checks"><label><input type="checkbox" data-check="fast"' + (state.showFast ? ' checked' : '') + '> ' + (zh ? 'EMA20（快线）黄色实线' : 'EMA20 (fast) gold solid line') + '</label> <label><input type="checkbox" data-check="slow"' + (state.showSlow ? ' checked' : '') + '> ' + (zh ? 'EMA50（慢线）蓝色虚线' : 'EMA50 (slow) blue dashed line') + '</label></p>' +
+        '<p>' + (zh ? 'EMA20（快线）周期较短，通常更贴近近期价格。EMA50（慢线）周期较长，反应更慢。快线不是预测线，慢线也不是保证支撑。' : 'EMA20 (the fast line) uses fewer bars, so it usually stays closer to recent prices. EMA50 (the slow line) uses more bars, so it reacts more slowly. The fast line is not a forecast, and the slow line is not guaranteed support.') + '</p>' +
+        '<div class="ema-scroll">' + bits.join('') + '</div>' +
+        '<p>' + look + '</p>' +
+        '<p>' + (zh ? '小练习：点出一根收盘跌穿 EMA20 的 K 线。' : 'Short practice: tap a candle whose close falls through EMA20.') + '</p>' +
         '<div class="a1-modes">' +
         '<button type="button" data-move="play" aria-pressed="' + state.playing + '">' + (state.playing ? (zh ? '暂停' : 'Pause') : (zh ? '播放' : 'Play')) + '</button>' +
-        '<button type="button" data-move="-1">' + (zh ? '上一根' : 'Previous') + '</button>' +
-        '<button type="button" data-move="1">' + (zh ? '下一根' : 'Next') + '</button>' +
-        '<button type="button" data-move="reset">' + (zh ? '重置' : 'Reset') + '</button>' +
-        '<span>' + state.shown + ' / ' + maxShown() + (zh ? '，后面先隐藏' : ', later bars hidden') + '</span></div>' +
-        '<div class="a1-fields">' +
+        '<button type="button" data-move="reset">' + (zh ? '重新开始' : 'Start again') + '</button>' +
+        '<button type="button" data-more="1">' + (zh ? '再看一个反例' : 'See a counterexample') + '</button>' +
+        '<span>' + state.shown + ' / ' + maxShown() + '</span></div>' +
+        '<details class="ema-note"><summary>' + (zh ? '更多设置' : 'More settings') + '</summary><div class="a1-fields">' +
         '<label>EMA <input data-n="fast" type="number" min="5" max="200" value="' + state.fastN + '"></label>' +
-        '<label>EMA <input data-n="slow" type="number" min="5" max="200" value="' + state.slowN + '"></label>' +
-        '<button type="button" data-layer="fast" aria-pressed="' + state.showFast + '">' + (zh ? '快线' : 'Fast') + '</button>' +
-        '<button type="button" data-layer="slow" aria-pressed="' + state.showSlow + '">' + (zh ? '慢线' : 'Slow') + '</button>' +
-        '<button type="button" data-layer="both" aria-pressed="' + (state.showFast && state.showSlow) + '">' + (zh ? '双线' : 'Both') + '</button>' +
-        '<button type="button" data-layer="cross" aria-pressed="' + state.showCross + '">' + (zh ? '标出交叉' : 'Show crosses') + '</button>' +
-        '<button type="button" data-layer="react" aria-pressed="' + state.showReact + '">' + (zh ? '显示靠近 ≤0.3%' : 'Show near ≤0.3%') + '</button>' +
-        '<button type="button" data-layer="hide" aria-pressed="' + state.hideAnswer + '">' + (state.hideAnswer ? (zh ? '答案隐藏中' : 'Answers hidden') : (zh ? '答案已显示' : 'Answers shown')) + '</button></div>' +
-        '<div class="ema-scroll">' + bits.join('') + '</div>' +
-        '<p class="star-key"><span><i style="background:#f4cb82"></i>EMA' + state.fastN + '</span><span><i style="background:#8eb4ff"></i>EMA' + state.slowN + (zh ? ' 虚线' : ' dashed') + '</span><span><i style="background:#1f8a4d"></i>' + (zh ? '阳线' : 'Up') + '</span><span><i style="background:#d4534e"></i>' + (zh ? '阴线' : 'Down') + '</span></p>' +
-        judge + exam +
+        '<label>EMA <input data-n="slow" type="number" min="5" max="200" value="' + state.slowN + '"></label></div></details>' +
         '<p class="a2-readout ' + state.tone + '">' + note + '</p>' +
         '<p class="ema-note">' + (zh
-          ? '公式：α=2/(N+1)。种子是前 N 根收盘的简单平均，之后 EMA=α×收盘+(1−α)×上一根 EMA。不够 N 根显示数据不足，不画 0。靠近的教学规则是 |收盘−快线|/快线≤0.3%，不是通用买卖信号。成交量在 K 线下方。'
-          : 'Formula: α=2/(N+1). The seed is the simple average of the first N closes, then EMA=α×close+(1−α)×previous EMA. Fewer than N bars says not ready, and does not draw 0. A near bar means |close−fast|/fast≤0.3%. That is a teaching rule, not a general signal. Volume sits under the candles.') + '</p></div>';
+          ? '公式：α=2/(N+1)。种子是前 N 根收盘的简单平均，之后 EMA=α×收盘+(1−α)×上一根 EMA。不够 N 根显示数据不足，不画 0。'
+          : 'Formula: α=2/(N+1). The seed is the simple average of the first N closes, then EMA=α×close+(1−α)×previous EMA. Fewer than N bars says not ready, and does not draw 0.') + '</p></div>';
     }
     function setShown(next) {
       state.shown = Math.max(1, Math.min(maxShown(), next));
@@ -736,8 +729,19 @@
     }
     if (root._emaClick) root.removeEventListener('click', root._emaClick);
     root._emaClick = function (ev) {
-      var el = ev.target.closest ? ev.target.closest('[data-step],[data-scene],[data-move],[data-layer],[data-bar],[data-judge],[data-trend],[data-lines]') : null;
+      var el = ev.target.closest ? ev.target.closest('[data-step],[data-scene],[data-move],[data-layer],[data-bar],[data-judge],[data-trend],[data-lines],[data-more]') : null;
       if (!el || !root.contains(el)) return;
+      if (el.hasAttribute('data-more')) {
+        stop();
+        state.scene = state.scene === 'up' ? 'range' : 'up';
+        state.shown = (root.clientWidth || 0) >= 800 ? 80 : 48;
+        state.note = state.scene === 'range'
+          ? (zh ? '反例：这里两条均线来回交叉。交叉不是后面一定涨。' : 'Counterexample: the two averages cross back and forth here. A cross does not mean a later rise.')
+          : '';
+        state.tone = '';
+        paint();
+        return;
+      }
       if (el.hasAttribute('data-step')) { enter(el.getAttribute('data-step')); return; }
       if (el.hasAttribute('data-scene')) {
         stop();
@@ -794,6 +798,17 @@
       if (el.hasAttribute('data-bar')) {
         var index = Number(el.getAttribute('data-bar'));
         state.cursor = index;
+        var live = prefix();
+        var barNow = live.bars[index];
+        var fastNow = live.fast[index];
+        var prevFast = live.fast[index - 1];
+        var prevBar = live.bars[index - 1];
+        if (state.scene === 'up' && barNow && fastNow != null && prevFast != null && prevBar && prevBar.c >= prevFast && barNow.c < fastNow) {
+          state.note = zh ? '这根收盘跌穿了 EMA20。跌穿还不代表趋势马上反转。' : 'This close fell through EMA20. Falling through it still does not mean the trend reverses at once.';
+          state.tone = 'is-right';
+          paint();
+          return;
+        }
         if (state.step === 'mark' || state.step === 'fail' || (state.step === 'exam' && state.examOk)) {
           var at = state.marks.indexOf(index);
           if (at >= 0) state.marks.splice(at, 1);
@@ -848,7 +863,14 @@
     if (root._emaChange) root.removeEventListener('change', root._emaChange);
     root._emaChange = function (ev) {
       var input = ev.target;
-      if (!input || !input.getAttribute || !input.getAttribute('data-n')) return;
+      if (!input || !input.getAttribute) return;
+      if (input.getAttribute('data-check')) {
+        if (input.getAttribute('data-check') === 'fast') state.showFast = !!input.checked;
+        if (input.getAttribute('data-check') === 'slow') state.showSlow = !!input.checked;
+        paint();
+        return;
+      }
+      if (!input.getAttribute('data-n')) return;
       var value = Math.max(5, Math.min(200, Math.round(Number(input.value) || 20)));
       if (input.getAttribute('data-n') === 'fast') state.fastN = value;
       else state.slowN = value;
@@ -1007,7 +1029,7 @@
     var scenes = buildScenes();
     var state = {
       scene: 'above',
-      step: 'watch',
+      step: 'mark',
       shown: 28,
       cursor: null,
       playing: false,
@@ -1016,8 +1038,8 @@
       showDif: true,
       showDea: true,
       showHist: true,
-      showCross: true,
-      hideAnswer: false,
+      showCross: false,
+      hideAnswer: true,
       useHist: false,
       pricePts: [],
       macdPts: [],
@@ -1305,31 +1327,23 @@
           return '<button type="button" data-judge="' + opt[0] + '" data-answer="' + q.answer + '">' + opt[0] + '. ' + esc(opt[1]) + '</button>';
         }).join('') + '</div>';
       }
-      var note = state.note || readout(pack) || taskText();
+      var note = state.note || readout(pack) || (zh ? '小练习：点出一根金叉，也就是 DIF 上穿 DEA 的那根。' : 'Short practice: tap a golden cross, the bar where DIF crosses above DEA.');
       root.innerHTML =
-        '<div class="a1"><p class="a1-flag">' + (zh ? '模拟，不是实时行情。教学虚构，不是投资建议。' : 'Simulated, not a live price. Teaching fiction, not investment advice.') + '</p>' +
-        '<div class="a1-modes">' + steps.map(function (item) { return '<button type="button" data-step="' + item[0] + '" aria-pressed="' + (state.step === item[0]) + '">' + item[1] + '</button>'; }).join('') + '</div>' +
-        '<div class="a1-modes">' + sceneIds.map(function (id) { return '<button type="button" data-scene="' + id + '" aria-pressed="' + (state.scene === id) + '">' + esc(zh ? scenes[id].zh : scenes[id].en) + '</button>'; }).join('') + '</div>' +
-        '<p>' + esc(taskText()) + '</p>' +
-        '<div class="a1-modes"><button type="button" data-move="play" aria-pressed="' + state.playing + '">' + (state.playing ? (zh ? '暂停' : 'Pause') : (zh ? '播放' : 'Play')) + '</button>' +
-        '<button type="button" data-move="-1">' + (zh ? '上一根' : 'Previous') + '</button><button type="button" data-move="1">' + (zh ? '下一根' : 'Next') + '</button>' +
-        '<button type="button" data-move="reset">' + (zh ? '重置' : 'Reset') + '</button><span>' + state.shown + ' / ' + maxShown() + (zh ? '，后面先隐藏' : ', later bars hidden') + '</span></div>' +
-        '<div class="a1-modes">' +
-        '<button type="button" data-layer="fast" aria-pressed="' + state.showFast + '">EMA12</button>' +
-        '<button type="button" data-layer="slow" aria-pressed="' + state.showSlow + '">EMA26</button>' +
-        '<button type="button" data-layer="dif" aria-pressed="' + state.showDif + '">DIF</button>' +
-        '<button type="button" data-layer="dea" aria-pressed="' + state.showDea + '">DEA</button>' +
-        '<button type="button" data-layer="hist" aria-pressed="' + state.showHist + '">' + (zh ? '柱' : 'Bars') + '</button>' +
-        '<button type="button" data-layer="cross" aria-pressed="' + state.showCross + '">' + (zh ? '标出金叉死叉' : 'Show crosses') + '</button>' +
-        '<button type="button" data-layer="hide" aria-pressed="' + state.hideAnswer + '">' + (state.hideAnswer ? (zh ? '答案隐藏中' : 'Answers hidden') : (zh ? '答案已显示' : 'Answers shown')) + '</button>' +
-        '<button type="button" data-layer="src" aria-pressed="' + state.useHist + '">' + (state.useHist ? (zh ? '正在比柱子' : 'Comparing bars') : (zh ? '正在比 DIF' : 'Comparing DIF')) + '</button></div>' +
+        '<div class="a1"><p class="a1-flag">' + (zh ? '模拟行情·非实时' : 'Simulated tape · not live') + '</p>' +
+        '<p>' + (zh ? '上面是 K 线，下面是 MACD。黄线 DIF 是 EMA12 减 EMA26，蓝虚线 DEA 是 DIF 的 9 根平均，柱子是 DIF 减 DEA，不乘 2。' : 'Candles are on top. MACD is below. The gold DIF line is EMA12 minus EMA26, the blue dashed DEA line is the 9-bar average of DIF, and a bar is DIF minus DEA, not doubled.') + '</p>' +
         '<div class="macd-scroll">' + bits.join('') + '</div>' +
-        '<p class="star-key"><span><i style="background:#f4cb82"></i>DIF</span><span><i style="background:#8eb4ff"></i>DEA</span><span><i style="background:#1f8a4d"></i>' + (zh ? '正柱 / 阳线' : 'Positive / up') + '</span><span><i style="background:#d4534e"></i>' + (zh ? '负柱 / 阴线' : 'Negative / down') + '</span><span>0 ' + (zh ? '零轴' : 'zero') + '</span></p>' +
-        judge +
+        '<p class="star-key"><span><i style="background:#f4cb82"></i>DIF</span><span><i style="background:#8eb4ff"></i>DEA</span><span><i style="background:#1f8a4d"></i>' + (zh ? '正柱' : 'Positive bar') + '</span><span><i style="background:#d4534e"></i>' + (zh ? '负柱' : 'Negative bar') + '</span><span>0 ' + (zh ? '零轴' : 'zero') + '</span></p>' +
+        '<p>' + (state.scene === 'fail'
+          ? (zh ? '反例：零轴下方的金叉仍可能后面创新低。' : 'Counterexample: a golden cross below zero can still be followed by a new low.')
+          : (zh ? '小练习：点出一根金叉。金叉不是买入按钮。' : 'Short practice: tap a golden cross. A golden cross is not a buy button.')) + '</p>' +
+        '<div class="a1-modes"><button type="button" data-move="play" aria-pressed="' + state.playing + '">' + (state.playing ? (zh ? '暂停' : 'Pause') : (zh ? '播放' : 'Play')) + '</button>' +
+        '<button type="button" data-move="reset">' + (zh ? '重新开始' : 'Start again') + '</button>' +
+        '<button type="button" data-more="macd">' + (zh ? '再看一个反例' : 'See a counterexample') + '</button>' +
+        '<span>' + state.shown + ' / ' + maxShown() + '</span></div>' +
         '<p class="a2-readout ' + state.tone + '">' + note + '</p>' +
         '<p class="ema-note">' + (zh
-          ? '公式：DIF=EMA(收盘,12)−EMA(收盘,26)。DEA 是有效 DIF 的 9 周期 EMA，种子是前 9 个有效 DIF 的简单平均。柱=DIF−DEA，不乘 2。相等不算交叉。不够预热显示数据不足，不向前填 0。'
-          : 'Formula: DIF=EMA(close,12)−EMA(close,26). DEA is the 9-bar EMA of valid DIF values, seeded with the simple average of the first 9. Histogram=DIF−DEA, not doubled. Equality is not a cross. Before the warmup, the chart says not ready and does not fill 0.') + '</p></div>';
+          ? '公式：DIF=EMA(收盘,12)−EMA(收盘,26)。DEA 是有效 DIF 的 9 周期 EMA。柱=DIF−DEA，不乘 2。不够预热显示数据不足，不画 0。'
+          : 'Formula: DIF=EMA(close,12)−EMA(close,26). DEA is the 9-bar EMA of valid DIF values. A bar is DIF−DEA, not doubled. Before the warmup, the chart says not ready and does not draw 0.') + '</p></div>';
     }
     function setShown(next) {
       state.shown = Math.max(1, Math.min(maxShown(), next));
@@ -1364,8 +1378,20 @@
     }
     if (root._macdClick) root.removeEventListener('click', root._macdClick);
     root._macdClick = function (ev) {
-      var el = ev.target.closest ? ev.target.closest('[data-step],[data-scene],[data-move],[data-layer],[data-bar],[data-judge]') : null;
+      var el = ev.target.closest ? ev.target.closest('[data-step],[data-scene],[data-move],[data-layer],[data-bar],[data-judge],[data-more]') : null;
       if (!el || !root.contains(el)) return;
+      if (el.getAttribute('data-more') === 'macd') {
+        stop();
+        state.scene = state.scene === 'above' ? 'fail' : 'above';
+        state.step = 'mark';
+        state.pricePts = [];
+        state.macdPts = [];
+        state.note = '';
+        state.tone = '';
+        state.shown = 28;
+        paint();
+        return;
+      }
       if (el.hasAttribute('data-step')) { enter(el.getAttribute('data-step')); return; }
       if (el.hasAttribute('data-scene')) {
         stop();
@@ -1594,7 +1620,7 @@
     var scenes = buildScenes();
     var state = {
       scene: 'hot',
-      step: 'watch',
+      step: 'mark',
       shown: 28,
       cursor: null,
       playing: false,
@@ -1833,27 +1859,20 @@
       if (state.step === 'exam' && state.examStage === 'strength') {
         exam = '<div class="a1-modes"><button type="button" data-bias="up">' + (zh ? '收盘在抬高' : 'Closes are rising') + '</button><button type="button" data-bias="flat">' + (zh ? '差不多' : 'About flat') + '</button><button type="button" data-bias="down">' + (zh ? '收盘在压低' : 'Closes are falling') + '</button></div>';
       }
-      var note = state.note || readout(pack) || taskText();
+      var note = state.note || readout(pack) || (zh ? '小练习：点出一根 RSI 高于 70、后面收盘还更高的 K 线。' : 'Short practice: tap a bar with RSI above 70 whose later close is still higher.');
       root.innerHTML =
-        '<div class="a1"><p class="a1-flag">' + (zh ? '模拟，不是实时行情。教学虚构，不是投资建议。' : 'Simulated, not a live price. Teaching fiction, not investment advice.') + '</p>' +
-        '<div class="a1-modes">' + steps.map(function (item) { return '<button type="button" data-step="' + item[0] + '" aria-pressed="' + (state.step === item[0]) + '">' + item[1] + '</button>'; }).join('') + '</div>' +
-        '<div class="a1-modes">' + sceneIds.map(function (id) { return '<button type="button" data-scene="' + id + '" aria-pressed="' + (state.scene === id) + '">' + esc(zh ? scenes[id].zh : scenes[id].en) + '</button>'; }).join('') + '</div>' +
-        '<p>' + esc(taskText()) + '</p>' +
-        '<div class="a1-modes"><button type="button" data-move="play" aria-pressed="' + state.playing + '">' + (state.playing ? (zh ? '暂停' : 'Pause') : (zh ? '播放' : 'Play')) + '</button>' +
-        '<button type="button" data-move="-1">' + (zh ? '上一根' : 'Previous') + '</button><button type="button" data-move="1">' + (zh ? '下一根' : 'Next') + '</button>' +
-        '<button type="button" data-move="reset">' + (zh ? '重置' : 'Reset') + '</button><span>' + state.shown + ' / ' + maxShown() + (zh ? '，后面先隐藏' : ', later bars hidden') + '</span></div>' +
-        '<div class="a1-fields"><label>RSI <input data-n="period" type="number" min="5" max="30" value="' + state.period + '"></label>' +
-        '<label>' + (zh ? '超买参考' : 'Overbought') + ' <input data-n="ob" type="number" min="51" max="95" value="' + state.ob + '"></label>' +
-        '<label>' + (zh ? '超卖参考' : 'Oversold') + ' <input data-n="os" type="number" min="5" max="49" value="' + state.os + '"></label>' +
-        '<button type="button" data-layer="time" aria-pressed="' + state.showTime + '">' + (zh ? '显示时间垂线' : 'Show time lines') + '</button>' +
-        '<button type="button" data-layer="hide" aria-pressed="' + state.hideAnswer + '">' + (state.hideAnswer ? (zh ? '答案隐藏中' : 'Answers hidden') : (zh ? '答案已显示' : 'Answers shown')) + '</button></div>' +
+        '<div class="a1"><p class="a1-flag">' + (zh ? '模拟行情·非实时' : 'Simulated tape · not live') + '</p>' +
+        '<p>' + (zh ? '上面是 K 线，下面是 RSI(14)，刻度 0 到 100。70 是超买参考，30 是超卖参考，都不是买卖命令。' : 'Candles are on top. RSI(14) is below, on a scale from 0 to 100. 70 is an overbought reference and 30 is an oversold reference. Neither is an order.') + '</p>' +
         '<div class="rsi-scroll">' + bits.join('') + '</div>' +
-        '<p class="star-key"><span><i style="background:#f4cb82"></i>RSI(' + state.period + ')</span><span><i style="background:#d4534e"></i>' + state.ob + (zh ? ' 超买参考' : ' overbought') + '</span><span><i style="background:#8eb4ff"></i>50</span><span><i style="background:#7dcea0"></i>' + state.os + (zh ? ' 超卖参考' : ' oversold') + '</span></p>' +
-        judge + exam +
-        '<p class="a2-readout ' + state.tone + '">' + note + '</p>' +
-        '<p class="ema-note">' + (zh
-          ? '公式：先把前 N 次涨跌做简单平均，得到平均涨幅和平均跌幅。之后平均涨幅=(N−1)×上一根平均涨幅+本根涨幅，再除以 N。RSI=100−100/(1+平均涨幅/平均跌幅)。平均跌幅为 0 且有涨幅时记 100。两边都是 0 时本课记 50。不够 N 次变化显示数据不足，不画 0。70 和 30 是参考阈值，不是买卖线。'
-          : 'Formula: average the first N changes into an average gain and an average loss. Then average gain=((N−1)×previous average gain+this gain)/N. RSI=100−100/(1+average gain/average loss). If average loss is 0 and there is a gain, RSI is 100. If both are 0, this lesson uses 50. Fewer than N changes says not ready and does not draw 0. 70 and 30 are reference levels, not orders.') + '</p></div>';
+        '<p class="star-key"><span><i style="background:#f4cb82"></i>RSI(14)</span><span><i style="background:#d4534e"></i>70 ' + (zh ? '超买' : 'overbought') + '</span><span><i style="background:#8eb4ff"></i>50</span><span><i style="background:#7dcea0"></i>30 ' + (zh ? '超卖' : 'oversold') + '</span></p>' +
+        '<p>' + (state.scene === 'cold'
+          ? (zh ? '反例：RSI 低于 30 时，价格仍可以继续跌。' : 'Counterexample: while RSI is under 30, price can keep falling.')
+          : (zh ? '小练习：点出一根 RSI 高于 70、后面还在涨的 K 线。超买不是马上卖。' : 'Short practice: tap a bar with RSI above 70 that is still followed by a higher close. Overbought is not a sell order.')) + '</p>' +
+        '<div class="a1-modes"><button type="button" data-move="play" aria-pressed="' + state.playing + '">' + (state.playing ? (zh ? '暂停' : 'Pause') : (zh ? '播放' : 'Play')) + '</button>' +
+        '<button type="button" data-move="reset">' + (zh ? '重新开始' : 'Start again') + '</button>' +
+        '<button type="button" data-more="rsi">' + (zh ? '再看一个反例' : 'See a counterexample') + '</button>' +
+        '<span>' + state.shown + ' / ' + maxShown() + '</span></div>' +
+        '<p class="a2-readout ' + state.tone + '">' + note + '</p></div>';
     }
     function setShown(next) {
       state.shown = Math.max(1, Math.min(maxShown(), next));
@@ -1887,8 +1906,18 @@
     }
     if (root._rsiClick) root.removeEventListener('click', root._rsiClick);
     root._rsiClick = function (ev) {
-      var el = ev.target.closest ? ev.target.closest('[data-step],[data-scene],[data-move],[data-layer],[data-bar],[data-judge],[data-bias]') : null;
+      var el = ev.target.closest ? ev.target.closest('[data-step],[data-scene],[data-move],[data-layer],[data-bar],[data-judge],[data-bias],[data-more]') : null;
       if (!el || !root.contains(el)) return;
+      if (el.getAttribute('data-more') === 'rsi') {
+        stop();
+        state.scene = state.scene === 'hot' ? 'cold' : 'hot';
+        state.step = 'mark';
+        state.note = '';
+        state.tone = '';
+        state.shown = 28;
+        paint();
+        return;
+      }
       if (el.hasAttribute('data-step')) { enter(el.getAttribute('data-step')); return; }
       if (el.hasAttribute('data-scene')) {
         stop();
@@ -2356,15 +2385,15 @@
         readout = (zh ? '第 ' + (state.cursor + 1) + ' 根 · 模拟' : 'Bar ' + (state.cursor + 1) + ' · simulated') + '<br>' + (zh ? '高 ' : 'H ') + fmt(bar.h) + (zh ? ' 低 ' : ' L ') + fmt(bar.l) + (zh ? ' 收 ' : ' C ') + fmt(bar.c) + '<br>' + (state.source === 'rsi' ? 'RSI(14) ' : state.source === 'dif' ? 'DIF ' : (zh ? '柱 ' : 'bar ')) + (pack.series[state.cursor] == null ? (zh ? '数据不足' : 'not ready') : fmt(pack.series[state.cursor]));
       }
       root.innerHTML =
-        '<div class="a1"><p class="a1-flag">' + (zh ? '模拟，不是实时行情。教学虚构，不是投资建议。' : 'Simulated, not a live price. Teaching fiction, not investment advice.') + '</p>' +
-        '<div class="a1-modes">' + ids.map(function (id) { return '<button type="button" data-scene="' + id + '" aria-pressed="' + (state.scene === id) + '">' + esc(zh ? scenes[id].zh : scenes[id].en) + '</button>'; }).join('') + '</div>' +
-        '<p>' + esc(taskText()) + '</p>' +
-        '<div class="a1-modes"><button type="button" data-move="play">' + (state.playing ? (zh ? '暂停' : 'Pause') : (zh ? '播放' : 'Play')) + '</button><button type="button" data-move="-1">' + (zh ? '上一根' : 'Previous') + '</button><button type="button" data-move="1">' + (zh ? '下一根' : 'Next') + '</button><button type="button" data-move="reset">' + (zh ? '重置' : 'Reset') + '</button><span>' + state.shown + ' / ' + scene().visible + (zh ? '，后面先隐藏' : ', later bars hidden') + '</span></div>' +
-        '<div class="a1-modes"><button type="button" data-source="rsi" aria-pressed="' + (state.source === 'rsi') + '">RSI</button><button type="button" data-source="dif" aria-pressed="' + (state.source === 'dif') + '">DIF</button><button type="button" data-source="hist" aria-pressed="' + (state.source === 'hist') + '">' + (zh ? '柱' : 'Bars') + '</button><button type="button" data-wing="2" aria-pressed="' + (state.wing === 2) + '">' + (zh ? '左右 2 根' : '2 bars each side') + '</button><button type="button" data-wing="3" aria-pressed="' + (state.wing === 3) + '">' + (zh ? '左右 3 根' : '3 bars each side') + '</button><button type="button" data-time="1" aria-pressed="' + state.showTime + '">' + (zh ? '时间垂线' : 'Time lines') + '</button></div>' +
+        '<div class="a1"><p class="a1-flag">' + (zh ? '模拟行情·非实时' : 'Simulated tape · not live') + '</p>' +
+        '<p>' + (zh ? '上面是价格，下面是指标。先点两个价格高点，再点同一时间附近的指标高点。EMA 只帮忙看趋势，不拿来判定背离。' : 'Price is on top and the indicator is below. Tap two price highs, then the indicator highs near the same time. EMA only helps you see the trend. It is not the divergence test.') + '</p>' +
+        '<div class="a1-modes"><button type="button" data-source="rsi" aria-pressed="' + (state.source === 'rsi') + '">RSI</button><button type="button" data-source="dif" aria-pressed="' + (state.source === 'dif') + '">MACD</button></div>' +
         '<div class="div-scroll">' + bits.join('') + '</div>' +
-        '<p class="star-key"><span><i style="background:#f4cb82"></i>' + (state.source === 'rsi' ? 'RSI(14)' : state.source === 'dif' ? 'DIF' : (zh ? '柱 DIF−DEA' : 'bar DIF−DEA')) + '</span><span>0–100</span></p>' +
-        '<p class="a2-readout ' + state.tone + '">' + (state.note || readout || taskText()) + '</p>' +
-        '<p class="ema-note">' + (zh ? '确认：左右各 ' + state.wing + ' 根都存在，且都没有更极端的高点或低点。指标点必须落在价格点左右 2 根以内。不够预热显示数据不足，不画 0。' : 'Confirmation: ' + state.wing + ' bars exist on each side, and none is more extreme. An indicator point must sit within 2 bars of the price point. Before the warmup, the chart says not ready and does not draw 0.') + '</p></div>';
+        '<p>' + (state.scene === 'fake'
+          ? (zh ? '反例：第二个价格高点没有更高，所以这不是顶背离。' : 'Counterexample: the second price high is not higher, so this is not bearish divergence.')
+          : (zh ? '小练习：点出价格更高、RSI 更低的两个高点。背离不保证反转。' : 'Short practice: mark a higher price high with a lower RSI high. Divergence does not guarantee a reversal.')) + '</p>' +
+        '<div class="a1-modes"><button type="button" data-move="play">' + (state.playing ? (zh ? '暂停' : 'Pause') : (zh ? '播放' : 'Play')) + '</button><button type="button" data-move="reset">' + (zh ? '重新开始' : 'Start again') + '</button><button type="button" data-more="div">' + (zh ? '再看一个反例' : 'See a counterexample') + '</button><span>' + state.shown + ' / ' + scene().visible + '</span></div>' +
+        '<p class="a2-readout ' + state.tone + '">' + (state.note || readout || (zh ? '价格两点和指标两点要对上时间。' : 'The two price points and the two indicator points have to match in time.')) + '</p></div>';
     }
     function setShown(next) { state.shown = Math.max(8, Math.min(scene().visible, next)); }
     function openScene(id) {
@@ -2380,8 +2409,12 @@
     }
     if (root._divClick) root.removeEventListener('click', root._divClick);
     root._divClick = function (ev) {
-      var el = ev.target.closest ? ev.target.closest('[data-scene],[data-move],[data-source],[data-wing],[data-time],[data-bar]') : null;
+      var el = ev.target.closest ? ev.target.closest('[data-scene],[data-move],[data-source],[data-wing],[data-time],[data-bar],[data-more]') : null;
       if (!el || !root.contains(el)) return;
+      if (el.getAttribute('data-more') === 'div') {
+        openScene(state.scene === 'bear' ? 'fake' : 'bear');
+        return;
+      }
       if (el.hasAttribute('data-scene')) { openScene(el.getAttribute('data-scene')); return; }
       if (el.hasAttribute('data-source')) {
         state.source = el.getAttribute('data-source');
@@ -2608,32 +2641,40 @@
           ? (state.dir === 'up' ? (zh ? '再点这一段的高点。' : 'Now tap the high of this swing.') : (zh ? '再点这一段的低点。' : 'Now tap the low of this swing.'))
           : (zh ? '线已经按你的两个锚点重算。播放后面的 K 线，看价格是否穿过 0.618。' : 'The lines were recalculated from your two anchors. Play the later candles and see whether price crosses 0.618.'));
       root.innerHTML =
-        '<div class="a1"><p class="a1-flag">' + (zh ? '模拟 BTC/USDT，不是实时行情。教学虚构，不是投资建议。' : 'Simulated BTC/USDT, not a live price. Teaching fiction, not investment advice.') + '</p>' +
-        '<div class="a1-modes">' +
-        '<button type="button" data-dir="up" aria-pressed="' + (state.dir === 'up') + '">' + (zh ? '上涨回撤' : 'Up retracement') + '</button>' +
-        '<button type="button" data-dir="down" aria-pressed="' + (state.dir === 'down') + '">' + (zh ? '下跌回撤' : 'Down retracement') + '</button>' +
-        '<button type="button" data-mode="retrace" aria-pressed="' + (state.mode === 'retrace') + '">' + (zh ? '回撤' : 'Retracement') + '</button>' +
-        '<button type="button" data-mode="extend" aria-pressed="' + (state.mode === 'extend') + '">' + (zh ? '扩展' : 'Extension') + '</button></div>' +
+        '<div class="a1"><p class="a1-flag">' + (zh ? '模拟行情·非实时' : 'Simulated tape · not live') + '</p>' +
+        '<p>' + (zh ? '在同一张 K 线上画回撤。先点低点，再点高点。0 在高点，1 在低点。' : 'Draw the retracement on this same chart. Tap the low, then the high. 0 is at the high and 1 is at the low.') + '</p>' +
+        '<div class="fib-scroll">' + bits.join('') + '</div>' +
         '<p>' + hint + '</p>' +
         '<div class="a1-modes"><button type="button" data-move="play">' + (state.playing ? (zh ? '暂停' : 'Pause') : (zh ? '播放' : 'Play')) + '</button>' +
-        '<button type="button" data-move="-1">' + (zh ? '上一根' : 'Previous') + '</button><button type="button" data-move="1">' + (zh ? '下一根' : 'Next') + '</button>' +
-        '<button type="button" data-act="undo">' + (zh ? '撤销' : 'Undo') + '</button><button type="button" data-act="redo">' + (zh ? '重做' : 'Redo') + '</button>' +
-        '<button type="button" data-act="clear">' + (zh ? '重画' : 'Redraw') + '</button><button type="button" data-act="reset">' + (zh ? '重置' : 'Reset') + '</button>' +
+        '<button type="button" data-act="clear">' + (zh ? '重画' : 'Redraw') + '</button>' +
+        '<button type="button" data-act="reset">' + (zh ? '重新开始' : 'Start again') + '</button>' +
+        '<button type="button" data-more="fib">' + (zh ? '再看一个反例' : 'See a counterexample') + '</button>' +
         '<button type="button" data-act="sample">' + (zh ? '核对 100→140' : 'Check 100 to 140') + '</button>' +
-        '<span>' + state.shown + ' / ' + data.bars.length + (zh ? '，后面先隐藏' : ', later bars hidden') + '</span></div>' +
-        '<div class="fib-scroll">' + bits.join('') + '</div>' +
+        '<span>' + state.shown + ' / ' + data.bars.length + '</span></div>' +
         '<p class="a2-readout ' + state.tone + '">' + (state.note || hint) + '</p>' +
         '<p class="ema-note">' + (zh
-          ? '上涨回撤：价格=H−(H−L)×比例，0 在高点。下跌回撤：价格=L+(H−L)×比例，0 在低点。扩展：价格=起点+(终点−起点)×比例。0.5 是常用中点，不是严格的斐波那契数列比率。两个锚点相同就不画。'
-          : 'Up retracement: price=H−(H−L)×ratio, and 0 is at the high. Down retracement: price=L+(H−L)×ratio, and 0 is at the low. Extension: price=start+(end−start)×ratio. 0.5 is a common midpoint, not a strict Fibonacci-sequence ratio. Equal anchors draw nothing.') + '</p></div>';
+          ? '上涨回撤：价格=H−(H−L)×比例，0 在高点。下跌回撤：价格=L+(H−L)×比例，0 在低点。0.5 是常用中点，不是严格的斐波那契数列比率。'
+          : 'Up retracement: price=H−(H−L)×ratio, and 0 is at the high. Down retracement: price=L+(H−L)×ratio, and 0 is at the low. 0.5 is a common midpoint, not a strict Fibonacci-sequence ratio.') + '</p></div>';
     }
     function setShown(next) {
       state.shown = Math.max(8, Math.min(data.bars.length, next));
     }
     if (root._fibClick) root.removeEventListener('click', root._fibClick);
     root._fibClick = function (ev) {
-      var el = ev.target.closest ? ev.target.closest('[data-dir],[data-mode],[data-move],[data-act],[data-bar]') : null;
+      var el = ev.target.closest ? ev.target.closest('[data-dir],[data-mode],[data-move],[data-act],[data-bar],[data-more]') : null;
       if (!el || !root.contains(el)) return;
+      if (el.getAttribute('data-more') === 'fib') {
+        remember();
+        state.dir = state.dir === 'up' ? 'down' : 'up';
+        state.a = null;
+        state.b = null;
+        state.note = state.dir === 'down'
+          ? (zh ? '反例改成下跌回撤：0 在低点，1 在高点。先点高点，再点低点。' : 'The counterexample uses a down retracement: 0 is at the low and 1 is at the high. Tap the high, then the low.')
+          : '';
+        state.tone = '';
+        paint();
+        return;
+      }
       if (el.hasAttribute('data-dir')) {
         remember();
         state.dir = el.getAttribute('data-dir');
