@@ -7,7 +7,7 @@
         id: '01',
         title: bi('交易计划：先写好认错条件', 'A trading plan: write the invalidation first'),
         scene: bi('价格还没触发你的条件，现在要不要追？', 'Price has not triggered your condition. Do you chase now?'),
-        one: bi('计划先写下进场、止损和目标。条件没出现就等待，止损在进场前就写好。', 'Write the entry, stop, and target first. If the condition has not appeared, wait. The stop is written before entry.'),
+        one: bi('计划先写下进场、止损和目标。条件没出现就等待，止损在进场前就写好。', 'Write the entry, stop, and target first. If the condition has not appeared, wait; the stop is written before entry.'),
         explain: bi('一笔计划至少要有进场条件、认错价和目标价。\n条件没用收盘价满足之前，选择是等待，不是临时追。\n止损写在事前，用来定义这笔愿意亏的距离。\n盈亏比比较的是计划中的收益距离和风险距离，不含手续费时只是计划比值。', 'A plan needs an entry condition, an invalidation price, and a target.\nUntil the close satisfies the condition, the choice is to wait, not to chase.\nThe stop is written beforehand. It defines the distance you are willing to lose on this trade.\nReward-to-risk compares the planned reward distance with the risk distance. Without fees, it is only the planned ratio.'),
         example: bi('进场 106，止损 102，目标 114。\n每单位风险=106−102=4。\n每单位计划收益=114−106=8。\n盈亏比=8/4=2:1。\n这表示计划收益是风险的两倍，不是胜率。', 'Entry 106, stop 102, target 114.\nRisk per unit=106−102=4.\nPlanned reward per unit=114−106=8.\nReward-to-risk=8/4=2:1.\nThat means the planned reward is twice the risk. It is not a win rate.'),
         pitfalls: [

@@ -6,7 +6,7 @@
       lesson({
         id: '01', title: bi('FOMO：怕错过时先看计划', 'FOMO: when you fear missing out, look at the plan first'),
         scene: bi('价格从 100 很快到了 120，现在不追是不是就错了？', 'Price ran from 100 to 120. Is it wrong not to chase?'),
-        one: bi('FOMO 是怕错过而想马上行动。快涨本身不要求追，不交易也可以符合计划。', 'FOMO is wanting to act immediately because you fear missing out. A fast rise does not require a chase. No-trade can still match the plan.'),
+        one: bi('FOMO 是怕错过而想马上行动。快涨本身不要求追，不交易也可以符合计划。', 'FOMO is wanting to act immediately because you fear missing out. A fast rise does not require a chase, and no-trade can still match the plan.'),
         explain: bi('先回到进场条件，而不是回到“别人已经赚了”。\n价格路径 100、105、112、120 只说明已经发生的上涨。\n后面可以继续到 125、130，也可以跌到 110、95。\n两条都是隐藏的分支，用来说明追与不追都不是事后唯一正确答案。', 'Return to the entry condition, not to “someone else already made money.”\nThe path 100, 105, 112, 120 only describes the rise that already happened.\nIt can continue to 125 and 130, or fall to 110 and 95.\nBoth branches stay hidden as illustrations. Chasing and not chasing are not the only correct answer after the fact.'),
         example: bi('聊天里出现“再不买就没了”，这是情绪，不是计划条件。\n若计划要求等待回撤或确认，120 并没有自动满足它。\n不交易可以是按计划留下的结果。', 'A chat line that says “buy or it is gone” is emotion, not a plan condition.\nIf the plan asks for a pullback or a confirmation, 120 does not satisfy it automatically.\nNo-trade can be the result of following the plan.'),
         pitfalls: [bi('用别人的盈利代替自己的条件', 'Replacing your conditions with someone else’s profit'), bi('把已经涨过的路径当成必须继续追', 'Treating the path that already rose as something you must chase')],

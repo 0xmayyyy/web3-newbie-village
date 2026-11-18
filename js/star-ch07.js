@@ -22,7 +22,7 @@
       lesson({
         id: '02', title: bi('Tokenomics：供应与解锁', 'Tokenomics: supply and unlocks'),
         scene: bi('FDV 有 20 亿，是不是已经有人买了 20 亿？', 'FDV is 2 billion. Has someone already bought 2 billion?'),
-        one: bi('流通市值=价格×流通量。FDV=价格×最大供应。解锁增加的是流通量，不是自动出现的买盘。', 'Circulating market cap=price×circulating supply. FDV=price×max supply. An unlock increases circulating supply. It does not automatically create buying.'),
+        one: bi('流通市值=价格×流通量。FDV=价格×最大供应。解锁增加的是流通量，不是自动出现的买盘。', 'Circulating market cap=price×circulating supply. FDV=price×max supply. An unlock increases circulating supply, and it does not automatically create buying.'),
         explain: bi('价格不变时，流通量上升，流通市值上升。\nFDV 用的是最大供应，不是已经成交的金额。\n解锁 5000 万枚，若价格仍按原价计算，流通市值增加的是价格乘以这 5000 万。\n这不等于市场上出现了同等金额的卖压证明。', 'If price is unchanged and circulating supply rises, circulating market cap rises.\nFDV uses max supply. It is not cash that has already traded.\nIf 50 million unlock and you still use the old price, circulating market cap rises by price times those 50 million.\nThat is not proof of the same amount of selling pressure.'),
         example: bi('价格 2，流通 1 亿，最大供应 10 亿。\n流通市值=2 亿。\nFDV=20 亿。\n再解锁 5000 万，流通变为 1.5 亿，按价格 2 计算，流通市值=3 亿。', 'Price 2, circulating supply 100 million, max supply 1 billion.\nCirculating market cap=200 million.\nFDV=2 billion.\nUnlock another 50 million and circulating supply is 150 million. At price 2, circulating market cap=300 million.'),
         pitfalls: [bi('把 FDV 当成已经买入的金额', 'Treating FDV as cash already spent to buy'), bi('把解锁数量直接写成砸盘金额', 'Writing the unlocked quantity directly as a dump in cash')],

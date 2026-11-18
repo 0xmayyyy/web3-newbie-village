@@ -6,7 +6,7 @@
       lesson({
         id: '01', title: bi('区块浏览器：成功不等于到账', 'A block explorer: success is not the same as arrival'),
         scene: bi('浏览器显示成功，钱就一定到了你认识的那个地址吗？', 'The explorer says success. Did the funds necessarily reach the address you know?'),
-        one: bi('先核对链、代币合约和收款地址。成功只说明这笔模拟交易被打包，不说明收款人是你以为的那一个。', 'Check the chain, the token contract, and the recipient first. Success only means this simulated transaction was included. It does not mean the recipient is the one you expected.'),
+        one: bi('先核对链、代币合约和收款地址。成功只说明这笔模拟交易被打包，不说明收款人是你以为的那一个。', 'Check the chain, the token contract, and the recipient first. Success only means this simulated transaction was included, and it does not mean the recipient is the one you expected.'),
         explain: bi('浏览器要看链的名字，而不是只看代币符号。\n同名代币可以是另一份合约。\n确认数增加，表示后面又接上了区块，不是收款身份证明。\n本课数据全部是模拟，不提供真实浏览器链接。', 'An explorer is read by the chain name, not by the token symbol alone.\nA token with the same name can be a different contract.\nMore confirmations mean later blocks were added. They are not proof of who the recipient is.\nEvery figure in this lesson is simulated. There is no real explorer link.'),
         example: bi('模拟链 DemoChain，交易 DEMO_TX_001，区块 1001。\n金额 100 DEMO_USDT，确认数 3。\n这些字段都要单独看。成功状态不能代替地址核对。', 'Simulated chain DemoChain, transaction DEMO_TX_001, block 1001.\nAmount 100 DEMO_USDT, 3 confirmations.\nEach field is read on its own. A success status does not replace checking the address.'),
         pitfalls: [bi('只看成功两个字', 'Reading only the word success'), bi('同名代币当成同一份资产', 'Treating a same-name token as the same asset')],
@@ -38,7 +38,7 @@
       lesson({
         id: '03', title: bi('稳定币增发：Mint 不等于买盘', 'Stablecoin minting: a mint is not buying pressure'),
         scene: bi('一条链上增发了，是不是就有人拿去买比特币？', 'A chain minted new supply. Did someone use it to buy bitcoin?'),
-        one: bi('单链增发不等于全网供应上升，增发也不等于买盘。跨链还要多条链一起核对。', 'A mint on one chain is not a rise in supply across all chains. A mint is also not buying pressure. A cross-chain move has to be checked on more than one chain.'),
+        one: bi('单链增发不等于全网供应上升，增发也不等于买盘。跨链还要多条链一起核对。', 'A mint on one chain is not a rise in supply across all chains, and a mint is also not buying pressure. A cross-chain move has to be checked on more than one chain.'),
         explain: bi('先分清这条链和全网。\n一条链 mint，另一条链 burn，两边金额相同也不等于已经证明是一笔桥。\n增发本身没有“必须买入 BTC”的动作。\n要看供应变化，就得把相关链放在一起。', 'Separate this chain from the whole network.\nA mint on one chain and a burn on another, even for the same amount, is not proof of a bridge.\nA mint itself contains no action that says “must buy BTC.”\nTo read a supply change, put the relevant chains together.'),
         example: bi('链 A mint 1 亿，链 B burn 1 亿。\n两边相加的变化可以是 0。\n金额相同仍不足以证明桥接。\n也不能把 A 的 mint 当成 BTC 买盘。', 'Chain A mints 100 million and chain B burns 100 million.\nThe sum of the two changes can be 0.\nThe same amount is still not enough to prove a bridge.\nA’s mint also cannot be read as BTC buying.'),
         pitfalls: [bi('单链增发当成总供应上升', 'Reading a single-chain mint as a rise in total supply'), bi('把 mint 写成买盘', 'Writing a mint down as buying pressure')],

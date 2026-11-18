@@ -38,7 +38,7 @@
       lesson({
         id: '03', title: bi('DXY 与美债：相关不是因果', 'DXY and Treasuries: correlation is not causation'),
         scene: bi('美债收益率上升的时候，比特币必须下跌吗？', 'When Treasury yields rise, must bitcoin fall?'),
-        one: bi('相关系数描述两列数一起变动的程度。它不是因果关系，方差为 0 时还无法计算。', 'Correlation describes how two series move together. It is not causation. If variance is 0, it cannot be calculated.'),
+        one: bi('相关系数描述两列数一起变动的程度。它不是因果关系，方差为 0 时还无法计算。', 'Correlation describes how two series move together. It is not causation, and if variance is 0 it cannot be calculated.'),
         explain: bi('皮尔逊相关系数 r 用两列数对各自平均数的偏离来算。\n完全反向的 1 到 5 和 5 到 1，r=−1。\n某一列完全不变时，分母为 0，本课标成不可计算。\n窗口一换，r 可以变号。所以收益率上升不保证 BTC 下跌。', 'Pearson r uses each series’ deviations from its own average.\nThe perfect reverse of 1 through 5 against 5 through 1 has r=−1.\nIf one series never changes, the denominator is 0. This lesson marks that as not computable.\nChange the window and r can change sign. So rising yields do not guarantee BTC falls.'),
         example: bi('X=1,2,3,4,5，Y=5,4,3,2,1，r=−1。\nX=1,1,1 时，r 不可计算。\n相关很强，仍然可以没有因果关系。', 'X=1,2,3,4,5 and Y=5,4,3,2,1, r=−1.\nWhen X=1,1,1, r cannot be calculated.\nA strong correlation can still have no causal link.'),
         pitfalls: [bi('把相关系数说成原因', 'Calling a correlation a cause'), bi('在一条横线的数据上硬算 r', 'Forcing r on a flat series')],
@@ -70,7 +70,7 @@
       lesson({
         id: '05', title: bi('宏观事件日历：先计划再看结果', 'A macro calendar: plan before the result'),
         scene: bi('数据公布前，计划里可以写“不交易”吗？', 'Before the release, can the plan say “no trade”?'),
-        one: bi('先写时间、时区和你允许的动作，再看结果。一个变量不够解释价格，不交易也可以是计划。', 'Write the time, the timezone, and the actions you allow before you see the result. One variable is not enough to explain price. No-trade can be the plan.'),
+        one: bi('先写时间、时区和你允许的动作，再看结果。一个变量不够解释价格，不交易也可以是计划。', 'Write the time, the timezone, and the actions you allow before you see the result. One variable is not enough to explain price, and no-trade can be the plan.'),
         explain: bi('同一时刻在不同时区不是同一个钟点。\n公布前写下：看哪个数据、预期是多少、触发后做什么、不触发做什么。\n只盯一个数字，忽略当时的仓位和流动性，解释不了价格。\n计划可以明确写成这次不交易。', 'The same instant is not the same clock time in every timezone.\nBefore the release, write which data you watch, what the forecast is, what you do if it triggers, and what you do if it does not.\nWatching one number while ignoring positions and liquidity does not explain price.\nThe plan can explicitly say this event is a no-trade.'),
         example: bi('虚构事件：2027-01-15 13:30 UTC。\nCPI 预期 2.8%，模拟实际值 3.1%。\n在看见 3.1% 之前，计划已经写好，而不是事后改口。', 'Fictional event: 2027-01-15 13:30 UTC.\nCPI forecast 2.8%, simulated actual 3.1%.\nThe plan is written before 3.1% is seen, not rewritten afterward.'),
         pitfalls: [bi('不看时区就对钟点', 'Matching the clock time without checking the timezone'), bi('用一个宏观数字解释全部涨跌', 'Explaining the whole move with one macro number')],
