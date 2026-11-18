@@ -10,7 +10,7 @@
         title: bi('EMA：均线为什么追着价格跑', 'EMA: why the average chases price'),
         scene: bi('价格刚跌下来，均线会不会马上跳到最新价？', 'Price just fell. Does the average jump to the latest price right away?'),
         one: bi('EMA 更重视最近的收盘，所以会跟着价格走，但不会在一根大阴线时瞬间跳下去。', 'An EMA weights recent closes more, so it follows price, but it does not jump down on one large red candle.'),
-        explain: bi('均线是一条跟着蜡烛收盘走的平滑线。\n图上黄线是 EMA20。\nEMA20 看的是最近 20 根 K 线，越近的越重要。\n看 1 小时图时，这 20 根是小时 K 线，不是 20 天。\n蓝线是 EMA50。\nEMA50 看的是最近 50 根 K 线，走得更慢。\n它不是用来预言下一根会到哪里。\n价格突然跌下来，均线还停在上面。\n你可以把它想成跟在身后的人。\n你停下了，他还要再走几步才到。\n追得快，不等于看得更准。\n计算是 α=2/(N+1)。\n第一根有效值是前 N 根收盘的简单平均。\n之后每根是 α×当根收盘+(1−α)×上一根。\n不够 N 根就写数据不足，不画 0。\n本课把“靠近”定成收盘离快线不超过 0.3%。\n这是教学规则，不是买卖信号。\n后面的 K 线先藏着。\n请一根一根放出来，再自己点。', 'An average is a smooth line that follows candle closes.\nThe gold line is EMA20.\nEMA20 looks at the last 20 bars, and the nearer ones matter more.\nOn a 1-hour chart those 20 bars are hours, not 20 days.\nThe blue line is EMA50.\nEMA50 looks at the last 50 bars, and it moves more slowly.\nIt is not there to predict where the next bar will go.\nWhen price drops suddenly, the average is still up above it.\nYou can think of it as a person walking behind you.\nYou stop, and he still needs a few more steps to arrive.\nFollowing faster does not mean seeing more clearly.\nThe formula is α=2/(N+1).\nThe first valid value is the simple average of the first N closes.\nAfter that, each bar is α times this close plus (1−α) times the previous value.\nFewer than N bars says the data is not ready, and it does not draw 0.\nThis lesson calls a bar “near” when the close is within 0.3% of the fast line.\nThat is a teaching rule, not a buy or sell signal.\nLater candles stay hidden.\nReveal them one by one, then mark them yourself.'),
+        explain: bi('均线是一条跟着蜡烛收盘走的平滑线。\n图上的 K 线有涨有跌，不是一条直线。\n黄实线是 EMA20，蓝虚线是 EMA50。\n两条线和 K 线用同一个价格轴。\nEMA20 看的是最近 20 根收盘，越近的越重要。\n看 1 小时图时，这 20 根是小时 K 线，不是 20 天。\nEMA50 看的是最近 50 根，走得更慢。\n它不是用来预言下一根会到哪里。\n价格先转，均线后转。\n计算是 α=2/(N+1)。\n第一根有效值是前 N 根收盘的简单平均。\n之后每根是 α×当根收盘+(1−α)×上一根。\n不够 N 根就写数据不足，不画 0。\n本课把“靠近”定成 |收盘−快线|/快线 ≤ 0.3%。\n这是教学规则，不是买卖信号。\n后面的 K 线先藏着。\n请一根一根放出来，再自己点。', 'An average is a smooth line that follows candle closes.\nThe candles rise and fall. They are not one straight line.\nThe gold solid line is EMA20, and the blue dashed line is EMA50.\nBoth lines share the candle price axis.\nEMA20 looks at the last 20 closes, and the nearer ones matter more.\nOn a 1-hour chart those 20 bars are hours, not 20 days.\nEMA50 looks at the last 50 closes, and it moves more slowly.\nIt is not there to predict where the next bar will go.\nPrice turns first. The average turns later.\nThe formula is α=2/(N+1).\nThe first valid value is the simple average of the first N closes.\nAfter that, each bar is α times this close plus (1−α) times the previous value.\nFewer than N bars says the data is not ready, and it does not draw 0.\nThis lesson calls a bar “near” when |close − fast line| / fast line ≤ 0.3%.\nThat is a teaching rule, not a buy or sell signal.\nLater candles stay hidden.\nReveal them one by one, then mark them yourself.'),
         example: bi('教学模拟：主图有 90 根以上的 1 小时 K 线，前面另有一段预热。\n趋势里，价格大多在两条向上的均线上方。\n其中一根收盘贴近快线。\n贴近还不是确认反弹。\n横盘里，快线和慢线会交叉不止一次。\n交叉也不等于后面一定涨。', 'Teaching simulation: the main chart has more than 90 one-hour candles, plus a warmup before them.\nIn the trend, price spends most of the time above two rising averages.\nOne close sits near the fast line.\nBeing near it is not a confirmed bounce.\nIn the sideways scene, the fast and slow lines cross more than once.\nA cross still does not mean the next move must rise.'),
         pitfalls: [
           bi('把均线当成下一根的预测价', 'Treating the average as the predicted price of the next bar'),
@@ -167,14 +167,14 @@
         id: '05',
         title: bi('背离：先确认高低点', 'Divergence: confirm the highs and lows first'),
         scene: bi('价格创新高、RSI 没创新高，是不是已经反转？', 'Price made a higher high and RSI did not. Has it already reversed?'),
-        one: bi('看跌背离是价格高点抬高、指标高点降低。它描述两段已经确认的摆动，不保证下一根反转。', 'Bearish divergence is a higher price high with a lower indicator high. It describes two confirmed swings, and it does not guarantee the next bar reverses.'),
-        explain: bi('先标记已经确认的高点和低点。\n本课要求高点右侧至少再走出 2 根，才把它当成确认摆动。\n看跌背离：价格高点更高，RSI 高点更低。\n看涨背离：价格低点更低，RSI 低点更高。\n背离之后价格仍可以顺着原方向继续走。', 'Mark highs and lows only after they are confirmed.\nThis lesson waits for at least 2 bars to the right of a high before calling it a confirmed swing.\nBearish divergence: a higher price high with a lower RSI high.\nBullish divergence: a lower price low with a higher RSI low.\nAfter divergence, price can still continue in the original direction.'),
-        example: bi('若价格高点从 105 到 112，而同一段 RSI 高点从 78 到 69，关系上是看跌背离。\n这两个 RSI 必须来自同一条收盘序列，不能事后挑点。\n即便如此，后面仍可能继续上涨。', 'If price highs go from 105 to 112 while RSI highs on the same stretch go from 78 to 69, the relationship is bearish divergence.\nThose RSI values must come from the same close series. You cannot pick points afterward.\nEven then, price can still continue up.'),
+        one: bi('看跌背离是价格高点抬高而指标高点降低，它只描述两段已经确认的摆动，不保证下一根反转。', 'Bearish divergence is a higher price high with a lower indicator high, and it only describes two confirmed swings, so it does not guarantee the next bar reverses.'),
+        explain: bi('左右各 2 根都走出来，这个高低点才算确认。\n右侧 2 根还没出现，就不能标。\n看跌背离是价格高点更高，左右 2 根以内的 RSI 高点更低。\n看涨背离是价格低点更低，RSI 低点更高。\n换成 DIF 或柱子时，两个点都要比同一条线。\n背离之后价格仍可以顺着原方向继续走。\n教学模拟：高点 105 再到 112，同一条收盘算出的 RSI 约 78 再到 69。', 'A high or low is confirmed only after 2 bars exist on each side.\nIf the 2 bars on the right have not printed, you cannot mark it.\nBearish divergence is a higher price high with a lower RSI high within 2 bars.\nBullish divergence is a lower price low with a higher RSI low.\nIf you switch to DIF or the histogram, both points must use that same line.\nAfter divergence, price can still continue in the original direction.\nTeaching simulation: highs at 105 then 112, and RSI from the same closes is about 78 then 69.'),
+        example: bi('教学模拟：价格高点从 105 到 112。\n同一条收盘序列上，RSI 高点从约 78 到约 69。\n这是算出来的，不是事后填上的。\n即便如此，后面仍可能继续上涨。', 'Teaching simulation: the price highs go from 105 to 112.\nOn the same close series, the RSI highs go from about 78 to about 69.\nThose numbers are calculated, not filled in afterward.\nEven then, price can still continue up.'),
         pitfalls: [
           bi('用还没走完的右侧 K 线提前标摆动', 'Marking a swing before the bars on its right have printed'),
           bi('把背离当成必然而不是一种关系', 'Treating divergence as a certainty instead of a relationship')
         ],
-        practice: bi('只比较图上已经走出来的高点，不要把最后一根未确认的影线当成摆动点。', 'Compare only highs that have already printed. Do not treat the last unconfirmed wick as a swing.'),
+        practice: bi('自己点两个已经确认的价格高点，再点左右 2 根以内的 RSI。右侧不够 2 根时，图会说还需要后续 K 线确认。', 'Mark two confirmed price highs yourself, then the RSI highs within 2 bars. If 2 bars are not yet on the right, the chart says later candles are still needed.'),
         check: {
           ask: bi('价格更高高点，RSI 更低高点，这叫什么？', 'Price makes a higher high and RSI makes a lower high. What is that called?'),
           options: [opt('A', '看跌背离', 'Bearish divergence'), opt('B', '看涨背离', 'Bullish divergence'), opt('C', '缩口', 'A squeeze')],
@@ -182,24 +182,25 @@
           miss: bi('看涨背离比的是低点。缩口说的是布林带宽度。', 'Bullish divergence compares lows. A squeeze talks about Bollinger width.')
         },
         quizzes: [
-          quiz('价格更高高点、RSI 更低高点，是？', 'A higher price high and a lower RSI high is?', [opt('A', '看跌背离', 'Bearish divergence'), opt('B', '看涨背离', 'Bullish divergence'), opt('C', '成交量背离', 'Volume divergence')], 'A', {
-            A: ['价格高点抬高，指标高点降低，这是看跌背离的定义。', 'A higher price high with a lower indicator high is the definition of bearish divergence.'],
-            B: ['看涨背离看的是更低的价格低点和更高的指标低点。', 'Bullish divergence looks at a lower price low and a higher indicator low.'],
-            C: ['这一对比用的是 RSI，不是成交量。', 'This comparison uses RSI, not volume.']
+          quiz('价格新高、RSI 更低高点属于？', 'A new price high with a lower RSI high is?', [opt('A', '看跌背离', 'Bearish divergence'), opt('B', '必涨信号', 'A signal that must rise'), opt('C', '没有意义', 'Meaningless')], 'A', {
+            A: ['价格高点更高，RSI 高点更低，这就是看跌背离。', 'A higher price high with a lower RSI high is bearish divergence.'],
+            B: ['它没有上涨这一项。看涨背离比的是低点。', 'It has no rise in it. Bullish divergence compares lows.'],
+            C: ['它描述两段已确认摆动的关系，不是空话，也不保证反转。', 'It describes two confirmed swings. That is not empty, and it still does not guarantee a reversal.']
           }),
-          quiz('出现背离后一定会反转吗？', 'Must price reverse after divergence?', [opt('A', '一定', 'It must'), opt('B', '不一定', 'Not necessarily'), opt('C', '只在 4 小时一定', 'Only on the 4-hour chart')], 'B', {
-            A: ['背离是两段摆动的关系，后面可以继续原方向。', 'Divergence is a relationship between two swings. Price can continue in the same direction.'],
-            B: ['它不包含“下一根必须反向”的条款。', 'It does not contain a clause that the next bar must reverse.'],
-            C: ['换周期不会把一种关系变成保证。', 'Changing timeframe does not turn a relationship into a guarantee.']
+          quiz('背离一定导致反转？', 'Must divergence cause a reversal?', [opt('A', '一定', 'It must'), opt('B', '不一定', 'Not necessarily'), opt('C', '只有 ETH 会', 'Only ETH does')], 'B', {
+            A: ['背离之后价格仍可以顺着原方向继续走。', 'After divergence, price can still continue in the original direction.'],
+            B: ['它只是价格和指标没有一起创新高或创新低。', 'It only says price and the indicator did not make the new extreme together.'],
+            C: ['换成 ETH 这个名字，确认规则也不变。', 'The name ETH does not change the confirmation rule.']
           }),
-          quiz('可以用还没走出来的未来 K 线提前标高点吗？', 'Can you mark a high early with future bars that have not printed?', [opt('A', '可以', 'Yes'), opt('B', '不可以提前显示', 'No, do not show it early'), opt('C', '只有练习可以', 'Only in practice')], 'B', {
-            A: ['右侧 K 线还没出现时，这个高点尚未按本课规则确认。', 'Before the bars on the right exist, this high is not confirmed under this lesson’s rule.'],
-            B: ['本课至少等右侧 2 根走出来，避免用未来信息挑点。', 'This lesson waits for 2 bars on the right, so you do not pick points with future information.'],
-            C: ['练习和正式图用同一条确认规则。', 'Practice and the main chart use the same confirmation rule.']
+          quiz('可用未来 K 线确认今天的信号吗？', 'Can future candles confirm today’s signal?', [opt('A', '可以提前画', 'You can draw it early'), opt('B', '不可以提前显示', 'Do not show it early'), opt('C', '随便', 'Either way')], 'B', {
+            A: ['右侧 2 根还没走出来，这个高低点还没确认。', 'Until 2 bars have printed on the right, the swing is not confirmed.'],
+            B: ['本课等右侧 2 根出现，才允许标这个点。', 'This lesson waits for 2 bars on the right before the point can be marked.'],
+            C: ['确认规则是固定的，不能有时提前、有时不提前。', 'The confirmation rule is fixed. It is not sometimes early and sometimes not.']
           })
         ],
         study: {
           kind: 'rsi',
+          lessonChart: 'div-full',
           bars: [
             { o: 76.4, h: 77.6, l: 75.9, c: 77 }, { o: 77, h: 82.6, l: 76.5, c: 82 }, { o: 82, h: 82.6, l: 78.5, c: 79 },
             { o: 79, h: 84.6, l: 78.5, c: 84 }, { o: 84, h: 84.6, l: 80.5, c: 81 }, { o: 81, h: 86.6, l: 80.5, c: 86 },
@@ -336,27 +337,35 @@
   function nearLine(close, line) {
     return line != null && line !== 0 && Math.abs(close - line) / Math.abs(line) <= 0.003;
   }
-  function walk(start, steps) {
+  function unit(i, salt) {
+    var x = Math.imul((i + 1) ^ (salt * 131), 1103515245) + 12345;
+    x = (x ^ (x >>> 16)) >>> 0;
+    return (x % 10000) / 10000;
+  }
+  function tape(start, plan, salt) {
     var bars = [];
     var price = start;
     var hour = 0;
-    steps.forEach(function (step) {
-      var count = step[0];
+    plan.forEach(function (leg, legIndex) {
       var i;
-      for (i = 0; i < count; i++) {
-        var delta = step[1];
-        if (typeof delta === 'function') delta = delta(i, hour);
+      for (i = 0; i < leg.n; i++) {
+        var u = unit(hour, salt + legIndex * 19);
+        var mag = leg.lo + (leg.hi - leg.lo) * u;
+        var delta = leg.dir * mag;
+        if (u > 0.78) delta = -delta * (0.35 + unit(hour, salt + 5) * 0.4);
         var open = price;
-        price = round2(open + delta);
-        var wick = Math.max(12, Math.abs(delta) * 0.35);
+        var close = round2(open + delta);
+        var upWick = 6 + unit(hour, salt + 3) * (12 + Math.abs(delta) * 0.8);
+        var downWick = 5 + unit(hour, salt + 8) * (10 + Math.abs(delta) * 0.6);
         bars.push({
           t: hour,
           o: open,
-          h: round2(Math.max(open, price) + wick),
-          l: round2(Math.min(open, price) - wick * 0.8),
-          c: price,
-          v: 80 + (hour % 7) * 11
+          h: round2(Math.max(open, close) + upWick),
+          l: round2(Math.min(open, close) - downWick),
+          c: close,
+          v: 25 + Math.floor(unit(hour, salt + 21) * 110 + Math.abs(delta) * unit(hour, salt + 4) * 0.35)
         });
+        price = close;
         hour += 1;
       }
     });
@@ -386,18 +395,20 @@
     };
   }
   function buildScenes() {
-    var trendBars = walk(48000, [[60, 22], [96, 48]]);
-    var pull = 60 + 88;
-    var seeded = ema(trendBars.map(function (bar) { return bar.c; }), 20);
-    trendBars[pull].c = round2(seeded[pull - 1]);
-    trendBars[pull].o = trendBars[pull - 1].c;
-    trendBars[pull].h = round2(Math.max(trendBars[pull].o, trendBars[pull].c) + 20);
-    trendBars[pull].l = round2(Math.min(trendBars[pull].o, trendBars[pull].c) - 18);
+    var plans = {
+      up: [{ n: 20, dir: 1, lo: 8, hi: 40 }, { n: 14, dir: -1, lo: 10, hi: 36 }, { n: 12, dir: 1, lo: 6, hi: 28 }, { n: 14, dir: -1, lo: 8, hi: 30 }, { n: 18, dir: 1, lo: 35, hi: 110 }, { n: 9, dir: -1, lo: 28, hi: 80 }, { n: 24, dir: 1, lo: 30, hi: 100 }, { n: 14, dir: -1, lo: 40, hi: 120 }, { n: 16, dir: 1, lo: 25, hi: 90 }, { n: 7, dir: -1, lo: 20, hi: 70 }, { n: 12, dir: 1, lo: 20, hi: 70 }],
+      down: [{ n: 24, dir: 1, lo: 10, hi: 40 }, { n: 18, dir: -1, lo: 12, hi: 36 }, { n: 18, dir: 1, lo: 8, hi: 30 }, { n: 22, dir: -1, lo: 40, hi: 110 }, { n: 8, dir: 1, lo: 30, hi: 80 }, { n: 20, dir: -1, lo: 35, hi: 100 }, { n: 6, dir: 1, lo: 25, hi: 70 }, { n: 18, dir: -1, lo: 30, hi: 90 }, { n: 10, dir: 1, lo: 15, hi: 50 }, { n: 16, dir: -1, lo: 25, hi: 80 }],
+      range: [{ n: 16, dir: 1, lo: 20, hi: 70 }, { n: 14, dir: -1, lo: 25, hi: 80 }, { n: 12, dir: 1, lo: 18, hi: 60 }, { n: 18, dir: -1, lo: 22, hi: 75 }, { n: 11, dir: 1, lo: 30, hi: 90 }, { n: 15, dir: -1, lo: 20, hi: 70 }, { n: 9, dir: 1, lo: 15, hi: 55 }, { n: 13, dir: -1, lo: 28, hi: 85 }, { n: 14, dir: 1, lo: 20, hi: 65 }, { n: 10, dir: -1, lo: 18, hi: 60 }, { n: 12, dir: 1, lo: 16, hi: 50 }, { n: 16, dir: -1, lo: 20, hi: 70 }],
+      turn: [{ n: 36, dir: 1, lo: 20, hi: 70 }, { n: 8, dir: -1, lo: 8, hi: 20 }, { n: 28, dir: 1, lo: 30, hi: 90 }, { n: 6, dir: -1, lo: 80, hi: 180 }, { n: 18, dir: -1, lo: 25, hi: 70 }, { n: 8, dir: 1, lo: 20, hi: 50 }, { n: 16, dir: -1, lo: 20, hi: 60 }, { n: 20, dir: 1, lo: 10, hi: 30 }, { n: 20, dir: -1, lo: 15, hi: 40 }],
+      exam: [{ n: 40, dir: 1, lo: 12, hi: 48 }, { n: 12, dir: -1, lo: 10, hi: 36 }, { n: 28, dir: 1, lo: 20, hi: 70 }, { n: 10, dir: -1, lo: 18, hi: 50 }, { n: 22, dir: 1, lo: 16, hi: 55 }, { n: 16, dir: -1, lo: 12, hi: 40 }, { n: 18, dir: 1, lo: 14, hi: 46 }, { n: 14, dir: -1, lo: 10, hi: 32 }]
+    };
+    var meta = { version: 1, timeframe: '1h', source: 'sim-btc-usdt-v1' };
     return {
-      trend: Object.assign({ id: 'trend', zh: '趋势上行与回踩', en: 'Uptrend and pullback' }, decorate(trendBars, 60)),
-      range: Object.assign({ id: 'range', zh: '震荡假交叉', en: 'Range and fake crosses' }, decorate(walk(62000, [[160, function (i) { return (Math.floor(i / 9) % 2 ? -1 : 1) * 55; }]]), 60)),
-      crash: Object.assign({ id: 'crash', zh: '大阴线与滞后', en: 'Drop and lag' }, decorate(walk(50000, [[60, 20], [70, 60], [1, -2800], [25, -30]]), 60)),
-      exam: Object.assign({ id: 'exam', zh: '新行情', en: 'New tape' }, decorate(walk(54000, [[60, 15], [80, 45], [1, -2200], [15, 10]]), 60))
+      up: Object.assign({ id: 'up', zh: '上升回踩', en: 'Uptrend and pullbacks', salt: 40 }, meta, decorate(tape(60000, plans.up, 40), 60)),
+      down: Object.assign({ id: 'down', zh: '下跌反弹', en: 'Decline and failed bounce', salt: 53 }, meta, decorate(tape(60000, plans.down, 53), 60)),
+      range: Object.assign({ id: 'range', zh: '震荡假交叉', en: 'Range and fake crosses', salt: 66 }, meta, decorate(tape(60000, plans.range, 66), 60)),
+      turn: Object.assign({ id: 'turn', zh: '反转滞后', en: 'Reversal and lag', salt: 11 }, meta, decorate(tape(62000, plans.turn, 11), 60)),
+      exam: Object.assign({ id: 'exam', zh: '新行情', en: 'New tape', salt: 90 }, meta, decorate(tape(58000, plans.exam, 90), 60))
     };
   }
   function esc(s) {
@@ -414,9 +425,9 @@
     var zh = lang !== 'en';
     var scenes = buildScenes();
     var state = {
-      scene: 'trend',
+      scene: 'up',
       step: 'watch',
-      shown: 30,
+      shown: 48,
       cursor: null,
       marks: [],
       playing: false,
@@ -478,7 +489,8 @@
       if (state.step === 'judge') return zh ? '判断这一句是真是假。点错会说明原因。' : 'Decide whether this statement holds. A wrong pick explains why.';
       if (state.step === 'fail' || state.step === 'mark') {
         if (id === 'range') return zh ? '自己点出至少两次交叉。交叉只说明两线换了位置，不保证后面上涨。' : 'Mark at least two crosses yourself. A cross only says the lines swapped places.';
-        if (id === 'crash') return zh ? '点出那根先穿过均线的大阴线。均线不会跟着它马上跳下去。' : 'Mark the long red candle that crosses the average first. The average does not jump with it.';
+        if (id === 'down') return zh ? '点一根高点穿过快线、收盘又回到快线下面，而且后面收盘更低的 K 线。穿过不是反弹成功。' : 'Mark a bar whose high crosses the fast line and whose close comes back under it, with a later close still lower. A cross is not a successful bounce.';
+        if (id === 'turn') return zh ? '点一根收盘已经跌破快线，但这条快线仍比 5 根之前更高的 K 线。价格先变，均线后转。' : 'Mark a bar whose close is already under the fast line while that line is still higher than it was 5 bars earlier. Price turns first.';
         return zh ? '先点一根两条均线都在抬头、收盘在两线上方的 K 线，再点一根收盘离快线不超过 0.3% 的 K 线。靠近还不是确认反弹。' : 'First mark a bar where both lines rise and the close is above them, then a close within 0.3% of the fast line. Near is not a confirmed bounce.';
       }
       return zh ? '先看懂。后面的 K 线还藏着，用播放或下一根放出来。点一根看收盘和两条均线。' : 'Watch first. Later candles stay hidden until you play or step. Tap a candle for the close and both averages.';
@@ -490,9 +502,32 @@
         if (found >= 2) return { tone: 'is-right', text: zh ? '你标出了至少两次交叉。横盘里交叉会反复出现，不能当成后面一定涨。' : 'You marked at least two crosses. In a range they repeat, so a cross is not a promise of a rise.' };
         return { tone: '', text: zh ? '还差交叉。现在标出 ' + found + ' 次。请点快慢线严格穿过的那一根，相等不算。' : 'Not enough crosses yet. You have marked ' + found + '. Tap a bar where the lines strictly swap. Equality does not count.' };
       }
-      if (state.scene === 'crash' || state.scene === 'exam') {
-        if (roles.some(function (item) { return item.crash; })) return { tone: 'is-right', text: zh ? '这根收盘先穿过去了，均线还在上面慢慢变。EMA 不能预测这根突发下跌，也不是卖出按钮。' : 'This close crossed first. The average is still catching up. EMA does not predict this drop, and it is not a sell button.' };
-        return { tone: '', text: zh ? '还没点到那根大阴线。它的收盘穿过快线，快线仍离收盘超过 1%。' : 'That is not the long red candle yet. Its close crosses the fast line, and the line stays more than 1% away.' };
+      if (state.scene === 'down') {
+        var failed = state.marks.some(function (index) {
+          var bar = pack.bars[index];
+          var fast = pack.fast[index];
+          if (!bar || fast == null || !(bar.h > fast && bar.c < fast)) return false;
+          var later = false;
+          var j;
+          for (j = index + 1; j < pack.bars.length; j++) if (pack.bars[j].c < bar.c) later = true;
+          return later;
+        });
+        if (failed) return { tone: 'is-right', text: zh ? '这根穿过快线后又回到下面，后面的收盘还更低。反弹失败不是买入。' : 'This bar crossed the fast line and came back under it, and a later close is lower. A failed bounce is not a buy.' };
+        return { tone: '', text: zh ? '还不是。要高点在快线之上、收盘在快线之下，而且后面还有更低的收盘。' : 'Not yet. The high must be above the fast line, the close under it, and a later close must be lower.' };
+      }
+      if (state.scene === 'turn') {
+        var lagged = state.marks.some(function (index) {
+          var bar = pack.bars[index];
+          var fast = pack.fast[index];
+          var earlier = pack.fast[index - 5];
+          return !!(bar && fast != null && earlier != null && bar.c < fast && fast > earlier);
+        });
+        if (lagged) return { tone: 'is-right', text: zh ? '收盘已经在快线下面，快线却还比 5 根之前更高。价格先转，均线后转。' : 'The close is already under the fast line, but the line is still higher than it was 5 bars earlier. Price turns first.' };
+        return { tone: '', text: zh ? '还不是滞后那一根。收盘要在快线下面，快线本身还在抬高。' : 'Not the lag bar yet. The close must be under the fast line while the line itself is still rising.' };
+      }
+      if (state.scene === 'exam') {
+        if (roles.some(function (item) { return item.crash; })) return { tone: 'is-right', text: zh ? '这根收盘先穿过去了，均线还在上面慢慢变。EMA 不能预测这根下跌。' : 'This close crossed first. The average is still catching up. EMA does not predict this drop.' };
+        return { tone: '', text: zh ? '先打开均线，再点收盘穿过快线、快线还离得很远的那一根。' : 'Turn the averages on, then mark the bar whose close crosses the fast line while the line is still far away.' };
       }
       var hasRise = roles.some(function (item) { return item.rising; });
       var hasNear = roles.some(function (item) { return item.near; });
@@ -517,15 +552,19 @@
         '<br>EMA' + state.slowN + ' ' + slowText;
     }
     function paint() {
+      if (!state.sized && root.clientWidth) {
+        state.sized = true;
+        if (root.clientWidth >= 800) state.shown = Math.min(80, maxShown());
+      }
       var pack = prefix();
       var from = pack.current.visibleFrom;
       var draw = pack.bars.slice(from);
       var w = 980;
-      var h = 390;
+      var h = 440;
       var padL = 10;
       var padR = 74;
-      var top = 16;
-      var priceH = 248;
+      var top = 14;
+      var priceH = 300;
       var vals = [];
       draw.forEach(function (bar, i) {
         vals.push(bar.h, bar.l);
@@ -562,9 +601,9 @@
         var bh = Math.max(1.4, Math.abs(y(bar.c) - y(bar.o)));
         bits.push('<line x1="' + xc + '" y1="' + y(bar.h) + '" x2="' + xc + '" y2="' + y(bar.l) + '" stroke="' + color + '" stroke-width="1.3"></line>');
         bits.push('<rect x="' + (xc - bw / 2) + '" y="' + bodyTop + '" width="' + bw + '" height="' + bh + '" fill="' + color + '"></rect>');
-        var vh = Math.max(1, bar.v / volMax * 48);
-        bits.push('<rect x="' + (xc - bw / 2) + '" y="' + (348 - vh) + '" width="' + bw + '" height="' + vh + '" fill="' + color + '" opacity="0.85"></rect>');
-        if (i % 16 === 0) bits.push('<text x="' + xc + '" y="376" fill="#b7aac8" font-size="12">' + (zh ? '第' + (i + 1) + '根' : '#' + (i + 1)) + '</text>');
+        var vh = Math.max(1, bar.v / volMax * 78);
+        bits.push('<rect x="' + (xc - bw / 2) + '" y="' + (418 - vh) + '" width="' + bw + '" height="' + vh + '" fill="' + color + '" opacity="0.85"></rect>');
+        if (i % 16 === 0) bits.push('<text x="' + xc + '" y="434" fill="#b7aac8" font-size="12">' + (zh ? '第' + (i + 1) + '根' : '#' + (i + 1)) + '</text>');
         var abs = from + i;
         if (state.marks.indexOf(abs) >= 0) bits.push('<circle cx="' + xc + '" cy="' + y(bar.h) + '" r="5" fill="none" stroke="#f4cb82" stroke-width="2"></circle>');
         if (!state.hideAnswer && state.showCross && roleAt(pack, abs).cross) bits.push('<polygon points="' + xc + ',' + (y(bar.l) + 12) + ' ' + (xc - 5) + ',' + (y(bar.l) + 22) + ' ' + (xc + 5) + ',' + (y(bar.l) + 22) + '" fill="#f0d59a"></polygon>');
@@ -572,15 +611,23 @@
         if (state.cursor === abs) bits.push('<line x1="' + xc + '" y1="' + top + '" x2="' + xc + '" y2="' + (top + priceH) + '" stroke="rgba(255,255,255,.45)" stroke-dasharray="3 3"></line>');
       });
       function poly(series, color, dash) {
-        var pts = [];
+        var run = [];
+        function flush() {
+          if (run.length > 1) bits.push('<polyline points="' + run.join(' ') + '" fill="none" stroke="' + color + '" stroke-width="2.5"' + (dash ? ' stroke-dasharray="6 4"' : '') + '></polyline>');
+          run = [];
+        }
         draw.forEach(function (bar, i) {
           var value = series[from + i];
-          if (value != null) pts.push((padL + i * slot + slot / 2).toFixed(1) + ',' + y(value).toFixed(1));
+          if (value == null || value !== value || value === Infinity || value === -Infinity) flush();
+          else run.push((padL + i * slot + slot / 2).toFixed(1) + ',' + y(value).toFixed(1));
         });
-        if (pts.length > 1) bits.push('<polyline points="' + pts.join(' ') + '" fill="none" stroke="' + color + '" stroke-width="2.4"' + (dash ? ' stroke-dasharray="7 4"' : '') + '></polyline>');
+        flush();
       }
       if (state.showFast) poly(pack.fast, '#f4cb82', false);
       if (state.showSlow) poly(pack.slow, '#8eb4ff', true);
+      if (state.showSlow && pack.slow.slice(from, from + draw.length).every(function (value) { return value == null; })) {
+        bits.push('<text x="' + (padL + 8) + '" y="' + (top + 28) + '" fill="#f0d59a" font-size="14">' + (zh ? '历史数据不足，无法计算 EMA' + state.slowN : 'Not enough history to calculate EMA' + state.slowN) + '</text>');
+      }
       draw.forEach(function (bar, i) {
         var abs = from + i;
         bits.push('<rect data-bar="' + abs + '" x="' + (padL + i * slot) + '" y="' + top + '" width="' + slot + '" height="' + (priceH + 8) + '" fill="transparent" style="cursor:pointer"></rect>');
@@ -593,7 +640,7 @@
         ['fail', zh ? '失败案例' : 'Failure'],
         ['exam', zh ? '新行情考试' : 'New tape']
       ];
-      var scenesBtns = ['trend', 'range', 'crash'].map(function (id) {
+      var scenesBtns = ['up', 'down', 'range', 'turn'].map(function (id) {
         var item = scenes[id];
         return '<button type="button" data-scene="' + id + '" aria-pressed="' + (state.scene === id) + '">' + esc(zh ? item.zh : item.en) + '</button>';
       }).join('');
@@ -601,9 +648,11 @@
       if (state.step === 'judge') {
         var q = state.scene === 'range'
           ? { ask: zh ? '快线上穿慢线，但价格在窄幅来回。能否直接判定随后上涨？' : 'The fast line crosses above the slow line while price chops. Can you decide that price must then rise?', answer: 'A', options: [['A', zh ? '不能，交叉可能反复' : 'No, crosses can repeat'], ['B', zh ? '能，金叉必涨' : 'Yes, a cross must rise'], ['C', zh ? '只有第一根算' : 'Only the first one counts']] }
-          : state.scene === 'crash'
-            ? { ask: zh ? '大阴线已经穿过均线。均线有没有马上变成这根收盘价？' : 'The long red candle has crossed the average. Did the average become that close at once?', answer: 'B', options: [['A', zh ? '有，它会跳过去' : 'Yes, it jumps there'], ['B', zh ? '没有，它还在慢慢跟上' : 'No, it is still catching up'], ['C', zh ? '只有慢线会跳' : 'Only the slow line jumps']] }
-            : { ask: zh ? '收盘离快线不到 0.3%。这是不是已经确认反弹？' : 'The close is within 0.3% of the fast line. Is the bounce already confirmed?', answer: 'B', options: [['A', zh ? '已经确认，可以买' : 'Yes, it is confirmed'], ['B', zh ? '还没有，靠近和确认不是同一件事' : 'No. Near and confirmed are different'], ['C', zh ? '只有跌破才算靠近' : 'Only a break below counts as near']] };
+          : state.scene === 'down'
+            ? { ask: zh ? '价格短暂穿过 EMA20 后又跌回去。这是不是已经反转向上？' : 'Price pokes through EMA20 and falls back. Has it already reversed upward?', answer: 'B', options: [['A', zh ? '已经反转，可以买' : 'Yes, buy it'], ['B', zh ? '不是，这是反弹失败' : 'No. The bounce failed'], ['C', zh ? '只有 EMA50 穿过才算' : 'Only an EMA50 cross counts']] }
+            : state.scene === 'turn'
+              ? { ask: zh ? '价格先跌破结构时，EMA50 会不会马上跟着拐头？' : 'When price breaks structure first, does EMA50 turn at the same moment?', answer: 'B', options: [['A', zh ? '会，它和价格同时转' : 'Yes, it turns with price'], ['B', zh ? '不会，它转得更晚' : 'No. It turns later'], ['C', zh ? '它会提前转' : 'It turns earlier']] }
+              : { ask: zh ? '收盘离快线不到 0.3%。这是不是已经确认反弹？' : 'The close is within 0.3% of the fast line. Is the bounce already confirmed?', answer: 'B', options: [['A', zh ? '已经确认，可以买' : 'Yes, it is confirmed'], ['B', zh ? '还没有，靠近和确认不是同一件事' : 'No. Near and confirmed are different'], ['C', zh ? '只有跌破才算靠近' : 'Only a break below counts as near']] };
         judge = '<p>' + esc(q.ask) + '</p><div class="a1-modes">' + q.options.map(function (opt) {
           return '<button type="button" data-judge="' + opt[0] + '" data-answer="' + q.answer + '">' + opt[0] + '. ' + esc(opt[1]) + '</button>';
         }).join('') + '</div>';
@@ -640,7 +689,7 @@
         '<button type="button" data-layer="slow" aria-pressed="' + state.showSlow + '">' + (zh ? '慢线' : 'Slow') + '</button>' +
         '<button type="button" data-layer="both" aria-pressed="' + (state.showFast && state.showSlow) + '">' + (zh ? '双线' : 'Both') + '</button>' +
         '<button type="button" data-layer="cross" aria-pressed="' + state.showCross + '">' + (zh ? '标出交叉' : 'Show crosses') + '</button>' +
-        '<button type="button" data-layer="react" aria-pressed="' + state.showReact + '">' + (zh ? '显示靠近' : 'Show near bars') + '</button>' +
+        '<button type="button" data-layer="react" aria-pressed="' + state.showReact + '">' + (zh ? '显示靠近 ≤0.3%' : 'Show near ≤0.3%') + '</button>' +
         '<button type="button" data-layer="hide" aria-pressed="' + state.hideAnswer + '">' + (state.hideAnswer ? (zh ? '答案隐藏中' : 'Answers hidden') : (zh ? '答案已显示' : 'Answers shown')) + '</button></div>' +
         '<div class="ema-scroll">' + bits.join('') + '</div>' +
         '<p class="star-key"><span><i style="background:#f4cb82"></i>EMA' + state.fastN + '</span><span><i style="background:#8eb4ff"></i>EMA' + state.slowN + (zh ? ' 虚线' : ' dashed') + '</span><span><i style="background:#1f8a4d"></i>' + (zh ? '阳线' : 'Up') + '</span><span><i style="background:#d4534e"></i>' + (zh ? '阴线' : 'Down') + '</span></p>' +
@@ -663,26 +712,25 @@
       state.tone = '';
       state.examPick = '';
       state.examOk = false;
+      var wide = (root.clientWidth || 0) >= 800;
       if (step === 'fail') {
-        state.scene = state.scene === 'range' ? 'crash' : 'range';
+        state.scene = state.scene === 'range' ? 'down' : 'range';
         state.hideAnswer = true;
         state.showCross = false;
         state.showFast = true;
         state.showSlow = true;
-      }
-      if (step === 'exam') {
+        state.shown = wide ? 80 : 48;
+      } else if (step === 'exam') {
         state.scene = 'exam';
         state.hideAnswer = true;
         state.showFast = false;
         state.showSlow = false;
-        state.shown = Math.max(1, (scene().crash[0] || scene().visibleFrom + 30) - scene().visibleFrom);
-      } else if (step !== 'fail') {
-        if (state.scene === 'exam') state.scene = 'trend';
-        state.shown = 30;
+        state.shown = wide ? 70 : 40;
+      } else {
+        if (state.scene === 'exam') state.scene = 'up';
+        state.shown = wide ? 80 : 48;
         state.showFast = true;
         state.showSlow = true;
-      } else {
-        state.shown = 30;
       }
       paint();
     }
@@ -698,7 +746,7 @@
         state.marks = [];
         state.note = '';
         state.tone = '';
-        state.shown = 30;
+        state.shown = (root.clientWidth || 0) >= 800 ? 80 : 48;
         state.showFast = true;
         state.showSlow = true;
         paint();
@@ -724,7 +772,7 @@
           state.cursor = null;
           state.note = '';
           state.tone = '';
-          state.shown = state.step === 'exam' ? Math.max(1, (scene().crash[0] || 0) - scene().visibleFrom) : 30;
+          state.shown = (root.clientWidth || 0) >= 800 ? (state.step === 'exam' ? 70 : 80) : (state.step === 'exam' ? 40 : 48);
           paint();
           return;
         }
@@ -734,8 +782,8 @@
       }
       if (el.hasAttribute('data-layer')) {
         var layer = el.getAttribute('data-layer');
-        if (layer === 'fast') state.showFast = !state.showFast;
-        if (layer === 'slow') state.showSlow = !state.showSlow;
+        if (layer === 'fast') { state.showFast = true; state.showSlow = false; }
+        if (layer === 'slow') { state.showFast = false; state.showSlow = true; }
         if (layer === 'both') { state.showFast = true; state.showSlow = true; }
         if (layer === 'cross') state.showCross = !state.showCross;
         if (layer === 'react') state.showReact = !state.showReact;
@@ -1993,4 +2041,414 @@
     study._rsiWrapped = true;
   }
   global.STAR_CH02_RSI = { rsi: rsi, buildScenes: buildScenes, mount: mount };
+})(typeof window !== 'undefined' ? window : global);
+
+/* Divergence lesson chart. Confirmation and indicator math live here, not in the lab. */
+(function (global) {
+  var CLASSIC = [
+    { o: 76.4, h: 77.6, l: 75.9, c: 77 }, { o: 77, h: 82.6, l: 76.5, c: 82 }, { o: 82, h: 82.6, l: 78.5, c: 79 },
+    { o: 79, h: 84.6, l: 78.5, c: 84 }, { o: 84, h: 84.6, l: 80.5, c: 81 }, { o: 81, h: 86.6, l: 80.5, c: 86 },
+    { o: 86, h: 86.6, l: 82.5, c: 83 }, { o: 83, h: 88.6, l: 82.5, c: 88 }, { o: 88, h: 88.6, l: 85.5, c: 86 },
+    { o: 86, h: 91.6, l: 85.5, c: 91 }, { o: 91, h: 91.6, l: 90.5, c: 91 }, { o: 91, h: 96.6, l: 90.5, c: 96 },
+    { o: 96, h: 96.6, l: 95.5, c: 96 }, { o: 96, h: 101.6, l: 95.5, c: 101 }, { o: 101, h: 105, l: 100, c: 105 },
+    { o: 99, h: 100, l: 96, c: 97 }, { o: 97, h: 97.6, l: 91, c: 91.5 }, { o: 91.5, h: 92.1, l: 91, c: 91.5 },
+    { o: 91.5, h: 96.6, l: 91, c: 96 }, { o: 96, h: 102.1, l: 95.5, c: 101.5 }, { o: 101.5, h: 109, l: 101, c: 107 },
+    { o: 107, h: 112, l: 104, c: 106 }, { o: 106, h: 106.6, l: 103.5, c: 104 }, { o: 104, h: 104.6, l: 100.5, c: 101 }
+  ];
+  function rsi(closes, n) {
+    var out = closes.map(function () { return null; });
+    if (closes.length <= n) return out;
+    var gain = 0;
+    var loss = 0;
+    var i;
+    for (i = 1; i <= n; i++) {
+      var ch = closes[i] - closes[i - 1];
+      if (ch > 0) gain += ch;
+      else loss -= ch;
+    }
+    var avgGain = gain / n;
+    var avgLoss = loss / n;
+    function value(g, l) {
+      if (g === 0 && l === 0) return 50;
+      if (l === 0 && g > 0) return 100;
+      if (g === 0 && l > 0) return 0;
+      return 100 - 100 / (1 + g / l);
+    }
+    out[n] = value(avgGain, avgLoss);
+    for (i = n + 1; i < closes.length; i++) {
+      var delta = closes[i] - closes[i - 1];
+      avgGain = ((n - 1) * avgGain + (delta > 0 ? delta : 0)) / n;
+      avgLoss = ((n - 1) * avgLoss + (delta < 0 ? -delta : 0)) / n;
+      out[i] = value(avgGain, avgLoss);
+    }
+    return out;
+  }
+  function ema(closes, n) {
+    var out = closes.map(function () { return null; });
+    if (closes.length < n) return out;
+    var sum = 0;
+    var i;
+    for (i = 0; i < n; i++) sum += closes[i];
+    var prev = sum / n;
+    out[n - 1] = prev;
+    var alpha = 2 / (n + 1);
+    for (i = n; i < closes.length; i++) {
+      prev = alpha * closes[i] + (1 - alpha) * prev;
+      out[i] = prev;
+    }
+    return out;
+  }
+  function macd(closes) {
+    var fast = ema(closes, 12);
+    var slow = ema(closes, 26);
+    var dif = closes.map(function (_, i) { return fast[i] == null || slow[i] == null ? null : fast[i] - slow[i]; });
+    var dea = dif.map(function () { return null; });
+    var idx = [];
+    dif.forEach(function (value, i) { if (value != null) idx.push(i); });
+    if (idx.length >= 9) {
+      var sum = 0;
+      var j;
+      for (j = 0; j < 9; j++) sum += dif[idx[j]];
+      var prev = sum / 9;
+      dea[idx[8]] = prev;
+      for (j = 9; j < idx.length; j++) {
+        prev = 0.2 * dif[idx[j]] + 0.8 * prev;
+        dea[idx[j]] = prev;
+      }
+    }
+    return { dif: dif, hist: dif.map(function (value, i) { return value == null || dea[i] == null ? null : value - dea[i]; }) };
+  }
+  function walk(start, steps) {
+    var bars = [];
+    var price = start;
+    steps.forEach(function (step) {
+      var i;
+      for (i = 0; i < step[0]; i++) {
+        var open = price;
+        price = Math.round((open + step[1]) * 100) / 100;
+        var wick = Math.max(0.4, Math.abs(step[1]) * 0.35);
+        bars.push({
+          o: open,
+          h: Math.round((Math.max(open, price) + wick) * 100) / 100,
+          l: Math.round((Math.min(open, price) - wick * 0.8) * 100) / 100,
+          c: price,
+          v: 40 + (bars.length % 5) * 3
+        });
+      }
+    });
+    return bars;
+  }
+  function extend(seed, deltas) {
+    var bars = seed.map(function (bar) { return { o: bar.o, h: bar.h, l: bar.l, c: bar.c, v: bar.v || 40 }; });
+    var price = bars[bars.length - 1].c;
+    deltas.forEach(function (delta) {
+      var open = price;
+      price = Math.round((open + delta) * 100) / 100;
+      var wick = Math.max(0.4, Math.abs(delta) * 0.35);
+      bars.push({
+        o: open,
+        h: Math.round((Math.max(open, price) + wick) * 100) / 100,
+        l: Math.round((Math.min(open, price) - wick * 0.8) * 100) / 100,
+        c: price,
+        v: 40
+      });
+    });
+    return bars;
+  }
+  function swings(bars, wing, mode) {
+    var out = [];
+    var i;
+    for (i = wing; i < bars.length - wing; i++) {
+      var ok = true;
+      var k;
+      for (k = 1; k <= wing; k++) {
+        if (mode === 'high') {
+          if (bars[i].h < bars[i - k].h || bars[i].h < bars[i + k].h) ok = false;
+        } else if (bars[i].l > bars[i - k].l || bars[i].l > bars[i + k].l) ok = false;
+      }
+      if (ok) out.push(i);
+    }
+    return out;
+  }
+  function decorate(bars, mode) {
+    return { bars: bars, visible: bars.length, mode: mode, highs: swings(bars, 2, 'high'), lows: swings(bars, 2, 'low'), rsi: rsi(bars.map(function (bar) { return bar.c; }), 14) };
+  }
+  function buildScenes() {
+    var mild = [];
+    var rally = [];
+    var i;
+    for (i = 0; i < 40; i++) {
+      mild.push(i < 20 ? -0.3 : 0.15);
+      rally.push(0.9);
+    }
+    return {
+      bear: Object.assign({ id: 'bear', zh: '这段顶背离', en: 'This bearish divergence', start: 22 }, decorate(extend(CLASSIC, mild), 'high')),
+      bear2: Object.assign({ id: 'bear2', zh: '另一段顶背离', en: 'Another bearish divergence', start: 42 }, decorate(walk(100, [[20, 0.4], [18, 1.6], [8, -0.8], [16, 0.7], [8, -0.3], [12, 0.2]]), 'high')),
+      bull: Object.assign({ id: 'bull', zh: '这段底背离', en: 'This bullish divergence', start: 42 }, decorate(walk(200, [[20, -0.3], [18, -1.5], [8, 0.7], [16, -0.6], [8, 0.2], [12, -0.15]]), 'low')),
+      bull2: Object.assign({ id: 'bull2', zh: '另一段底背离', en: 'Another bullish divergence', start: 42 }, decorate(walk(160, [[16, -0.2], [22, -1.2], [10, 0.5], [18, -0.55], [10, 0.25], [12, -0.1]]), 'low')),
+      fake: Object.assign({ id: 'fake', zh: '价格没更高', en: 'Price did not make a higher high', start: 40 }, decorate(walk(120, [[16, 0.3], [20, 1.4], [10, -0.9], [14, 0.35], [12, -0.2], [12, 0.1]]), 'high')),
+      agree: Object.assign({ id: 'agree', zh: '一起创新高', en: 'Both make higher highs', start: 30 }, decorate(walk(100, [[8, 0.25], [6, -0.3], [8, 0.2], [6, -0.2], [12, 0.35], [10, -0.45], [18, 0.55], [8, -0.15]]), 'high')),
+      rally: Object.assign({ id: 'rally', zh: '背离后仍涨', en: 'Still rising after divergence', start: 22 }, decorate(extend(CLASSIC, rally), 'high'))
+    };
+  }
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function fmt(n) {
+    if (n == null || n !== n) return '—';
+    return (Math.round(n * 100) / 100).toString();
+  }
+  function mount(root, lesson, lang) {
+    var zh = lang !== 'en';
+    var scenes = buildScenes();
+    var state = { scene: 'bear', step: 'watch', shown: 22, cursor: null, playing: false, source: 'rsi', wing: 2, showTime: false, pricePts: [], indPts: [], note: '', tone: '' };
+    if (root._divTimer) clearInterval(root._divTimer);
+    root._divTimer = null;
+    function scene() { return scenes[state.scene]; }
+    function stop() {
+      state.playing = false;
+      if (root._divTimer) clearInterval(root._divTimer);
+      root._divTimer = null;
+    }
+    function prefix() {
+      var current = scene();
+      var bars = current.bars.slice(0, state.shown);
+      var closes = bars.map(function (bar) { return bar.c; });
+      var pack = macd(closes);
+      var series = state.source === 'dif' ? pack.dif : (state.source === 'hist' ? pack.hist : rsi(closes, 14));
+      return { current: current, bars: bars, series: series };
+    }
+    function swingState(pack, index) {
+      var wing = state.wing;
+      var mode = pack.current.mode;
+      if (index < wing || index + wing >= pack.bars.length) return 'wait';
+      var k;
+      for (k = 1; k <= wing; k++) {
+        if (mode === 'high') {
+          if (pack.bars[index].h < pack.bars[index - k].h || pack.bars[index].h < pack.bars[index + k].h) return 'no';
+        } else if (pack.bars[index].l > pack.bars[index - k].l || pack.bars[index].l > pack.bars[index + k].l) return 'no';
+      }
+      return 'yes';
+    }
+    function taskText() {
+      if (state.scene === 'bull' || state.scene === 'bull2') return zh ? '点两个已确认的价格低点，再点左右 2 根以内的指标低点。第二处价格要更低，指标要更高。' : 'Mark two confirmed price lows, then the indicator lows within 2 bars. The later price low must be lower and the indicator low higher.';
+      if (state.scene === 'fake') return zh ? '试着点两个价格高点。如果第二个价格高点没有更高，就不是顶背离。' : 'Try two price highs. If the second price high is not higher, it is not bearish divergence.';
+      if (state.scene === 'agree') return zh ? '点两个价格高点和对应的指标。如果两边一起创新高，就不是背离。' : 'Mark two price highs and the matching indicator points. If both make higher highs, it is not divergence.';
+      if (state.scene === 'rally') return zh ? '先点 105 和 112 这一对已确认高点。再把后面的 K 线放出来，看价格是不是还能更高。' : 'First mark the confirmed highs at 105 and 112. Then reveal the later candles and see whether price can go higher still.';
+      return zh ? '点两个已确认的价格高点，再点左右 2 根以内的指标高点。右侧 2 根没出来时不能标。' : 'Mark two confirmed price highs, then the indicator highs within 2 bars. You cannot mark a high before 2 bars exist on its right.';
+    }
+    function grade(pack) {
+      if (state.pricePts.length < 2 || state.indPts.length < 2) return { tone: '', text: zh ? '价格点 ' + state.pricePts.length + '/2，指标点 ' + state.indPts.length + '/2。' : 'Price points ' + state.pricePts.length + '/2, indicator points ' + state.indPts.length + '/2.' };
+      var price = state.pricePts.slice().sort(function (a, b) { return a - b; });
+      var inds = state.indPts.slice().sort(function (a, b) { return a - b; });
+      var left = swingState(pack, price[0]);
+      var right = swingState(pack, price[1]);
+      if (left === 'wait' || right === 'wait') return { tone: '', text: zh ? '还需要后续 K 线确认。左右各 ' + state.wing + ' 根都走出来，才能标。' : 'Later candles are still needed. ' + state.wing + ' bars must exist on each side before you can mark it.' };
+      if (left !== 'yes' || right !== 'yes') return { tone: 'is-wrong', text: zh ? '有一根不是按左右各 ' + state.wing + ' 根确认的摆动点。' : 'One mark is not a swing confirmed by ' + state.wing + ' bars on each side.' };
+      if (Math.abs(inds[0] - price[0]) > 2 || Math.abs(inds[1] - price[1]) > 2) return { tone: 'is-wrong', text: zh ? '时间窗口不对应。指标点要落在价格摆动点左右 2 根以内。' : 'The time windows do not match. Each indicator point must sit within 2 bars of the price swing.' };
+      var a = pack.series[inds[0]];
+      var b = pack.series[inds[1]];
+      if (a == null || b == null) return { tone: '', text: zh ? '这两根指标还不能计算，不显示 0。' : 'The indicator is not ready on one of these bars. No fake 0 is shown.' };
+      var mode = pack.current.mode;
+      var name = state.source === 'dif' ? 'DIF' : (state.source === 'hist' ? (zh ? '柱子' : 'histogram') : 'RSI');
+      if (mode === 'low') {
+        if (!(pack.bars[price[1]].l < pack.bars[price[0]].l)) return { tone: 'is-wrong', text: zh ? '第二价格低点没有更低，所以不是底背离。' : 'The second price low is not lower, so this is not bullish divergence.' };
+        if (!(b > a)) return { tone: 'is-wrong', text: zh ? name + ' 没有更高低点。两个点都要比同一条线。' : name + ' does not make a higher low. Both points must use the same line.' };
+        return { tone: 'is-right', text: zh ? '价格更低低点，' + name + ' 更高低点，时间也在 2 根以内。这是底背离，不保证反弹。' : 'Lower price low, higher ' + name + ' low, within 2 bars. This is bullish divergence. It does not guarantee a bounce.' };
+      }
+      if (!(pack.bars[price[1]].h > pack.bars[price[0]].h)) {
+        return { tone: state.scene === 'fake' || state.scene === 'agree' ? 'is-right' : 'is-wrong', text: zh ? '第二价格高点没有更高，所以这不是顶背离。' : 'The second price high is not higher, so this is not bearish divergence.' };
+      }
+      if (!(b < a)) {
+        return { tone: state.scene === 'agree' ? 'is-right' : 'is-wrong', text: zh ? '价格和 ' + name + ' 一起走高，这不是背离。背离要的是指标没有一起创新高。' : 'Price and ' + name + ' both made a higher high. That is not divergence. Divergence needs the indicator to miss the new high.' };
+      }
+      var extra = state.scene === 'rally' ? (zh ? ' 再把后面的 K 线放出来，价格仍可能高于 112。' : ' Reveal the later candles. Price can still go above 112.') : (zh ? ' 这不保证下一根反转。' : ' It does not guarantee the next bar reverses.');
+      return { tone: 'is-right', text: (zh ? '价格更高高点，' + name + ' 更低高点。' : 'Higher price high, lower ' + name + ' high.') + extra + (name === 'RSI' ? ' ' + fmt(a) + ' → ' + fmt(b) + '。' : '') };
+    }
+    function paint() {
+      var pack = prefix();
+      var draw = pack.bars;
+      var w = 980;
+      var h = 460;
+      var padL = 10;
+      var padR = 72;
+      var top = 16;
+      var priceH = 180;
+      var vals = [];
+      draw.forEach(function (bar) { vals.push(bar.h, bar.l); });
+      var min = Math.min.apply(null, vals);
+      var max = Math.max.apply(null, vals);
+      var span = max - min || 1;
+      min -= span * 0.08;
+      max += span * 0.08;
+      function y(p) { return top + (max - p) / (max - min) * priceH; }
+      var slot = (w - padL - padR) / Math.max(draw.length, 1);
+      var paneTop = 280;
+      var paneH = 140;
+      var smin = 0;
+      var smax = 100;
+      if (state.source !== 'rsi') {
+        var abs = [];
+        pack.series.forEach(function (value) { if (value != null) abs.push(Math.abs(value)); });
+        smax = Math.max(1, Math.max.apply(null, abs.concat([1])));
+        smin = -smax;
+      }
+      function sy(v) { return paneTop + (smax - v) / (smax - smin) * paneH; }
+      var bits = ['<svg viewBox="0 0 ' + w + ' ' + h + '" role="img">'];
+      bits.push('<rect width="' + w + '" height="' + h + '" fill="#120e21"></rect>');
+      draw.forEach(function (bar, i) {
+        var up = bar.c >= bar.o;
+        var color = up ? '#1f8a4d' : '#d4534e';
+        var xc = padL + i * slot + slot / 2;
+        var bw = Math.max(2.2, slot * 0.55);
+        bits.push('<line x1="' + xc + '" y1="' + y(bar.h) + '" x2="' + xc + '" y2="' + y(bar.l) + '" stroke="' + color + '"></line>');
+        bits.push('<rect x="' + (xc - bw / 2) + '" y="' + Math.min(y(bar.o), y(bar.c)) + '" width="' + bw + '" height="' + Math.max(1.2, Math.abs(y(bar.c) - y(bar.o))) + '" fill="' + color + '"></rect>');
+        if (i % 12 === 0) bits.push('<text x="' + xc + '" y="452" fill="#b7aac8" font-size="12">' + (i + 1) + '</text>');
+      });
+      if (state.source === 'rsi') {
+        [70, 50, 30].forEach(function (level) {
+          bits.push('<line x1="' + padL + '" y1="' + sy(level) + '" x2="' + (w - padR) + '" y2="' + sy(level) + '" stroke="#8eb4ff" stroke-dasharray="4 3"></line>');
+          bits.push('<text x="' + (w - 8) + '" y="' + (sy(level) + 4) + '" text-anchor="end" fill="#8eb4ff" font-size="13">' + level + '</text>');
+        });
+      } else {
+        bits.push('<line x1="' + padL + '" y1="' + sy(0) + '" x2="' + (w - padR) + '" y2="' + sy(0) + '" stroke="#f0d59a" stroke-dasharray="4 3"></line>');
+        bits.push('<text x="' + (w - 8) + '" y="' + (sy(0) + 4) + '" text-anchor="end" fill="#f0d59a" font-size="13">0</text>');
+      }
+      var pts = [];
+      pack.series.forEach(function (value, i) { if (value != null) pts.push((padL + i * slot + slot / 2).toFixed(1) + ',' + sy(value).toFixed(1)); });
+      if (pts.length > 1) bits.push('<polyline points="' + pts.join(' ') + '" fill="none" stroke="#f4cb82" stroke-width="2.4"></polyline>');
+      function mark(list, pane) {
+        var sorted = list.slice().sort(function (a, b) { return a - b; });
+        if (sorted.length === 2) {
+          var line = sorted.map(function (index) {
+            var xc = padL + index * slot + slot / 2;
+            var yy = pane === 'price' ? y(pack.current.mode === 'low' ? pack.bars[index].l : pack.bars[index].h) : sy(pack.series[index] == null ? (smin + smax) / 2 : pack.series[index]);
+            return xc.toFixed(1) + ',' + yy.toFixed(1);
+          });
+          bits.push('<polyline points="' + line.join(' ') + '" fill="none" stroke="#fff" stroke-width="1.6" stroke-dasharray="4 3"></polyline>');
+        }
+        list.forEach(function (index) {
+          if (index >= draw.length) return;
+          var xc = padL + index * slot + slot / 2;
+          var yy = pane === 'price' ? y(pack.current.mode === 'low' ? pack.bars[index].l : pack.bars[index].h) : sy(pack.series[index] == null ? (smin + smax) / 2 : pack.series[index]);
+          bits.push('<circle cx="' + xc + '" cy="' + yy + '" r="5" fill="none" stroke="#fff" stroke-width="2"></circle>');
+          if (state.showTime && pane === 'price') bits.push('<line x1="' + xc + '" y1="' + top + '" x2="' + xc + '" y2="' + (paneTop + paneH) + '" stroke="rgba(240,213,154,.75)"></line>');
+        });
+      }
+      mark(state.pricePts, 'price');
+      mark(state.indPts, 'ind');
+      if (state.cursor != null && state.cursor < draw.length) {
+        var cx = padL + state.cursor * slot + slot / 2;
+        bits.push('<line x1="' + cx + '" y1="' + top + '" x2="' + cx + '" y2="' + (paneTop + paneH) + '" stroke="rgba(255,255,255,.45)" stroke-dasharray="3 3"></line>');
+      }
+      draw.forEach(function (bar, i) {
+        var x = padL + i * slot;
+        bits.push('<rect data-bar="' + i + '" data-pane="price" x="' + x + '" y="' + top + '" width="' + slot + '" height="240" fill="transparent"></rect>');
+        bits.push('<rect data-bar="' + i + '" data-pane="ind" x="' + x + '" y="' + paneTop + '" width="' + slot + '" height="' + paneH + '" fill="transparent"></rect>');
+      });
+      bits.push('</svg>');
+      var ids = ['bear', 'bear2', 'bull', 'bull2', 'fake', 'agree', 'rally'];
+      var readout = '';
+      if (state.cursor != null && pack.bars[state.cursor]) {
+        var bar = pack.bars[state.cursor];
+        readout = (zh ? '第 ' + (state.cursor + 1) + ' 根 · 模拟' : 'Bar ' + (state.cursor + 1) + ' · simulated') + '<br>' + (zh ? '高 ' : 'H ') + fmt(bar.h) + (zh ? ' 低 ' : ' L ') + fmt(bar.l) + (zh ? ' 收 ' : ' C ') + fmt(bar.c) + '<br>' + (state.source === 'rsi' ? 'RSI(14) ' : state.source === 'dif' ? 'DIF ' : (zh ? '柱 ' : 'bar ')) + (pack.series[state.cursor] == null ? (zh ? '数据不足' : 'not ready') : fmt(pack.series[state.cursor]));
+      }
+      root.innerHTML =
+        '<div class="a1"><p class="a1-flag">' + (zh ? '模拟，不是实时行情。教学虚构，不是投资建议。' : 'Simulated, not a live price. Teaching fiction, not investment advice.') + '</p>' +
+        '<div class="a1-modes">' + ids.map(function (id) { return '<button type="button" data-scene="' + id + '" aria-pressed="' + (state.scene === id) + '">' + esc(zh ? scenes[id].zh : scenes[id].en) + '</button>'; }).join('') + '</div>' +
+        '<p>' + esc(taskText()) + '</p>' +
+        '<div class="a1-modes"><button type="button" data-move="play">' + (state.playing ? (zh ? '暂停' : 'Pause') : (zh ? '播放' : 'Play')) + '</button><button type="button" data-move="-1">' + (zh ? '上一根' : 'Previous') + '</button><button type="button" data-move="1">' + (zh ? '下一根' : 'Next') + '</button><button type="button" data-move="reset">' + (zh ? '重置' : 'Reset') + '</button><span>' + state.shown + ' / ' + scene().visible + (zh ? '，后面先隐藏' : ', later bars hidden') + '</span></div>' +
+        '<div class="a1-modes"><button type="button" data-source="rsi" aria-pressed="' + (state.source === 'rsi') + '">RSI</button><button type="button" data-source="dif" aria-pressed="' + (state.source === 'dif') + '">DIF</button><button type="button" data-source="hist" aria-pressed="' + (state.source === 'hist') + '">' + (zh ? '柱' : 'Bars') + '</button><button type="button" data-wing="2" aria-pressed="' + (state.wing === 2) + '">' + (zh ? '左右 2 根' : '2 bars each side') + '</button><button type="button" data-wing="3" aria-pressed="' + (state.wing === 3) + '">' + (zh ? '左右 3 根' : '3 bars each side') + '</button><button type="button" data-time="1" aria-pressed="' + state.showTime + '">' + (zh ? '时间垂线' : 'Time lines') + '</button></div>' +
+        '<div class="div-scroll">' + bits.join('') + '</div>' +
+        '<p class="star-key"><span><i style="background:#f4cb82"></i>' + (state.source === 'rsi' ? 'RSI(14)' : state.source === 'dif' ? 'DIF' : (zh ? '柱 DIF−DEA' : 'bar DIF−DEA')) + '</span><span>0–100</span></p>' +
+        '<p class="a2-readout ' + state.tone + '">' + (state.note || readout || taskText()) + '</p>' +
+        '<p class="ema-note">' + (zh ? '确认：左右各 ' + state.wing + ' 根都存在，且都没有更极端的高点或低点。指标点必须落在价格点左右 2 根以内。不够预热显示数据不足，不画 0。' : 'Confirmation: ' + state.wing + ' bars exist on each side, and none is more extreme. An indicator point must sit within 2 bars of the price point. Before the warmup, the chart says not ready and does not draw 0.') + '</p></div>';
+    }
+    function setShown(next) { state.shown = Math.max(8, Math.min(scene().visible, next)); }
+    function openScene(id) {
+      stop();
+      state.scene = id;
+      state.shown = scenes[id].start;
+      state.pricePts = [];
+      state.indPts = [];
+      state.cursor = null;
+      state.note = '';
+      state.tone = '';
+      paint();
+    }
+    if (root._divClick) root.removeEventListener('click', root._divClick);
+    root._divClick = function (ev) {
+      var el = ev.target.closest ? ev.target.closest('[data-scene],[data-move],[data-source],[data-wing],[data-time],[data-bar]') : null;
+      if (!el || !root.contains(el)) return;
+      if (el.hasAttribute('data-scene')) { openScene(el.getAttribute('data-scene')); return; }
+      if (el.hasAttribute('data-source')) {
+        state.source = el.getAttribute('data-source');
+        state.indPts = [];
+        state.note = zh ? '已改成比这一条线。之前的指标点清掉了，不能和另一条线拼在一起。' : 'Now comparing this line. The old indicator points were cleared, so they are not mixed with another line.';
+        state.tone = '';
+        paint();
+        return;
+      }
+      if (el.hasAttribute('data-wing')) { state.wing = Number(el.getAttribute('data-wing')); state.pricePts = []; state.indPts = []; paint(); return; }
+      if (el.hasAttribute('data-time')) { state.showTime = !state.showTime; paint(); return; }
+      if (el.hasAttribute('data-move')) {
+        var move = el.getAttribute('data-move');
+        if (move === 'play') {
+          if (state.playing) { stop(); paint(); return; }
+          state.playing = true;
+          root._divTimer = setInterval(function () {
+            if (!root.isConnected || state.shown >= scene().visible) { stop(); paint(); return; }
+            setShown(state.shown + 1);
+            paint();
+          }, 280);
+          paint();
+          return;
+        }
+        if (move === 'reset') { state.shown = scene().start; state.pricePts = []; state.indPts = []; state.note = ''; state.tone = ''; stop(); paint(); return; }
+        setShown(state.shown + Number(move));
+        paint();
+        return;
+      }
+      var index = Number(el.getAttribute('data-bar'));
+      var pane = el.getAttribute('data-pane');
+      state.cursor = index;
+      if (pane === 'price' && swingState(prefix(), index) === 'wait') {
+        state.note = zh ? '还需要后续 K 线确认。' : 'Later candles are still needed to confirm this swing.';
+        state.tone = '';
+        paint();
+        return;
+      }
+      var list = pane === 'ind' ? state.indPts : state.pricePts;
+      var at = list.indexOf(index);
+      if (at >= 0) list.splice(at, 1);
+      else { if (list.length >= 2) list.shift(); list.push(index); }
+      var graded = grade(prefix());
+      state.note = graded.text;
+      state.tone = graded.tone;
+      paint();
+    };
+    root.addEventListener('click', root._divClick);
+    if (root._divKey) root.removeEventListener('keydown', root._divKey);
+    root.tabIndex = 0;
+    root._divKey = function (ev) {
+      if (ev.key !== 'ArrowRight' && ev.key !== 'ArrowLeft') return;
+      ev.preventDefault();
+      setShown(state.shown + (ev.key === 'ArrowRight' ? 1 : -1));
+      paint();
+    };
+    root.addEventListener('keydown', root._divKey);
+    paint();
+  }
+  var study = global.STAR_STUDY;
+  if (study && !study._divWrapped) {
+    var inner = study.mount;
+    study.mount = function (root, lesson, lang) {
+      if (lesson && lesson.study && lesson.study.lessonChart === 'div-full') return mount(root, lesson, lang);
+      return inner.apply(this, arguments);
+    };
+    study._divWrapped = true;
+  }
+  global.STAR_CH02_DIV = { rsi: rsi, buildScenes: buildScenes, classic: CLASSIC, mount: mount };
 })(typeof window !== 'undefined' ? window : global);
