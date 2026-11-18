@@ -94,13 +94,13 @@
         title: bi('RSI：超买不等于立刻卖', 'RSI: overbought does not mean sell now'),
         scene: bi('RSI 到了 75，是不是必须马上卖？', 'RSI is 75. Do you have to sell immediately?'),
         one: bi('RSI 看最近涨得多还是跌得多，超买只说明涨得相对强，并不叫你马上卖。', 'RSI looks at whether recent rises outweigh recent falls, and overbought only says the rise is relatively strong, not that you must sell now.'),
-        explain: bi('上面是蜡烛 K 线，只作价格对照。\n图的主体是 RSI(14)，刻度从 0 到 100。\n它看的是最近 14 根涨跌。\n70 的横线标成超买。\n30 的横线标成超卖。\n本课用 Wilder 的平滑法。\n先把涨跌幅分成平均涨幅和平均跌幅。\nRS 是平均涨幅除以平均跌幅。\nRSI 等于 100 减去 100 除以（1 加 RS）。\n只有上涨时 RSI 可以到 100。\n涨跌都是 0 时，本课记为 50。\n样本不够 14 次变化时不显示 0，而是还不能计算。', 'The candles above are only price, for reference.\nThe main picture is RSI(14), on a scale from 0 to 100.\nIt looks at the rises and falls of the last 14 bars.\nThe line at 70 is labeled overbought.\nThe line at 30 is labeled oversold.\nThis lesson uses Wilder smoothing.\nFirst split the changes into an average gain and an average loss.\nRS is the average gain divided by the average loss.\nRSI equals 100 minus 100 divided by (1 plus RS).\nIf price only rises, RSI can reach 100.\nIf both gain and loss are 0, this lesson records 50.\nBefore 14 changes exist, do not show 0. It cannot be calculated yet.'),
-        example: bi('RSI 75 只表示近期上涨幅度相对更大。\n强趋势里它可以在 70 上方停留很多根。\n所以“超买”不是立刻卖出的命令。', 'RSI 75 only means recent gains are relatively larger.\nIn a strong trend it can stay above 70 for many bars.\nSo “overbought” is not an order to sell immediately.'),
+        explain: bi('上面是蜡烛 K 线，只作价格对照。\n图的主体是 RSI(14)，刻度从 0 到 100。\n它看的是最近 14 根涨跌。\n70 的横线标成超买。\n50 在中间。\n30 的横线标成超卖。\n这两条只是参考线，可以改，但改了也不是买卖命令。\n本课用 Wilder 的平滑法。\n先把前 14 次涨跌分成平均涨幅和平均跌幅。\n之后平均涨幅等于（13×上一根平均涨幅+这一根涨幅）除以 14。\n跌幅同样计算。\nRS 是平均涨幅除以平均跌幅。\nRSI 等于 100 减去 100 除以（1 加 RS）。\n只有上涨时 RSI 可以到 100。\n只有下跌时可以到 0。\n涨跌都是 0 时，本课记为 50。\n样本不够 N 次变化时不显示 0，而是还不能计算。\n图上至少 90 根模拟 K 线。\n后面的 K 线先藏着。\n顶背离是价格更高的高点，配上同一时间更低的 RSI 高点。\n底背离是价格更低的低点，配上更高的 RSI 低点。\nRSI 自己下降，而价格没有更高的高点，就不是顶背离。', 'The candles above are only price, for reference.\nThe main picture is RSI(14), on a scale from 0 to 100.\nIt looks at the rises and falls of the last 14 bars.\nThe line at 70 is labeled overbought.\n50 sits in the middle.\nThe line at 30 is labeled oversold.\nThose two lines are only reference lines. They can be moved, and moving them is still not a buy or sell order.\nThis lesson uses Wilder smoothing.\nFirst split the first 14 changes into an average gain and an average loss.\nAfter that, average gain equals (13 times the previous average gain plus this bar’s gain) divided by 14.\nLoss is calculated the same way.\nRS is the average gain divided by the average loss.\nRSI equals 100 minus 100 divided by (1 plus RS).\nIf price only rises, RSI can reach 100.\nIf price only falls, it can reach 0.\nIf both gain and loss are 0, this lesson records 50.\nBefore N changes exist, do not show 0. It cannot be calculated yet.\nThe chart has at least 90 simulated candles.\nLater candles stay hidden.\nBearish divergence is a higher price high with a lower RSI high at the same time.\nBullish divergence is a lower price low with a higher RSI low.\nA falling RSI without a higher price high is not bearish divergence.'),
+        example: bi('教学模拟：RSI 75 只表示近期上涨幅度相对更大。\n强趋势里它可以在 70 上方停留很多根，价格还在创新高。\n跌势里它可以停在 30 下方，价格还在创新低。\n所以“超买”不是立刻卖出的命令，“超卖”也不是立刻买入的命令。\n价格创新高时，RSI 的高点可以更低。\n那也不保证反转。', 'Teaching simulation: RSI 75 only means recent gains are relatively larger.\nIn a strong trend it can stay above 70 for many bars while price still makes new highs.\nIn a decline it can stay below 30 while price still makes new lows.\nSo “overbought” is not an order to sell, and “oversold” is not an order to buy.\nPrice can make a new high while the RSI high is lower.\nThat still does not guarantee a reversal.'),
         pitfalls: [
           bi('RSI 一过 70 就认为必须反转', 'Assuming price must reverse as soon as RSI crosses 70'),
           bi('把样本不足时的空值当成 0', 'Treating an empty value, before the sample is ready, as 0')
         ],
-        practice: bi('把图播放过 14 根以后，看 RSI 是否才出现数值。', 'Step the chart past 14 bars and see that RSI gets a number only then.'),
+        practice: bi('在超买剧情里点一根 RSI 高于 70、后面收盘还在更高的 K 线。顶背离要自己点两个价格高点，再点同一时间的 RSI。', 'In the overbought scene, mark a bar with RSI above 70 whose later close is still higher. For bearish divergence, mark two price highs, then the RSI highs at the same time.'),
         check: {
           ask: bi('RSI 75 直接表示什么？', 'What does RSI 75 say directly?'),
           options: [opt('A', '必须马上卖', 'You must sell now'), opt('B', '近期上涨相对更强', 'The recent rise is relatively stronger'), opt('C', '成交量创新高', 'Volume made a new high')],
@@ -124,7 +124,7 @@
             C: ['持仓量是合约未平仓数量，不是 RSI 的输入。', 'Open interest is outstanding contracts, not an RSI input.']
           })
         ],
-        study: { kind: 'rsi', main: 'rsi', practical: 'rsi', closes: rsi75 }
+        study: { kind: 'rsi', main: 'rsi', lessonChart: 'rsi-full', closes: rsi75 }
       }),
       lesson({
         id: '04',
@@ -1437,4 +1437,560 @@
     study._macdWrapped = true;
   }
   global.STAR_CH02_MACD = { ema: ema, macd: macd, buildScenes: buildScenes, mount: mount };
+})(typeof window !== 'undefined' ? window : global);
+
+/* RSI lesson chart. Wilder math and drawing live here, not in the lab engine. */
+(function (global) {
+  function rsi(closes, n) {
+    var out = closes.map(function () { return null; });
+    n = Math.round(Number(n));
+    if (n < 1 || closes.length <= n) return out;
+    var gain = 0;
+    var loss = 0;
+    var i;
+    for (i = 1; i <= n; i++) {
+      var ch = closes[i] - closes[i - 1];
+      if (ch > 0) gain += ch;
+      else loss -= ch;
+    }
+    var avgGain = gain / n;
+    var avgLoss = loss / n;
+    function value(g, l) {
+      if (g === 0 && l === 0) return 50;
+      if (l === 0 && g > 0) return 100;
+      if (g === 0 && l > 0) return 0;
+      return 100 - 100 / (1 + g / l);
+    }
+    out[n] = value(avgGain, avgLoss);
+    for (i = n + 1; i < closes.length; i++) {
+      var delta = closes[i] - closes[i - 1];
+      var up = delta > 0 ? delta : 0;
+      var down = delta < 0 ? -delta : 0;
+      avgGain = ((n - 1) * avgGain + up) / n;
+      avgLoss = ((n - 1) * avgLoss + down) / n;
+      out[i] = value(avgGain, avgLoss);
+    }
+    return out;
+  }
+  function walk(start, steps) {
+    var bars = [];
+    var price = start;
+    var hour = 0;
+    steps.forEach(function (step) {
+      var i;
+      for (i = 0; i < step[0]; i++) {
+        var open = price;
+        price = Math.round((open + step[1]) * 100) / 100;
+        var wick = Math.max(8, Math.abs(step[1]) * 0.35);
+        bars.push({
+          t: hour,
+          o: open,
+          h: Math.round((Math.max(open, price) + wick) * 100) / 100,
+          l: Math.round((Math.min(open, price) - wick * 0.8) * 100) / 100,
+          c: price,
+          v: 80 + (hour % 7) * 11
+        });
+        hour += 1;
+      }
+    });
+    return bars;
+  }
+  function swings(bars, from, mode) {
+    var out = [];
+    var i;
+    for (i = Math.max(from, 3); i < bars.length - 3; i++) {
+      var ok = true;
+      var k;
+      for (k = 1; k <= 3; k++) {
+        if (mode === 'high') {
+          if (bars[i].h < bars[i - k].h || bars[i].h < bars[i + k].h) ok = false;
+        } else if (bars[i].l > bars[i - k].l || bars[i].l > bars[i + k].l) ok = false;
+      }
+      if (ok) out.push(i);
+    }
+    return out;
+  }
+  function decorate(bars) {
+    var values = rsi(bars.map(function (bar) { return bar.c; }), 14);
+    var from = 60;
+    return {
+      bars: bars,
+      visibleFrom: from,
+      visible: bars.length - from,
+      rsi: values,
+      highs: swings(bars, from, 'high'),
+      lows: swings(bars, from, 'low')
+    };
+  }
+  function buildScenes() {
+    return {
+      hot: Object.assign({ id: 'hot', zh: '持续超买', en: 'Stays overbought' }, decorate(walk(40000, [[40, 8], [100, 18], [20, -2]]))),
+      cold: Object.assign({ id: 'cold', zh: '持续超卖', en: 'Stays oversold' }, decorate(walk(80000, [[160, -30]]))),
+      bear: Object.assign({ id: 'bear', zh: '顶背离', en: 'Bearish divergence' }, decorate(walk(42000, [[50, 6], [24, 80], [12, -35], [22, 28], [18, -8], [28, 4]]))),
+      bull: Object.assign({ id: 'bull', zh: '底背离', en: 'Bullish divergence' }, decorate(walk(70000, [[50, -4], [24, -70], [12, 30], [22, -22], [18, 6], [28, -3]]))),
+      fake: Object.assign({ id: 'fake', zh: '假背离', en: 'Fake divergence' }, decorate(walk(43000, [[50, 6], [24, 70], [14, -40], [18, 18], [16, -6], [24, 2], [12, 2]]))),
+      exam: Object.assign({ id: 'exam', zh: '新行情', en: 'New tape' }, decorate(walk(45000, [[48, 10], [28, 55], [10, -20], [20, 22], [16, -8], [24, 8], [12, -6]])))
+    };
+  }
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function fmt(n) {
+    if (n == null || n !== n) return '—';
+    return (Math.round(n * 100) / 100).toString();
+  }
+  function mount(root, lesson, lang) {
+    var zh = lang !== 'en';
+    var scenes = buildScenes();
+    var state = {
+      scene: 'hot',
+      step: 'watch',
+      shown: 28,
+      cursor: null,
+      playing: false,
+      period: 14,
+      ob: 70,
+      os: 30,
+      showRsi: true,
+      showTime: false,
+      hideAnswer: false,
+      pricePts: [],
+      rsiPts: [],
+      note: '',
+      tone: '',
+      examStage: 'strength'
+    };
+    if (root._rsiTimer) clearInterval(root._rsiTimer);
+    root._rsiTimer = null;
+    function scene() { return scenes[state.scene]; }
+    function maxShown() { return scene().bars.length - scene().visibleFrom; }
+    function stop() {
+      state.playing = false;
+      if (root._rsiTimer) clearInterval(root._rsiTimer);
+      root._rsiTimer = null;
+    }
+    function prefix() {
+      var current = scene();
+      var end = current.visibleFrom + state.shown;
+      var bars = current.bars.slice(0, end);
+      return { current: current, end: end, bars: bars, rsi: rsi(bars.map(function (bar) { return bar.c; }), state.period) };
+    }
+    function bias(pack) {
+      var first = pack.bars[pack.current.visibleFrom].c;
+      var last = pack.bars[pack.bars.length - 1].c;
+      if (last > first * 1.01) return 'up';
+      if (last < first * 0.99) return 'down';
+      return 'flat';
+    }
+    function confirmed(pack, index, mode) {
+      if (index < 3 || index + 3 >= pack.bars.length) return false;
+      var k;
+      for (k = 1; k <= 3; k++) {
+        if (mode === 'high') {
+          if (pack.bars[index].h < pack.bars[index - k].h || pack.bars[index].h < pack.bars[index + k].h) return false;
+        } else if (pack.bars[index].l > pack.bars[index - k].l || pack.bars[index].l > pack.bars[index + k].l) return false;
+      }
+      return true;
+    }
+    function taskText() {
+      if (state.step === 'exam') {
+        if (state.examStage === 'strength') return zh ? '先藏起 RSI。看已经放出来的 K 线，判断收盘整体是抬高、差不多，还是压低。' : 'RSI stays hidden. From the candles already shown, judge whether closes are rising, flat, or falling.';
+        return zh ? 'RSI 打开了。点两个价格高点，再点同一时间附近的 RSI 高点。第二处价格要更高，RSI 要更低。' : 'RSI is on. Mark two price highs, then the nearby RSI highs. The later price high must be higher and the RSI high lower.';
+      }
+      if (state.step === 'judge') return zh ? '判断这一句。点错会说明原因。' : 'Judge this statement. A wrong pick explains why.';
+      if (state.scene === 'cold') return zh ? '点一根 RSI 低于超卖参考线、而且后面已经放出来的收盘还更低的 K 线。低于 30 不是抄底命令。' : 'Mark a bar with RSI under the oversold line whose later close is still lower. Below 30 is not an order to buy.';
+      if (state.scene === 'bear' || state.scene === 'exam') return zh ? '先点两个价格高点，再在副图点对应的 RSI 高点。时间要对上。' : 'Mark two price highs, then the matching RSI highs. The times have to line up.';
+      if (state.scene === 'bull') return zh ? '先点两个价格低点，再点对应的 RSI 低点。第二处价格要更低，RSI 要更高，才是底背离。' : 'Mark two price lows, then the matching RSI lows. The later price low must be lower and the RSI low higher.';
+      if (state.scene === 'fake') return zh ? '试着点两个价格高点和 RSI。如果第二个价格高点没有更高，就不是顶背离。' : 'Try two price highs and the RSI highs. If the second price high is not higher, it is not bearish divergence.';
+      return zh ? '看 RSI 停在超买参考线上面时，价格是不是还在涨。后面的 K 线先藏着。点一根看收盘和 RSI。' : 'Watch whether price is still rising while RSI stays above the overbought line. Later candles stay hidden. Tap one for the close and RSI.';
+    }
+    function gradeDivergence(pack) {
+      var mode = state.scene === 'bull' ? 'low' : 'high';
+      if (state.pricePts.length < 2 || state.rsiPts.length < 2) {
+        return { tone: '', text: zh ? '价格点 ' + state.pricePts.length + '/2，RSI 点 ' + state.rsiPts.length + '/2。' : 'Price points ' + state.pricePts.length + '/2, RSI points ' + state.rsiPts.length + '/2.' };
+      }
+      var price = state.pricePts.slice().sort(function (a, b) { return a - b; });
+      var rsiPts = state.rsiPts.slice().sort(function (a, b) { return a - b; });
+      if (!confirmed(pack, price[0], mode) || !confirmed(pack, price[1], mode)) {
+        return { tone: 'is-wrong', text: zh ? '有一根还不能算摆动点。左右各 3 根都要更' + (mode === 'high' ? '低' : '高') + '，而且右边 3 根要已经放出来。' : 'One mark is not a confirmed swing. Three bars on each side must be beyond it, and the later three must already be shown.' };
+      }
+      if (Math.abs(rsiPts[0] - price[0]) > 2 || Math.abs(rsiPts[1] - price[1]) > 2) {
+        return { tone: 'is-wrong', text: zh ? '时间窗口不对应。RSI 的点要和价格摆动点在同一根，或左右不超过 2 根。' : 'The time windows do not match. Each RSI point must be on the same bar as the price swing, or within 2 bars.' };
+      }
+      var left = pack.rsi[rsiPts[0]];
+      var right = pack.rsi[rsiPts[1]];
+      if (left == null || right == null) return { tone: '', text: zh ? '这两根的 RSI 还不能计算，不显示 0。' : 'RSI is not ready on one of these bars. No fake zero is shown.' };
+      if (mode === 'high') {
+        if (!(pack.bars[price[1]].h > pack.bars[price[0]].h)) {
+          return { tone: state.scene === 'fake' ? 'is-right' : 'is-wrong', text: zh ? '第二价格高点没有更高，所以这不是本课的顶背离。RSI 下降本身不是背离。' : 'The second price high is not higher, so this is not bearish divergence. A falling RSI by itself is not divergence.' };
+        }
+        if (!(right < left)) return { tone: 'is-wrong', text: zh ? 'RSI 没有更低高点。两个点都要看 RSI 的局部高点。' : 'RSI does not make a lower high. Both points have to be RSI highs.' };
+        return { tone: 'is-right', text: zh ? '价格更高高点，RSI 更低高点，时间也对齐。这是顶背离，仍然不保证反转，也不是做空命令。' : 'Higher price high, lower RSI high, and the times line up. This is bearish divergence. It still does not guarantee a reversal or a short.' };
+      }
+      if (!(pack.bars[price[1]].l < pack.bars[price[0]].l)) return { tone: 'is-wrong', text: zh ? '第二价格低点没有更低，所以这不是底背离。' : 'The second price low is not lower, so this is not bullish divergence.' };
+      if (!(right > left)) return { tone: 'is-wrong', text: zh ? 'RSI 没有更高低点。' : 'RSI does not make a higher low.' };
+      return { tone: 'is-right', text: zh ? '价格更低低点，RSI 更高低点，时间也对齐。这是底背离，仍然不保证反弹，也不是买入命令。' : 'Lower price low, higher RSI low, and the times line up. This is bullish divergence. It still does not guarantee a bounce or a buy.' };
+    }
+    function gradeBar(pack, index) {
+      var value = pack.rsi[index];
+      if (state.step === 'exam' && state.examStage === 'div') return gradeDivergence(pack);
+      if (value == null) return { tone: '', text: zh ? '这根 RSI 还不能计算。前 ' + state.period + ' 次涨跌不够，不显示 0。' : 'RSI is not ready. Fewer than ' + state.period + ' changes exist, so no fake 0 is shown.' };
+      if (state.scene === 'cold') {
+        var lower = false;
+        var i;
+        for (i = index + 1; i < pack.bars.length; i++) if (pack.bars[i].c < pack.bars[index].c) lower = true;
+        if (value < state.os && lower) return { tone: 'is-right', text: zh ? 'RSI 低于 ' + state.os + '，后面的收盘还更低。超卖只说明最近跌得相对多，不是马上抄底。' : 'RSI is under ' + state.os + ', and a later close is lower. Oversold only says the recent fall is relatively large. It is not an order to buy.' };
+        if (value < state.os) return { tone: '', text: zh ? '这根是低于参考线，但后面还没有更低的收盘。把后面的 K 线放出来，或点更早的一根。' : 'This bar is under the line, but no later close is lower yet. Reveal more bars, or pick an earlier one.' };
+        return { tone: '', text: zh ? '这根没有低于超卖参考线 ' + state.os + '。这只是参考阈值。' : 'This bar is not under the oversold line at ' + state.os + '. That number is only a reference.' };
+      }
+      if (state.scene === 'bear' || state.scene === 'bull' || state.scene === 'fake') return gradeDivergence(pack);
+      var higher = false;
+      var j;
+      for (j = index + 1; j < pack.bars.length; j++) if (pack.bars[j].c > pack.bars[index].c) higher = true;
+      if (value > state.ob && higher) return { tone: 'is-right', text: zh ? 'RSI 高于 ' + state.ob + '，后面的收盘还更高。超买只说明涨得相对强，不是马上卖，也不是做空命令。' : 'RSI is above ' + state.ob + ', and a later close is higher. Overbought only says the rise is relatively strong. It is not an order to sell or short.' };
+      if (value > state.ob) return { tone: '', text: zh ? '这根高于参考线，但后面还没有更高的收盘。请点更早的一根，或继续播放。' : 'This bar is above the line, but no later close is higher yet. Pick an earlier bar, or keep playing.' };
+      return { tone: '', text: zh ? '这根没有高于超买参考线 ' + state.ob + '。' : 'This bar is not above the overbought line at ' + state.ob + '.' };
+    }
+    function readout(pack) {
+      if (state.cursor == null) return '';
+      var bar = pack.bars[state.cursor];
+      if (!bar) return '';
+      var value = pack.rsi[state.cursor];
+      var prev = pack.rsi[state.cursor - 1];
+      var when = zh ? '第 ' + (state.cursor - pack.current.visibleFrom + 1) + ' 根 · 模拟 1 小时' : 'Bar ' + (state.cursor - pack.current.visibleFrom + 1) + ' · simulated 1h';
+      var rsiText = !state.showRsi ? (zh ? 'RSI 先藏着' : 'RSI is still hidden') : (value == null ? (zh ? '数据不足' : 'not ready') : fmt(value));
+      var delta = !state.showRsi || value == null || prev == null ? (zh ? '数据不足' : 'not ready') : fmt(value - prev);
+      return when + '<br>' + (zh ? '开 ' : 'O ') + fmt(bar.o) + (zh ? ' 高 ' : ' H ') + fmt(bar.h) + (zh ? ' 低 ' : ' L ') + fmt(bar.l) + (zh ? ' 收 ' : ' C ') + fmt(bar.c) + (zh ? ' 量 ' : ' V ') + bar.v +
+        '<br>RSI(' + state.period + ') ' + rsiText + (zh ? '，较前一根 ' : ', change ') + delta;
+    }
+    function paint() {
+      var pack = prefix();
+      var from = pack.current.visibleFrom;
+      var draw = pack.bars.slice(from);
+      var w = 980;
+      var h = 460;
+      var padL = 10;
+      var padR = 78;
+      var top = 16;
+      var priceH = 188;
+      var vals = [];
+      draw.forEach(function (bar) { vals.push(bar.h, bar.l); });
+      var min = Math.min.apply(null, vals);
+      var max = Math.max.apply(null, vals);
+      if (min === max) { min -= 1; max += 1; }
+      var span = max - min;
+      min -= span * 0.08;
+      max += span * 0.08;
+      function y(p) { return top + (max - p) / (max - min) * priceH; }
+      var slot = (w - padL - padR) / Math.max(draw.length, 1);
+      var rsiTop = 286;
+      var rsiH = 140;
+      function ry(v) { return rsiTop + (100 - v) / 100 * rsiH; }
+      var bits = ['<svg viewBox="0 0 ' + w + ' ' + h + '" role="img" aria-label="' + (zh ? '模拟BTC与RSI' : 'Simulated BTC and RSI') + '">'];
+      bits.push('<rect width="' + w + '" height="' + h + '" fill="#120e21"></rect>');
+      var g;
+      for (g = 0; g < 4; g++) {
+        var price = min + (max - min) * g / 3;
+        var gy = y(price);
+        bits.push('<line x1="' + padL + '" y1="' + gy + '" x2="' + (w - padR) + '" y2="' + gy + '" stroke="rgba(230,199,158,.16)"></line>');
+        bits.push('<text x="' + (w - 8) + '" y="' + (gy + 4) + '" text-anchor="end" fill="#d4bc9e" font-size="13">' + fmt(price) + '</text>');
+      }
+      var volMax = 1;
+      draw.forEach(function (bar) { if (bar.v > volMax) volMax = bar.v; });
+      draw.forEach(function (bar, i) {
+        var up = bar.c >= bar.o;
+        var color = up ? '#1f8a4d' : '#d4534e';
+        var x = padL + i * slot;
+        var xc = x + slot / 2;
+        var bw = Math.max(2.2, slot * 0.55);
+        bits.push('<line x1="' + xc + '" y1="' + y(bar.h) + '" x2="' + xc + '" y2="' + y(bar.l) + '" stroke="' + color + '" stroke-width="1.2"></line>');
+        bits.push('<rect x="' + (xc - bw / 2) + '" y="' + Math.min(y(bar.o), y(bar.c)) + '" width="' + bw + '" height="' + Math.max(1.3, Math.abs(y(bar.c) - y(bar.o))) + '" fill="' + color + '"></rect>');
+        var vh = Math.max(1, bar.v / volMax * 28);
+        bits.push('<rect x="' + (xc - bw / 2) + '" y="' + (262 - vh) + '" width="' + bw + '" height="' + vh + '" fill="' + color + '" opacity="0.8"></rect>');
+        if (i % 16 === 0) bits.push('<text x="' + xc + '" y="452" fill="#b7aac8" font-size="12">' + (zh ? '第' + (i + 1) + '根' : '#' + (i + 1)) + '</text>');
+      });
+      if (state.showRsi) {
+        bits.push('<rect x="' + padL + '" y="' + ry(100) + '" width="' + (w - padL - padR) + '" height="' + (ry(state.ob) - ry(100)) + '" fill="rgba(212,83,78,.12)"></rect>');
+        bits.push('<rect x="' + padL + '" y="' + ry(state.os) + '" width="' + (w - padL - padR) + '" height="' + (ry(0) - ry(state.os)) + '" fill="rgba(31,138,77,.12)"></rect>');
+        [[state.ob, zh ? state.ob + ' 超买' : state.ob + ' overbought', '#d4534e'], [50, '50', '#8eb4ff'], [state.os, zh ? state.os + ' 超卖' : state.os + ' oversold', '#7dcea0']].forEach(function (level) {
+          bits.push('<line x1="' + padL + '" y1="' + ry(level[0]) + '" x2="' + (w - padR) + '" y2="' + ry(level[0]) + '" stroke="' + level[2] + '" stroke-dasharray="4 3"></line>');
+          bits.push('<text x="' + (w - 8) + '" y="' + (ry(level[0]) + 4) + '" text-anchor="end" fill="' + level[2] + '" font-size="13">' + level[1] + '</text>');
+        });
+        var pts = [];
+        draw.forEach(function (bar, i) {
+          var value = pack.rsi[from + i];
+          if (value != null) pts.push((padL + i * slot + slot / 2).toFixed(1) + ',' + ry(value).toFixed(1));
+        });
+        if (pts.length > 1) bits.push('<polyline points="' + pts.join(' ') + '" fill="none" stroke="#f4cb82" stroke-width="2.4"></polyline>');
+      } else {
+        bits.push('<text x="' + (padL + 12) + '" y="' + (rsiTop + 40) + '" fill="#d4bc9e" font-size="16">' + (zh ? 'RSI 先藏着' : 'RSI is hidden') + '</text>');
+      }
+      function link(points, pane) {
+        if (points.length < 2) return;
+        var sorted = points.slice().sort(function (a, b) { return a - b; });
+        var line = sorted.map(function (abs) {
+          var i = abs - from;
+          if (i < 0 || i >= draw.length) return '';
+          var xc = padL + i * slot + slot / 2;
+          var yy = pane === 'price' ? y(state.scene === 'bull' ? pack.bars[abs].l : pack.bars[abs].h) : ry(pack.rsi[abs] == null ? 50 : pack.rsi[abs]);
+          return xc.toFixed(1) + ',' + yy.toFixed(1);
+        }).filter(Boolean);
+        if (line.length === 2) bits.push('<polyline points="' + line.join(' ') + '" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-dasharray="4 3"></polyline>');
+      }
+      link(state.pricePts, 'price');
+      if (state.showRsi) link(state.rsiPts, 'rsi');
+      function dots(points, pane) {
+        points.forEach(function (abs) {
+          var i = abs - from;
+          if (i < 0 || i >= draw.length) return;
+          var xc = padL + i * slot + slot / 2;
+          var yy = pane === 'price' ? y(state.scene === 'bull' ? pack.bars[abs].l : pack.bars[abs].h) : ry(pack.rsi[abs] == null ? 50 : pack.rsi[abs]);
+          bits.push('<circle cx="' + xc + '" cy="' + yy + '" r="5" fill="none" stroke="#ffffff" stroke-width="2"></circle>');
+          if (state.showTime && pane === 'price') bits.push('<line x1="' + xc + '" y1="' + top + '" x2="' + xc + '" y2="' + (rsiTop + rsiH) + '" stroke="rgba(240,213,154,.7)" stroke-dasharray="2 3"></line>');
+        });
+      }
+      dots(state.pricePts, 'price');
+      if (state.showRsi) dots(state.rsiPts, 'rsi');
+      if (state.cursor != null && state.cursor >= from && state.cursor < pack.end) {
+        var cx = padL + (state.cursor - from) * slot + slot / 2;
+        bits.push('<line x1="' + cx + '" y1="' + top + '" x2="' + cx + '" y2="' + (rsiTop + rsiH) + '" stroke="rgba(255,255,255,.4)" stroke-dasharray="3 3"></line>');
+      }
+      draw.forEach(function (bar, i) {
+        var abs = from + i;
+        var x = padL + i * slot;
+        bits.push('<rect data-bar="' + abs + '" data-pane="price" x="' + x + '" y="' + top + '" width="' + slot + '" height="246" fill="transparent" style="cursor:pointer"></rect>');
+        bits.push('<rect data-bar="' + abs + '" data-pane="rsi" x="' + x + '" y="' + rsiTop + '" width="' + slot + '" height="' + rsiH + '" fill="transparent" style="cursor:pointer"></rect>');
+      });
+      bits.push('</svg>');
+      var steps = [['watch', zh ? '看懂' : 'Watch'], ['mark', zh ? '自己标记' : 'Mark'], ['judge', zh ? '判断真假' : 'True or false'], ['fail', zh ? '失败案例' : 'Failure'], ['exam', zh ? '新行情考试' : 'New tape']];
+      var sceneIds = ['hot', 'cold', 'bear', 'bull', 'fake'];
+      var judge = '';
+      if (state.step === 'judge') {
+        var q = state.scene === 'cold'
+          ? { ask: zh ? 'RSI 低于 30，是不是必须马上抄底？' : 'RSI is below 30. Do you have to buy immediately?', answer: 'B', options: [['A', zh ? '必须抄底' : 'You must buy'], ['B', zh ? '不是，低于 30 仍可以继续跌' : 'No. It can keep falling under 30'], ['C', zh ? '只有 RSI 到 0 才不是' : 'Only RSI 0 is not a buy']] }
+          : state.scene === 'bear'
+            ? { ask: zh ? '价格更高高点、RSI 更低高点，是否保证随后下跌？' : 'A higher price high and a lower RSI high: does that guarantee a drop?', answer: 'B', options: [['A', zh ? '保证，马上做空' : 'Yes, short now'], ['B', zh ? '不保证' : 'It does not'], ['C', zh ? '到了 70 才保证' : 'Only after 70']] }
+            : state.scene === 'bull'
+              ? { ask: zh ? '价格更低低点、RSI 更高低点，是否保证随后上涨？' : 'A lower price low and a higher RSI low: does that guarantee a rise?', answer: 'B', options: [['A', zh ? '保证' : 'It guarantees it'], ['B', zh ? '不保证' : 'It does not'], ['C', zh ? '超卖了就保证' : 'Oversold guarantees it']] }
+              : state.scene === 'fake'
+                ? { ask: zh ? '第二个价格高点没有更高，RSI 却在下降。这是顶背离吗？' : 'The second price high is not higher, while RSI falls. Is that bearish divergence?', answer: 'B', options: [['A', zh ? '是' : 'Yes'], ['B', zh ? '不是' : 'No'], ['C', zh ? '只要 RSI 下降就是' : 'Any falling RSI counts']] }
+                : { ask: zh ? 'RSI 高于 70，是不是必须马上卖？' : 'RSI is above 70. Do you have to sell immediately?', answer: 'B', options: [['A', zh ? '必须马上卖' : 'You must sell now'], ['B', zh ? '不是，它还可以停在高位' : 'No. It can stay high'], ['C', zh ? '到了 80 才必须卖' : 'Only 80 forces a sale']] };
+        judge = '<p>' + esc(q.ask) + '</p><div class="a1-modes">' + q.options.map(function (opt) {
+          return '<button type="button" data-judge="' + opt[0] + '" data-answer="' + q.answer + '">' + opt[0] + '. ' + esc(opt[1]) + '</button>';
+        }).join('') + '</div>';
+      }
+      var exam = '';
+      if (state.step === 'exam' && state.examStage === 'strength') {
+        exam = '<div class="a1-modes"><button type="button" data-bias="up">' + (zh ? '收盘在抬高' : 'Closes are rising') + '</button><button type="button" data-bias="flat">' + (zh ? '差不多' : 'About flat') + '</button><button type="button" data-bias="down">' + (zh ? '收盘在压低' : 'Closes are falling') + '</button></div>';
+      }
+      var note = state.note || readout(pack) || taskText();
+      root.innerHTML =
+        '<div class="a1"><p class="a1-flag">' + (zh ? '模拟，不是实时行情。教学虚构，不是投资建议。' : 'Simulated, not a live price. Teaching fiction, not investment advice.') + '</p>' +
+        '<div class="a1-modes">' + steps.map(function (item) { return '<button type="button" data-step="' + item[0] + '" aria-pressed="' + (state.step === item[0]) + '">' + item[1] + '</button>'; }).join('') + '</div>' +
+        '<div class="a1-modes">' + sceneIds.map(function (id) { return '<button type="button" data-scene="' + id + '" aria-pressed="' + (state.scene === id) + '">' + esc(zh ? scenes[id].zh : scenes[id].en) + '</button>'; }).join('') + '</div>' +
+        '<p>' + esc(taskText()) + '</p>' +
+        '<div class="a1-modes"><button type="button" data-move="play" aria-pressed="' + state.playing + '">' + (state.playing ? (zh ? '暂停' : 'Pause') : (zh ? '播放' : 'Play')) + '</button>' +
+        '<button type="button" data-move="-1">' + (zh ? '上一根' : 'Previous') + '</button><button type="button" data-move="1">' + (zh ? '下一根' : 'Next') + '</button>' +
+        '<button type="button" data-move="reset">' + (zh ? '重置' : 'Reset') + '</button><span>' + state.shown + ' / ' + maxShown() + (zh ? '，后面先隐藏' : ', later bars hidden') + '</span></div>' +
+        '<div class="a1-fields"><label>RSI <input data-n="period" type="number" min="5" max="30" value="' + state.period + '"></label>' +
+        '<label>' + (zh ? '超买参考' : 'Overbought') + ' <input data-n="ob" type="number" min="51" max="95" value="' + state.ob + '"></label>' +
+        '<label>' + (zh ? '超卖参考' : 'Oversold') + ' <input data-n="os" type="number" min="5" max="49" value="' + state.os + '"></label>' +
+        '<button type="button" data-layer="time" aria-pressed="' + state.showTime + '">' + (zh ? '显示时间垂线' : 'Show time lines') + '</button>' +
+        '<button type="button" data-layer="hide" aria-pressed="' + state.hideAnswer + '">' + (state.hideAnswer ? (zh ? '答案隐藏中' : 'Answers hidden') : (zh ? '答案已显示' : 'Answers shown')) + '</button></div>' +
+        '<div class="rsi-scroll">' + bits.join('') + '</div>' +
+        '<p class="star-key"><span><i style="background:#f4cb82"></i>RSI(' + state.period + ')</span><span><i style="background:#d4534e"></i>' + state.ob + (zh ? ' 超买参考' : ' overbought') + '</span><span><i style="background:#8eb4ff"></i>50</span><span><i style="background:#7dcea0"></i>' + state.os + (zh ? ' 超卖参考' : ' oversold') + '</span></p>' +
+        judge + exam +
+        '<p class="a2-readout ' + state.tone + '">' + note + '</p>' +
+        '<p class="ema-note">' + (zh
+          ? '公式：先把前 N 次涨跌做简单平均，得到平均涨幅和平均跌幅。之后平均涨幅=(N−1)×上一根平均涨幅+本根涨幅，再除以 N。RSI=100−100/(1+平均涨幅/平均跌幅)。平均跌幅为 0 且有涨幅时记 100。两边都是 0 时本课记 50。不够 N 次变化显示数据不足，不画 0。70 和 30 是参考阈值，不是买卖线。'
+          : 'Formula: average the first N changes into an average gain and an average loss. Then average gain=((N−1)×previous average gain+this gain)/N. RSI=100−100/(1+average gain/average loss). If average loss is 0 and there is a gain, RSI is 100. If both are 0, this lesson uses 50. Fewer than N changes says not ready and does not draw 0. 70 and 30 are reference levels, not orders.') + '</p></div>';
+    }
+    function setShown(next) {
+      state.shown = Math.max(1, Math.min(maxShown(), next));
+      if (state.cursor != null && state.cursor >= scene().visibleFrom + state.shown) state.cursor = null;
+    }
+    function enter(step) {
+      stop();
+      state.step = step;
+      state.pricePts = [];
+      state.rsiPts = [];
+      state.cursor = null;
+      state.note = '';
+      state.tone = '';
+      state.examStage = 'strength';
+      state.showRsi = true;
+      if (step === 'fail') {
+        state.scene = state.scene === 'fake' ? 'cold' : 'fake';
+        state.hideAnswer = true;
+        state.shown = 28;
+      } else if (step === 'exam') {
+        state.scene = 'exam';
+        state.hideAnswer = true;
+        state.showRsi = false;
+        state.shown = 40;
+      } else {
+        if (state.scene === 'exam') state.scene = 'hot';
+        state.shown = 28;
+        state.hideAnswer = step !== 'watch';
+      }
+      paint();
+    }
+    if (root._rsiClick) root.removeEventListener('click', root._rsiClick);
+    root._rsiClick = function (ev) {
+      var el = ev.target.closest ? ev.target.closest('[data-step],[data-scene],[data-move],[data-layer],[data-bar],[data-judge],[data-bias]') : null;
+      if (!el || !root.contains(el)) return;
+      if (el.hasAttribute('data-step')) { enter(el.getAttribute('data-step')); return; }
+      if (el.hasAttribute('data-scene')) {
+        stop();
+        state.scene = el.getAttribute('data-scene');
+        state.step = 'mark';
+        state.pricePts = [];
+        state.rsiPts = [];
+        state.note = '';
+        state.tone = '';
+        state.hideAnswer = true;
+        state.showRsi = true;
+        state.shown = 28;
+        paint();
+        return;
+      }
+      if (el.hasAttribute('data-move')) {
+        var move = el.getAttribute('data-move');
+        if (move === 'play') {
+          if (state.playing) { stop(); paint(); return; }
+          state.playing = true;
+          root._rsiTimer = setInterval(function () {
+            if (!root.isConnected) { stop(); return; }
+            if (state.shown >= maxShown()) { stop(); paint(); return; }
+            setShown(state.shown + 1);
+            paint();
+          }, 280);
+          paint();
+          return;
+        }
+        if (move === 'reset') {
+          stop();
+          state.pricePts = [];
+          state.rsiPts = [];
+          state.cursor = null;
+          state.note = '';
+          state.tone = '';
+          state.examStage = 'strength';
+          if (state.step === 'exam') state.showRsi = false;
+          state.shown = state.step === 'exam' ? 40 : 28;
+          paint();
+          return;
+        }
+        setShown(state.shown + Number(move));
+        paint();
+        return;
+      }
+      if (el.hasAttribute('data-layer')) {
+        var layer = el.getAttribute('data-layer');
+        if (layer === 'time') state.showTime = !state.showTime;
+        if (layer === 'hide') state.hideAnswer = !state.hideAnswer;
+        paint();
+        return;
+      }
+      if (el.hasAttribute('data-bias')) {
+        var pick = el.getAttribute('data-bias');
+        var answer = bias(prefix());
+        var right = pick === answer;
+        state.tone = right ? 'is-right' : 'is-wrong';
+        if (right) {
+          state.examStage = 'div';
+          state.showRsi = true;
+          state.note = zh ? '对。这只是已经放出来的方向，不是下一根的保证。现在打开 RSI，自己点顶背离。' : 'Correct. That is only the direction already shown, not a promise for the next bar. RSI is on. Mark the bearish divergence yourself.';
+        } else state.note = zh ? '先看已经放出来的收盘。这段整体还在抬高，不是超卖，也不是叫你做空。' : 'Look at the closes already shown. This stretch is still rising. It is not oversold, and it is not an order to short.';
+        paint();
+        return;
+      }
+      if (el.hasAttribute('data-bar')) {
+        var index = Number(el.getAttribute('data-bar'));
+        var pane = el.getAttribute('data-pane');
+        state.cursor = index;
+        var marking = state.step === 'mark' || state.step === 'fail' || (state.step === 'exam' && state.examStage === 'div');
+        var divMode = state.scene === 'bear' || state.scene === 'bull' || state.scene === 'fake' || (state.step === 'exam' && state.examStage === 'div');
+        if (marking && divMode) {
+          if (state.step === 'exam' && !state.showRsi) {
+            state.note = zh ? '先判断 K 线方向，再打开 RSI。' : 'Judge the candles first, then turn RSI on.';
+            state.tone = '';
+          } else {
+            var list = pane === 'rsi' ? state.rsiPts : state.pricePts;
+            var at = list.indexOf(index);
+            if (at >= 0) list.splice(at, 1);
+            else {
+              if (list.length >= 2) list.shift();
+              list.push(index);
+            }
+            var graded = gradeDivergence(prefix());
+            state.note = graded.text;
+            state.tone = graded.tone;
+          }
+        } else if (marking) {
+          var gradedBar = gradeBar(prefix(), index);
+          state.note = gradedBar.text;
+          state.tone = gradedBar.tone;
+        } else {
+          state.note = '';
+          state.tone = '';
+        }
+        paint();
+        return;
+      }
+      if (el.hasAttribute('data-judge')) {
+        var rightJudge = el.getAttribute('data-judge') === el.getAttribute('data-answer');
+        state.tone = rightJudge ? 'is-right' : 'is-wrong';
+        state.note = rightJudge
+          ? (zh ? '对。超买、超卖和背离都不是下一根的命令。' : 'Correct. Overbought, oversold, and divergence are not orders for the next bar.')
+          : (zh ? '不对。RSI 说的是最近涨跌的相对强弱，不保证下一根涨或跌。' : 'No. RSI describes the relative strength of recent rises and falls. It does not guarantee the next bar.');
+        paint();
+      }
+    };
+    root.addEventListener('click', root._rsiClick);
+    if (root._rsiChange) root.removeEventListener('change', root._rsiChange);
+    root._rsiChange = function (ev) {
+      var input = ev.target;
+      if (!input || !input.getAttribute || !input.getAttribute('data-n')) return;
+      var key = input.getAttribute('data-n');
+      var value = Math.round(Number(input.value));
+      if (key === 'period') {
+        state.period = Math.max(5, Math.min(30, value || 14));
+        state.note = zh ? '周期已改成 ' + state.period + '，按同一条 Wilder 公式重算。之前的标记清掉了。' : 'Period is now ' + state.period + '. RSI was recalculated with the same Wilder formula. Earlier marks were cleared.';
+      } else if (key === 'ob') {
+        state.ob = Math.max(51, Math.min(95, value || 70));
+        state.note = zh ? '超买参考线改成 ' + state.ob + '。这仍是参考阈值，不是卖出命令。' : 'The overbought reference is now ' + state.ob + '. It is still a reference, not a sell order.';
+      } else {
+        state.os = Math.max(5, Math.min(49, value || 30));
+        state.note = zh ? '超卖参考线改成 ' + state.os + '。这仍是参考阈值，不是买入命令。' : 'The oversold reference is now ' + state.os + '. It is still a reference, not a buy order.';
+      }
+      state.pricePts = [];
+      state.rsiPts = [];
+      state.tone = '';
+      paint();
+    };
+    root.addEventListener('change', root._rsiChange);
+    if (root._rsiKey) root.removeEventListener('keydown', root._rsiKey);
+    root.tabIndex = 0;
+    root._rsiKey = function (ev) {
+      if (ev.key !== 'ArrowRight' && ev.key !== 'ArrowLeft') return;
+      ev.preventDefault();
+      setShown(state.shown + (ev.key === 'ArrowRight' ? 1 : -1));
+      paint();
+    };
+    root.addEventListener('keydown', root._rsiKey);
+    paint();
+  }
+  var study = global.STAR_STUDY;
+  if (study && !study._rsiWrapped) {
+    var inner = study.mount;
+    study.mount = function (root, lesson, lang) {
+      if (lesson && lesson.study && lesson.study.lessonChart === 'rsi-full') return mount(root, lesson, lang);
+      return inner.apply(this, arguments);
+    };
+    study._rsiWrapped = true;
+  }
+  global.STAR_CH02_RSI = { rsi: rsi, buildScenes: buildScenes, mount: mount };
 })(typeof window !== 'undefined' ? window : global);
