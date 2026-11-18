@@ -10,18 +10,18 @@
         title: bi('EMA：均线为什么追着价格跑', 'EMA: why the average chases price'),
         scene: bi('价格刚跌下来，均线会不会马上跳到最新价？', 'Price just fell. Does the average jump to the latest price right away?'),
         one: bi('均线会跟着价格慢慢走，但不会一下子跳到最新价。', 'An average follows price slowly, and it does not jump to the latest price in one step.'),
-        explain: bi('均线是一条跟着价格走的平滑线。\n它不是用来预言下一根会到哪里。\n最近的价格更重要，所以它会追着价格跑。\n价格突然跌下来，均线还停在上面。\n你可以把它想成跟在身后的人。\n你停下了，他还要再走几步才到。\n短周期追得更紧，也更容易被横盘晃来晃去。\n追得快，不等于看得更准。', 'An average is a smooth line that follows price.\nIt is not there to predict where the next bar will go.\nRecent prices matter more, so it chases price.\nWhen price drops suddenly, the average is still up above it.\nYou can think of it as a person walking behind you.\nYou stop, and he still needs a few more steps to arrive.\nA short period follows more tightly, and a sideways market shakes it more.\nFollowing faster does not mean seeing more clearly.'),
-        example: bi('教学虚构：价格从 100 涨到 114，再跌到 99。\n快线贴着价格。\n慢线还留在更高的地方。\n最新价已经是 99，两条均线都还在 99 上面。', 'Teaching fiction: price rises from 100 to 114, then falls to 99.\nThe fast line stays close to price.\nThe slow line is still higher up.\nThe latest price is already 99, and both averages are still above 99.'),
+        explain: bi('均线是一条跟着蜡烛收盘走的平滑线。\n图上黄线是 EMA20。\nEMA20 看的是最近 20 根 K 线，越近的越重要。\n蓝线是 EMA50。\nEMA50 看的是最近 50 根 K 线，走得更慢。\n它不是用来预言下一根会到哪里。\n价格突然跌下来，均线还停在上面。\n你可以把它想成跟在身后的人。\n你停下了，他还要再走几步才到。\n追得快，不等于看得更准。', 'An average is a smooth line that follows candle closes.\nThe gold line is EMA20.\nEMA20 looks at the last 20 bars, and the nearer ones matter more.\nThe blue line is EMA50.\nEMA50 looks at the last 50 bars, and it moves more slowly.\nIt is not there to predict where the next bar will go.\nWhen price drops suddenly, the average is still up above it.\nYou can think of it as a person walking behind you.\nYou stop, and he still needs a few more steps to arrive.\nFollowing faster does not mean seeing more clearly.'),
+        example: bi('教学模拟：价格从大约 101 涨到大约 137，再跌到大约 107。\nEMA20 贴得更近。\nEMA50 还留在更高的地方。\n最新收盘已经下来了，两条均线都还在它上面。', 'Teaching simulation: price rises from about 101 to about 137, then falls to about 107.\nEMA20 stays closer.\nEMA50 is still higher up.\nThe latest close has already come down, and both averages are still above it.'),
         pitfalls: [
           bi('把均线当成下一根的预测价', 'Treating the average as the predicted price of the next bar'),
           bi('横盘里来回交叉，就当成方向已经确定', 'Treating a back-and-forth cross in a sideways market as a decided direction')
         ],
-        practice: bi('看图里的教学虚构价格。最新价已经掉下来了，均线还在它上面。', 'Look at the teaching-fiction price on the chart. The latest price has already fallen, and the averages are still above it.'),
+        practice: bi('看图里的教学模拟 K 线。最新收盘已经掉下来了，EMA20 和 EMA50 还在它上面。', 'Look at the teaching-simulation candles. The latest close has already fallen, and EMA20 and EMA50 are still above it.'),
         check: {
-          ask: bi('价格刚跌到 99，均线会马上变成 99 吗？', 'Price just fell to 99. Does the average become 99 right away?'),
+          ask: bi('最新这根 K 线跌下来了，EMA20 会马上变成这根收盘价吗？', 'This latest candle fell. Does EMA20 become that close right away?'),
           options: [opt('A', '会，它会跳过去', 'Yes, it jumps there'), opt('B', '不会，它还在慢慢跟上', 'No, it is still catching up'), opt('C', '只有 BTC 会跳', 'Only BTC jumps')],
           answer: 'B',
-          miss: bi('99 是最新价，不是均线。\n均线还停在更高的地方。', '99 is the latest price, not the average.\nThe average is still higher up.')
+          miss: bi('收盘价是这根 K 线的价格，不是均线。\nEMA20 还停在更高的地方。', 'The close is this candle’s price, not the average.\nEMA20 is still higher up.')
         },
         quizzes: [
           quiz('价格刚跌下来，均线会马上跳到新价格吗？', 'Price just fell. Does the average jump to the new price right away?', [opt('A', '会', 'Yes'), opt('B', '不会', 'No'), opt('C', '只在 BTC 会', 'Only on BTC')], 'B', {
@@ -40,14 +40,14 @@
             C: ['交叉只说明两条线换了上下位置，不保证下一根上涨。', 'A cross only says the two lines swapped places. It does not guarantee the next bar rises.']
           })
         ],
-        study: { kind: 'ema', closes: [100, 102, 105, 108, 112, 114, 113, 110, 106, 102, 99], periods: [5, 12], start: 11 }
+        study: { kind: 'ema', closes: [101.1, 102.2, 103.3, 104.4, 105.5, 106.6, 107.7, 108.8, 109.9, 111, 112.1, 113.2, 114.3, 115.4, 116.5, 117.6, 118.7, 119.8, 120.9, 122, 123.1, 124.2, 125.3, 126.4, 127.5, 128.6, 129.7, 130.8, 131.1, 131.5, 131.8, 132.2, 132.5, 132.9, 133.2, 133.6, 133.9, 134.3, 134.6, 135, 135.3, 135.7, 136, 136.4, 136.7, 137.1, 135.7, 134.4, 133, 131.7, 130.3, 129, 127.6, 126.3, 124.9, 123.6, 122.2, 120.9, 119.5, 118.2, 116.8, 115.5, 114.1, 112.8, 111.4, 110.1, 108.7, 107.4], periods: [20, 50], start: 68 }
       }),
       lesson({
         id: '02',
         title: bi('MACD：柱子缩短意味着什么', 'MACD: what a shrinking histogram means'),
         scene: bi('柱子变短的时候，价格是不是一定马上跌？', 'When the histogram shrinks, must price fall right away?'),
         one: bi('金叉是快线 DIF 上穿慢线 DEA，死叉是下穿，柱子变短也不等于价格马上跌。', 'A golden cross is the fast DIF line crossing above the slow DEA line, a death cross is a cross below, and a shorter histogram still does not mean price falls at once.'),
-        explain: bi('图的上半部分是价格。\n下半部分才是 MACD。\n黄线是快线，名字叫 DIF。\n蓝线是慢线，名字叫 DEA，也叫信号线。\n柱子画的是两条线差多远。\n本课的柱子等于 DIF 减去 DEA，不乘 2。\n有的软件把柱子画成两倍。\n数值就可以差一倍。\n那是画法不同，不是算错。\n最前面大约 26 根还在预热。\n早期的线还不稳。', 'The top half of the chart is price.\nThe bottom half is the MACD.\nThe gold line is the fast line, called DIF.\nThe blue line is the slow line, called DEA, also called the signal line.\nThe bars show how far apart the two lines are.\nIn this lesson a bar equals DIF minus DEA, and it is not multiplied by 2.\nSome software draws the bar at twice that size.\nThe number can then differ by a factor of two.\nThat is a different way of drawing it, not a wrong calculation.\nAbout the first 26 bars are still warming up.\nThe early lines are not steady yet.'),
+        explain: bi('图的上半部分是蜡烛 K 线。\n下半部分才是 MACD（12、26、9）。\n黄线 DIF 是 EMA12 减去 EMA26。\n蓝线 DEA 是 DIF 的 9 根平均，也叫信号线。\n柱子画的是两条线差多远。\n本课的柱子等于 DIF 减去 DEA，不乘 2。\n有的软件把柱子画成两倍。\n数值就可以差一倍。\n那是画法不同，不是算错。\n最前面大约 26 根还在预热。\n早期的线还不稳。\n金叉不是买入按钮。', 'The top half is candlesticks.\nThe bottom half is MACD (12, 26, 9).\nThe gold DIF line is EMA12 minus EMA26.\nThe blue DEA line is the 9-bar average of DIF, also called the signal line.\nThe bars show how far apart the two lines are.\nIn this lesson a bar equals DIF minus DEA, and it is not multiplied by 2.\nSome software draws the bar at twice that size.\nThe number can then differ by a factor of two.\nThat is a different way of drawing it, not a wrong calculation.\nAbout the first 26 bars are still warming up.\nThe early lines are not steady yet.\nA golden cross is not a buy button.'),
         topic: {
           title: bi('金叉和死叉', 'Golden cross and death cross'),
           body: bi('金叉，是快线 DIF 从下往上穿过慢线 DEA。\n死叉，是快线 DIF 从上往下穿过慢线 DEA。\n图上会把这两个点标成「金叉」和「死叉」。\n金叉不是必涨。\n死叉不是必跌。\n它们只说明两条线换了上下位置。', 'A golden cross is the fast DIF line crossing up through the slow DEA line.\nA death cross is the fast DIF line crossing down through the slow DEA line.\nThe chart marks these two points as “golden cross” and “death cross”.\nA golden cross is not a sure rise.\nA death cross is not a sure fall.\nThey only say the two lines have swapped which one is on top.')
@@ -94,7 +94,7 @@
         title: bi('RSI：超买不等于立刻卖', 'RSI: overbought does not mean sell now'),
         scene: bi('RSI 到了 75，是不是必须马上卖？', 'RSI is 75. Do you have to sell immediately?'),
         one: bi('RSI 看最近涨得多还是跌得多，超买只说明涨得相对强，并不叫你马上卖。', 'RSI looks at whether recent rises outweigh recent falls, and overbought only says the rise is relatively strong, not that you must sell now.'),
-        explain: bi('图的主体是 RSI，刻度从 0 到 100。\n70 的横线标成超买。\n30 的横线标成超卖。\n上面那条淡线只是价格对照，不是 RSI。\n本课用 Wilder 的 RSI(14)。\n先把涨跌幅分成平均涨幅和平均跌幅。\nRS 是平均涨幅除以平均跌幅。\nRSI 等于 100 减去 100 除以（1 加 RS）。\n只有上涨时 RSI 可以到 100。\n涨跌都是 0 时，本课记为 50。\n样本不够 14 次变化时不显示 0，而是还不能计算。', 'The main picture is RSI, on a scale from 0 to 100.\nThe line at 70 is labeled overbought.\nThe line at 30 is labeled oversold.\nThe faint line above is only price for reference. It is not the RSI.\nThis lesson uses Wilder RSI(14).\nFirst split the changes into an average gain and an average loss.\nRS is the average gain divided by the average loss.\nRSI equals 100 minus 100 divided by (1 plus RS).\nIf price only rises, RSI can reach 100.\nIf both gain and loss are 0, this lesson records 50.\nBefore 14 changes exist, do not show 0. It cannot be calculated yet.'),
+        explain: bi('上面是蜡烛 K 线，只作价格对照。\n图的主体是 RSI(14)，刻度从 0 到 100。\n它看的是最近 14 根涨跌。\n70 的横线标成超买。\n30 的横线标成超卖。\n本课用 Wilder 的平滑法。\n先把涨跌幅分成平均涨幅和平均跌幅。\nRS 是平均涨幅除以平均跌幅。\nRSI 等于 100 减去 100 除以（1 加 RS）。\n只有上涨时 RSI 可以到 100。\n涨跌都是 0 时，本课记为 50。\n样本不够 14 次变化时不显示 0，而是还不能计算。', 'The candles above are only price, for reference.\nThe main picture is RSI(14), on a scale from 0 to 100.\nIt looks at the rises and falls of the last 14 bars.\nThe line at 70 is labeled overbought.\nThe line at 30 is labeled oversold.\nThis lesson uses Wilder smoothing.\nFirst split the changes into an average gain and an average loss.\nRS is the average gain divided by the average loss.\nRSI equals 100 minus 100 divided by (1 plus RS).\nIf price only rises, RSI can reach 100.\nIf both gain and loss are 0, this lesson records 50.\nBefore 14 changes exist, do not show 0. It cannot be calculated yet.'),
         example: bi('RSI 75 只表示近期上涨幅度相对更大。\n强趋势里它可以在 70 上方停留很多根。\n所以“超买”不是立刻卖出的命令。', 'RSI 75 only means recent gains are relatively larger.\nIn a strong trend it can stay above 70 for many bars.\nSo “overbought” is not an order to sell immediately.'),
         pitfalls: [
           bi('RSI 一过 70 就认为必须反转', 'Assuming price must reverse as soon as RSI crosses 70'),

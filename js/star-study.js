@@ -194,7 +194,11 @@
     var max = opts.max;
     if (min === max) { min -= 1; max += 1; }
     function y(v) { return top + (max - v) / (max - min) * plotH; }
-    function x(i) { return padL + (n < 2 ? 0 : i / (n - 1) * (w - padL - padR)); }
+    var slot = (w - padL - padR) / Math.max(n, 1);
+    function x(i) {
+      if (opts.centers) return padL + (i + 0.5) * slot;
+      return padL + (n < 2 ? 0 : i / (n - 1) * (w - padL - padR));
+    }
     var bits = opts.bits;
     (opts.guides || []).forEach(function (g) {
       var yy = y(g.value);
@@ -235,62 +239,74 @@
     tags.forEach(function (tag) {
       bits.push('<text x="' + (w - 6) + '" y="' + tag.y.toFixed(1) + '" text-anchor="end" fill="' + tag.color + '" font-size="13" font-family="sans-serif">' + esc(tag.label) + '</text>');
     });
-    return { x: x, y: y };
+    return { x: x, y: y, slot: slot };
+  }
+  function drawCandles(bits, bars, x, y, slot) {
+    bars.forEach(function (bar, i) {
+      var up = bar.c >= bar.o;
+      var color = up ? '#1f8a4d' : '#d4534e';
+      var xc = x(i);
+      var bw = Math.max(2.2, slot * 0.62);
+      var top = Math.min(y(bar.o), y(bar.c));
+      var bh = Math.max(1.4, Math.abs(y(bar.c) - y(bar.o)));
+      bits.push('<line x1="' + xc.toFixed(1) + '" y1="' + y(bar.h).toFixed(1) + '" x2="' + xc.toFixed(1) + '" y2="' + y(bar.l).toFixed(1) + '" stroke="' + color + '" stroke-width="1.2"></line>');
+      bits.push('<rect x="' + (xc - bw / 2).toFixed(1) + '" y="' + top.toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + bh.toFixed(1) + '" fill="' + color + '"></rect>');
+    });
   }
   function openSvg(w, h, label) {
     return '<svg class="a1-svg star-study" viewBox="0 0 ' + w + ' ' + h + '" role="img" aria-label="' + esc(label) + '"><rect width="' + w + '" height="' + h + '" fill="#120e21"></rect>';
   }
-  function emaSvg(closes, fast, slow, lang) {
+  function emaSvg(bars, fast, slow, fastN, slowN, lang) {
     var w = 360;
-    var h = 250;
-    var vals = closes.concat(fast, slow);
+    var h = 280;
+    var vals = [];
+    bars.forEach(function (bar) { vals.push(bar.l, bar.h); });
+    fast.forEach(function (v) { if (v != null) vals.push(v); });
+    slow.forEach(function (v) { if (v != null) vals.push(v); });
     var min = Math.min.apply(null, vals);
     var max = Math.max.apply(null, vals);
     var span = max - min || 1;
-    min -= span * 0.12;
+    min -= span * 0.08;
     max += span * 0.16;
-    var bits = [openSvg(w, h, lang === 'en' ? 'Teaching chart: price and two averages' : '教学图：价格和两条均线')];
-    var priceName = lang === 'en' ? 'Price' : '价格';
-    var fastName = lang === 'en' ? 'Fast' : '快线';
-    var slowName = lang === 'en' ? 'Slow' : '慢线';
-    lineSvg({
-      bits: bits, w: w, h: h, padL: 16, padR: 46, top: 16, plotH: 210, n: closes.length,
-      min: min, max: max,
-      series: [
-        { values: closes, color: '#f7f1e8', width: 2.2, label: priceName },
-        { values: fast, color: '#f4cb82', width: 2.6, label: fastName },
-        { values: slow, color: '#8eb4ff', width: 2.6, label: slowName }
-      ]
-    });
+    var fastTag = 'EMA' + fastN;
+    var slowTag = 'EMA' + slowN;
+    var fastName = lang === 'en' ? fastTag + ' (fast)' : fastTag + '（快线）';
+    var slowName = lang === 'en' ? slowTag + ' (slow)' : slowTag + '（慢线）';
+    var bits = [openSvg(w, h, lang === 'en' ? 'Teaching candles with ' + fastName + ' and ' + slowName : '教学图：蜡烛 K 线，叠 ' + fastName + ' 和 ' + slowName)];
+    var geom = { bits: bits, w: w, h: h, padL: 8, padR: 58, top: 14, plotH: 246, n: bars.length, min: min, max: max, centers: true };
+    var plot = lineSvg(Object.assign({}, geom, { series: [] }));
+    drawCandles(bits, bars, plot.x, plot.y, plot.slot);
+    lineSvg(Object.assign({}, geom, { series: [
+      { values: fast, color: '#f4cb82', width: 2.6, label: fastTag },
+      { values: slow, color: '#8eb4ff', width: 2.6, label: slowTag }
+    ] }));
     bits.push('</svg>');
     return bits.join('') + keyRow([
-      { color: '#f7f1e8', label: priceName },
+      { color: '#1f8a4d', label: lang === 'en' ? 'Green candle, up' : '绿色 K 线（涨）' },
+      { color: '#d4534e', label: lang === 'en' ? 'Red candle, down' : '红色 K 线（跌）' },
       { color: '#f4cb82', label: fastName },
       { color: '#8eb4ff', label: slowName }
     ]);
   }
-  function macdSvg(closes, pack, lang) {
+  function macdSvg(bars, pack, lang) {
     var w = 360;
-    var h = 500;
-    var padL = 12;
-    var padR = 44;
-    var priceTop = 12;
-    var priceH = 150;
-    var macdTop = 198;
-    var macdH = 270;
-    var vals = closes.slice();
+    var h = 520;
+    var padL = 8;
+    var padR = 64;
+    var macdTop = 200;
+    var macdH = 286;
+    var vals = [];
+    bars.forEach(function (bar) { vals.push(bar.l, bar.h); });
     var min = Math.min.apply(null, vals);
     var max = Math.max.apply(null, vals);
     var span = max - min || 1;
     min -= span * 0.08;
     max += span * 0.12;
-    var bits = [openSvg(w, h, lang === 'en' ? 'Teaching chart: price, DIF, DEA, and histogram' : '教学图：价格、DIF、DEA 和柱子')];
-    bits.push('<text x="12" y="24" fill="#d4bc9e" font-size="13" font-family="sans-serif">' + (lang === 'en' ? 'Price' : '价格') + '</text>');
-    lineSvg({
-      bits: bits, w: w, h: h, padL: padL, padR: padR, top: 32, plotH: priceH - 24, n: closes.length,
-      min: min, max: max,
-      series: [{ values: closes, color: '#f7f1e8', width: 2.2 }]
-    });
+    var bits = [openSvg(w, h, lang === 'en' ? 'Teaching candles with MACD 12/26/9' : '教学图：蜡烛 K 线，以及 MACD（12、26、9）')];
+    bits.push('<text x="8" y="16" fill="#d4bc9e" font-size="13" font-family="sans-serif">' + (lang === 'en' ? 'Candles' : '蜡烛 K 线') + '</text>');
+    var priceGeom = { bits: bits, w: w, h: h, padL: padL, padR: padR, top: 22, plotH: 156, n: bars.length, min: min, max: max, centers: true };
+    var pricePlot = lineSvg(Object.assign({}, priceGeom, { series: [] }));
+    drawCandles(bits, bars, pricePlot.x, pricePlot.y, pricePlot.slot);
     var pool = pack.dif.concat(pack.dea, pack.hist, [0]).filter(function (v) { return v != null; });
     var pmin = Math.min.apply(null, pool);
     var pmax = Math.max.apply(null, pool);
@@ -298,8 +314,8 @@
     pmin -= pspan * 0.18;
     pmax += pspan * 0.22;
     var plot = lineSvg({
-      bits: bits, w: w, h: h, padL: padL, padR: padR, top: macdTop, plotH: macdH, n: closes.length,
-      min: pmin, max: pmax,
+      bits: bits, w: w, h: h, padL: padL, padR: padR, top: macdTop, plotH: macdH, n: bars.length,
+      min: pmin, max: pmax, centers: true,
       guides: [{ value: 0, label: lang === 'en' ? '0 zero' : '0 零轴', color: 'rgba(240,213,154,.7)' }],
       series: [
         { values: pack.hist, bars: true },
@@ -308,7 +324,7 @@
       ]
     });
     var i;
-    for (i = 26; i < closes.length; i++) {
+    for (i = 26; i < bars.length; i++) {
       var prev = pack.dif[i - 1] - pack.dea[i - 1];
       var now = pack.dif[i] - pack.dea[i];
       var kind = '';
@@ -327,46 +343,47 @@
     }
     bits.push('</svg>');
     return bits.join('') + keyRow([
-      { color: '#f7f1e8', label: lang === 'en' ? 'Price' : '价格' },
-      { color: '#f4cb82', label: lang === 'en' ? 'DIF fast' : 'DIF 快线' },
-      { color: '#8eb4ff', label: lang === 'en' ? 'DEA slow' : 'DEA 慢线' },
-      { color: '#1f8a4d', label: lang === 'en' ? 'Bar above 0' : '零轴上绿柱' },
-      { color: '#d4534e', label: lang === 'en' ? 'Bar below 0' : '零轴下红柱' }
+      { color: '#1f8a4d', label: lang === 'en' ? 'Green candle, up' : '绿色 K 线（涨）' },
+      { color: '#d4534e', label: lang === 'en' ? 'Red candle, down' : '红色 K 线（跌）' },
+      { color: '#f4cb82', label: lang === 'en' ? 'DIF (EMA12−EMA26)' : 'DIF（12/26）' },
+      { color: '#8eb4ff', label: lang === 'en' ? 'DEA (EMA9 of DIF)' : 'DEA（9）' },
+      { color: '#1f8a4d', label: lang === 'en' ? 'Histogram, DIF−DEA' : '柱子（DIF−DEA）' }
     ]);
   }
-  function rsiSvg(closes, values, lang) {
+  function rsiSvg(bars, values, lang) {
     var w = 360;
-    var h = 470;
-    var bits = [openSvg(w, h, lang === 'en' ? 'Teaching chart: RSI from 0 to 100' : '教学图：0 到 100 的 RSI')];
-    var min = Math.min.apply(null, closes);
-    var max = Math.max.apply(null, closes);
+    var h = 500;
+    var bits = [openSvg(w, h, lang === 'en' ? 'Teaching candles and RSI(14)' : '教学图：蜡烛 K 线，以及 RSI(14)')];
+    var extremes = [];
+    bars.forEach(function (bar) { extremes.push(bar.l, bar.h); });
+    var min = Math.min.apply(null, extremes);
+    var max = Math.max.apply(null, extremes);
     var span = max - min || 1;
-    bits.push('<text x="12" y="22" fill="#d4bc9e" font-size="13" font-family="sans-serif">' + (lang === 'en' ? 'Price, for reference' : '价格，只作对照') + '</text>');
-    lineSvg({
-      bits: bits, w: w, h: h, padL: 12, padR: 16, top: 30, plotH: 78, n: closes.length,
-      min: min - span * 0.08, max: max + span * 0.12,
-      series: [{ values: closes, color: '#b7aac8', width: 1.8 }]
-    });
-    bits.push('<text x="12" y="138" fill="#f0d59a" font-size="15" font-weight="700" font-family="sans-serif">RSI 0–100</text>');
+    bits.push('<text x="8" y="16" fill="#d4bc9e" font-size="13" font-family="sans-serif">' + (lang === 'en' ? 'Candles, for reference' : '蜡烛 K 线，只作对照') + '</text>');
+    var priceGeom = { bits: bits, w: w, h: h, padL: 8, padR: 12, top: 22, plotH: 96, n: bars.length, min: min - span * 0.08, max: max + span * 0.12, centers: true };
+    var pricePlot = lineSvg(Object.assign({}, priceGeom, { series: [] }));
+    drawCandles(bits, bars, pricePlot.x, pricePlot.y, pricePlot.slot);
+    bits.push('<text x="8" y="150" fill="#f0d59a" font-size="15" font-weight="700" font-family="sans-serif">RSI(14)</text>');
     var first = 0;
     var vi;
     for (vi = 0; vi < values.length; vi++) if (values[vi] != null) { first = vi; break; }
     var rsiVals = values.slice(first);
     lineSvg({
-      bits: bits, w: w, h: h, padL: 12, padR: 16, top: 148, plotH: 290, n: Math.max(rsiVals.length, 2),
+      bits: bits, w: w, h: h, padL: 8, padR: 16, top: 162, plotH: 310, n: Math.max(rsiVals.length, 2),
       min: 0, max: 100,
       labelSide: 'right',
       guides: [
         { value: 70, label: lang === 'en' ? '70 overbought' : '70 超买' },
         { value: 30, label: lang === 'en' ? '30 oversold' : '30 超卖' }
       ],
-      series: [{ values: rsiVals, color: '#f4cb82', width: 2.8 }]
+      series: [{ values: rsiVals, color: '#f4cb82', width: 2.8, label: 'RSI(14)' }]
     });
     bits.push('</svg>');
     return bits.join('') + keyRow([
-      { color: '#b7aac8', label: lang === 'en' ? 'Price' : '价格' },
-      { color: '#f4cb82', label: 'RSI' },
-      { color: '#f0d59a', label: lang === 'en' ? '70 and 30 guides' : '70 与 30 参考线' }
+      { color: '#1f8a4d', label: lang === 'en' ? 'Green candle, up' : '绿色 K 线（涨）' },
+      { color: '#d4534e', label: lang === 'en' ? 'Red candle, down' : '红色 K 线（跌）' },
+      { color: '#f4cb82', label: 'RSI(14)' },
+      { color: '#f0d59a', label: lang === 'en' ? '70 overbought and 30 oversold' : '70 超买，30 超卖' }
     ]);
   }
 
@@ -381,21 +398,22 @@
       var lastC = closes[closes.length - 1];
       var lastI = closes.length - 1;
       var above = eFast[lastI] > lastC && eSlow[lastI] > lastC;
-      var note = above
-        ? (lang === 'en'
-          ? 'Teaching fiction. The latest price is ' + fmt(lastC, 0) + '. Both averages are still above it.'
-          : '教学虚构。最新价是 ' + fmt(lastC, 0) + '。两条均线都还在它上面。')
-        : (lang === 'en'
-          ? 'Teaching fiction. The white line is price. The gold line is the fast average. The blue line is the slow average.'
-          : '教学虚构。白线是价格。黄线是快线。蓝线是慢线。');
-      return emaSvg(closes, eFast, eSlow, lang) + '<p class="a2-readout">' + esc(note) + '</p>';
+      var note = (lang === 'en'
+        ? 'Teaching fiction. EMA' + fastN + ' follows the last ' + fastN + ' bars. EMA' + slowN + ' follows the last ' + slowN + ' bars.'
+        : '教学虚构。EMA' + fastN + ' 看最近 ' + fastN + ' 根。EMA' + slowN + ' 看最近 ' + slowN + ' 根。');
+      if (above) {
+        note += lang === 'en'
+          ? ' The latest close is ' + fmt(lastC, 0) + '. Both lines are still above it.'
+          : '最新收盘是 ' + fmt(lastC, 0) + '。两条都还在它上面。';
+      }
+      return emaSvg(bars, eFast, eSlow, fastN, slowN, lang) + '<p class="a2-readout">' + esc(note) + '</p>';
     }
     if (study.kind === 'macd') {
       var m = math.macd(closes);
       var noteM = lang === 'en'
-        ? 'Teaching fiction. Golden marks a cross above. Death marks a cross below. The bars are DIF minus DEA.'
-        : '教学虚构。金叉是上穿。死叉是下穿。柱子是 DIF 减去 DEA。';
-      return macdSvg(closes, m, lang) + '<p class="a2-readout">' + esc(noteM) + '</p>';
+        ? 'Teaching fiction. MACD is 12/26/9. Golden is DIF crossing above DEA. Death is a cross below. The histogram is DIF minus DEA.'
+        : '教学虚构。MACD 是 12/26/9。金叉是 DIF 上穿 DEA。死叉是下穿。柱子是 DIF 减去 DEA。';
+      return macdSvg(bars, m, lang) + '<p class="a2-readout">' + esc(noteM) + '</p>';
     }
     if (study.kind === 'rsi') {
       var r = math.rsiWilder(closes, 14);
@@ -406,9 +424,9 @@
         var ri;
         for (ri = r.length - 1; ri >= 0; ri--) if (r[ri] != null) { lastR = r[ri]; break; }
         var noteR = lang === 'en'
-          ? 'Teaching fiction. RSI is ' + rsiText(lastR) + '. The guides are 70 overbought and 30 oversold.'
-          : '教学虚构。RSI 是 ' + rsiText(lastR) + '。参考线是 70 超买和 30 超卖。';
-        return rsiSvg(closes, r, lang) + '<p class="a2-readout">' + esc(noteR) + '</p>';
+          ? 'Teaching fiction. This is RSI(14). The latest value is ' + rsiText(lastR) + '. The guides are 70 overbought and 30 oversold.'
+          : '教学虚构。这是 RSI(14)。最新值是 ' + rsiText(lastR) + '。参考线是 70 超买和 30 超卖。';
+        return rsiSvg(bars, r, lang) + '<p class="a2-readout">' + esc(noteR) + '</p>';
       }
       var readout;
       if (study.peaks) {
