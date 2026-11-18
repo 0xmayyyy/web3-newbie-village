@@ -1075,216 +1075,138 @@ Swap 是把一种资产换成另一种。确认代币合约、交易路径、预
 # 11｜如何研究一个项目？🔍
 ## 第一问：它做什么？
 
-**先弄明白谁需要它，再研究它的币。**
+**一句话说不清这个项目做什么，就先别买。**
 
-项目研究的第一步，不是看币价，而是看产品解决了什么问题。
+用一句话写清它解决什么问题、给谁用、产品是什么。
+如果只能重复「革命性」或「生态赋能」，却说不出自己怎么用，就先继续查。
 
-试着用三句话介绍：谁有问题、它怎么解决、为什么有人会用。
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。说不出怎么用，就先继续研究，不要因为口号买入。" data-bad="答错了。口号不能代替产品说明。一句话说不清，就先别买。"><h3>想一想</h3><p>项目介绍里只有「革命性」和「生态赋能」。可以据此买入吗？</p><button type="button" class="option" data-answer="a">A. 可以，口号够大就说明产品清楚</button><button type="button" class="option" data-answer="b">B. 先别买。要能用一句话说清问题、用户和产品</button><button type="button" class="option" data-answer="c">C. 只要官网上了，就不需要说清用途</button><div class="feedback"></div></div>
 
-这三句话不代表值得投资。
-
-还要问产品上线了没有、有没有真实用户、为什么一定要用区块链。
-
-生态赋能、颠覆行业、百倍潜力，都不是产品说明。
-
-项目有产品，也不代表代币必然升值。
-
-<div class="planet-lab" data-planet-lab="pitch"><p>教学模拟。哪一张说出了用户和场景？不打投资分。</p><button type="button" data-k="a">重新定义下一代金融</button><button type="button" data-k="b">让自由职业者用稳定币网络收款</button><button type="button" data-k="c">社区驱动的价值飞轮</button><p class="pl-out" data-out>选一张介绍。</p></div>
-
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。先看产品和用户，不看热度和价格外形。" data-bad="答错了。转发量和价格位数都不是产品价值。"><h3>想一想</h3><p>研究项目时最应该先确认什么？</p><button type="button" class="option" data-answer="a" data-note="答错了。转发量只是热度。">A. KOL 转发量</button><button type="button" class="option" data-answer="b">B. 项目解决谁的什么问题、产品是否可用</button><button type="button" class="option" data-answer="c" data-note="答错了。价格形式不能说明它解决了什么问题。">C. 代币价格有没有很多个零</button><div class="feedback"></div></div>
 ## 第二问：币有什么作用？
 
-**好产品不一定有好代币，先找两者之间真实的连接。**
+**项目好，不等于这枚币有用。要看它能拿来做什么。**
 
-产品成功和代币有价值捕获，是两个问题。
+检查代币的用途、供应和需求、持有人实际有什么权利、费用流向哪里，以及治理权限在谁手里。
 
-要看用途、真实需求、会不会增发，以及持有人有没有写明的权利。
+「平台收入在增长」，不会自动变成分给持币人的收入。
+回购计划也要看它有没有真的执行，以及能不能持续。
 
-教学模拟：虚构云端存储每月收入 100 万 USDT。
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。项目好，不等于代币能捕获这些价值。回购也要核对是否在执行。" data-bad="答错了。收入增长不会自动分给持币人。用途、权利和费用去向要单独看。"><h3>想一想</h3><p>平台收入增长了。持币人是不是就自动分到这些收入？</p><button type="button" class="option" data-answer="a">A. 是，收入增长等于持币人赚钱</button><button type="button" class="option" data-answer="b">B. 不是。要看费用流向和持有人实际有什么权利</button><button type="button" class="option" data-answer="c">C. 只要写了回购，就一定已经在执行</button><div class="feedback"></div></div>
 
-用户全部用 USDT 付款。
-
-平台不要求使用 ABC 代币，也没有经核实的回购。
-
-不能推出收入增加就等于 ABC 必涨。
-
-即使宣布回购，也要检查有没有执行、钱从哪来、能不能改规则。
-
-<div class="planet-lab" data-planet-lab="capture"><p>教学模拟。用户付了 100 USDT，钱和代币是什么关系？</p><button type="button" data-k="none">和代币无关</button><button type="button" data-k="buy">按规则回购</button><button type="button" data-k="pay">用代币付费</button><p class="pl-out" data-out>选一种模式。</p></div>
-
-<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。收入和代币之间没有写明的连接，就不能直接推断。" data-bad="答错了。上所和收入本身都不自动变成代币需求。"><h3>想一想</h3><p>平台收入翻倍，但代币不参与收费或分配，能直接断定代币会涨吗？</p><button type="button" class="option" data-answer="a" data-note="答错了。收入增加不等于代币有权分到这笔钱。">A. 能</button><button type="button" class="option" data-answer="b" data-note="答错了。交易所上市不创造价值捕获。">B. 只要项目上了交易所就能</button><button type="button" class="option" data-answer="c">C. 不能，要研究代币和业务的实际关系</button><div class="feedback"></div></div>
 ## 第三问：谁拿着币，什么时候能卖？
 
-**看价格之前，先看谁有币、何时能卖、市场接不接得住。**
+**先看谁拿着币，以及什么时候能卖。**
 
-已发行总量、流通数量、锁仓和未来解锁，不是同一个数。
+看团队、投资者、社区和金库各分到多少，现在流通了多少，解锁计划是什么。
 
-教学模拟：XYZ 总发行 1 亿枚，当前流通 2000 万枚。
+持仓集中，要结合地址是谁。
+交易所的汇总地址，不一定是一个大户。
 
-下个月计划解锁团队份额 1000 万枚。
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。先分清地址身份，再看团队、投资者什么时候解锁。" data-bad="答错了。大地址可能是交易所汇总。解锁时间和分配仍然要看。"><h3>想一想</h3><p>一个地址里堆了很多币。能不能直接说这是一个大户准备砸盘？</p><button type="button" class="option" data-answer="a">A. 能，地址越大越一定是个人大户</button><button type="button" class="option" data-answer="b">B. 不能。交易所汇总地址不一定代表单个大户，还要看解锁计划</button><button type="button" class="option" data-answer="c">C. 流通比例和谁持有无关</button><div class="feedback"></div></div>
 
-若全部计入流通，流通可能变成 3000 万，增加 50%。
-
-这不等于价格必跌 50%。
-
-解锁不代表全部卖出。
-
-一个地址持有 30%，也可能是交易所托管或合约金库。
-
-先识别地址身份，再决定要不要叫它大户。
-
-<div class="planet-lab" data-planet-lab="unlock"><p>教学模拟。总发行 1 亿。不预测卖压。</p><button type="button" data-when="now">今天</button><button type="button" data-when="next">下月</button><button type="button" data-when="later">再下月</button><p class="pl-out" data-out>切换时间。</p></div>
-
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。解锁是流通口径可能变化，不是增发，也不是必跌。" data-bad="答错了。不能直接预测价格，也不能把解锁当成新发行。"><h3>想一想</h3><p>代币下个月解锁 1000 万枚，最准确的判断是什么？</p><button type="button" class="option" data-answer="a" data-note="答错了。解锁不等于这些币都会卖掉。">A. 价格一定跌</button><button type="button" class="option" data-answer="b">B. 可能增加可流通供应，但要结合持有人、需求和流动性</button><button type="button" class="option" data-answer="c" data-note="答错了。总供应未必增加，变的是可流通数量。">C. 总供应量必然增加 1000 万</button><div class="feedback"></div></div>
 ## 补充检查：已经上架哪些交易所？
 
-**钱包可交易不等于交易所现货已上架。**
+**上没上交易所，以交易所自己的公告为准。**
 
-同一个品牌可能同时有现货、合约、盘前交易、钱包和链上聚合。
+从交易所的官方币种页和公告去核对。
+不要只看项目的宣传海报。
+核对合约、网络、交易对，以及交易、充币和提币开了没有。
 
-它们的可交易不是同一个意思。
+现货上架、合约上架、盘前交易，和某个钱包的 DEX 聚合收录，不是同一件事。
+某个品牌的钱包能搜到这枚代币，不等于同品牌的 CEX 已经正式上了现货。
+也要看最近有没有下架、暂停或限制的公告。
 
-先找交易所官方公告，核对名称、交易对、网络和开放时间。
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。钱包收录、合约上架和现货上架不是一回事。以交易所官方页面和公告为准。" data-bad="答错了。能搜到不等于 CEX 现货已上线。海报也不能代替官方公告。"><h3>想一想</h3><p>某品牌钱包能搜到这枚代币。是不是表示同品牌的 CEX 已经上了现货？</p><button type="button" class="option" data-answer="a">A. 是，能搜到就是正式上架</button><button type="button" class="option" data-answer="b">B. 不是。要看交易所官方公告，并分清现货、合约和盘前</button><button type="button" class="option" data-answer="c">C. 宣传海报上写了上所，就不必再核对</button><div class="feedback"></div></div>
 
-再区分现货、衍生品、盘前，还是钱包能搜到链上代币。
-
-还要核对合约地址，防止同名假币。
-
-充值和提现是否开放、有没有地区限制，也要看。
-
-教学模拟：虚构交易所的钱包能通过链上路径买 XYZ，但现货公告页没有 XYZ。
-
-最多只能说钱包能访问这条兑换路径。
-
-不能说 XYZ 已在该交易所现货上市。
-
-<div class="planet-lab" data-planet-lab="listing"><p>教学模拟。哪一种材料能证实现货上架？</p><button type="button" data-k="poster">社媒海报</button><button type="button" data-k="wallet">官方钱包能搜到</button><button type="button" data-k="cex">官方现货公告</button><p class="pl-out" data-out>给材料分类。</p></div>
-
-<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。钱包路径和现货公告是两套系统。" data-bad="答错了。能在钱包里换，不能推出现货上市或充提已开放。"><h3>想一想</h3><p>某币能在交易所品牌的钱包里交换，说明什么？</p><button type="button" class="option" data-answer="a" data-note="答错了。钱包搜索结果不是现货公告。">A. 一定已上该品牌交易所现货</button><button type="button" class="option" data-answer="b" data-note="答错了。充提是否开放要单独核对。">B. 一定能在该交易所充提</button><button type="button" class="option" data-answer="c">C. 可能只是钱包聚合的链上交易，要另查官方公告</button><div class="feedback"></div></div>
 ## 如果是新项目：谁领投，有哪些机构参与？
 
-**查机构不是数 Logo，而是查清楚双方到底发生过什么。**
+**机构投资可以去核对，但不等于价格会涨。**
 
-Logo 可能代表投资、技术合作、资助、活动，甚至只是宣传。
+查看融资在第几轮、什么时间、公开金额是多少、谁领投、还有哪些机构。
+和项目自己的公告、机构自己的公告交叉核对。
 
-比较稳的写法是：哪家机构、哪一轮、什么时间、公开了什么金额、拿到的是股权还是代币。
+股权投资、代币投资、资助、技术合作，以及只是参加了一场活动，不是同一种关系。
 
-领投和参投不一样。
+「机构背书」最好写成可以核对的事实，例如「某机构参与了某一轮融资」。
+不要只因为官网上放了 Logo，就认定存在合作。
+更不能把投资机构的名字当成未来价格的保证。
 
-承诺投资和已经完成的融资也不一样。
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。Logo 不是合作证明。投资事实要能核对，也不能当成价格保证。" data-bad="答错了。机构名字不是涨价保证。股权、代币资助和出席活动要分开写。"><h3>想一想</h3><p>官网上放了几家机构的 Logo。能不能据此认为它们已经投资，而且价格会涨？</p><button type="button" class="option" data-answer="a">A. 能，Logo 就是投资证明和价格保证</button><button type="button" class="option" data-answer="b">B. 不能。要核对公告，并分清投资、合作和只是参加活动</button><button type="button" class="option" data-answer="c">C. 只要有领投方，价格就一定上涨</button><div class="feedback"></div></div>
 
-教学模拟：项目说获得 A 基金支持，但公开信息只显示 A 基金参加过黑客松评审。
-
-这不能证明 A 基金投资了项目，更不能证明代币值得买。
-
-<div class="planet-lab" data-planet-lab="logo"><p>教学模拟。哪张卡能支持「机构参投某轮」？</p><button type="button" data-k="logo">官网 Logo</button><button type="button" data-k="note">机构融资公告</button><button type="button" data-k="hack">黑客松名单</button><button type="button" data-k="post">项目方推文</button><p class="pl-out" data-out>选一张证据。</p></div>
-
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。Logo 只是线索，关系要核对到公告。" data-bad="答错了。Logo 不能直接变成领投或涨价。"><h3>想一想</h3><p>看到项目官网列出某基金 Logo，下一步应该做什么？</p><button type="button" class="option" data-answer="a">A. 查双方公开资料，确认具体关系</button><button type="button" class="option" data-answer="b" data-note="答错了。没有公告就不能默认领投。">B. 默认基金领投</button><button type="button" class="option" data-answer="c" data-note="答错了。机构名字不是价格保证。">C. 默认项目币价会涨</button><div class="feedback"></div></div>
 ## 第四问：数据说了什么？
 
-**指标先看口径，再看数字有多大。**
+看数据要先确认口径、时间和有没有重复计算，一个数字不能单独下结论。
 
-活跃地址不是独立真人用户。
+**看数据先看口径。宣传截图要找到原始来源。**
 
-同一个人、交易所和机器人都可以制造很多地址。
+TVL 是按某种规则统计的锁定资产价值。
+它会受币价影响，也可能被重复计算。
+活跃地址不等于独立的真人用户。
+成交量也不是收入。
+协议收费、协议收入和净利润，不是同一个指标。
 
-TVL 是按特定方法统计的锁定资产价值。
+比较之前，先看日期、单位、时间范围和口径。
+宣传用的截图，尽量找到原始出处。
 
-币价上涨会推高美元 TVL，不代表新存入了同样多的钱。
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。TVL、活跃地址、成交量和收入不是同一个口径。截图要回到原始来源。" data-bad="答错了。数字相同也可能口径不同。成交量和活跃地址都不能直接当成收入或真人数。"><h3>想一想</h3><p>两个项目的 TVL 数字一样。能不能直接说它们锁住的资产一样多、收入也一样？</p><button type="button" class="option" data-answer="a">A. 能，TVL 就是收入</button><button type="button" class="option" data-answer="b">B. 不能。先看口径、日期和有没有重复计算，收入是另一个指标</button><button type="button" class="option" data-answer="c">C. 活跃地址数就等于真实用户数</button><div class="feedback"></div></div>
 
-交易量不是平台赚到的钱。
-
-协议收费、协议收入和净利润也不是同一个口径。
-
-教学模拟：锁定 1000 ETH，价格从 2000 到 3000 美元。
-
-数量没变，美元 TVL 从 200 万变成 300 万，增长 50%。
-
-这不证明新增了 100 万美元净存款。
-
-<div class="planet-lab" data-planet-lab="data"><p>教学模拟。1000 ETH 数量不变。</p><label>ETH 美元价格 <input type="range" data-px min="1000" max="4000" value="2000"></label><p class="pl-out" data-out></p></div>
-
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。先问这 50% 是价格、重复计算，还是新资金。" data-bad="答错了。TVL 不是资金净流入，也不是利润。"><h3>想一想</h3><p>TVL 的美元值涨了 50%，最稳妥的说法是什么？</p><button type="button" class="option" data-answer="a" data-note="答错了。币价上涨本身就会让美元 TVL 变大。">A. 一定流入了 50% 新资金</button><button type="button" class="option" data-answer="b">B. 要排除币价、重复计算和统计口径</button><button type="button" class="option" data-answer="c" data-note="答错了。锁定价值不是净利润。">C. 项目净利润也涨了 50%</button><div class="feedback"></div></div>
 ## 第五问：有什么权限与退出风险？
 
-**研究退出通道，和研究买入理由一样重要。**
+**先查谁能增发、冻结和改规则，再考虑买不买。**
 
-买得进，不代表卖得出。
+谁能升级合约、暂停、增发、冻结，或者改手续费？
+能不能正常卖出？
+有没有交易税、黑名单或转账限制？
+池子里的流动性由谁控制？
 
-要看谁能增发、冻结、拉黑、暂停、升级合约或修改手续费。
+安全检测工具只能提供一部分线索，不能保证没有恶意逻辑。
+用小额买卖试一次，也不能证明以后一定退得出去。
 
-管理员是不是单地址、有没有多签和时间锁，也要看这些机制是否真的生效。
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。一次小额成交不能证明以后退得出去。管理员权限和限制转账要单独查。" data-bad="答错了。检测工具和小额测试都不是退出保证。先看谁能改规则和冻结。"><h3>想一想</h3><p>小额买进又卖出成功了。是不是说明以后一定还能退出？</p><button type="button" class="option" data-answer="a">A. 是，试过一次就永远能卖</button><button type="button" class="option" data-answer="b">B. 不是。还要看谁能改规则、冻结、加税或抽走流动性</button><button type="button" class="option" data-answer="c">C. 检测工具没报警，就等于没有管理员权限</button><div class="feedback"></div></div>
 
-流动性由谁控制、能不能突然撤走，同样要问。
-
-自动检测只能发现部分问题。
-
-小额卖出成功，也不能证明大额以后一定成功。
-
-<div class="planet-lab" data-planet-lab="exit"><p>教学模拟。三种合约都不能保证退出安全。</p><button type="button" data-k="a">池子很浅</button><button type="button" data-k="b">限制卖出</button><button type="button" data-k="c">管理员能改税</button><p class="pl-out" data-out>点一种状态。</p></div>
-
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。小额成功只说明当时这一小笔过了。" data-bad="答错了。规模、税率和管理员权限都可能变。"><h3>想一想</h3><p>用 1 USDT 测试卖出成功，能保证以后卖出 10000 USDT 吗？</p><button type="button" class="option" data-answer="a">A. 不能，权限和流动性可能变化</button><button type="button" class="option" data-answer="b" data-note="答错了。一次小额成交不能外推到大额。">B. 能</button><button type="button" class="option" data-answer="c" data-note="答错了。价格上涨不取消卖出限制。">C. 只要涨了就能</button><div class="feedback"></div></div>
 ## 审计代表什么？
 
-**审计是证据之一，不是风险归零证明。**
+**审计是检查过某一版代码，不是没有漏洞的证明。**
 
-审计通常只覆盖一定时间、范围和版本。
+审计针对的是特定代码和特定范围。
+它可能发现问题，但不是「没有漏洞」的证书。
 
-要问谁审的、报告能不能从审计方渠道找到。
+要看审计的对象、版本、时间、还没解决的问题，以及上线的代码和审计的版本是不是同一份。
 
-要问审了哪些合约、哪个版本、高危问题有没有修。
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。审计不是无漏洞证明。版本不一致，或者问题还没修，都不能当成已经安全。" data-bad="答错了。有一份报告，不等于当前上线的代码就是被审计的那一版。"><h3>想一想</h3><p>项目说「已经审计」。是不是就可以当成没有漏洞？</p><button type="button" class="option" data-answer="a">A. 是，审计过就等于代码没有问题</button><button type="button" class="option" data-answer="b">B. 不是。要看审计的版本、范围，以及上线代码是不是那一版</button><button type="button" class="option" data-answer="c">C. 只要报告存在，未解决的问题也可以忽略</button><div class="feedback"></div></div>
 
-现在运行的是不是同一版，尤其是可升级合约。
-
-经济设计、预言机、治理密钥和钓鱼前端，审计常常不管。
-
-教学模拟：2024 年的报告不能自动覆盖 2026 年新部署的实现。
-
-<div class="planet-lab" data-planet-lab="audit"><p>教学模拟。旧报告和新部署对得上吗？</p><button type="button" data-k="same">版本一致</button><button type="button" data-k="diff">版本不一致</button><p class="pl-out" data-out>选一种对照结果。</p></div>
-
-<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。旧报告对不上新代码，就不能沿用旧结论。" data-bad="答错了。升级不会自动继承保证，标志也不是证据。"><h3>想一想</h3><p>合约审计过，但后来升级了实现，最正确的判断是什么？</p><button type="button" class="option" data-answer="a" data-note="答错了。新实现可能不在旧报告范围内。">A. 升级后自动继承安全保证</button><button type="button" class="option" data-answer="b" data-note="答错了。标志不能代替版本核对。">B. 只要报告有标志就行</button><button type="button" class="option" data-answer="c">C. 要核对审计范围、版本和升级后的代码</button><div class="feedback"></div></div>
 ## 信息来源与推广关系
 
-**先分清证据和观点，再判断值得信多少。**
+**先看官方文档和链上记录，再看 KOL，并留意对方有没有收钱。**
 
-先看官方文档、合约和公告。
+先看官方文档、链上记录和独立数据，再看社区讨论。
+融资、上所、名人关注和合作公告都要核对。
+它们也都不是赚钱保证。
 
-官方也可能选择性披露。
+读 KOL 的内容时，留意对方是否持仓、是否收了推广费、是否用了返佣链接。
+不同的利益关系，会影响对方强调什么。
 
-再看能独立核对的链上数据和反对意见。
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。返佣、推广费和持仓都会影响说法。它们也不是盈利保证。" data-bad="答错了。有返佣不能当成无风险。先看官方文档、链上记录和独立数据。"><h3>想一想</h3><p>一位 KOL 强烈推荐，而且用了返佣链接。该怎么看待这条内容？</p><button type="button" class="option" data-answer="a">A. 当成独立研究结论</button><button type="button" class="option" data-answer="b">B. 先核对官方和链上资料，并记住对方可能有推广或持仓关系</button><button type="button" class="option" data-answer="c">C. 返佣链接说明项目已经没有风险</button><div class="feedback"></div></div>
 
-还要看作者是否持仓、拿报酬或使用返佣链接。
-
-披露了利益关系，不代表内容一定错。
-
-没有披露，也不能断定一定收了钱。
-
-只有群聊截图时，应写成未证实消息。
-
-交易所官方公告可以写成公告说了什么，并保留时间和条件。
-
-消息是真的，也不代表买入会赚钱。
-
-<div class="planet-lab" data-planet-lab="source"><p>教学模拟。给消息分类。可以有多种理解，这里先看主要属性。</p><button type="button" data-k="official">官方公告</button><button type="button" data-k="kol">付费合作帖</button><button type="button" data-k="chain">链上记录</button><button type="button" data-k="chat">群聊截图</button><button type="button" data-k="road">路线图</button><p class="pl-out" data-out>点一张卡。</p></div>
-
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。披露是线索，事实仍要自己核对。" data-bad="答错了。不能因为持仓就全盘否定，也不能因此免查。"><h3>想一想</h3><p>博主明确披露自己持仓某币，你应该怎么做？</p><button type="button" class="option" data-answer="a" data-note="答错了。持仓说明可能有立场，不自动等于造假。">A. 直接认定所有内容是假</button><button type="button" class="option" data-answer="b">B. 把利益关系纳入判断，并独立核验关键事实</button><button type="button" class="option" data-answer="c" data-note="答错了。披露不是真实性保证。">C. 因为披露了就不用查</button><div class="feedback"></div></div>
 ## 一页研究记录
 
-**一份好的研究记录不怕写不知道，只怕把猜测写成事实。**
+把项目做什么、谁拿着币、数据和退出风险写在一页上，看不懂就先别买。
 
-把研究结果压成一页，是为了看见自己还不懂的地方。
+**用一页纸写下研究结果。写不出来，就是还没想清楚。**
 
-至少写下：项目和合约、它解决谁的问题、代币用途、流通和解锁、哪些机构关系已核实、数据口径和日期、管理员权限和退出条件。
+项目名称与官方入口：
+产品与用户：
+代币用途：
+流通、估值与解锁：
+合约与管理员权限：
+可验证数据与日期：
+主要风险与退出方式：
+我仍然不理解的地方：
 
-还要留下三件不理解的事，以及什么新证据会推翻判断。
+小提醒：看不懂是继续查资料的理由，不是怕错过而买入的理由。
 
-教学模拟：用户 10 万如果没写是地址、注册还是付费客户，就要标成待核实。
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。写不出来就是还没想清楚。看不懂是继续查的理由，不是追涨的理由。" data-bad="答错了。空白的研究记录不能用「怕错过」来跳过。"><h3>想一想</h3><p>研究记录里「我仍然不理解的地方」还是空白，而且你也说不清。这时更合适的做法是什么？</p><button type="button" class="option" data-answer="a">A. 因为怕错过，先买入再补研究</button><button type="button" class="option" data-answer="b">B. 看不懂就继续查资料，不要把害怕错过当成买入理由</button><button type="button" class="option" data-answer="c">C. 表格填不满也没关系，名字知道了就可以买</button><div class="feedback"></div></div>
 
-机构投资没有公告、已审计没有版本，也不能凭感觉补齐。
-
-<div class="planet-lab" data-planet-lab="card"><p>教学模拟。虚构项目没有融资公告，也没有审计版本。</p><button type="button" data-k="unknown">写成待核实</button><button type="button" data-k="fill">补成已投资、已审计</button><p class="pl-out" data-out>选一种写法。</p></div>
-
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。不知道就写待核实。" data-bad="答错了。用情绪填空或删掉问题，都是把不确定性藏起来。"><h3>想一想</h3><p>研究卡里有三个关键问题找不到可靠证据，应该怎么写？</p><button type="button" class="option" data-answer="a">A. 写待核实，并继续调查</button><button type="button" class="option" data-answer="b" data-note="答错了。社区情绪不是证据。">B. 按社区情绪填应该没事</button><button type="button" class="option" data-answer="c" data-note="答错了。删掉问题不会让未知消失。">C. 删掉问题，让记录更好看</button><div class="feedback"></div></div>
 # 12｜Web3 玩法地图 🎮
 
 ## 先有一个钱包：所有玩法的起点 👛
@@ -1337,37 +1259,16 @@ APR 是年化利率，不算复利；APY 包含复利假设。年化显示不是
 
 ## 空投、积分与测试网
 
-**空投是可能的机会，不是任务做完就能领到的工资。**
+**空投和积分不保证有回报。不要为了它们乱授权。**
 
-空投按项目规则分配资产，资格和数量由规则决定。
+参加体验产品这类活动，得到的是可能的分配机会。
+成本包括时间、网络费和交互风险。
 
-积分可能只是排名或活动分数。
+积分不保证能换成代币。
+测试网上的资产通常没有主网资产的价值，也不一定有奖励。
 
-积分不保证能换代币，也不保证有经济价值。
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。积分和测试网不是回报承诺。看不懂的授权不要为了活动去签。" data-bad="答错了。高积分不等于发币承诺。不要为了活动做看不懂的授权。"><h3>想一想</h3><p>测试网里的积分很高。是不是表示以后一定能换成代币？</p><button type="button" class="option" data-answer="a">A. 是，积分就是已经承诺的奖励</button><button type="button" class="option" data-answer="b">B. 不是。积分不保证兑换，测试资产通常也没有主网价值</button><button type="button" class="option" data-answer="c">C. 为了冲积分，可以先签看不懂的授权</button><div class="feedback"></div></div>
 
-测试网用来试用产品。
-
-测试币通常没有主网币的市场价值。
-
-参加测试不保证以后有空投。
-
-教学模拟：做 20 次操作，每次网络费 0.5，直接成本是 10。
-
-项目最后没发币，或者你不符合资格，这 10 和时间都可能收不回来。
-
-如果还给了恶意合约授权，损失可能更大。
-
-没有公开规则的部分，就写未知。
-
-任何索取助记词的领取页面都应停止。
-
-正规领取也可能要网络费。
-
-通过可信官方入口核对，不要只点群聊链接。
-
-<div class="planet-lab" data-planet-lab="airdrop"><p>教学模拟。预算 30。积分不等于有价值。</p><label>操作次数 <input type="range" data-times min="0" max="100" value="20"></label><label>单次网络费 <input type="range" data-fee min="0" max="5" step="0.1" value="0.5"></label><label>额外跨链费 <input type="range" data-bridge min="0" max="20" value="0"></label><p class="pl-out" data-out></p></div>
-
-<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。积分不是美元，也不是已经承诺的代币。" data-bad="答错了。积分本身没有写明的兑换和价格。"><h3>想一想</h3><p>某项目给了你 1000 积分，最准确的理解是什么？</p><button type="button" class="option" data-answer="a" data-note="答错了。1000 积分不是 1000 美元。">A. 至少价值 1000 美元</button><button type="button" class="option" data-answer="b" data-note="答错了。没有规则就不能默认能换成币。">B. 一定能兑换代币</button><button type="button" class="option" data-answer="c">C. 只代表按现有规则获得积分，能否兑换及价值仍要核实</button><div class="feedback"></div></div>
 ## NFT
 
 **买 NFT 不等于买到了图片版权。**
@@ -1383,112 +1284,72 @@ DAO 是一种以规则与治理机制组织协作的形式。持有治理币不�
 
 ## Meme 币
 
-**Meme 最容易让你看见暴富故事，却看不见退出成本。**
+**Meme 币可以涨得很快，也可以归零。只用输得起的钱。**
 
-Meme 币可以短时间大涨，也可以暴跌、归零或卖不出去。
+Meme 币常常围绕文化、社区和传播。
+它可能出现很大的涨幅，让少数人赚很多。
+它也可能很快归零，或者卖不出去，让人损失大部分甚至全部本金。
 
-价格更多依赖情绪、传播和交易结构。
+有人会把它比作买彩票，因为结果很不确定，而且容易只看见暴富的故事。
+它并没有彩票那种固定、公开的中奖规则。
+持仓集中、内幕、机器人抢先、恶意合约和流动性，都会影响结果。
 
-你更容易刷到赚了很多倍的人，这是幸存者偏差。
-
-屏幕上的浮盈，不等于卖出后到手的钱。
-
-教学模拟：单价显示 0.01，持有 100 万枚，账面写成 10000。
-
-如果买盘只有三档，一次卖出全部可能只收到 6100。
-
-未计手续费和网络费。
-
-如果合约限制卖出，甚至无法退出。
-
-至少查合约权限、持仓是否集中、流动性够不够、卖出路径能不能执行。
-
-小额卖出成功，也不能保证大额以后成功。
+可以理解它有暴涨的可能。
+也要把归零、卖不掉和信息不对等放在一起看。
+不要把暴富故事当成普通人的预期收益。
 
 Meme 币导航（DeBot）：https://debot.ai/r/0xMay
+用途：查看链上 Meme 币动态与交易数据的工具。收录不代表代币安全，参与前先想清楚可能归零。
 
-用途：查看链上 Meme 币动态与交易数据。收录不代表代币安全。
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。工具只帮助查看数据。归零、卖不掉和信息不对等都要算进去，只用输得起的钱。" data-bad="答错了。收录不是安全认证。Meme 币也没有彩票那种固定的中奖规则。"><h3>想一想</h3><p>DeBot 上能看到一枚 Meme 币的交易数据。这是不是说明它安全，而且普通人也能复制暴富？</p><button type="button" class="option" data-answer="a">A. 是，工具收录了就代表安全</button><button type="button" class="option" data-answer="b">B. 不是。收录不代表安全，暴富故事也不是预期收益</button><button type="button" class="option" data-answer="c">C. Meme 币有和彩票一样公开固定的中奖规则</button><div class="feedback"></div></div>
 
-<div class="planet-lab" data-planet-lab="meme"><p>教学模拟。账面 10000。虚构盘口：10 万枚 0.010，20 万枚 0.008，70 万枚 0.005。</p><button type="button" data-k="all">一次卖出 100 万枚</button><button type="button" data-k="part">只卖 10 万枚</button><button type="button" data-k="block">合约限制卖出</button><p class="pl-out" data-out>选一种卖法。</p></div>
-
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。账面价值不是买盘承诺收回的现金。" data-bad="答错了。页面数字不是提现保证，拿着不动也仍有归零和无法退出的风险。"><h3>想一想</h3><p>持仓页面显示价值 10000，能保证一次卖出收到 10000 吗？</p><button type="button" class="option" data-answer="a">A. 不能，要考虑深度、价格影响、费用和合约限制</button><button type="button" class="option" data-answer="b" data-note="答错了。10000 是按显示价格估的，不是成交结果。">B. 能，页面数字就是可提现现金</button><button type="button" class="option" data-answer="c" data-note="答错了。不卖也不能消除归零和卖不掉的风险。">C. 只要不卖就没有风险</button><div class="feedback"></div></div>
 ## 预测市场是什么？🔮
 
-**预测市场不仅要判断结果，还要判断买入价格和结算规则。**
+**预测市场是围绕一个问题的结果来交易。**
 
-它交易的是某个事件结果的价格敞口，不是普通投票。
+比如：
+「某支球队会不会赢？」
+「某个产品会不会在年底前发布？」
 
-有的二元市场用接近 0 到 1 的价格表示份额。
+你可以买入「会」或「不会」。
+选对了，按平台规则结算。
+选错了，买入的份额可能归零。
 
-判定成立可能按 1 结算，否则按 0。
+你觉得事情会发生，不代表买进去就一定赚钱。
+买入价格、手续费和最终怎么判定，都会影响结果。
 
-具体单位、费用和裁决方式因平台而异。
+参与前先看清：什么时候截止、什么算发生、谁来判定。
 
-猜对了，不代表一定赚很多。
+> ⚠️ 这类产品有损失风险，部分地区可能涉及博彩或金融监管，使用前确认所在地规定。
 
-教学模拟：花 0.90 买入 1 份「会」。
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。看对方向，仍可能因为买价、费用和判定规则而不赚钱。选错的份额可能归零。" data-bad="答错了。预测正确不等于这笔交易赚钱。先看截止时间、判定标准和所在地规定。"><h3>想一想</h3><p>你很确定一件事会发生。是不是只要买「会」，就一定赚钱？</p><button type="button" class="option" data-answer="a">A. 是，判断对了就一定赚</button><button type="button" class="option" data-answer="b">B. 不一定。买入价格、手续费和判定规则都会影响结果</button><button type="button" class="option" data-answer="c">C. 选错了也不会归零</button><div class="feedback"></div></div>
 
-最终判定「会」，得到 1.00。
-
-每份盈利只有 0.10，大约 11.11%，不是赚了 100%。
-
-如果判定「不会」，这一份可能归零。
-
-参与前要看截止时间、什么算发生、谁来裁决。
-
-这类产品在部分地区可能涉及监管。
-
-本课不提供参与入口。
-
-<div class="planet-lab" data-planet-lab="predict"><p>教学模拟。正确结算 1.00，忽略费用。价格不是客观概率。</p><label>买入价 <input type="range" data-px min="0.10" max="0.99" step="0.01" value="0.90"></label><button type="button" data-win aria-pressed="true">结果：判定正确</button><p class="pl-out" data-out></p></div>
-
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。1.00 减去 0.90 等于 0.10。" data-bad="答错了。0.90 是成本，1.00 是结算收入，盈利是两者的差。"><h3>想一想</h3><p>教学模拟：忽略费用，以 0.90 买入一份，最终按 1.00 结算，盈利多少？</p><button type="button" class="option" data-answer="a" data-note="答错了。0.90 是你付出的价格。">A. 0.90</button><button type="button" class="option" data-answer="b">B. 0.10</button><button type="button" class="option" data-answer="c" data-note="答错了。1.00 是结算收入，还没扣成本。">C. 1.00</button><div class="feedback"></div></div>
 ## RWA 与代币化股票
 
-**买股票代币之前，先问自己究竟买到了哪一种权利。**
+**代币化股票不等于你真的持有那只股票。**
 
-RWA 通常指把现实资产或相关权益用链上代币表示。
+RWA 是现实资产相关权益在链上的一种表示。
+代币化股票提供的是某种价格敞口或权益。
+它不等于你已经登记为那只股票的持有人。
 
-名字带股票，不代表你在公司股东名册上登记持股。
+要检查发行主体、托管、法律权利、能不能赎回、有没有分红、你所在的地区能不能买，以及交易时间。
+名字像某只股票，不代表权利完全一样。
 
-要分清发行主体、底层资产由谁托管、你有什么法律权利。
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。代币提供的可能只是价格敞口。名字像，也不等于登记持有股票。" data-bad="答错了。先看法律权利和赎回方式。名字相似不是持有证明。"><h3>想一想</h3><p>一枚代币的名字很像某只股票。是不是就表示你持有了那只股票？</p><button type="button" class="option" data-answer="a">A. 是，名字相同权利就相同</button><button type="button" class="option" data-answer="b">B. 不是。要核对发行主体、托管、赎回、分红和你所在地区能不能买</button><button type="button" class="option" data-answer="c">C. 代币化之后，交易时间和股票市场一定一样</button><div class="feedback"></div></div>
 
-有没有分红和投票权、什么时候能赎回、谁能使用，都要单独看。
-
-链上可以转账，不等于底层股票在非交易时段也能同样赎回。
-
-教学模拟：虚构 ABC 代币跟踪股价，但条款只给对发行商的现金结算请求权，没有投票权。
-
-它更接近某种价格敞口或合同权利。
-
-不能称作直接持有 ABC 公司股票。
-
-不能预设所有代币化股票都没有分红。
-
-<div class="planet-lab" data-planet-lab="rwa"><p>教学模拟。先不要从价格推断权利。</p><button type="button" data-show>查看虚构条款</button><p class="pl-out" data-out>股东登记、投票权和赎回对象都还是未知。</p></div>
-
-<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。价格像，不等于权利一样。" data-bad="答错了。价格同步和能转账，都不是股东投票权。"><h3>想一想</h3><p>一枚代币追踪某股票价格，能直接说明你拥有该公司的股东投票权吗？</p><button type="button" class="option" data-answer="a" data-note="答错了。跟踪价格不是股东登记。">A. 能</button><button type="button" class="option" data-answer="b" data-note="答错了。转账能力不是投票权。">B. 只要代币可转账就能</button><button type="button" class="option" data-answer="c">C. 不能，要看发行结构和法律条款</button><div class="feedback"></div></div>
 ## DePIN 与 AI
 
-**DePIN 看真实需求，AI 代理看权限边界。**
+**DePIN 和 AI 项目，先看有没有真实需求，以及钱从哪里来。**
 
-设备多，不等于客户愿意付钱。
+DePIN 通常是用网络和激励去组织现实里的基础设施，比如算力、通信或传感器。
+AI 和 Web3 的项目，可能涉及算力、数据或自动化代理。
 
-如果设备只靠代币补贴才有人部署，补贴减少后还能否持续，要单独问。
+检查真实需求、硬件成本、收入来源和权限怎么设置。
+如果 AI Agent 能操作钱包，还要写清它能花多少钱、能调用什么、怎样撤销权限。
 
-处理了 1 亿次请求，还要问多少是付费的、有没有重复统计、成本是多少。
+小提醒：每种玩法都问四句话——它是什么、怎么参与、付什么成本、可能怎么亏。
 
-AI 代理如果能签名，必须写明能花多少、能调用哪些合约、怎样撤销。
-
-教学模拟：你说帮我找收益最高的池子，代理可能只按展示的年化排序。
-
-更稳妥的起点是只读和模拟，真实签名由人逐项确认。
-
-限额和紧急停止能降低风险，不能保证没有损失。
-
-<div class="planet-lab" data-planet-lab="agent"><p>教学模拟。默认只读。单笔上限 20，不会连接真实钱包。</p><button type="button" data-act="read">查询余额</button><button type="button" data-act="hint">只给建议</button><button type="button" data-cap aria-pressed="false">打开单笔上限 20</button><button type="button" data-act="trade">模拟执行 30</button><button type="button" data-act="stop">紧急停止</button><button type="button" data-act="reset">重置</button><p class="pl-out" data-out>从只读开始。</p></div>
-
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。先只读，再给限额和白名单。" data-bad="答错了。无限额度和只看名字，都会把误操作放大。"><h3>想一想</h3><p>准备让 AI 代理辅助管理链上资产，最合理的起点是什么？</p><button type="button" class="option" data-answer="a" data-note="答错了。无限额度会把一次误判变成很大的损失。">A. 先开放无限额度</button><button type="button" class="option" data-answer="b">B. 从只读和模拟开始，真实操作设置限额、白名单和人工确认</button><button type="button" class="option" data-answer="c" data-note="答错了。名字里的 AI 不说明它能调用什么。">C. 只要名字里有 AI 就不用检查权限</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。能操作钱包的代理，要先限制金额和权限，并知道怎么撤销。需求和收入也要单独看。" data-bad="答错了。不要先放开额度。真实需求、成本和撤销方式都要先写清。"><h3>想一想</h3><p>一个 AI 代理可以操作钱包。最需要先定下来的是什么？</p><button type="button" class="option" data-answer="a">A. 让它先不限额地调用资产，方便自动操作</button><button type="button" class="option" data-answer="b">B. 它能花多少、能调用什么，以及你怎样撤销权限</button><button type="button" class="option" data-answer="c">C. 只要项目名字里有 AI，收入就可以不看</button><div class="feedback"></div></div>
 # 13｜币圈话术翻译器 💬
 
 ## 正经术语
