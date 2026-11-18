@@ -130,9 +130,9 @@
         id: '04',
         title: bi('布林带：缩口不负责告诉你方向', 'Bollinger Bands: a squeeze does not owe you a direction'),
         scene: bi('带子变窄之后，价格一定向上吗？', 'After the bands narrow, must price go up?'),
-        one: bi('布林带用均线和标准差描述波动散开的程度。缩口只说明最近更挤，不指明方向。', 'Bollinger Bands use an average and a standard deviation to describe how spread out prices are. A squeeze only says the recent range is tighter. It does not name a direction.'),
-        explain: bi('中轨是最近 N 根收盘的平均数。\n上下轨=中轨±k×标准差。\n本课标准差用这 N 根对平均数的平方差再除以 N，然后开方。\n带子变宽，表示这组收盘更分散。\n缩口之后价格既可以上破，也可以下破。', 'The middle line is the average of the last N closes.\nThe outer bands are the middle ± k times the standard deviation.\nThis lesson takes the squared differences from the average, divides by N, then takes the square root.\nA wider band means those closes are more spread out.\nAfter a squeeze, price can break up or down.'),
-        example: bi('收盘 98、100、102，N=3，k=2。\n中轨=100。\n标准差=√(8/3)≈1.632993。\n上轨≈103.266。\n下轨≈96.734。', 'Closes 98, 100, 102, N=3, k=2.\nMiddle=100.\nStandard deviation=√(8/3)≈1.632993.\nUpper≈103.266.\nLower≈96.734.'),
+        one: bi('布林带把均价和波动画在一起，带子变窄只说明最近更挤，不指明方向。', 'Bollinger Bands draw the average and the variation together, and a narrower band only says the recent prices are tighter, not which way they go.'),
+        explain: bi('中轨是最近 20 根收盘的简单平均。\n上轨是中轨加上 2 倍总体标准差。\n下轨是中轨减去 2 倍总体标准差。\n标准差是这 20 根对平均数的偏差，平方后除以 20，再开方。\n前 19 根还没有完整的带，不显示伪造轨道。\n带子变宽，表示这组收盘更分散。\n缩口之后价格既可以上破，也可以下破。\n沿上轨走，也不等于该做空。\n收盘跑到带外，再回到带内，是另一件事。', 'The middle line is the simple average of the last 20 closes.\nThe upper band is the middle plus 2 population standard deviations.\nThe lower band is the middle minus 2 population standard deviations.\nThe standard deviation is the spread of those 20 closes around the average, squared, divided by 20, then square-rooted.\nThe first 19 bars do not have a full band, so no fake band is drawn.\nA wider band means those closes are more spread out.\nAfter a squeeze, price can break up or down.\nRiding the upper band is not an order to short.\nA close outside the band, and a later close back inside, are two different events.'),
+        example: bi('教学模拟：收盘 98、100、102，N=3，k=2。\n中轨是 100。\n总体标准差是 √(8/3)，约 1.632993。\n上轨约 103.266。\n下轨约 96.734。\n图上的主图用的是 20 根，不是这 3 根小例子。', 'Teaching simulation: closes 98, 100, 102, N=3, k=2.\nThe middle is 100.\nThe population standard deviation is √(8/3), about 1.632993.\nThe upper band is about 103.266.\nThe lower band is about 96.734.\nThe main chart uses 20 bars, not this 3-close example.'),
         pitfalls: [
           bi('看见缩口就预先写好只会上涨', 'Seeing a squeeze and writing in advance that it can only rise'),
           bi('把轨道当成必到的成交价', 'Treating a band as a price that must trade')
@@ -150,10 +150,10 @@
             B: ['102 是最后一根收盘，不是上轨。', '102 is the last close, not the upper band.'],
             C: ['100 是中轨，上轨还要加上 2 倍标准差。', '100 is the middle. The upper band still adds 2 standard deviations.']
           }),
-          quiz('缩口是否保证随后上涨？', 'Does a squeeze guarantee a later rise?', [opt('A', '保证', 'It guarantees it'), opt('B', '不保证', 'It does not'), opt('C', '只保证横盘', 'It only guarantees a range')], 'B', {
+          quiz('缩口是否保证随后上涨？', 'Does a squeeze guarantee a later rise?', [opt('A', '保证', 'It guarantees it'), opt('B', '不保证', 'It does not'), opt('C', '只对稳定币保证', 'It guarantees it only for stablecoins')], 'B', {
             A: ['带子变窄没有方向项。上破和下破都可能。', 'A narrower band has no direction term. A break up or down is both possible.'],
             B: ['它只说明最近收盘更挤在一起。', 'It only says the recent closes are packed closer together.'],
-            C: ['缩口不是承诺继续横盘，波动随后可以放大。', 'A squeeze does not promise the range continues. Variation can expand afterward.']
+            C: ['稳定币这个名字不改变公式。缩口仍然没有方向。', 'The word stablecoin does not change the formula. A squeeze still has no direction.']
           }),
           quiz('带子变宽通常表示什么？', 'What does a wider band usually mean?', [opt('A', '这组价格更分散', 'These prices are more spread out'), opt('B', '方向已经向上', 'Direction is already up'), opt('C', '成交量必须增加', 'Volume must increase')], 'A', {
             A: ['标准差变大，中轨上下的距离就变宽。', 'When the standard deviation grows, the distance around the middle grows.'],
@@ -161,7 +161,7 @@
             C: ['这条公式只用收盘，不用成交量。', 'This formula uses closes only, not volume.']
           })
         ],
-        study: { kind: 'boll', closes: [98, 100, 102], n: 3, k: 2, start: 3 }
+        study: { kind: 'boll', practical: 'boll', closes: [98, 100, 102], n: 20, k: 2 }
       }),
       lesson({
         id: '05',

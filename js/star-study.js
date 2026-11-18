@@ -179,6 +179,22 @@
     });
     return out;
   }
+  function bollSeed(closes, n, k) {
+    var out = closes.map(function () { return null; });
+    var i;
+    for (i = n - 1; i < closes.length; i++) {
+      var slice = closes.slice(i + 1 - n, i + 1);
+      var mean = 0;
+      var j;
+      for (j = 0; j < slice.length; j++) mean += slice[j];
+      mean /= n;
+      var variance = 0;
+      for (j = 0; j < slice.length; j++) variance += (slice[j] - mean) * (slice[j] - mean);
+      var sd = Math.sqrt(variance / n);
+      out[i] = { mid: mean, upper: mean + k * sd, lower: mean - k * sd, width: mean ? (2 * k * sd) / mean : null };
+    }
+    return out;
+  }
   function packOf(kind, closes) {
     var bars = M().barsFromCloses(closes);
     bars.forEach(function (bar, i) { bar.v = Math.round(800 + Math.abs(closes[i] - (closes[i - 1] || closes[i])) * 12); });
@@ -186,6 +202,7 @@
       return { bars: bars, closes: closes, e20: emaSeed(closes, 20), e50: emaSeed(closes, 50) };
     }
     if (kind === 'macd') return { bars: bars, closes: closes, macd: macdSeed(closes) };
+    if (kind === 'boll') return { bars: bars, closes: closes, band: bollSeed(closes, 20, 2) };
     return { bars: bars, closes: closes, rsi: M().rsiWilder(closes, 14) };
   }
   function crossIndexes(fast, slow) {
@@ -220,6 +237,18 @@
       { id: 'above', zh: '零轴上金叉', en: 'Golden cross above zero', closes: seqCloses(50000, [[45, 90], [12, -40], [30, 80]]) },
       { id: 'fail', zh: '零轴下金叉失败', en: 'Golden cross below zero fails', closes: seqCloses(70000, [[40, -80], [12, 90], [40, -70]]) },
       { id: 'shrink', zh: '负柱缩短仍在跌', en: 'Negative bars shrink while price falls', closes: seqCloses(80000, [[20, 80], [18, -180], [40, -20]]) }
+    ] : kind === 'boll' ? [
+      { id: 'squeeze', zh: '收口', en: 'Squeeze', closes: (function () {
+        var price = 100;
+        var out = [];
+        var i;
+        for (i = 0; i < 36; i++) { price += i % 2 ? -0.12 : 0.12; out.push(Math.round(price * 100) / 100); }
+        for (i = 0; i < 24; i++) { price += i % 2 ? -2.4 : 2.6; out.push(Math.round(price * 100) / 100); }
+        return out;
+      })() },
+      { id: 'wide', zh: '扩张', en: 'Expansion', closes: seqCloses(100, [[24, 0.05], [20, 1.8]]) },
+      { id: 'ride', zh: '沿上轨', en: 'Riding the upper band', closes: seqCloses(100, [[50, 0.8]]) },
+      { id: 'fake', zh: '带外再回来', en: 'Outside, then back', closes: seqCloses(100, [[30, 0.15], [1, 6], [12, -0.35]]) }
     ] : [
       { id: 'hot', zh: '超买仍上涨', en: 'Overbought and still rising', closes: seqCloses(100, [[40, 3]]) },
       { id: 'cold', zh: '超卖仍下跌', en: 'Oversold and still falling', closes: seqCloses(200, [[40, -3]]) },
@@ -266,6 +295,31 @@
         if (gold) return { tone: '', text: head + extra + (zh ? '这根是金叉，但请对照当前剧情看它在零轴的哪一侧。' : 'This bar is a golden cross. Check which side of zero it is on.') };
         return { tone: '', text: head + extra };
       }
+      if (kind === 'boll') {
+        var band = pack.band[index];
+        if (!band) return { tone: '', text: head + (zh ? '前 19 根还没有完整的 20 期布林带，不显示伪造轨道。' : 'The first 19 bars do not have a full 20-bar band. No fake band is drawn.') };
+        var where = bar.c > band.upper ? (zh ? '收盘在上轨外。' : 'The close is outside the upper band. ') : (bar.c < band.lower ? (zh ? '收盘在下轨外。' : 'The close is outside the lower band. ') : (zh ? '收盘在带内。' : 'The close is inside the band. '));
+        var nums = (zh ? '中轨 ' : 'Middle ') + fmt(band.mid, 2) + (zh ? '，上轨 ' : ', upper ') + fmt(band.upper, 2) + (zh ? '，下轨 ' : ', lower ') + fmt(band.lower, 2) + '。';
+        if (state.scene === 'squeeze') {
+          var narrow = 0;
+          var bi;
+          for (bi = 1; bi < pack.band.length; bi++) if (pack.band[bi] && pack.band[narrow] && pack.band[bi].width < pack.band[narrow].width) narrow = bi;
+          if (Math.abs(index - narrow) <= 2) return { tone: 'is-right', text: head + nums + (zh ? '这里最窄，只说明波动收缩，不预测向上或向下。' : 'This is the narrow stretch. It only says variation shrank. It does not predict up or down.') };
+        }
+        if (state.scene === 'wide') {
+          var wide = 0;
+          var wj;
+          for (wj = 1; wj < pack.band.length; wj++) if (pack.band[wj] && pack.band[wide] && pack.band[wj].width > pack.band[wide].width) wide = wj;
+          if (Math.abs(index - wide) <= 2) return { tone: 'is-right', text: head + nums + (zh ? '带宽变大，是这组收盘更分散，不是方向已经确定。' : 'A wider band means these closes are more spread out, not that direction is decided.') };
+        }
+        if (state.scene === 'ride' && bar.c >= band.mid + (band.upper - band.mid) * 0.65) {
+          return { tone: 'is-bad', text: head + nums + where + (zh ? '沿上轨运行仍可能继续。触上轨不是做空命令。' : 'Price can keep riding the upper band. A touch is not an order to short.') };
+        }
+        if (state.scene === 'fake' && bar.c > band.upper) {
+          return { tone: 'is-bad', text: head + nums + (zh ? '这是带外收盘。回到带内才叫回轨。带外收盘不是方向保证。' : 'This close is outside the band. A return inside is a different event. An outside close is not a direction.') };
+        }
+        return { tone: '', text: head + nums + where };
+      }
       var rsi = pack.rsi[index];
       var extraR = rsi == null ? (zh ? 'RSI 数据不足，不显示 0。' : 'RSI is not ready. Do not show 0.') : (zh ? 'RSI(14) ' + fmt(rsi, 2) + '。' : 'RSI(14) ' + fmt(rsi, 2) + '.');
       if (state.scene === 'hot' && rsi > 70) return { tone: 'is-right', text: head + extraR + (zh ? '高于 70 只说明最近涨得强，不是立刻做空的命令。' : 'Above 70 only says the recent rise is strong. It is not an order to short.') };
@@ -278,7 +332,7 @@
       var pack = view.pack;
       var bars = pack.bars;
       var w = 360;
-      var h = kind === 'ema' ? 300 : 500;
+      var h = kind === 'ema' || kind === 'boll' ? 320 : 500;
       var bits = [openSvg(w, h, zh ? '教学模拟 K 线' : 'Teaching simulation candles')];
       var highs = [];
       bars.forEach(function (bar) { highs.push(bar.l, bar.h); });
@@ -286,10 +340,13 @@
         pack.e20.forEach(function (v) { if (v != null) highs.push(v); });
         pack.e50.forEach(function (v) { if (v != null) highs.push(v); });
       }
+      if (kind === 'boll') {
+        pack.band.forEach(function (b) { if (b) { highs.push(b.upper); highs.push(b.lower); } });
+      }
       var min = Math.min.apply(null, highs);
       var max = Math.max.apply(null, highs);
       var span = max - min || 1;
-      var priceH = kind === 'ema' ? 250 : 180;
+      var priceH = kind === 'ema' || kind === 'boll' ? 270 : 180;
       var geom = { bits: bits, w: w, h: h, padL: 8, padR: kind === 'ema' ? 58 : 16, top: 16, plotH: priceH, n: bars.length, min: min - span * 0.08, max: max + span * 0.12, centers: true, series: [] };
       var plot = lineSvg(geom);
       drawCandles(bits, bars, plot.x, plot.y, plot.slot);
@@ -309,6 +366,15 @@
         if (state.fast) lines.push({ values: pack.e20, color: '#f4cb82', width: 2.6, label: 'EMA20' });
         if (state.slow) lines.push({ values: pack.e50, color: '#8eb4ff', width: 2.4, label: 'EMA50', dash: true });
         lineSvg({ bits: bits, w: w, h: h, padL: 8, padR: 58, top: 16, plotH: priceH, n: bars.length, min: geom.min, max: geom.max, centers: true, series: lines });
+      } else if (kind === 'boll') {
+        var upper = pack.band.map(function (b) { return b && b.upper; });
+        var mid = pack.band.map(function (b) { return b && b.mid; });
+        var lower = pack.band.map(function (b) { return b && b.lower; });
+        lineSvg({ bits: bits, w: w, h: h, padL: 8, padR: 52, top: 16, plotH: priceH, n: bars.length, min: geom.min, max: geom.max, centers: true, series: [
+          { values: upper, color: '#8eb4ff', width: 2.2, label: zh ? '上轨' : 'Upper' },
+          { values: mid, color: '#f4cb82', width: 2.4, label: zh ? '中轨' : 'Mid' },
+          { values: lower, color: '#d7b4ff', width: 2.2, label: zh ? '下轨' : 'Lower' }
+        ] });
       } else if (kind === 'macd') {
         var pool = pack.macd.dif.concat(pack.macd.dea, pack.macd.hist, [0]).filter(function (v) { return v != null; });
         var pmin = Math.min.apply(null, pool);
@@ -337,7 +403,9 @@
         });
       }
       bits.push('</svg>');
-      var keys = kind === 'ema'
+      var keys = kind === 'boll'
+        ? [{ color: '#8eb4ff', label: zh ? '上轨 SMA20+2σ' : 'Upper SMA20+2σ' }, { color: '#f4cb82', label: zh ? '中轨 SMA20' : 'Middle SMA20' }, { color: '#d7b4ff', label: zh ? '下轨 SMA20−2σ' : 'Lower SMA20−2σ' }]
+        : kind === 'ema'
         ? [{ color: '#1f8a4d', label: zh ? '绿色 K 线（涨）' : 'Green candle, up' }, { color: '#d4534e', label: zh ? '红色 K 线（跌）' : 'Red candle, down' }, { color: '#f4cb82', label: zh ? 'EMA20（快线，实线）' : 'EMA20 (fast, solid)' }, { color: '#8eb4ff', label: zh ? 'EMA50（慢线，虚线）' : 'EMA50 (slow, dashed)' }]
         : kind === 'macd'
           ? [{ color: '#f4cb82', label: zh ? 'DIF（12/26）' : 'DIF (12/26)' }, { color: '#8eb4ff', label: zh ? 'DEA（9）' : 'DEA (9)' }, { color: '#1f8a4d', label: zh ? '柱子 DIF−DEA' : 'Histogram DIF−DEA' }]
