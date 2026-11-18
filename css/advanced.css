@@ -132,6 +132,11 @@ body.is-star main:has(.star-hub){padding-bottom:0}
 .a1{border:1px solid rgba(230,199,158,.28);border-radius:18px;padding:12px;background:#171226}
 .a1-flag{display:inline-block;margin:0 0 8px;padding:2px 8px;border-radius:999px;background:rgba(230,199,158,.16);color:#e6c79e;font-size:12px}
 .a1-modes,.a1-sub,.a1-fields{display:flex;flex-wrap:wrap;gap:8px}
+.ema-scroll{overflow-x:auto;max-width:100%}
+.ema-scroll svg{min-width:960px;height:auto;display:block}
+.ema-note{margin:8px 0 0;color:#d4bc9e;font-size:14px;line-height:1.7}
+.a1 button.is-right{background:#1f8a4d;border-color:#1f8a4d;color:#fff}
+.a1 button.is-wrong{background:#6e2c32;border-color:#6e2c32;color:#fff}
 .a1 button,.a2 .a1-modes button,.a1-fields input{font:inherit;min-height:40px;border-radius:999px;border:1px solid rgba(230,199,158,.4);background:#241c33;color:#f5efff;padding:6px 12px}
 .a1 button[aria-pressed="true"],.a2 .a1-modes button[aria-pressed="true"]{background:#e6c79e;color:#1b1428}
 .a2 .a4-bar button{min-height:44px}

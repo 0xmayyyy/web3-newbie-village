@@ -10,13 +10,13 @@
         title: bi('EMA：均线为什么追着价格跑', 'EMA: why the average chases price'),
         scene: bi('价格刚跌下来，均线会不会马上跳到最新价？', 'Price just fell. Does the average jump to the latest price right away?'),
         one: bi('EMA 更重视最近的收盘，所以会跟着价格走，但不会在一根大阴线时瞬间跳下去。', 'An EMA weights recent closes more, so it follows price, but it does not jump down on one large red candle.'),
-        explain: bi('均线是一条跟着蜡烛收盘走的平滑线。\n图上黄线是 EMA20。\nEMA20 看的是最近 20 根 K 线，越近的越重要。\n看 1 小时图时，这 20 根是小时 K 线，不是 20 天。\n蓝线是 EMA50。\nEMA50 看的是最近 50 根 K 线，走得更慢。\n它不是用来预言下一根会到哪里。\n价格突然跌下来，均线还停在上面。\n你可以把它想成跟在身后的人。\n你停下了，他还要再走几步才到。\n追得快，不等于看得更准。', 'An average is a smooth line that follows candle closes.\nThe gold line is EMA20.\nEMA20 looks at the last 20 bars, and the nearer ones matter more.\nOn a 1-hour chart those 20 bars are hours, not 20 days.\nThe blue line is EMA50.\nEMA50 looks at the last 50 bars, and it moves more slowly.\nIt is not there to predict where the next bar will go.\nWhen price drops suddenly, the average is still up above it.\nYou can think of it as a person walking behind you.\nYou stop, and he still needs a few more steps to arrive.\nFollowing faster does not mean seeing more clearly.'),
-        example: bi('教学模拟：价格从大约 101 涨到大约 137，再跌到大约 107。\nEMA20 贴得更近。\nEMA50 还留在更高的地方。\n最新收盘已经下来了，两条均线都还在它上面。', 'Teaching simulation: price rises from about 101 to about 137, then falls to about 107.\nEMA20 stays closer.\nEMA50 is still higher up.\nThe latest close has already come down, and both averages are still above it.'),
+        explain: bi('均线是一条跟着蜡烛收盘走的平滑线。\n图上黄线是 EMA20。\nEMA20 看的是最近 20 根 K 线，越近的越重要。\n看 1 小时图时，这 20 根是小时 K 线，不是 20 天。\n蓝线是 EMA50。\nEMA50 看的是最近 50 根 K 线，走得更慢。\n它不是用来预言下一根会到哪里。\n价格突然跌下来，均线还停在上面。\n你可以把它想成跟在身后的人。\n你停下了，他还要再走几步才到。\n追得快，不等于看得更准。\n计算是 α=2/(N+1)。\n第一根有效值是前 N 根收盘的简单平均。\n之后每根是 α×当根收盘+(1−α)×上一根。\n不够 N 根就写数据不足，不画 0。\n本课把“靠近”定成收盘离快线不超过 0.3%。\n这是教学规则，不是买卖信号。\n后面的 K 线先藏着。\n请一根一根放出来，再自己点。', 'An average is a smooth line that follows candle closes.\nThe gold line is EMA20.\nEMA20 looks at the last 20 bars, and the nearer ones matter more.\nOn a 1-hour chart those 20 bars are hours, not 20 days.\nThe blue line is EMA50.\nEMA50 looks at the last 50 bars, and it moves more slowly.\nIt is not there to predict where the next bar will go.\nWhen price drops suddenly, the average is still up above it.\nYou can think of it as a person walking behind you.\nYou stop, and he still needs a few more steps to arrive.\nFollowing faster does not mean seeing more clearly.\nThe formula is α=2/(N+1).\nThe first valid value is the simple average of the first N closes.\nAfter that, each bar is α times this close plus (1−α) times the previous value.\nFewer than N bars says the data is not ready, and it does not draw 0.\nThis lesson calls a bar “near” when the close is within 0.3% of the fast line.\nThat is a teaching rule, not a buy or sell signal.\nLater candles stay hidden.\nReveal them one by one, then mark them yourself.'),
+        example: bi('教学模拟：主图有 90 根以上的 1 小时 K 线，前面另有一段预热。\n趋势里，价格大多在两条向上的均线上方。\n其中一根收盘贴近快线。\n贴近还不是确认反弹。\n横盘里，快线和慢线会交叉不止一次。\n交叉也不等于后面一定涨。', 'Teaching simulation: the main chart has more than 90 one-hour candles, plus a warmup before them.\nIn the trend, price spends most of the time above two rising averages.\nOne close sits near the fast line.\nBeing near it is not a confirmed bounce.\nIn the sideways scene, the fast and slow lines cross more than once.\nA cross still does not mean the next move must rise.'),
         pitfalls: [
           bi('把均线当成下一根的预测价', 'Treating the average as the predicted price of the next bar'),
           bi('横盘里来回交叉，就当成方向已经确定', 'Treating a back-and-forth cross in a sideways market as a decided direction')
         ],
-        practice: bi('看图里的教学模拟 K 线。最新收盘已经掉下来了，EMA20 和 EMA50 还在它上面。', 'Look at the teaching-simulation candles. The latest close has already fallen, and EMA20 and EMA50 are still above it.'),
+        practice: bi('在图上自己点。先点一段两条均线都在抬头的 K 线，再点一根离快线不超过 0.3% 的 K 线。横盘里请点出至少两次交叉。', 'Mark the chart yourself. First mark a bar where both averages are rising, then a bar within 0.3% of the fast line. In the sideways scene, mark at least two crosses.'),
         check: {
           ask: bi('最新这根 K 线跌下来了，EMA20 会马上变成这根收盘价吗？', 'This latest candle fell. Does EMA20 become that close right away?'),
           options: [opt('A', '会，它会跳过去', 'Yes, it jumps there'), opt('B', '不会，它还在慢慢跟上', 'No, it is still catching up'), opt('C', '只有 BTC 会跳', 'Only BTC jumps')],
@@ -40,7 +40,7 @@
             C: ['交叉只说明两条线换了上下位置，不保证下一根上涨。', 'A cross only says the two lines swapped places. It does not guarantee the next bar rises.']
           })
         ],
-        study: { kind: 'ema', practical: 'ema', closes: [100, 102, 104, 100, 98], periods: [20, 50] }
+        study: { kind: 'ema', lessonChart: 'ema-full', closes: [100, 102, 104, 100, 98], periods: [20, 50] }
       }),
       lesson({
         id: '02',
@@ -301,3 +301,534 @@
     ]
   };
 })(window.STAR_PACK);
+
+/* EMA lesson chart. Formula and drawing live here, not in the lab engine. */
+(function (global) {
+  function round2(n) { return Math.round(n * 100) / 100; }
+  function ema(closes, n) {
+    var out = closes.map(function () { return null; });
+    n = Math.round(Number(n));
+    if (n < 1 || closes.length < n) return out;
+    var sum = 0;
+    var i;
+    for (i = 0; i < n; i++) sum += closes[i];
+    var prev = sum / n;
+    out[n - 1] = prev;
+    var alpha = 2 / (n + 1);
+    for (i = n; i < closes.length; i++) {
+      prev = alpha * closes[i] + (1 - alpha) * prev;
+      out[i] = prev;
+    }
+    return out;
+  }
+  function crosses(fast, slow) {
+    var out = [];
+    var i;
+    for (i = 1; i < fast.length; i++) {
+      if (fast[i] == null || slow[i] == null || fast[i - 1] == null || slow[i - 1] == null) continue;
+      var prev = fast[i - 1] - slow[i - 1];
+      var now = fast[i] - slow[i];
+      if (prev === 0 || now === 0) continue;
+      if ((prev < 0 && now > 0) || (prev > 0 && now < 0)) out.push(i);
+    }
+    return out;
+  }
+  function nearLine(close, line) {
+    return line != null && line !== 0 && Math.abs(close - line) / Math.abs(line) <= 0.003;
+  }
+  function walk(start, steps) {
+    var bars = [];
+    var price = start;
+    var hour = 0;
+    steps.forEach(function (step) {
+      var count = step[0];
+      var i;
+      for (i = 0; i < count; i++) {
+        var delta = step[1];
+        if (typeof delta === 'function') delta = delta(i, hour);
+        var open = price;
+        price = round2(open + delta);
+        var wick = Math.max(12, Math.abs(delta) * 0.35);
+        bars.push({
+          t: hour,
+          o: open,
+          h: round2(Math.max(open, price) + wick),
+          l: round2(Math.min(open, price) - wick * 0.8),
+          c: price,
+          v: 80 + (hour % 7) * 11
+        });
+        hour += 1;
+      }
+    });
+    return bars;
+  }
+  function decorate(bars, visibleFrom) {
+    var closes = bars.map(function (bar) { return bar.c; });
+    var fast = ema(closes, 20);
+    var slow = ema(closes, 50);
+    var rising = [];
+    var near = [];
+    var crash = [];
+    var i;
+    for (i = visibleFrom + 1; i < bars.length; i++) {
+      if (nearLine(bars[i].c, fast[i])) near.push(i);
+      if (fast[i] != null && slow[i] != null && fast[i] > fast[i - 1] && slow[i] > slow[i - 1] && bars[i].c > fast[i] && bars[i].c > slow[i]) rising.push(i);
+      if (fast[i] != null && fast[i - 1] != null && bars[i - 1].c > fast[i - 1] && bars[i].c < fast[i] && (fast[i] - bars[i].c) / fast[i] > 0.01) crash.push(i);
+    }
+    return {
+      bars: bars,
+      visibleFrom: visibleFrom,
+      visible: bars.length - visibleFrom,
+      crosses: crosses(fast, slow).filter(function (index) { return index >= visibleFrom; }),
+      rising: rising,
+      near: near,
+      crash: crash
+    };
+  }
+  function buildScenes() {
+    var trendBars = walk(48000, [[60, 22], [96, 48]]);
+    var pull = 60 + 88;
+    var seeded = ema(trendBars.map(function (bar) { return bar.c; }), 20);
+    trendBars[pull].c = round2(seeded[pull - 1]);
+    trendBars[pull].o = trendBars[pull - 1].c;
+    trendBars[pull].h = round2(Math.max(trendBars[pull].o, trendBars[pull].c) + 20);
+    trendBars[pull].l = round2(Math.min(trendBars[pull].o, trendBars[pull].c) - 18);
+    return {
+      trend: Object.assign({ id: 'trend', zh: '趋势上行与回踩', en: 'Uptrend and pullback' }, decorate(trendBars, 60)),
+      range: Object.assign({ id: 'range', zh: '震荡假交叉', en: 'Range and fake crosses' }, decorate(walk(62000, [[160, function (i) { return (Math.floor(i / 9) % 2 ? -1 : 1) * 55; }]]), 60)),
+      crash: Object.assign({ id: 'crash', zh: '大阴线与滞后', en: 'Drop and lag' }, decorate(walk(50000, [[60, 20], [70, 60], [1, -2800], [25, -30]]), 60)),
+      exam: Object.assign({ id: 'exam', zh: '新行情', en: 'New tape' }, decorate(walk(54000, [[60, 15], [80, 45], [1, -2200], [15, 10]]), 60))
+    };
+  }
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function fmt(n, d) {
+    if (n == null || n !== n) return '—';
+    var p = Math.pow(10, d == null ? 2 : d);
+    return (Math.round(n * p) / p).toString();
+  }
+  function mount(root, lesson, lang) {
+    var zh = lang !== 'en';
+    var scenes = buildScenes();
+    var state = {
+      scene: 'trend',
+      step: 'watch',
+      shown: 30,
+      cursor: null,
+      marks: [],
+      playing: false,
+      fastN: 20,
+      slowN: 50,
+      showFast: true,
+      showSlow: true,
+      showCross: false,
+      showReact: false,
+      hideAnswer: true,
+      note: '',
+      tone: '',
+      examPick: '',
+      examOk: false
+    };
+    if (root._emaTimer) clearInterval(root._emaTimer);
+    root._emaTimer = null;
+    function scene() { return scenes[state.scene]; }
+    function maxShown() {
+      var cap = scene().bars.length - scene().visibleFrom;
+      if (state.step === 'exam' && !state.examOk && scene().crash.length) return Math.min(cap, scene().crash[0] - scene().visibleFrom);
+      return cap;
+    }
+    function stop() {
+      state.playing = false;
+      if (root._emaTimer) clearInterval(root._emaTimer);
+      root._emaTimer = null;
+    }
+    function prefix() {
+      var current = scene();
+      var end = current.visibleFrom + state.shown;
+      var bars = current.bars.slice(0, end);
+      var closes = bars.map(function (bar) { return bar.c; });
+      return { current: current, end: end, bars: bars, fast: ema(closes, state.fastN), slow: ema(closes, state.slowN) };
+    }
+    function roleAt(pack, index) {
+      var bar = pack.bars[index];
+      var fast = pack.fast[index];
+      var slow = pack.slow[index];
+      var prevFast = pack.fast[index - 1];
+      var prevSlow = pack.slow[index - 1];
+      if (!bar || fast == null || slow == null || prevFast == null || prevSlow == null) return { ready: false };
+      var prevGap = prevFast - prevSlow;
+      var gap = fast - slow;
+      return {
+        ready: true,
+        rising: fast > prevFast && slow > prevSlow && bar.c > fast && bar.c > slow,
+        near: nearLine(bar.c, fast),
+        cross: prevGap !== 0 && gap !== 0 && ((prevGap < 0 && gap > 0) || (prevGap > 0 && gap < 0)),
+        crash: pack.bars[index - 1].c > prevFast && bar.c < fast && (fast - bar.c) / fast > 0.01,
+        fast: fast,
+        slow: slow,
+        bar: bar
+      };
+    }
+    function taskText() {
+      var id = state.scene;
+      if (state.step === 'exam') return zh ? '新行情先藏着均线。大阴线放出来之前，先判断方向，再打开均线，点那根先穿过均线的 K 线。' : 'The new tape hides the averages. Before the long red candle, judge the direction, then turn the lines on and mark the candle that crosses first.';
+      if (state.step === 'judge') return zh ? '判断这一句是真是假。点错会说明原因。' : 'Decide whether this statement holds. A wrong pick explains why.';
+      if (state.step === 'fail' || state.step === 'mark') {
+        if (id === 'range') return zh ? '自己点出至少两次交叉。交叉只说明两线换了位置，不保证后面上涨。' : 'Mark at least two crosses yourself. A cross only says the lines swapped places.';
+        if (id === 'crash') return zh ? '点出那根先穿过均线的大阴线。均线不会跟着它马上跳下去。' : 'Mark the long red candle that crosses the average first. The average does not jump with it.';
+        return zh ? '先点一根两条均线都在抬头、收盘在两线上方的 K 线，再点一根收盘离快线不超过 0.3% 的 K 线。靠近还不是确认反弹。' : 'First mark a bar where both lines rise and the close is above them, then a close within 0.3% of the fast line. Near is not a confirmed bounce.';
+      }
+      return zh ? '先看懂。后面的 K 线还藏着，用播放或下一根放出来。点一根看收盘和两条均线。' : 'Watch first. Later candles stay hidden until you play or step. Tap a candle for the close and both averages.';
+    }
+    function gradeMarks(pack) {
+      var roles = state.marks.map(function (index) { return roleAt(pack, index); }).filter(function (item) { return item.ready; });
+      if (state.scene === 'range') {
+        var found = roles.filter(function (item) { return item.cross; }).length;
+        if (found >= 2) return { tone: 'is-right', text: zh ? '你标出了至少两次交叉。横盘里交叉会反复出现，不能当成后面一定涨。' : 'You marked at least two crosses. In a range they repeat, so a cross is not a promise of a rise.' };
+        return { tone: '', text: zh ? '还差交叉。现在标出 ' + found + ' 次。请点快慢线严格穿过的那一根，相等不算。' : 'Not enough crosses yet. You have marked ' + found + '. Tap a bar where the lines strictly swap. Equality does not count.' };
+      }
+      if (state.scene === 'crash' || state.scene === 'exam') {
+        if (roles.some(function (item) { return item.crash; })) return { tone: 'is-right', text: zh ? '这根收盘先穿过去了，均线还在上面慢慢变。EMA 不能预测这根突发下跌，也不是卖出按钮。' : 'This close crossed first. The average is still catching up. EMA does not predict this drop, and it is not a sell button.' };
+        return { tone: '', text: zh ? '还没点到那根大阴线。它的收盘穿过快线，快线仍离收盘超过 1%。' : 'That is not the long red candle yet. Its close crosses the fast line, and the line stays more than 1% away.' };
+      }
+      var hasRise = roles.some(function (item) { return item.rising; });
+      var hasNear = roles.some(function (item) { return item.near; });
+      if (hasRise && hasNear) return { tone: 'is-right', text: zh ? '抬头区和靠近的 K 线都点到了。靠近快线只说明距离不超过 0.3%，不是确认反弹，也不是买入。' : 'You marked both a rising stretch and a near bar. Within 0.3% only says it is close. It is not a confirmed bounce or a buy.' };
+      if (!hasRise) return { tone: '', text: zh ? '还缺抬头区：两条线都比前一根高，并且收盘在两条线上方。' : 'Still missing a rising bar: both lines higher than the previous bar, and the close above both.' };
+      return { tone: '', text: zh ? '还缺回踩：|收盘−快线|/快线 ≤ 0.3%。这是本课规则，不是行业通用信号。' : 'Still missing the pullback: |close − fast line| / fast line ≤ 0.3%. This is a lesson rule, not an industry signal.' };
+    }
+    function readout(pack) {
+      if (state.cursor == null) return '';
+      var bar = pack.bars[state.cursor];
+      if (!bar) return '';
+      var fast = pack.fast[state.cursor];
+      var slow = pack.slow[state.cursor];
+      var prev = pack.fast[state.cursor - 1];
+      var fastText = fast == null ? (zh ? '数据不足' : 'not ready') : fmt(fast, 2);
+      var slowText = slow == null ? (zh ? '数据不足' : 'not ready') : fmt(slow, 2);
+      var delta = fast == null || prev == null ? (zh ? '数据不足' : 'not ready') : fmt(fast - prev, 2);
+      var when = zh ? '第 ' + (state.cursor - pack.current.visibleFrom + 1) + ' 根' : 'Bar ' + (state.cursor - pack.current.visibleFrom + 1);
+      return when + (zh ? ' · 模拟 1 小时' : ' · simulated 1h') +
+        '<br>' + (zh ? '开 ' : 'O ') + fmt(bar.o, 2) + (zh ? ' 高 ' : ' H ') + fmt(bar.h, 2) + (zh ? ' 低 ' : ' L ') + fmt(bar.l, 2) + (zh ? ' 收 ' : ' C ') + fmt(bar.c, 2) + (zh ? ' 量 ' : ' V ') + bar.v +
+        '<br>EMA' + state.fastN + ' ' + fastText + (zh ? '，较前一根 ' : ', change ') + delta +
+        '<br>EMA' + state.slowN + ' ' + slowText;
+    }
+    function paint() {
+      var pack = prefix();
+      var from = pack.current.visibleFrom;
+      var draw = pack.bars.slice(from);
+      var w = 980;
+      var h = 390;
+      var padL = 10;
+      var padR = 74;
+      var top = 16;
+      var priceH = 248;
+      var vals = [];
+      draw.forEach(function (bar, i) {
+        vals.push(bar.h, bar.l);
+        var abs = from + i;
+        if (state.showFast && pack.fast[abs] != null) vals.push(pack.fast[abs]);
+        if (state.showSlow && pack.slow[abs] != null) vals.push(pack.slow[abs]);
+      });
+      var min = Math.min.apply(null, vals);
+      var max = Math.max.apply(null, vals);
+      if (min === max) { min -= 1; max += 1; }
+      var span = max - min;
+      min -= span * 0.08;
+      max += span * 0.08;
+      function y(p) { return top + (max - p) / (max - min) * priceH; }
+      var slot = (w - padL - padR) / Math.max(draw.length, 1);
+      var bits = ['<svg viewBox="0 0 ' + w + ' ' + h + '" role="img" aria-label="' + (zh ? '模拟BTC蜡烛与两条EMA' : 'Simulated BTC candles and two EMAs') + '">'];
+      bits.push('<rect width="' + w + '" height="' + h + '" fill="#120e21"></rect>');
+      var g;
+      for (g = 0; g < 4; g++) {
+        var price = min + (max - min) * g / 3;
+        var gy = y(price);
+        bits.push('<line x1="' + padL + '" y1="' + gy + '" x2="' + (w - padR) + '" y2="' + gy + '" stroke="rgba(230,199,158,.18)"></line>');
+        bits.push('<text x="' + (w - 8) + '" y="' + (gy + 4) + '" text-anchor="end" fill="#d4bc9e" font-size="13">' + fmt(price, 0) + '</text>');
+      }
+      var volMax = 1;
+      draw.forEach(function (bar) { if (bar.v > volMax) volMax = bar.v; });
+      draw.forEach(function (bar, i) {
+        var up = bar.c >= bar.o;
+        var color = up ? '#1f8a4d' : '#d4534e';
+        var x = padL + i * slot;
+        var xc = x + slot / 2;
+        var bw = Math.max(2.4, slot * 0.58);
+        var bodyTop = Math.min(y(bar.o), y(bar.c));
+        var bh = Math.max(1.4, Math.abs(y(bar.c) - y(bar.o)));
+        bits.push('<line x1="' + xc + '" y1="' + y(bar.h) + '" x2="' + xc + '" y2="' + y(bar.l) + '" stroke="' + color + '" stroke-width="1.3"></line>');
+        bits.push('<rect x="' + (xc - bw / 2) + '" y="' + bodyTop + '" width="' + bw + '" height="' + bh + '" fill="' + color + '"></rect>');
+        var vh = Math.max(1, bar.v / volMax * 48);
+        bits.push('<rect x="' + (xc - bw / 2) + '" y="' + (348 - vh) + '" width="' + bw + '" height="' + vh + '" fill="' + color + '" opacity="0.85"></rect>');
+        if (i % 16 === 0) bits.push('<text x="' + xc + '" y="376" fill="#b7aac8" font-size="12">' + (zh ? '第' + (i + 1) + '根' : '#' + (i + 1)) + '</text>');
+        var abs = from + i;
+        if (state.marks.indexOf(abs) >= 0) bits.push('<circle cx="' + xc + '" cy="' + y(bar.h) + '" r="5" fill="none" stroke="#f4cb82" stroke-width="2"></circle>');
+        if (!state.hideAnswer && state.showCross && roleAt(pack, abs).cross) bits.push('<polygon points="' + xc + ',' + (y(bar.l) + 12) + ' ' + (xc - 5) + ',' + (y(bar.l) + 22) + ' ' + (xc + 5) + ',' + (y(bar.l) + 22) + '" fill="#f0d59a"></polygon>');
+        if (!state.hideAnswer && state.showReact && roleAt(pack, abs).near) bits.push('<circle cx="' + xc + '" cy="' + y(bar.c) + '" r="4" fill="none" stroke="#ffffff" stroke-width="1.4"></circle>');
+        if (state.cursor === abs) bits.push('<line x1="' + xc + '" y1="' + top + '" x2="' + xc + '" y2="' + (top + priceH) + '" stroke="rgba(255,255,255,.45)" stroke-dasharray="3 3"></line>');
+      });
+      function poly(series, color, dash) {
+        var pts = [];
+        draw.forEach(function (bar, i) {
+          var value = series[from + i];
+          if (value != null) pts.push((padL + i * slot + slot / 2).toFixed(1) + ',' + y(value).toFixed(1));
+        });
+        if (pts.length > 1) bits.push('<polyline points="' + pts.join(' ') + '" fill="none" stroke="' + color + '" stroke-width="2.4"' + (dash ? ' stroke-dasharray="7 4"' : '') + '></polyline>');
+      }
+      if (state.showFast) poly(pack.fast, '#f4cb82', false);
+      if (state.showSlow) poly(pack.slow, '#8eb4ff', true);
+      draw.forEach(function (bar, i) {
+        var abs = from + i;
+        bits.push('<rect data-bar="' + abs + '" x="' + (padL + i * slot) + '" y="' + top + '" width="' + slot + '" height="' + (priceH + 8) + '" fill="transparent" style="cursor:pointer"></rect>');
+      });
+      bits.push('</svg>');
+      var steps = [
+        ['watch', zh ? '看懂' : 'Watch'],
+        ['mark', zh ? '自己标记' : 'Mark'],
+        ['judge', zh ? '判断真假' : 'True or false'],
+        ['fail', zh ? '失败案例' : 'Failure'],
+        ['exam', zh ? '新行情考试' : 'New tape']
+      ];
+      var scenesBtns = ['trend', 'range', 'crash'].map(function (id) {
+        var item = scenes[id];
+        return '<button type="button" data-scene="' + id + '" aria-pressed="' + (state.scene === id) + '">' + esc(zh ? item.zh : item.en) + '</button>';
+      }).join('');
+      var judge = '';
+      if (state.step === 'judge') {
+        var q = state.scene === 'range'
+          ? { ask: zh ? '快线上穿慢线，但价格在窄幅来回。能否直接判定随后上涨？' : 'The fast line crosses above the slow line while price chops. Can you decide that price must then rise?', answer: 'A', options: [['A', zh ? '不能，交叉可能反复' : 'No, crosses can repeat'], ['B', zh ? '能，金叉必涨' : 'Yes, a cross must rise'], ['C', zh ? '只有第一根算' : 'Only the first one counts']] }
+          : state.scene === 'crash'
+            ? { ask: zh ? '大阴线已经穿过均线。均线有没有马上变成这根收盘价？' : 'The long red candle has crossed the average. Did the average become that close at once?', answer: 'B', options: [['A', zh ? '有，它会跳过去' : 'Yes, it jumps there'], ['B', zh ? '没有，它还在慢慢跟上' : 'No, it is still catching up'], ['C', zh ? '只有慢线会跳' : 'Only the slow line jumps']] }
+            : { ask: zh ? '收盘离快线不到 0.3%。这是不是已经确认反弹？' : 'The close is within 0.3% of the fast line. Is the bounce already confirmed?', answer: 'B', options: [['A', zh ? '已经确认，可以买' : 'Yes, it is confirmed'], ['B', zh ? '还没有，靠近和确认不是同一件事' : 'No. Near and confirmed are different'], ['C', zh ? '只有跌破才算靠近' : 'Only a break below counts as near']] };
+        judge = '<p>' + esc(q.ask) + '</p><div class="a1-modes">' + q.options.map(function (opt) {
+          return '<button type="button" data-judge="' + opt[0] + '" data-answer="' + q.answer + '">' + opt[0] + '. ' + esc(opt[1]) + '</button>';
+        }).join('') + '</div>';
+      }
+      var exam = '';
+      if (state.step === 'exam' && !state.examOk) {
+        exam = '<p>' + (zh ? '先别看均线。已经放出来的这段，主要方向是？' : 'Leave the averages off. What is the main direction of the candles shown so far?') + '</p><div class="a1-modes">' +
+          '<button type="button" data-trend="up">' + (zh ? '上涨' : 'Rising') + '</button>' +
+          '<button type="button" data-trend="flat">' + (zh ? '横盘' : 'Sideways') + '</button>' +
+          '<button type="button" data-trend="down">' + (zh ? '下跌' : 'Falling') + '</button></div>';
+      }
+      if (state.step === 'exam' && state.examOk) {
+        exam = '<div class="a1-modes"><button type="button" data-lines="1" aria-pressed="' + (state.showFast && state.showSlow) + '">' + (zh ? '打开 EMA 核对' : 'Turn EMA on') + '</button></div>';
+      }
+      var note = state.note || readout(pack) || taskText();
+      root.innerHTML =
+        '<div class="a1">' +
+        '<p class="a1-flag">' + (zh ? '模拟，不是实时行情。教学虚构，不是投资建议。' : 'Simulated, not a live price. Teaching fiction, not investment advice.') + '</p>' +
+        '<div class="a1-modes">' + steps.map(function (item) {
+          return '<button type="button" data-step="' + item[0] + '" aria-pressed="' + (state.step === item[0]) + '">' + item[1] + '</button>';
+        }).join('') + '</div>' +
+        '<div class="a1-modes">' + scenesBtns + '</div>' +
+        '<p>' + esc(taskText()) + '</p>' +
+        '<div class="a1-modes">' +
+        '<button type="button" data-move="play" aria-pressed="' + state.playing + '">' + (state.playing ? (zh ? '暂停' : 'Pause') : (zh ? '播放' : 'Play')) + '</button>' +
+        '<button type="button" data-move="-1">' + (zh ? '上一根' : 'Previous') + '</button>' +
+        '<button type="button" data-move="1">' + (zh ? '下一根' : 'Next') + '</button>' +
+        '<button type="button" data-move="reset">' + (zh ? '重置' : 'Reset') + '</button>' +
+        '<span>' + state.shown + ' / ' + maxShown() + (zh ? '，后面先隐藏' : ', later bars hidden') + '</span></div>' +
+        '<div class="a1-fields">' +
+        '<label>EMA <input data-n="fast" type="number" min="5" max="200" value="' + state.fastN + '"></label>' +
+        '<label>EMA <input data-n="slow" type="number" min="5" max="200" value="' + state.slowN + '"></label>' +
+        '<button type="button" data-layer="fast" aria-pressed="' + state.showFast + '">' + (zh ? '快线' : 'Fast') + '</button>' +
+        '<button type="button" data-layer="slow" aria-pressed="' + state.showSlow + '">' + (zh ? '慢线' : 'Slow') + '</button>' +
+        '<button type="button" data-layer="both" aria-pressed="' + (state.showFast && state.showSlow) + '">' + (zh ? '双线' : 'Both') + '</button>' +
+        '<button type="button" data-layer="cross" aria-pressed="' + state.showCross + '">' + (zh ? '标出交叉' : 'Show crosses') + '</button>' +
+        '<button type="button" data-layer="react" aria-pressed="' + state.showReact + '">' + (zh ? '显示靠近' : 'Show near bars') + '</button>' +
+        '<button type="button" data-layer="hide" aria-pressed="' + state.hideAnswer + '">' + (state.hideAnswer ? (zh ? '答案隐藏中' : 'Answers hidden') : (zh ? '答案已显示' : 'Answers shown')) + '</button></div>' +
+        '<div class="ema-scroll">' + bits.join('') + '</div>' +
+        '<p class="star-key"><span><i style="background:#f4cb82"></i>EMA' + state.fastN + '</span><span><i style="background:#8eb4ff"></i>EMA' + state.slowN + (zh ? ' 虚线' : ' dashed') + '</span><span><i style="background:#1f8a4d"></i>' + (zh ? '阳线' : 'Up') + '</span><span><i style="background:#d4534e"></i>' + (zh ? '阴线' : 'Down') + '</span></p>' +
+        judge + exam +
+        '<p class="a2-readout ' + state.tone + '">' + note + '</p>' +
+        '<p class="ema-note">' + (zh
+          ? '公式：α=2/(N+1)。种子是前 N 根收盘的简单平均，之后 EMA=α×收盘+(1−α)×上一根 EMA。不够 N 根显示数据不足，不画 0。靠近的教学规则是 |收盘−快线|/快线≤0.3%，不是通用买卖信号。成交量在 K 线下方。'
+          : 'Formula: α=2/(N+1). The seed is the simple average of the first N closes, then EMA=α×close+(1−α)×previous EMA. Fewer than N bars says not ready, and does not draw 0. A near bar means |close−fast|/fast≤0.3%. That is a teaching rule, not a general signal. Volume sits under the candles.') + '</p></div>';
+    }
+    function setShown(next) {
+      state.shown = Math.max(1, Math.min(maxShown(), next));
+      if (state.cursor != null && state.cursor >= scene().visibleFrom + state.shown) state.cursor = null;
+    }
+    function enter(step) {
+      stop();
+      state.step = step;
+      state.marks = [];
+      state.cursor = null;
+      state.note = '';
+      state.tone = '';
+      state.examPick = '';
+      state.examOk = false;
+      if (step === 'fail') {
+        state.scene = state.scene === 'range' ? 'crash' : 'range';
+        state.hideAnswer = true;
+        state.showCross = false;
+        state.showFast = true;
+        state.showSlow = true;
+      }
+      if (step === 'exam') {
+        state.scene = 'exam';
+        state.hideAnswer = true;
+        state.showFast = false;
+        state.showSlow = false;
+        state.shown = Math.max(1, (scene().crash[0] || scene().visibleFrom + 30) - scene().visibleFrom);
+      } else if (step !== 'fail') {
+        if (state.scene === 'exam') state.scene = 'trend';
+        state.shown = 30;
+        state.showFast = true;
+        state.showSlow = true;
+      } else {
+        state.shown = 30;
+      }
+      paint();
+    }
+    if (root._emaClick) root.removeEventListener('click', root._emaClick);
+    root._emaClick = function (ev) {
+      var el = ev.target.closest ? ev.target.closest('[data-step],[data-scene],[data-move],[data-layer],[data-bar],[data-judge],[data-trend],[data-lines]') : null;
+      if (!el || !root.contains(el)) return;
+      if (el.hasAttribute('data-step')) { enter(el.getAttribute('data-step')); return; }
+      if (el.hasAttribute('data-scene')) {
+        stop();
+        state.scene = el.getAttribute('data-scene');
+        state.step = 'mark';
+        state.marks = [];
+        state.note = '';
+        state.tone = '';
+        state.shown = 30;
+        state.showFast = true;
+        state.showSlow = true;
+        paint();
+        return;
+      }
+      if (el.hasAttribute('data-move')) {
+        var move = el.getAttribute('data-move');
+        if (move === 'play') {
+          if (state.playing) { stop(); paint(); return; }
+          state.playing = true;
+          root._emaTimer = setInterval(function () {
+            if (!root.isConnected) { stop(); return; }
+            if (state.shown >= maxShown()) { stop(); paint(); return; }
+            setShown(state.shown + 1);
+            paint();
+          }, 280);
+          paint();
+          return;
+        }
+        if (move === 'reset') {
+          stop();
+          state.marks = [];
+          state.cursor = null;
+          state.note = '';
+          state.tone = '';
+          state.shown = state.step === 'exam' ? Math.max(1, (scene().crash[0] || 0) - scene().visibleFrom) : 30;
+          paint();
+          return;
+        }
+        setShown(state.shown + Number(move));
+        paint();
+        return;
+      }
+      if (el.hasAttribute('data-layer')) {
+        var layer = el.getAttribute('data-layer');
+        if (layer === 'fast') state.showFast = !state.showFast;
+        if (layer === 'slow') state.showSlow = !state.showSlow;
+        if (layer === 'both') { state.showFast = true; state.showSlow = true; }
+        if (layer === 'cross') state.showCross = !state.showCross;
+        if (layer === 'react') state.showReact = !state.showReact;
+        if (layer === 'hide') state.hideAnswer = !state.hideAnswer;
+        paint();
+        return;
+      }
+      if (el.hasAttribute('data-bar')) {
+        var index = Number(el.getAttribute('data-bar'));
+        state.cursor = index;
+        if (state.step === 'mark' || state.step === 'fail' || (state.step === 'exam' && state.examOk)) {
+          var at = state.marks.indexOf(index);
+          if (at >= 0) state.marks.splice(at, 1);
+          else state.marks.push(index);
+          if (state.step === 'exam' && (!state.examOk || !(state.showFast && state.showSlow))) {
+            state.note = zh ? '先判断方向，再打开两条均线，然后点那根大阴线。' : 'Judge the direction, turn both lines on, then mark the long red candle.';
+            state.tone = '';
+          } else {
+            var graded = gradeMarks(prefix());
+            state.note = graded.text;
+            state.tone = graded.tone;
+          }
+        } else {
+          state.note = '';
+          state.tone = '';
+        }
+        paint();
+        return;
+      }
+      if (el.hasAttribute('data-judge')) {
+        var pick = el.getAttribute('data-judge');
+        var answer = el.getAttribute('data-answer');
+        var right = pick === answer;
+        state.tone = right ? 'is-right' : 'is-wrong';
+        state.note = right
+          ? (zh ? '对。这只说明你看懂了定义，不是叫你下单。' : 'Correct. That only means the definition is clear. It is not an order.')
+          : (answer === 'A'
+            ? (zh ? '不对。窄幅里的上穿会反复出现，不能直接判定随后上涨。' : 'No. An upward cross in a narrow range can repeat. It does not decide a later rise.')
+            : (zh ? '不对。靠近、穿过，都还不是下一根的保证。' : 'No. Being near, or crossing, is still not a promise about the next bar.'));
+        paint();
+        return;
+      }
+      if (el.hasAttribute('data-trend')) {
+        var trend = el.getAttribute('data-trend');
+        state.examPick = trend;
+        state.examOk = trend === 'up';
+        state.tone = state.examOk ? 'is-right' : 'is-wrong';
+        state.note = state.examOk
+          ? (zh ? '对。放出来的这一段收盘在抬高。这只是已经发生的方向，不是下一根必涨。可以打开均线了。' : 'Correct. The candles shown so far close higher. That is the past direction, not a promise for the next bar. You can turn the averages on.')
+          : (zh ? '先看已经放出来的这些阳线。收盘整体在抬高，还没到后面那根大阴线。' : 'Look at the candles already shown. The closes are rising. The long red candle is still hidden.');
+        paint();
+        return;
+      }
+      if (el.hasAttribute('data-lines')) {
+        state.showFast = true;
+        state.showSlow = true;
+        state.note = zh ? '均线打开了。把后面的 K 线放出来，点那根收盘先穿过、均线还没跟上的大阴线。' : 'The averages are on. Reveal the later candles and mark the one whose close crosses while the average lags.';
+        paint();
+      }
+    };
+    root.addEventListener('click', root._emaClick);
+    if (root._emaChange) root.removeEventListener('change', root._emaChange);
+    root._emaChange = function (ev) {
+      var input = ev.target;
+      if (!input || !input.getAttribute || !input.getAttribute('data-n')) return;
+      var value = Math.max(5, Math.min(200, Math.round(Number(input.value) || 20)));
+      if (input.getAttribute('data-n') === 'fast') state.fastN = value;
+      else state.slowN = value;
+      state.marks = [];
+      state.note = zh ? '周期已改成 ' + value + '，两条线按同一条公式重算。之前的标记清掉了。' : 'Period is now ' + value + '. Both lines were recalculated with the same formula. Earlier marks were cleared.';
+      state.tone = '';
+      paint();
+    };
+    root.addEventListener('change', root._emaChange);
+    if (root._emaKey) root.removeEventListener('keydown', root._emaKey);
+    root.tabIndex = 0;
+    root._emaKey = function (ev) {
+      if (ev.key !== 'ArrowRight' && ev.key !== 'ArrowLeft') return;
+      ev.preventDefault();
+      setShown(state.shown + (ev.key === 'ArrowRight' ? 1 : -1));
+      paint();
+    };
+    root.addEventListener('keydown', root._emaKey);
+    paint();
+  }
+  var study = global.STAR_STUDY;
+  if (study && !study._emaWrapped) {
+    var inner = study.mount;
+    study.mount = function (root, lesson, lang) {
+      if (lesson && lesson.study && lesson.study.lessonChart === 'ema-full') return mount(root, lesson, lang);
+      return inner.apply(this, arguments);
+    };
+    study._emaWrapped = true;
+  }
+  global.STAR_CH02_EMA = { ema: ema, crosses: crosses, nearLine: nearLine, buildScenes: buildScenes, mount: mount };
+})(typeof window !== 'undefined' ? window : global);
