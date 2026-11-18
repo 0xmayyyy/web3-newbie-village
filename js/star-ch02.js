@@ -219,14 +219,14 @@
         id: '06',
         title: bi('斐波那契：参考位不是魔法价', 'Fibonacci: a reference level is not a magic price'),
         scene: bi('价格碰到 0.618 就一定会弹回去吗？', 'Must price bounce when it touches 0.618?'),
-        one: bi('斐波那契回撤只是把一段高点和低点按比例分成参考位。价格不必在那里转身。', 'A Fibonacci retracement only divides a high and a low into reference levels. Price does not have to turn there.'),
-        explain: bi('先定这一段的低点 L 和高点 H。\n上涨回撤：价格=H−(H−L)×比例。\n下跌回撤：价格=L+(H−L)×比例。\n0.5 是中点，不是严格的斐波那契比例。\n锚点一改，所有价位都跟着改。', 'First fix the low L and the high H of the swing.\nFor an up retracement, price=H−(H−L)×ratio.\nFor a down retracement, price=L+(H−L)×ratio.\n0.5 is the midpoint. It is not a strict Fibonacci ratio.\nIf you move an anchor, every level moves with it.'),
-        example: bi('L=100，H=140。\n0 在 140，1 在 100。\n0.236 在 130.56。\n0.382 在 124.72。\n0.5 在 120。\n0.618 在 115.28。\n0.786 在 108.56。', 'L=100 and H=140.\n0 is at 140 and 1 is at 100.\n0.236 is at 130.56.\n0.382 is at 124.72.\n0.5 is at 120.\n0.618 is at 115.28.\n0.786 is at 108.56.'),
+        one: bi('斐波那契回撤只是把一段高点和低点按比例分成参考位，价格不必在那里转身。', 'A Fibonacci retracement only divides a high and a low into reference levels, so price does not have to turn there.'),
+        explain: bi('先定这一段的低点 L 和高点 H。\n上涨回撤：价格=H−(H−L)×比例。\n0 在高点，1 在低点。\n下跌回撤：价格=L+(H−L)×比例。\n0 在低点，1 在高点。\n0.5 是中点，不是严格的斐波那契比例。\n扩展用两点：价格=起点+(终点−起点)×比例。\n1.272 和 1.618 在波段外面。\n两个锚点相同就不能画。\n锚点一改，所有价位都跟着改。\n碰到 0.618 也不保证反弹。', 'First fix the low L and the high H of the swing.\nFor an up retracement, price=H−(H−L)×ratio.\n0 is at the high, and 1 is at the low.\nFor a down retracement, price=L+(H−L)×ratio.\n0 is at the low, and 1 is at the high.\n0.5 is the midpoint. It is not a strict Fibonacci ratio.\nAn extension uses two points: price=start+(end−start)×ratio.\n1.272 and 1.618 sit outside the swing.\nIf the two anchors are the same, no lines are drawn.\nIf you move an anchor, every level moves with it.\nTouching 0.618 still does not guarantee a bounce.'),
+        example: bi('教学模拟：L=100，H=140。\n上涨回撤的 0 在 140，1 在 100。\n0.236 在 130.56。\n0.382 在 124.72。\n0.5 在 120。\n0.618 在 115.28。\n0.786 在 108.56。\n另一段教学模拟从 60000 涨到 70000。\n0.618 在 63820。\n价格仍可以穿过它继续走。', 'Teaching simulation: L=100 and H=140.\nOn an up retracement, 0 is at 140 and 1 is at 100.\n0.236 is at 130.56.\n0.382 is at 124.72.\n0.5 is at 120.\n0.618 is at 115.28.\n0.786 is at 108.56.\nAnother teaching simulation rises from 60000 to 70000.\n0.618 is at 63820.\nPrice can still pass through it and keep going.'),
         pitfalls: [
           bi('把 0.618 当成必须成交的反转价', 'Treating 0.618 as a reversal price that must trade'),
           bi('锚点换了却沿用旧价位', 'Keeping old prices after the anchors moved')
         ],
-        practice: bi('在图上切换上涨回撤和下跌回撤，看 0.618 的价格是否改变。', 'Switch between the up and down retracement and see whether the 0.618 price changes.'),
+        practice: bi('先点低点，再点高点。看 0.618 的价格。再把后面的 K 线放出来，看它会不会穿过这条线。', 'Tap the low, then the high. Read the 0.618 price. Then reveal the later candles and see whether price passes that line.'),
         check: {
           ask: bi('100 到 140 的上涨回撤，0.618 在哪里？', 'For an up retracement from 100 to 140, where is 0.618?'),
           options: [opt('A', '115.28', '115.28'), opt('B', '140', '140'), opt('C', '86.48', '86.48')],
@@ -234,23 +234,23 @@
           miss: bi('140−40×0.618=115.28。\n140 是高点本身。', '140−40×0.618=115.28.\n140 is the high itself.')
         },
         quizzes: [
-          quiz('100 到 140，上涨回撤的 0.618 是？', 'From 100 to 140, what is the 0.618 up-retracement?', [opt('A', '115.28', '115.28'), opt('B', '124.72', '124.72'), opt('C', '130.56', '130.56')], 'A', {
-            A: ['40×0.618=24.72，140−24.72=115.28。', '40×0.618=24.72, and 140−24.72=115.28.'],
+          quiz('100 到 140 的 0.618 回撤约是多少？', 'About where is the 0.618 retracement from 100 to 140?', [opt('A', '115.28', '115.28'), opt('B', '124.72', '124.72'), opt('C', '140', '140')], 'A', {
+            A: ['140−(140−100)×0.618=115.28。', '140−(140−100)×0.618=115.28.'],
             B: ['124.72 是 0.382，不是 0.618。', '124.72 is 0.382, not 0.618.'],
-            C: ['130.56 是 0.236。', '130.56 is 0.236.']
+            C: ['140 是高点本身，对应比例 0，不是 0.618。', '140 is the high itself. That is ratio 0, not 0.618.']
           }),
-          quiz('价格必须在 0.618 反弹吗？', 'Must price bounce at 0.618?', [opt('A', '必须', 'It must'), opt('B', '否', 'No'), opt('C', '只在整数位必须', 'Only at round numbers')], 'B', {
-            A: ['这是参考比例，不是成交指令。', 'It is a reference ratio, not an order to trade.'],
-            B: ['价格可以穿过、停住或根本不碰这个价。', 'Price can pass through it, pause, or never touch it.'],
-            C: ['整数位同样不是必到价。', 'A round number is not a price that must be reached either.']
+          quiz('0.618 必反弹吗？', 'Must price bounce at 0.618?', [opt('A', '是', 'Yes'), opt('B', '否', 'No'), opt('C', '只在牛市', 'Only in a bull market')], 'B', {
+            A: ['比例没有“必须反弹”这一项。', 'The ratio has no clause that says price must bounce.'],
+            B: ['价格可以穿过、停住，或根本不碰这条线。', 'Price can pass through it, pause, or never touch the line.'],
+            C: ['牛市这个名字不改变公式。', 'The word bull market does not change the formula.']
           }),
-          quiz('锚点改变后，这些价位会动吗？', 'If an anchor changes, do these prices move?', [opt('A', '会', 'Yes'), opt('B', '不会', 'No'), opt('C', '只有 0.5 会动', 'Only 0.5 moves')], 'A', {
-            A: ['每个价位都由 L 和 H 算出来，锚点变了结果就变。', 'Every price is calculated from L and H. Change an anchor and the result changes.'],
-            B: ['旧锚点的价位不能继续套在新的一段上。', 'Prices from the old anchors cannot stay pasted onto a new swing.'],
-            C: ['0.236、0.618 和其他比例一起变。', '0.236, 0.618, and the other ratios all move together.']
+          quiz('锚点改变后，价位会变吗？', 'If an anchor changes, do the prices change?', [opt('A', '会', 'Yes'), opt('B', '不会', 'No'), opt('C', '只变颜色', 'Only the color changes')], 'A', {
+            A: ['每个价位都由两个锚点算出来。锚点变了，价位就变。', 'Every price is calculated from the two anchors. Move an anchor and the prices move.'],
+            B: ['旧价位不能继续套在新的锚点上。', 'The old prices cannot stay pasted onto the new anchors.'],
+            C: ['颜色没变，变的是算出来的价格。', 'The color stays. What changes is the calculated price.']
           })
         ],
-        study: { kind: 'fib', closes: [100, 108, 116, 124, 132, 140, 136, 128, 120], low: 100, high: 140, start: 6 }
+        study: { kind: 'fib', lessonChart: 'fib-full', closes: [100, 108, 116, 124, 132, 140, 136, 128, 120], low: 100, high: 140, start: 6 }
       }),
       lesson({
         id: '07',
@@ -2451,4 +2451,297 @@
     study._divWrapped = true;
   }
   global.STAR_CH02_DIV = { rsi: rsi, buildScenes: buildScenes, classic: CLASSIC, mount: mount };
+})(typeof window !== 'undefined' ? window : global);
+
+/* Fibonacci lesson chart. Level math lives here, not in the lab. */
+(function (global) {
+  var RETRACE = [0, 0.236, 0.382, 0.5, 0.618, 0.786, 1];
+  var EXTEND = [1.272, 1.618];
+  function round2(n) { return Math.round(n * 100) / 100; }
+  function unit(i, salt) {
+    var x = Math.imul((i + 1) ^ (salt * 131), 1103515245) + 12345;
+    x = (x ^ (x >>> 16)) >>> 0;
+    return (x % 10000) / 10000;
+  }
+  function levels(low, high, dir, mode) {
+    if (low == null || high == null || low === high) return null;
+    var span = high - low;
+    var ratios = mode === 'extend' ? EXTEND : RETRACE;
+    return ratios.map(function (ratio) {
+      var price;
+      if (mode === 'extend') price = dir === 'up' ? low + span * ratio : high - span * ratio;
+      else price = dir === 'up' ? high - span * ratio : low + span * ratio;
+      return { r: ratio, price: round2(price) };
+    });
+  }
+  function tape() {
+    var bars = [];
+    var price = 64000;
+    var i;
+    for (i = 0; i < 92; i++) {
+      var open = price;
+      var close = open;
+      if (i < 20) close = round2(open - 160 - unit(i, 3) * 80);
+      else if (i === 20) close = 60240;
+      else if (i < 50) close = round2(open + 220 + unit(i, 7) * 140);
+      else if (i === 50) close = 69680;
+      else close = round2(Math.max(60800, open - 180 - unit(i, 11) * 90));
+      if (i !== 20 && i !== 50 && unit(i, 17) > 0.82) close = round2(open + (open - close) * 0.5);
+      var upW = 18 + unit(i, 19) * 50;
+      var dnW = 14 + unit(i, 23) * 40;
+      bars.push({
+        t: i,
+        o: open,
+        h: round2(Math.max(open, close) + upW),
+        l: round2(Math.min(open, close) - dnW),
+        c: close,
+        v: 40 + Math.floor(unit(i, 29) * 70)
+      });
+      price = close;
+    }
+    bars[20].l = 60000;
+    bars[20].o = Math.max(bars[20].o, 60100);
+    bars[20].c = Math.max(bars[20].c, 60240);
+    bars[20].h = Math.max(bars[20].h, bars[20].o, bars[20].c);
+    bars[50].h = 70000;
+    bars[50].o = Math.min(bars[50].o, 69400);
+    bars[50].c = Math.min(bars[50].c, 69680);
+    bars[50].l = Math.min(bars[50].l, bars[50].o, bars[50].c);
+    return { bars: bars, lowAt: 20, highAt: 50, version: 1, source: 'sim-btc-usdt-fib-v1' };
+  }
+  function mount(root, lesson, lang) {
+    var zh = lang !== 'en';
+    var data = tape();
+    var state = {
+      dir: 'up',
+      mode: 'retrace',
+      shown: 56,
+      a: null,
+      b: null,
+      cursor: null,
+      past: [],
+      future: [],
+      playing: false,
+      note: '',
+      tone: ''
+    };
+    if (root._fibTimer) clearInterval(root._fibTimer);
+    function stop() {
+      state.playing = false;
+      if (root._fibTimer) clearInterval(root._fibTimer);
+      root._fibTimer = null;
+    }
+    function snap(index) {
+      var bar = data.bars[index];
+      if (!bar) return null;
+      var first = state.a == null;
+      var price = state.dir === 'up' ? (first ? bar.l : bar.h) : (first ? bar.h : bar.l);
+      return { index: index, price: price, t: bar.t };
+    }
+    function remember() {
+      state.past.push({ a: state.a, b: state.b, dir: state.dir, mode: state.mode });
+      if (state.past.length > 20) state.past.shift();
+      state.future = [];
+    }
+    function anchors() {
+      if (!state.a || !state.b) return null;
+      var low = Math.min(state.a.price, state.b.price);
+      var high = Math.max(state.a.price, state.b.price);
+      return { low: low, high: high, lines: levels(low, high, state.dir, state.mode) };
+    }
+    function paint() {
+      var draw = data.bars.slice(0, state.shown);
+      var w = 980;
+      var h = 420;
+      var padL = 12;
+      var padR = 108;
+      var top = 16;
+      var plotH = 360;
+      var vals = [];
+      draw.forEach(function (bar) { vals.push(bar.h, bar.l); });
+      var drawn = anchors();
+      if (drawn && drawn.lines) drawn.lines.forEach(function (line) { vals.push(line.price); });
+      var min = Math.min.apply(null, vals);
+      var max = Math.max.apply(null, vals);
+      var span = max - min || 1;
+      min -= span * 0.08;
+      max += span * 0.08;
+      function y(p) { return top + (max - p) / (max - min) * plotH; }
+      var slot = (w - padL - padR) / Math.max(draw.length, 1);
+      var bits = ['<svg viewBox="0 0 ' + w + ' ' + h + '" role="img">'];
+      bits.push('<rect width="' + w + '" height="' + h + '" fill="#120e21"></rect>');
+      var g;
+      for (g = 0; g < 4; g++) {
+        var price = min + (max - min) * g / 3;
+        var gy = y(price);
+        bits.push('<line x1="' + padL + '" y1="' + gy + '" x2="' + (w - padR) + '" y2="' + gy + '" stroke="rgba(230,199,158,.16)"></line>');
+        bits.push('<text x="' + (w - 8) + '" y="' + (gy + 4) + '" text-anchor="end" fill="#d4bc9e" font-size="13">' + Math.round(price) + '</text>');
+      }
+      draw.forEach(function (bar, i) {
+        var up = bar.c >= bar.o;
+        var color = up ? '#1f8a4d' : '#d4534e';
+        var xc = padL + i * slot + slot / 2;
+        var bw = Math.max(2.4, slot * 0.55);
+        bits.push('<line x1="' + xc + '" y1="' + y(bar.h) + '" x2="' + xc + '" y2="' + y(bar.l) + '" stroke="' + color + '"></line>');
+        bits.push('<rect x="' + (xc - bw / 2) + '" y="' + Math.min(y(bar.o), y(bar.c)) + '" width="' + bw + '" height="' + Math.max(1.3, Math.abs(y(bar.c) - y(bar.o))) + '" fill="' + color + '"></rect>');
+        if (i % 12 === 0) bits.push('<text x="' + xc + '" y="408" fill="#b7aac8" font-size="12">' + (i + 1) + '</text>');
+        if (state.a && state.a.index === i) bits.push('<circle cx="' + xc + '" cy="' + y(state.a.price) + '" r="6" fill="none" stroke="#f4cb82" stroke-width="2"></circle>');
+        if (state.b && state.b.index === i) bits.push('<circle cx="' + xc + '" cy="' + y(state.b.price) + '" r="6" fill="none" stroke="#8eb4ff" stroke-width="2"></circle>');
+      });
+      if (drawn && drawn.lines) {
+        drawn.lines.forEach(function (line) {
+          var yy = y(line.price);
+          bits.push('<line x1="' + padL + '" y1="' + yy + '" x2="' + (w - padR) + '" y2="' + yy + '" stroke="#f0d59a" stroke-dasharray="5 3"></line>');
+          var label = line.r + '  ' + line.price + (line.r === 0.5 ? (zh ? ' 中点' : ' mid') : '');
+          bits.push('<text x="' + (padL + 6) + '" y="' + (yy - 4) + '" fill="#f0d59a" font-size="13">' + label + '</text>');
+        });
+      } else if (state.a && state.b && state.a.price === state.b.price) {
+        bits.push('<text x="' + (padL + 12) + '" y="40" fill="#f0d59a" font-size="16">' + (zh ? '两个锚点重合，请重新选择' : 'The anchors are the same. Pick again.') + '</text>');
+      }
+      draw.forEach(function (bar, i) {
+        bits.push('<rect data-bar="' + i + '" x="' + (padL + i * slot) + '" y="' + top + '" width="' + slot + '" height="' + plotH + '" fill="transparent"></rect>');
+      });
+      bits.push('</svg>');
+      var hint = state.a == null
+        ? (state.dir === 'up' ? (zh ? '先点这一段的低点。它会吸到那根 K 线的最低价。' : 'Tap the low of this swing first. It snaps to that candle’s low.') : (zh ? '先点这一段的高点。它会吸到那根 K 线的最高价。' : 'Tap the high of this swing first. It snaps to that candle’s high.'))
+        : (state.b == null
+          ? (state.dir === 'up' ? (zh ? '再点这一段的高点。' : 'Now tap the high of this swing.') : (zh ? '再点这一段的低点。' : 'Now tap the low of this swing.'))
+          : (zh ? '线已经按你的两个锚点重算。播放后面的 K 线，看价格是否穿过 0.618。' : 'The lines were recalculated from your two anchors. Play the later candles and see whether price crosses 0.618.'));
+      root.innerHTML =
+        '<div class="a1"><p class="a1-flag">' + (zh ? '模拟 BTC/USDT，不是实时行情。教学虚构，不是投资建议。' : 'Simulated BTC/USDT, not a live price. Teaching fiction, not investment advice.') + '</p>' +
+        '<div class="a1-modes">' +
+        '<button type="button" data-dir="up" aria-pressed="' + (state.dir === 'up') + '">' + (zh ? '上涨回撤' : 'Up retracement') + '</button>' +
+        '<button type="button" data-dir="down" aria-pressed="' + (state.dir === 'down') + '">' + (zh ? '下跌回撤' : 'Down retracement') + '</button>' +
+        '<button type="button" data-mode="retrace" aria-pressed="' + (state.mode === 'retrace') + '">' + (zh ? '回撤' : 'Retracement') + '</button>' +
+        '<button type="button" data-mode="extend" aria-pressed="' + (state.mode === 'extend') + '">' + (zh ? '扩展' : 'Extension') + '</button></div>' +
+        '<p>' + hint + '</p>' +
+        '<div class="a1-modes"><button type="button" data-move="play">' + (state.playing ? (zh ? '暂停' : 'Pause') : (zh ? '播放' : 'Play')) + '</button>' +
+        '<button type="button" data-move="-1">' + (zh ? '上一根' : 'Previous') + '</button><button type="button" data-move="1">' + (zh ? '下一根' : 'Next') + '</button>' +
+        '<button type="button" data-act="undo">' + (zh ? '撤销' : 'Undo') + '</button><button type="button" data-act="redo">' + (zh ? '重做' : 'Redo') + '</button>' +
+        '<button type="button" data-act="clear">' + (zh ? '重画' : 'Redraw') + '</button><button type="button" data-act="reset">' + (zh ? '重置' : 'Reset') + '</button>' +
+        '<button type="button" data-act="sample">' + (zh ? '核对 100→140' : 'Check 100 to 140') + '</button>' +
+        '<span>' + state.shown + ' / ' + data.bars.length + (zh ? '，后面先隐藏' : ', later bars hidden') + '</span></div>' +
+        '<div class="fib-scroll">' + bits.join('') + '</div>' +
+        '<p class="a2-readout ' + state.tone + '">' + (state.note || hint) + '</p>' +
+        '<p class="ema-note">' + (zh
+          ? '上涨回撤：价格=H−(H−L)×比例，0 在高点。下跌回撤：价格=L+(H−L)×比例，0 在低点。扩展：价格=起点+(终点−起点)×比例。0.5 是常用中点，不是严格的斐波那契数列比率。两个锚点相同就不画。'
+          : 'Up retracement: price=H−(H−L)×ratio, and 0 is at the high. Down retracement: price=L+(H−L)×ratio, and 0 is at the low. Extension: price=start+(end−start)×ratio. 0.5 is a common midpoint, not a strict Fibonacci-sequence ratio. Equal anchors draw nothing.') + '</p></div>';
+    }
+    function setShown(next) {
+      state.shown = Math.max(8, Math.min(data.bars.length, next));
+    }
+    if (root._fibClick) root.removeEventListener('click', root._fibClick);
+    root._fibClick = function (ev) {
+      var el = ev.target.closest ? ev.target.closest('[data-dir],[data-mode],[data-move],[data-act],[data-bar]') : null;
+      if (!el || !root.contains(el)) return;
+      if (el.hasAttribute('data-dir')) {
+        remember();
+        state.dir = el.getAttribute('data-dir');
+        state.note = zh ? '方向改了。同一对锚点会按另一条公式重算。' : 'The direction changed. The same anchors are recalculated with the other formula.';
+        state.tone = '';
+        paint();
+        return;
+      }
+      if (el.hasAttribute('data-mode')) {
+        remember();
+        state.mode = el.getAttribute('data-mode');
+        state.note = state.mode === 'extend'
+          ? (zh ? '现在是两点扩展。1.272 和 1.618 在这段外面。' : 'This is a two-point extension. 1.272 and 1.618 sit outside the swing.')
+          : (zh ? '现在是回撤。0.618 只是参考位。' : 'This is a retracement. 0.618 is only a reference.');
+        state.tone = '';
+        paint();
+        return;
+      }
+      if (el.hasAttribute('data-move')) {
+        var move = el.getAttribute('data-move');
+        if (move === 'play') {
+          if (state.playing) { stop(); paint(); return; }
+          state.playing = true;
+          root._fibTimer = setInterval(function () {
+            if (!root.isConnected || state.shown >= data.bars.length) { stop(); paint(); return; }
+            setShown(state.shown + 1);
+            paint();
+          }, 280);
+          paint();
+          return;
+        }
+        setShown(state.shown + Number(move));
+        paint();
+        return;
+      }
+      if (el.hasAttribute('data-act')) {
+        var act = el.getAttribute('data-act');
+        if (act === 'undo' && state.past.length) {
+          state.future.push({ a: state.a, b: state.b, dir: state.dir, mode: state.mode });
+          var prev = state.past.pop();
+          state.a = prev.a; state.b = prev.b; state.dir = prev.dir; state.mode = prev.mode;
+        } else if (act === 'redo' && state.future.length) {
+          state.past.push({ a: state.a, b: state.b, dir: state.dir, mode: state.mode });
+          var next = state.future.pop();
+          state.a = next.a; state.b = next.b; state.dir = next.dir; state.mode = next.mode;
+        } else if (act === 'clear') {
+          remember();
+          state.a = null; state.b = null;
+        } else if (act === 'reset') {
+          stop();
+          state.dir = 'up'; state.mode = 'retrace'; state.a = null; state.b = null; state.past = []; state.future = [];
+          state.shown = 56;
+          state.note = ''; state.tone = '';
+        } else if (act === 'sample') {
+          var sample = levels(100, 140, 'up', 'retrace');
+          var row = sample.filter(function (line) { return line.r === 0.618; })[0];
+          state.note = zh
+            ? '教学模拟。140−(140−100)×0.618=' + row.price + '。124.72 是 0.382，140 是高点。'
+            : 'Teaching simulation. 140−(140−100)×0.618=' + row.price + '. 124.72 is 0.382, and 140 is the high.';
+          state.tone = 'is-right';
+        }
+        paint();
+        return;
+      }
+      var index = Number(el.getAttribute('data-bar'));
+      var bar = data.bars[index];
+      state.cursor = index;
+      if (state.a && state.b) {
+        remember();
+        state.a = null;
+        state.b = null;
+      }
+      var point = snap(index);
+      if (!state.a) state.a = point;
+      else state.b = point;
+      var book = anchors();
+      var touch = '';
+      if (book && book.lines && state.b) {
+        var near = book.lines.slice().sort(function (p, q) { return Math.abs(p.price - bar.c) - Math.abs(q.price - bar.c); })[0];
+        var gap = Math.abs(bar.c - near.price);
+        if (bar.l <= near.price && bar.h >= near.price) touch = zh ? ' 这根碰到了 ' + near.r + '（' + near.price + '）。碰到不是必反弹。' : ' This candle touches ' + near.r + ' (' + near.price + '). A touch is not a required bounce.';
+        else if (gap / near.price < 0.003) touch = zh ? ' 收盘靠近 ' + near.r + '。靠近不是确认转身。' : ' The close is near ' + near.r + '. Near is not a confirmed turn.';
+        else if ((state.dir === 'up' && bar.c < near.price && near.r === 0.618) || (state.dir === 'down' && bar.c > near.price && near.r === 0.618)) touch = zh ? ' 收盘已经穿过 0.618。穿过也不是反向保证。' : ' The close has crossed 0.618. A cross is not a reversal guarantee.';
+      }
+      state.note = (zh ? '第 ' + (index + 1) + ' 根，收盘 ' + bar.c + '。' : 'Bar ' + (index + 1) + ', close ' + bar.c + '. ') + touch;
+      state.tone = touch ? '' : '';
+      paint();
+    };
+    root.addEventListener('click', root._fibClick);
+    if (root._fibKey) root.removeEventListener('keydown', root._fibKey);
+    root.tabIndex = 0;
+    root._fibKey = function (ev) {
+      if (ev.key !== 'ArrowRight' && ev.key !== 'ArrowLeft') return;
+      ev.preventDefault();
+      setShown(state.shown + (ev.key === 'ArrowRight' ? 1 : -1));
+      paint();
+    };
+    root.addEventListener('keydown', root._fibKey);
+    paint();
+  }
+  var study = global.STAR_STUDY;
+  if (study && !study._fibWrapped) {
+    var inner = study.mount;
+    study.mount = function (root, lesson, lang) {
+      if (lesson && lesson.study && lesson.study.lessonChart === 'fib-full') return mount(root, lesson, lang);
+      return inner.apply(this, arguments);
+    };
+    study._fibWrapped = true;
+  }
+  global.STAR_CH02_FIB = { levels: levels, tape: tape, mount: mount };
 })(typeof window !== 'undefined' ? window : global);
