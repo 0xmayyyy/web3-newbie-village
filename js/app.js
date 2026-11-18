@@ -945,6 +945,7 @@
       step(1);
     });
     if (window.TEACH && prose) TEACH.mount(prose, id, cur.i, unlockTeachNext);
+    if (window.PLANET_LABS) PLANET_LABS.mount(prose || main);
     bindLessonSpeech();
     $$('.course-reader [data-tool]').forEach(function (b) {
       b.addEventListener('click', function () { goHash(b.getAttribute('data-tool'), null); });
