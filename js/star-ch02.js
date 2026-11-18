@@ -1,93 +1,100 @@
 (function (P) {
   var bi = P.bi, opt = P.opt, quiz = P.quiz, lesson = P.lesson;
-  var macd = [];
-  var i;
-  for (i = 0; i < 30; i++) macd.push(Math.round((100 + i * 0.8) * 1000) / 1000);
-  for (i = 0; i < 12; i++) macd.push(Math.round((macd[macd.length - 1] + 0.12) * 1000) / 1000);
-  var rsi75 = [100, 103, 106, 103.5, 106.5, 104, 107, 110, 107.5, 110.5, 108, 111, 114, 117, 120];
+  var macdCloses = [138.6, 137.2, 135.8, 134.4, 133, 131.6, 130.2, 128.8, 127.4, 126, 124.6, 123.2, 121.8, 120.4, 119, 117.6, 116.2, 114.8, 113.4, 112, 110.6, 109.2, 107.8, 106.4, 108.4, 110.4, 112.4, 114.4, 116.4, 118.4, 120.4, 122.4, 124.4, 126.4, 128.4, 130.4, 132.4, 134.4, 136.4, 138.4, 140.4, 142.4, 144.4, 146.4, 145, 143.6, 142.2, 140.8, 139.4, 138, 136.6, 135.2, 133.8, 132.4, 131, 129.6, 128.2, 126.8, 125.4, 124];
+  var rsi75 = [100, 103, 106, 103.5, 106.5, 104, 107, 110, 107.5, 110.5, 108, 111, 114, 117, 120, 122, 121, 124, 126, 125, 128, 130, 129, 132, 134, 133, 136, 135, 138, 140];
   P.chapters['02'] = {
     title: bi('技术指标与信号', 'Indicators and signals'),
     lessons: [
       lesson({
         id: '01',
         title: bi('EMA：均线为什么追着价格跑', 'EMA: why the average chases price'),
-        scene: bi('价格刚跌下来，EMA 会不会一下子跳到最新收盘价？', 'When price just fell, does the EMA jump straight to the latest close?'),
-        one: bi('EMA 让最近的收盘占更大权重，它跟着价格走，但不会一步跳到新收盘。', 'An EMA gives more weight to recent closes. It follows price, but it does not jump to the new close in one step.'),
-        explain: bi('EMA 不是预测线。\n它只是让最近的价格占更大权重。\nα=2/(N+1)。\nE0 取第一根收盘。\n之后 Et=α×Ct+(1−α)×Et−1。\n周期短，反应更快，也更容易被横盘晃动。\n周期短不等于信号更准。', 'An EMA is not a forecast line.\nIt only gives more weight to recent prices.\nα=2/(N+1).\nE0 is the first close.\nAfter that, Et=α×Ct+(1−α)×Et−1.\nA short period reacts faster, and it is also shaken more by a range.\nA short period does not mean the signal is more accurate.'),
-        example: bi('收盘 100、102、104、100、98。\nEMA3 为 100、101、102.5、101.25、99.625。\n第五根 α=0.5，前值 101.25，所以 0.5×98+0.5×101.25=99.625。\nEMA5 第五根是 100.123457。', 'Closes 100, 102, 104, 100, 98.\nEMA3 is 100, 101, 102.5, 101.25, 99.625.\nOn bar 5, α=0.5 and the previous value is 101.25, so 0.5×98+0.5×101.25=99.625.\nEMA5 on bar 5 is 100.123457.'),
+        scene: bi('价格刚跌下来，均线会不会马上跳到最新价？', 'Price just fell. Does the average jump to the latest price right away?'),
+        one: bi('均线会跟着价格慢慢走，但不会一下子跳到最新价。', 'An average follows price slowly, and it does not jump to the latest price in one step.'),
+        explain: bi('均线是一条跟着价格走的平滑线。\n它不是用来预言下一根会到哪里。\n最近的价格更重要，所以它会追着价格跑。\n价格突然跌下来，均线还停在上面。\n你可以把它想成跟在身后的人。\n你停下了，他还要再走几步才到。\n短周期追得更紧，也更容易被横盘晃来晃去。\n追得快，不等于看得更准。', 'An average is a smooth line that follows price.\nIt is not there to predict where the next bar will go.\nRecent prices matter more, so it chases price.\nWhen price drops suddenly, the average is still up above it.\nYou can think of it as a person walking behind you.\nYou stop, and he still needs a few more steps to arrive.\nA short period follows more tightly, and a sideways market shakes it more.\nFollowing faster does not mean seeing more clearly.'),
+        example: bi('教学虚构：价格从 100 涨到 114，再跌到 99。\n快线贴着价格。\n慢线还留在更高的地方。\n最新价已经是 99，两条均线都还在 99 上面。', 'Teaching fiction: price rises from 100 to 114, then falls to 99.\nThe fast line stays close to price.\nThe slow line is still higher up.\nThe latest price is already 99, and both averages are still above 99.'),
         pitfalls: [
-          bi('把 EMA 当成下一根的预测价', 'Treating the EMA as the predicted price of the next bar'),
-          bi('横盘里的交叉当成方向已经确定', 'Treating a cross inside a range as a decided direction')
+          bi('把均线当成下一根的预测价', 'Treating the average as the predicted price of the next bar'),
+          bi('横盘里来回交叉，就当成方向已经确定', 'Treating a back-and-forth cross in a sideways market as a decided direction')
         ],
-        practice: bi('在图上把 N 从 3 改到 5，核对第五根 EMA 是否不再是 99.625。', 'On the chart, change N from 3 to 5 and check that bar 5 is no longer 99.625.'),
+        practice: bi('看图里的教学虚构价格。最新价已经掉下来了，均线还在它上面。', 'Look at the teaching-fiction price on the chart. The latest price has already fallen, and the averages are still above it.'),
         check: {
-          ask: bi('第五根 EMA3 会等于最新收盘 98 吗？', 'Does EMA3 on bar 5 equal the latest close, 98?'),
-          options: [opt('A', '会，它会跳过去', 'Yes, it jumps there'), opt('B', '不会，它按 α 跟上一步混合', 'No, it blends with the previous value by α'), opt('C', '只有 BTC 会跳', 'Only BTC jumps')],
+          ask: bi('价格刚跌到 99，均线会马上变成 99 吗？', 'Price just fell to 99. Does the average become 99 right away?'),
+          options: [opt('A', '会，它会跳过去', 'Yes, it jumps there'), opt('B', '不会，它还在慢慢跟上', 'No, it is still catching up'), opt('C', '只有 BTC 会跳', 'Only BTC jumps')],
           answer: 'B',
-          miss: bi('98 是收盘，不是 EMA。\nEMA3 第五根是 99.625。', '98 is the close, not the EMA.\nEMA3 on bar 5 is 99.625.')
+          miss: bi('99 是最新价，不是均线。\n均线还停在更高的地方。', '99 is the latest price, not the average.\nThe average is still higher up.')
         },
         quizzes: [
-          quiz('EMA3 第五根是多少？', 'What is EMA3 on bar 5?', [opt('A', '99.625', '99.625'), opt('B', '98', '98'), opt('C', '101.25', '101.25')], 'A', {
-            A: ['α=0.5，0.5×98+0.5×101.25=99.625。', 'α=0.5, so 0.5×98+0.5×101.25=99.625.'],
-            B: ['98 是当根收盘，EMA 还保留了前值 101.25 的一半。', '98 is that bar’s close. The EMA still keeps half of the previous value, 101.25.'],
-            C: ['101.25 是第四根 EMA3，第五根已经把 98 算进去了。', '101.25 is EMA3 on bar 4. Bar 5 has already mixed in 98.']
+          quiz('价格刚跌下来，均线会马上跳到新价格吗？', 'Price just fell. Does the average jump to the new price right away?', [opt('A', '会', 'Yes'), opt('B', '不会', 'No'), opt('C', '只在 BTC 会', 'Only on BTC')], 'B', {
+            A: ['均线是跟着走的，不是一下子跳过去。', 'The average follows. It does not jump there in one step.'],
+            B: ['价格先到，均线还要再走几步才跟上。', 'Price arrives first. The average still needs a few more steps to catch up.'],
+            C: ['换一个币，也不会让均线突然跳到最新价。', 'Changing the coin does not make the average jump to the latest price.']
           }),
-          quiz('EMA 周期短就保证信号更准？', 'Does a shorter EMA period guarantee a more accurate signal?', [opt('A', '是', 'Yes'), opt('B', '否', 'No'), opt('C', '只在 BTC 是', 'Only on BTC')], 'B', {
-            A: ['周期短只代表权重更靠近最近收盘，也更容易被横盘来回交叉。', 'A short period only puts more weight on the latest close, and it also crosses back and forth more in a range.'],
-            B: ['更快不等于更准。横盘里的交叉可以没有方向优势。', 'Faster does not mean more accurate. A cross in a range can have no directional edge.'],
-            C: ['公式不因品种变成“更准”。BTC 同样会被横盘晃动。', 'The formula does not become “more accurate” because the asset is BTC. BTC is shaken by ranges too.']
+          quiz('均线是拿来预测下一根价格的吗？', 'Is an average used to predict the next price?', [opt('A', '是', 'Yes'), opt('B', '不是', 'No'), opt('C', '只在上涨时是', 'Only while price is rising')], 'B', {
+            A: ['它只描述价格已经走过的位置，不预言下一根。', 'It only describes where price has already been. It does not predict the next bar.'],
+            B: ['均线跟着已经发生的价格，不是下一根的答案。', 'The average follows price that has already happened. It is not the answer for the next bar.'],
+            C: ['上涨的时候它也只是跟着走，并不预告下一根。', 'While price is rising it is still only following. It does not announce the next bar.']
           }),
-          quiz('横盘中均线交叉可以误导吗？', 'Can a moving-average cross mislead you during a range?', [opt('A', '可以', 'Yes'), opt('B', '不可以', 'No'), opt('C', '交叉必涨', 'A cross must rise')], 'A', {
-            A: ['横盘里价格围绕均线来回穿，交叉不一定带来可交易的方向。', 'In a range, price crosses the average back and forth. A cross does not have to give a tradable direction.'],
-            B: ['同一套 EMA 规则在横盘里会反复交叉，所以可以误导。', 'The same EMA rule crosses repeatedly in a range, so it can mislead.'],
-            C: ['交叉只说明短均线和长均线换了上下位置，不保证下一根上涨。', 'A cross only says the short and long averages swapped places. It does not guarantee the next bar rises.']
+          quiz('横盘时均线来回交叉，能当成方向已经确定吗？', 'When averages cross back and forth in a sideways market, is the direction already decided?', [opt('A', '不能', 'No'), opt('B', '能', 'Yes'), opt('C', '交叉就一定涨', 'A cross must rise')], 'A', {
+            A: ['横盘里价格围着均线来回穿，交叉不等于方向已经定了。', 'In a sideways market, price crosses the average back and forth. A cross does not mean the direction is settled.'],
+            B: ['同一条均线在横盘里会反复交叉，所以不能当成方向已定。', 'The same average crosses again and again in a sideways market, so it cannot be treated as a settled direction.'],
+            C: ['交叉只说明两条线换了上下位置，不保证下一根上涨。', 'A cross only says the two lines swapped places. It does not guarantee the next bar rises.']
           })
         ],
-        study: { kind: 'ema', closes: [100, 102, 104, 100, 98], periods: [3, 5], start: 1 }
+        study: { kind: 'ema', closes: [100, 102, 105, 108, 112, 114, 113, 110, 106, 102, 99], periods: [5, 12], start: 11 }
       }),
       lesson({
         id: '02',
         title: bi('MACD：柱子缩短意味着什么', 'MACD: what a shrinking histogram means'),
         scene: bi('柱子变短的时候，价格是不是一定马上跌？', 'When the histogram shrinks, must price fall right away?'),
-        one: bi('柱子是 DIF 减 DEA。柱子缩短只说明两条线在靠近，不说明价格必须下跌。', 'The histogram is DIF minus DEA. A shorter bar only means the two lines are getting closer. It does not mean price must fall.'),
-        explain: bi('DIF=EMA12−EMA26。\nDEA 是 DIF 的 EMA9。\n本课柱子=DIF−DEA，不乘 2。\n有的平台把柱子画成 2×(DIF−DEA)，所以数值可以差一倍，定义不同，不是算错。\n前 26 根附近仍在预热，早期数值不稳定。', 'DIF=EMA12−EMA26.\nDEA is the EMA9 of DIF.\nIn this lesson the histogram is DIF−DEA, not multiplied by 2.\nSome platforms draw 2×(DIF−DEA), so the number can be twice as large. That is a different display definition, not a wrong calculation.\nThe values near the first 26 bars are still warming up and are unstable.'),
-        example: bi('若 DIF=2.4、DEA=1.9，柱子=0.5。\n价格仍在抬高时，DIF 与 DEA 的距离也可以缩小。\n所以柱子缩短不等于价格必须下跌。', 'If DIF=2.4 and DEA=1.9, the histogram is 0.5.\nWhile price is still rising, the gap between DIF and DEA can shrink.\nSo a shrinking histogram does not mean price must fall.'),
+        one: bi('金叉是快线 DIF 上穿慢线 DEA，死叉是下穿，柱子变短也不等于价格马上跌。', 'A golden cross is the fast DIF line crossing above the slow DEA line, a death cross is a cross below, and a shorter histogram still does not mean price falls at once.'),
+        explain: bi('图的上半部分是价格。\n下半部分才是 MACD。\n黄线是快线，名字叫 DIF。\n蓝线是慢线，名字叫 DEA，也叫信号线。\n柱子画的是两条线差多远。\n本课的柱子等于 DIF 减去 DEA，不乘 2。\n有的软件把柱子画成两倍。\n数值就可以差一倍。\n那是画法不同，不是算错。\n最前面大约 26 根还在预热。\n早期的线还不稳。', 'The top half of the chart is price.\nThe bottom half is the MACD.\nThe gold line is the fast line, called DIF.\nThe blue line is the slow line, called DEA, also called the signal line.\nThe bars show how far apart the two lines are.\nIn this lesson a bar equals DIF minus DEA, and it is not multiplied by 2.\nSome software draws the bar at twice that size.\nThe number can then differ by a factor of two.\nThat is a different way of drawing it, not a wrong calculation.\nAbout the first 26 bars are still warming up.\nThe early lines are not steady yet.'),
+        topic: {
+          title: bi('金叉和死叉', 'Golden cross and death cross'),
+          body: bi('金叉，是快线 DIF 从下往上穿过慢线 DEA。\n死叉，是快线 DIF 从上往下穿过慢线 DEA。\n图上会把这两个点标成「金叉」和「死叉」。\n金叉不是必涨。\n死叉不是必跌。\n它们只说明两条线换了上下位置。', 'A golden cross is the fast DIF line crossing up through the slow DEA line.\nA death cross is the fast DIF line crossing down through the slow DEA line.\nThe chart marks these two points as “golden cross” and “death cross”.\nA golden cross is not a sure rise.\nA death cross is not a sure fall.\nThey only say the two lines have swapped which one is on top.')
+        },
+        example: bi('教学虚构：DIF 是 2.4，DEA 是 1.9。\n柱子是 0.5。\n价格还在涨的时候，两条线也可以靠近。\n所以柱子变短，不等于价格必须下跌。\n图上另有一次金叉和一次死叉，都标了名字。', 'Teaching fiction: DIF is 2.4 and DEA is 1.9.\nThe bar is 0.5.\nWhile price is still rising, the two lines can also move closer.\nSo a shorter bar does not mean price must fall.\nThe chart also has one golden cross and one death cross, and both are named.'),
         pitfalls: [
           bi('把柱子缩短直接当成卖出信号', 'Taking a shrinking histogram as a sell signal by itself'),
+          bi('看见金叉就当成必涨，看见死叉就当成必跌', 'Treating a golden cross as a sure rise, or a death cross as a sure fall'),
           bi('忽略平台是否把柱子乘了 2', 'Ignoring whether the platform multiplies the histogram by 2')
         ],
-        practice: bi('在图上往后播放，看价格还在上升时柱子是否可以变短。', 'Step the chart forward and see whether the histogram can shrink while price is still rising.'),
+        practice: bi('先在图上找到标着金叉和死叉的点，再看柱子变短时价格是不是还可能在涨。', 'First find the points marked golden cross and death cross, then see that price can still be rising when the bars get shorter.'),
         check: {
-          ask: bi('DIF 2.4、DEA 1.9，按本课定义柱子是多少？', 'DIF is 2.4 and DEA is 1.9. What is the histogram in this lesson?'),
+          ask: bi('教学虚构：DIF 2.4、DEA 1.9，按本课定义柱子是多少？', 'Teaching fiction: DIF is 2.4 and DEA is 1.9. What is the bar in this lesson?'),
           options: [opt('A', '0.5', '0.5'), opt('B', '4.3', '4.3'), opt('C', '2.4', '2.4')],
           answer: 'A',
-          miss: bi('柱子=DIF−DEA=0.5。\n4.3 是两者相加。', 'Histogram=DIF−DEA=0.5.\n4.3 is the sum of the two.')
+          miss: bi('柱子等于 DIF 减去 DEA，是 0.5。\n4.3 是两者相加。', 'The bar equals DIF minus DEA, which is 0.5.\n4.3 is the two numbers added together.')
         },
         quizzes: [
-          quiz('DIF 2.4、DEA 1.9，柱子是多少？', 'DIF is 2.4 and DEA is 1.9. What is the histogram?', [opt('A', '0.5', '0.5'), opt('B', '4.3', '4.3'), opt('C', '1.9', '1.9')], 'A', {
-            A: ['本课柱子=DIF−DEA=2.4−1.9=0.5。', 'In this lesson histogram=DIF−DEA=2.4−1.9=0.5.'],
-            B: ['4.3 是 2.4+1.9，不是相减。', '4.3 is 2.4+1.9, not the difference.'],
+          quiz('金叉是什么？', 'What is a golden cross?', [opt('A', '快线 DIF 上穿慢线 DEA', 'The fast DIF line crosses above the slow DEA line'), opt('B', '快线 DIF 下穿慢线 DEA', 'The fast DIF line crosses below the slow DEA line'), opt('C', '柱子变长', 'The bars get longer')], 'A', {
+            A: ['快线从下往上穿过慢线，就是金叉。', 'The fast line crossing up through the slow line is a golden cross.'],
+            B: ['快线从上往下穿过慢线，那是死叉。', 'The fast line crossing down through the slow line is a death cross.'],
+            C: ['柱子变长只说明两条线离得更远，不是金叉的定义。', 'Longer bars only mean the two lines are farther apart. That is not the definition of a golden cross.']
+          }),
+          quiz('死叉是什么？', 'What is a death cross?', [opt('A', '快线 DIF 下穿慢线 DEA', 'The fast DIF line crosses below the slow DEA line'), opt('B', '快线 DIF 上穿慢线 DEA', 'The fast DIF line crosses above the slow DEA line'), opt('C', '价格一定马上跌', 'Price must fall at once')], 'A', {
+            A: ['快线从上往下穿过慢线，就是死叉。', 'The fast line crossing down through the slow line is a death cross.'],
+            B: ['上穿是金叉，不是死叉。', 'A cross above is a golden cross, not a death cross.'],
+            C: ['死叉只说明两条线换了位置，不保证价格马上跌。', 'A death cross only says the two lines swapped places. It does not guarantee that price falls at once.']
+          }),
+          quiz('教学虚构：DIF 2.4、DEA 1.9，柱子是多少？', 'Teaching fiction: DIF is 2.4 and DEA is 1.9. What is the bar?', [opt('A', '0.5', '0.5'), opt('B', '4.3', '4.3'), opt('C', '1.9', '1.9')], 'A', {
+            A: ['本课柱子等于 2.4 减去 1.9，是 0.5。', 'In this lesson the bar equals 2.4 minus 1.9, which is 0.5.'],
+            B: ['4.3 是 2.4 加上 1.9，不是相减。', '4.3 is 2.4 plus 1.9, not the difference.'],
             C: ['1.9 是 DEA 本身，还没有减去。', '1.9 is DEA itself. It has not been subtracted.']
           }),
-          quiz('柱子缩短是不是价格一定下跌？', 'If the histogram shrinks, must price fall?', [opt('A', '一定', 'It must'), opt('B', '否', 'No'), opt('C', '只在日线一定', 'Only on the daily chart')], 'B', {
-            A: ['柱子缩短只说明 DIF 与 DEA 靠近，价格仍可以继续上涨。', 'A shorter histogram only means DIF and DEA are closer. Price can still keep rising.'],
-            B: ['动量变缓不等于方向已经反转。', 'Slower momentum is not the same as a reversal.'],
-            C: ['公式与周期无关，日线也不保证下跌。', 'The formula does not depend on the timeframe. The daily chart does not guarantee a fall either.']
-          }),
-          quiz('和别的平台差一倍，最常见的原因是？', 'When another platform differs by a factor of two, what is the usual reason?', [opt('A', '柱子显示定义不同', 'The histogram display definition differs'), opt('B', '收盘价单位变了', 'The close changed units'), opt('C', 'EMA 不能相减', 'EMAs cannot be subtracted')], 'A', {
-            A: ['有的软件画 DIF−DEA，有的画 2 倍。定义不同，数值就可以差一倍。', 'Some software draws DIF−DEA and some draws twice that. Different definitions can double the number.'],
-            B: ['同一条收盘序列不会因为“单位”单独把柱子正好放大一倍。', 'The same close series does not double the histogram just because of a unit label.'],
-            C: ['DIF 就是两条 EMA 相减，可以相减。', 'DIF is exactly the difference of two EMAs. They can be subtracted.']
+          quiz('柱子缩短是不是价格一定下跌？', 'If the bars get shorter, must price fall?', [opt('A', '一定', 'It must'), opt('B', '否', 'No'), opt('C', '只在日线一定', 'Only on the daily chart')], 'B', {
+            A: ['柱子变短只说明两条线在靠近，价格仍可以继续涨。', 'Shorter bars only mean the two lines are getting closer. Price can still keep rising.'],
+            B: ['靠近不等于方向已经反过来。', 'Getting closer is not the same as the direction already reversing.'],
+            C: ['换成日线，也不保证下跌。', 'Switching to the daily chart does not guarantee a fall either.']
           })
         ],
-        study: { kind: 'macd', closes: macd, start: 26 }
+        study: { kind: 'macd', closes: macdCloses, start: 60 }
       }),
       lesson({
         id: '03',
         title: bi('RSI：超买不等于立刻卖', 'RSI: overbought does not mean sell now'),
         scene: bi('RSI 到了 75，是不是必须马上卖？', 'RSI is 75. Do you have to sell immediately?'),
-        one: bi('RSI 比较的是近期上涨幅度和下跌幅度。超买只说明涨得相对强，不命令你卖出。', 'RSI compares recent gains with recent losses. Overbought only says the rise has been relatively strong. It does not order you to sell.'),
-        explain: bi('本课用 Wilder 的 RSI(14)。\n先把涨跌幅分成平均涨幅和平均跌幅。\nRS=平均涨幅/平均跌幅。\nRSI=100−100/(1+RS)。\n只有上涨时 RSI 可以到 100。\n涨跌都是 0 时，本课记为 50。\n样本不够 14 次变化时不显示 0，而是还不能计算。', 'This lesson uses Wilder RSI(14).\nSplit the changes into an average gain and an average loss.\nRS=average gain/average loss.\nRSI=100−100/(1+RS).\nIf price only rises, RSI can reach 100.\nIf both gain and loss are 0, this lesson records 50.\nBefore 14 changes exist, do not show 0. It cannot be calculated yet.'),
+        one: bi('RSI 看最近涨得多还是跌得多，超买只说明涨得相对强，并不叫你马上卖。', 'RSI looks at whether recent rises outweigh recent falls, and overbought only says the rise is relatively strong, not that you must sell now.'),
+        explain: bi('图的主体是 RSI，刻度从 0 到 100。\n70 的横线标成超买。\n30 的横线标成超卖。\n上面那条淡线只是价格对照，不是 RSI。\n本课用 Wilder 的 RSI(14)。\n先把涨跌幅分成平均涨幅和平均跌幅。\nRS 是平均涨幅除以平均跌幅。\nRSI 等于 100 减去 100 除以（1 加 RS）。\n只有上涨时 RSI 可以到 100。\n涨跌都是 0 时，本课记为 50。\n样本不够 14 次变化时不显示 0，而是还不能计算。', 'The main picture is RSI, on a scale from 0 to 100.\nThe line at 70 is labeled overbought.\nThe line at 30 is labeled oversold.\nThe faint line above is only price for reference. It is not the RSI.\nThis lesson uses Wilder RSI(14).\nFirst split the changes into an average gain and an average loss.\nRS is the average gain divided by the average loss.\nRSI equals 100 minus 100 divided by (1 plus RS).\nIf price only rises, RSI can reach 100.\nIf both gain and loss are 0, this lesson records 50.\nBefore 14 changes exist, do not show 0. It cannot be calculated yet.'),
         example: bi('RSI 75 只表示近期上涨幅度相对更大。\n强趋势里它可以在 70 上方停留很多根。\n所以“超买”不是立刻卖出的命令。', 'RSI 75 only means recent gains are relatively larger.\nIn a strong trend it can stay above 70 for many bars.\nSo “overbought” is not an order to sell immediately.'),
         pitfalls: [
           bi('RSI 一过 70 就认为必须反转', 'Assuming price must reverse as soon as RSI crosses 70'),
@@ -117,7 +124,7 @@
             C: ['持仓量是合约未平仓数量，不是 RSI 的输入。', 'Open interest is outstanding contracts, not an RSI input.']
           })
         ],
-        study: { kind: 'rsi', closes: rsi75, start: 15 }
+        study: { kind: 'rsi', main: 'rsi', closes: rsi75, start: 30 }
       }),
       lesson({
         id: '04',
