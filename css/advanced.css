@@ -133,6 +133,10 @@ body.is-star main:has(.star-hub){padding-bottom:0}
 .a1-flag{display:inline-block;margin:0 0 8px;padding:2px 8px;border-radius:999px;background:rgba(230,199,158,.16);color:#e6c79e;font-size:12px}
 .a1-modes,.a1-sub,.a1-fields{display:flex;flex-wrap:wrap;gap:8px}
 .ema-scroll,.macd-scroll,.rsi-scroll,.div-scroll,.fib-scroll,.smc-scroll{overflow-x:auto;max-width:100%}
+.rsi-chart{display:flex;align-items:stretch;max-width:100%;background:#120e21}
+.rsi-chart .rsi-scroll{flex:1 1 auto;min-width:0}
+.rsi-axis{position:relative;flex:0 0 58px;background:#120e21;border-left:1px solid rgba(190,176,230,.35)}
+.rsi-tick{position:absolute;right:5px;transform:translateY(-50%);font-size:13px;font-weight:600;line-height:1.15;color:#f6f1ff;background:rgba(48,36,78,.96);border:1px solid rgba(196,176,240,.55);border-radius:4px;padding:1px 5px}
 .fib-scroll{touch-action:none}
 .ema-scroll svg,.macd-scroll svg,.rsi-scroll svg,.div-scroll svg,.fib-scroll svg,.smc-scroll svg{min-width:960px;height:auto;display:block}
 .ema-note{margin:8px 0 0;color:#d4bc9e;font-size:14px;line-height:1.7}

@@ -1793,17 +1793,15 @@
         bits.push('<rect x="' + (xc - bw / 2) + '" y="' + Math.min(y(bar.o), y(bar.c)) + '" width="' + bw + '" height="' + Math.max(1.2, Math.abs(y(bar.c) - y(bar.o))) + '" fill="' + color + '"></rect>');
         if (i % 20 === 0) bits.push('<text x="' + xc + '" y="462" fill="#b7aac8" font-size="12">' + (zh ? '第' + (i + 1) + '根' : '#' + (i + 1)) + '</text>');
       });
+      [100, 70, 50, 30].forEach(function (level) {
+        var guide = level === 100 ? 'rgba(190,176,230,.32)' : 'rgba(190,176,230,.75)';
+        var dash = level === 100 ? '3 4' : '4 4';
+        bits.push('<line x1="' + padL + '" y1="' + ry(level) + '" x2="' + (w - padR) + '" y2="' + ry(level) + '" stroke="' + guide + '" stroke-dasharray="' + dash + '"></line>');
+      });
       if (state.showRsi) {
         var bandTop = ry(70);
         var bandBot = ry(30);
         bits.push('<rect x="' + padL + '" y="' + bandTop + '" width="' + (w - padL - padR) + '" height="' + (bandBot - bandTop) + '" fill="rgba(176,154,230,.16)"></rect>');
-        [70, 50, 30].forEach(function (level) {
-          bits.push('<line x1="' + padL + '" y1="' + ry(level) + '" x2="' + (w - padR) + '" y2="' + ry(level) + '" stroke="rgba(190,176,230,.75)" stroke-dasharray="4 4"></line>');
-        });
-        bits.push('<line x1="' + padL + '" y1="' + ry(100) + '" x2="' + (w - padR) + '" y2="' + ry(100) + '" stroke="rgba(190,176,230,.32)" stroke-dasharray="3 4"></line>');
-        [100, 70, 50, 30].forEach(function (level) {
-          bits.push('<text x="' + (w - 8) + '" y="' + (ry(level) + 4) + '" text-anchor="end" fill="#b7aac8" font-size="12">' + level + '</text>');
-        });
         draw.forEach(function (bar, i) {
           var value = pack.rsi[from + i];
           if (value == null) return;
@@ -1900,7 +1898,9 @@
       root.innerHTML =
         '<div class="a1"><p class="a1-flag">' + (zh ? '模拟行情·非实时' : 'Simulated tape · not live') + '</p>' +
         '<p>' + (zh ? '上面是 K 线，下面是强弱线。' : 'Candles are on top, and the strength line is below.') + '</p>' +
-        '<div class="rsi-scroll">' + bits.join('') + '</div>' +
+        '<div class="rsi-chart"><div class="rsi-scroll">' + bits.join('') + '</div><div class="rsi-axis" aria-label="RSI">' + [100, 70, 50, 30].map(function (level) {
+          return '<span class="rsi-tick" style="top:' + (ry(level) / h * 100).toFixed(2) + '%">' + level + '</span>';
+        }).join('') + '</div></div>' +
         '<p class="star-key"><span><i style="background:#9a84d6"></i>' + (zh ? '强弱线' : 'Strength') + '</span><span><i style="background:#f4cb82"></i>' + (zh ? '强弱线的平均' : 'Average of the line') + '</span><span><i style="background:#b09ae6"></i>30–70</span></p>' +
         '<p>' + (state.scene === 'cold'
           ? (zh ? '反例：线到 30 下面时，价格仍可以继续跌。' : 'Counterexample: while the line is under 30, price can keep falling.')
