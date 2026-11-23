@@ -3169,37 +3169,52 @@
       });
     }
     function step(close) {
-      var open = bars.length ? bars[bars.length - 1].c : close - 90;
-      var i = bars.length;
+      var open = bars.length ? bars[bars.length - 1].c : close - 80;
       var up = close >= open;
-      var high = Math.max(open, close) + 30 + mix(i * 13 + 2) * (up ? 80 : 170);
-      var low = Math.min(open, close) - 30 - mix(i * 19 + 5) * (up ? 160 : 70);
-      var prev2 = bars.length >= 2 ? bars[bars.length - 2] : null;
-      if (prev2 && low > prev2.h) low = prev2.h - 30 - mix(i) * 40;
-      if (prev2 && high < prev2.l) high = prev2.l + 30 + mix(i + 4) * 40;
+      var i = bars.length;
+      var high = Math.max(open, close) + (up ? 28 + mix(i * 3) * 24 : 12 + mix(i * 5) * 10);
+      var low = Math.min(open, close) - (up ? 16 + mix(i * 7) * 14 : 32 + mix(i * 9) * 20);
       put(open, high, low, close);
     }
-    var i;
-    var price = 62840;
-    for (i = 0; i < 8; i++) {
-      if (i === 3 || i === 6) price -= 70 + mix(i + 9) * 90;
-      else price += 90 + mix(i * 7 + 1) * 240;
-      step(price);
+    function run(n, delta) {
+      var k;
+      for (k = 0; k < n; k++) {
+        price += delta * (0.72 + mix(bars.length * 11 + k) * 0.56);
+        step(price);
+      }
     }
-    for (i = 0; i < 3; i++) { price += 40 + mix(i + 40) * 70; step(price); }
-    for (i = 0; i < 5; i++) { price -= 90 + mix(i * 3 + 8) * 120; step(price); }
-    put(price, price + 180, price - 220, price + 60);
-    put(price + 80, price + 2480, price + 40, price + 2360);
-    put(price + 2320, price + 2860, price + 1680, price + 2740);
+    var price = 61800;
+    run(7, 180);
+    run(4, -150);
+    run(4, 220);
+    put(price, price + 160, price - 140, price + 40);
+    put(price + 60, price + 2100, price + 20, price + 1980);
+    put(price + 1960, price + 2480, price + 980, price + 2360);
     price = bars[bars.length - 1].c;
-    for (i = 0; i < 4; i++) { price += 70 + mix(i + 21) * 90; step(price); }
-    for (i = 0; i < 6; i++) { price -= 110 + mix(i * 5 + 2) * 80; step(price); }
-    for (i = 0; i < 4; i++) { price += 160 + mix(i + 15) * 80; step(price); }
-    put(price, price + 140, price - 90, price + 40);
-    put(price + 20, price + 90, price - 2100, price - 1980);
-    put(price - 1960, price - 1880, price - 2460, price - 2320);
+    run(3, 140);
+    run(5, -160);
+    run(4, 200);
+    run(4, -120);
+    put(price, price + 80, price - 70, price - 20);
+    put(price - 40, price + 40, price - 1680, price - 1560);
+    put(price - 1540, price - 1460, price - 2140, price - 2020);
     price = bars[bars.length - 1].c;
-    for (i = 0; i < 5; i++) { price -= 40 + mix(i + 33) * 50; step(price); }
+    run(4, -110);
+    run(5, 170);
+    run(3, 90);
+    put(price, price + 120, price - 80, price + 50);
+    put(price + 70, price + 1560, price + 30, price + 1420);
+    put(price + 1400, price + 1880, price + 760, price + 1740);
+    price = bars[bars.length - 1].c;
+    run(4, 60);
+    run(3, -130);
+    run(4, 210);
+    run(3, -90);
+    put(price, price + 70, price - 80, price - 40);
+    put(price - 60, price + 10, price - 1900, price - 1760);
+    put(price - 1740, price - 1660, price - 2200, price - 2080);
+    price = bars[bars.length - 1].c;
+    run(4, -50);
     return bars;
   }
   function swings(bars) {
@@ -3303,7 +3318,7 @@
       var w = 980;
       var h = 460;
       var padL = 12;
-      var padR = 86;
+      var future = 210;
       var top = 28;
       var plotH = 390;
       var vals = [];
@@ -3315,7 +3330,7 @@
       min -= span * 0.06;
       max += span * 0.08;
       function y(p) { return top + (max - p) / (max - min) * plotH; }
-      var slot = (w - padL - padR) / Math.max(draw.length, 1);
+      var slot = (w - padL - future) / Math.max(draw.length, 1);
       function xAt(i) { return padL + i * slot + slot / 2; }
       var bits = ['<svg viewBox="0 0 ' + w + ' ' + h + '" role="img">'];
       bits.push('<rect width="' + w + '" height="' + h + '" fill="#120e21"></rect>');
@@ -3329,7 +3344,7 @@
           if (back) { end = j; break; }
         }
         var x1 = padL + zone.i * slot;
-        var x2 = end == null ? (w - 8) : Math.max(x1 + slot * 2, padL + end * slot + slot * 0.7);
+        var x2 = end == null ? (w - 14) : Math.max(x1 + slot * 2, padL + end * slot + slot * 0.7);
         var bull = zone.dir === 'up';
         var fill = bull ? '#3aab88' : '#c16b78';
         var ink = bull ? '#8bd5ba' : '#e6a1a9';
@@ -3345,14 +3360,24 @@
         bits.push('<rect x="' + (xc - bw / 2) + '" y="' + Math.min(y(bar.o), y(bar.c)) + '" width="' + bw + '" height="' + Math.max(1.2, Math.abs(y(bar.c) - y(bar.o))) + '" fill="' + color + '"></rect>');
         if (i % 12 === 0) bits.push('<text x="' + xc + '" y="448" fill="#b7aac8" font-size="12">' + (zh ? '第' + (i + 1) + '根' : '#' + (i + 1)) + '</text>');
       });
+      var placed = [];
       function mark(item, name, color) {
         var yy = y(item.price);
         var x1 = xAt(item.from);
         var x2 = xAt(item.i);
         bits.push('<line x1="' + x1 + '" y1="' + yy + '" x2="' + x2 + '" y2="' + yy + '" stroke="' + color + '" stroke-width="1.6" stroke-dasharray="5 3"></line>');
         bits.push('<circle cx="' + x1 + '" cy="' + yy + '" r="3.2" fill="' + color + '"></circle>');
-        var lx = Math.max(padL + 28, Math.min(w - padR - 8, (x1 + x2) / 2));
-        bits.push('<text x="' + lx + '" y="' + Math.max(top + 14, yy - 7) + '" text-anchor="middle" fill="' + color + '" font-size="12" font-weight="700">' + name + '</text>');
+        var lx = Math.max(x1 + 18, Math.min(x2 - 18, (x1 + x2) / 2));
+        var ly = yy - 8;
+        var guard = 0;
+        while (guard < 6 && placed.some(function (p) { return Math.abs(p.x - lx) < 78 && Math.abs(p.y - ly) < 15; })) {
+          ly += 15;
+          if (ly > yy + 16) ly = yy - 8 - 15 * (guard + 1);
+          guard++;
+        }
+        ly = Math.max(top + 12, Math.min(top + plotH - 4, ly));
+        placed.push({ x: lx, y: ly });
+        bits.push('<text x="' + lx + '" y="' + ly + '" text-anchor="middle" fill="' + color + '" font-size="12" font-weight="700">' + name + '</text>');
       }
       if (state.structure) {
         info.bos.forEach(function (item) { mark(item, 'BOS', '#748ca8'); });
