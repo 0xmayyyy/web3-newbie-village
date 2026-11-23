@@ -2906,7 +2906,6 @@
       var vals = [];
       draw.forEach(function (bar) { vals.push(bar.h, bar.l); });
       var drawn = anchors();
-      if (drawn && drawn.lines) drawn.lines.forEach(function (line) { vals.push(line.price); });
       var min = Math.min.apply(null, vals);
       var max = Math.max.apply(null, vals);
       var span = max - min || 1;
@@ -2935,31 +2934,54 @@
         if (state.b && state.b.index === i) bits.push('<circle cx="' + xc + '" cy="' + y(state.b.price) + '" r="6" fill="none" stroke="#8eb4ff" stroke-width="2"></circle>');
       });
       var showRatio = { 0: true, 0.382: true, 0.5: true, 0.618: true, 1: true };
-      if (drawn && drawn.lines) {
-        drawn.lines.filter(function (line) { return showRatio[line.r]; }).forEach(function (line) {
-          var yy = y(line.price);
-          bits.push('<line x1="' + padL + '" y1="' + yy + '" x2="' + (w - padR) + '" y2="' + yy + '" stroke="#f0d59a" stroke-dasharray="5 3"></line>');
-          var label = line.r + '  ' + Math.round(line.price);
-          bits.push('<text x="' + (padL + 6) + '" y="' + (yy - 4) + '" fill="#f0d59a" font-size="13">' + label + '</text>');
-        });
-      } else if (state.a && state.b && state.a.price === state.b.price) {
-        bits.push('<text x="' + (padL + 12) + '" y="40" fill="#f0d59a" font-size="16">' + (zh ? '两个锚点重合，请重新选择' : 'The anchors are the same. Pick again.') + '</text>');
+      var shownLines = drawn && drawn.lines ? drawn.lines.filter(function (line) { return showRatio[line.r]; }).slice().sort(function (p, q) { return q.price - p.price; }) : [];
+      var zi;
+      for (zi = 0; zi < shownLines.length - 1; zi++) {
+        var yHi = y(shownLines[zi].price);
+        var yLo = y(shownLines[zi + 1].price);
+        bits.push('<rect x="' + padL + '" y="' + Math.min(yHi, yLo) + '" width="' + (w - padL - padR) + '" height="' + Math.abs(yLo - yHi) + '" fill="rgba(240,213,154,' + (zi % 2 ? '0.14' : '0.07') + ')"></rect>');
+      }
+      shownLines.forEach(function (line) {
+        var yy = y(line.price);
+        bits.push('<line x1="' + padL + '" y1="' + yy + '" x2="' + (w - padR) + '" y2="' + yy + '" stroke="#f0d59a" stroke-width="1.4"></line>');
+        bits.push('<text x="' + (padL + 6) + '" y="' + (yy - 4) + '" fill="#f0d59a" font-size="13">' + line.r + '  ' + Math.round(line.price) + '</text>');
+      });
+      if (state.a && state.b && state.a.price !== state.b.price) {
+        var ax = padL + state.a.index * slot + slot / 2;
+        var bx = padL + state.b.index * slot + slot / 2;
+        bits.push('<line x1="' + ax + '" y1="' + y(state.a.price) + '" x2="' + bx + '" y2="' + y(state.b.price) + '" stroke="#ffffff" stroke-width="1.4"></line>');
       }
       draw.forEach(function (bar, i) {
         bits.push('<rect data-bar="' + i + '" x="' + (padL + i * slot) + '" y="' + top + '" width="' + slot + '" height="' + plotH + '" fill="transparent"></rect>');
       });
+      function handle(which, point, color) {
+        if (!point) return;
+        var xc = padL + point.index * slot + slot / 2;
+        var yy = y(point.price);
+        bits.push('<circle data-handle="' + which + '" cx="' + xc + '" cy="' + yy + '" r="16" fill="transparent"></circle>');
+        bits.push('<circle cx="' + xc + '" cy="' + yy + '" r="6" fill="' + color + '" stroke="#120e21" stroke-width="2"></circle>');
+      }
+      handle('a', state.a, '#f4cb82');
+      handle('b', state.b, '#8eb4ff');
       bits.push('</svg>');
       var hint = state.a == null
         ? (state.dir === 'up' ? (zh ? '按住这段低点，拖到高点后松开。也可以先点低点，再点高点。' : 'Press this swing’s low and drag to the high. You can also tap the low, then the high.') : (zh ? '按住这段高点，拖到低点后松开。' : 'Press this swing’s high and drag to the low.'))
         : (state.b == null
           ? (state.dir === 'up' ? (zh ? '再点这一段的高点。' : 'Now tap the high of this swing.') : (zh ? '再点这一段的低点。' : 'Now tap the low of this swing.'))
-          : (zh ? '线已经画好。0.5 到 0.618 是回调时大家常看的一带，不是必弹的价。' : 'The lines are drawn. 0.5 to 0.618 is the band people often watch in a pullback. It is not a price that must bounce.'));
+          : (zh ? '线已经画好。可以再拖两端。0.5 到 0.618 只是参考。' : 'The lines are locked. You can still drag either end. 0.5 to 0.618 is only a reference.'));
+      var liveHost = state.gesture && root.querySelector('.fib-scroll');
+      if (liveHost) {
+        liveHost.innerHTML = bits.join('');
+        var liveRead = root.querySelector('.a2-readout');
+        if (liveRead) liveRead.textContent = state.note || hint;
+        return;
+      }
       root.innerHTML =
         '<div class="a1"><p class="a1-flag">' + (zh ? '模拟行情·非实时' : 'Simulated tape · not live') + '</p>' +
         '<p>' + (zh
-          ? '找到这段最明显的低点和高点。<br>按住起点拖到终点，松开后画出 0、0.382、0.5、0.618 和 1。<br>上涨从低点拖到高点，下跌从高点拖到低点。<br>0.5 到 0.618 是回调时大家常看的一带，不是必弹的价。'
-          : 'Find the most obvious low and high of this swing.<br>Press the start and drag to the end. On release, 0, 0.382, 0.5, 0.618, and 1 are drawn.<br>In a rise, drag from the low to the high. In a drop, drag from the high to the low.<br>0.5 to 0.618 is the band people often watch in a pullback. It is not a price that must bounce.') + '</p>' +
-        '<div class="fib-scroll">' + bits.join('') + '</div>' +
+          ? '找到这段最明显的低点和高点。<br>按住起点拖到终点，线会跟着走，松开就定住。<br>上涨从低点拖到高点，下跌从高点拖到低点。<br>画好后可以再拖两端。0.5 到 0.618 只是参考。'
+          : 'Find the most obvious low and high of this swing.<br>Press the start and drag to the end. The lines follow, and they lock when you let go.<br>In a rise, drag from the low to the high. In a drop, drag from the high to the low.<br>After that, you can drag either end. 0.5 to 0.618 is only a reference.') + '</p>' +
+        '<div class="fib-scroll" style="touch-action:none">' + bits.join('') + '</div>' +
         '<p>' + hint + '</p>' +
         '<div class="a1-modes"><button type="button" data-move="play">' + (state.playing ? (zh ? '暂停' : 'Pause') : (zh ? '播放' : 'Play')) + '</button>' +
         '<button type="button" data-act="clear">' + (zh ? '重画' : 'Redraw') + '</button>' +
@@ -3087,37 +3109,87 @@
       root.removeEventListener('pointermove', root._fibPtr);
       root.removeEventListener('pointerup', root._fibPtr);
     }
+    var fibFrame = 0;
+    function schedulePaint() {
+      if (fibFrame) return;
+      fibFrame = requestAnimationFrame(function () {
+        fibFrame = 0;
+        if (!root.isConnected) return;
+        paint();
+      });
+    }
+    function pointFrom(ev) {
+      var svg = root.querySelector('svg');
+      if (!svg) return null;
+      var rect = svg.getBoundingClientRect();
+      var px = ((ev.clientX - rect.left) / Math.max(rect.width, 1)) * 980;
+      var py = ((ev.clientY - rect.top) / Math.max(rect.height, 1)) * 420;
+      var slot = (980 - 12 - 108) / Math.max(state.shown, 1);
+      var index = Math.max(0, Math.min(state.shown - 1, Math.floor((px - 12) / slot)));
+      var bar = data.bars[index];
+      var vals = [];
+      var i;
+      for (i = 0; i < state.shown; i++) vals.push(data.bars[i].h, data.bars[i].l);
+      var lo = Math.min.apply(null, vals);
+      var hi = Math.max.apply(null, vals);
+      var span = hi - lo || 1;
+      lo -= span * 0.08;
+      hi += span * 0.08;
+      function yOf(price) { return 16 + (hi - price) / (hi - lo) * 360; }
+      function priceOf(pixel) { return hi - (pixel - 16) / 360 * (hi - lo); }
+      var raw = priceOf(py);
+      var pick = bar.h;
+      var best = Math.abs(py - yOf(bar.h));
+      if (Math.abs(py - yOf(bar.l)) < best) { pick = bar.l; best = Math.abs(py - yOf(bar.l)); }
+      if (best <= 16) return { index: index, price: pick, t: bar.t };
+      return { index: index, price: Math.round(raw * 100) / 100, t: bar.t };
+    }
+    function follow(which, point) {
+      if (!point) return;
+      if (which === 'a') state.a = point;
+      else state.b = point;
+      if (state.a && state.b) state.dir = state.b.price >= state.a.price ? 'up' : 'down';
+    }
     root._fibPtr = function (ev) {
       if (ev.type === 'pointerdown') {
-        var hit = ev.target.closest ? ev.target.closest('[data-bar]') : null;
-        if (!hit || !root.contains(hit)) return;
-        state.dragFrom = Number(hit.getAttribute('data-bar'));
-        state.dragMoved = false;
-        try { hit.setPointerCapture(ev.pointerId); } catch (err) {}
+        if (ev.target.closest && ev.target.closest('button, a, input, label')) return;
+        var handle = ev.target.closest ? ev.target.closest('[data-handle]') : null;
+        var onChart = ev.target.closest ? ev.target.closest('svg') : null;
+        if (!handle && !onChart) return;
+        stop();
+        state.skipClick = true;
+        state.moved = false;
+        if (handle) {
+          state.gesture = handle.getAttribute('data-handle');
+        } else if (state.a && !state.b) {
+          state.gesture = 'b';
+          state.fresh = false;
+          follow('b', pointFrom(ev));
+        } else {
+          state.gesture = 'b';
+          state.fresh = true;
+          state.a = pointFrom(ev);
+          state.b = { index: state.a.index, price: state.a.price, t: state.a.t };
+        }
+        try { root.setPointerCapture(ev.pointerId); } catch (err) {}
+        schedulePaint();
         return;
       }
-      if (ev.type === 'pointermove' && state.dragFrom != null) {
-        state.dragMoved = true;
+      if (ev.type === 'pointermove') {
+        if (!state.gesture) return;
+        state.moved = true;
+        follow(state.gesture, pointFrom(ev));
+        state.note = zh ? '线跟着光标走。松开就定住。' : 'The lines follow the cursor. They lock when you let go.';
+        schedulePaint();
         return;
       }
-      if (ev.type !== 'pointerup' || state.dragFrom == null) return;
-      var from = state.dragFrom;
-      state.dragFrom = null;
-      var svg = root.querySelector('svg');
-      var to = from;
-      if (svg) {
-        var rect = svg.getBoundingClientRect();
-        var x = ((ev.clientX - rect.left) / Math.max(rect.width, 1)) * 980;
-        var slot = (980 - 12 - 108) / Math.max(state.shown, 1);
-        to = Math.max(0, Math.min(state.shown - 1, Math.floor((x - 12) / slot)));
-      }
-      if (to === from) return;
-      state.skipClick = true;
-      state.a = { index: from, price: data.bars[from][state.dir === 'up' ? 'l' : 'h'] };
-      state.b = { index: to, price: data.bars[to][state.dir === 'up' ? 'h' : 'l'] };
-      state.note = zh ? '线按你拖的这一段画好了。0.5 到 0.618 只是参考区。' : 'The lines follow the swing you dragged. 0.5 to 0.618 is only a reference zone.';
-      state.tone = '';
-      paint();
+      if (ev.type !== 'pointerup' || !state.gesture) return;
+      if (state.fresh && !state.moved) state.b = null;
+      state.gesture = null;
+      state.fresh = false;
+      if (state.a && state.b) state.note = zh ? '线定住了。可以再拖两端，或按重画。' : 'The lines are locked. Drag either end, or press Redraw.';
+      try { root.releasePointerCapture(ev.pointerId); } catch (err2) {}
+      schedulePaint();
     };
     root.addEventListener('pointerdown', root._fibPtr);
     root.addEventListener('pointermove', root._fibPtr);
