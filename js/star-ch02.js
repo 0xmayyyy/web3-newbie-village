@@ -130,33 +130,33 @@
         id: '05',
         title: bi('背离：价格和下面的线没走在一起', 'Divergence: price and the lower lines did not move together'),
         scene: bi('价格创新高、下面的线没创新高，是不是已经要跌了？', 'Price made a new high and the line below did not. Does that mean it is about to fall?'),
-        one: bi('顶背离是价格高点更高、下面的线高点更低，它只说明这两段没走在一起，不保证马上跌。', 'Top divergence is a higher price high with a lower high on the lines below, and it only says those two stretches did not move together, so it does not guarantee an immediate drop.'),
-        explain: bi('上面是价格 K 线。\n下面同时画两条线。\n一条是快线和慢线，看最近涨跌的速度。\n另一条是强弱线，看最近涨得多还是跌得多。\n顶背离：后面的价格高点更高，两条线的高点却更低。\n底背离：后面的价格低点更低，两条线的低点却更高。\n图上会把这两个点连起来，并标上顶背离或底背离。\n这只是已经走出来的两段对不上。\n它不保证下一根就转向。', 'The top is the price candles.\nTwo lines are drawn together underneath.\nOne pair is the fast line and the slow line. They show how fast price has been moving.\nThe other line is the strength line. It shows whether recent rises or falls were bigger.\nTop divergence: the later price high is higher, but the highs on both lines are lower.\nBottom divergence: the later price low is lower, but the lows on both lines are higher.\nThe chart connects those two points and labels top divergence or bottom divergence.\nThat only says two stretches that already happened did not match.\nIt does not guarantee the next candle turns.'),
-        example: bi('教学模拟：价格做出更高的高点时，快线和强弱线的高点更低。\n价格做出更低的低点时，两条线的低点更高。\n反例里，标出顶背离之后价格还在继续涨。\n所以背离不是买卖按钮。', 'Teaching simulation: when price makes a higher high, the fast line and the strength line make lower highs.\nWhen price makes a lower low, both lines make higher lows.\nIn the counterexample, price keeps rising after the top divergence is marked.\nSo divergence is not a buy or sell button.'),
+        one: bi('顶背离是价格高点更高、快线高点更低，它只说明这两段没走在一起，不保证马上跌。', 'Top divergence is a higher price high with a lower fast-line high, and it only says those two stretches did not move together, so it does not guarantee an immediate drop.'),
+        explain: bi('上面是价格 K 线。\n下面是 MACD。\n黄线是快线，看最近涨跌的速度。\n蓝线是慢线，是快线的平均。\n顶背离：后面的价格高点更高，快线的高点却更低。\n底背离：后面的价格低点更低，快线的低点却更高。\n图上会把这两个点连起来，并标上顶背离或底背离。\n这只是已经走出来的两段对不上。\n它不保证下一根就转向。', 'The top is the price candles.\nMACD is below.\nThe gold line is the fast line. It shows how fast price has been moving.\nThe blue line is the slow line, the average of the fast line.\nTop divergence: the later price high is higher, but the fast-line high is lower.\nBottom divergence: the later price low is lower, but the fast-line low is higher.\nThe chart connects those two points and labels top divergence or bottom divergence.\nThat only says two stretches that already happened did not match.\nIt does not guarantee the next candle turns.'),
+        example: bi('教学模拟：价格做出更高的高点时，快线的高点更低。\n价格做出更低的低点时，快线的低点更高。\n反例里，标出顶背离之后价格还在继续涨。\n所以背离不是买卖按钮。', 'Teaching simulation: when price makes a higher high, the fast line makes a lower high.\nWhen price makes a lower low, the fast line makes a higher low.\nIn the counterexample, price keeps rising after the top divergence is marked.\nSo divergence is not a buy or sell button.'),
         pitfalls: [
           bi('把背离当成马上要转向', 'Treating divergence as an immediate turn'),
           bi('只看线，不看价格有没有真的更高或更低', 'Looking only at the line, without checking whether price really went higher or lower')
         ],
-        practice: bi('点出顶背离的第二个高点。\n价格更高，下面的线更低。\n这不保证马上跌。', 'Tap the second high of the top divergence.\nPrice is higher and the line below is lower.\nThat does not guarantee an immediate drop.'),
+        practice: bi('点出顶背离的第二个高点。\n价格更高，快线更低。\n这不保证马上跌。', 'Tap the second high of the top divergence.\nPrice is higher and the fast line is lower.\nThat does not guarantee an immediate drop.'),
         check: {
-          ask: bi('价格更高、下面的线更低，这叫什么？', 'Price is higher and the line below is lower. What is that called?'),
+          ask: bi('价格更高、快线更低，这叫什么？', 'Price is higher and the fast line is lower. What is that called?'),
           options: [opt('A', '顶背离', 'Top divergence'), opt('B', '底背离', 'Bottom divergence'), opt('C', '金叉', 'A golden cross')],
           answer: 'A',
           miss: bi('底背离比的是低点。\n金叉是快线穿过慢线。', 'Bottom divergence compares lows.\nA golden cross is the fast line crossing the slow line.')
         },
         quizzes: [
-          quiz('价格新高、下面的线没有新高，这是？', 'A new price high, while the line below does not make a new high. What is that?', [opt('A', '顶背离', 'Top divergence'), opt('B', '底背离', 'Bottom divergence'), opt('C', '没有意义', 'Meaningless')], 'A', {
-            A: ['价格高点更高，线的高点更低，这就是顶背离。', 'A higher price high with a lower line high is top divergence.'],
+          quiz('价格新高、快线没有新高，这是？', 'A new price high, while the fast line does not make a new high. What is that?', [opt('A', '顶背离', 'Top divergence'), opt('B', '底背离', 'Bottom divergence'), opt('C', '没有意义', 'Meaningless')], 'A', {
+            A: ['价格高点更高，快线的高点更低，这就是顶背离。', 'A higher price high with a lower fast-line high is top divergence.'],
             B: ['底背离比的是更低的低点。', 'Bottom divergence compares a lower low.'],
             C: ['它说明两段没走在一起，不是空话，也不保证马上跌。', 'It says two stretches did not move together. That is not empty, and it still does not guarantee an immediate drop.']
           }),
           quiz('背离是不是一定马上转向？', 'Must divergence turn price right away?', [opt('A', '一定', 'It must'), opt('B', '不一定', 'Not necessarily'), opt('C', '只有上涨时一定', 'Only in a rise')], 'B', {
             A: ['背离之后价格仍可以顺着原来的方向再走一段。', 'After divergence, price can still keep going the same way.'],
-            B: ['它只是价格和下面的线没有一起创新高或创新低。', 'It only says price and the line below did not make the new extreme together.'],
+            B: ['它只是价格和快线没有一起创新高或创新低。', 'It only says price and the fast line did not make the new extreme together.'],
             C: ['换成上涨或下跌，也不变成保证。', 'A rise or a fall does not turn it into a guarantee.']
           }),
-          quiz('底背离看的是什么？', 'What does bottom divergence look at?', [opt('A', '价格低点更低，线的低点更高', 'A lower price low and a higher low on the line'), opt('B', '价格和线一起创新高', 'Price and the line both make a new high'), opt('C', '绿柱变长', 'The green bars get longer')], 'A', {
-            A: ['后面的价格更低，下面的线却没再创新低，这是底背离。', 'Later price is lower, but the line below did not make a new low. That is bottom divergence.'],
+          quiz('底背离看的是什么？', 'What does bottom divergence look at?', [opt('A', '价格低点更低，快线的低点更高', 'A lower price low and a higher fast-line low'), opt('B', '价格和快线一起创新高', 'Price and the fast line both make a new high'), opt('C', '绿柱变长', 'The green bars get longer')], 'A', {
+            A: ['后面的价格更低，快线却没再创新低，这是底背离。', 'Later price is lower, but the fast line did not make a new low. That is bottom divergence.'],
             B: ['一起创新高就不是背离。', 'Making a new high together is not divergence.'],
             C: ['绿柱变长说的是快线和慢线拉得更开。', 'A longer green bar means the fast and slow lines pulled farther apart.']
           })
@@ -2467,13 +2467,12 @@
       var draw = current.bars.slice(0, state.shown);
       var closes = draw.map(function (bar) { return bar.c; });
       var pack = macd(closes);
-      var strength = rsi(closes, 14);
       var w = 980;
-      var h = 520;
-      var padL = 8;
-      var padR = 64;
-      var top = 14;
-      var priceH = 210;
+      var h = 560;
+      var padL = 12;
+      var padR = 72;
+      var top = 18;
+      var priceH = 300;
       var vals = [];
       draw.forEach(function (bar) { vals.push(bar.h, bar.l); });
       var min = Math.min.apply(null, vals);
@@ -2483,15 +2482,12 @@
       max += span * 0.08;
       function y(p) { return top + (max - p) / (max - min) * priceH; }
       var slot = (w - padL - padR) / Math.max(draw.length, 1);
-      var macTop = 246;
-      var macH = 110;
-      var rsiTop = 378;
-      var rsiH = 110;
+      var macTop = 348;
+      var macH = 186;
       var macAbs = [1];
       pack.dif.forEach(function (v, i) { if (v != null) macAbs.push(Math.abs(v), Math.abs(pack.hist[i] || 0)); });
       var macMax = Math.max.apply(null, macAbs);
-      function my(v) { return macTop + macH / 2 - (v / macMax) * (macH / 2 - 8); }
-      function ry(v) { return rsiTop + (100 - v) / 100 * rsiH; }
+      function my(v) { return macTop + macH / 2 - (v / macMax) * (macH / 2 - 12); }
       var bits = ['<svg viewBox="0 0 ' + w + ' ' + h + '" role="img">'];
       bits.push('<rect width="' + w + '" height="' + h + '" fill="#120e21"></rect>');
       draw.forEach(function (bar, i) {
@@ -2501,7 +2497,7 @@
         var bw = Math.max(1.5, slot * 0.62);
         bits.push('<line x1="' + xc + '" y1="' + y(bar.h) + '" x2="' + xc + '" y2="' + y(bar.l) + '" stroke="' + color + '" stroke-width="1.1"></line>');
         bits.push('<rect x="' + (xc - bw / 2) + '" y="' + Math.min(y(bar.o), y(bar.c)) + '" width="' + bw + '" height="' + Math.max(1.1, Math.abs(y(bar.c) - y(bar.o))) + '" fill="' + color + '"></rect>');
-        if (i % 20 === 0) bits.push('<text x="' + xc + '" y="512" fill="#b7aac8" font-size="12">' + (zh ? '第' + (i + 1) + '根' : '#' + (i + 1)) + '</text>');
+        if (i % 20 === 0) bits.push('<text x="' + xc + '" y="548" fill="#b7aac8" font-size="12">' + (zh ? '第' + (i + 1) + '根' : '#' + (i + 1)) + '</text>');
       });
       function line(series, color, dash, mapY) {
         var pts = [];
@@ -2519,28 +2515,45 @@
       });
       line(pack.dif, '#f4cb82', false, my);
       line(pack.dea, '#8eb4ff', true, my);
-      bits.push('<rect x="' + padL + '" y="' + ry(100) + '" width="' + (w - padL - padR) + '" height="' + (ry(70) - ry(100)) + '" fill="rgba(212,83,78,.16)"></rect>');
-      bits.push('<rect x="' + padL + '" y="' + ry(30) + '" width="' + (w - padL - padR) + '" height="' + (ry(0) - ry(30)) + '" fill="rgba(31,138,77,.14)"></rect>');
-      [70, 50, 30].forEach(function (level) {
-        bits.push('<line x1="' + padL + '" y1="' + ry(level) + '" x2="' + (w - padR) + '" y2="' + ry(level) + '" stroke="#8eb4ff" stroke-dasharray="4 3"></line>');
-      });
-      line(strength, '#f4cb82', false, ry);
-      function linkPair(pair, label, priceOf, macdOf, rsiOf, color) {
-        if (!pair || pair[1] >= draw.length) return;
-        function seg(mapY, pick) {
-          var pts = pair.map(function (index) {
-            return (padL + index * slot + slot / 2).toFixed(1) + ',' + mapY(pick(index)).toFixed(1);
-          });
-          bits.push('<polyline points="' + pts.join(' ') + '" fill="none" stroke="' + color + '" stroke-width="1.6" stroke-dasharray="4 3"></polyline>');
+      function macdPeak(index, mode) {
+        var best = index;
+        var bestV = pack.dif[index];
+        var k;
+        for (k = Math.max(0, index - 2); k <= Math.min(draw.length - 1, index + 2); k++) {
+          var value = pack.dif[k];
+          if (value == null) continue;
+          if (bestV == null || (mode === 'high' ? value > bestV : value < bestV)) { best = k; bestV = value; }
         }
-        seg(y, priceOf);
-        if (macdOf(pair[0]) != null && macdOf(pair[1]) != null) seg(my, macdOf);
-        if (rsiOf(pair[0]) != null && rsiOf(pair[1]) != null) seg(ry, rsiOf);
-        var xc = padL + pair[1] * slot + slot / 2;
-        bits.push('<text data-mark="' + (label === (zh ? '顶背离' : 'Top') ? 'top' : 'bot') + '" x="' + xc + '" y="' + (y(priceOf(pair[1])) - 8) + '" text-anchor="middle" fill="' + color + '" font-size="12">' + label + '</text>');
+        return best;
       }
-      linkPair(current.top, zh ? '顶背离' : 'Top', function (i) { return draw[i].h; }, function (i) { return pack.dif[i]; }, function (i) { return strength[i]; }, '#d4534e');
-      linkPair(current.bot, zh ? '底背离' : 'Bottom', function (i) { return draw[i].l; }, function (i) { return pack.dif[i]; }, function (i) { return strength[i]; }, '#7dcea0');
+      function linkPair(pair, label, mode, color) {
+        if (!pair || pair[1] >= draw.length) return;
+        var mark = label === (zh ? '顶背离' : 'Top') ? 'top' : 'bot';
+        var pricePts = pair.map(function (index) {
+          var xc = padL + index * slot + slot / 2;
+          var yy = y(mode === 'high' ? draw[index].h : draw[index].l);
+          bits.push('<circle cx="' + xc + '" cy="' + yy + '" r="4.5" fill="' + color + '"></circle>');
+          return xc.toFixed(1) + ',' + yy.toFixed(1);
+        });
+        bits.push('<polyline points="' + pricePts.join(' ') + '" fill="none" stroke="' + color + '" stroke-width="3.2" stroke-linecap="round"></polyline>');
+        var macPts = [];
+        pair.forEach(function (index) {
+          var at = macdPeak(index, mode);
+          if (pack.dif[at] == null) return;
+          var xc = padL + at * slot + slot / 2;
+          var yy = my(pack.dif[at]);
+          bits.push('<circle cx="' + xc + '" cy="' + yy + '" r="4.5" fill="' + color + '"></circle>');
+          macPts.push(xc.toFixed(1) + ',' + yy.toFixed(1));
+        });
+        if (macPts.length === 2) bits.push('<polyline points="' + macPts.join(' ') + '" fill="none" stroke="' + color + '" stroke-width="3.2" stroke-linecap="round"></polyline>');
+        var xc = padL + pair[1] * slot + slot / 2;
+        var priceY = y(mode === 'high' ? draw[pair[1]].h : draw[pair[1]].l);
+        var labelY = mode === 'high' ? Math.max(top + 14, priceY - 10) : Math.min(top + priceH - 6, priceY + 16);
+        var nearRight = xc > w - padR - 56;
+        bits.push('<text data-mark="' + mark + '" x="' + (nearRight ? xc - 8 : xc) + '" y="' + labelY + '" text-anchor="' + (nearRight ? 'end' : 'middle') + '" fill="' + color + '" font-size="14" font-weight="700">' + label + '</text>');
+      }
+      linkPair(current.top, zh ? '顶背离' : 'Top', 'high', '#ff8f86');
+      linkPair(current.bot, zh ? '底背离' : 'Bottom', 'low', '#8ee0b0');
       draw.forEach(function (bar, i) {
         bits.push('<rect data-bar="' + i + '" data-pane="price" x="' + (padL + i * slot) + '" y="' + top + '" width="' + slot + '" height="' + priceH + '" fill="transparent"></rect>');
       });
@@ -2550,11 +2563,9 @@
         : (zh ? '小练习：点出顶背离的第二个高点。背离不保证马上跌。' : 'Short practice: tap the second high of the top divergence. Divergence does not guarantee an immediate drop.'));
       root.innerHTML =
         '<div class="a1"><p class="a1-flag">' + (zh ? '模拟行情·非实时' : 'Simulated tape · not live') + '</p>' +
-        '<p>' + (zh
-          ? '上面是 K 线。<br>中间是快线和慢线，柱子是它们的距离。<br>下面是强弱线，0 到 100。<br>价格高点更高、两条线的高点更低，是顶背离。<br>价格低点更低、两条线的低点更高，是底背离。'
-          : 'Candles are on top.<br>The middle shows the fast line and the slow line. The bars are the distance between them.<br>The bottom line is strength, from 0 to 100.<br>A higher price high with lower highs on both lines is top divergence.<br>A lower price low with higher lows on both lines is bottom divergence.') + '</p>' +
+        '<p>' + (zh ? '上面是 K 线，下面是 MACD。' : 'Candles are on top, and MACD is below.') + '</p>' +
         '<div class="div-scroll">' + bits.join('') + '</div>' +
-        '<p class="star-key"><span><i style="background:#f4cb82"></i>' + (zh ? '快线 / 强弱线' : 'Fast / strength') + '</span><span><i style="background:#8eb4ff"></i>' + (zh ? '慢线' : 'Slow line') + '</span><span><i style="background:#d4534e"></i>' + (zh ? '顶背离' : 'Top') + '</span><span><i style="background:#7dcea0"></i>' + (zh ? '底背离' : 'Bottom') + '</span></p>' +
+        '<p class="star-key"><span><i style="background:#f4cb82"></i>' + (zh ? '快线' : 'Fast line') + '</span><span><i style="background:#8eb4ff"></i>' + (zh ? '慢线' : 'Slow line') + '</span><span><i style="background:#ff8f86"></i>' + (zh ? '顶背离' : 'Top') + '</span><span><i style="background:#8ee0b0"></i>' + (zh ? '底背离' : 'Bottom') + '</span></p>' +
         '<p>' + note + '</p>' +
         '<div class="a1-modes"><button type="button" data-move="play">' + (state.playing ? (zh ? '暂停' : 'Pause') : (zh ? '播放' : 'Play')) + '</button><button type="button" data-move="reset">' + (zh ? '重新开始' : 'Start again') + '</button><button type="button" data-more="div">' + (zh ? '再看一个反例' : 'See a counterexample') + '</button><span>' + state.shown + ' / ' + current.visible + '</span></div>' +
         '<p class="a2-readout ' + state.tone + '">' + note + '</p></div>';
@@ -2725,7 +2736,7 @@
           state.note = zh ? '这是顶背离的第二个高点。可是后面价格还在涨，所以它没有拦住行情。' : 'This is the second high of the top divergence. Price kept rising afterward, so it did not stop the move.';
         } else if (hit) {
           state.tone = 'is-right';
-          state.note = zh ? '这是顶背离的第二个高点。价格更高，快线和强弱线都更低。这不保证马上跌。' : 'This is the second high of the top divergence. Price is higher, and the fast line and the strength line are lower. That does not guarantee an immediate drop.';
+          state.note = zh ? '这是顶背离的第二个高点。价格更高，快线更低。这不保证马上跌。' : 'This is the second high of the top divergence. Price is higher, and the fast line is lower. That does not guarantee an immediate drop.';
         } else {
           state.tone = 'is-wrong';
           state.note = zh ? '还不是。请点标着顶背离的那个更高的高点。' : 'Not yet. Tap the higher high labeled top divergence.';
