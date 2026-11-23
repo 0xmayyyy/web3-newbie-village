@@ -48,10 +48,10 @@ window.ADVANCED_STAR = {
           quiz: {
             q: { zh: 'OHLC 能判断最高价发生在最低价之前吗？', en: 'Can OHLC tell you whether the high happened before the low?' },
             options: [
-              { id: 'A', zh: '能', en: 'Yes' },
-              { id: 'B', zh: '不能', en: 'No' }
-            ],
-            answer: 'B',
+{ id: 'A', zh: '不能', en: 'No' },
+{ id: 'B', zh: '能', en: 'Yes' }
+],
+            answer: 'A',
             why: {
               zh: 'OHLC 是一根 K 线的四个价格：开盘价（Open）、最高价（High）、最低价（Low）、收盘价（Close）。它只记录了这段时间里到过哪些价格，没有记录哪个价格先出现。所以不能据此知道是先涨到 110 还是先跌到 95。',
               en: 'OHLC is the four prices of one candlestick: the opening price (Open), the highest price (High), the lowest price (Low), and the closing price (Close). It only records which prices were reached during that period, and does not record which price came first. So you cannot tell from this whether it rose to 110 first or fell to 95 first.'
@@ -94,10 +94,10 @@ window.ADVANCED_STAR = {
               en: 'Which statement matches this teaching simulation?'
             },
             options: [
-              { id: 'A', zh: '日线收涨，同时下午两小时的 5 分钟可以连着收跌', en: 'The day closes up, while the afternoon 5-minute candles can keep closing down' },
-              { id: 'B', zh: '日线收涨，所以每一根 5 分钟都收涨', en: 'The day closes up, so every 5-minute candle closes up' }
-            ],
-            answer: 'A',
+{ id: 'A', zh: '日线收涨，所以每一根 5 分钟都收涨', en: 'The day closes up, so every 5-minute candle closes up' },
+{ id: 'B', zh: '日线收涨，同时下午两小时的 5 分钟可以连着收跌', en: 'The day closes up, while the afternoon 5-minute candles can keep closing down' }
+],
+            answer: 'B',
             miss: {
               zh: '答错了。日线收涨不代表其中每个5分钟都涨。',
               en: 'Wrong. A rising daily close does not mean every 5-minute candle rose.'
@@ -110,10 +110,10 @@ window.ADVANCED_STAR = {
           quiz: {
             q: { zh: '日线收阳意味着所有 5 分钟 K 线都收阳吗？', en: 'Does a bullish daily candle mean every 5-minute candle closed up?' },
             options: [
-              { id: 'A', zh: '是', en: 'Yes' },
-              { id: 'B', zh: '否', en: 'No' }
-            ],
-            answer: 'B',
+{ id: 'A', zh: '否', en: 'No' },
+{ id: 'B', zh: '是', en: 'Yes' }
+],
+            answer: 'A',
             why: {
               zh: '日线收涨不代表其中每个5分钟都涨。',
               en: 'A rising daily close does not mean every 5 minutes inside it rose.'
@@ -160,69 +160,74 @@ window.ADVANCED_STAR = {
               en: 'Highs at 105, 112, and 120, lows at 90, 96, and 101. What structure has already happened?'
             },
             options: [
-              { id: 'A', zh: '上涨结构', en: 'An up structure' },
-              { id: 'B', zh: '下跌结构', en: 'A down structure' },
-              { id: 'C', zh: '还不明确', en: 'Still unclear' }
-            ],
-            answer: 'A',
+{ id: 'A', zh: '下跌结构', en: 'A down structure' },
+{ id: 'B', zh: '还不明确', en: 'Still unclear' },
+{ id: 'C', zh: '上涨结构', en: 'An up structure' },
+{ id: 'D', zh: '不用学，看到就买', en: 'Skip the lesson and buy as soon as you see it.' }
+],
+            answer: 'C',
             misses: {
-              B: {
+A: {
                 zh: '答错了。下跌结构常见更低的高点LH和更低的低点LL。这组高点和低点都在抬高。',
                 en: 'Wrong. A down structure often shows a lower high LH and a lower low LL. These highs and lows are both rising.'
               },
-              C: {
+B: {
                 zh: '答错了。这些高点和低点已经依次抬高，不是还分不出来。',
                 en: 'Wrong. These highs and lows have already risen in order, so this is not still unclear.'
-              }
-            }
+              },
+D: { zh: '这不是这道题要选的。回到题目里的说法再看一次。', en: 'That is not the choice this question wants. Look again at what the question says.' }
+}
           },
           quiz: {
             q: { zh: '高点与低点持续上移通常属于？', en: 'Highs and lows that keep stepping up usually belong to which structure?' },
             options: [
-              { id: 'A', zh: '上升', en: 'Up' },
-              { id: 'B', zh: '下降', en: 'Down' }
-            ],
-            answer: 'A',
+{ id: 'A', zh: '下降', en: 'Down' },
+{ id: 'B', zh: '上升', en: 'Up' }
+],
+            answer: 'B',
             why: { zh: '上升结构常见更高的高点HH和更高的低点HL。', en: 'An up structure usually shows a higher high (HH) and a higher low (HL).' }
           },
           quizzes: [
             {
               q: { zh: '高点与低点持续上移通常属于？', en: 'Highs and lows that keep stepping up usually belong to which structure?' },
               options: [
-                { id: 'A', zh: '上升', en: 'Up' },
-                { id: 'B', zh: '下降', en: 'Down' }
-              ],
+{ id: 'A', zh: '上升', en: 'Up' },
+{ id: 'B', zh: '下降', en: 'Down' }
+],
               answer: 'A',
               why: { zh: '上升结构常见更高的高点HH和更高的低点HL。', en: 'An up structure usually shows a higher high (HH) and a higher low (HL).' }
             },
             {
               q: { zh: '高点 105、112、120，低点 90、96、101，这组结构是？', en: 'Highs at 105, 112, and 120, lows at 90, 96, and 101. Which structure is this?' },
               options: [
-                { id: 'A', zh: '下跌', en: 'Down' },
-                { id: 'B', zh: '上涨', en: 'Up' },
-                { id: 'C', zh: '必然暴涨', en: 'Must surge' }
-              ],
-              answer: 'B',
+{ id: 'A', zh: '下跌', en: 'Down' },
+{ id: 'B', zh: '必然暴涨', en: 'Must surge' },
+{ id: 'C', zh: '只看名字就够了', en: 'The name alone is enough.' },
+{ id: 'D', zh: '上涨', en: 'Up' }
+],
+              answer: 'D',
               why: { zh: '上涨结构常见HH+HL。这里高点和低点都在抬高。这只描述已经发生的事实，不表示下一根必然暴涨。', en: 'An up structure often shows HH+HL. Here both the highs and the lows are rising. This only describes what has already happened, and it does not mean the next candle must surge.' }
             },
             {
               q: { zh: '刚出现一个疑似高点，可以立刻标成 HH 吗？', en: 'A possible high just printed. Can you mark it HH immediately?' },
               options: [
-                { id: 'A', zh: '可以', en: 'Yes' },
-                { id: 'B', zh: '要等右侧两根 K 线', en: 'Wait for two bars on the right' },
-                { id: 'C', zh: '收盘是绿色就可以', en: 'Yes, if it closes green' }
-              ],
-              answer: 'B',
+{ id: 'A', zh: '可以', en: 'Yes' },
+{ id: 'B', zh: '收盘是绿色就可以', en: 'Yes, if it closes green' },
+{ id: 'C', zh: '要等右侧两根 K 线', en: 'Wait for two bars on the right' },
+{ id: 'D', zh: '只看名字就够了', en: 'The name alone is enough.' }
+],
+              answer: 'C',
               why: { zh: '摆动点要左右各 2 根都满足，右侧两根出现之后才确认。不能因为这一根是绿色就确认。', en: 'A swing point needs two bars on each side, and it is confirmed only after the two bars on the right appear. You cannot confirm it just because this candle is green.' }
             },
             {
               q: { zh: '5 分钟在跌，日线在涨，可能吗？', en: 'Can the 5-minute chart fall while the daily chart rises?' },
               options: [
-                { id: 'A', zh: '数据一定错了', en: 'The data must be wrong' },
-                { id: 'B', zh: '日线接下来必跌', en: 'The daily chart must then fall' },
-                { id: 'C', zh: '不同周期可以方向不同', en: 'Different timeframes can point different ways' }
-              ],
-              answer: 'C',
+{ id: 'A', zh: '数据一定错了', en: 'The data must be wrong' },
+{ id: 'B', zh: '日线接下来必跌', en: 'The daily chart must then fall' },
+{ id: 'C', zh: '私聊里说可以，就可以做', en: 'If a private chat says yes, you can do it.' },
+{ id: 'D', zh: '不同周期可以方向不同', en: 'Different timeframes can point different ways' }
+],
+              answer: 'D',
               why: { zh: '不同周期可以相反。5 分钟下跌并不表示日线数据是错的，也不表示日线必然下跌。', en: 'Different timeframes can point opposite ways. A falling 5-minute chart does not mean the daily data is wrong, and it does not mean the daily chart must fall.' }
             }
           ]
@@ -265,68 +270,72 @@ window.ADVANCED_STAR = {
               en: 'Price dipped into 98–102 more than once and then rose. What is the better description?'
             },
             options: [
-              { id: 'A', zh: '绝对底部', en: 'An absolute bottom' },
-              { id: 'B', zh: '候选支撑区', en: 'A candidate support zone' },
-              { id: 'C', zh: '下一根必涨', en: 'The next candle must rise' }
-            ],
+{ id: 'A', zh: '绝对底部', en: 'An absolute bottom' },
+{ id: 'B', zh: '候选支撑区', en: 'A candidate support zone' },
+{ id: 'C', zh: '下一根必涨', en: 'The next candle must rise' },
+{ id: 'D', zh: '不用学，看到就买', en: 'Skip the lesson and buy as soon as you see it.' }
+],
             answer: 'B',
             misses: {
-              A: {
+A: {
                 zh: '答错了。支撑压力是价格过去出现明显反应的区域，不是保证有效的精准价位，也不是绝对底部。',
                 en: 'Wrong. Support and resistance are zones where price reacted before, not an exact price that is guaranteed to hold, and not an absolute bottom.'
               },
-              C: {
+C: {
                 zh: '答错了。过去有效不等于未来有效。不能由这块区域推出下一根必涨。',
                 en: 'Wrong. What worked before is not the same as what must work next. This zone does not mean the next candle must rise.'
-              }
-            }
+              },
+D: { zh: '这不是这道题要选的。回到题目里的说法再看一次。', en: 'That is not the choice this question wants. Look again at what the question says.' }
+}
           },
           quiz: {
             q: { zh: '支撑是？', en: 'Support is?' },
             options: [
-              { id: 'A', zh: '必涨价位', en: 'A price that must rise' },
-              { id: 'B', zh: '历史反应区域', en: 'A zone of past reactions' }
-            ],
-            answer: 'B',
+{ id: 'A', zh: '历史反应区域', en: 'A zone of past reactions' },
+{ id: 'B', zh: '必涨价位', en: 'A price that must rise' }
+],
+            answer: 'A',
             why: { zh: '支撑压力是价格过去出现明显反应的区域，不是保证有效的精准价位。', en: 'Support and resistance are zones where price reacted before, not exact prices that are guaranteed to hold.' }
           },
           quizzes: [
             {
               q: { zh: '支撑是？', en: 'Support is?' },
               options: [
-                { id: 'A', zh: '必涨价位', en: 'A price that must rise' },
-                { id: 'B', zh: '历史反应区域', en: 'A zone of past reactions' }
-              ],
+{ id: 'A', zh: '必涨价位', en: 'A price that must rise' },
+{ id: 'B', zh: '历史反应区域', en: 'A zone of past reactions' }
+],
               answer: 'B',
               why: { zh: '支撑压力是价格过去出现明显反应的区域，不是保证有效的精准价位。', en: 'Support and resistance are zones where price reacted before, not exact prices that are guaranteed to hold.' }
             },
             {
               q: { zh: '支撑压力更适合看成？', en: 'Support and resistance are better treated as?' },
               options: [
-                { id: 'A', zh: '永不失效的精确线', en: 'An exact line that never fails' },
-                { id: 'B', zh: '一块价格区域', en: 'A price zone' }
-              ],
-              answer: 'B',
+{ id: 'A', zh: '一块价格区域', en: 'A price zone' },
+{ id: 'B', zh: '永不失效的精确线', en: 'An exact line that never fails' }
+],
+              answer: 'A',
               why: { zh: '实际绘图更适合画价格带，而非一条绝对精确的线。', en: 'It is more useful to draw a band than one perfectly exact line.' }
             },
             {
               q: { zh: '价格第三次碰到支撑，接下来？', en: 'Price touches support for a third time. What comes next?' },
               options: [
-                { id: 'A', zh: '必反弹', en: 'It must bounce' },
-                { id: 'B', zh: '必跌破', en: 'It must break' },
-                { id: 'C', zh: '仍需观察', en: 'It still has to be watched' }
-              ],
+{ id: 'A', zh: '必反弹', en: 'It must bounce' },
+{ id: 'B', zh: '必跌破', en: 'It must break' },
+{ id: 'C', zh: '仍需观察', en: 'It still has to be watched' },
+{ id: 'D', zh: '只看名字就够了', en: 'The name alone is enough.' }
+],
               answer: 'C',
               why: { zh: '过去有效不等于未来有效。多次测试不等于永不跌破。', en: 'What worked before is not the same as what must work next. Several tests do not mean the zone can never break.' }
             },
             {
               q: { zh: '价格穿过压力之后，应该？', en: 'After price trades through resistance, you should?' },
               options: [
-                { id: 'A', zh: '立刻宣布那里永远变成支撑', en: 'Immediately call it permanent support' },
-                { id: 'B', zh: '观察后续', en: 'Watch what happens next' },
-                { id: 'C', zh: '把历史反应删掉', en: 'Erase the earlier reactions' }
-              ],
-              answer: 'B',
+{ id: 'A', zh: '立刻宣布那里永远变成支撑', en: 'Immediately call it permanent support' },
+{ id: 'B', zh: '把历史反应删掉', en: 'Erase the earlier reactions' },
+{ id: 'C', zh: '不用学，看到就买', en: 'Skip the lesson and buy as soon as you see it.' },
+{ id: 'D', zh: '观察后续', en: 'Watch what happens next' }
+],
+              answer: 'D',
               why: { zh: '价格可以穿越区域，角色转换不是必然。压力突破不等于必然变支撑。', en: 'Price can pass through a zone, and a role change is not inevitable. A break of resistance does not necessarily become support.' }
             }
           ]
@@ -371,28 +380,30 @@ window.ADVANCED_STAR = {
               en: 'High 113, close 108. This lesson’s line is a close above 111. Does this candle meet that close rule?'
             },
             options: [
-              { id: 'A', zh: '满足', en: 'Yes' },
-              { id: 'B', zh: '不满足', en: 'No' },
-              { id: 'C', zh: '所以它一定是假突破', en: 'So it must be a failed breakout' }
-            ],
-            answer: 'B',
+{ id: 'A', zh: '满足', en: 'Yes' },
+{ id: 'B', zh: '所以它一定是假突破', en: 'So it must be a failed breakout' },
+{ id: 'C', zh: '不满足', en: 'No' },
+{ id: 'D', zh: '私聊里说可以，就可以做', en: 'If a private chat says yes, you can do it.' }
+],
+            answer: 'C',
             misses: {
-              A: {
+A: {
                 zh: '答错了。本课用收盘价大于 111 作为收盘突破。收盘是 108，不满足。',
                 en: 'Wrong. This lesson uses a close above 111. The close is 108, so it does not meet that rule.'
               },
-              C: {
+B: {
                 zh: '答错了。收盘没有大于 111，只是影线越过。不能提前把它叫成假突破。',
                 en: 'Wrong. The close is not greater than 111, so only the wick went beyond. You cannot call it a failed breakout ahead of time.'
-              }
-            }
+              },
+D: { zh: '这不是这道题要选的。回到题目里的说法再看一次。', en: 'That is not the choice this question wants. Look again at what the question says.' }
+}
           },
           quiz: {
             q: { zh: '瞬间高于压力就一定成功突破？', en: 'Does a brief move above resistance mean the breakout has succeeded?' },
             options: [
-              { id: 'A', zh: '是', en: 'Yes' },
-              { id: 'B', zh: '否', en: 'No' }
-            ],
+{ id: 'A', zh: '是', en: 'Yes' },
+{ id: 'B', zh: '否', en: 'No' }
+],
             answer: 'B',
             why: { zh: '价格越过区间边界叫突破，但是否站稳要看后续表现。', en: 'Price crossing a range boundary is called a breakout, but whether it holds depends on what happens next.' }
           },
@@ -400,40 +411,43 @@ window.ADVANCED_STAR = {
             {
               q: { zh: '瞬间高于压力就一定成功突破？', en: 'Does a brief move above resistance mean the breakout has succeeded?' },
               options: [
-                { id: 'A', zh: '是', en: 'Yes' },
-                { id: 'B', zh: '否', en: 'No' }
-              ],
-              answer: 'B',
+{ id: 'A', zh: '否', en: 'No' },
+{ id: 'B', zh: '是', en: 'Yes' }
+],
+              answer: 'A',
               why: { zh: '价格越过区间边界叫突破，但是否站稳要看后续表现。', en: 'Price crossing a range boundary is called a breakout, but whether it holds depends on what happens next.' }
             },
             {
               q: { zh: '最高 113，收盘 108，门槛是收盘价大于 111。这根怎么看？', en: 'High 113, close 108. The line is a close above 111. How do you read this candle?' },
               options: [
-                { id: 'A', zh: '满足收盘突破', en: 'It meets the close rule' },
-                { id: 'B', zh: '不满足收盘突破', en: 'It does not meet the close rule' },
-                { id: 'C', zh: '一定是假突破', en: 'It must be a failed breakout' }
-              ],
-              answer: 'B',
+{ id: 'A', zh: '满足收盘突破', en: 'It meets the close rule' },
+{ id: 'B', zh: '一定是假突破', en: 'It must be a failed breakout' },
+{ id: 'C', zh: '不用学，看到就买', en: 'Skip the lesson and buy as soon as you see it.' },
+{ id: 'D', zh: '不满足收盘突破', en: 'It does not meet the close rule' }
+],
+              answer: 'D',
               why: { zh: '收盘 108，没有大于 111，不符合本课的收盘突破。也不能因此就叫它假突破。', en: 'The close is 108, which is not greater than 111, so it does not meet this lesson’s close breakout. You also cannot call it a failed breakout for that reason alone.' }
             },
             {
               q: { zh: '先收在 112，下一根收在 107。这时能说什么？', en: 'Price closes at 112, then the next candle closes at 107. What can you say?' },
               options: [
-                { id: 'A', zh: '之后必涨', en: 'It must rise after that' },
-                { id: 'B', zh: '收盘回到了区间', en: 'The close came back into the range' },
-                { id: 'C', zh: '不知道有没有收盘', en: 'There is no close to look at' }
-              ],
-              answer: 'B',
+{ id: 'A', zh: '之后必涨', en: 'It must rise after that' },
+{ id: 'B', zh: '不知道有没有收盘', en: 'There is no close to look at' },
+{ id: 'C', zh: '收盘回到了区间', en: 'The close came back into the range' },
+{ id: 'D', zh: '只看名字就够了', en: 'The name alone is enough.' }
+],
+              answer: 'C',
               why: { zh: '112 大于 111，107 又回到 100–110 里。收盘突破仍可失败。', en: '112 is above 111, and 107 is back inside 100–110. A close beyond the line can still fail.' }
             },
             {
               q: { zh: '回踩更准确的说法是？', en: 'Which statement about a retest is the accurate one?' },
               options: [
-                { id: 'A', zh: '回踩必成功', en: 'A retest must succeed' },
-                { id: 'B', zh: '回踩必反转', en: 'A retest must reverse' },
-                { id: 'C', zh: '价格返回测试边界，但结果不定', en: 'Price comes back to test the boundary, and the result is not settled' }
-              ],
-              answer: 'C',
+{ id: 'A', zh: '回踩必成功', en: 'A retest must succeed' },
+{ id: 'B', zh: '回踩必反转', en: 'A retest must reverse' },
+{ id: 'C', zh: '私聊里说可以，就可以做', en: 'If a private chat says yes, you can do it.' },
+{ id: 'D', zh: '价格返回测试边界，但结果不定', en: 'Price comes back to test the boundary, and the result is not settled' }
+],
+              answer: 'D',
               why: { zh: '突破后重新接近边界测试叫回踩。回踩不是每次都有，也不能保证成功或反转。', en: 'A move back toward the boundary after a break is a retest. It does not happen every time, and it does not guarantee success or a reversal.' }
             }
           ]
@@ -477,69 +491,74 @@ window.ADVANCED_STAR = {
               en: 'Candle 6 opens at 108, closes at 111, and trades 75 BTC. The previous candle traded 130 BTC. What is candle 6?'
             },
             options: [
-              { id: 'A', zh: '缩量上涨', en: 'A rise on less volume' },
-              { id: 'B', zh: '放量上涨', en: 'A rise on more volume' },
-              { id: 'C', zh: '下一根必跌', en: 'The next candle must fall' }
-            ],
-            answer: 'A',
+{ id: 'A', zh: '放量上涨', en: 'A rise on more volume' },
+{ id: 'B', zh: '缩量上涨', en: 'A rise on less volume' },
+{ id: 'C', zh: '下一根必跌', en: 'The next candle must fall' },
+{ id: 'D', zh: '只看名字就够了', en: 'The name alone is enough.' }
+],
+            answer: 'B',
             misses: {
-              B: {
+A: {
                 zh: '答错了。75 低于前一根 130，不是放量。收盘 111 高于开盘 108，是上涨。',
                 en: 'Wrong. 75 is below the previous 130, so this is not more volume. The close 111 is above the open 108, so it is a rise.'
               },
-              C: {
+C: {
                 zh: '答错了。缩量上涨不一定会下跌。不能单靠成交量预测下一根。',
                 en: 'Wrong. A rise on less volume will not necessarily fall. Volume alone cannot predict the next candle.'
-              }
-            }
+              },
+D: { zh: '这不是这道题要选的。回到题目里的说法再看一次。', en: 'That is not the choice this question wants. Look again at what the question says.' }
+}
           },
           quiz: {
             q: { zh: '缩量下跌必然即将反弹？', en: 'Must a drop on less volume bounce soon?' },
             options: [
-              { id: 'A', zh: '是', en: 'Yes' },
-              { id: 'B', zh: '否', en: 'No' }
-            ],
-            answer: 'B',
+{ id: 'A', zh: '否', en: 'No' },
+{ id: 'B', zh: '是', en: 'Yes' }
+],
+            answer: 'A',
             why: { zh: '成交量不能单独预测未来涨跌。放量下跌也不一定会反弹。', en: 'Volume cannot by itself predict a future rise or fall. A drop on more volume will not necessarily bounce either.' }
           },
           quizzes: [
             {
               q: { zh: '缩量下跌必然即将反弹？', en: 'Must a drop on less volume bounce soon?' },
               options: [
-                { id: 'A', zh: '是', en: 'Yes' },
-                { id: 'B', zh: '否', en: 'No' }
-              ],
+{ id: 'A', zh: '是', en: 'Yes' },
+{ id: 'B', zh: '否', en: 'No' }
+],
               answer: 'B',
               why: { zh: '成交量不能单独预测未来涨跌。放量下跌也不一定会反弹。', en: 'Volume cannot by itself predict a future rise or fall. A drop on more volume will not necessarily bounce either.' }
             },
             {
               q: { zh: '第 7 根开 111、收 107、成交量 210 BTC。前一根成交量 75 BTC。这根是？', en: 'Candle 7 opens at 111, closes at 107, and trades 210 BTC. The previous candle traded 75 BTC. What is candle 7?' },
               options: [
-                { id: 'A', zh: '缩量上涨', en: 'A rise on less volume' },
-                { id: 'B', zh: '放量下跌', en: 'A drop on more volume' },
-                { id: 'C', zh: '缩量下跌', en: 'A drop on less volume' }
-              ],
-              answer: 'B',
+{ id: 'A', zh: '缩量上涨', en: 'A rise on less volume' },
+{ id: 'B', zh: '缩量下跌', en: 'A drop on less volume' },
+{ id: 'C', zh: '放量下跌', en: 'A drop on more volume' },
+{ id: 'D', zh: '不用学，看到就买', en: 'Skip the lesson and buy as soon as you see it.' }
+],
+              answer: 'C',
               why: { zh: '收盘 107 低于开盘 111，成交量 210 高于前一根 75。本课把这叫放量下跌。', en: 'The close 107 is below the open 111, and 210 BTC is above the previous 75. This lesson calls that a drop on more volume.' }
             },
             {
               q: { zh: '一根成交量柱表示什么？', en: 'What does one volume bar show?' },
               options: [
-                { id: 'A', zh: '只有买入', en: 'Buying only' },
-                { id: 'B', zh: '买入减去卖出', en: 'Buying minus selling' },
-                { id: 'C', zh: '指定时段的成交数量', en: 'The amount traded in that period' }
-              ],
-              answer: 'C',
+{ id: 'A', zh: '只有买入', en: 'Buying only' },
+{ id: 'B', zh: '买入减去卖出', en: 'Buying minus selling' },
+{ id: 'C', zh: '只看名字就够了', en: 'The name alone is enough.' },
+{ id: 'D', zh: '指定时段的成交数量', en: 'The amount traded in that period' }
+],
+              answer: 'D',
               why: { zh: '成交量是指定市场、时段的成交标的数量。每笔成交有买卖双方，成交量柱不是净买入量。', en: 'Volume is the amount traded in a named market and period. Every trade has a buyer and a seller, so a volume bar is not net buying.' }
             },
             {
               q: { zh: '缩量上涨说明什么？', en: 'What does a rise on less volume show?' },
               options: [
-                { id: 'A', zh: '下一根必跌', en: 'The next candle must fall' },
-                { id: 'B', zh: '量低于比较基准，但后面还不确定', en: 'Volume is below the comparison, and what follows is not settled' },
-                { id: 'C', zh: '一定被操纵', en: 'It must be manipulation' }
-              ],
-              answer: 'B',
+{ id: 'A', zh: '下一根必跌', en: 'The next candle must fall' },
+{ id: 'B', zh: '一定被操纵', en: 'It must be manipulation' },
+{ id: 'C', zh: '量低于比较基准，但后面还不确定', en: 'Volume is below the comparison, and what follows is not settled' },
+{ id: 'D', zh: '私聊里说可以，就可以做', en: 'If a private chat says yes, you can do it.' }
+],
+              answer: 'C',
               why: { zh: '本课的量增减只和上一根比。缩量上涨不一定会下跌。不能把缩量上涨写成必跌。', en: 'In this lesson, more or less volume is compared only with the previous candle. A rise on less volume will not necessarily fall. Do not write a rise on less volume as a certain drop.' }
             }
           ]

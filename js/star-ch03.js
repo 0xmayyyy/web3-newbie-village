@@ -17,26 +17,14 @@
         practice: bi('在图上指出 106、102、114 三条线，并说出风险距离是 4。', 'On the chart, point to the lines at 106, 102, and 114, and say the risk distance is 4.'),
         check: {
           ask: bi('突破条件还没被收盘确认时，计划允许什么？', 'The break condition is not confirmed by the close. What does the plan allow?'),
-          options: [opt('A', '先追一半', 'Chase half now'), opt('B', '等待', 'Wait'), opt('C', '取消止损', 'Remove the stop')],
-          answer: 'B',
+          options: [opt('A', '等待', 'Wait'), opt('B', '先追一半', 'Chase half now'), opt('C', '取消止损', 'Remove the stop'), opt('D', '不用学，看到就买', 'Skip the lesson and buy as soon as you see it.')],
+          answer: 'A',
           miss: bi('没触发就等待。止损不能为了追价临时拿掉。', 'If it has not triggered, wait. The stop is not removed so you can chase.')
         },
         quizzes: [
-          quiz('条件没有触发时应该？', 'What should you do when the condition has not triggered?', [opt('A', '按感觉追', 'Chase by feel'), opt('B', '等待', 'Wait'), opt('C', '把目标改到更近', 'Move the target closer')], 'B', {
-            A: ['追价等于放弃事先写好的进场条件。', 'Chasing abandons the entry condition you wrote in advance.'],
-            B: ['条件没用收盘满足，计划的动作就是等待。', 'Until the close satisfies the condition, the plan’s action is to wait.'],
-            C: ['改目标不代替进场条件。', 'Changing the target does not replace the entry condition.']
-          }),
-          quiz('止损应该什么时候写？', 'When should the stop be written?', [opt('A', '进场之前', 'Before entry'), opt('B', '亏损之后再补', 'After the loss, as a patch'), opt('C', '盈利了再写', 'After it is in profit')], 'A', {
-            A: ['事前写下认错价，风险距离才是已知的。', 'Write the invalidation beforehand so the risk distance is known.'],
-            B: ['亏了再补，距离已经不是原来的计划。', 'Adding it after a loss means the distance is no longer the original plan.'],
-            C: ['盈利后再写，进场时并没有认错条件。', 'Writing it after a profit means there was no invalidation at entry.']
-          }),
-          quiz('2:1 表示什么？', 'What does 2:1 mean?', [opt('A', '胜率是两倍', 'The win rate is doubled'), opt('B', '计划收益是风险的两倍', 'Planned reward is twice the risk'), opt('C', '可以不加止损', 'You can skip the stop')], 'B', {
-            A: ['2:1 是距离比，不是赢的次数。', '2:1 is a ratio of distances, not a count of wins.'],
-            B: ['8 的计划收益对照 4 的风险，正好两倍。', 'A planned reward of 8 against a risk of 4 is exactly twice.'],
-            C: ['没有止损就没有这个风险距离，比值也无从谈起。', 'Without a stop there is no risk distance, so the ratio cannot be stated.']
-          })
+          quiz('条件没有触发时应该？', 'What should you do when the condition has not triggered?', [opt('A', '按感觉追', 'Chase by feel'), opt('B', '把目标改到更近', 'Move the target closer'), opt('C', '不用学，看到就买', 'Skip the lesson and buy as soon as you see it.'), opt('D', '等待', 'Wait')], 'D', {A: ['追价等于放弃事先写好的进场条件。', 'Chasing abandons the entry condition you wrote in advance.'], B: ['改目标不代替进场条件。', 'Changing the target does not replace the entry condition.'], C: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.'], D: ['条件没用收盘满足，计划的动作就是等待。', 'Until the close satisfies the condition, the plan’s action is to wait.']}),
+          quiz('止损应该什么时候写？', 'When should the stop be written?', [opt('A', '亏损之后再补', 'After the loss, as a patch'), opt('B', '盈利了再写', 'After it is in profit'), opt('C', '进场之前', 'Before entry'), opt('D', '只看名字就够了', 'The name alone is enough.')], 'C', {A: ['亏了再补，距离已经不是原来的计划。', 'Adding it after a loss means the distance is no longer the original plan.'], B: ['盈利后再写，进场时并没有认错条件。', 'Writing it after a profit means there was no invalidation at entry.'], C: ['事前写下认错价，风险距离才是已知的。', 'Write the invalidation beforehand so the risk distance is known.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
+          quiz('2:1 表示什么？', 'What does 2:1 mean?', [opt('A', '胜率是两倍', 'The win rate is doubled'), opt('B', '可以不加止损', 'You can skip the stop'), opt('C', '私聊里说可以，就可以做', 'If a private chat says yes, you can do it.'), opt('D', '计划收益是风险的两倍', 'Planned reward is twice the risk')], 'D', {A: ['2:1 是距离比，不是赢的次数。', '2:1 is a ratio of distances, not a count of wins.'], B: ['没有止损就没有这个风险距离，比值也无从谈起。', 'Without a stop there is no risk distance, so the ratio cannot be stated.'], C: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.'], D: ['8 的计划收益对照 4 的风险，正好两倍。', 'A planned reward of 8 against a risk of 4 is exactly twice.']})
         ],
         study: {
           kind: 'levels',
@@ -64,26 +52,14 @@
         practice: bi('用 1000、1%、进场 100、止损 95 算出 2 枚。', 'Use 1000, 1%, entry 100, and stop 95 to get 2 coins.'),
         check: {
           ask: bi('上面的例子应该买多少？', 'How many should the example buy?'),
-          options: [opt('A', '2 枚', '2 coins'), opt('B', '10 枚', '10 coins'), opt('C', '100 枚', '100 coins')],
-          answer: 'A',
+          options: [opt('A', '10 枚', '10 coins'), opt('B', '2 枚', '2 coins'), opt('C', '100 枚', '100 coins'), opt('D', '私聊里说可以，就可以做', 'If a private chat says yes, you can do it.')],
+          answer: 'B',
           miss: bi('10 是风险金额，不是数量。数量=10/5=2。', '10 is the risk cash, not the quantity. Quantity=10/5=2.')
         },
         quizzes: [
-          quiz('权益 1000、风险 1%、每枚风险 5，数量是？', 'Equity 1000, risk 1%, risk per coin 5. What is the quantity?', [opt('A', '2 枚', '2 coins'), opt('B', '5 枚', '5 coins'), opt('C', '10 枚', '10 coins')], 'A', {
-            A: ['风险金额 10，10÷5=2 枚。', 'Risk cash is 10, and 10÷5=2 coins.'],
-            B: ['5 是每枚的止损距离，不是数量。', '5 is the stop distance per coin, not the quantity.'],
-            C: ['10 是允许亏损的金额。若买 10 枚，价格跌 5 就亏 50。', '10 is the cash you allow yourself to lose. Ten coins would lose 50 if price falls 5.']
-          }),
-          quiz('风险金额不变，止损放得更远，数量应该？', 'If the risk cash stays the same and the stop is wider, quantity should?', [opt('A', '减少', 'Decrease'), opt('B', '增加', 'Increase'), opt('C', '不变', 'Stay the same')], 'A', {
-            A: ['数量=风险金额÷距离。距离变大，数量变小。', 'Quantity=risk cash÷distance. A larger distance means a smaller quantity.'],
-            B: ['更远的止损如果还加数量，亏损会超过事先定的金额。', 'Adding quantity on a wider stop makes the loss exceed the cash you set.'],
-            C: ['距离变了，除数就变了，数量不会保持原样。', 'When the distance changes, the divisor changes, so the quantity does not stay the same.']
-          }),
-          quiz('止损价能保证按那个价成交吗？', 'Does the stop price guarantee a fill at that price?', [opt('A', '保证', 'Yes'), opt('B', '否', 'No'), opt('C', '只在整点保证', 'Only at round numbers')], 'B', {
-            A: ['触发之后还要看当时的对手盘，价格可以滑过止损。', 'After the trigger, the other side of the book still matters. Price can slip through the stop.'],
-            B: ['例子里止损 95，成交可以在 94，2 枚就亏 12。', 'In the example the stop is 95 and the fill can be 94, so 2 coins lose 12.'],
-            C: ['整数价同样不是成交保证。', 'A round price is not a guaranteed fill either.']
-          })
+          quiz('权益 1000、风险 1%、每枚风险 5，数量是？', 'Equity 1000, risk 1%, risk per coin 5. What is the quantity?', [opt('A', '5 枚', '5 coins'), opt('B', '10 枚', '10 coins'), opt('C', '不用学，看到就买', 'Skip the lesson and buy as soon as you see it.'), opt('D', '2 枚', '2 coins')], 'D', {A: ['5 是每枚的止损距离，不是数量。', '5 is the stop distance per coin, not the quantity.'], B: ['10 是允许亏损的金额。若买 10 枚，价格跌 5 就亏 50。', '10 is the cash you allow yourself to lose. Ten coins would lose 50 if price falls 5.'], C: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.'], D: ['风险金额 10，10÷5=2 枚。', 'Risk cash is 10, and 10÷5=2 coins.']}),
+          quiz('风险金额不变，止损放得更远，数量应该？', 'If the risk cash stays the same and the stop is wider, quantity should?', [opt('A', '减少', 'Decrease'), opt('B', '增加', 'Increase'), opt('C', '不变', 'Stay the same'), opt('D', '私聊里说可以，就可以做', 'If a private chat says yes, you can do it.')], 'A', {A: ['数量=风险金额÷距离。距离变大，数量变小。', 'Quantity=risk cash÷distance. A larger distance means a smaller quantity.'], B: ['更远的止损如果还加数量，亏损会超过事先定的金额。', 'Adding quantity on a wider stop makes the loss exceed the cash you set.'], C: ['距离变了，除数就变了，数量不会保持原样。', 'When the distance changes, the divisor changes, so the quantity does not stay the same.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
+          quiz('止损价能保证按那个价成交吗？', 'Does the stop price guarantee a fill at that price?', [opt('A', '保证', 'Yes'), opt('B', '只在整点保证', 'Only at round numbers'), opt('C', '只看名字就够了', 'The name alone is enough.'), opt('D', '否', 'No')], 'D', {A: ['触发之后还要看当时的对手盘，价格可以滑过止损。', 'After the trigger, the other side of the book still matters. Price can slip through the stop.'], B: ['整数价同样不是成交保证。', 'A round price is not a guaranteed fill either.'], C: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.'], D: ['例子里止损 95，成交可以在 94，2 枚就亏 12。', 'In the example the stop is 95 and the fill can be 94, so 2 coins lose 12.']})
         ],
         study: { kind: 'panel', rows: [
           bi('权益 1000 × 1% = 风险金额 10。', 'Equity 1000 × 1% = risk cash 10.'),
@@ -106,26 +82,14 @@
         practice: bi('手算 B 的期望，确认是 −4 而不是正数。', 'Calculate B’s expectancy by hand and confirm it is −4, not positive.'),
         check: {
           ask: bi('策略 A 扣费前的期望是多少？', 'What is strategy A’s expectancy before fees?'),
-          options: [opt('A', '+20', '+20'), opt('B', '−4', '−4'), opt('C', '+80', '+80')],
-          answer: 'A',
+          options: [opt('A', '−4', '−4'), opt('B', '+80', '+80'), opt('C', '+20', '+20'), opt('D', '只看名字就够了', 'The name alone is enough.')],
+          answer: 'C',
           miss: bi('0.4×200−0.6×100=80−60=20。', '0.4×200−0.6×100=80−60=20.')
         },
         quizzes: [
-          quiz('策略 A 的期望是？', 'What is strategy A’s expectancy?', [opt('A', '+20', '+20'), opt('B', '0', '0'), opt('C', '+200', '+200')], 'A', {
-            A: ['0.4×200−0.6×100=20。', '0.4×200−0.6×100=20.'],
-            B: ['赢的贡献和亏的贡献不相等，不是 0。', 'The win contribution and the loss contribution are not equal, so it is not 0.'],
-            C: ['200 是赢的时候的金额，还要乘胜率并减掉亏损。', '200 is the amount when you win. It still has to be multiplied by the win rate, and the losses subtracted.']
-          }),
-          quiz('策略 B 的期望是？', 'What is strategy B’s expectancy?', [opt('A', '正的', 'Positive'), opt('B', '负的', 'Negative'), opt('C', '等于胜率', 'Equal to the win rate')], 'B', {
-            A: ['0.8×20 只有 16，而 0.2×100=20，减完是 −4。', '0.8×20 is only 16, while 0.2×100=20, so the result is −4.'],
-            B: ['高胜率盖不住偶尔一次的大亏。', 'A high win rate does not cover an occasional large loss.'],
-            C: ['0.8 是胜率，不是期望金额。', '0.8 is the win rate, not the expectancy in money.']
-          }),
-          quiz('手续费对净期望通常怎样？', 'What do fees usually do to net expectancy?', [opt('A', '降低', 'Lower it'), opt('B', '提高', 'Raise it'), opt('C', '不影响', 'No effect')], 'A', {
-            A: ['费用从公式里减去，净期望下降。', 'Fees are subtracted in the formula, so net expectancy falls.'],
-            B: ['费用不是收入。', 'A fee is not income.'],
-            C: ['只要费用不为 0，结果就和扣费前不同。', 'If the fee is not 0, the result differs from the pre-fee number.']
-          })
+          quiz('策略 A 的期望是？', 'What is strategy A’s expectancy?', [opt('A', '0', '0'), opt('B', '+200', '+200'), opt('C', '私聊里说可以，就可以做', 'If a private chat says yes, you can do it.'), opt('D', '+20', '+20')], 'D', {A: ['赢的贡献和亏的贡献不相等，不是 0。', 'The win contribution and the loss contribution are not equal, so it is not 0.'], B: ['200 是赢的时候的金额，还要乘胜率并减掉亏损。', '200 is the amount when you win. It still has to be multiplied by the win rate, and the losses subtracted.'], C: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.'], D: ['0.4×200−0.6×100=20。', '0.4×200−0.6×100=20.']}),
+          quiz('策略 B 的期望是？', 'What is strategy B’s expectancy?', [opt('A', '正的', 'Positive'), opt('B', '负的', 'Negative'), opt('C', '等于胜率', 'Equal to the win rate'), opt('D', '不用学，看到就买', 'Skip the lesson and buy as soon as you see it.')], 'B', {A: ['0.8×20 只有 16，而 0.2×100=20，减完是 −4。', '0.8×20 is only 16, while 0.2×100=20, so the result is −4.'], B: ['高胜率盖不住偶尔一次的大亏。', 'A high win rate does not cover an occasional large loss.'], C: ['0.8 是胜率，不是期望金额。', '0.8 is the win rate, not the expectancy in money.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
+          quiz('手续费对净期望通常怎样？', 'What do fees usually do to net expectancy?', [opt('A', '提高', 'Raise it'), opt('B', '不影响', 'No effect'), opt('C', '只看名字就够了', 'The name alone is enough.'), opt('D', '降低', 'Lower it')], 'D', {A: ['费用不是收入。', 'A fee is not income.'], B: ['只要费用不为 0，结果就和扣费前不同。', 'If the fee is not 0, the result differs from the pre-fee number.'], C: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.'], D: ['费用从公式里减去，净期望下降。', 'Fees are subtracted in the formula, so net expectancy falls.']})
         ],
         study: { kind: 'panel', rows: [
           bi('A：0.4×200 − 0.6×100 = +20。', 'A: 0.4×200 − 0.6×100 = +20.'),
@@ -147,26 +111,14 @@
         practice: bi('用 100 和 92 算出每枚亏损 8。', 'Use 100 and 92 to get a loss of 8 per coin.'),
         check: {
           ask: bi('例子里每枚实际亏损是多少？', 'What is the actual loss per coin in the example?'),
-          options: [opt('A', '5', '5'), opt('B', '8', '8'), opt('C', '3', '3')],
-          answer: 'B',
+          options: [opt('A', '5', '5'), opt('B', '3', '3'), opt('C', '私聊里说可以，就可以做', 'If a private chat says yes, you can do it.'), opt('D', '8', '8')],
+          answer: 'D',
           miss: bi('5 只是 100 到触发价 95。成交在 92，亏损是 8。', '5 is only the distance from 100 to the trigger at 95. The fill is 92, so the loss is 8.')
         },
         quizzes: [
-          quiz('止损市价单保护成交价吗？', 'Does a stop-market order protect the fill price?', [opt('A', '保护', 'It protects it'), opt('B', '不保护', 'It does not'), opt('C', '只保护整数价', 'Only round prices')], 'B', {
-            A: ['它保护的是“触发后去成交”，不是成交在触发价。', 'It protects “go trade after the trigger,” not “fill at the trigger.”'],
-            B: ['盘口薄时，成交价可以是 92 而不是 95。', 'In a thin book the fill can be 92 rather than 95.'],
-            C: ['整数价没有特殊保护。', 'A round price has no special protection.']
-          }),
-          quiz('止损限价单可能不成交吗？', 'Can a stop-limit fail to fill?', [opt('A', '可能', 'Yes'), opt('B', '不可能', 'No'), opt('C', '触发了就一定成交', 'A trigger always fills')], 'A', {
-            A: ['限价挡在触发价附近时，价格跳过限价就可以留下未成交。', 'If the limit sits near the trigger, price can jump past the limit and leave the order unfilled.'],
-            B: ['限价单的定义就包含“价格不合适则不成交”。', 'The definition of a limit includes “no fill if the price is not acceptable.”'],
-            C: ['触发只是启动，限价仍要被市场碰到。', 'The trigger only starts it. The limit still has to be met by the market.']
-          }),
-          quiz('例子里每枚亏损是多少？', 'What is the loss per coin in the example?', [opt('A', '5', '5'), opt('B', '8', '8'), opt('C', '92', '92')], 'B', {
-            A: ['5=100−95，那是触发距离，不是成交亏损。', '5=100−95. That is the distance to the trigger, not the fill loss.'],
-            B: ['100−92=8。', '100−92=8.'],
-            C: ['92 是成交价，不是亏损额。', '92 is the fill price, not the loss.']
-          })
+          quiz('止损市价单保护成交价吗？', 'Does a stop-market order protect the fill price?', [opt('A', '保护', 'It protects it'), opt('B', '只保护整数价', 'Only round prices'), opt('C', '不保护', 'It does not'), opt('D', '只看名字就够了', 'The name alone is enough.')], 'C', {A: ['它保护的是“触发后去成交”，不是成交在触发价。', 'It protects “go trade after the trigger,” not “fill at the trigger.”'], B: ['整数价没有特殊保护。', 'A round price has no special protection.'], C: ['盘口薄时，成交价可以是 92 而不是 95。', 'In a thin book the fill can be 92 rather than 95.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
+          quiz('止损限价单可能不成交吗？', 'Can a stop-limit fail to fill?', [opt('A', '不可能', 'No'), opt('B', '触发了就一定成交', 'A trigger always fills'), opt('C', '私聊里说可以，就可以做', 'If a private chat says yes, you can do it.'), opt('D', '可能', 'Yes')], 'D', {A: ['限价单的定义就包含“价格不合适则不成交”。', 'The definition of a limit includes “no fill if the price is not acceptable.”'], B: ['触发只是启动，限价仍要被市场碰到。', 'The trigger only starts it. The limit still has to be met by the market.'], C: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.'], D: ['限价挡在触发价附近时，价格跳过限价就可以留下未成交。', 'If the limit sits near the trigger, price can jump past the limit and leave the order unfilled.']}),
+          quiz('例子里每枚亏损是多少？', 'What is the loss per coin in the example?', [opt('A', '8', '8'), opt('B', '5', '5'), opt('C', '92', '92'), opt('D', '不用学，看到就买', 'Skip the lesson and buy as soon as you see it.')], 'A', {A: ['100−92=8。', '100−92=8.'], B: ['5=100−95，那是触发距离，不是成交亏损。', '5=100−95. That is the distance to the trigger, not the fill loss.'], C: ['92 是成交价，不是亏损额。', '92 is the fill price, not the loss.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']})
         ],
         study: { kind: 'book', headers: [bi('价', 'Price'), bi('买盘数量', 'Bid size')], cells: [['95', '0'], ['94', '0'], ['92', '2']], rows: [
           bi('买入 100，触发 95，成交 92，每枚亏损 8。', 'Bought at 100, trigger 95, fill 92, loss 8 per coin.')
@@ -186,26 +138,14 @@
         practice: bi('算 500 回到 1000 需要的涨幅，再算 0.99 的五次方。', 'Compute the rise from 500 back to 1000, then compute 0.99 to the 5th power.'),
         check: {
           ask: bi('从峰值亏 50% 后，要涨多少才回本？', 'After a 50% drop from the peak, how much must it rise to recover?'),
-          options: [opt('A', '50%', '50%'), opt('B', '100%', '100%'), opt('C', '25%', '25%')],
-          answer: 'B',
+          options: [opt('A', '100%', '100%'), opt('B', '50%', '50%'), opt('C', '25%', '25%'), opt('D', '不用学，看到就买', 'Skip the lesson and buy as soon as you see it.')],
+          answer: 'A',
           miss: bi('500×1.5=750，还没回到 1000。500×2=1000。', '500×1.5=750, which is not back to 1000. 500×2=1000.')
         },
         quizzes: [
-          quiz('亏掉一半之后，回本需要上涨多少？', 'After losing half, what rise is needed to recover?', [opt('A', '50%', '50%'), opt('B', '100%', '100%'), opt('C', '200%', '200%')], 'B', {
-            A: ['500 上涨 50% 只到 750。', 'A 50% rise from 500 only reaches 750.'],
-            B: ['500×(1+100%)=1000，正好回到峰值。', '500×(1+100%)=1000, exactly back to the peak.'],
-            C: ['200% 会到 1500，超过原来的峰值。', '200% would reach 1500, past the old peak.']
-          }),
-          quiz('1000 连续五次亏当前权益的 1%，大约剩多少？', 'Start at 1000 and lose 1% of current equity five times. About what remains?', [opt('A', '950.99', '950.99'), opt('B', '950', '950'), opt('C', '995', '995')], 'A', {
-            A: ['1000×0.99^5≈950.99。', '1000×0.99^5≈950.99.'],
-            B: ['950 是五次各扣固定的 10，不是每次按剩余权益的 1%。', '950 would be five flat deductions of 10, not 1% of the remaining equity each time.'],
-            C: ['995 只扣了一次 5，不是五次。', '995 removes 5 once, not five times.']
-          }),
-          quiz('回撤是相对什么计算的？', 'Drawdown is calculated against what?', [opt('A', '历史峰值', 'The historical peak'), opt('B', '第一笔的进场价', 'The first entry price'), opt('C', '手续费', 'Fees')], 'A', {
-            A: ['回撤=(峰值−当前权益)/峰值。', 'Drawdown=(peak−current equity)/peak.'],
-            B: ['进场价不是权益曲线的峰值定义。', 'An entry price is not the definition of the peak on the equity curve.'],
-            C: ['手续费会影响权益，但回撤的对照物仍是峰值。', 'Fees affect equity, but the reference for drawdown is still the peak.']
-          })
+          quiz('亏掉一半之后，回本需要上涨多少？', 'After losing half, what rise is needed to recover?', [opt('A', '50%', '50%'), opt('B', '100%', '100%'), opt('C', '200%', '200%'), opt('D', '只看名字就够了', 'The name alone is enough.')], 'B', {A: ['500 上涨 50% 只到 750。', 'A 50% rise from 500 only reaches 750.'], B: ['500×(1+100%)=1000，正好回到峰值。', '500×(1+100%)=1000, exactly back to the peak.'], C: ['200% 会到 1500，超过原来的峰值。', '200% would reach 1500, past the old peak.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
+          quiz('1000 连续五次亏当前权益的 1%，大约剩多少？', 'Start at 1000 and lose 1% of current equity five times. About what remains?', [opt('A', '950', '950'), opt('B', '995', '995'), opt('C', '950.99', '950.99'), opt('D', '私聊里说可以，就可以做', 'If a private chat says yes, you can do it.')], 'C', {A: ['950 是五次各扣固定的 10，不是每次按剩余权益的 1%。', '950 would be five flat deductions of 10, not 1% of the remaining equity each time.'], B: ['995 只扣了一次 5，不是五次。', '995 removes 5 once, not five times.'], C: ['1000×0.99^5≈950.99。', '1000×0.99^5≈950.99.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
+          quiz('回撤是相对什么计算的？', 'Drawdown is calculated against what?', [opt('A', '第一笔的进场价', 'The first entry price'), opt('B', '手续费', 'Fees'), opt('C', '不用学，看到就买', 'Skip the lesson and buy as soon as you see it.'), opt('D', '历史峰值', 'The historical peak')], 'D', {A: ['进场价不是权益曲线的峰值定义。', 'An entry price is not the definition of the peak on the equity curve.'], B: ['手续费会影响权益，但回撤的对照物仍是峰值。', 'Fees affect equity, but the reference for drawdown is still the peak.'], C: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.'], D: ['回撤=(峰值−当前权益)/峰值。', 'Drawdown=(peak−current equity)/peak.']})
         ],
         study: { kind: 'panel', rows: [
           bi('1000 → 500，回撤 50%，回本需要 +100%。', '1000 → 500, drawdown 50%, recovery needs +100%.'),
@@ -226,26 +166,14 @@
         practice: bi('拿一笔盈利但没按计划的单，把它标成执行问题而不是策略证明。', 'Take one winning trade that broke the plan and mark it as an execution problem, not proof of the strategy.'),
         check: {
           ask: bi('只记录赚钱的单，好不好？', 'Is it good to record only the winning trades?'),
-          options: [opt('A', '好，看着安心', 'Yes, it feels better'), opt('B', '不好', 'No'), opt('C', '只在亏损月不好', 'Only bad in a losing month')],
-          answer: 'B',
+          options: [opt('A', '好，看着安心', 'Yes, it feels better'), opt('B', '只在亏损月不好', 'Only bad in a losing month'), opt('C', '只看名字就够了', 'The name alone is enough.'), opt('D', '不好', 'No')],
+          answer: 'D',
           miss: bi('缺了亏损和违规，日志不能复盘。', 'Without losses and rule breaks, the log cannot be reviewed.')
         },
         quizzes: [
-          quiz('只把赚钱的单写进日志，好吗？', 'Is it good to write only winners into the log?', [opt('A', '好', 'Yes'), opt('B', '不好', 'No'), opt('C', '样本少的时候好', 'Yes when the sample is small')], 'B', {
-            A: ['缺亏损样本，期望和错误都看不出来。', 'Without the losing sample, you cannot see expectancy or mistakes.'],
-            B: ['赚钱和亏钱、按计划和违规，都要留下。', 'Winners and losers, plan-following and rule-breaking, all have to stay in the log.'],
-            C: ['样本越少越不能再删掉一半。', 'The smaller the sample, the worse it is to delete half of it.']
-          }),
-          quiz('策略问题和执行问题要分开吗？', 'Should strategy problems and execution problems be separated?', [opt('A', '要', 'Yes'), opt('B', '不用', 'No'), opt('C', '只分开盈利单', 'Only separate the winners')], 'A', {
-            A: ['按计划却亏钱，和违规却赚钱，处理方式不同。', 'Losing while following the plan is handled differently from winning while breaking it.'],
-            B: ['混在一起就不知道该改规则还是改执行。', 'Mixed together, you cannot tell whether to change the rule or the execution.'],
-            C: ['亏损单更需要知道有没有违规。', 'Losing trades need that distinction even more.']
-          }),
-          quiz('十笔记录能保证以后的结果吗？', 'Can ten records guarantee later results?', [opt('A', '能', 'Yes'), opt('B', '不能', 'No'), opt('C', '胜率过半就能', 'Yes if the win rate is above half')], 'B', {
-            A: ['十笔只是一小段样本，可以偏离期望。', 'Ten trades are a short sample. They can deviate from expectancy.'],
-            B: ['日志帮助复盘，不承诺下一段的胜率。', 'A log helps review. It does not promise the next stretch’s win rate.'],
-            C: ['过半的胜率仍然可能期望为负，也不能外推。', 'A win rate above half can still have negative expectancy, and it still cannot be extrapolated.']
-          })
+          quiz('只把赚钱的单写进日志，好吗？', 'Is it good to write only winners into the log?', [opt('A', '不好', 'No'), opt('B', '好', 'Yes'), opt('C', '样本少的时候好', 'Yes when the sample is small'), opt('D', '不用学，看到就买', 'Skip the lesson and buy as soon as you see it.')], 'A', {A: ['赚钱和亏钱、按计划和违规，都要留下。', 'Winners and losers, plan-following and rule-breaking, all have to stay in the log.'], B: ['缺亏损样本，期望和错误都看不出来。', 'Without the losing sample, you cannot see expectancy or mistakes.'], C: ['样本越少越不能再删掉一半。', 'The smaller the sample, the worse it is to delete half of it.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
+          quiz('策略问题和执行问题要分开吗？', 'Should strategy problems and execution problems be separated?', [opt('A', '不用', 'No'), opt('B', '要', 'Yes'), opt('C', '只分开盈利单', 'Only separate the winners'), opt('D', '只看名字就够了', 'The name alone is enough.')], 'B', {A: ['混在一起就不知道该改规则还是改执行。', 'Mixed together, you cannot tell whether to change the rule or the execution.'], B: ['按计划却亏钱，和违规却赚钱，处理方式不同。', 'Losing while following the plan is handled differently from winning while breaking it.'], C: ['亏损单更需要知道有没有违规。', 'Losing trades need that distinction even more.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
+          quiz('十笔记录能保证以后的结果吗？', 'Can ten records guarantee later results?', [opt('A', '能', 'Yes'), opt('B', '胜率过半就能', 'Yes if the win rate is above half'), opt('C', '不能', 'No'), opt('D', '私聊里说可以，就可以做', 'If a private chat says yes, you can do it.')], 'C', {A: ['十笔只是一小段样本，可以偏离期望。', 'Ten trades are a short sample. They can deviate from expectancy.'], B: ['过半的胜率仍然可能期望为负，也不能外推。', 'A win rate above half can still have negative expectancy, and it still cannot be extrapolated.'], C: ['日志帮助复盘，不承诺下一段的胜率。', 'A log helps review. It does not promise the next stretch’s win rate.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']})
         ],
         study: { kind: 'panel', rows: [
           bi('多单盈亏 = (出场 − 进场) × 数量 − 费用。', 'Long PnL = (exit − entry) × quantity − fees.'),

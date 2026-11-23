@@ -1101,19 +1101,19 @@ window.I18N = {
 window.I18N_QUIZ = {
   zh: [
     { q: '「官方客服」要助记词帮你修复钱包，给吗？', o: ['给', '不给'], a: 1, ans: '不给。停止沟通并核验渠道。', ch: '09' },
-    { q: 'Ethereum 和 Base 地址看起来一样，可以随意选网络吗？', o: ['可以', '不可以'], a: 1, ans: '不可以。收款方必须支持对应网络和资产。', ch: '10' },
+    { q: 'Ethereum 和 Base 地址看起来一样，可以随意选网络吗？', o: ['不可以', '可以'], a: 0, ans: '不可以。收款方必须支持对应网络和资产。', ch: '10' },
     { q: '断开网站连接，之前的代币授权就撤销了吗？', o: ['撤销了', '通常没有'], a: 1, ans: '通常没有，需要单独检查。', ch: '09' },
-    { q: '币价 0.001 美元，是否一定比价格 100 美元的币便宜？', o: ['一定更便宜', '不能这样判断'], a: 1, ans: '不能这样判断，还要看供应、估值和资产本身。', ch: '03' },
+    { q: '币价 0.001 美元，是否一定比价格 100 美元的币便宜？', o: ['不能这样判断', '一定更便宜'], a: 0, ans: '不能这样判断，还要看供应、估值和资产本身。', ch: '03' },
     { q: '止损设置好了，实际损失是否一定不超过预设金额？', o: ['一定不超过', '不能保证'], a: 1, ans: '不能保证。滑点、跳价、订单机制与执行问题都可能影响结果。', ch: '07' },
-    { q: '稳定币显示年化 20%，是否说明一年后保证多 20%？', o: ['是，保证多 20%', '不是'], a: 1, ans: '不是。年化是按当前条件估算的，会随市场变化，不是保证收益。', ch: '12' }
+    { q: '稳定币显示年化 20%，是否说明一年后保证多 20%？', o: ['不是', '是，保证多 20%'], a: 0, ans: '不是。年化是按当前条件估算的，会随市场变化，不是保证收益。', ch: '12' }
   ],
   en: [
     { q: '“Official support” asks for your seed phrase to repair the wallet. Do you give it?', o: ['Yes', 'No'], a: 1, ans: 'No. Stop the conversation and check the channel.', ch: '09' },
-    { q: 'An Ethereum address and a Base address can look the same. Can you pick the network at random?', o: ['Yes', 'No'], a: 1, ans: 'No. The recipient has to support that network and that asset.', ch: '10' },
+    { q: 'An Ethereum address and a Base address can look the same. Can you pick the network at random?', o: ['No', 'Yes'], a: 0, ans: 'No. The recipient has to support that network and that asset.', ch: '10' },
     { q: 'If you disconnect a site, are previous token approvals revoked?', o: ['Yes, they are revoked', 'Usually not'], a: 1, ans: 'Usually not. You have to check them separately.', ch: '09' },
-    { q: 'Is a coin priced at 0.001 dollar always cheaper than a coin priced at 100 dollars?', o: ['Yes, always cheaper', 'You cannot judge it that way'], a: 1, ans: 'You cannot judge it that way. You also have to look at supply, valuation, and the asset itself.', ch: '03' },
+    { q: 'Is a coin priced at 0.001 dollar always cheaper than a coin priced at 100 dollars?', o: ['You cannot judge it that way', 'Yes, always cheaper'], a: 0, ans: 'You cannot judge it that way. You also have to look at supply, valuation, and the asset itself.', ch: '03' },
     { q: 'You set a stop. Is the real loss guaranteed to stay within the amount you planned?', o: ['Yes, it cannot exceed it', 'No, it is not guaranteed'], a: 1, ans: 'It is not guaranteed. Slippage, a price jump, how the order works, and execution problems can all change the result.', ch: '07' },
-    { q: 'A stablecoin shows 20% annualized. Does that mean you are guaranteed 20% more after one year?', o: ['Yes, 20% is guaranteed', 'No'], a: 1, ans: 'No. The annualized figure is an estimate under current conditions. It changes with the market. It is not a guaranteed return.', ch: '12' }
+    { q: 'A stablecoin shows 20% annualized. Does that mean you are guaranteed 20% more after one year?', o: ['No', 'Yes, 20% is guaranteed'], a: 0, ans: 'No. The annualized figure is an estimate under current conditions. It changes with the market. It is not a guaranteed return.', ch: '12' }
   ]
 };
 
