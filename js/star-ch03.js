@@ -101,29 +101,27 @@
       lesson({
         id: '04',
         title: bi('止损：触发价不等于成交价', 'Stops: the trigger price is not the fill'),
-        scene: bi('止损挂在 95，结果 92 才成交，多出来的亏损算谁的？', 'The stop was at 95 but the fill was 92. Whose loss is the extra amount?'),
-        one: bi('止损市价单不保证价格。止损限价单可能根本不成交。薄的盘口会让成交价离触发价更远。', 'A stop-market order does not guarantee the price. A stop-limit order may not fill at all. A thin book can put the fill far from the trigger.'),
-        explain: bi('触发价只是启动订单的条件。\n市价止损触发后按当时能成交的价格走，所以不保护成交价。\n限价止损触发后还要求价格不低于或不超过你的限价，盘口不够时可以不成交。\n亏损按真实成交价计算，不是按触发价。', 'The trigger only starts the order.\nAfter a stop-market triggers, it trades at prices the book can fill, so it does not protect the fill price.\nAfter a stop-limit triggers, it still requires a price no worse than your limit. If the book is not there, it may not fill.\nThe loss uses the real fill, not the trigger.'),
-        example: bi('买入价 100，触发价 95，成交价 92。\n每枚亏损=100−92=8。\n若 95 和 94 的买盘深度是 0，92 才有 2 个数量，3 个数量里就有 1 个在已知深度之外。', 'Buy price 100, trigger 95, fill 92.\nLoss per coin=100−92=8.\nIf the bid size at 95 and 94 is 0 and 92 has size 2, then 1 of 3 units is outside the known depth.'),
+        scene: bi('止损市价卖掉 2 个 BTC，看得见的买盘不够时，剩下的在哪成交？', 'A stop-market sell of 2 BTC. If the bids you can see are not enough, where does the rest fill?'),
+        one: bi('止损市价卖出时，看得见的买盘不够，剩下的就会在更低的价格成交。', 'On a stop-market sell, if the bids you can see are not enough, the rest fills at a lower price.'),
+        explain: bi('你想用止损市价单卖掉 2 个 BTC。\n触发之后，卖单会去吃当时的买盘，成交价不是锁在触发价上。\n图上绿色买盘从 61,245.7 到 61,242.6，加在一起只有 1.58872 个 BTC。\n卖掉 2 个时，这些买盘先被吃完，还剩 0.41128 个。\n剩下的会在 61,242.6 下面成交，所以平均成交价比触发价更差。\n如果改成限价单，价格不到你写的限价就不成交，2 个 BTC 可能卖不完。', 'You want to sell 2 BTC with a stop-market order.\nAfter it triggers, the sell order takes the bids that are there, and the fill is not locked at the trigger.\nThe green bids from 61,245.7 down to 61,242.6 add up to only 1.58872 BTC.\nWhen you sell 2, those bids are taken first, and 0.41128 is left.\nThe rest fills below 61,242.6, so the average fill is worse than the trigger.\nIf you switch to a limit order, it does not trade until price reaches your limit, so all 2 BTC may not sell.'),
+        example: bi('这张盘上，先被吃掉的是绿色买盘。\n看得见的一共 1.58872 个 BTC。\n卖出 2 个以后，还剩 0.41128 个，要到 61,242.6 下面才有人接。', 'On this book, the green bids are taken first.\nThe ones you can see add up to 1.58872 BTC.\nAfter selling 2, 0.41128 is left, and that part needs a buyer below 61,242.6.'),
         pitfalls: [
-          bi('用触发价代替成交价算亏损', 'Using the trigger instead of the fill to compute the loss'),
-          bi('以为限价止损一定会成交', 'Assuming a stop-limit will always fill')
+          bi('把触发价当成已经成交的价格', 'Treating the trigger price as the price you already sold at'),
+          bi('以为限价单一定能把 2 个 BTC 卖完', 'Assuming a limit order will always sell all 2 BTC')
         ],
-        practice: bi('用 100 和 92 算出每枚亏损 8。', 'Use 100 and 92 to get a loss of 8 per coin.'),
+        practice: bi('把卖出数量点到 2 个 BTC，看哪些绿色买盘被吃掉，剩下的会在更低的价格成交。', 'Set the sell amount to 2 BTC, see which green bids are taken, and see that the rest fills at a lower price.'),
         check: {
-          ask: bi('例子里每枚实际亏损是多少？', 'What is the actual loss per coin in the example?'),
-          options: [opt('A', '5', '5'), opt('B', '3', '3'), opt('C', '私聊里说可以，就可以做', 'If a private chat says yes, you can do it.'), opt('D', '8', '8')],
+          ask: bi('看得见的买盘，从 61,245.7 到 61,242.6，一共多少 BTC？', 'How much BTC do the bids you can see add up to, from 61,245.7 down to 61,242.6?'),
+          options: [opt('A', '2', '2'), opt('B', '3.21208', '3.21208'), opt('C', '大约 0.41', 'About 0.41'), opt('D', '1.58872', '1.58872')],
           answer: 'D',
-          miss: bi('5 只是 100 到触发价 95。成交在 92，亏损是 8。', '5 is only the distance from 100 to the trigger at 95. The fill is 92, so the loss is 8.')
+          miss: bi('把绿色买盘加在一起是 1.58872 个 BTC。\n2 是你想卖的数量，0.41 是吃完以后还剩的部分。', 'The green bids add up to 1.58872 BTC.\n2 is how much you want to sell, and about 0.41 is what is left after those bids are taken.')
         },
         quizzes: [
-          quiz('止损市价单保护成交价吗？', 'Does a stop-market order protect the fill price?', [opt('A', '保护', 'It protects it'), opt('B', '只保护整数价', 'Only round prices'), opt('C', '不保护', 'It does not'), opt('D', '只看名字就够了', 'The name alone is enough.')], 'C', {A: ['它保护的是“触发后去成交”，不是成交在触发价。', 'It protects “go trade after the trigger,” not “fill at the trigger.”'], B: ['整数价没有特殊保护。', 'A round price has no special protection.'], C: ['盘口薄时，成交价可以是 92 而不是 95。', 'In a thin book the fill can be 92 rather than 95.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
-          quiz('止损限价单可能不成交吗？', 'Can a stop-limit fail to fill?', [opt('A', '不可能', 'No'), opt('B', '触发了就一定成交', 'A trigger always fills'), opt('C', '私聊里说可以，就可以做', 'If a private chat says yes, you can do it.'), opt('D', '可能', 'Yes')], 'D', {A: ['限价单的定义就包含“价格不合适则不成交”。', 'The definition of a limit includes “no fill if the price is not acceptable.”'], B: ['触发只是启动，限价仍要被市场碰到。', 'The trigger only starts it. The limit still has to be met by the market.'], C: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.'], D: ['限价挡在触发价附近时，价格跳过限价就可以留下未成交。', 'If the limit sits near the trigger, price can jump past the limit and leave the order unfilled.']}),
-          quiz('例子里每枚亏损是多少？', 'What is the loss per coin in the example?', [opt('A', '8', '8'), opt('B', '5', '5'), opt('C', '92', '92'), opt('D', '不用学，看到就买', 'Skip the lesson and buy as soon as you see it.')], 'A', {A: ['100−92=8。', '100−92=8.'], B: ['5=100−95，那是触发距离，不是成交亏损。', '5=100−95. That is the distance to the trigger, not the fill loss.'], C: ['92 是成交价，不是亏损额。', '92 is the fill price, not the loss.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']})
+          quiz('止损市价卖掉 2 个 BTC，看得见的买盘只有 1.58872。剩下的怎样？', 'A stop-market sell of 2 BTC, and the bids you can see are only 1.58872. What happens to the rest?', [opt('A', '仍按触发价成交', 'It still fills at the trigger'), opt('B', '会在 61,242.6 下面成交，平均价更差', 'It fills below 61,242.6, and the average price is worse'), opt('C', '自动取消', 'It is cancelled'), opt('D', '不用学，看到就买', 'Skip the lesson and buy as soon as you see it.')], 'B', {A: ['触发价只是开始卖，不是成交价。', 'The trigger only starts the sell. It is not the fill.'], B: ['买盘先被吃完，还剩 0.41128 个，要到 61,242.6 下面才有人接。', 'Those bids are taken first. 0.41128 is left, and it needs a buyer below 61,242.6.'], C: ['市价单不会因为买盘不够就取消，它会继续往下吃。', 'A market order is not cancelled because the visible bids run out. It keeps selling lower.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
+          quiz('同样想卖掉 2 个 BTC，改成限价单，可能怎样？', 'You still want to sell 2 BTC, but you use a limit order. What can happen?', [opt('A', '一定按触发价全部卖完', 'It must sell all of it at the trigger'), opt('B', '买盘会自动变多', 'The bids grow on their own'), opt('C', '价格不到限价，可能卖不完', 'If price does not reach the limit, it may not all sell'), opt('D', '私聊里说可以，就可以做', 'If a private chat says yes, you can do it.')], 'C', {A: ['限价单不保证按触发价卖完。', 'A limit order does not guarantee a full sale at the trigger.'], B: ['你的订单类型不会把别人的买盘变多。', 'Your order type does not make other people bid more.'], C: ['限价保护价格，但买盘不够、或者价格没到，剩下的可以不成交。', 'A limit protects the price, but if the bids are not there, or price never reaches it, the rest can stay unsold.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
+          quiz('止损市价单保的是成交价吗？', 'Does a stop-market order protect the fill price?', [opt('A', '不保。它按当时买盘能成交的价格走', 'No. It fills at the bids that are there'), opt('B', '保，一定是触发价', 'Yes. It is always the trigger'), opt('C', '只保整数价', 'Only round prices'), opt('D', '只看名字就够了', 'The name alone is enough.')], 'A', {A: ['它只保证触发后去卖，成交价跟着买盘走。', 'It only guarantees that the sell starts after the trigger. The fill follows the bids.'], B: ['触发价不是成交保证。', 'The trigger is not a guaranteed fill.'], C: ['整数价没有特殊保护。', 'A round price has no special protection.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']})
         ],
-        study: { kind: 'book', headers: [bi('价', 'Price'), bi('买盘数量', 'Bid size')], cells: [['95', '0'], ['94', '0'], ['92', '2']], rows: [
-          bi('买入 100，触发 95，成交 92，每枚亏损 8。', 'Bought at 100, trigger 95, fill 92, loss 8 per coin.')
-        ] }
+        study: { kind: 'spotbook' }
       }),
       lesson({
         id: '05',

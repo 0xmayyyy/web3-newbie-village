@@ -480,15 +480,21 @@
     }
     function bars() { return source().slice(0, shown); }
     function paint() {
-      var plainStudy = study.kind === 'ema' || study.kind === 'macd' || (study.kind === 'rsi' && study.main === 'rsi');
+      var plainStudy = study.kind === 'ema' || study.kind === 'macd' || (study.kind === 'rsi' && study.main === 'rsi') || study.kind === 'spotbook';
       var html = '<div class="a1">' + (t ? '<p class="a1-flag">' + t('star.sim') + ' · ' + t('star.figure') + ' · ' + t('star.a2.disclaimer') + '</p>' : '') + (plainStudy ? '' : legend(lang));
       html += renderKind(study, bars(), shown, lang, state);
       var max = source().length || 1;
-      if (max > 1 && study.kind !== 'book' && study.kind !== 'panel') {
+      if (max > 1 && study.kind !== 'book' && study.kind !== 'panel' && study.kind !== 'spotbook') {
         html += '<div class="a1-modes"><button type="button" data-step="prev">' + (lang === 'en' ? 'Previous bar' : '上一根') + '</button><button type="button" data-step="next">' + (lang === 'en' ? 'Next bar' : '下一根') + '</button><span>' + shown + ' / ' + max + '</span></div>';
       }
       html += '</div>';
       root.innerHTML = html;
+      root.querySelectorAll('[data-qty]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          state.qty = btn.getAttribute('data-qty');
+          paint();
+        });
+      });
       root.querySelectorAll('[data-step]').forEach(function (btn) {
         btn.addEventListener('click', function () {
           var maxN = source().length;
@@ -731,7 +737,65 @@
     ]);
   }
 
+  function renderSpotBook(lang, state) {
+    var zh = lang !== 'en';
+    var asks = [
+      ['61,247.3', 44137], ['61,247.2', 40886], ['61,246.9', 9],
+      ['61,246.8', 1990], ['61,246.3', 20], ['61,245.8', 321208]
+    ];
+    var bids = [
+      ['61,245.7', 155691], ['61,245.0', 18], ['61,243.8', 1383],
+      ['61,243.4', 18], ['61,243.3', 775], ['61,242.6', 987]
+    ];
+    var bidSum = 0;
+    bids.forEach(function (row) { bidSum += row[1]; });
+    var maxSize = 321208;
+    var qty = state.qty || '2';
+    var want = Math.round(Number(qty) * 100000);
+    var left = want;
+    var eaten = bids.map(function (row) {
+      var take = left > 0 ? Math.min(row[1], left) : 0;
+      left -= take;
+      return take;
+    });
+    var remain = left > 0 ? left : 0;
+    function sizeText(units) {
+      var s = (units / 100000).toFixed(5);
+      return units % 1000 === 0 ? (units / 100000).toFixed(2) : s;
+    }
+    function rowHtml(price, units, take, side) {
+      var pct = Math.max(2, units / maxSize * 100);
+      var cls = 'ob-row ' + side + (take > 0 ? (take < units ? ' is-part' : ' is-eat') : '');
+      return '<div class="' + cls + '"><i style="width:' + pct.toFixed(1) + '%"></i><span>' + price + '</span><b>' + sizeText(units) + '</b></div>';
+    }
+    var note;
+    if (remain > 0) {
+      note = zh
+        ? '卖出 ' + sizeText(want) + ' BTC。看得见的买盘一共 1.58872 BTC，先被吃掉 ' + sizeText(want - remain) + '。还剩 ' + sizeText(remain) + '，会在 61,242.6 下面成交，平均价比触发价更差。改成限价单，可能卖不完。'
+        : 'Sell ' + sizeText(want) + ' BTC. The bids you can see add up to 1.58872 BTC, and ' + sizeText(want - remain) + ' of them are taken first. ' + sizeText(remain) + ' remains and fills below 61,242.6, so the average price is worse than the trigger. A limit order may not sell it all.';
+    } else {
+      note = zh
+        ? '卖出 ' + sizeText(want) + ' BTC。看得见的买盘够用，标出来的绿色买盘会被吃掉。成交价仍按当时的买盘走，不是锁在触发价。'
+        : 'Sell ' + sizeText(want) + ' BTC. The bids you can see are enough, and the marked green bids are taken. The fill still follows those bids. It is not locked at the trigger.';
+    }
+    var picks = [['1', zh ? '卖 1' : 'Sell 1'], ['1.58872', zh ? '吃完买盘' : 'Eat the book'], ['2', zh ? '卖 2' : 'Sell 2']];
+    return '<div class="ob">' +
+      '<div class="ob-top"><strong>BTC/USDT</strong><span>' + (zh ? '现货' : 'Spot') + '</span></div>' +
+      '<div class="ob-tabs"><span>' + (zh ? '买入' : 'Buy') + '</span><span class="on">' + (zh ? '卖出' : 'Sell') + '</span></div>' +
+      '<div class="ob-types"><span>' + (zh ? '限价单' : 'Limit') + '</span><span class="on">' + (zh ? '市价' : 'Market') + '</span></div>' +
+      '<p class="ob-hint">' + (zh ? '止损市价单触发后，按市价去吃下面的绿色买盘。' : 'After a stop-market order triggers, it takes the green bids below at the market.') + '</p>' +
+      '<div class="ob-picks">' + picks.map(function (pick) {
+        return '<button type="button" data-qty="' + pick[0] + '"' + (qty === pick[0] ? ' class="on"' : '') + '>' + pick[1] + '</button>';
+      }).join('') + '</div>' +
+      '<div class="ob-cols"><span>' + (zh ? '价格' : 'Price') + '</span><span>' + (zh ? '数量' : 'Amount') + '</span></div>' +
+      asks.map(function (row) { return rowHtml(row[0], row[1], 0, 'ask'); }).join('') +
+      '<div class="ob-last">61,245.74</div>' +
+      bids.map(function (row, i) { return rowHtml(row[0], row[1], eaten[i], 'bid'); }).join('') +
+      '<p class="ob-note">' + esc(note) + '</p></div>';
+  }
+
   function renderKind(study, bars, shown, lang, state) {
+    if (study.kind === 'spotbook') return renderSpotBook(lang, state || {});
     var closes = bars.map(function (bar) { return bar.c; });
     var math = M();
     if (study.kind === 'ema') {
