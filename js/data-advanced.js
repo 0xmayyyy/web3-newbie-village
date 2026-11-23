@@ -9,7 +9,7 @@ window.ADVANCED_STAR = {
   modules: [
     { id: '01', status: 'open', title: { zh: 'K 线与价格行为', en: 'Candlesticks and price action' }, blurb: { zh: '看懂蜡烛图、趋势、支撑压力与市场结构', en: 'Candles, trend, support, resistance, and market structure' } },
     { id: '02', status: 'soon', title: { zh: '技术指标与信号', en: 'Indicators and signals' }, blurb: { zh: 'EMA、MACD、RSI、背离、斐波那契与 SMC', en: 'EMA, MACD, RSI, divergence, Fibonacci, and SMC' } },
-    { id: '03', status: 'soon', title: { zh: '交易系统与风险管理', en: 'Trading systems and risk' }, blurb: { zh: '仓位、止损、盈亏比与交易计划', en: 'Position size, stops, reward-to-risk, and a trading plan' } },
+    { id: '03', status: 'soon', title: { zh: '交易系统与风险管理', en: 'Trading systems and risk' }, blurb: { zh: '交易计划、仓位和胜率', en: 'A trading plan, position size, and win rate' } },
     { id: '04', status: 'soon', title: { zh: '合约与市场微观结构', en: 'Contracts and market microstructure' }, blurb: { zh: '杠杆、资金费率、持仓量与流动性', en: 'Leverage, funding, open interest, and liquidity' } },
     { id: '05', status: 'soon', title: { zh: '宏观经济与市场周期', en: 'Macroeconomics and market cycles' }, blurb: { zh: '利率、通胀、美元、BTC 周期与 ETF 影响', en: 'Rates, inflation, the dollar, the BTC cycle, and ETFs' } },
     { id: '06', status: 'soon', title: { zh: '链上数据与资金流向', en: 'On-chain data and flows' }, blurb: { zh: '交易所流量、稳定币、巨鲸、TVL 与链上活跃度', en: 'Exchange flows, stablecoins, large holders, TVL, and activity' } },
