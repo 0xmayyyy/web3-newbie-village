@@ -7,8 +7,8 @@
         id: '01',
         title: bi('交易计划：先写好进场、止损和止盈', 'A trading plan: write the entry, the stop, and the target first'),
         scene: bi('这笔交易，进场、止损和止盈要不要提前写好？', 'For this trade, should the entry, the stop, and the target be written in advance?'),
-        one: bi('一笔交易要提前写好进场条件、止损位置和止盈目标。', 'Write the entry condition, the stop, and the take-profit target before the trade.'),
-        explain: bi('一笔交易要提前计划好进场条件、止损位置和止盈目标价。\n见过不少案例，都是在交易时没设止损，心态一直充满希望，最后满盘皆输。\n做交易不要怕短期的亏损。\n只要保住本金，随时都可以有重来的筹码。', 'Plan the entry condition, the stop, and the take-profit target before a trade.\nMany cases go like this: no stop was set during the trade, hope stayed high the whole time, and in the end everything was lost.\nDo not be afraid of a short-term loss in trading.\nAs long as the principal is kept, there are always chips to start again.'),
+        one: bi('一笔交易要在进场前写好进场条件、止损位置和止盈目标。', 'Before you enter, write the entry condition, the stop, and the take-profit target.'),
+        explain: bi('进场之前，先把这一笔写成计划。\n计划里要有三样。\n第一，写下进场条件，也就是价格走到什么样子你才买。\n第二，写下止损位置，也就是判断错了就离场的价格。\n第三，写下止盈目标，也就是你打算在哪里兑现。\n见过不少案例：交易时没有设止损，心态一直充满希望，最后满盘皆输。\n做交易不要怕短期的亏损。\n只要保住本金，你就还有重来的筹码。', 'Before you enter, write this trade down as a plan.\nThe plan needs three things.\nFirst, write the entry condition: the price action you wait for before you buy.\nSecond, write the stop: the price where you leave if the idea is wrong.\nThird, write the take-profit target: the price where you plan to take the gain.\nMany cases go like this: no stop was set during the trade, hope stayed high the whole time, and in the end everything was lost.\nDo not be afraid of a short-term loss in trading.\nAs long as you keep the principal, you still have chips to start again.'),
         example: bi('', ''),
         pitfalls: [
           bi('交易时不设止损，只靠希望扛着', 'Trading with no stop and holding on with hope'),
@@ -42,8 +42,8 @@
         id: '02',
         title: bi('仓位：先定最多能亏多少钱', 'Position size: first decide the most money you can lose'),
         scene: bi('本金 1000 美元，最多接受亏 100 美元。60000 全仓买 BTC，止损放哪？', 'The principal is 1000 dollars, and the most you can accept losing is 100 dollars. You buy BTC at 60000 with the full position. Where is the stop?'),
-        one: bi('仓位先定自己能接受的亏损，也就是最多亏本金里的多少钱。', 'Position size starts with the loss you can accept, the most money you may lose from the principal.'),
-        explain: bi('仓位说的是，在自己接受的范围内，最多亏本金里的多少钱。\n打个比方：你本金有 1000 美元，最大能接受的亏损是 100 美元，那就是本金的 10%；\n也就是说，如果你在 60000 买了 BTC，54000 就是你的止损位置。\n这是按全仓买入来算的。\n这是给自己制定交易规矩，而不是不怕亏完就可以不设。\n一般情况下，除非真的很信仰自己所购买的代币，那一直持有也无所谓。', 'Position size means the most of your principal you may lose, inside the range you can accept.\nFor example: you have 1000 dollars of principal, and the most you can accept losing is 100 dollars, which is 10% of the principal;\nso if you buy BTC at 60000, 54000 is your stop.\nThis is calculated on a full-position buy.\nThis is a trading rule you set for yourself. It is not a reason to skip the stop just because you are not afraid of losing it all.\nIn general, unless you truly believe in the token you bought, holding it all the way is fine.'),
+        one: bi('仓位先定自己能接受的亏损，也就是这笔最多亏掉本金里的多少钱。', 'Position size starts by deciding the loss you can accept, the most of your principal this trade may lose.'),
+        explain: bi('仓位不是先决定买多少，而是先决定自己能接受亏多少。\n这个数字要在你承受得了的范围里。\n打个比方：本金有 1000 美元，最大能接受的亏损是 100 美元，那就是本金的 10%。\n按全仓买入来算，在 60000 买入 BTC，止损位置就是 54000。\n这是你给自己定的交易规矩。\n并不是说不怕把钱亏完，就可以不设止损。\n一般情况下，都要守住这条规矩。\n只有当你真的很信仰自己购买的代币时，一直持有也无所谓。', 'Position size does not start by deciding how much to buy, it starts by deciding how much loss you can accept.\nThat number has to sit inside the range you can bear.\nFor example: the principal is 1000 dollars, and the most you can accept losing is 100 dollars, which is 10% of the principal.\nOn a full-position buy, if you buy BTC at 60000, the stop is 54000.\nThis is a trading rule you set for yourself.\nIt does not mean you can skip the stop just because you are not afraid of losing it all.\nIn general, you keep this rule.\nOnly when you truly believe in the token you bought is it fine to hold all the way.'),
         example: bi('', ''),
         pitfalls: [
           bi('不怕亏完，就干脆不设止损', 'Skipping the stop because you are not afraid of losing it all'),
@@ -71,8 +71,8 @@
         id: '03',
         title: bi('胜率：看金额，不只看笔数', 'Win rate: look at the money, not only the count'),
         scene: bi('赢了很多笔，是不是就说明这笔交易做得好？', 'You won many trades. Does that mean the trading is going well?'),
-        one: bi('交易的胜率，看亏赚的金额比只数赢了几笔更有用。', 'A trading win rate is more useful when you look at the money won and lost, not only how many trades you won.'),
-        explain: bi('一个人交易的胜率，比起看笔数，看金额更有参考价值。\n交易里很常见，刚开始开的每一单都赚钱。\n结果人飘了。\n一次方向开错，依旧坚信自己不会出错，然后不停地加仓。\n最后一笔单子亏的，可能就是前面 10 笔的盈利，再搭上本金。', 'A person’s win rate in trading is more useful when you look at the money, not only the number of trades.\nIt is common to make money on every trade at the start.\nThen the person gets cocky.\nThe direction is wrong once, they still believe they cannot be wrong, and they keep adding to the position.\nThe last trade can lose the profit from the previous 10 trades, plus the principal.'),
+        one: bi('看胜率时，亏赚的金额比赢了几笔更有参考价值。', 'When you read a win rate, the money won and lost matters more than how many trades won.'),
+        explain: bi('看一个人的交易胜率，不要只数赢了几笔。\n亏了多少钱、赚了多少钱，比笔数更有参考价值。\n交易里有一种很常见的过程。\n刚开始每一单都在赚钱，人就飘了。\n后来方向开错了，却仍然坚信自己不会出错，于是不停地加仓。\n最后一笔亏掉的，可能是前面 10 笔赚到的利润，再加上本金。', 'When you look at a trader win rate, do not only count how many trades won.\nHow much money was lost, and how much was made, is more useful than the count.\nOne pattern is very common in trading.\nAt the start every trade makes money, and the person gets cocky.\nLater the direction is wrong, but they still believe they cannot be wrong, so they keep adding to the position.\nThe last trade can lose the profit from the previous 10 trades, plus the principal.'),
         example: bi('', ''),
         pitfalls: [
           bi('只数赢了几笔，不看亏掉多少钱', 'Counting winning trades and ignoring how much money was lost'),
