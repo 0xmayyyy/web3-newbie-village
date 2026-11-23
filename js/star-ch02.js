@@ -217,14 +217,14 @@
       }),
       lesson({
         id: '07',
-        title: bi('SMC：图上的标签不是机构证据', 'SMC: a label on the chart is not proof of an institution'),
-        scene: bi('图上标了订单块，是不是已经证明有机构在买？', 'The chart labels an order block. Does that prove an institution is buying?'),
-        one: bi('结构、扫荡、缺口和订单块都是按规则画在价格上的标签，它们不证明是谁在买卖，也不保证后面怎么走。', 'Structure, a sweep, a gap, and an order block are only labels drawn on price by a rule, so they do not prove who is buying or selling, and they do not guarantee what comes next.'),
-        explain: bi('上面是价格 K 线。\n结构延续，是收盘顺着原来的方向越过前一个高低点。\n只是影线刺过去、收盘没过去，不算。\n结构转向，是收盘反过来跌破或升破刚才护着的那个点。\n它只是说结构可能在变，不是已经转完。\n扫荡是影线扎过前高或前低，收盘又回到里面。\n这只是形态像，不代表真有人在扫单。\n缺口是三根 K 线中间空出来的一段价格。\n看涨时，第三根的最低价高于第一根的最高价。\n订单块是突破前最后一根反方向 K 线的实体，只是一个候选区。\n这些标签都不能证明是机构在买。', 'The top is the price candles.\nStructure continues when the close passes the previous high or low in the same direction.\nA wick through it does not count if the close stays back.\nStructure turns when the close breaks the level that was holding the other way.\nThat only says the structure may be changing. It is not a finished turn.\nA sweep is a wick past a prior high or low, with the close back inside.\nThe shape only looks like that. It does not mean someone swept orders.\nA gap is a stretch of price left open across three candles.\nIn a rise, the third candle’s low is above the first candle’s high.\nAn order block is the body of the last opposite candle before the break. It is only a candidate zone.\nNone of these labels prove an institution is buying.'),
-        example: bi('教学模拟：第一根高点 103，第三根低点 106。\n106 高于 103，所以这段空档是 103 到 106。\n价格后来可以回来填上，也可以不回来。\n订单块仍只是候选区，不是谁在买的证据。', 'Teaching simulation: the first high is 103 and the third low is 106.\n106 is above 103, so the open stretch is 103 to 106.\nPrice may come back and fill it, or it may not.\nAn order block is still only a candidate zone. It is not proof of who is buying.'),
+        title: bi('SMC：自己在图上找结构和缺口', 'SMC: find the structure and the gap on the chart yourself'),
+        scene: bi('收盘越过前高，是不是已经保证后面继续涨？', 'The close passed the prior high. Does that guarantee the rise continues?'),
+        one: bi('SMC 不是指标，是一种看 K 线的方法，要自己在图上找。', 'SMC is not an indicator, it is a way of reading candles, and you have to find the marks on the chart yourself.'),
+        explain: bi('SMC 不是指标。\n它是一种看 K 线的方法。\n高低点要自己在图上找。\n结构延续，是收盘顺着原来的方向越过前一个高低点。\n只是影线刺过去、收盘没过去，不算。\n结构转向，是收盘反过来跌破或升破刚才护着的那个点。\n缺口是快行情在三根 K 线中间留下的空档。\n价格常常会回来填上这段空档。\n回来填上并不保证。', 'SMC is not an indicator.\nIt is a way of reading candles.\nYou have to find the highs and lows on the chart yourself.\nStructure continues when the close passes the previous high or low in the same direction.\nA wick through it does not count if the close stays back.\nStructure turns when the close breaks the level that was holding, the other way.\nA gap is the open space a fast move leaves between three candles.\nPrice often comes back to fill that space.\nA fill is not guaranteed.'),
+        example: bi('教学模拟：第一根高点 103，第三根低点 106。\n106 高于 103，所以三根 K 线中间留下 103 到 106 的空档。\n价格后来可以回来填上。\n也可以不回来。', 'Teaching simulation: the first high is 103 and the third low is 106.\n106 is above 103, so the three candles leave an open space from 103 to 106.\nPrice may come back and fill it later.\nIt may also never come back.'),
         pitfalls: [
-          bi('把缺口理解成这段没有成交', 'Reading a gap as a stretch where nothing traded'),
-          bi('把订单块理解成机构已经买入的证据', 'Reading an order block as proof an institution already bought')
+          bi('把影线刺过当成收盘已经突破', 'Treating a wick through a level as a close that already broke it'),
+          bi('把缺口当成一定会补上', 'Treating a gap as something that must be filled')
         ],
         practice: bi('点出收盘价越过前高的那根。\n影线过了但收盘没过，不算结构延续。', 'Tap the candle whose close passes the prior high.\nA wick through it is not structure continuing if the close stays back.'),
         check: {
@@ -239,10 +239,10 @@
             B: ['103 到 106 只是第一根高点到第三根低点之间空出来的一段。', '103 to 106 is only the open stretch from the first high to the third low.'],
             C: ['没有“必然没有成交”这一条。', 'There is no rule that trades were necessarily absent.']
           }),
-          quiz('订单块能证明机构在买吗？', 'Can an order block prove an institution is buying?', [opt('A', '能', 'Yes'), opt('B', '不能', 'No'), opt('C', '标成英文就能', 'Yes, if the label is in English')], 'B', {
-            A: ['规则只挑出突破前的一根反向 K 线，不知道是谁下的单。', 'The rule only picks the opposite candle before the break. It does not know who placed the order.'],
-            B: ['它是候选区，不是机构在买的证据。', 'It is a candidate zone, not proof an institution is buying.'],
-            C: ['换成英文，证据也不会多出来。', 'Writing the label in English does not add evidence.']
+          quiz('缺口一定会补上吗？', 'Must a gap be filled?', [opt('A', '一定', 'It must'), opt('B', '不一定', 'Not necessarily'), opt('C', '只有上涨时一定', 'Only in a rise')], 'B', {
+            A: ['价格常常回来填，但这不是保证。', 'Price often comes back to fill it. That is not a guarantee.'],
+            B: ['空档只是快行情留下的一段。回来或不回来都可能。', 'The gap is only a space a fast move left. Coming back or not are both possible.'],
+            C: ['换成上涨，也不变成必须补上。', 'A rise does not turn it into something that must be filled.']
           }),
           quiz('这些标签保证后面的走势吗？', 'Do these labels guarantee what comes next?', [opt('A', '保证', 'They do'), opt('B', '不保证', 'They do not'), opt('C', '只做多保证', 'Only longs are guaranteed')], 'B', {
             A: ['标签说的是已经走出来的结构，不管后面。', 'A label describes structure that already happened. It does not cover what comes next.'],
@@ -3346,7 +3346,7 @@
   function mount(root, lesson, lang) {
     var zh = lang !== 'en';
     var bars = tape();
-    var state = { shown: bars.length, playing: false, structure: true, sweep: true, fvg: true, ob: true, note: '', tone: '' };
+    var state = { shown: bars.length, playing: false, structure: true, fvg: true, note: '', tone: '' };
     if (root._smcTimer) clearInterval(root._smcTimer);
     function stop() { state.playing = false; if (root._smcTimer) clearInterval(root._smcTimer); root._smcTimer = null; }
     function view() {
@@ -3354,10 +3354,7 @@
       return {
         bos: info.bos.filter(function (item) { return item.dir === 'up'; }).slice(0, 1),
         choch: info.choch.filter(function (item) { return item.dir === 'down'; }).slice(0, 1),
-        sweeps: info.sweeps.filter(function (item) { return item.dir === 'up'; }).slice(0, 1),
-        fvgs: info.fvgs.filter(function (item) { return item.dir === 'up'; }).sort(function (a, b) { return (b.high - b.low) - (a.high - a.low); }).slice(0, 1),
-        obs: info.obs.slice(0, 1),
-        all: info
+        fvgs: info.fvgs.filter(function (item) { return item.dir === 'up'; }).sort(function (a, b) { return (b.high - b.low) - (a.high - a.low); }).slice(0, 1)
       };
     }
     function paint() {
@@ -3389,11 +3386,6 @@
         bits.push('<rect x="' + x1 + '" y="' + Math.min(y1, y2) + '" width="' + Math.max(36, (w - padR) - x1) + '" height="' + Math.max(2, Math.abs(y2 - y1)) + '" fill="#3aab88" fill-opacity="0.22" stroke="#3aab88" stroke-opacity="0.6"></rect>');
         bits.push('<text x="' + (x1 + 8) + '" y="' + (Math.min(y1, y2) + 14) + '" fill="#8bd5ba" font-size="12" font-weight="700">FVG</text>');
       });
-      if (state.ob) info.obs.forEach(function (zone) {
-        var x = padL + zone.i * slot;
-        bits.push('<rect x="' + x + '" y="' + y(zone.high) + '" width="' + Math.max(slot * 1.2, 8) + '" height="' + Math.max(3, Math.abs(y(zone.low) - y(zone.high))) + '" fill="#f4cb82" fill-opacity="0.28" stroke="#f4cb82"></rect>');
-        bits.push('<text x="' + x + '" y="' + (y(zone.high) - 6) + '" fill="#f4cb82" font-size="11" font-weight="700">OB</text>');
-      });
       draw.forEach(function (bar, i) {
         var up = bar.c >= bar.o;
         var color = up ? '#1f8a4d' : '#d4534e';
@@ -3416,20 +3408,18 @@
           bits.push('<text x="' + xAt(item.i) + '" y="' + (yy + 16) + '" text-anchor="middle" fill="#b28b58" font-size="12" font-weight="700">CHoCH</text>');
         });
       }
-      if (state.sweep) info.sweeps.forEach(function (item) {
-        bits.push('<text x="' + xAt(item.i) + '" y="' + (y(draw[item.i].h) - 10) + '" text-anchor="middle" fill="#e6a1a9" font-size="12" font-weight="700">' + (zh ? '扫荡' : 'Sweep') + '</text>');
-      });
       bits.push('</svg>');
       var note = state.note || (zh ? '小练习：点出收盘越过前高的那根。影线过了但收盘没过，不算。' : 'Short practice: tap the candle whose close passes the prior high. A wick through it does not count if the close stays back.');
       root.innerHTML =
         '<div class="a1"><p class="a1-flag">' + (zh ? '模拟行情·非实时' : 'Simulated tape · not live') + '</p>' +
+        '<p>' + (zh ? 'SMC 不是指标，是一种看 K 线的方法，要自己在图上找。' : 'SMC is not an indicator, it is a way of reading candles, and you have to find the marks on the chart yourself.') + '</p>' +
         '<p>' + (zh
-          ? 'BOS 是收盘顺着原方向越过前高或前低。<br>CHoCH 是收盘反过来破了刚才护着的那个点。<br>扫荡是影线扎出去、收盘又回来。<br>FVG 是三根 K 线中间空出的一段。<br>OB 是突破前最后一根反方向 K 线，只是候选区。'
-          : 'BOS is a close that passes the prior high or low in the same direction.<br>CHoCH is a close that breaks the level that was holding, the other way.<br>A sweep is a wick that pokes out and a close that comes back.<br>FVG is the open stretch between three candles.<br>OB is the last opposite candle before the break. It is only a candidate zone.') + '</p>' +
-        '<p class="a1-checks"><label><input type="checkbox" data-layer="structure"' + (state.structure ? ' checked' : '') + '> ' + (zh ? '结构' : 'Structure') + '</label> <label><input type="checkbox" data-layer="sweep"' + (state.sweep ? ' checked' : '') + '> ' + (zh ? '扫荡' : 'Sweep') + '</label> <label><input type="checkbox" data-layer="fvg"' + (state.fvg ? ' checked' : '') + '> FVG</label> <label><input type="checkbox" data-layer="ob"' + (state.ob ? ' checked' : '') + '> OB</label></p>' +
+          ? '结构看高低点。BOS 是收盘顺着原方向越过前高或前低。<br>缺口是快行情在三根 K 线中间留下的空档。价格常常会回来填，但不保证。'
+          : 'Structure is the highs and lows. BOS is a close that passes the prior high or low in the same direction.<br>A gap is the open space a fast move leaves between three candles. Price often comes back to fill it, but that is not guaranteed.') + '</p>' +
+        '<p class="a1-checks"><label><input type="checkbox" data-layer="structure"' + (state.structure ? ' checked' : '') + '> ' + (zh ? '结构' : 'Structure') + '</label> <label><input type="checkbox" data-layer="fvg"' + (state.fvg ? ' checked' : '') + '> FVG</label></p>' +
         '<div class="smc-scroll">' + bits.join('') + '</div>' +
-        '<p class="star-key"><span style="color:#748ca8">BOS</span><span style="color:#b28b58">CHoCH</span><span style="color:#e6a1a9">' + (zh ? '扫荡' : 'Sweep') + '</span><span style="color:#8bd5ba">FVG</span><span style="color:#f4cb82">OB</span></p>' +
-        '<p>' + (zh ? '小练习：点出收盘越过前高的那根。这些标签不证明是谁在买。' : 'Short practice: tap the candle whose close passes the prior high. These labels do not prove who is buying.') + '</p>' +
+        '<p class="star-key"><span style="color:#748ca8">BOS</span><span style="color:#b28b58">CHoCH</span><span style="color:#8bd5ba">FVG</span></p>' +
+        '<p>' + (zh ? '小练习：点出收盘越过前高的那根。影线过了但收盘没过，不算。' : 'Short practice: tap the candle whose close passes the prior high. A wick through it does not count if the close stays back.') + '</p>' +
         '<div class="a1-modes"><button type="button" data-move="play">' + (state.playing ? (zh ? '暂停' : 'Pause') : (zh ? '播放' : 'Play')) + '</button><button type="button" data-move="reset">' + (zh ? '重新开始' : 'Start again') + '</button><span>' + state.shown + ' / ' + bars.length + '</span></div>' +
         '<p class="a2-readout ' + state.tone + '">' + note + '</p></div>';
     }
@@ -3437,7 +3427,6 @@
       var info = view();
       if (info.bos.some(function (item) { return item.i === index; })) return { tone: 'is-right', text: zh ? '这根收盘越过了前高，所以是结构延续。它不保证后面继续涨。' : 'This close passed the prior high, so structure continued. It does not guarantee the later rise.' };
       if (info.choch.some(function (item) { return item.i === index; })) return { tone: 'is-right', text: zh ? '这根收盘反过来破了护着的低点，所以结构可能在变。这不是已经转完。' : 'This close broke the low that was holding, the other way, so the structure may be changing. The turn is not finished.' };
-      if (info.sweeps.some(function (item) { return item.i === index; })) return { tone: 'is-wrong', text: zh ? '这根只是影线扎出去、收盘又回来。那是扫荡，不是收盘突破。' : 'This one only poked out with the wick and closed back inside. That is a sweep, not a close through the level.' };
       return { tone: 'is-wrong', text: zh ? '还不是。请点收盘越过前高、标着 BOS 的那根。' : 'Not yet. Tap the candle labeled BOS, whose close passes the prior high.' };
     }
     if (root._smcClick) root.removeEventListener('click', root._smcClick);
