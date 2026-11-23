@@ -26,11 +26,17 @@
           quiz('做交易，该怎么看短期的亏损？', 'In trading, how should you look at a short-term loss?', [opt('A', '亏一点就再也不能做', 'One loss means you can never trade again'), opt('B', '怕亏就不要设止损', 'If you fear a loss, skip the stop'), opt('C', '不用学，看到就买', 'Skip the lesson and buy as soon as you see it.'), opt('D', '不要怕，保住本金就还有重来的筹码', 'Do not fear it. Keep the principal and you still have chips to start again')], 'D', {A: ['短期亏损不等于本金没了，也不等于以后不能做。', 'A short-term loss does not mean the principal is gone, and it does not mean you can never trade again.'], B: ['怕亏就把止损拿掉，更容易把本金亏光。', 'Taking the stop away because you fear a loss makes it easier to lose the principal.'], C: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.'], D: ['不要怕短期亏损。本金还在，就还有重来的筹码。', 'Do not fear a short-term loss. If the principal is still there, you still have chips to start again.']}),
           quiz('止盈目标价应该什么时候定？', 'When should the take-profit target be set?', [opt('A', '赚到了再看', 'After you have already made money'), opt('B', '亏了再补', 'Add it after a loss'), opt('C', '进场之前，和止损一起写好', 'Before entry, written together with the stop'), opt('D', '只看名字就够了', 'The name alone is enough.')], 'C', {A: ['赚到了再看，进场时就没有目标。', 'Looking after the profit means there was no target at entry.'], B: ['亏了再补，计划已经晚了。', 'Adding it after a loss means the plan is already late.'], C: ['止盈和止损、进场条件一样，都在进场前写好。', 'The target is written before entry, the same as the stop and the entry condition.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']})
         ],
-        study: { kind: 'panel', rows: [
-          bi('进场条件、止损位置、止盈目标，三样都提前写。', 'Write the entry condition, the stop, and the take-profit target in advance.'),
-          bi('没设止损、一直抱着希望，常见的结局是满盘皆输。', 'No stop, and hope the whole way: the common ending is losing everything.'),
-          bi('保住本金，就还有重来的筹码。', 'Keep the principal, and you still have chips to start again.')
-        ] }
+        study: {
+          kind: 'levels',
+          closes: [100, 101, 103, 104, 103, 105, 104, 106, 108],
+          levels: [
+            { price: 106, label: '106' },
+            { price: 102, label: '102' },
+            { price: 114, label: '114' }
+          ],
+          caption: bi('106 进场，102 止损，114 目标。风险 4，计划收益 8。', 'Entry 106, stop 102, target 114. Risk 4, planned reward 8.'),
+          start: 6
+        }
       }),
       lesson({
         id: '02',
