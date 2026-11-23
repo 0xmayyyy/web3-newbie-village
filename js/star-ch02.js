@@ -1606,24 +1606,25 @@
   function intraday(start, count, salt, plan) {
     var bars = [];
     var price = start;
-    var vol = 0.00085;
+    var dir = 1;
+    var left = 0;
     var i;
     for (i = 0; i < count; i++) {
       var drift = 0;
       var p;
       for (p = 0; p < plan.length; p++) if (i >= plan[p][0] && i < plan[p][0] + plan[p][1]) drift = plan[p][2];
-      var u = mix(i * 997 + salt * 131);
-      if (!drift) {
-        if (u > 0.97) vol = Math.min(0.0019, vol * 1.5);
-        else vol = vol * 0.92 + 0.00085 * 0.08;
+      if (!drift && left <= 0) {
+        left = 5 + Math.floor(mix(i * 13 + salt) * 4);
+        dir = mix(i * 19 + salt) > 0.5 ? 1 : -1;
       }
-      var noise = (mix(i * 997 + salt * 17) - 0.5) * 2;
-      var ret = drift ? drift * (0.75 + mix(i + salt) * 0.5) : noise * vol;
+      if (!drift) left -= 1;
+      var noise = (mix(i * 41 + salt) - 0.5) * 0.004;
+      var ret = drift ? drift + noise * 0.3 : dir * 0.0055 + noise;
       var open = price;
       var close = open * (1 + ret);
-      var wick = open * (0.00035 + mix(i * 3 + salt) * 0.0011);
+      var wick = open * (0.001 + mix(i * 3 + salt) * 0.0025);
       var high = Math.max(open, close) + wick;
-      var low = Math.min(open, close) - wick * (0.8 + mix(i * 5 + salt) * 0.5);
+      var low = Math.min(open, close) - wick;
       bars.push({
         t: i,
         o: Math.round(open * 100) / 100,
@@ -1685,8 +1686,8 @@
   }
   function buildScenes() {
     return {
-      hot: Object.assign({ id: 'hot', zh: '急跌再急拉', en: 'A dump and a pump' }, decorate(intraday(61200, 230, 14, [[80, 6, -0.012], [86, 8, 0.011], [150, 8, 0.01], [158, 6, -0.004]]), 40)),
-      cold: Object.assign({ id: 'cold', zh: '跌破后还在跌', en: 'Still falling after the drop' }, decorate(intraday(62800, 220, 5, [[55, 6, -0.014], [62, 10, 0.002], [110, 6, -0.006]]), 40)),
+      hot: Object.assign({ id: 'hot', zh: '急跌再急拉', en: 'A dump and a pump' }, decorate(intraday(61200, 230, 1, [[100, 4, -0.02], [104, 5, 0.018], [170, 5, 0.016]]), 40)),
+      cold: Object.assign({ id: 'cold', zh: '跌破后还在跌', en: 'Still falling after the drop' }, decorate(intraday(62800, 220, 10, [[70, 5, -0.022], [76, 4, 0.006], [120, 5, -0.012]]), 40)),
       bear: Object.assign({ id: 'bear', zh: '顶背离', en: 'Bearish divergence' }, decorate(walk(42000, [[50, 6], [24, 80], [12, -35], [22, 28], [18, -8], [28, 4]]))),
       bull: Object.assign({ id: 'bull', zh: '底背离', en: 'Bullish divergence' }, decorate(walk(70000, [[50, -4], [24, -70], [12, 30], [22, -22], [18, 6], [28, -3]]))),
       fake: Object.assign({ id: 'fake', zh: '假背离', en: 'Fake divergence' }, decorate(walk(43000, [[50, 6], [24, 70], [14, -40], [18, 18], [16, -6], [24, 2], [12, 2]]))),
