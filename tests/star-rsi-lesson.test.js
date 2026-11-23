@@ -52,7 +52,7 @@ test('each RSI scene has 90 bars and the required signal', function () {
   });
   assert.ok(runLength(scenes.hot.rsi.map(function (value, i) { return i >= 60 && value > 70; })) >= 8);
   assert.ok(runLength(scenes.cold.rsi.map(function (value, i) { return i >= 60 && value < 30; })) >= 8);
-  assert.ok(scenes.hot.bars.length >= 120 && scenes.hot.bars.length <= 160);
+  assert.ok(scenes.hot.bars.length >= 200 && scenes.hot.bars.length <= 260);
   assert.ok(scenes.hot.rsi.some(function (value) { return value != null && value < 30; }));
   var hotUp = scenes.hot.bars.filter(function (bar) { return bar.c >= bar.o; }).length;
   assert.ok(hotUp > 20 && hotUp < scenes.hot.bars.length - 20);

@@ -47,12 +47,12 @@
         title: bi('MACD：柱子变短不等于马上跌', 'MACD: a shorter bar does not mean price falls now'),
         scene: bi('柱子变短的时候，价格是不是一定马上跌？', 'When the bars get shorter, must price fall right away?'),
         one: bi('快线从下往上穿过慢线叫金叉，反过来叫死叉，柱子变短也不等于价格马上跌。', 'The fast line crossing up through the slow line is a golden cross, the other way is a death cross, and shorter bars still do not mean price falls at once.'),
-        explain: bi('上面画的是价格 K 线。\n下面黄线是快线，看最近涨跌的速度。\n蓝线是慢线，它是快线的平均，走得更稳。\n快线从下往上穿过慢线，叫金叉。\n快线从上往下穿过慢线，叫死叉。\n柱子是两条线隔得有多远。\n绿柱变长，上涨的力量在变强。\n红柱变长，下跌的力量在变强。\n柱子变短，只说明两条线在靠近。\n靠近不等于价格马上转向。\n0 轴上方，整体偏多。\n0 轴下方，整体偏空。\n金叉不是买入按钮。\n死叉也不是卖出按钮。', 'The top shows price candles.\nThe gold line below is the fast line, and it shows how fast price has been moving.\nThe blue line is the slow line. It is the average of the fast line, so it moves more calmly.\nThe fast line crossing up through the slow line is a golden cross.\nThe fast line crossing down through the slow line is a death cross.\nThe bars are how far apart the two lines are.\nA longer green bar means the upward push is getting stronger.\nA longer red bar means the downward push is getting stronger.\nShorter bars only mean the two lines are getting closer.\nGetting closer does not mean price turns right away.\nAbove the zero line, the picture leans up.\nBelow the zero line, the picture leans down.\nA golden cross is not a buy button.\nA death cross is not a sell button.'),
+        explain: bi('上面画的是价格 K 线。\n下面黄线是快线，看最近涨跌的速度。\n蓝线是慢线，它是快线的平均，走得更稳。\n快线从下往上穿过慢线，叫金叉。\n快线从上往下穿过慢线，叫死叉。\n柱子是两条线隔得有多远。\n绿柱变长，上涨的力量在变强。\n红柱变长，下跌的力量在变强。\n柱子变短，只说明两条线在靠近。\n靠近不等于价格马上转向。\n0 轴上方，整体偏多。\n0 轴下方，整体偏空。\n金叉不是买入信号，死叉也不是卖出信号。\n交易员一般都会结合 3 种或以上的技术指标来观察走势。', 'The top shows price candles.\nThe gold line below is the fast line, and it shows how fast price has been moving.\nThe blue line is the slow line. It is the average of the fast line, so it moves more calmly.\nThe fast line crossing up through the slow line is a golden cross.\nThe fast line crossing down through the slow line is a death cross.\nThe bars are how far apart the two lines are.\nA longer green bar means the upward push is getting stronger.\nA longer red bar means the downward push is getting stronger.\nShorter bars only mean the two lines are getting closer.\nGetting closer does not mean price turns right away.\nAbove the zero line, the picture leans up.\nBelow the zero line, the picture leans down.\nA golden cross is not a buy signal, and a death cross is not a sell signal.\nTraders usually watch the move with 3 or more indicators together.'),
         topic: {
           title: bi('金叉和死叉', 'Golden cross and death cross'),
           body: bi('金叉，是快线从下往上穿过慢线。\n死叉，是快线从上往下穿过慢线。\n图上会标出这两个点。\n金叉不是必涨。\n死叉不是必跌。\n它们只说明两条线换了上下位置。', 'A golden cross is the fast line crossing up through the slow line.\nA death cross is the fast line crossing down through the slow line.\nThe chart marks these two spots.\nA golden cross is not a sure rise.\nA death cross is not a sure fall.\nThey only say the two lines swapped which one is on top.')
         },
-        example: bi('教学模拟：绿柱变长，只说明上涨更有劲。\n0 轴上方的金叉，只是偏多，不是买入。\n0 轴下方也可以出现金叉，价格随后仍能再跌一截。\n红柱变短时，收盘还可以继续跌。\n这些都是模拟数字，不是真实行情。', 'Teaching simulation: a longer green bar only means the rise has more push.\nA golden cross above zero only leans up. It is not a buy.\nA golden cross can also appear below zero, and price can still fall further.\nWhen the red bars get shorter, the close can keep falling.\nThese are simulated numbers, not a live market.'),
+        example: bi('教学模拟：绿柱变长，只说明上涨更有劲。\n0 轴上方的金叉，只是偏多，不是买入。\n0 轴下方也可以出现金叉，价格随后仍能再跌一截。\n红柱变短时，收盘还可以继续跌。', 'Teaching simulation: a longer green bar only means the rise has more push.\nA golden cross above zero only leans up. It is not a buy.\nA golden cross can also appear below zero, and price can still fall further.\nWhen the red bars get shorter, the close can keep falling.'),
         pitfalls: [
           bi('把柱子变短直接当成卖出', 'Taking shorter bars as a sell by itself'),
           bi('看见金叉就当成必涨，看见死叉就当成必跌', 'Treating a golden cross as a sure rise, or a death cross as a sure fall'),
@@ -1340,9 +1340,7 @@
       var note = state.note || readout(pack) || (zh ? '小练习：点出一根金叉，也就是快线从下往上穿过慢线的那根。' : 'Short practice: tap a golden cross, the bar where the fast line crosses up through the slow line.');
       root.innerHTML =
         '<div class="a1"><p class="a1-flag">' + (zh ? '模拟行情·非实时' : 'Simulated tape · not live') + '</p>' +
-        '<p>' + (zh
-          ? '上面是 K 线。<br>下面黄线是快线，看最近涨跌的速度。<br>蓝线是慢线，是快线的平均。<br>快线从下往上穿过慢线是金叉，反过来是死叉。<br>柱子是两条线的距离。<br>绿柱变长，上涨更有劲。<br>0 轴上方偏多。'
-          : 'Candles are on top.<br>The gold line below is the fast line. It shows how fast price has been moving.<br>The blue line is the slow line, the average of the fast line.<br>The fast line crossing up through the slow line is a golden cross, and the other way is a death cross.<br>The bars are the distance between the two lines.<br>A longer green bar means the rise has more push.<br>Above zero, the picture leans up.') + '</p>' +
+        '<p>' + (zh ? '上面是 K 线，下面是 MACD。' : 'Candles are on top, and MACD is below.') + '</p>' +
         '<div class="macd-scroll">' + bits.join('') + '</div>' +
         '<p class="star-key"><span><i style="background:#f4cb82"></i>' + (zh ? '快线' : 'Fast line') + '</span><span><i style="background:#8eb4ff"></i>' + (zh ? '慢线' : 'Slow line') + '</span><span><i style="background:#1f8a4d"></i>' + (zh ? '绿柱' : 'Green bar') + '</span><span><i style="background:#d4534e"></i>' + (zh ? '红柱' : 'Red bar') + '</span><span>0 ' + (zh ? '轴' : 'line') + '</span></p>' +
         '<p>' + (state.scene === 'fail'
@@ -1605,6 +1603,39 @@
   function unit(i, salt) {
     return mix(i * 997 + salt * 131 + 17);
   }
+  function intraday(start, count, salt, plan) {
+    var bars = [];
+    var price = start;
+    var vol = 0.00085;
+    var i;
+    for (i = 0; i < count; i++) {
+      var drift = 0;
+      var p;
+      for (p = 0; p < plan.length; p++) if (i >= plan[p][0] && i < plan[p][0] + plan[p][1]) drift = plan[p][2];
+      var u = mix(i * 997 + salt * 131);
+      if (!drift) {
+        if (u > 0.97) vol = Math.min(0.0019, vol * 1.5);
+        else vol = vol * 0.92 + 0.00085 * 0.08;
+      }
+      var noise = (mix(i * 997 + salt * 17) - 0.5) * 2;
+      var ret = drift ? drift * (0.75 + mix(i + salt) * 0.5) : noise * vol;
+      var open = price;
+      var close = open * (1 + ret);
+      var wick = open * (0.00035 + mix(i * 3 + salt) * 0.0011);
+      var high = Math.max(open, close) + wick;
+      var low = Math.min(open, close) - wick * (0.8 + mix(i * 5 + salt) * 0.5);
+      bars.push({
+        t: i,
+        o: Math.round(open * 100) / 100,
+        h: Math.round(high * 100) / 100,
+        l: Math.round(low * 100) / 100,
+        c: Math.round(close * 100) / 100,
+        v: Math.round(40 + mix(i + salt + 9) * 80)
+      });
+      price = close;
+    }
+    return bars;
+  }
   function tape(start, count, salt, segs) {
     var bars = [];
     var price = start;
@@ -1654,8 +1685,8 @@
   }
   function buildScenes() {
     return {
-      hot: Object.assign({ id: 'hot', zh: '涨得猛还在涨', en: 'Strong and still rising' }, decorate(tape(38000, 150, 15, [[24, 0.0002], [18, 0.001], [16, -0.0016], [14, 0.0008], [28, 0.0042], [12, -0.0004], [22, -0.0055], [16, 0.0014]]), 40)),
-      cold: Object.assign({ id: 'cold', zh: '跌得猛还在跌', en: 'Weak and still falling' }, decorate(tape(72000, 150, 3, [[20, 0.0003], [18, -0.0012], [16, 0.001], [70, -0.0036], [26, -0.001]]), 40)),
+      hot: Object.assign({ id: 'hot', zh: '急跌再急拉', en: 'A dump and a pump' }, decorate(intraday(61200, 230, 14, [[80, 6, -0.012], [86, 8, 0.011], [150, 8, 0.01], [158, 6, -0.004]]), 40)),
+      cold: Object.assign({ id: 'cold', zh: '跌破后还在跌', en: 'Still falling after the drop' }, decorate(intraday(62800, 220, 5, [[55, 6, -0.014], [62, 10, 0.002], [110, 6, -0.006]]), 40)),
       bear: Object.assign({ id: 'bear', zh: '顶背离', en: 'Bearish divergence' }, decorate(walk(42000, [[50, 6], [24, 80], [12, -35], [22, 28], [18, -8], [28, 4]]))),
       bull: Object.assign({ id: 'bull', zh: '底背离', en: 'Bullish divergence' }, decorate(walk(70000, [[50, -4], [24, -70], [12, 30], [22, -22], [18, 6], [28, -3]]))),
       fake: Object.assign({ id: 'fake', zh: '假背离', en: 'Fake divergence' }, decorate(walk(43000, [[50, 6], [24, 70], [14, -40], [18, 18], [16, -6], [24, 2], [12, 2]]))),
@@ -1838,41 +1869,46 @@
         if (i % 20 === 0) bits.push('<text x="' + xc + '" y="462" fill="#b7aac8" font-size="12">' + (zh ? '第' + (i + 1) + '根' : '#' + (i + 1)) + '</text>');
       });
       if (state.showRsi) {
-        bits.push('<rect x="' + padL + '" y="' + ry(100) + '" width="' + (w - padL - padR) + '" height="' + (ry(state.ob) - ry(100)) + '" fill="rgba(212,83,78,.18)"></rect>');
-        bits.push('<rect x="' + padL + '" y="' + ry(state.os) + '" width="' + (w - padL - padR) + '" height="' + (ry(0) - ry(state.os)) + '" fill="rgba(31,138,77,.16)"></rect>');
-        [[state.ob, zh ? state.ob + ' 涨得猛' : state.ob + ' strong rise', '#d4534e'], [50, '50', '#8eb4ff'], [state.os, zh ? state.os + ' 跌得猛' : state.os + ' sharp fall', '#7dcea0']].forEach(function (level) {
-          bits.push('<line x1="' + padL + '" y1="' + ry(level[0]) + '" x2="' + (w - padR) + '" y2="' + ry(level[0]) + '" stroke="' + level[2] + '" stroke-dasharray="4 3"></line>');
-          bits.push('<text x="' + (w - 8) + '" y="' + (ry(level[0]) + 4) + '" text-anchor="end" fill="' + level[2] + '" font-size="13">' + level[1] + '</text>');
+        var bandTop = ry(70);
+        var bandBot = ry(30);
+        bits.push('<rect x="' + padL + '" y="' + bandTop + '" width="' + (w - padL - padR) + '" height="' + (bandBot - bandTop) + '" fill="rgba(176,154,230,.16)"></rect>');
+        [70, 50, 30].forEach(function (level) {
+          bits.push('<line x1="' + padL + '" y1="' + ry(level) + '" x2="' + (w - padR) + '" y2="' + ry(level) + '" stroke="rgba(190,176,230,.75)" stroke-dasharray="4 4"></line>');
         });
-        var run = [];
-        var runColor = '';
-        function flushRun() {
-          if (run.length > 1) bits.push('<polyline points="' + run.join(' ') + '" fill="none" stroke="' + runColor + '" stroke-width="2.4"></polyline>');
-          run = [];
-        }
-        var prevZone = '';
-        var lastMark = -20;
+        [80, 60, 40, 20].forEach(function (level) {
+          bits.push('<text x="' + (w - 8) + '" y="' + (ry(level) + 4) + '" text-anchor="end" fill="#b7aac8" font-size="12">' + level + '</text>');
+        });
         draw.forEach(function (bar, i) {
           var value = pack.rsi[from + i];
-          if (value == null) { flushRun(); runColor = ''; return; }
-          var zone = value > state.ob ? 'hot' : (value < state.os ? 'cold' : 'mid');
-          var color = zone === 'hot' ? '#d4534e' : (zone === 'cold' ? '#7dcea0' : '#f4cb82');
-          var pt = (padL + i * slot + slot / 2).toFixed(1) + ',' + ry(value).toFixed(1);
-          if (color !== runColor) {
-            if (run.length) run.push(pt);
-            flushRun();
-            runColor = color;
-            run = [pt];
-          } else run.push(pt);
-          if (zone !== 'mid' && zone !== prevZone && i - lastMark > 12) {
-            lastMark = i;
-            var label = zone === 'hot' ? (zh ? '涨得猛' : 'Strong') : (zh ? '跌得猛' : 'Sharp fall');
-            var ly = zone === 'hot' ? ry(value) - 8 : ry(value) + 14;
-            bits.push('<text x="' + (padL + i * slot + slot / 2) + '" y="' + ly + '" text-anchor="middle" fill="' + color + '" font-size="11">' + label + '</text>');
-          }
-          prevZone = zone;
+          if (value == null) return;
+          var xc = padL + i * slot + slot / 2;
+          var bw = Math.max(1.4, slot * 0.7);
+          if (value > 70) bits.push('<rect x="' + (xc - bw / 2) + '" y="' + ry(value) + '" width="' + bw + '" height="' + Math.max(1, ry(70) - ry(value)) + '" fill="rgba(61,190,134,.55)"></rect>');
+          if (value < 30) bits.push('<rect x="' + (xc - bw / 2) + '" y="' + ry(30) + '" width="' + bw + '" height="' + Math.max(1, ry(value) - ry(30)) + '" fill="rgba(224,112,144,.55)"></rect>');
         });
-        flushRun();
+        var rsiPts = [];
+        var smaPts = [];
+        var sma = pack.rsi.map(function () { return null; });
+        var si;
+        for (si = 0; si < pack.rsi.length; si++) {
+          if (si < 13 || pack.rsi[si] == null) continue;
+          var ok = true;
+          var sum = 0;
+          var sk;
+          for (sk = si - 13; sk <= si; sk++) {
+            if (pack.rsi[sk] == null) ok = false;
+            else sum += pack.rsi[sk];
+          }
+          if (ok) sma[si] = sum / 14;
+        }
+        draw.forEach(function (bar, i) {
+          var abs = from + i;
+          var xc = (padL + i * slot + slot / 2).toFixed(1);
+          if (pack.rsi[abs] != null) rsiPts.push(xc + ',' + ry(pack.rsi[abs]).toFixed(1));
+          if (sma[abs] != null) smaPts.push(xc + ',' + ry(sma[abs]).toFixed(1));
+        });
+        if (rsiPts.length > 1) bits.push('<polyline points="' + rsiPts.join(' ') + '" fill="none" stroke="#9a84d6" stroke-width="1.6"></polyline>');
+        if (smaPts.length > 1) bits.push('<polyline points="' + smaPts.join(' ') + '" fill="none" stroke="#f4cb82" stroke-width="1.5"></polyline>');
       } else {
         bits.push('<text x="' + (padL + 12) + '" y="' + (rsiTop + 40) + '" fill="#d4bc9e" font-size="16">' + (zh ? 'RSI 先藏着' : 'RSI is hidden') + '</text>');
       }
@@ -1937,11 +1973,9 @@
       var note = state.note || readout(pack) || (zh ? '小练习：点出一根线在 70 上面、后面价格还更高的 K 线。' : 'Short practice: tap a candle where the line is above 70 and a later price is higher.');
       root.innerHTML =
         '<div class="a1"><p class="a1-flag">' + (zh ? '模拟行情·非实时' : 'Simulated tape · not live') + '</p>' +
-        '<p>' + (zh
-          ? '上面是 K 线。<br>下面这条线看最近 14 根涨得多还是跌得多，刻度 0 到 100。<br>70 以上是涨得猛。<br>30 以下是跌得猛。<br>都不是买卖命令。'
-          : 'Candles are on top.<br>The line below looks at whether the last 14 bars rose more or fell more, on a scale from 0 to 100.<br>Above 70, the rise is strong.<br>Below 30, the fall is sharp.<br>Neither is a buy or sell order.') + '</p>' +
+        '<p>' + (zh ? '上面是 K 线，下面是强弱线。' : 'Candles are on top, and the strength line is below.') + '</p>' +
         '<div class="rsi-scroll">' + bits.join('') + '</div>' +
-        '<p class="star-key"><span><i style="background:#f4cb82"></i>' + (zh ? '强弱线' : 'Strength') + '</span><span><i style="background:#d4534e"></i>70 ' + (zh ? '涨得猛' : 'strong rise') + '</span><span><i style="background:#8eb4ff"></i>50</span><span><i style="background:#7dcea0"></i>30 ' + (zh ? '跌得猛' : 'sharp fall') + '</span></p>' +
+        '<p class="star-key"><span><i style="background:#9a84d6"></i>' + (zh ? '强弱线' : 'Strength') + '</span><span><i style="background:#f4cb82"></i>' + (zh ? '强弱线的平均' : 'Average of the line') + '</span><span><i style="background:#b09ae6"></i>30–70</span></p>' +
         '<p>' + (state.scene === 'cold'
           ? (zh ? '反例：线到 30 下面时，价格仍可以继续跌。' : 'Counterexample: while the line is under 30, price can keep falling.')
           : (zh ? '小练习：点出一根线在 70 上面、后面还在涨的 K 线。涨得猛不是马上卖。' : 'Short practice: tap a candle above 70 that is still followed by a higher price. A strong rise is not an immediate sell.')) + '</p>' +
