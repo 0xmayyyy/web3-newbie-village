@@ -127,75 +127,38 @@
         study: { kind: 'rsi', main: 'rsi', lessonChart: 'rsi-full', closes: rsi75 }
       }),
       lesson({
-        id: '04',
-        title: bi('布林带：缩口不负责告诉你方向', 'Bollinger Bands: a squeeze does not owe you a direction'),
-        scene: bi('带子变窄之后，价格一定向上吗？', 'After the bands narrow, must price go up?'),
-        one: bi('布林带把均价和波动画在一起，带子变窄只说明最近更挤，不指明方向。', 'Bollinger Bands draw the average and the variation together, and a narrower band only says the recent prices are tighter, not which way they go.'),
-        explain: bi('中轨是最近 20 根收盘的简单平均。\n上轨是中轨加上 2 倍总体标准差。\n下轨是中轨减去 2 倍总体标准差。\n标准差是这 20 根对平均数的偏差，平方后除以 20，再开方。\n前 19 根还没有完整的带，不显示伪造轨道。\n带子变宽，表示这组收盘更分散。\n缩口之后价格既可以上破，也可以下破。\n沿上轨走，也不等于该做空。\n收盘跑到带外，再回到带内，是另一件事。', 'The middle line is the simple average of the last 20 closes.\nThe upper band is the middle plus 2 population standard deviations.\nThe lower band is the middle minus 2 population standard deviations.\nThe standard deviation is the spread of those 20 closes around the average, squared, divided by 20, then square-rooted.\nThe first 19 bars do not have a full band, so no fake band is drawn.\nA wider band means those closes are more spread out.\nAfter a squeeze, price can break up or down.\nRiding the upper band is not an order to short.\nA close outside the band, and a later close back inside, are two different events.'),
-        example: bi('教学模拟：收盘 98、100、102，N=3，k=2。\n中轨是 100。\n总体标准差是 √(8/3)，约 1.632993。\n上轨约 103.266。\n下轨约 96.734。\n图上的主图用的是 20 根，不是这 3 根小例子。', 'Teaching simulation: closes 98, 100, 102, N=3, k=2.\nThe middle is 100.\nThe population standard deviation is √(8/3), about 1.632993.\nThe upper band is about 103.266.\nThe lower band is about 96.734.\nThe main chart uses 20 bars, not this 3-close example.'),
-        pitfalls: [
-          bi('看见缩口就预先写好只会上涨', 'Seeing a squeeze and writing in advance that it can only rise'),
-          bi('把轨道当成必到的成交价', 'Treating a band as a price that must trade')
-        ],
-        practice: bi('核对图上最后一根的上轨是否约为 103.266。', 'Check that the upper band on the last bar is about 103.266.'),
-        check: {
-          ask: bi('缩口之后方向确定了吗？', 'Is the direction decided after a squeeze?'),
-          options: [opt('A', '确定向上', 'It is decided upward'), opt('B', '不保证方向', 'Direction is not guaranteed'), opt('C', '确定向下', 'It is decided downward')],
-          answer: 'B',
-          miss: bi('缩口描述的是波动变小，不是方向。', 'A squeeze describes smaller variation, not a direction.')
-        },
-        quizzes: [
-          quiz('98、100、102，N=3、k=2，上轨约为多少？', 'For 98, 100, 102 with N=3 and k=2, about what is the upper band?', [opt('A', '103.266', '103.266'), opt('B', '102', '102'), opt('C', '100', '100')], 'A', {
-            A: ['中轨 100，标准差约 1.633，100+2×1.633≈103.266。', 'Middle is 100, standard deviation is about 1.633, and 100+2×1.633≈103.266.'],
-            B: ['102 是最后一根收盘，不是上轨。', '102 is the last close, not the upper band.'],
-            C: ['100 是中轨，上轨还要加上 2 倍标准差。', '100 is the middle. The upper band still adds 2 standard deviations.']
-          }),
-          quiz('缩口是否保证随后上涨？', 'Does a squeeze guarantee a later rise?', [opt('A', '保证', 'It guarantees it'), opt('B', '不保证', 'It does not'), opt('C', '只对稳定币保证', 'It guarantees it only for stablecoins')], 'B', {
-            A: ['带子变窄没有方向项。上破和下破都可能。', 'A narrower band has no direction term. A break up or down is both possible.'],
-            B: ['它只说明最近收盘更挤在一起。', 'It only says the recent closes are packed closer together.'],
-            C: ['稳定币这个名字不改变公式。缩口仍然没有方向。', 'The word stablecoin does not change the formula. A squeeze still has no direction.']
-          }),
-          quiz('带子变宽通常表示什么？', 'What does a wider band usually mean?', [opt('A', '这组价格更分散', 'These prices are more spread out'), opt('B', '方向已经向上', 'Direction is already up'), opt('C', '成交量必须增加', 'Volume must increase')], 'A', {
-            A: ['标准差变大，中轨上下的距离就变宽。', 'When the standard deviation grows, the distance around the middle grows.'],
-            B: ['变宽不包含上涨或下跌的符号。', 'Width does not include an up or down sign.'],
-            C: ['这条公式只用收盘，不用成交量。', 'This formula uses closes only, not volume.']
-          })
-        ],
-        study: { kind: 'boll', practical: 'boll', closes: [98, 100, 102], n: 20, k: 2 }
-      }),
-      lesson({
         id: '05',
-        title: bi('背离：先确认高低点', 'Divergence: confirm the highs and lows first'),
-        scene: bi('价格创新高、RSI 没创新高，是不是已经反转？', 'Price made a higher high and RSI did not. Has it already reversed?'),
-        one: bi('看跌背离是价格高点抬高而指标高点降低，它只描述两段已经确认的摆动，不保证下一根反转。', 'Bearish divergence is a higher price high with a lower indicator high, and it only describes two confirmed swings, so it does not guarantee the next bar reverses.'),
-        explain: bi('左右各 2 根都走出来，这个高低点才算确认。\n右侧 2 根还没出现，就不能标。\n看跌背离是价格高点更高，左右 2 根以内的 RSI 高点更低。\n看涨背离是价格低点更低，RSI 低点更高。\n换成 DIF 或柱子时，两个点都要比同一条线。\n背离之后价格仍可以顺着原方向继续走。\n教学模拟：高点 105 再到 112，同一条收盘算出的 RSI 约 78 再到 69。', 'A high or low is confirmed only after 2 bars exist on each side.\nIf the 2 bars on the right have not printed, you cannot mark it.\nBearish divergence is a higher price high with a lower RSI high within 2 bars.\nBullish divergence is a lower price low with a higher RSI low.\nIf you switch to DIF or the histogram, both points must use that same line.\nAfter divergence, price can still continue in the original direction.\nTeaching simulation: highs at 105 then 112, and RSI from the same closes is about 78 then 69.'),
-        example: bi('教学模拟：价格高点从 105 到 112。\n同一条收盘序列上，RSI 高点从约 78 到约 69。\n这是算出来的，不是事后填上的。\n即便如此，后面仍可能继续上涨。', 'Teaching simulation: the price highs go from 105 to 112.\nOn the same close series, the RSI highs go from about 78 to about 69.\nThose numbers are calculated, not filled in afterward.\nEven then, price can still continue up.'),
+        title: bi('背离：价格和下面的线没走在一起', 'Divergence: price and the lower lines did not move together'),
+        scene: bi('价格创新高、下面的线没创新高，是不是已经要跌了？', 'Price made a new high and the line below did not. Does that mean it is about to fall?'),
+        one: bi('顶背离是价格高点更高、下面的线高点更低，它只说明这两段没走在一起，不保证马上跌。', 'Top divergence is a higher price high with a lower high on the lines below, and it only says those two stretches did not move together, so it does not guarantee an immediate drop.'),
+        explain: bi('上面是价格 K 线。\n下面同时画两条线。\n一条是快线和慢线，看最近涨跌的速度。\n另一条是强弱线，看最近涨得多还是跌得多。\n顶背离：后面的价格高点更高，两条线的高点却更低。\n底背离：后面的价格低点更低，两条线的低点却更高。\n图上会把这两个点连起来，并标上顶背离或底背离。\n这只是已经走出来的两段对不上。\n它不保证下一根就转向。', 'The top is the price candles.\nTwo lines are drawn together underneath.\nOne pair is the fast line and the slow line. They show how fast price has been moving.\nThe other line is the strength line. It shows whether recent rises or falls were bigger.\nTop divergence: the later price high is higher, but the highs on both lines are lower.\nBottom divergence: the later price low is lower, but the lows on both lines are higher.\nThe chart connects those two points and labels top divergence or bottom divergence.\nThat only says two stretches that already happened did not match.\nIt does not guarantee the next candle turns.'),
+        example: bi('教学模拟：价格做出更高的高点时，快线和强弱线的高点更低。\n价格做出更低的低点时，两条线的低点更高。\n反例里，标出顶背离之后价格还在继续涨。\n所以背离不是买卖按钮。', 'Teaching simulation: when price makes a higher high, the fast line and the strength line make lower highs.\nWhen price makes a lower low, both lines make higher lows.\nIn the counterexample, price keeps rising after the top divergence is marked.\nSo divergence is not a buy or sell button.'),
         pitfalls: [
-          bi('用还没走完的右侧 K 线提前标摆动', 'Marking a swing before the bars on its right have printed'),
-          bi('把背离当成必然而不是一种关系', 'Treating divergence as a certainty instead of a relationship')
+          bi('把背离当成马上要转向', 'Treating divergence as an immediate turn'),
+          bi('只看线，不看价格有没有真的更高或更低', 'Looking only at the line, without checking whether price really went higher or lower')
         ],
-        practice: bi('自己点两个已经确认的价格高点，再点左右 2 根以内的 RSI。右侧不够 2 根时，图会说还需要后续 K 线确认。', 'Mark two confirmed price highs yourself, then the RSI highs within 2 bars. If 2 bars are not yet on the right, the chart says later candles are still needed.'),
+        practice: bi('点出顶背离的第二个高点。\n价格更高，下面的线更低。\n这不保证马上跌。', 'Tap the second high of the top divergence.\nPrice is higher and the line below is lower.\nThat does not guarantee an immediate drop.'),
         check: {
-          ask: bi('价格更高高点，RSI 更低高点，这叫什么？', 'Price makes a higher high and RSI makes a lower high. What is that called?'),
-          options: [opt('A', '看跌背离', 'Bearish divergence'), opt('B', '看涨背离', 'Bullish divergence'), opt('C', '缩口', 'A squeeze')],
+          ask: bi('价格更高、下面的线更低，这叫什么？', 'Price is higher and the line below is lower. What is that called?'),
+          options: [opt('A', '顶背离', 'Top divergence'), opt('B', '底背离', 'Bottom divergence'), opt('C', '金叉', 'A golden cross')],
           answer: 'A',
-          miss: bi('看涨背离比的是低点。缩口说的是布林带宽度。', 'Bullish divergence compares lows. A squeeze talks about Bollinger width.')
+          miss: bi('底背离比的是低点。\n金叉是快线穿过慢线。', 'Bottom divergence compares lows.\nA golden cross is the fast line crossing the slow line.')
         },
         quizzes: [
-          quiz('价格新高、RSI 更低高点属于？', 'A new price high with a lower RSI high is?', [opt('A', '看跌背离', 'Bearish divergence'), opt('B', '必涨信号', 'A signal that must rise'), opt('C', '没有意义', 'Meaningless')], 'A', {
-            A: ['价格高点更高，RSI 高点更低，这就是看跌背离。', 'A higher price high with a lower RSI high is bearish divergence.'],
-            B: ['它没有上涨这一项。看涨背离比的是低点。', 'It has no rise in it. Bullish divergence compares lows.'],
-            C: ['它描述两段已确认摆动的关系，不是空话，也不保证反转。', 'It describes two confirmed swings. That is not empty, and it still does not guarantee a reversal.']
+          quiz('价格新高、下面的线没有新高，这是？', 'A new price high, while the line below does not make a new high. What is that?', [opt('A', '顶背离', 'Top divergence'), opt('B', '底背离', 'Bottom divergence'), opt('C', '没有意义', 'Meaningless')], 'A', {
+            A: ['价格高点更高，线的高点更低，这就是顶背离。', 'A higher price high with a lower line high is top divergence.'],
+            B: ['底背离比的是更低的低点。', 'Bottom divergence compares a lower low.'],
+            C: ['它说明两段没走在一起，不是空话，也不保证马上跌。', 'It says two stretches did not move together. That is not empty, and it still does not guarantee an immediate drop.']
           }),
-          quiz('背离一定导致反转？', 'Must divergence cause a reversal?', [opt('A', '一定', 'It must'), opt('B', '不一定', 'Not necessarily'), opt('C', '只有 ETH 会', 'Only ETH does')], 'B', {
-            A: ['背离之后价格仍可以顺着原方向继续走。', 'After divergence, price can still continue in the original direction.'],
-            B: ['它只是价格和指标没有一起创新高或创新低。', 'It only says price and the indicator did not make the new extreme together.'],
-            C: ['换成 ETH 这个名字，确认规则也不变。', 'The name ETH does not change the confirmation rule.']
+          quiz('背离是不是一定马上转向？', 'Must divergence turn price right away?', [opt('A', '一定', 'It must'), opt('B', '不一定', 'Not necessarily'), opt('C', '只有上涨时一定', 'Only in a rise')], 'B', {
+            A: ['背离之后价格仍可以顺着原来的方向再走一段。', 'After divergence, price can still keep going the same way.'],
+            B: ['它只是价格和下面的线没有一起创新高或创新低。', 'It only says price and the line below did not make the new extreme together.'],
+            C: ['换成上涨或下跌，也不变成保证。', 'A rise or a fall does not turn it into a guarantee.']
           }),
-          quiz('可用未来 K 线确认今天的信号吗？', 'Can future candles confirm today’s signal?', [opt('A', '可以提前画', 'You can draw it early'), opt('B', '不可以提前显示', 'Do not show it early'), opt('C', '随便', 'Either way')], 'B', {
-            A: ['右侧 2 根还没走出来，这个高低点还没确认。', 'Until 2 bars have printed on the right, the swing is not confirmed.'],
-            B: ['本课等右侧 2 根出现，才允许标这个点。', 'This lesson waits for 2 bars on the right before the point can be marked.'],
-            C: ['确认规则是固定的，不能有时提前、有时不提前。', 'The confirmation rule is fixed. It is not sometimes early and sometimes not.']
+          quiz('底背离看的是什么？', 'What does bottom divergence look at?', [opt('A', '价格低点更低，线的低点更高', 'A lower price low and a higher low on the line'), opt('B', '价格和线一起创新高', 'Price and the line both make a new high'), opt('C', '绿柱变长', 'The green bars get longer')], 'A', {
+            A: ['后面的价格更低，下面的线却没再创新低，这是底背离。', 'Later price is lower, but the line below did not make a new low. That is bottom divergence.'],
+            B: ['一起创新高就不是背离。', 'Making a new high together is not divergence.'],
+            C: ['绿柱变长说的是快线和慢线拉得更开。', 'A longer green bar means the fast and slow lines pulled farther apart.']
           })
         ],
         study: {
@@ -217,85 +180,86 @@
       }),
       lesson({
         id: '06',
-        title: bi('斐波那契：参考位不是魔法价', 'Fibonacci: a reference level is not a magic price'),
+        title: bi('斐波那契：参考线不是必到的价', 'Fibonacci: a reference line is not a price that must be hit'),
         scene: bi('价格碰到 0.618 就一定会弹回去吗？', 'Must price bounce when it touches 0.618?'),
-        one: bi('斐波那契回撤只是把一段高点和低点按比例分成参考位，价格不必在那里转身。', 'A Fibonacci retracement only divides a high and a low into reference levels, so price does not have to turn there.'),
-        explain: bi('先定这一段的低点 L 和高点 H。\n上涨回撤：价格=H−(H−L)×比例。\n0 在高点，1 在低点。\n下跌回撤：价格=L+(H−L)×比例。\n0 在低点，1 在高点。\n0.5 是中点，不是严格的斐波那契比例。\n扩展用两点：价格=起点+(终点−起点)×比例。\n1.272 和 1.618 在波段外面。\n两个锚点相同就不能画。\n锚点一改，所有价位都跟着改。\n碰到 0.618 也不保证反弹。', 'First fix the low L and the high H of the swing.\nFor an up retracement, price=H−(H−L)×ratio.\n0 is at the high, and 1 is at the low.\nFor a down retracement, price=L+(H−L)×ratio.\n0 is at the low, and 1 is at the high.\n0.5 is the midpoint. It is not a strict Fibonacci ratio.\nAn extension uses two points: price=start+(end−start)×ratio.\n1.272 and 1.618 sit outside the swing.\nIf the two anchors are the same, no lines are drawn.\nIf you move an anchor, every level moves with it.\nTouching 0.618 still does not guarantee a bounce.'),
-        example: bi('教学模拟：L=100，H=140。\n上涨回撤的 0 在 140，1 在 100。\n0.236 在 130.56。\n0.382 在 124.72。\n0.5 在 120。\n0.618 在 115.28。\n0.786 在 108.56。\n另一段教学模拟从 60000 涨到 70000。\n0.618 在 63820。\n价格仍可以穿过它继续走。', 'Teaching simulation: L=100 and H=140.\nOn an up retracement, 0 is at 140 and 1 is at 100.\n0.236 is at 130.56.\n0.382 is at 124.72.\n0.5 is at 120.\n0.618 is at 115.28.\n0.786 is at 108.56.\nAnother teaching simulation rises from 60000 to 70000.\n0.618 is at 63820.\nPrice can still pass through it and keep going.'),
+        one: bi('斐波那契是把上一段明显的低点到高点分成几条参考线，价格可以在那里停一停，但不必在那里转身。', 'Fibonacci splits the obvious low-to-high of the last swing into a few reference lines, so price may pause there, but it does not have to turn there.'),
+        explain: bi('先找到眼前这一段最明显的低点和高点。\n从这段的起点拖到终点。\n上涨时从低点拖到高点。\n下跌时从高点拖到低点。\n松开后，0、0.382、0.5、0.618 和 1 会自动画出来。\n0 在这段的终点，1 在起点。\n回调时，大家常看 0.5 到 0.618 这一带。\n价格可能在那里停一停，或弹一下。\n这些线只是参考区。\n它们不保证反弹，也不保证跌破。\n拿来看的时候，止损还是要自己放。', 'First find the most obvious low and high of the swing in front of you.\nDrag from the start of that swing to the end.\nIn a rise, drag from the low to the high.\nIn a drop, drag from the high to the low.\nWhen you let go, 0, 0.382, 0.5, 0.618, and 1 draw themselves.\n0 is at the end of the swing, and 1 is at the start.\nIn a pullback, people often watch the band from 0.5 to 0.618.\nPrice may pause there, or bounce a little.\nThese lines are only reference zones.\nThey do not guarantee a bounce, and they do not guarantee a break.\nIf you use them, you still place the stop yourself.'),
+        example: bi('教学模拟：这一段从大约 60000 涨到 70000，再往回走。\n看示范会把低点到高点的线画出来。\n价格可以碰到 0.618，也可以穿过去。\n碰到不是必弹。', 'Teaching simulation: this swing rises from about 60000 to 70000, then pulls back.\nSee the example draws the lines from that low to that high.\nPrice can touch 0.618, or pass through it.\nA touch is not a required bounce.'),
         pitfalls: [
-          bi('把 0.618 当成必须成交的反转价', 'Treating 0.618 as a reversal price that must trade'),
-          bi('锚点换了却沿用旧价位', 'Keeping old prices after the anchors moved')
+          bi('把 0.618 当成必须反弹的价', 'Treating 0.618 as a price that must bounce'),
+          bi('换了一段高低点，还用着旧线', 'Keeping the old lines after the swing high and low changed')
         ],
-        practice: bi('先点低点，再点高点。看 0.618 的价格。再把后面的 K 线放出来，看它会不会穿过这条线。', 'Tap the low, then the high. Read the 0.618 price. Then reveal the later candles and see whether price passes that line.'),
+        practice: bi('从这段低点拖到高点。\n看价格回撤时有没有靠近 0.5 到 0.618。\n靠近也不是必弹。', 'Drag from the low of this swing to the high.\nSee whether the pullback comes near 0.5 to 0.618.\nBeing near it is still not a required bounce.'),
         check: {
-          ask: bi('100 到 140 的上涨回撤，0.618 在哪里？', 'For an up retracement from 100 to 140, where is 0.618?'),
-          options: [opt('A', '115.28', '115.28'), opt('B', '140', '140'), opt('C', '86.48', '86.48')],
-          answer: 'A',
-          miss: bi('140−40×0.618=115.28。\n140 是高点本身。', '140−40×0.618=115.28.\n140 is the high itself.')
+          ask: bi('价格碰到 0.618，是不是一定弹回去？', 'Price touches 0.618. Must it bounce?'),
+          options: [opt('A', '一定弹', 'It must bounce'), opt('B', '不一定', 'Not necessarily'), opt('C', '只有上涨时一定', 'Only in a rise')],
+          answer: 'B',
+          miss: bi('0.618 只是一条参考线。\n价格可以停、可以穿、也可以不碰。', '0.618 is only a reference line.\nPrice can pause, pass through, or never touch it.')
         },
         quizzes: [
-          quiz('100 到 140 的 0.618 回撤约是多少？', 'About where is the 0.618 retracement from 100 to 140?', [opt('A', '115.28', '115.28'), opt('B', '124.72', '124.72'), opt('C', '140', '140')], 'A', {
-            A: ['140−(140−100)×0.618=115.28。', '140−(140−100)×0.618=115.28.'],
-            B: ['124.72 是 0.382，不是 0.618。', '124.72 is 0.382, not 0.618.'],
-            C: ['140 是高点本身，对应比例 0，不是 0.618。', '140 is the high itself. That is ratio 0, not 0.618.']
+          quiz('画这条线时，先找什么？', 'When you draw this, what do you find first?', [opt('A', '眼前这段最明显的低点和高点', 'The most obvious low and high of the swing in front of you'), opt('B', '任意两根 K 线', 'Any two candles'), opt('C', '成交量最大的那根', 'The candle with the most volume')], 'A', {
+            A: ['从这段的起点拖到终点，线才对得上这段行情。', 'Drag from the start of that swing to the end, and the lines match that move.'],
+            B: ['随便点两根，画出来的线对不上这段涨跌。', 'Two random candles do not line up with this swing.'],
+            C: ['这条线看的是高低点，不是成交量。', 'These lines look at the high and the low, not volume.']
           }),
-          quiz('0.618 必反弹吗？', 'Must price bounce at 0.618?', [opt('A', '是', 'Yes'), opt('B', '否', 'No'), opt('C', '只在牛市', 'Only in a bull market')], 'B', {
-            A: ['比例没有“必须反弹”这一项。', 'The ratio has no clause that says price must bounce.'],
-            B: ['价格可以穿过、停住，或根本不碰这条线。', 'Price can pass through it, pause, or never touch the line.'],
-            C: ['牛市这个名字不改变公式。', 'The word bull market does not change the formula.']
+          quiz('0.5 到 0.618 通常用来看什么？', 'What are 0.5 to 0.618 usually watched for?', [opt('A', '回调时可能停一停的区域', 'A zone where a pullback may pause'), opt('B', '必到的反转价', 'A reversal price that must be hit'), opt('C', '止损必须放在这里', 'The stop must sit here')], 'A', {
+            A: ['回调时价格常在这一带慢下来，但这不是保证。', 'In a pullback, price often slows in this band. That is not a guarantee.'],
+            B: ['没有“必须在这里转身”这一条。', 'There is no rule that price must turn here.'],
+            C: ['止损放哪里，要你自己定。线不替你放。', 'Where the stop goes is yours to choose. The line does not place it.']
           }),
-          quiz('锚点改变后，价位会变吗？', 'If an anchor changes, do the prices change?', [opt('A', '会', 'Yes'), opt('B', '不会', 'No'), opt('C', '只变颜色', 'Only the color changes')], 'A', {
-            A: ['每个价位都由两个锚点算出来。锚点变了，价位就变。', 'Every price is calculated from the two anchors. Move an anchor and the prices move.'],
-            B: ['旧价位不能继续套在新的锚点上。', 'The old prices cannot stay pasted onto the new anchors.'],
-            C: ['颜色没变，变的是算出来的价格。', 'The color stays. What changes is the calculated price.']
+          quiz('这些线保证反弹吗？', 'Do these lines guarantee a bounce?', [opt('A', '保证', 'They do'), opt('B', '不保证', 'They do not'), opt('C', '看示范就保证', 'The example guarantees it')], 'B', {
+            A: ['参考区不是到站必停。', 'A reference zone is not a stop that must happen.'],
+            B: ['价格可以碰到、穿过，或根本不来。', 'Price can touch them, pass through, or never arrive.'],
+            C: ['看示范只是把这一段画出来，不是保证。', 'See the example only draws this swing. It is not a guarantee.']
           })
         ],
         study: { kind: 'fib', lessonChart: 'fib-full', closes: [100, 108, 116, 124, 132, 140, 136, 128, 120], low: 100, high: 140, start: 6 }
       }),
       lesson({
         id: '07',
-        title: bi('SMC：结构标签不等于机构证据', 'SMC: a structure label is not evidence of an institution'),
+        title: bi('SMC：图上的标签不是机构证据', 'SMC: a label on the chart is not proof of an institution'),
         scene: bi('图上标了订单块，是不是已经证明有机构在买？', 'The chart labels an order block. Does that prove an institution is buying?'),
-        one: bi('FVG、订单块这些标签来自定义好的价格规则。它们描述价格留下的空档或候选区域，不证明是谁在交易。', 'Labels such as FVG and order block come from price rules you defined. They describe a gap price left, or a candidate zone, and they do not prove who traded.'),
-        explain: bi('公允价值缺口看的是三根 K 线之间没有重叠的价格带。\n例如第一根高点 103，第三根低点 106，中间带是 103 到 106。\n这不是“这段没有任何人成交”。\n订单块只是按规则挑出的候选区，不是机构买单的证据。\n结构标签也不保证后面的路径。', 'A fair value gap is a price band with no overlap across three candles.\nIf the first high is 103 and the third low is 106, the band is 103 to 106.\nThat is not “nobody traded there.”\nAn order block is only a candidate zone picked by a rule. It is not evidence of an institutional buy.\nA structure label also does not guarantee the later path.'),
-        example: bi('A 高 103，C 低 106，缺口带为 103–106。\n价格后来可以回补，也可以不回补。\n把这块区域叫订单块，仍然只是候选，不是成交身份证明。', 'A’s high is 103 and C’s low is 106, so the gap band is 103–106.\nPrice may fill it later, or it may not.\nCalling the zone an order block is still only a candidate. It is not proof of who traded.'),
+        one: bi('结构、扫荡、缺口和订单块都是按规则画在价格上的标签，它们不证明是谁在买卖，也不保证后面怎么走。', 'Structure, a sweep, a gap, and an order block are only labels drawn on price by a rule, so they do not prove who is buying or selling, and they do not guarantee what comes next.'),
+        explain: bi('上面是价格 K 线。\n结构延续，是收盘顺着原来的方向越过前一个高低点。\n只是影线刺过去、收盘没过去，不算。\n结构转向，是收盘反过来跌破或升破刚才护着的那个点。\n它只是说结构可能在变，不是已经转完。\n扫荡是影线扎过前高或前低，收盘又回到里面。\n这只是形态像，不代表真有人在扫单。\n缺口是三根 K 线中间空出来的一段价格。\n看涨时，第三根的最低价高于第一根的最高价。\n订单块是突破前最后一根反方向 K 线的实体，只是一个候选区。\n这些标签都不能证明是机构在买。', 'The top is the price candles.\nStructure continues when the close passes the previous high or low in the same direction.\nA wick through it does not count if the close stays back.\nStructure turns when the close breaks the level that was holding the other way.\nThat only says the structure may be changing. It is not a finished turn.\nA sweep is a wick past a prior high or low, with the close back inside.\nThe shape only looks like that. It does not mean someone swept orders.\nA gap is a stretch of price left open across three candles.\nIn a rise, the third candle’s low is above the first candle’s high.\nAn order block is the body of the last opposite candle before the break. It is only a candidate zone.\nNone of these labels prove an institution is buying.'),
+        example: bi('教学模拟：第一根高点 103，第三根低点 106。\n106 高于 103，所以这段空档是 103 到 106。\n价格后来可以回来填上，也可以不回来。\n订单块仍只是候选区，不是谁在买的证据。', 'Teaching simulation: the first high is 103 and the third low is 106.\n106 is above 103, so the open stretch is 103 to 106.\nPrice may come back and fill it, or it may not.\nAn order block is still only a candidate zone. It is not proof of who is buying.'),
         pitfalls: [
-          bi('把缺口理解成零成交', 'Reading a gap as zero trades'),
+          bi('把缺口理解成这段没有成交', 'Reading a gap as a stretch where nothing traded'),
           bi('把订单块理解成机构已经买入的证据', 'Reading an order block as proof an institution already bought')
         ],
-        practice: bi('看图上的色带，说出它的上沿和下沿，并说明它不能证明的事情。', 'Look at the shaded band, name its top and bottom, and say what it cannot prove.'),
+        practice: bi('点出收盘价越过前高的那根。\n影线过了但收盘没过，不算结构延续。', 'Tap the candle whose close passes the prior high.\nA wick through it is not structure continuing if the close stays back.'),
         check: {
           ask: bi('103 到 106 的缺口等于这段没有成交吗？', 'Does a 103 to 106 gap mean nothing traded there?'),
           options: [opt('A', '等于', 'Yes'), opt('B', '不是', 'No'), opt('C', '只在模拟盘等于', 'Only on a demo account')],
           answer: 'B',
-          miss: bi('缺口是三根 K 线的价格带没有重叠，不是成交量为零。', 'A gap means the price bands of three candles do not overlap. It does not mean volume was zero.')
+          miss: bi('缺口只是三根 K 线的高低没有叠在一起。\n它不是成交量为零。', 'A gap only means the highs and lows of three candles do not overlap.\nIt is not zero volume.')
         },
         quizzes: [
-          quiz('FVG 是不是表示这个区间没有成交？', 'Does an FVG mean there were no trades in that zone?', [opt('A', '是', 'Yes'), opt('B', '不是', 'No'), opt('C', '只有实体没有成交', 'Only the body had no trades')], 'B', {
-            A: ['K 线只给出高低区间，给不出“这段价格无人成交”的证明。', 'A candle only gives a high-low range. It cannot prove nobody traded at those prices.'],
-            B: ['103–106 只是第一根高点和第三根低点之间没有重叠的带。', '103–106 is only the band with no overlap between the first high and the third low.'],
-            C: ['规则看的是高低区间的重叠，不是实体内部有没有成交。', 'The rule looks at overlap of the high-low ranges, not whether trades happened inside the body.']
+          quiz('缺口是不是表示这个区间没有成交？', 'Does a gap mean nothing traded in that zone?', [opt('A', '是', 'Yes'), opt('B', '不是', 'No'), opt('C', '必然', 'It must')], 'B', {
+            A: ['三根 K 线只比高低有没有重叠，证明不了没人成交。', 'Three candles only compare whether the high and low overlap. They cannot prove nobody traded.'],
+            B: ['103 到 106 只是第一根高点到第三根低点之间空出来的一段。', '103 to 106 is only the open stretch from the first high to the third low.'],
+            C: ['没有“必然没有成交”这一条。', 'There is no rule that trades were necessarily absent.']
           }),
-          quiz('订单块能证明机构在买吗？', 'Can an order block prove an institution is buying?', [opt('A', '能', 'Yes'), opt('B', '不能', 'No'), opt('C', '标注成英文就能', 'Yes, if the label is in English')], 'B', {
-            A: ['规则只能挑出候选 K 线，不能识别下单的人。', 'A rule can only pick a candidate candle. It cannot identify who placed the order.'],
-            B: ['它是候选区，不是机构行为的证据。', 'It is a candidate zone, not evidence of institutional behavior.'],
-            C: ['换成英文标签也不会增加证据。', 'Translating the label into English does not add evidence.']
+          quiz('订单块能证明机构在买吗？', 'Can an order block prove an institution is buying?', [opt('A', '能', 'Yes'), opt('B', '不能', 'No'), opt('C', '标成英文就能', 'Yes, if the label is in English')], 'B', {
+            A: ['规则只挑出突破前的一根反向 K 线，不知道是谁下的单。', 'The rule only picks the opposite candle before the break. It does not know who placed the order.'],
+            B: ['它是候选区，不是机构在买的证据。', 'It is a candidate zone, not proof an institution is buying.'],
+            C: ['换成英文，证据也不会多出来。', 'Writing the label in English does not add evidence.']
           }),
-          quiz('这些结构标签保证后面的走势吗？', 'Do these structure labels guarantee the later path?', [opt('A', '保证', 'They do'), opt('B', '不保证', 'They do not'), opt('C', '回补了才保证', 'Only after a fill')], 'B', {
-            A: ['标签描述已经发生的价格结构，不锁定后面的路径。', 'A label describes price structure that already happened. It does not lock the later path.'],
-            B: ['回补、延续或不碰这个区域都可能发生。', 'A fill, a continuation, or never touching the zone can all happen.'],
-            C: ['回补只是后来的一种走法，不是保证条款。', 'A fill is one later path, not a guarantee clause.']
+          quiz('这些标签保证后面的走势吗？', 'Do these labels guarantee what comes next?', [opt('A', '保证', 'They do'), opt('B', '不保证', 'They do not'), opt('C', '只做多保证', 'Only longs are guaranteed')], 'B', {
+            A: ['标签说的是已经走出来的结构，不管后面。', 'A label describes structure that already happened. It does not cover what comes next.'],
+            B: ['继续走、转过来，或不回到这个区域，都可能。', 'Continuing, turning, or never coming back to the zone can all happen.'],
+            C: ['做多这一边同样没有保证。', 'The long side has no guarantee either.']
           })
         ],
         study: {
           kind: 'zone',
+          lessonChart: 'smc-full',
           bars: [
             { o: 100, h: 103, l: 99, c: 102 },
-            { o: 104, h: 109, l: 103.5, c: 108 },
-            { o: 108, h: 112, l: 106, c: 110 }
+            { o: 102, h: 109, l: 101, c: 108 },
+            { o: 108, h: 112, l: 106, c: 111 }
           ],
           zone: { low: 103, high: 106 },
-          caption: bi('色带 103–106：第一根高点到第三根低点之间没有重叠。', 'Band 103–106: no overlap between the first high and the third low.'),
+          caption: bi('色带 103–106：第三根低点高于第一根高点。', 'Band 103–106: the third low is above the first high.'),
           start: 3
         }
       })
@@ -2262,7 +2226,7 @@
         dea[idx[j]] = prev;
       }
     }
-    return { dif: dif, hist: dif.map(function (value, i) { return value == null || dea[i] == null ? null : value - dea[i]; }) };
+    return { dif: dif, dea: dea, hist: dif.map(function (value, i) { return value == null || dea[i] == null ? null : value - dea[i]; }) };
   }
   function walk(start, steps) {
     var bars = [];
@@ -2346,10 +2310,61 @@
     if (n == null || n !== n) return '—';
     return (Math.round(n * 100) / 100).toString();
   }
+  function mix(n) {
+    var x = Math.imul(n ^ 0x9e3779b9, 0x85ebca6b);
+    x = Math.imul(x ^ (x >>> 13), 0xc2b2ae35);
+    return ((x ^ (x >>> 16)) >>> 0) / 4294967296;
+  }
+  function storyBars(extra) {
+    var segs = [[22, 0.0003], [20, 0.0034], [12, -0.0024], [22, 0.0015], [14, -0.002], [18, -0.0038], [10, 0.0022], [16, -0.0026], [12, 0.001]];
+    if (extra) segs = segs.concat([[18, 0.0045]]);
+    var price = 42000;
+    var plan = [];
+    segs.forEach(function (seg) { var k; for (k = 0; k < seg[0]; k++) plan.push(seg[1]); });
+    var bars = [];
+    var vol = 0.007;
+    var i;
+    for (i = 0; i < plan.length; i++) {
+      var u = mix(i * 997 + 9 * 131);
+      if (u > 0.94) vol = Math.min(0.022, vol * 1.7);
+      else vol = vol * 0.88 + 0.007 * 0.12;
+      var ret = plan[i] + (mix(i * 997 + 9 * 17) - 0.5) * 2 * vol;
+      var open = price;
+      var close = open * (1 + ret);
+      var body = Math.abs(close - open);
+      var high = Math.max(open, close) + body * (0.45 + mix(i * 3 + 9) * 1.6) + open * 0.001;
+      var low = Math.min(open, close) - body * (0.45 + mix(i * 5 + 9) * 1.6) - open * 0.001;
+      bars.push({ t: i, o: Math.round(open * 100) / 100, h: Math.round(high * 100) / 100, l: Math.round(low * 100) / 100, c: Math.round(close * 100) / 100, v: 40 + Math.floor(mix(i + 4) * 80) });
+      price = close;
+    }
+    return bars;
+  }
+  function pairOf(bars, mode) {
+    var values = rsi(bars.map(function (bar) { return bar.c; }), 14);
+    var pack = macd(bars.map(function (bar) { return bar.c; }));
+    var points = swings(bars, 2, mode);
+    var best = null;
+    var score = 0;
+    points.forEach(function (a) {
+      points.forEach(function (b) {
+        if (b - a < 8 || values[a] == null || values[b] == null || pack.dif[a] == null || pack.dif[b] == null) return;
+        var priceOk = mode === 'high' ? bars[b].h > bars[a].h : bars[b].l < bars[a].l;
+        var rsiOk = mode === 'high' ? values[b] < values[a] - 3 : values[b] > values[a] + 3;
+        var macdOk = mode === 'high' ? pack.dif[b] < pack.dif[a] : pack.dif[b] > pack.dif[a];
+        var gap = mode === 'high' ? bars[b].h - bars[a].h : bars[a].l - bars[b].l;
+        if (priceOk && rsiOk && macdOk && gap > score) { score = gap; best = [a, b]; }
+      });
+    });
+    return best;
+  }
   function mount(root, lesson, lang) {
     var zh = lang !== 'en';
     var scenes = buildScenes();
-    var state = { scene: 'bear', step: 'watch', shown: 22, cursor: null, playing: false, source: 'rsi', wing: 2, showTime: false, pricePts: [], indPts: [], note: '', tone: '' };
+    var storyBarsMain = storyBars(false);
+    var storyBarsFail = storyBars(true);
+    scenes.story = { id: 'story', bars: storyBarsMain, visible: storyBarsMain.length, mode: 'high', start: 40, top: pairOf(storyBarsMain, 'high'), bot: pairOf(storyBarsMain, 'low') };
+    scenes.miss = { id: 'miss', bars: storyBarsFail, visible: storyBarsFail.length, mode: 'high', start: 40, top: scenes.story.top, bot: scenes.story.bot };
+    var state = { scene: 'story', step: 'watch', shown: scenes.story.visible, cursor: null, playing: false, source: 'rsi', wing: 2, showTime: false, pricePts: [], indPts: [], note: '', tone: '' };
     if (root._divTimer) clearInterval(root._divTimer);
     root._divTimer = null;
     function scene() { return scenes[state.scene]; }
@@ -2413,7 +2428,105 @@
       var extra = state.scene === 'rally' ? (zh ? ' 再把后面的 K 线放出来，价格仍可能高于 112。' : ' Reveal the later candles. Price can still go above 112.') : (zh ? ' 这不保证下一根反转。' : ' It does not guarantee the next bar reverses.');
       return { tone: 'is-right', text: (zh ? '价格更高高点，' + name + ' 更低高点。' : 'Higher price high, lower ' + name + ' high.') + extra + (name === 'RSI' ? ' ' + fmt(a) + ' → ' + fmt(b) + '。' : '') };
     }
+    function paintStory() {
+      var current = scene();
+      var draw = current.bars.slice(0, state.shown);
+      var closes = draw.map(function (bar) { return bar.c; });
+      var pack = macd(closes);
+      var strength = rsi(closes, 14);
+      var w = 980;
+      var h = 520;
+      var padL = 8;
+      var padR = 64;
+      var top = 14;
+      var priceH = 210;
+      var vals = [];
+      draw.forEach(function (bar) { vals.push(bar.h, bar.l); });
+      var min = Math.min.apply(null, vals);
+      var max = Math.max.apply(null, vals);
+      var span = max - min || 1;
+      min -= span * 0.06;
+      max += span * 0.08;
+      function y(p) { return top + (max - p) / (max - min) * priceH; }
+      var slot = (w - padL - padR) / Math.max(draw.length, 1);
+      var macTop = 246;
+      var macH = 110;
+      var rsiTop = 378;
+      var rsiH = 110;
+      var macAbs = [1];
+      pack.dif.forEach(function (v, i) { if (v != null) macAbs.push(Math.abs(v), Math.abs(pack.hist[i] || 0)); });
+      var macMax = Math.max.apply(null, macAbs);
+      function my(v) { return macTop + macH / 2 - (v / macMax) * (macH / 2 - 8); }
+      function ry(v) { return rsiTop + (100 - v) / 100 * rsiH; }
+      var bits = ['<svg viewBox="0 0 ' + w + ' ' + h + '" role="img">'];
+      bits.push('<rect width="' + w + '" height="' + h + '" fill="#120e21"></rect>');
+      draw.forEach(function (bar, i) {
+        var up = bar.c >= bar.o;
+        var color = up ? '#1f8a4d' : '#d4534e';
+        var xc = padL + i * slot + slot / 2;
+        var bw = Math.max(1.5, slot * 0.62);
+        bits.push('<line x1="' + xc + '" y1="' + y(bar.h) + '" x2="' + xc + '" y2="' + y(bar.l) + '" stroke="' + color + '" stroke-width="1.1"></line>');
+        bits.push('<rect x="' + (xc - bw / 2) + '" y="' + Math.min(y(bar.o), y(bar.c)) + '" width="' + bw + '" height="' + Math.max(1.1, Math.abs(y(bar.c) - y(bar.o))) + '" fill="' + color + '"></rect>');
+        if (i % 20 === 0) bits.push('<text x="' + xc + '" y="512" fill="#b7aac8" font-size="12">' + (zh ? '第' + (i + 1) + '根' : '#' + (i + 1)) + '</text>');
+      });
+      function line(series, color, dash, mapY) {
+        var pts = [];
+        series.forEach(function (value, i) { if (value != null && i < draw.length) pts.push((padL + i * slot + slot / 2).toFixed(1) + ',' + mapY(value).toFixed(1)); });
+        if (pts.length > 1) bits.push('<polyline points="' + pts.join(' ') + '" fill="none" stroke="' + color + '" stroke-width="2.2"' + (dash ? ' stroke-dasharray="6 4"' : '') + '></polyline>');
+      }
+      bits.push('<line x1="' + padL + '" y1="' + my(0) + '" x2="' + (w - padR) + '" y2="' + my(0) + '" stroke="#f0d59a" stroke-dasharray="4 3"></line>');
+      draw.forEach(function (bar, i) {
+        var hist = pack.hist[i];
+        if (hist == null) return;
+        var xc = padL + i * slot + slot / 2;
+        var y1 = my(0);
+        var y2 = my(hist);
+        bits.push('<rect x="' + (xc - Math.max(1, slot * 0.28)) + '" y="' + Math.min(y1, y2) + '" width="' + Math.max(1.6, slot * 0.5) + '" height="' + Math.max(1, Math.abs(y2 - y1)) + '" fill="' + (hist >= 0 ? '#1f8a4d' : '#d4534e') + '" opacity="0.85"></rect>');
+      });
+      line(pack.dif, '#f4cb82', false, my);
+      line(pack.dea, '#8eb4ff', true, my);
+      bits.push('<rect x="' + padL + '" y="' + ry(100) + '" width="' + (w - padL - padR) + '" height="' + (ry(70) - ry(100)) + '" fill="rgba(212,83,78,.16)"></rect>');
+      bits.push('<rect x="' + padL + '" y="' + ry(30) + '" width="' + (w - padL - padR) + '" height="' + (ry(0) - ry(30)) + '" fill="rgba(31,138,77,.14)"></rect>');
+      [70, 50, 30].forEach(function (level) {
+        bits.push('<line x1="' + padL + '" y1="' + ry(level) + '" x2="' + (w - padR) + '" y2="' + ry(level) + '" stroke="#8eb4ff" stroke-dasharray="4 3"></line>');
+      });
+      line(strength, '#f4cb82', false, ry);
+      function linkPair(pair, label, priceOf, macdOf, rsiOf, color) {
+        if (!pair || pair[1] >= draw.length) return;
+        function seg(mapY, pick) {
+          var pts = pair.map(function (index) {
+            return (padL + index * slot + slot / 2).toFixed(1) + ',' + mapY(pick(index)).toFixed(1);
+          });
+          bits.push('<polyline points="' + pts.join(' ') + '" fill="none" stroke="' + color + '" stroke-width="1.6" stroke-dasharray="4 3"></polyline>');
+        }
+        seg(y, priceOf);
+        if (macdOf(pair[0]) != null && macdOf(pair[1]) != null) seg(my, macdOf);
+        if (rsiOf(pair[0]) != null && rsiOf(pair[1]) != null) seg(ry, rsiOf);
+        var xc = padL + pair[1] * slot + slot / 2;
+        bits.push('<text data-mark="' + (label === (zh ? '顶背离' : 'Top') ? 'top' : 'bot') + '" x="' + xc + '" y="' + (y(priceOf(pair[1])) - 8) + '" text-anchor="middle" fill="' + color + '" font-size="12">' + label + '</text>');
+      }
+      linkPair(current.top, zh ? '顶背离' : 'Top', function (i) { return draw[i].h; }, function (i) { return pack.dif[i]; }, function (i) { return strength[i]; }, '#d4534e');
+      linkPair(current.bot, zh ? '底背离' : 'Bottom', function (i) { return draw[i].l; }, function (i) { return pack.dif[i]; }, function (i) { return strength[i]; }, '#7dcea0');
+      draw.forEach(function (bar, i) {
+        bits.push('<rect data-bar="' + i + '" data-pane="price" x="' + (padL + i * slot) + '" y="' + top + '" width="' + slot + '" height="' + priceH + '" fill="transparent"></rect>');
+      });
+      bits.push('</svg>');
+      var note = state.note || (current.id === 'miss'
+        ? (zh ? '反例：顶背离标出来之后，价格还在继续涨。' : 'Counterexample: after the top divergence is marked, price keeps rising.')
+        : (zh ? '小练习：点出顶背离的第二个高点。背离不保证马上跌。' : 'Short practice: tap the second high of the top divergence. Divergence does not guarantee an immediate drop.'));
+      root.innerHTML =
+        '<div class="a1"><p class="a1-flag">' + (zh ? '模拟行情·非实时' : 'Simulated tape · not live') + '</p>' +
+        '<p>' + (zh
+          ? '上面是 K 线。<br>中间是快线和慢线，柱子是它们的距离。<br>下面是强弱线，0 到 100。<br>价格高点更高、两条线的高点更低，是顶背离。<br>价格低点更低、两条线的低点更高，是底背离。'
+          : 'Candles are on top.<br>The middle shows the fast line and the slow line. The bars are the distance between them.<br>The bottom line is strength, from 0 to 100.<br>A higher price high with lower highs on both lines is top divergence.<br>A lower price low with higher lows on both lines is bottom divergence.') + '</p>' +
+        '<div class="div-scroll">' + bits.join('') + '</div>' +
+        '<p class="star-key"><span><i style="background:#f4cb82"></i>' + (zh ? '快线 / 强弱线' : 'Fast / strength') + '</span><span><i style="background:#8eb4ff"></i>' + (zh ? '慢线' : 'Slow line') + '</span><span><i style="background:#d4534e"></i>' + (zh ? '顶背离' : 'Top') + '</span><span><i style="background:#7dcea0"></i>' + (zh ? '底背离' : 'Bottom') + '</span></p>' +
+        '<p>' + note + '</p>' +
+        '<div class="a1-modes"><button type="button" data-move="play">' + (state.playing ? (zh ? '暂停' : 'Pause') : (zh ? '播放' : 'Play')) + '</button><button type="button" data-move="reset">' + (zh ? '重新开始' : 'Start again') + '</button><button type="button" data-more="div">' + (zh ? '再看一个反例' : 'See a counterexample') + '</button><span>' + state.shown + ' / ' + current.visible + '</span></div>' +
+        '<p class="a2-readout ' + state.tone + '">' + note + '</p></div>';
+    }
     function paint() {
+      if (state.scene === 'story' || state.scene === 'miss') { paintStory(); return; }
       var pack = prefix();
       var draw = pack.bars;
       var w = 980;
@@ -2529,7 +2642,14 @@
       var el = ev.target.closest ? ev.target.closest('[data-scene],[data-move],[data-source],[data-wing],[data-time],[data-bar],[data-more]') : null;
       if (!el || !root.contains(el)) return;
       if (el.getAttribute('data-more') === 'div') {
-        openScene(state.scene === 'bear' ? 'fake' : 'bear');
+        stop();
+        state.scene = state.scene === 'story' ? 'miss' : 'story';
+        state.shown = scene().visible;
+        state.note = '';
+        state.tone = '';
+        state.pricePts = [];
+        state.indPts = [];
+        paint();
         return;
       }
       if (el.hasAttribute('data-scene')) { openScene(el.getAttribute('data-scene')); return; }
@@ -2547,6 +2667,7 @@
         var move = el.getAttribute('data-move');
         if (move === 'play') {
           if (state.playing) { stop(); paint(); return; }
+          if (state.shown >= scene().visible) state.shown = scene().start || 40;
           state.playing = true;
           root._divTimer = setInterval(function () {
             if (!root.isConnected || state.shown >= scene().visible) { stop(); paint(); return; }
@@ -2562,6 +2683,22 @@
         return;
       }
       var index = Number(el.getAttribute('data-bar'));
+      if (state.scene === 'story' || state.scene === 'miss') {
+        var top = scene().top;
+        var hit = top && Math.abs(index - top[1]) <= 1;
+        if (hit && state.scene === 'miss') {
+          state.tone = 'is-right';
+          state.note = zh ? '这是顶背离的第二个高点。可是后面价格还在涨，所以它没有拦住行情。' : 'This is the second high of the top divergence. Price kept rising afterward, so it did not stop the move.';
+        } else if (hit) {
+          state.tone = 'is-right';
+          state.note = zh ? '这是顶背离的第二个高点。价格更高，快线和强弱线都更低。这不保证马上跌。' : 'This is the second high of the top divergence. Price is higher, and the fast line and the strength line are lower. That does not guarantee an immediate drop.';
+        } else {
+          state.tone = 'is-wrong';
+          state.note = zh ? '还不是。请点标着顶背离的那个更高的高点。' : 'Not yet. Tap the higher high labeled top divergence.';
+        }
+        paint();
+        return;
+      }
       var pane = el.getAttribute('data-pane');
       state.cursor = index;
       if (pane === 'price' && swingState(prefix(), index) === 'wait') {
@@ -2637,8 +2774,8 @@
       else if (i === 50) close = 69680;
       else close = round2(Math.max(60800, open - 180 - unit(i, 11) * 90));
       if (i !== 20 && i !== 50 && unit(i, 17) > 0.82) close = round2(open + (open - close) * 0.5);
-      var upW = 18 + unit(i, 19) * 50;
-      var dnW = 14 + unit(i, 23) * 40;
+      var upW = Math.abs(close) * (0.0016 + unit(i, 19) * 0.0045);
+      var dnW = Math.abs(close) * (0.0014 + unit(i, 23) * 0.004);
       bars.push({
         t: i,
         o: open,
@@ -2654,9 +2791,23 @@
     bars[20].c = Math.max(bars[20].c, 60240);
     bars[20].h = Math.max(bars[20].h, bars[20].o, bars[20].c);
     bars[50].h = 70000;
-    bars[50].o = Math.min(bars[50].o, 69400);
-    bars[50].c = Math.min(bars[50].c, 69680);
-    bars[50].l = Math.min(bars[50].l, bars[50].o, bars[50].c);
+    bars[50].c = 69680;
+    bars[50].o = 69120;
+    bars[50].l = 68840;
+    var climb;
+    for (climb = 45; climb < 50; climb++) {
+      var step = (69120 - bars[44].c) * (climb - 44) / 6;
+      bars[climb].c = Math.round((bars[44].c + step) * 100) / 100;
+      bars[climb].o = bars[climb - 1].c;
+      bars[climb].h = Math.round((Math.max(bars[climb].o, bars[climb].c) + 180) * 100) / 100;
+      bars[climb].l = Math.round((Math.min(bars[climb].o, bars[climb].c) - 140) * 100) / 100;
+    }
+    bars.forEach(function (bar, index) {
+      if (index !== 20) bar.l = Math.max(bar.l, 60120);
+      if (index !== 50) bar.h = Math.min(bar.h, 69840);
+      bar.h = Math.max(bar.h, bar.o, bar.c);
+      bar.l = Math.min(bar.l, bar.o, bar.c);
+    });
     return { bars: bars, lowAt: 20, highAt: 50, version: 1, source: 'sim-btc-usdt-fib-v1' };
   }
   function mount(root, lesson, lang) {
@@ -2665,7 +2816,7 @@
     var state = {
       dir: 'up',
       mode: 'retrace',
-      shown: 56,
+      shown: data.bars.length,
       a: null,
       b: null,
       cursor: null,
@@ -2738,11 +2889,12 @@
         if (state.a && state.a.index === i) bits.push('<circle cx="' + xc + '" cy="' + y(state.a.price) + '" r="6" fill="none" stroke="#f4cb82" stroke-width="2"></circle>');
         if (state.b && state.b.index === i) bits.push('<circle cx="' + xc + '" cy="' + y(state.b.price) + '" r="6" fill="none" stroke="#8eb4ff" stroke-width="2"></circle>');
       });
+      var showRatio = { 0: true, 0.382: true, 0.5: true, 0.618: true, 1: true };
       if (drawn && drawn.lines) {
-        drawn.lines.forEach(function (line) {
+        drawn.lines.filter(function (line) { return showRatio[line.r]; }).forEach(function (line) {
           var yy = y(line.price);
           bits.push('<line x1="' + padL + '" y1="' + yy + '" x2="' + (w - padR) + '" y2="' + yy + '" stroke="#f0d59a" stroke-dasharray="5 3"></line>');
-          var label = line.r + '  ' + line.price + (line.r === 0.5 ? (zh ? ' 中点' : ' mid') : '');
+          var label = line.r + '  ' + Math.round(line.price);
           bits.push('<text x="' + (padL + 6) + '" y="' + (yy - 4) + '" fill="#f0d59a" font-size="13">' + label + '</text>');
         });
       } else if (state.a && state.b && state.a.price === state.b.price) {
@@ -2753,25 +2905,27 @@
       });
       bits.push('</svg>');
       var hint = state.a == null
-        ? (state.dir === 'up' ? (zh ? '先点这一段的低点。它会吸到那根 K 线的最低价。' : 'Tap the low of this swing first. It snaps to that candle’s low.') : (zh ? '先点这一段的高点。它会吸到那根 K 线的最高价。' : 'Tap the high of this swing first. It snaps to that candle’s high.'))
+        ? (state.dir === 'up' ? (zh ? '按住这段低点，拖到高点后松开。也可以先点低点，再点高点。' : 'Press this swing’s low and drag to the high. You can also tap the low, then the high.') : (zh ? '按住这段高点，拖到低点后松开。' : 'Press this swing’s high and drag to the low.'))
         : (state.b == null
           ? (state.dir === 'up' ? (zh ? '再点这一段的高点。' : 'Now tap the high of this swing.') : (zh ? '再点这一段的低点。' : 'Now tap the low of this swing.'))
-          : (zh ? '线已经按你的两个锚点重算。播放后面的 K 线，看价格是否穿过 0.618。' : 'The lines were recalculated from your two anchors. Play the later candles and see whether price crosses 0.618.'));
+          : (zh ? '线已经画好。0.5 到 0.618 是回调时大家常看的一带，不是必弹的价。' : 'The lines are drawn. 0.5 to 0.618 is the band people often watch in a pullback. It is not a price that must bounce.'));
       root.innerHTML =
         '<div class="a1"><p class="a1-flag">' + (zh ? '模拟行情·非实时' : 'Simulated tape · not live') + '</p>' +
-        '<p>' + (zh ? '在同一张 K 线上画回撤。先点低点，再点高点。0 在高点，1 在低点。' : 'Draw the retracement on this same chart. Tap the low, then the high. 0 is at the high and 1 is at the low.') + '</p>' +
+        '<p>' + (zh
+          ? '找到这段最明显的低点和高点。<br>按住起点拖到终点，松开后画出 0、0.382、0.5、0.618 和 1。<br>上涨从低点拖到高点，下跌从高点拖到低点。<br>0.5 到 0.618 是回调时大家常看的一带，不是必弹的价。'
+          : 'Find the most obvious low and high of this swing.<br>Press the start and drag to the end. On release, 0, 0.382, 0.5, 0.618, and 1 are drawn.<br>In a rise, drag from the low to the high. In a drop, drag from the high to the low.<br>0.5 to 0.618 is the band people often watch in a pullback. It is not a price that must bounce.') + '</p>' +
         '<div class="fib-scroll">' + bits.join('') + '</div>' +
         '<p>' + hint + '</p>' +
         '<div class="a1-modes"><button type="button" data-move="play">' + (state.playing ? (zh ? '暂停' : 'Pause') : (zh ? '播放' : 'Play')) + '</button>' +
         '<button type="button" data-act="clear">' + (zh ? '重画' : 'Redraw') + '</button>' +
+        '<button type="button" data-act="demo">' + (zh ? '看示范' : 'See the example') + '</button>' +
         '<button type="button" data-act="reset">' + (zh ? '重新开始' : 'Start again') + '</button>' +
         '<button type="button" data-more="fib">' + (zh ? '再看一个反例' : 'See a counterexample') + '</button>' +
-        '<button type="button" data-act="sample">' + (zh ? '核对 100→140' : 'Check 100 to 140') + '</button>' +
         '<span>' + state.shown + ' / ' + data.bars.length + '</span></div>' +
         '<p class="a2-readout ' + state.tone + '">' + (state.note || hint) + '</p>' +
         '<p class="ema-note">' + (zh
-          ? '上涨回撤：价格=H−(H−L)×比例，0 在高点。下跌回撤：价格=L+(H−L)×比例，0 在低点。0.5 是常用中点，不是严格的斐波那契数列比率。'
-          : 'Up retracement: price=H−(H−L)×ratio, and 0 is at the high. Down retracement: price=L+(H−L)×ratio, and 0 is at the low. 0.5 is a common midpoint, not a strict Fibonacci-sequence ratio.') + '</p></div>';
+          ? '这些线只是把这一段高低点分成参考区。价格可以停、可以穿、也可以不来。止损要自己放。'
+          : 'These lines only split this swing into reference zones. Price can pause, pass through, or never arrive. You place the stop yourself.') + '</p></div>';
     }
     function setShown(next) {
       state.shown = Math.max(8, Math.min(data.bars.length, next));
@@ -2845,17 +2999,19 @@
           state.dir = 'up'; state.mode = 'retrace'; state.a = null; state.b = null; state.past = []; state.future = [];
           state.shown = 56;
           state.note = ''; state.tone = '';
-        } else if (act === 'sample') {
-          var sample = levels(100, 140, 'up', 'retrace');
-          var row = sample.filter(function (line) { return line.r === 0.618; })[0];
-          state.note = zh
-            ? '教学模拟。140−(140−100)×0.618=' + row.price + '。124.72 是 0.382，140 是高点。'
-            : 'Teaching simulation. 140−(140−100)×0.618=' + row.price + '. 124.72 is 0.382, and 140 is the high.';
-          state.tone = 'is-right';
+        } else if (act === 'demo') {
+          state.dir = 'up';
+          state.mode = 'retrace';
+          state.shown = data.bars.length;
+          state.a = { index: data.lowAt, price: data.bars[data.lowAt].l };
+          state.b = { index: data.highAt, price: data.bars[data.highAt].h };
+          state.note = zh ? '示范：从这段低点拖到高点。线只是参考，价格不必在这里弹回去。' : 'Example: drag from this low to this high. The lines are only a reference. Price does not have to bounce here.';
+          state.tone = '';
         }
         paint();
         return;
       }
+      if (state.skipClick) { state.skipClick = false; return; }
       var index = Number(el.getAttribute('data-bar'));
       var bar = data.bars[index];
       state.cursor = index;
@@ -2881,6 +3037,46 @@
       paint();
     };
     root.addEventListener('click', root._fibClick);
+    if (root._fibPtr) {
+      root.removeEventListener('pointerdown', root._fibPtr);
+      root.removeEventListener('pointermove', root._fibPtr);
+      root.removeEventListener('pointerup', root._fibPtr);
+    }
+    root._fibPtr = function (ev) {
+      if (ev.type === 'pointerdown') {
+        var hit = ev.target.closest ? ev.target.closest('[data-bar]') : null;
+        if (!hit || !root.contains(hit)) return;
+        state.dragFrom = Number(hit.getAttribute('data-bar'));
+        state.dragMoved = false;
+        try { hit.setPointerCapture(ev.pointerId); } catch (err) {}
+        return;
+      }
+      if (ev.type === 'pointermove' && state.dragFrom != null) {
+        state.dragMoved = true;
+        return;
+      }
+      if (ev.type !== 'pointerup' || state.dragFrom == null) return;
+      var from = state.dragFrom;
+      state.dragFrom = null;
+      var svg = root.querySelector('svg');
+      var to = from;
+      if (svg) {
+        var rect = svg.getBoundingClientRect();
+        var x = ((ev.clientX - rect.left) / Math.max(rect.width, 1)) * 980;
+        var slot = (980 - 12 - 108) / Math.max(state.shown, 1);
+        to = Math.max(0, Math.min(state.shown - 1, Math.floor((x - 12) / slot)));
+      }
+      if (to === from) return;
+      state.skipClick = true;
+      state.a = { index: from, price: data.bars[from][state.dir === 'up' ? 'l' : 'h'] };
+      state.b = { index: to, price: data.bars[to][state.dir === 'up' ? 'h' : 'l'] };
+      state.note = zh ? '线按你拖的这一段画好了。0.5 到 0.618 只是参考区。' : 'The lines follow the swing you dragged. 0.5 to 0.618 is only a reference zone.';
+      state.tone = '';
+      paint();
+    };
+    root.addEventListener('pointerdown', root._fibPtr);
+    root.addEventListener('pointermove', root._fibPtr);
+    root.addEventListener('pointerup', root._fibPtr);
     if (root._fibKey) root.removeEventListener('keydown', root._fibKey);
     root.tabIndex = 0;
     root._fibKey = function (ev) {
@@ -2902,4 +3098,281 @@
     study._fibWrapped = true;
   }
   global.STAR_CH02_FIB = { levels: levels, tape: tape, mount: mount };
+})(typeof window !== 'undefined' ? window : global);
+
+/* SMC lesson chart. Rules and drawing live here, not in the lab. */
+(function (global) {
+  function mix(n) {
+    var x = Math.imul(n ^ 0x9e3779b9, 0x85ebca6b);
+    x = Math.imul(x ^ (x >>> 13), 0xc2b2ae35);
+    return ((x ^ (x >>> 16)) >>> 0) / 4294967296;
+  }
+  function candle(open, close, i) {
+    var body = Math.abs(close - open);
+    var high = Math.max(open, close) + body * (0.35 + mix(i + 2) * 0.8) + Math.abs(close) * 0.0011;
+    var low = Math.min(open, close) - body * (0.35 + mix(i + 8) * 0.8) - Math.abs(close) * 0.001;
+    return { t: i, o: Math.round(open * 100) / 100, h: Math.round(high * 100) / 100, l: Math.round(low * 100) / 100, c: Math.round(close * 100) / 100, v: 40 };
+  }
+  function tape() {
+    var bars = [];
+    var price = 42000;
+    function add(close) {
+      var bar = candle(price, close, bars.length);
+      bars.push(bar);
+      price = bar.c;
+    }
+    function walk(n, drift) {
+      var k;
+      for (k = 0; k < n; k++) add(price * (1 + drift + (mix(bars.length * 7 + 3) - 0.5) * 0.01));
+    }
+    walk(16, 0.0035);
+    walk(6, -0.004);
+    walk(4, 0.002);
+    add(price * 0.996);
+    var gapAt = bars.length;
+    add(price * 1.004);
+    add(price * 1.01);
+    add(price * 1.016);
+    var roof = bars[gapAt].h;
+    bars[gapAt + 2].l = Math.round((roof + Math.abs(roof) * 0.004) * 100) / 100;
+    bars[gapAt + 2].o = Math.round((bars[gapAt + 2].l + Math.abs(roof) * 0.002) * 100) / 100;
+    bars[gapAt + 2].c = Math.round((bars[gapAt + 2].o + Math.abs(roof) * 0.004) * 100) / 100;
+    bars[gapAt + 2].h = Math.round((bars[gapAt + 2].c + Math.abs(roof) * 0.002) * 100) / 100;
+    price = bars[gapAt + 2].c;
+    walk(8, 0.0028);
+    var prior = 0;
+    bars.forEach(function (bar) { if (bar.h > prior) prior = bar.h; });
+    add(price * 0.999);
+    var sw = bars.length - 1;
+    bars[sw].h = Math.round(prior * 1.004 * 100) / 100;
+    bars[sw].c = Math.round(prior * 0.994 * 100) / 100;
+    bars[sw].o = Math.round(prior * 0.997 * 100) / 100;
+    bars[sw].l = Math.round(Math.min(bars[sw].o, bars[sw].c) * 0.998 * 100) / 100;
+    price = bars[sw].c;
+    walk(12, -0.006);
+    walk(8, 0.0012);
+    bars.forEach(function (bar) {
+      bar.h = Math.max(bar.h, bar.o, bar.c);
+      bar.l = Math.min(bar.l, bar.o, bar.c);
+    });
+    return bars;
+  }
+  function swings(bars) {
+    var highs = [];
+    var lows = [];
+    var i;
+    var k;
+    for (i = 2; i < bars.length - 2; i++) {
+      var hi = true;
+      var lo = true;
+      for (k = 1; k <= 2; k++) {
+        if (bars[i].h <= bars[i - k].h || bars[i].h <= bars[i + k].h) hi = false;
+        if (bars[i].l >= bars[i - k].l || bars[i].l >= bars[i + k].l) lo = false;
+      }
+      if (hi) highs.push(i);
+      if (lo) lows.push(i);
+    }
+    return { highs: highs, lows: lows };
+  }
+  function read(bars) {
+    var sw = swings(bars);
+    var bos = [];
+    var choch = [];
+    var sweeps = [];
+    var trend = 0;
+    var i;
+    function latest(list, before) {
+      var found = null;
+      list.forEach(function (index) { if (index < before) found = index; });
+      return found;
+    }
+    for (i = 0; i < bars.length; i++) {
+      var high = latest(sw.highs, i);
+      var low = latest(sw.lows, i);
+      var close = bars[i].c;
+      if (trend >= 0 && high != null && close > bars[high].h) {
+        bos.push({ i: i, price: bars[high].h, from: high, dir: 'up' });
+        trend = 1;
+      } else if (trend <= 0 && low != null && close < bars[low].l) {
+        bos.push({ i: i, price: bars[low].l, from: low, dir: 'down' });
+        trend = -1;
+      } else if (trend === 1 && low != null && close < bars[low].l) {
+        choch.push({ i: i, price: bars[low].l, from: low, dir: 'down' });
+        trend = 0;
+      } else if (trend === -1 && high != null && close > bars[high].h) {
+        choch.push({ i: i, price: bars[high].h, from: high, dir: 'up' });
+        trend = 0;
+      }
+      if (high != null && bars[i].h > bars[high].h && close <= bars[high].h) sweeps.push({ i: i, price: bars[high].h, dir: 'up' });
+      if (low != null && bars[i].l < bars[low].l && close >= bars[low].l) sweeps.push({ i: i, price: bars[low].l, dir: 'down' });
+    }
+    var fvgs = [];
+    for (i = 2; i < bars.length; i++) {
+      if (bars[i].l > bars[i - 2].h) fvgs.push({ i: i, low: bars[i - 2].h, high: bars[i].l, dir: 'up' });
+      if (bars[i].h < bars[i - 2].l) fvgs.push({ i: i, low: bars[i].h, high: bars[i - 2].l, dir: 'down' });
+    }
+    var obs = bos.map(function (item) {
+      var j;
+      for (j = item.i - 1; j >= 0; j--) {
+        var bull = bars[j].c >= bars[j].o;
+        if (item.dir === 'up' && !bull) return { i: j, bos: item.i, low: Math.min(bars[j].o, bars[j].c), high: Math.max(bars[j].o, bars[j].c) };
+        if (item.dir === 'down' && bull) return { i: j, bos: item.i, low: Math.min(bars[j].o, bars[j].c), high: Math.max(bars[j].o, bars[j].c) };
+      }
+      return null;
+    }).filter(Boolean);
+    return { bos: bos, choch: choch, sweeps: sweeps, fvgs: fvgs, obs: obs };
+  }
+  function fvgExample() {
+    return { low: 103, high: 106 };
+  }
+  function mount(root, lesson, lang) {
+    var zh = lang !== 'en';
+    var bars = tape();
+    var state = { shown: bars.length, playing: false, structure: true, sweep: true, fvg: true, ob: true, note: '', tone: '' };
+    if (root._smcTimer) clearInterval(root._smcTimer);
+    function stop() { state.playing = false; if (root._smcTimer) clearInterval(root._smcTimer); root._smcTimer = null; }
+    function view() {
+      var info = read(bars.slice(0, state.shown));
+      return {
+        bos: info.bos.filter(function (item) { return item.dir === 'up'; }).slice(0, 1),
+        choch: info.choch.filter(function (item) { return item.dir === 'down'; }).slice(0, 1),
+        sweeps: info.sweeps.filter(function (item) { return item.dir === 'up'; }).slice(0, 1),
+        fvgs: info.fvgs.filter(function (item) { return item.dir === 'up'; }).sort(function (a, b) { return (b.high - b.low) - (a.high - a.low); }).slice(0, 1),
+        obs: info.obs.slice(0, 1),
+        all: info
+      };
+    }
+    function paint() {
+      var draw = bars.slice(0, state.shown);
+      var info = view();
+      var w = 980;
+      var h = 460;
+      var padL = 12;
+      var padR = 16;
+      var top = 28;
+      var plotH = 390;
+      var vals = [];
+      draw.forEach(function (bar) { vals.push(bar.h, bar.l); });
+      info.fvgs.forEach(function (zone) { vals.push(zone.low, zone.high); });
+      var min = Math.min.apply(null, vals);
+      var max = Math.max.apply(null, vals);
+      var span = max - min || 1;
+      min -= span * 0.06;
+      max += span * 0.08;
+      function y(p) { return top + (max - p) / (max - min) * plotH; }
+      var slot = (w - padL - padR) / Math.max(draw.length, 1);
+      function xAt(i) { return padL + i * slot + slot / 2; }
+      var bits = ['<svg viewBox="0 0 ' + w + ' ' + h + '" role="img">'];
+      bits.push('<rect width="' + w + '" height="' + h + '" fill="#120e21"></rect>');
+      if (state.fvg) info.fvgs.forEach(function (zone) {
+        var y1 = y(zone.high);
+        var y2 = y(zone.low);
+        var x1 = xAt(zone.i);
+        bits.push('<rect x="' + x1 + '" y="' + Math.min(y1, y2) + '" width="' + Math.max(36, (w - padR) - x1) + '" height="' + Math.max(2, Math.abs(y2 - y1)) + '" fill="#3aab88" fill-opacity="0.22" stroke="#3aab88" stroke-opacity="0.6"></rect>');
+        bits.push('<text x="' + (x1 + 8) + '" y="' + (Math.min(y1, y2) + 14) + '" fill="#8bd5ba" font-size="12" font-weight="700">FVG</text>');
+      });
+      if (state.ob) info.obs.forEach(function (zone) {
+        var x = padL + zone.i * slot;
+        bits.push('<rect x="' + x + '" y="' + y(zone.high) + '" width="' + Math.max(slot * 1.2, 8) + '" height="' + Math.max(3, Math.abs(y(zone.low) - y(zone.high))) + '" fill="#f4cb82" fill-opacity="0.28" stroke="#f4cb82"></rect>');
+        bits.push('<text x="' + x + '" y="' + (y(zone.high) - 6) + '" fill="#f4cb82" font-size="11" font-weight="700">OB</text>');
+      });
+      draw.forEach(function (bar, i) {
+        var up = bar.c >= bar.o;
+        var color = up ? '#1f8a4d' : '#d4534e';
+        var xc = xAt(i);
+        var bw = Math.max(1.8, slot * 0.62);
+        bits.push('<line x1="' + xc + '" y1="' + y(bar.h) + '" x2="' + xc + '" y2="' + y(bar.l) + '" stroke="' + color + '"></line>');
+        bits.push('<rect x="' + (xc - bw / 2) + '" y="' + Math.min(y(bar.o), y(bar.c)) + '" width="' + bw + '" height="' + Math.max(1.2, Math.abs(y(bar.c) - y(bar.o))) + '" fill="' + color + '"></rect>');
+        if (i % 12 === 0) bits.push('<text x="' + xc + '" y="448" fill="#b7aac8" font-size="12">' + (zh ? '第' + (i + 1) + '根' : '#' + (i + 1)) + '</text>');
+        bits.push('<rect data-bar="' + i + '" x="' + (padL + i * slot) + '" y="' + top + '" width="' + slot + '" height="' + plotH + '" fill="transparent"></rect>');
+      });
+      if (state.structure) {
+        info.bos.forEach(function (item) {
+          var yy = y(item.price);
+          bits.push('<line x1="' + xAt(item.from) + '" y1="' + yy + '" x2="' + xAt(item.i) + '" y2="' + yy + '" stroke="#748ca8" stroke-width="1.6"></line>');
+          bits.push('<text x="' + xAt(item.i) + '" y="' + (yy - 8) + '" text-anchor="middle" fill="#748ca8" font-size="12" font-weight="700">BOS</text>');
+        });
+        info.choch.forEach(function (item) {
+          var yy = y(item.price);
+          bits.push('<line x1="' + xAt(item.from) + '" y1="' + yy + '" x2="' + xAt(item.i) + '" y2="' + yy + '" stroke="#b28b58" stroke-width="1.6" stroke-dasharray="5 3"></line>');
+          bits.push('<text x="' + xAt(item.i) + '" y="' + (yy + 16) + '" text-anchor="middle" fill="#b28b58" font-size="12" font-weight="700">CHoCH</text>');
+        });
+      }
+      if (state.sweep) info.sweeps.forEach(function (item) {
+        bits.push('<text x="' + xAt(item.i) + '" y="' + (y(draw[item.i].h) - 10) + '" text-anchor="middle" fill="#e6a1a9" font-size="12" font-weight="700">' + (zh ? '扫荡' : 'Sweep') + '</text>');
+      });
+      bits.push('</svg>');
+      var note = state.note || (zh ? '小练习：点出收盘越过前高的那根。影线过了但收盘没过，不算。' : 'Short practice: tap the candle whose close passes the prior high. A wick through it does not count if the close stays back.');
+      root.innerHTML =
+        '<div class="a1"><p class="a1-flag">' + (zh ? '模拟行情·非实时' : 'Simulated tape · not live') + '</p>' +
+        '<p>' + (zh
+          ? 'BOS 是收盘顺着原方向越过前高或前低。<br>CHoCH 是收盘反过来破了刚才护着的那个点。<br>扫荡是影线扎出去、收盘又回来。<br>FVG 是三根 K 线中间空出的一段。<br>OB 是突破前最后一根反方向 K 线，只是候选区。'
+          : 'BOS is a close that passes the prior high or low in the same direction.<br>CHoCH is a close that breaks the level that was holding, the other way.<br>A sweep is a wick that pokes out and a close that comes back.<br>FVG is the open stretch between three candles.<br>OB is the last opposite candle before the break. It is only a candidate zone.') + '</p>' +
+        '<p class="a1-checks"><label><input type="checkbox" data-layer="structure"' + (state.structure ? ' checked' : '') + '> ' + (zh ? '结构' : 'Structure') + '</label> <label><input type="checkbox" data-layer="sweep"' + (state.sweep ? ' checked' : '') + '> ' + (zh ? '扫荡' : 'Sweep') + '</label> <label><input type="checkbox" data-layer="fvg"' + (state.fvg ? ' checked' : '') + '> FVG</label> <label><input type="checkbox" data-layer="ob"' + (state.ob ? ' checked' : '') + '> OB</label></p>' +
+        '<div class="smc-scroll">' + bits.join('') + '</div>' +
+        '<p class="star-key"><span style="color:#748ca8">BOS</span><span style="color:#b28b58">CHoCH</span><span style="color:#e6a1a9">' + (zh ? '扫荡' : 'Sweep') + '</span><span style="color:#8bd5ba">FVG</span><span style="color:#f4cb82">OB</span></p>' +
+        '<p>' + (zh ? '小练习：点出收盘越过前高的那根。这些标签不证明是谁在买。' : 'Short practice: tap the candle whose close passes the prior high. These labels do not prove who is buying.') + '</p>' +
+        '<div class="a1-modes"><button type="button" data-move="play">' + (state.playing ? (zh ? '暂停' : 'Pause') : (zh ? '播放' : 'Play')) + '</button><button type="button" data-move="reset">' + (zh ? '重新开始' : 'Start again') + '</button><span>' + state.shown + ' / ' + bars.length + '</span></div>' +
+        '<p class="a2-readout ' + state.tone + '">' + note + '</p></div>';
+    }
+    function explain(index) {
+      var info = view();
+      if (info.bos.some(function (item) { return item.i === index; })) return { tone: 'is-right', text: zh ? '这根收盘越过了前高，所以是结构延续。它不保证后面继续涨。' : 'This close passed the prior high, so structure continued. It does not guarantee the later rise.' };
+      if (info.choch.some(function (item) { return item.i === index; })) return { tone: 'is-right', text: zh ? '这根收盘反过来破了护着的低点，所以结构可能在变。这不是已经转完。' : 'This close broke the low that was holding, the other way, so the structure may be changing. The turn is not finished.' };
+      if (info.sweeps.some(function (item) { return item.i === index; })) return { tone: 'is-wrong', text: zh ? '这根只是影线扎出去、收盘又回来。那是扫荡，不是收盘突破。' : 'This one only poked out with the wick and closed back inside. That is a sweep, not a close through the level.' };
+      return { tone: 'is-wrong', text: zh ? '还不是。请点收盘越过前高、标着 BOS 的那根。' : 'Not yet. Tap the candle labeled BOS, whose close passes the prior high.' };
+    }
+    if (root._smcClick) root.removeEventListener('click', root._smcClick);
+    root._smcClick = function (ev) {
+      var el = ev.target.closest ? ev.target.closest('[data-move],[data-bar]') : null;
+      if (!el || !root.contains(el)) return;
+      if (el.hasAttribute('data-move')) {
+        var move = el.getAttribute('data-move');
+        if (move === 'play') {
+          if (state.playing) { stop(); paint(); return; }
+          if (state.shown >= bars.length) state.shown = 24;
+          state.playing = true;
+          root._smcTimer = setInterval(function () {
+            if (!root.isConnected || state.shown >= bars.length) { stop(); paint(); return; }
+            state.shown += 1;
+            paint();
+          }, 280);
+          paint();
+          return;
+        }
+        stop();
+        state.shown = 24;
+        state.note = '';
+        state.tone = '';
+        paint();
+        return;
+      }
+      var graded = explain(Number(el.getAttribute('data-bar')));
+      state.note = graded.text;
+      state.tone = graded.tone;
+      paint();
+    };
+    root.addEventListener('click', root._smcClick);
+    if (root._smcChange) root.removeEventListener('change', root._smcChange);
+    root._smcChange = function (ev) {
+      var box = ev.target;
+      if (!box || !box.getAttribute || !root.contains(box)) return;
+      var layer = box.getAttribute('data-layer');
+      if (!layer) return;
+      state[layer] = box.checked;
+      paint();
+    };
+    root.addEventListener('change', root._smcChange);
+    paint();
+  }
+  var study = global.STAR_STUDY;
+  if (study && !study._smcWrapped) {
+    var inner = study.mount;
+    study.mount = function (root, lesson, lang) {
+      if (lesson && lesson.study && lesson.study.lessonChart === 'smc-full') return mount(root, lesson, lang);
+      return inner.apply(this, arguments);
+    };
+    study._smcWrapped = true;
+  }
+  global.STAR_CH02_SMC = { read: read, tape: tape, fvgExample: fvgExample, mount: mount };
 })(typeof window !== 'undefined' ? window : global);
