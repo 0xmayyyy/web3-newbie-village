@@ -36,6 +36,16 @@ test('each MACD scene has 90 bars and the required signal', function () {
   var aboveGold = scenes.above.gold.filter(function (i) { return scenes.above.macd.dif[i] > 0; });
   assert.ok(aboveGold.length >= 1);
   assert.ok(scenes.above.death.length >= 1);
+  assert.ok(scenes.above.gold.length + scenes.above.death.length >= 6);
+  assert.equal(scenes.above.bars.length >= 120 && scenes.above.bars.length <= 150, true);
+  var diffs = [];
+  var ci;
+  for (ci = 1; ci < scenes.above.bars.length; ci++) diffs.push(scenes.above.bars[ci].c - scenes.above.bars[ci - 1].c);
+  var mean = diffs.reduce(function (a, b) { return a + b; }, 0) / diffs.length;
+  var variance = diffs.reduce(function (a, b) { return a + (b - mean) * (b - mean); }, 0) / diffs.length;
+  assert.ok(variance > 1000);
+  var ups = scenes.above.bars.filter(function (bar) { return bar.c >= bar.o; }).length;
+  assert.ok(ups > 20 && ups < scenes.above.bars.length - 20);
   var below = scenes.fail.gold.filter(function (i) { return scenes.fail.macd.dif[i] <= 0; });
   assert.ok(below.length >= 1);
   assert.ok(scenes.fail.bars.slice(below[0] + 1).some(function (bar) { return bar.l < scenes.fail.bars[below[0]].l; }));

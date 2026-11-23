@@ -976,9 +976,52 @@
     }
     return out;
   }
-  function decorate(bars) {
+  function mix(n) {
+    var x = Math.imul(n ^ 0x9e3779b9, 0x85ebca6b);
+    x = Math.imul(x ^ (x >>> 13), 0xc2b2ae35);
+    return ((x ^ (x >>> 16)) >>> 0) / 4294967296;
+  }
+  function unit(i, salt) {
+    return mix(i * 997 + salt * 131 + 17);
+  }
+  function tape(start, count, salt, segs) {
+    var bars = [];
+    var price = start;
+    var vol = 0.007;
+    var i;
+    for (i = 0; i < count; i++) {
+      var at = 0;
+      var drift = segs[segs.length - 1][1];
+      var s;
+      for (s = 0; s < segs.length; s++) {
+        at += segs[s][0];
+        if (i < at) { drift = segs[s][1]; break; }
+      }
+      var u = unit(i, salt);
+      if (u > 0.94) vol = Math.min(0.022, vol * 1.7);
+      else if (u < 0.06) vol = Math.max(0.003, vol * 0.5);
+      else vol = vol * 0.88 + 0.007 * 0.12;
+      var ret = drift + (unit(i, salt + 17) - 0.5) * 2 * vol;
+      var open = price;
+      var close = open * (1 + ret);
+      var body = Math.abs(close - open);
+      var high = Math.max(open, close) + body * (0.45 + unit(i, salt + 3) * 1.8) + open * 0.0012 * unit(i, salt + 4);
+      var low = Math.min(open, close) - body * (0.45 + unit(i, salt + 5) * 1.8) - open * 0.0012 * unit(i, salt + 6);
+      bars.push({
+        t: i,
+        o: Math.round(open * 100) / 100,
+        h: Math.round(high * 100) / 100,
+        l: Math.round(low * 100) / 100,
+        c: Math.round(close * 100) / 100,
+        v: Math.round(40 + unit(i, salt + 9) * 220 * (0.45 + Math.abs(ret) / 0.01))
+      });
+      price = close;
+    }
+    return bars;
+  }
+  function decorate(bars, from) {
     var pack = macd(bars.map(function (bar) { return bar.c; }));
-    var from = 60;
+    if (from == null) from = 60;
     var gold = [];
     var death = [];
     var shrink = [];
@@ -1007,8 +1050,8 @@
   }
   function buildScenes() {
     return {
-      above: Object.assign({ id: 'above', zh: '零轴上金叉', en: 'Golden cross above zero' }, decorate(walk(50000, [[70, 45], [16, -30], [40, 40], [20, 15], [12, 10]]))),
-      fail: Object.assign({ id: 'fail', zh: '零轴下金叉', en: 'Golden cross below zero' }, decorate(walk(68000, [[50, 10], [40, -80], [18, 130], [30, -70], [20, -40]]))),
+      above: Object.assign({ id: 'above', zh: '来回交叉', en: 'Many crosses' }, decorate(tape(41000, 150, 15, [[22, 0.0006], [16, 0.0026], [12, -0.0022], [18, 0.002], [14, -0.0018], [18, 0.0024], [12, -0.0026], [18, 0.0012], [20, -0.0008]]), 40)),
+      fail: Object.assign({ id: 'fail', zh: '金叉失败', en: 'Failed golden cross' }, decorate(tape(72000, 150, 8, [[36, -0.0022], [8, 0.0002], [20, 0.0034], [86, -0.0026]]), 40)),
       shrink: Object.assign({ id: 'shrink', zh: '负柱缩短', en: 'Negative bars shrink' }, decorate(walk(80000, [[50, -20], [30, -90], [40, -8], [36, -6]]))),
       div: Object.assign({ id: 'div', zh: '顶背离', en: 'Bearish divergence' }, decorate(walk(40000, [[60, 8], [28, 100], [14, -45], [24, 40], [16, -12], [14, -8]]))),
       fake: Object.assign({ id: 'fake', zh: '假背离', en: 'Fake divergence' }, decorate(walk(42000, [[60, 8], [28, 90], [16, -50], [18, 25], [16, -10], [16, -8]]))),
@@ -1030,10 +1073,10 @@
     var state = {
       scene: 'above',
       step: 'mark',
-      shown: 28,
+      shown: scenes.above.bars.length - scenes.above.visibleFrom,
       cursor: null,
       playing: false,
-      showFast: true,
+      showFast: false,
       showSlow: false,
       showDif: true,
       showDea: true,
@@ -1182,7 +1225,7 @@
       var padL = 10;
       var padR = 72;
       var top = 16;
-      var priceH = 188;
+      var priceH = 236;
       var vals = [];
       draw.forEach(function (bar, i) {
         vals.push(bar.h, bar.l);
@@ -1198,8 +1241,8 @@
       max += span * 0.08;
       function y(p) { return top + (max - p) / (max - min) * priceH; }
       var slot = (w - padL - padR) / Math.max(draw.length, 1);
-      var macTop = 292;
-      var macH = 140;
+      var macTop = 278;
+      var macH = 158;
       var macVals = [1];
       draw.forEach(function (bar, i) {
         var abs = from + i;
@@ -1219,19 +1262,15 @@
         bits.push('<line x1="' + padL + '" y1="' + gy + '" x2="' + (w - padR) + '" y2="' + gy + '" stroke="rgba(230,199,158,.16)"></line>');
         bits.push('<text x="' + (w - 8) + '" y="' + (gy + 4) + '" text-anchor="end" fill="#d4bc9e" font-size="13">' + fmt(price) + '</text>');
       }
-      var volMax = 1;
-      draw.forEach(function (bar) { if (bar.v > volMax) volMax = bar.v; });
       draw.forEach(function (bar, i) {
         var up = bar.c >= bar.o;
         var color = up ? '#1f8a4d' : '#d4534e';
         var x = padL + i * slot;
         var xc = x + slot / 2;
-        var bw = Math.max(2.2, slot * 0.55);
-        bits.push('<line x1="' + xc + '" y1="' + y(bar.h) + '" x2="' + xc + '" y2="' + y(bar.l) + '" stroke="' + color + '" stroke-width="1.2"></line>');
-        bits.push('<rect x="' + (xc - bw / 2) + '" y="' + Math.min(y(bar.o), y(bar.c)) + '" width="' + bw + '" height="' + Math.max(1.3, Math.abs(y(bar.c) - y(bar.o))) + '" fill="' + color + '"></rect>');
-        var vh = Math.max(1, bar.v / volMax * 28);
-        bits.push('<rect x="' + (xc - bw / 2) + '" y="' + (268 - vh) + '" width="' + bw + '" height="' + vh + '" fill="' + color + '" opacity="0.8"></rect>');
-        if (i % 16 === 0) bits.push('<text x="' + xc + '" y="462" fill="#b7aac8" font-size="12">' + (zh ? '第' + (i + 1) + '根' : '#' + (i + 1)) + '</text>');
+        var bw = Math.max(1.6, slot * 0.62);
+        bits.push('<line x1="' + xc + '" y1="' + y(bar.h) + '" x2="' + xc + '" y2="' + y(bar.l) + '" stroke="' + color + '" stroke-width="1.1"></line>');
+        bits.push('<rect x="' + (xc - bw / 2) + '" y="' + Math.min(y(bar.o), y(bar.c)) + '" width="' + bw + '" height="' + Math.max(1.2, Math.abs(y(bar.c) - y(bar.o))) + '" fill="' + color + '"></rect>');
+        if (i % 20 === 0) bits.push('<text x="' + xc + '" y="462" fill="#b7aac8" font-size="12">' + (zh ? '第' + (i + 1) + '根' : '#' + (i + 1)) + '</text>');
       });
       function priceLine(series, color, dash) {
         var pts = [];
@@ -1249,10 +1288,13 @@
         var abs = from + i;
         var hist = pack.macd.hist[abs];
         if (!state.showHist || hist == null) return;
+        var prev = abs > 0 ? pack.macd.hist[abs - 1] : null;
+        var growing = prev == null || (hist >= 0 ? hist >= prev : hist <= prev);
+        var color = hist >= 0 ? (growing ? '#1f8a4d' : '#145c34') : (growing ? '#d4534e' : '#6e2c32');
         var xc = padL + i * slot + slot / 2;
         var y1 = my(0);
         var y2 = my(hist);
-        bits.push('<rect x="' + (xc - Math.max(1.6, slot * 0.36)) + '" y="' + Math.min(y1, y2) + '" width="' + Math.max(2.4, slot * 0.62) + '" height="' + Math.max(1, Math.abs(y2 - y1)) + '" fill="' + (hist >= 0 ? '#1f8a4d' : '#d4534e') + '"></rect>');
+        bits.push('<rect x="' + (xc - Math.max(1.4, slot * 0.32)) + '" y="' + Math.min(y1, y2) + '" width="' + Math.max(2, slot * 0.58) + '" height="' + Math.max(1, Math.abs(y2 - y1)) + '" fill="' + color + '"></rect>');
       });
       function macdLine(series, color, dash) {
         var pts = [];
@@ -1264,16 +1306,21 @@
       }
       if (state.showDif) macdLine(pack.macd.dif, '#f4cb82', false);
       if (state.showDea) macdLine(pack.macd.dea, '#8eb4ff', true);
-      var showLabels = !state.hideAnswer && (state.step === 'watch' || state.showCross);
-      if (showLabels) {
-        draw.forEach(function (bar, i) {
-          var abs = from + i;
-          var kind = kindAt(pack, abs);
-          if (!kind) return;
-          var xc = padL + i * slot + slot / 2;
-          bits.push('<text data-cross="' + kind + '" x="' + xc + '" y="' + (my(0) - 8) + '" text-anchor="middle" fill="' + (kind === 'gold' ? '#f4cb82' : '#ffb4c0') + '" font-size="13">' + (kind === 'gold' ? (zh ? '金叉' : 'Gold') : (zh ? '死叉' : 'Death')) + '</text>');
-        });
-      }
+      draw.forEach(function (bar, i) {
+        var abs = from + i;
+        var kind = kindAt(pack, abs);
+        if (!kind) return;
+        var xc = padL + i * slot + slot / 2;
+        var dif = pack.macd.dif[abs];
+        var dea = pack.macd.dea[abs];
+        var at = my((dif + dea) / 2);
+        var bump = (i % 2) * 10;
+        if (kind === 'gold') {
+          bits.push('<text data-cross="gold" x="' + xc + '" y="' + Math.min(macTop + macH - 2, at + 14 + bump) + '" text-anchor="middle" fill="#1f8a4d" font-size="11">' + (zh ? '金叉' : 'Gold') + '</text>');
+        } else {
+          bits.push('<text data-cross="death" x="' + xc + '" y="' + Math.max(macTop + 11, at - 6 - bump) + '" text-anchor="middle" fill="#d4534e" font-size="11">' + (zh ? '死叉' : 'Death') + '</text>');
+        }
+      });
       function link(points, pane) {
         if (points.length < 2) return;
         var sorted = points.slice().sort(function (a, b) { return a - b; });
@@ -1306,7 +1353,7 @@
       draw.forEach(function (bar, i) {
         var abs = from + i;
         var x = padL + i * slot;
-        bits.push('<rect data-bar="' + abs + '" data-pane="price" x="' + x + '" y="' + top + '" width="' + slot + '" height="250" fill="transparent" style="cursor:pointer"></rect>');
+        bits.push('<rect data-bar="' + abs + '" data-pane="price" x="' + x + '" y="' + top + '" width="' + slot + '" height="' + (macTop - top - 8) + '" fill="transparent" style="cursor:pointer"></rect>');
         bits.push('<rect data-bar="' + abs + '" data-pane="macd" x="' + x + '" y="' + macTop + '" width="' + slot + '" height="' + macH + '" fill="transparent" style="cursor:pointer"></rect>');
       });
       bits.push('</svg>');
@@ -1334,7 +1381,7 @@
         '<div class="macd-scroll">' + bits.join('') + '</div>' +
         '<p class="star-key"><span><i style="background:#f4cb82"></i>DIF</span><span><i style="background:#8eb4ff"></i>DEA</span><span><i style="background:#1f8a4d"></i>' + (zh ? '正柱' : 'Positive bar') + '</span><span><i style="background:#d4534e"></i>' + (zh ? '负柱' : 'Negative bar') + '</span><span>0 ' + (zh ? '零轴' : 'zero') + '</span></p>' +
         '<p>' + (state.scene === 'fail'
-          ? (zh ? '反例：零轴下方的金叉仍可能后面创新低。' : 'Counterexample: a golden cross below zero can still be followed by a new low.')
+          ? (zh ? '反例：这次金叉是假动作，价格随后再创新低。' : 'Counterexample: this golden cross is a whipsaw, and price then makes a new low.')
           : (zh ? '小练习：点出一根金叉。金叉不是买入按钮。' : 'Short practice: tap a golden cross. A golden cross is not a buy button.')) + '</p>' +
         '<div class="a1-modes"><button type="button" data-move="play" aria-pressed="' + state.playing + '">' + (state.playing ? (zh ? '暂停' : 'Pause') : (zh ? '播放' : 'Play')) + '</button>' +
         '<button type="button" data-move="reset">' + (zh ? '重新开始' : 'Start again') + '</button>' +
@@ -1388,7 +1435,7 @@
         state.macdPts = [];
         state.note = '';
         state.tone = '';
-        state.shown = 28;
+        state.shown = maxShown();
         paint();
         return;
       }
@@ -1411,6 +1458,7 @@
         var move = el.getAttribute('data-move');
         if (move === 'play') {
           if (state.playing) { stop(); paint(); return; }
+          if (state.shown >= maxShown()) state.shown = 40;
           state.playing = true;
           root._macdTimer = setInterval(function () {
             if (!root.isConnected) { stop(); return; }
@@ -1429,7 +1477,7 @@
           state.note = '';
           state.tone = '';
           state.examStage = 'cross';
-          state.shown = state.step === 'exam' ? 36 : 28;
+          state.shown = state.step === 'exam' ? 36 : 40;
           paint();
           return;
         }
