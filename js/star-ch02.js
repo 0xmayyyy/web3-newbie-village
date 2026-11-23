@@ -1800,7 +1800,8 @@
         [70, 50, 30].forEach(function (level) {
           bits.push('<line x1="' + padL + '" y1="' + ry(level) + '" x2="' + (w - padR) + '" y2="' + ry(level) + '" stroke="rgba(190,176,230,.75)" stroke-dasharray="4 4"></line>');
         });
-        [80, 60, 40, 20].forEach(function (level) {
+        bits.push('<line x1="' + padL + '" y1="' + ry(100) + '" x2="' + (w - padR) + '" y2="' + ry(100) + '" stroke="rgba(190,176,230,.32)" stroke-dasharray="3 4"></line>');
+        [100, 70, 50, 30].forEach(function (level) {
           bits.push('<text x="' + (w - 8) + '" y="' + (ry(level) + 4) + '" text-anchor="end" fill="#b7aac8" font-size="12">' + level + '</text>');
         });
         draw.forEach(function (bar, i) {
