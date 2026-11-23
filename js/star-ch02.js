@@ -153,26 +153,26 @@
       }),
       lesson({
         id: '07',
-        title: bi('SMC：自己在图上找结构和缺口', 'SMC: find the structure and the gap on the chart yourself'),
-        scene: bi('收盘越过前高，是不是已经保证后面继续涨？', 'The close passed the prior high. Does that guarantee the rise continues?'),
-        one: bi('SMC 不是指标，是一种看 K 线的方法，要自己在图上找。', 'SMC is not an indicator, it is a way of reading candles, and you have to find the marks on the chart yourself.'),
-        explain: bi('SMC 不是指标。\n它是一种看 K 线的方法。\n高低点要自己在图上找。\n结构延续，是收盘顺着原来的方向越过前一个高低点。\n只是影线刺过去、收盘没过去，不算。\n结构转向，是收盘反过来跌破或升破刚才护着的那个点。\n缺口是快行情在三根 K 线中间留下的空档。\n价格常常会回来填上这段空档。\n回来填上并不保证。', 'SMC is not an indicator.\nIt is a way of reading candles.\nYou have to find the highs and lows on the chart yourself.\nStructure continues when the close passes the previous high or low in the same direction.\nA wick through it does not count if the close stays back.\nStructure turns when the close breaks the level that was holding, the other way.\nA gap is the open space a fast move leaves between three candles.\nPrice often comes back to fill that space.\nA fill is not guaranteed.'),
-        example: bi('教学模拟：第一根高点 103，第三根低点 106。\n106 高于 103，所以三根 K 线中间留下 103 到 106 的空档。\n价格后来可以回来填上。\n也可以不回来。', 'Teaching simulation: the first high is 103 and the third low is 106.\n106 is above 103, so the three candles leave an open space from 103 to 106.\nPrice may come back and fill it later.\nIt may also never come back.'),
+        title: bi('SMC：指标自动标出结构和缺口', 'SMC: the indicator marks structure and gaps for you'),
+        scene: bi('这些 BOS 和 CHoCH，要自己在图上找吗？', 'Do you have to find these BOS and CHoCH marks yourself?'),
+        one: bi('SMC 是现成指标，会自动标出 BOS、CHoCH 和 FVG。', 'SMC is a ready-made indicator, and it marks BOS, CHoCH, and FVG on its own.'),
+        explain: bi('SMC 是一种现成指标，和 TradingView 上的 Smart Money Concepts 是一类。\n打开就能用，不用自己在图上找点。\n图上会自动标出 BOS、CHoCH，以及 FVG 方框。\nBOS 是结构延续。\n原来往上走，收盘又越过前一个高点，就标 BOS。\n原来往下走，收盘又跌破前一个低点，也标 BOS。\n只是影线刺过去、收盘没过去，不算。\nCHoCH 是结构转向。\n原来往上走，收盘反过来跌破刚才护着的低点，就标 CHoCH。\n原来往下走，收盘反过来升破刚才压着的高点，也标 CHoCH。\n它只说明方向可能在变，不保证已经转完。\nFVG 是三根 K 线中间留下的缺口方框。\n中间那根要是一根冲得很猛的大 K 线。\n往上冲时，第一根的高点够不着第三根的低点。\n往下冲时，第一根的低点够不着第三根的高点。\n两边对不上，中间就空出一块，指标把它画成方框。\n资金和动能还在，大方向也顺着的时候，价格常常会先回来补一波流动性，再继续走。\n补上不是每次都有。\n要和其他信号一起看。', 'SMC is a ready-made indicator, in the same family as Smart Money Concepts on TradingView.\nYou turn it on and use it, without hunting for the points yourself.\nThe chart marks BOS, CHoCH, and the FVG boxes on its own.\nBOS means the structure continues.\nIf price was rising and the close passes the previous high, it marks BOS.\nIf price was falling and the close breaks the previous low, it also marks BOS.\nA wick through the level does not count when the close stays back.\nCHoCH means the structure turns.\nIf price was rising and the close breaks the low that was holding, the other way, it marks CHoCH.\nIf price was falling and the close breaks the high that was capping it, the other way, it also marks CHoCH.\nIt only says the direction may be changing, and it does not mean the turn is already finished.\nAn FVG is the gap box left between three candles.\nThe middle candle has to be a big, fast candle.\nOn a push up, the first candle\'s high does not reach the third candle\'s low.\nOn a push down, the first candle\'s low does not reach the third candle\'s high.\nThe two sides do not overlap, a space is left in the middle, and the indicator draws it as a box.\nWhen the funds and the momentum are still there, and the bigger trend agrees, price often comes back to fill some liquidity, then continues.\nThe fill does not happen every time.\nLook at it together with other signals.'),
+        example: bi('', ''),
         pitfalls: [
           bi('把影线刺过当成收盘已经突破', 'Treating a wick through a level as a close that already broke it'),
-          bi('把缺口当成一定会补上', 'Treating a gap as something that must be filled')
+          bi('以为每个 FVG 都会补上', 'Assuming every FVG gets filled')
         ],
-        practice: bi('点出收盘价越过前高的那根。\n影线过了但收盘没过，不算结构延续。', 'Tap the candle whose close passes the prior high.\nA wick through it is not structure continuing if the close stays back.'),
+        practice: bi('到行情实验室打开 SMC，看它自动标出的 BOS、CHoCH 和 FVG。', 'Open SMC in the market lab and look at the BOS, CHoCH, and FVG it marks on its own.'),
         check: {
-          ask: bi('103 到 106 的缺口等于这段没有成交吗？', 'Does a 103 to 106 gap mean nothing traded there?'),
-          options: [opt('A', '等于', 'Yes'), opt('B', '不是', 'No'), opt('C', '只在模拟盘等于', 'Only on a demo account'), opt('D', '只看名字就够了', 'The name alone is enough.')],
+          ask: bi('往上的缺口方框，是怎么出现的？', 'What makes an upward gap box appear?'),
+          options: [opt('A', '一根影线刺过前高', 'A wick pokes through the prior high'), opt('B', '中间一根冲得猛，第一根高点够不着第三根低点', 'The middle candle is a fast push, and the first high does not reach the third low'), opt('C', '这个价位完全没有成交', 'Nothing traded at that price'), opt('D', '不用学，看到就买', 'Skip the lesson and buy as soon as you see it.')],
           answer: 'B',
-          miss: bi('缺口只是三根 K 线的高低没有叠在一起。\n它不是成交量为零。', 'A gap only means the highs and lows of three candles do not overlap.\nIt is not zero volume.')
+          miss: bi('缺口看的是三根 K 线的高低对不上。\n影线刺过，或者没人成交，都不是这个方框的条件。', 'A gap is three candles whose high and low do not meet.\nA wick through a level, or a claim that nobody traded, is not what makes this box.')
         },
         quizzes: [
-          quiz('缺口是不是表示这个区间没有成交？', 'Does a gap mean nothing traded in that zone?', [opt('A', '是', 'Yes'), opt('B', '必然', 'It must'), opt('C', '不是', 'No'), opt('D', '私聊里说可以，就可以做', 'If a private chat says yes, you can do it.')], 'C', {A: ['三根 K 线只比高低有没有重叠，证明不了没人成交。', 'Three candles only compare whether the high and low overlap. They cannot prove nobody traded.'], B: ['没有“必然没有成交”这一条。', 'There is no rule that trades were necessarily absent.'], C: ['103 到 106 只是第一根高点到第三根低点之间空出来的一段。', '103 to 106 is only the open stretch from the first high to the third low.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
-          quiz('缺口一定会补上吗？', 'Must a gap be filled?', [opt('A', '一定', 'It must'), opt('B', '只有上涨时一定', 'Only in a rise'), opt('C', '不用学，看到就买', 'Skip the lesson and buy as soon as you see it.'), opt('D', '不一定', 'Not necessarily')], 'D', {A: ['价格常常回来填，但这不是保证。', 'Price often comes back to fill it. That is not a guarantee.'], B: ['换成上涨，也不变成必须补上。', 'A rise does not turn it into something that must be filled.'], C: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.'], D: ['空档只是快行情留下的一段。回来或不回来都可能。', 'The gap is only a space a fast move left. Coming back or not are both possible.']}),
-          quiz('这些标签保证后面的走势吗？', 'Do these labels guarantee what comes next?', [opt('A', '不保证', 'They do not'), opt('B', '保证', 'They do'), opt('C', '只做多保证', 'Only longs are guaranteed'), opt('D', '只看名字就够了', 'The name alone is enough.')], 'A', {A: ['继续走、转过来，或不回到这个区域，都可能。', 'Continuing, turning, or never coming back to the zone can all happen.'], B: ['标签说的是已经走出来的结构，不管后面。', 'A label describes structure that already happened. It does not cover what comes next.'], C: ['做多这一边同样没有保证。', 'The long side has no guarantee either.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']})
+          quiz('原来往上走，收盘又越过前一个高点。指标标什么？', 'Price was rising, and the close passes the previous high again. What does the indicator mark?', [opt('A', 'CHoCH', 'CHoCH'), opt('B', 'FVG', 'FVG'), opt('C', 'BOS', 'BOS'), opt('D', '不用学，看到就买', 'Skip the lesson and buy as soon as you see it.')], 'C', {A: ['反过来破掉护着的低点，才是 CHoCH。', 'Breaking the low that was holding, the other way, is CHoCH.'], B: ['FVG 是三根 K 线中间的缺口方框，不是这次突破。', 'An FVG is the gap box between three candles, not this break.'], C: ['顺着原来的方向，收盘越过前高，这是结构延续，标 BOS。', 'A close that passes the prior high in the same direction is structure continuing. That mark is BOS.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
+          quiz('原来往上走，收盘反过来跌破刚才护着的低点。这是？', 'Price was rising, and the close breaks the low that was holding, the other way. What is that?', [opt('A', 'CHoCH', 'CHoCH'), opt('B', 'BOS', 'BOS'), opt('C', '一定已经转跌完', 'The drop is already finished'), opt('D', '只看名字就够了', 'The name alone is enough.')], 'A', {A: ['方向反过来破掉原来护着的点，这是结构转向，标 CHoCH。它不保证已经转完。', 'Breaking the level that was holding, the other way, is a change of structure. The mark is CHoCH. It does not mean the turn is finished.'], B: ['BOS 是顺着原来的方向越过前高或前低。', 'BOS passes the prior high or low in the same direction.'], C: ['标出来只说明可能在变，不是已经转完。', 'The mark only says it may be changing. The turn is not finished.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
+          quiz('资金和动能还在，大方向也顺着。价格对 FVG 常常怎样？', 'The funds and the momentum are still there, and the bigger trend agrees. What does price often do with an FVG?', [opt('A', '方框一出来就必须反向', 'The box must reverse as soon as it appears'), opt('B', '每次都会补满，而且一定继续', 'It fills every time, and it must continue'), opt('C', '私聊里说可以，就可以做', 'If a private chat says yes, you can do it.'), opt('D', '常常先回来补一波流动性，再继续，但不是每次都有', 'It often comes back to fill some liquidity, then continues, but not every time')], 'D', {A: ['方框不是反向命令。', 'The box is not an order to reverse.'], B: ['回来补一波很常见，但不是每次都有，也不保证接着怎么走。', 'Coming back to fill some is common, but it is not every time, and it does not guarantee what follows.'], C: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.'], D: ['资金和动能还在、大方向也顺着时，价格常常先回来补一波流动性，再继续。要和其他信号一起看。', 'When the funds and the momentum are still there, and the bigger trend agrees, price often comes back to fill some liquidity, then continues. Look at it with other signals.']})
         ],
         study: {
           kind: 'zone',
@@ -183,7 +183,7 @@
             { o: 108, h: 112, l: 106, c: 111 }
           ],
           zone: { low: 103, high: 106 },
-          caption: bi('色带 103–106：第三根低点高于第一根高点。', 'Band 103–106: the third low is above the first high.'),
+          caption: bi('BOS、CHoCH 和 FVG 是指标自动标在 K 线上的。', 'BOS, CHoCH, and FVG are marked on the candles by the indicator.'),
           start: 3
         }
       })
@@ -3158,46 +3158,39 @@
   }
   function tape() {
     var bars = [];
-    var price = 42000;
-    function add(close) {
-      var bar = candle(price, close, bars.length);
-      bars.push(bar);
-      price = bar.c;
+    function put(o, h, l, c) {
+      bars.push({
+        t: bars.length,
+        o: Math.round(o),
+        h: Math.round(Math.max(h, o, c)),
+        l: Math.round(Math.min(l, o, c)),
+        c: Math.round(c),
+        v: 80
+      });
     }
-    function walk(n, drift) {
-      var k;
-      for (k = 0; k < n; k++) add(price * (1 + drift + (mix(bars.length * 7 + 3) - 0.5) * 0.01));
+    function step(close) {
+      var open = bars.length ? bars[bars.length - 1].c : close - 80;
+      var up = close >= open;
+      put(open, Math.max(open, close) + (up ? 55 : 18), Math.min(open, close) - (up ? 28 : 62), close);
     }
-    walk(16, 0.0035);
-    walk(6, -0.004);
-    walk(4, 0.002);
-    add(price * 0.996);
-    var gapAt = bars.length;
-    add(price * 1.004);
-    add(price * 1.01);
-    add(price * 1.016);
-    var roof = bars[gapAt].h;
-    bars[gapAt + 2].l = Math.round((roof + Math.abs(roof) * 0.004) * 100) / 100;
-    bars[gapAt + 2].o = Math.round((bars[gapAt + 2].l + Math.abs(roof) * 0.002) * 100) / 100;
-    bars[gapAt + 2].c = Math.round((bars[gapAt + 2].o + Math.abs(roof) * 0.004) * 100) / 100;
-    bars[gapAt + 2].h = Math.round((bars[gapAt + 2].c + Math.abs(roof) * 0.002) * 100) / 100;
-    price = bars[gapAt + 2].c;
-    walk(8, 0.0028);
-    var prior = 0;
-    bars.forEach(function (bar) { if (bar.h > prior) prior = bar.h; });
-    add(price * 0.999);
-    var sw = bars.length - 1;
-    bars[sw].h = Math.round(prior * 1.004 * 100) / 100;
-    bars[sw].c = Math.round(prior * 0.994 * 100) / 100;
-    bars[sw].o = Math.round(prior * 0.997 * 100) / 100;
-    bars[sw].l = Math.round(Math.min(bars[sw].o, bars[sw].c) * 0.998 * 100) / 100;
-    price = bars[sw].c;
-    walk(12, -0.006);
-    walk(8, 0.0012);
-    bars.forEach(function (bar) {
-      bar.h = Math.max(bar.h, bar.o, bar.c);
-      bar.l = Math.min(bar.l, bar.o, bar.c);
-    });
+    var i;
+    var price = 58200;
+    for (i = 0; i < 10; i++) { price += 220; step(price); }
+    for (i = 0; i < 4; i++) { price -= 140; step(price); }
+    put(60840, 61320, 60680, 61140);
+    put(61220, 64680, 61160, 64240);
+    put(64180, 65240, 63480, 64920);
+    price = 64920;
+    for (i = 0; i < 3; i++) { price += 140; step(price); }
+    for (i = 0; i < 8; i++) { price -= 280; step(price); }
+    for (i = 0; i < 5; i++) { price += 240; step(price); }
+    for (i = 0; i < 3; i++) { price -= 150; step(price); }
+    for (i = 0; i < 3; i++) { price += 180; step(price); }
+    put(price, price + 70, price - 210, price - 160);
+    put(price - 160, price - 80, price - 980, price - 860);
+    put(price - 860, price - 760, price - 1320, price - 1180);
+    price = bars[bars.length - 1].c;
+    for (i = 0; i < 3; i++) { price -= 80; step(price); }
     return bars;
   }
   function swings(bars) {
@@ -3223,28 +3216,37 @@
     var choch = [];
     var sweeps = [];
     var trend = 0;
+    var usedHigh = -1;
+    var usedLow = -1;
     var i;
     function latest(list, before) {
       var found = null;
       list.forEach(function (index) { if (index < before) found = index; });
       return found;
     }
-    for (i = 0; i < bars.length; i++) {
+    for (i = 1; i < bars.length; i++) {
       var high = latest(sw.highs, i);
       var low = latest(sw.lows, i);
       var close = bars[i].c;
-      if (trend >= 0 && high != null && close > bars[high].h) {
+      var prev = bars[i - 1].c;
+      var breakHigh = high != null && high !== usedHigh && prev <= bars[high].h && close > bars[high].h;
+      var breakLow = low != null && low !== usedLow && prev >= bars[low].l && close < bars[low].l;
+      if (breakHigh && trend !== -1) {
         bos.push({ i: i, price: bars[high].h, from: high, dir: 'up' });
+        usedHigh = high;
         trend = 1;
-      } else if (trend <= 0 && low != null && close < bars[low].l) {
+      } else if (breakLow && trend !== 1) {
         bos.push({ i: i, price: bars[low].l, from: low, dir: 'down' });
+        usedLow = low;
         trend = -1;
-      } else if (trend === 1 && low != null && close < bars[low].l) {
+      } else if (breakLow && trend === 1) {
         choch.push({ i: i, price: bars[low].l, from: low, dir: 'down' });
-        trend = 0;
-      } else if (trend === -1 && high != null && close > bars[high].h) {
+        usedLow = low;
+        trend = -1;
+      } else if (breakHigh && trend === -1) {
         choch.push({ i: i, price: bars[high].h, from: high, dir: 'up' });
-        trend = 0;
+        usedHigh = high;
+        trend = 1;
       }
       if (high != null && bars[i].h > bars[high].h && close <= bars[high].h) sweeps.push({ i: i, price: bars[high].h, dir: 'up' });
       if (low != null && bars[i].l < bars[low].l && close >= bars[low].l) sweeps.push({ i: i, price: bars[low].l, dir: 'down' });
@@ -3275,11 +3277,15 @@
     if (root._smcTimer) clearInterval(root._smcTimer);
     function stop() { state.playing = false; if (root._smcTimer) clearInterval(root._smcTimer); root._smcTimer = null; }
     function view() {
-      var info = read(bars.slice(0, state.shown));
+      var series = bars.slice(0, state.shown);
+      var info = read(series);
       return {
-        bos: info.bos.filter(function (item) { return item.dir === 'up'; }).slice(0, 1),
-        choch: info.choch.filter(function (item) { return item.dir === 'down'; }).slice(0, 1),
-        fvgs: info.fvgs.filter(function (item) { return item.dir === 'up'; }).sort(function (a, b) { return (b.high - b.low) - (a.high - a.low); }).slice(0, 1)
+        bos: info.bos,
+        choch: info.choch,
+        fvgs: info.fvgs.filter(function (zone) {
+          var mid = series[zone.i - 1];
+          return mid && (zone.high - zone.low) > 800 && Math.abs(mid.c - mid.o) > 1500;
+        })
       };
     }
     function paint() {
@@ -3307,9 +3313,19 @@
       if (state.fvg) info.fvgs.forEach(function (zone) {
         var y1 = y(zone.high);
         var y2 = y(zone.low);
-        var x1 = xAt(zone.i);
-        bits.push('<rect x="' + x1 + '" y="' + Math.min(y1, y2) + '" width="' + Math.max(36, (w - padR) - x1) + '" height="' + Math.max(2, Math.abs(y2 - y1)) + '" fill="#3aab88" fill-opacity="0.22" stroke="#3aab88" stroke-opacity="0.6"></rect>');
-        bits.push('<text x="' + (x1 + 8) + '" y="' + (Math.min(y1, y2) + 14) + '" fill="#8bd5ba" font-size="12" font-weight="700">FVG</text>');
+        var end = draw.length - 1;
+        var j;
+        for (j = zone.i + 1; j < draw.length; j++) {
+          if (zone.dir === 'up' && draw[j].l <= zone.low) { end = j; break; }
+          if (zone.dir === 'down' && draw[j].h >= zone.high) { end = j; break; }
+        }
+        var x1 = xAt(Math.max(0, zone.i - 1));
+        var x2 = Math.max(x1 + slot * 3, xAt(end));
+        var bull = zone.dir === 'up';
+        var fill = bull ? '#3aab88' : '#c16b78';
+        var ink = bull ? '#8bd5ba' : '#e6a1a9';
+        bits.push('<rect x="' + x1 + '" y="' + Math.min(y1, y2) + '" width="' + (x2 - x1) + '" height="' + Math.max(2, Math.abs(y2 - y1)) + '" rx="2" fill="' + fill + '" fill-opacity="0.22" stroke="' + fill + '" stroke-opacity="0.6" stroke-width="1"></rect>');
+        bits.push('<text x="' + (x1 + 8) + '" y="' + (Math.min(y1, y2) + 14) + '" fill="' + ink + '" font-size="11" font-weight="700">FVG</text>');
       });
       draw.forEach(function (bar, i) {
         var up = bar.c >= bar.o;
@@ -3319,69 +3335,52 @@
         bits.push('<line x1="' + xc + '" y1="' + y(bar.h) + '" x2="' + xc + '" y2="' + y(bar.l) + '" stroke="' + color + '"></line>');
         bits.push('<rect x="' + (xc - bw / 2) + '" y="' + Math.min(y(bar.o), y(bar.c)) + '" width="' + bw + '" height="' + Math.max(1.2, Math.abs(y(bar.c) - y(bar.o))) + '" fill="' + color + '"></rect>');
         if (i % 12 === 0) bits.push('<text x="' + xc + '" y="448" fill="#b7aac8" font-size="12">' + (zh ? '第' + (i + 1) + '根' : '#' + (i + 1)) + '</text>');
-        bits.push('<rect data-bar="' + i + '" x="' + (padL + i * slot) + '" y="' + top + '" width="' + slot + '" height="' + plotH + '" fill="transparent"></rect>');
       });
+      function mark(item, name, color, dash) {
+        var yy = y(item.price);
+        var x1 = xAt(item.from);
+        var x2 = xAt(item.i);
+        bits.push('<line x1="' + x1 + '" y1="' + yy + '" x2="' + x2 + '" y2="' + yy + '" stroke="' + color + '" stroke-width="1.5"' + (dash ? ' stroke-dasharray="5 3"' : '') + '></line>');
+        var lx = Math.max(padL + 36, Math.min(w - 46, (x1 + x2) / 2));
+        var ly = dash ? Math.min(top + plotH - 6, yy + 14) : Math.max(top + 14, yy - 8);
+        var anchor = lx > w - 70 ? 'end' : 'middle';
+        if (anchor === 'end') lx = w - 10;
+        bits.push('<text x="' + lx + '" y="' + ly + '" text-anchor="' + anchor + '" fill="' + color + '" font-size="12" font-weight="700">' + name + '</text>');
+      }
       if (state.structure) {
-        info.bos.forEach(function (item) {
-          var yy = y(item.price);
-          bits.push('<line x1="' + xAt(item.from) + '" y1="' + yy + '" x2="' + xAt(item.i) + '" y2="' + yy + '" stroke="#748ca8" stroke-width="1.6"></line>');
-          bits.push('<text x="' + xAt(item.i) + '" y="' + (yy - 8) + '" text-anchor="middle" fill="#748ca8" font-size="12" font-weight="700">BOS</text>');
-        });
-        info.choch.forEach(function (item) {
-          var yy = y(item.price);
-          bits.push('<line x1="' + xAt(item.from) + '" y1="' + yy + '" x2="' + xAt(item.i) + '" y2="' + yy + '" stroke="#b28b58" stroke-width="1.6" stroke-dasharray="5 3"></line>');
-          bits.push('<text x="' + xAt(item.i) + '" y="' + (yy + 16) + '" text-anchor="middle" fill="#b28b58" font-size="12" font-weight="700">CHoCH</text>');
-        });
+        info.bos.forEach(function (item) { mark(item, 'BOS', '#748ca8', false); });
+        info.choch.forEach(function (item) { mark(item, 'CHoCH', '#b28b58', true); });
       }
       bits.push('</svg>');
-      var note = state.note || (zh ? '小练习：点出收盘越过前高的那根。影线过了但收盘没过，不算。' : 'Short practice: tap the candle whose close passes the prior high. A wick through it does not count if the close stays back.');
+      var note = zh ? '标签跟着已经走出来的 K 线出现。它不保证下一根。' : 'The marks show up on candles that have already printed. They do not promise the next one.';
       root.innerHTML =
         '<div class="a1"><p class="a1-flag">' + (zh ? '模拟行情·非实时' : 'Simulated tape · not live') + '</p>' +
-        '<p>' + (zh ? 'SMC 不是指标，是一种看 K 线的方法，要自己在图上找。' : 'SMC is not an indicator, it is a way of reading candles, and you have to find the marks on the chart yourself.') + '</p>' +
-        '<p>' + (zh
-          ? '结构看高低点。BOS 是收盘顺着原方向越过前高或前低。<br>缺口是快行情在三根 K 线中间留下的空档。价格常常会回来填，但不保证。'
-          : 'Structure is the highs and lows. BOS is a close that passes the prior high or low in the same direction.<br>A gap is the open space a fast move leaves between three candles. Price often comes back to fill it, but that is not guaranteed.') + '</p>' +
-        '<p class="a1-checks"><label><input type="checkbox" data-layer="structure"' + (state.structure ? ' checked' : '') + '> ' + (zh ? '结构' : 'Structure') + '</label> <label><input type="checkbox" data-layer="fvg"' + (state.fvg ? ' checked' : '') + '> FVG</label></p>' +
+        '<p>' + (zh ? 'BOS、CHoCH 和 FVG 是指标自动标在 K 线上的。' : 'BOS, CHoCH, and FVG are marked on the candles by the indicator.') + '</p>' +
+        '<p class="a1-checks"><label><input type="checkbox" data-layer="structure"' + (state.structure ? ' checked' : '') + '> BOS / CHoCH</label> <label><input type="checkbox" data-layer="fvg"' + (state.fvg ? ' checked' : '') + '> FVG</label></p>' +
         '<div class="smc-scroll">' + bits.join('') + '</div>' +
         '<p class="star-key"><span style="color:#748ca8">BOS</span><span style="color:#b28b58">CHoCH</span><span style="color:#8bd5ba">FVG</span></p>' +
-        '<p>' + (zh ? '小练习：点出收盘越过前高的那根。影线过了但收盘没过，不算。' : 'Short practice: tap the candle whose close passes the prior high. A wick through it does not count if the close stays back.') + '</p>' +
         '<div class="a1-modes"><button type="button" data-move="play">' + (state.playing ? (zh ? '暂停' : 'Pause') : (zh ? '播放' : 'Play')) + '</button><button type="button" data-move="reset">' + (zh ? '重新开始' : 'Start again') + '</button><span>' + state.shown + ' / ' + bars.length + '</span></div>' +
-        '<p class="a2-readout ' + state.tone + '">' + note + '</p></div>';
-    }
-    function explain(index) {
-      var info = view();
-      if (info.bos.some(function (item) { return item.i === index; })) return { tone: 'is-right', text: zh ? '这根收盘越过了前高，所以是结构延续。它不保证后面继续涨。' : 'This close passed the prior high, so structure continued. It does not guarantee the later rise.' };
-      if (info.choch.some(function (item) { return item.i === index; })) return { tone: 'is-right', text: zh ? '这根收盘反过来破了护着的低点，所以结构可能在变。这不是已经转完。' : 'This close broke the low that was holding, the other way, so the structure may be changing. The turn is not finished.' };
-      return { tone: 'is-wrong', text: zh ? '还不是。请点收盘越过前高、标着 BOS 的那根。' : 'Not yet. Tap the candle labeled BOS, whose close passes the prior high.' };
+        '<p class="a2-readout">' + note + '</p></div>';
     }
     if (root._smcClick) root.removeEventListener('click', root._smcClick);
     root._smcClick = function (ev) {
-      var el = ev.target.closest ? ev.target.closest('[data-move],[data-bar]') : null;
+      var el = ev.target.closest ? ev.target.closest('[data-move]') : null;
       if (!el || !root.contains(el)) return;
-      if (el.hasAttribute('data-move')) {
-        var move = el.getAttribute('data-move');
-        if (move === 'play') {
-          if (state.playing) { stop(); paint(); return; }
-          if (state.shown >= bars.length) state.shown = 24;
-          state.playing = true;
-          root._smcTimer = setInterval(function () {
-            if (!root.isConnected || state.shown >= bars.length) { stop(); paint(); return; }
-            state.shown += 1;
-            paint();
-          }, 280);
+      var move = el.getAttribute('data-move');
+      if (move === 'play') {
+        if (state.playing) { stop(); paint(); return; }
+        if (state.shown >= bars.length) state.shown = 12;
+        state.playing = true;
+        root._smcTimer = setInterval(function () {
+          if (!root.isConnected || state.shown >= bars.length) { stop(); paint(); return; }
+          state.shown += 1;
           paint();
-          return;
-        }
-        stop();
-        state.shown = 24;
-        state.note = '';
-        state.tone = '';
+        }, 280);
         paint();
         return;
       }
-      var graded = explain(Number(el.getAttribute('data-bar')));
-      state.note = graded.text;
-      state.tone = graded.tone;
+      stop();
+      state.shown = 12;
       paint();
     };
     root.addEventListener('click', root._smcClick);
