@@ -44,44 +44,44 @@
       }),
       lesson({
         id: '02',
-        title: bi('MACD：柱子缩短意味着什么', 'MACD: what a shrinking histogram means'),
-        scene: bi('柱子变短的时候，价格是不是一定马上跌？', 'When the histogram shrinks, must price fall right away?'),
-        one: bi('金叉是快线 DIF 上穿慢线 DEA，死叉是下穿，柱子变短也不等于价格马上跌。', 'A golden cross is the fast DIF line crossing above the slow DEA line, a death cross is a cross below, and a shorter histogram still does not mean price falls at once.'),
-        explain: bi('图的上半部分是蜡烛 K 线。\n下半部分才是 MACD（12、26、9）。\n黄线 DIF 是 EMA12 减去 EMA26。\n蓝线 DEA 是 DIF 的 9 根平均，也叫信号线。\n柱子画的是两条线差多远。\n本课的柱子等于 DIF 减去 DEA，不乘 2。\n有的软件把柱子画成两倍。\n数值就可以差一倍。\n那是画法不同，不是算错。\n金叉是 DIF 由下向上穿过 DEA。\n死叉是 DIF 由上向下穿过 DEA。\n两根相等不算穿过。\n不够预热就写数据不足，不画 0。\n图上至少 90 根模拟 K 线。\n后面的 K 线先藏着。\n顶背离要价格的第二个高点更高，而且同一时间的 DIF 高点更低。\n只看到 DIF 下降，还不是背离。\n金叉不是买入按钮。', 'The top half is candlesticks.\nThe bottom half is MACD (12, 26, 9).\nThe gold DIF line is EMA12 minus EMA26.\nThe blue DEA line is the 9-bar average of DIF, also called the signal line.\nThe bars show how far apart the two lines are.\nIn this lesson a bar equals DIF minus DEA, and it is not multiplied by 2.\nSome software draws the bar at twice that size.\nThe number can then differ by a factor of two.\nThat is a different way of drawing it, not a wrong calculation.\nA golden cross is DIF crossing up through DEA.\nA death cross is DIF crossing down through DEA.\nEqual values are not a cross.\nBefore the warmup is done, the chart says the data is not ready and does not draw 0.\nThe chart has at least 90 simulated candles.\nLater candles stay hidden.\nA bearish divergence needs a higher price high and, at the same time, a lower DIF high.\nA falling DIF by itself is not divergence.\nA golden cross is not a buy button.'),
+        title: bi('MACD：柱子变短不等于马上跌', 'MACD: a shorter bar does not mean price falls now'),
+        scene: bi('柱子变短的时候，价格是不是一定马上跌？', 'When the bars get shorter, must price fall right away?'),
+        one: bi('快线从下往上穿过慢线叫金叉，反过来叫死叉，柱子变短也不等于价格马上跌。', 'The fast line crossing up through the slow line is a golden cross, the other way is a death cross, and shorter bars still do not mean price falls at once.'),
+        explain: bi('上面画的是价格 K 线。\n下面黄线是快线，看最近涨跌的速度。\n蓝线是慢线，它是快线的平均，走得更稳。\n快线从下往上穿过慢线，叫金叉。\n快线从上往下穿过慢线，叫死叉。\n柱子是两条线隔得有多远。\n绿柱变长，上涨的力量在变强。\n红柱变长，下跌的力量在变强。\n柱子变短，只说明两条线在靠近。\n靠近不等于价格马上转向。\n0 轴上方，整体偏多。\n0 轴下方，整体偏空。\n金叉不是买入按钮。\n死叉也不是卖出按钮。', 'The top shows price candles.\nThe gold line below is the fast line, and it shows how fast price has been moving.\nThe blue line is the slow line. It is the average of the fast line, so it moves more calmly.\nThe fast line crossing up through the slow line is a golden cross.\nThe fast line crossing down through the slow line is a death cross.\nThe bars are how far apart the two lines are.\nA longer green bar means the upward push is getting stronger.\nA longer red bar means the downward push is getting stronger.\nShorter bars only mean the two lines are getting closer.\nGetting closer does not mean price turns right away.\nAbove the zero line, the picture leans up.\nBelow the zero line, the picture leans down.\nA golden cross is not a buy button.\nA death cross is not a sell button.'),
         topic: {
           title: bi('金叉和死叉', 'Golden cross and death cross'),
-          body: bi('金叉，是快线 DIF 从下往上穿过慢线 DEA。\n死叉，是快线 DIF 从上往下穿过慢线 DEA。\n图上会把这两个点标成「金叉」和「死叉」。\n金叉不是必涨。\n死叉不是必跌。\n它们只说明两条线换了上下位置。', 'A golden cross is the fast DIF line crossing up through the slow DEA line.\nA death cross is the fast DIF line crossing down through the slow DEA line.\nThe chart marks these two points as “golden cross” and “death cross”.\nA golden cross is not a sure rise.\nA death cross is not a sure fall.\nThey only say the two lines have swapped which one is on top.')
+          body: bi('金叉，是快线从下往上穿过慢线。\n死叉，是快线从上往下穿过慢线。\n图上会标出这两个点。\n金叉不是必涨。\n死叉不是必跌。\n它们只说明两条线换了上下位置。', 'A golden cross is the fast line crossing up through the slow line.\nA death cross is the fast line crossing down through the slow line.\nThe chart marks these two spots.\nA golden cross is not a sure rise.\nA death cross is not a sure fall.\nThey only say the two lines swapped which one is on top.')
         },
-        example: bi('教学模拟：DIF 是 2.4，DEA 是 1.9。\n柱子是 0.5，不乘 2。\n零轴上方有一次金叉，只是延续候选。\n零轴下方另有一次金叉，后面仍能创新低。\n负柱变短时，收盘还可以继续跌。\n价格创新高时，DIF 的高点可以更低。\n那也不保证反转。', 'Teaching simulation: DIF is 2.4 and DEA is 1.9.\nThe bar is 0.5, and it is not doubled.\nOne golden cross is above zero. It is only a continuation candidate.\nAnother golden cross is below zero, and price can still make a new low afterward.\nWhile the negative bars get shorter, the close can keep falling.\nPrice can make a new high while the DIF high is lower.\nThat still does not guarantee a reversal.'),
+        example: bi('教学模拟：绿柱变长，只说明上涨更有劲。\n0 轴上方的金叉，只是偏多，不是买入。\n0 轴下方也可以出现金叉，价格随后仍能再跌一截。\n红柱变短时，收盘还可以继续跌。\n这些都是模拟数字，不是真实行情。', 'Teaching simulation: a longer green bar only means the rise has more push.\nA golden cross above zero only leans up. It is not a buy.\nA golden cross can also appear below zero, and price can still fall further.\nWhen the red bars get shorter, the close can keep falling.\nThese are simulated numbers, not a live market.'),
         pitfalls: [
-          bi('把柱子缩短直接当成卖出信号', 'Taking a shrinking histogram as a sell signal by itself'),
+          bi('把柱子变短直接当成卖出', 'Taking shorter bars as a sell by itself'),
           bi('看见金叉就当成必涨，看见死叉就当成必跌', 'Treating a golden cross as a sure rise, or a death cross as a sure fall'),
-          bi('忽略平台是否把柱子乘了 2', 'Ignoring whether the platform multiplies the histogram by 2')
+          bi('把 0 轴上方当成已经可以无脑买', 'Treating “above zero” as a reason to buy without looking')
         ],
-        practice: bi('自己点出金叉那根 K 线。零轴上方不是买入保证。零轴下方仍可能创新低。背离要自己点两个价格高点，再点同一时间的 DIF。', 'Mark the golden-cross candle yourself. Above zero is not a buy order. Below zero, price can still make a new low. For divergence, mark two price highs, then the DIF highs at the same time.'),
+        practice: bi('点出快线从下往上穿过慢线的那根。\n0 轴上方不是买入保证。\n0 轴下方的金叉，后面仍可能再跌。', 'Tap the bar where the fast line crosses up through the slow line.\nAbove zero is not a promise to buy.\nA golden cross below zero can still be followed by another drop.'),
         check: {
-          ask: bi('教学虚构：DIF 2.4、DEA 1.9，按本课定义柱子是多少？', 'Teaching fiction: DIF is 2.4 and DEA is 1.9. What is the bar in this lesson?'),
-          options: [opt('A', '0.5', '0.5'), opt('B', '4.3', '4.3'), opt('C', '2.4', '2.4')],
+          ask: bi('绿柱变长，直接表示什么？', 'What does a longer green bar say directly?'),
+          options: [opt('A', '上涨的力量在变强', 'The upward push is getting stronger'), opt('B', '必须马上买入', 'You must buy now'), opt('C', '价格一定到顶', 'Price has definitely topped')],
           answer: 'A',
-          miss: bi('柱子等于 DIF 减去 DEA，是 0.5。\n4.3 是两者相加。', 'The bar equals DIF minus DEA, which is 0.5.\n4.3 is the two numbers added together.')
+          miss: bi('绿柱变长只说明两条线拉得更开，上涨更有劲。\n它不是买入按钮。', 'A longer green bar only means the two lines pulled farther apart, so the rise has more push.\nIt is not a buy button.')
         },
         quizzes: [
-          quiz('金叉是什么？', 'What is a golden cross?', [opt('A', '快线 DIF 上穿慢线 DEA', 'The fast DIF line crosses above the slow DEA line'), opt('B', '快线 DIF 下穿慢线 DEA', 'The fast DIF line crosses below the slow DEA line'), opt('C', '柱子变长', 'The bars get longer')], 'A', {
+          quiz('金叉是什么？', 'What is a golden cross?', [opt('A', '快线从下往上穿过慢线', 'The fast line crosses up through the slow line'), opt('B', '快线从上往下穿过慢线', 'The fast line crosses down through the slow line'), opt('C', '绿柱变长', 'The green bars get longer')], 'A', {
             A: ['快线从下往上穿过慢线，就是金叉。', 'The fast line crossing up through the slow line is a golden cross.'],
             B: ['快线从上往下穿过慢线，那是死叉。', 'The fast line crossing down through the slow line is a death cross.'],
-            C: ['柱子变长只说明两条线离得更远，不是金叉的定义。', 'Longer bars only mean the two lines are farther apart. That is not the definition of a golden cross.']
+            C: ['绿柱变长只说明上涨更有劲，不是金叉。', 'Longer green bars only mean the rise has more push. That is not a golden cross.']
           }),
-          quiz('死叉是什么？', 'What is a death cross?', [opt('A', '快线 DIF 下穿慢线 DEA', 'The fast DIF line crosses below the slow DEA line'), opt('B', '快线 DIF 上穿慢线 DEA', 'The fast DIF line crosses above the slow DEA line'), opt('C', '价格一定马上跌', 'Price must fall at once')], 'A', {
+          quiz('死叉是什么？', 'What is a death cross?', [opt('A', '快线从上往下穿过慢线', 'The fast line crosses down through the slow line'), opt('B', '快线从下往上穿过慢线', 'The fast line crosses up through the slow line'), opt('C', '价格一定马上跌', 'Price must fall at once')], 'A', {
             A: ['快线从上往下穿过慢线，就是死叉。', 'The fast line crossing down through the slow line is a death cross.'],
-            B: ['上穿是金叉，不是死叉。', 'A cross above is a golden cross, not a death cross.'],
-            C: ['死叉只说明两条线换了位置，不保证价格马上跌。', 'A death cross only says the two lines swapped places. It does not guarantee that price falls at once.']
+            B: ['从下往上穿，那是金叉。', 'A cross from below is a golden cross.'],
+            C: ['死叉只说明两条线换了位置，不保证马上跌。', 'A death cross only says the two lines swapped places. It does not guarantee an immediate drop.']
           }),
-          quiz('教学模拟：MACD 柱从 -120 变成 -40，但收盘价仍在下跌。最准确的说法是？', 'Teaching simulation: the MACD bar goes from -120 to -40, but the close is still falling. What is the most accurate statement?', [opt('A', '价格已经确认上涨', 'Price has confirmed a rise'), opt('B', '下一根一定会反弹', 'The next bar must bounce'), opt('C', '负差值在收窄，不能单独证明反转', 'The negative gap is narrowing, which alone does not prove a reversal')], 'C', {
-            A: ['柱子变短只说明 DIF 和 DEA 在靠近，不是价格已经上涨。', 'A shorter bar only means DIF and DEA are closer. It is not proof that price has risen.'],
+          quiz('教学模拟：红柱从很长变成较短，收盘还在跌。最准确的说法是？', 'Teaching simulation: the red bars go from long to shorter, and the close is still falling. What is the most accurate statement?', [opt('A', '价格已经确认上涨', 'Price has confirmed a rise'), opt('B', '下一根一定会反弹', 'The next bar must bounce'), opt('C', '两条线在靠近，不能单独证明已经涨回来', 'The two lines are getting closer, which alone does not prove price has turned up')], 'C', {
+            A: ['柱子变短只说明两条线在靠近，不是价格已经上涨。', 'Shorter bars only mean the two lines are closer. It is not proof that price has risen.'],
             B: ['没有“下一根必须反弹”这条规则。', 'There is no rule that the next bar must bounce.'],
-            C: ['-120 到 -40 是负的差距变小。还要看上面的 K 线。', '-120 to -40 means the negative gap got smaller. You still have to look at the candles.']
+            C: ['红柱变短，是下跌的力量在减弱。还要看上面的 K 线。', 'Shorter red bars mean the downward push is fading. You still have to look at the candles.']
           }),
-          quiz('柱子缩短是不是价格一定下跌？', 'If the bars get shorter, must price fall?', [opt('A', '一定', 'It must'), opt('B', '否', 'No'), opt('C', '只在日线一定', 'Only on the daily chart')], 'B', {
+          quiz('柱子变短是不是价格一定下跌？', 'If the bars get shorter, must price fall?', [opt('A', '一定', 'It must'), opt('B', '不是', 'No'), opt('C', '只在日线一定', 'Only on the daily chart')], 'B', {
             A: ['柱子变短只说明两条线在靠近，价格仍可以继续涨。', 'Shorter bars only mean the two lines are getting closer. Price can still keep rising.'],
             B: ['靠近不等于方向已经反过来。', 'Getting closer is not the same as the direction already reversing.'],
             C: ['换成日线，也不保证下跌。', 'Switching to the daily chart does not guarantee a fall either.']
@@ -91,37 +91,37 @@
       }),
       lesson({
         id: '03',
-        title: bi('RSI：超买不等于立刻卖', 'RSI: overbought does not mean sell now'),
-        scene: bi('RSI 到了 75，是不是必须马上卖？', 'RSI is 75. Do you have to sell immediately?'),
-        one: bi('RSI 看最近涨得多还是跌得多，超买只说明涨得相对强，并不叫你马上卖。', 'RSI looks at whether recent rises outweigh recent falls, and overbought only says the rise is relatively strong, not that you must sell now.'),
-        explain: bi('上面是蜡烛 K 线，只作价格对照。\n图的主体是 RSI(14)，刻度从 0 到 100。\n它看的是最近 14 根涨跌。\n70 的横线标成超买。\n50 在中间。\n30 的横线标成超卖。\n这两条只是参考线，可以改，但改了也不是买卖命令。\n本课用 Wilder 的平滑法。\n先把前 14 次涨跌分成平均涨幅和平均跌幅。\n之后平均涨幅等于（13×上一根平均涨幅+这一根涨幅）除以 14。\n跌幅同样计算。\nRS 是平均涨幅除以平均跌幅。\nRSI 等于 100 减去 100 除以（1 加 RS）。\n只有上涨时 RSI 可以到 100。\n只有下跌时可以到 0。\n涨跌都是 0 时，本课记为 50。\n样本不够 N 次变化时不显示 0，而是还不能计算。\n图上至少 90 根模拟 K 线。\n后面的 K 线先藏着。\n顶背离是价格更高的高点，配上同一时间更低的 RSI 高点。\n底背离是价格更低的低点，配上更高的 RSI 低点。\nRSI 自己下降，而价格没有更高的高点，就不是顶背离。', 'The candles above are only price, for reference.\nThe main picture is RSI(14), on a scale from 0 to 100.\nIt looks at the rises and falls of the last 14 bars.\nThe line at 70 is labeled overbought.\n50 sits in the middle.\nThe line at 30 is labeled oversold.\nThose two lines are only reference lines. They can be moved, and moving them is still not a buy or sell order.\nThis lesson uses Wilder smoothing.\nFirst split the first 14 changes into an average gain and an average loss.\nAfter that, average gain equals (13 times the previous average gain plus this bar’s gain) divided by 14.\nLoss is calculated the same way.\nRS is the average gain divided by the average loss.\nRSI equals 100 minus 100 divided by (1 plus RS).\nIf price only rises, RSI can reach 100.\nIf price only falls, it can reach 0.\nIf both gain and loss are 0, this lesson records 50.\nBefore N changes exist, do not show 0. It cannot be calculated yet.\nThe chart has at least 90 simulated candles.\nLater candles stay hidden.\nBearish divergence is a higher price high with a lower RSI high at the same time.\nBullish divergence is a lower price low with a higher RSI low.\nA falling RSI without a higher price high is not bearish divergence.'),
-        example: bi('教学模拟：RSI 75 只表示近期上涨幅度相对更大。\n强趋势里它可以在 70 上方停留很多根，价格还在创新高。\n跌势里它可以停在 30 下方，价格还在创新低。\n所以“超买”不是立刻卖出的命令，“超卖”也不是立刻买入的命令。\n价格创新高时，RSI 的高点可以更低。\n那也不保证反转。', 'Teaching simulation: RSI 75 only means recent gains are relatively larger.\nIn a strong trend it can stay above 70 for many bars while price still makes new highs.\nIn a decline it can stay below 30 while price still makes new lows.\nSo “overbought” is not an order to sell, and “oversold” is not an order to buy.\nPrice can make a new high while the RSI high is lower.\nThat still does not guarantee a reversal.'),
+        title: bi('RSI：涨得猛不等于立刻卖', 'RSI: a strong rise does not mean sell now'),
+        scene: bi('这条线到了 75，是不是必须马上卖？', 'The line is at 75. Do you have to sell immediately?'),
+        one: bi('RSI 看最近涨得多还是跌得多，到了 70 以上只说明涨得猛，并不叫你马上卖。', 'RSI looks at whether recent rises or falls are bigger, and above 70 it only says the rise is strong, not that you must sell now.'),
+        explain: bi('上面画的是价格 K 线。\n下面这条线看最近 14 根涨得多还是跌得多。\n刻度从 0 到 100。\n线到 70 以上，最近涨得比较猛。\n线到 30 以下，最近跌得比较猛。\n50 在中间，涨和跌差不多。\n涨得猛，不等于马上要跌。\n很强的上涨里，线可以在 70 上面停很久，价格还在涨。\n跌得猛，也不等于马上要涨。\n线还算不出来的时候先空着，不画成 0。', 'The top shows price candles.\nThe line below looks at whether the last 14 bars rose more or fell more.\nThe scale runs from 0 to 100.\nAbove 70, the recent rise has been fairly strong.\nBelow 30, the recent fall has been fairly strong.\n50 is the middle, where rises and falls are about even.\nA strong rise does not mean a drop is due.\nIn a very strong rally the line can stay above 70 for a long time while price is still rising.\nA strong fall does not mean a bounce is due.\nWhen the line cannot be calculated yet, leave it blank. Do not draw 0.'),
+        example: bi('教学模拟：线到 75，只说明最近涨得更猛。\n它还可以停在 70 上面，价格继续创新高。\n大跌的时候也可以停在 30 下面，价格继续创新低。\n所以高位不是卖出命令。\n低位也不是买入命令。', 'Teaching simulation: a reading of 75 only means the recent rise was stronger.\nIt can stay above 70 while price keeps making new highs.\nIn a big drop it can also stay under 30 while price keeps making new lows.\nSo a high reading is not a sell order.\nA low reading is not a buy order.'),
         pitfalls: [
-          bi('RSI 一过 70 就认为必须反转', 'Assuming price must reverse as soon as RSI crosses 70'),
-          bi('把样本不足时的空值当成 0', 'Treating an empty value, before the sample is ready, as 0')
+          bi('线一过 70 就认为必须马上跌', 'Assuming price must drop as soon as the line crosses 70'),
+          bi('把还没算出来的空位当成 0', 'Treating a blank, before the line is ready, as 0')
         ],
-        practice: bi('在超买剧情里点一根 RSI 高于 70、后面收盘还在更高的 K 线。顶背离要自己点两个价格高点，再点同一时间的 RSI。', 'In the overbought scene, mark a bar with RSI above 70 whose later close is still higher. For bearish divergence, mark two price highs, then the RSI highs at the same time.'),
+        practice: bi('点一根线还在 70 上面、后面价格还在涨的 K 线。\n高位不是马上卖。', 'Tap a candle where the line is still above 70 and a later price is higher.\nA high reading is not an immediate sell.'),
         check: {
-          ask: bi('RSI 75 直接表示什么？', 'What does RSI 75 say directly?'),
-          options: [opt('A', '必须马上卖', 'You must sell now'), opt('B', '近期上涨相对更强', 'The recent rise is relatively stronger'), opt('C', '成交量创新高', 'Volume made a new high')],
+          ask: bi('线到 75，直接表示什么？', 'The line is at 75. What does that say directly?'),
+          options: [opt('A', '必须马上卖', 'You must sell now'), opt('B', '最近涨得更猛', 'The recent rise was stronger'), opt('C', '成交量创新高', 'Volume made a new high')],
           answer: 'B',
-          miss: bi('RSI 用的是涨跌幅，不是成交量，也不下卖出命令。', 'RSI uses price changes, not volume, and it does not issue a sell order.')
+          miss: bi('它看的是涨跌，不是成交量。\n75 也不下卖出命令。', 'It looks at rises and falls, not volume.\n75 is not a sell order either.')
         },
         quizzes: [
-          quiz('教学模拟：BTC 的 RSI(14) 等于 78，最准确的说法是？', 'Teaching simulation: BTC RSI(14) is 78. What is the most accurate statement?', [opt('A', '最近上涨相对强，可能停在高位，不能单凭 78 判断马上下跌', 'The recent rise is relatively strong and can stay high. 78 alone does not mean a drop is imminent'), opt('B', '一定要立刻做空', 'You must short immediately'), opt('C', '价格已经确定到顶', 'Price has definitely topped')], 'A', {
-            A: ['78 只说明最近涨得相对强。强趋势里它可以一直高于 70。', '78 only says the recent rise is relatively strong. A strong trend can stay above 70.'],
-            B: ['超买不是做空命令。', 'Overbought is not an order to short.'],
+          quiz('教学模拟：这条线到了 78。最准确的说法是？', 'Teaching simulation: the line is at 78. What is the most accurate statement?', [opt('A', '最近涨得猛，还可以停在高位，不能单凭 78 说马上跌', 'The recent rise is strong and can stay high. 78 alone does not mean a drop is imminent'), opt('B', '一定要立刻做空', 'You must short immediately'), opt('C', '价格已经确定到顶', 'Price has definitely topped')], 'A', {
+            A: ['78 只说明最近涨得猛。很强的上涨里，它可以一直停在 70 上面。', '78 only says the recent rise is strong. A very strong rally can stay above 70.'],
+            B: ['涨得猛不是做空命令。', 'A strong rise is not an order to short.'],
             C: ['没有“到了 78 就到顶”这条规则。', 'There is no rule that 78 means the top is in.']
           }),
-          quiz('强趋势可以一直停在超买区吗？', 'Can a strong trend stay in the overbought zone?', [opt('A', '能', 'Yes'), opt('B', '不能', 'No'), opt('C', '只能停一根', 'Only for one bar')], 'A', {
-            A: ['价格连续上涨时，平均涨幅会压过平均跌幅，RSI 可以在高位停留。', 'When price keeps rising, average gain outweighs average loss, so RSI can stay high.'],
-            B: ['没有“到了 70 就必须下一根回落”这条规则。', 'There is no rule that the next bar must fall once RSI reaches 70.'],
-            C: ['停留多久取决于后面的涨跌幅，不是固定一根。', 'How long it stays depends on later changes, not a fixed single bar.']
+          quiz('很强的上涨，可以一直停在 70 上面吗？', 'Can a very strong rally stay above 70?', [opt('A', '能', 'Yes'), opt('B', '不能', 'No'), opt('C', '只能停一根', 'Only for one bar')], 'A', {
+            A: ['价格接连上涨时，这条线可以在高位停留。', 'When price keeps rising, this line can stay high.'],
+            B: ['没有“到了 70 下一根必须跌”这条规则。', 'There is no rule that the next bar must fall once the line reaches 70.'],
+            C: ['停多久看后面还涨不涨，不是固定一根。', 'How long it stays depends on whether price keeps rising, not a fixed single bar.']
           }),
-          quiz('RSI 主要使用什么？', 'What does RSI mainly use?', [opt('A', '涨跌幅', 'Price changes'), opt('B', '成交量', 'Volume'), opt('C', '持仓量', 'Open interest')], 'A', {
-            A: ['它把收盘的上涨和下跌分开平滑。', 'It smooths the up moves and down moves of the close.'],
-            B: ['成交量不进入这条 RSI 公式。', 'Volume does not enter this RSI formula.'],
-            C: ['持仓量是合约未平仓数量，不是 RSI 的输入。', 'Open interest is outstanding contracts, not an RSI input.']
+          quiz('这条线主要看什么？', 'What does this line mainly look at?', [opt('A', '最近的涨和跌', 'Recent rises and falls'), opt('B', '成交量', 'Volume'), opt('C', '持仓量', 'Open interest')], 'A', {
+            A: ['它把收盘的上涨和下跌分开来看。', 'It separates the up moves and down moves of the close.'],
+            B: ['成交量不进这条线。', 'Volume does not go into this line.'],
+            C: ['持仓量是还没平掉的合约，这条线不用它。', 'Open interest is contracts still open. This line does not use it.']
           })
         ],
         study: { kind: 'rsi', main: 'rsi', lessonChart: 'rsi-full', closes: rsi75 }
@@ -1191,14 +1191,14 @@
       }
       if (state.scene === 'div' || state.scene === 'fake') return gradeDivergence(pack);
       if (state.scene === 'fail') {
-        if (kind === 'gold' && dif <= 0) return { tone: 'is-right', text: zh ? '这次金叉在零轴下方。交叉和大趋势矛盾，后面仍可能创新低。它不是买入保证。' : 'This golden cross is below zero. The cross disagrees with the larger decline, and price can still make a new low.' };
-        if (kind === 'gold') return { tone: 'is-wrong', text: zh ? '这根在零轴上方。本剧情要找 DIF 小于或等于 0 的金叉。' : 'This one is above zero. This scene asks for a golden cross with DIF at or below 0.' };
-        return { tone: '', text: zh ? '这根不是零轴下方的金叉。' : 'This bar is not the golden cross below zero.' };
+        if (kind === 'gold' && dif <= 0) return { tone: 'is-right', text: zh ? '这是一次失败的金叉。快线穿过了慢线，价格随后还创新低。它不是买入按钮。' : 'This golden cross failed. The fast line crossed the slow line, and price then made a new low. It is not a buy button.' };
+        if (kind === 'gold') return { tone: 'is-wrong', text: zh ? '这根在 0 轴上方。反例要找穿过之后价格还继续跌的那一次。' : 'This one is above zero. The counterexample asks for the cross that was still followed by a drop.' };
+        return { tone: '', text: zh ? '这根快线没有从下往上穿过慢线。' : 'The fast line does not cross up through the slow line on this bar.' };
       }
-      if (kind === 'gold' && dif > 0) return { tone: 'is-right', text: zh ? '这是零轴上方的金叉，只是延续候选，不是买入保证。旁边的死叉也只是两条线换了位置。' : 'This golden cross is above zero. It is a continuation candidate, not a buy order. A death cross only says the lines swapped places.' };
-      if (kind === 'gold') return { tone: 'is-wrong', text: zh ? '这次金叉在零轴下方。请换零轴上方的那一次。' : 'This golden cross is below zero. Find the one above zero.' };
-      if (kind === 'death') return { tone: '', text: zh ? '这根标的是死叉。本剧情要你点金叉。' : 'This bar is the death cross. This scene asks for the golden cross.' };
-      return { tone: '', text: zh ? '这根 DIF 没有穿过 DEA。' : 'DIF does not cross DEA on this bar.' };
+      if (kind === 'gold' && dif > 0) return { tone: 'is-right', text: zh ? '这是 0 轴上方的金叉。快线刚从下往上穿过慢线，整体偏多，但不是买入按钮。' : 'This golden cross is above zero. The fast line just crossed up through the slow line, so it leans up, but it is not a buy button.' };
+      if (kind === 'gold') return { tone: 'is-wrong', text: zh ? '这次金叉在 0 轴下方，整体还偏空。请点 0 轴上方的那一次。' : 'This golden cross is below zero, so the picture still leans down. Tap the one above zero.' };
+      if (kind === 'death') return { tone: '', text: zh ? '这根是死叉。快线从上往下穿过慢线。本练习要你点金叉。' : 'This bar is a death cross. The fast line crossed down through the slow line. This practice asks for a golden cross.' };
+      return { tone: '', text: zh ? '这根快线没有穿过慢线。' : 'The fast line does not cross the slow line on this bar.' };
     }
     function readout(pack) {
       if (state.cursor == null) return '';
@@ -1211,10 +1211,9 @@
       var when = zh ? '第 ' + (state.cursor - pack.current.visibleFrom + 1) + ' 根 · 模拟 1 小时' : 'Bar ' + (state.cursor - pack.current.visibleFrom + 1) + ' · simulated 1h';
       var cross = kindAt(pack, state.cursor);
       var tag = cross === 'gold' ? (zh ? ' 这根是金叉。' : ' This bar is a golden cross.') : (cross === 'death' ? (zh ? ' 这根是死叉。' : ' This bar is a death cross.') : '');
-      var side = dif == null ? '' : (dif > 0 ? (zh ? ' DIF 在零轴上方。' : ' DIF is above zero.') : (dif < 0 ? (zh ? ' DIF 在零轴下方。' : ' DIF is below zero.') : (zh ? ' DIF 正在零轴上。' : ' DIF is on zero.')));
-      return when + '<br>' + (zh ? '开 ' : 'O ') + fmt(bar.o) + (zh ? ' 高 ' : ' H ') + fmt(bar.h) + (zh ? ' 低 ' : ' L ') + fmt(bar.l) + (zh ? ' 收 ' : ' C ') + fmt(bar.c) + (zh ? ' 量 ' : ' V ') + bar.v +
-        '<br>EMA12 ' + fmt(m.fast[state.cursor]) + ' · EMA26 ' + fmt(m.slow[state.cursor]) +
-        '<br>DIF ' + (dif == null ? (zh ? '数据不足' : 'not ready') : fmt(dif)) + ' · DEA ' + (dea == null ? (zh ? '数据不足' : 'not ready') : fmt(dea)) + ' · ' + (zh ? '柱 ' : 'bar ') + (hist == null ? (zh ? '数据不足' : 'not ready') : fmt(hist)) + tag + side;
+      var side = dif == null ? '' : (dif > 0 ? (zh ? ' 快线在 0 轴上方，偏多。' : ' The fast line is above zero, so it leans up.') : (dif < 0 ? (zh ? ' 快线在 0 轴下方，偏空。' : ' The fast line is below zero, so it leans down.') : (zh ? ' 快线正在 0 轴上。' : ' The fast line is on zero.')));
+      return when + '<br>' + (zh ? '开 ' : 'O ') + fmt(bar.o) + (zh ? ' 高 ' : ' H ') + fmt(bar.h) + (zh ? ' 低 ' : ' L ') + fmt(bar.l) + (zh ? ' 收 ' : ' C ') + fmt(bar.c) +
+        '<br>' + (zh ? '快线 ' : 'Fast ') + (dif == null ? (zh ? '还算不出' : 'not ready') : fmt(dif)) + (zh ? ' · 慢线 ' : ' · Slow ') + (dea == null ? (zh ? '还算不出' : 'not ready') : fmt(dea)) + (zh ? ' · 距离 ' : ' · Gap ') + (hist == null ? (zh ? '还算不出' : 'not ready') : fmt(hist)) + tag + side;
     }
     function paint() {
       var pack = prefix();
@@ -1374,14 +1373,16 @@
           return '<button type="button" data-judge="' + opt[0] + '" data-answer="' + q.answer + '">' + opt[0] + '. ' + esc(opt[1]) + '</button>';
         }).join('') + '</div>';
       }
-      var note = state.note || readout(pack) || (zh ? '小练习：点出一根金叉，也就是 DIF 上穿 DEA 的那根。' : 'Short practice: tap a golden cross, the bar where DIF crosses above DEA.');
+      var note = state.note || readout(pack) || (zh ? '小练习：点出一根金叉，也就是快线从下往上穿过慢线的那根。' : 'Short practice: tap a golden cross, the bar where the fast line crosses up through the slow line.');
       root.innerHTML =
         '<div class="a1"><p class="a1-flag">' + (zh ? '模拟行情·非实时' : 'Simulated tape · not live') + '</p>' +
-        '<p>' + (zh ? '上面是 K 线，下面是 MACD。黄线 DIF 是 EMA12 减 EMA26，蓝虚线 DEA 是 DIF 的 9 根平均，柱子是 DIF 减 DEA，不乘 2。' : 'Candles are on top. MACD is below. The gold DIF line is EMA12 minus EMA26, the blue dashed DEA line is the 9-bar average of DIF, and a bar is DIF minus DEA, not doubled.') + '</p>' +
+        '<p>' + (zh
+          ? '上面是 K 线。<br>下面黄线是快线，看最近涨跌的速度。<br>蓝线是慢线，是快线的平均。<br>快线从下往上穿过慢线是金叉，反过来是死叉。<br>柱子是两条线的距离。<br>绿柱变长，上涨更有劲。<br>0 轴上方偏多。'
+          : 'Candles are on top.<br>The gold line below is the fast line. It shows how fast price has been moving.<br>The blue line is the slow line, the average of the fast line.<br>The fast line crossing up through the slow line is a golden cross, and the other way is a death cross.<br>The bars are the distance between the two lines.<br>A longer green bar means the rise has more push.<br>Above zero, the picture leans up.') + '</p>' +
         '<div class="macd-scroll">' + bits.join('') + '</div>' +
-        '<p class="star-key"><span><i style="background:#f4cb82"></i>DIF</span><span><i style="background:#8eb4ff"></i>DEA</span><span><i style="background:#1f8a4d"></i>' + (zh ? '正柱' : 'Positive bar') + '</span><span><i style="background:#d4534e"></i>' + (zh ? '负柱' : 'Negative bar') + '</span><span>0 ' + (zh ? '零轴' : 'zero') + '</span></p>' +
+        '<p class="star-key"><span><i style="background:#f4cb82"></i>' + (zh ? '快线' : 'Fast line') + '</span><span><i style="background:#8eb4ff"></i>' + (zh ? '慢线' : 'Slow line') + '</span><span><i style="background:#1f8a4d"></i>' + (zh ? '绿柱' : 'Green bar') + '</span><span><i style="background:#d4534e"></i>' + (zh ? '红柱' : 'Red bar') + '</span><span>0 ' + (zh ? '轴' : 'line') + '</span></p>' +
         '<p>' + (state.scene === 'fail'
-          ? (zh ? '反例：这次金叉是假动作，价格随后再创新低。' : 'Counterexample: this golden cross is a whipsaw, and price then makes a new low.')
+          ? (zh ? '反例：快线穿过慢线之后，价格还是继续跌。' : 'Counterexample: after the fast line crosses the slow line, price still keeps falling.')
           : (zh ? '小练习：点出一根金叉。金叉不是买入按钮。' : 'Short practice: tap a golden cross. A golden cross is not a buy button.')) + '</p>' +
         '<div class="a1-modes"><button type="button" data-move="play" aria-pressed="' + state.playing + '">' + (state.playing ? (zh ? '暂停' : 'Pause') : (zh ? '播放' : 'Play')) + '</button>' +
         '<button type="button" data-move="reset">' + (zh ? '重新开始' : 'Start again') + '</button>' +
@@ -1389,8 +1390,8 @@
         '<span>' + state.shown + ' / ' + maxShown() + '</span></div>' +
         '<p class="a2-readout ' + state.tone + '">' + note + '</p>' +
         '<p class="ema-note">' + (zh
-          ? '公式：DIF=EMA(收盘,12)−EMA(收盘,26)。DEA 是有效 DIF 的 9 周期 EMA。柱=DIF−DEA，不乘 2。不够预热显示数据不足，不画 0。'
-          : 'Formula: DIF=EMA(close,12)−EMA(close,26). DEA is the 9-bar EMA of valid DIF values. A bar is DIF−DEA, not doubled. Before the warmup, the chart says not ready and does not draw 0.') + '</p></div>';
+          ? '想知道怎么算：快线是近 12 根收盘和近 26 根收盘的差。慢线是快线自己的 9 根平均。柱子是快线减慢线，不乘 2。根数不够时不画线，也不假装是 0。'
+          : 'Want the calculation: the fast line is the last 12 closes minus the last 26 closes. The slow line is the fast line’s own 9-bar average. A bar is fast minus slow, not doubled. Before there are enough bars, no line is drawn, and it is not faked as 0.') + '</p></div>';
     }
     function setShown(next) {
       state.shown = Math.max(1, Math.min(maxShown(), next));
@@ -1632,9 +1633,52 @@
     }
     return out;
   }
-  function decorate(bars) {
+  function mix(n) {
+    var x = Math.imul(n ^ 0x9e3779b9, 0x85ebca6b);
+    x = Math.imul(x ^ (x >>> 13), 0xc2b2ae35);
+    return ((x ^ (x >>> 16)) >>> 0) / 4294967296;
+  }
+  function unit(i, salt) {
+    return mix(i * 997 + salt * 131 + 17);
+  }
+  function tape(start, count, salt, segs) {
+    var bars = [];
+    var price = start;
+    var vol = 0.008;
+    var i;
+    for (i = 0; i < count; i++) {
+      var at = 0;
+      var drift = segs[segs.length - 1][1];
+      var s;
+      for (s = 0; s < segs.length; s++) {
+        at += segs[s][0];
+        if (i < at) { drift = segs[s][1]; break; }
+      }
+      var u = unit(i, salt);
+      if (u > 0.94) vol = Math.min(0.024, vol * 1.7);
+      else if (u < 0.06) vol = Math.max(0.003, vol * 0.5);
+      else vol = vol * 0.88 + 0.008 * 0.12;
+      var ret = drift + (unit(i, salt + 17) - 0.5) * 2 * vol;
+      var open = price;
+      var close = open * (1 + ret);
+      var body = Math.abs(close - open);
+      var high = Math.max(open, close) + body * (0.45 + unit(i, salt + 3) * 1.8) + open * 0.0012 * unit(i, salt + 4);
+      var low = Math.min(open, close) - body * (0.45 + unit(i, salt + 5) * 1.8) - open * 0.0012 * unit(i, salt + 6);
+      bars.push({
+        t: i,
+        o: Math.round(open * 100) / 100,
+        h: Math.round(high * 100) / 100,
+        l: Math.round(low * 100) / 100,
+        c: Math.round(close * 100) / 100,
+        v: Math.round(40 + unit(i, salt + 9) * 200)
+      });
+      price = close;
+    }
+    return bars;
+  }
+  function decorate(bars, from) {
     var values = rsi(bars.map(function (bar) { return bar.c; }), 14);
-    var from = 60;
+    if (from == null) from = 60;
     return {
       bars: bars,
       visibleFrom: from,
@@ -1646,8 +1690,8 @@
   }
   function buildScenes() {
     return {
-      hot: Object.assign({ id: 'hot', zh: '持续超买', en: 'Stays overbought' }, decorate(walk(40000, [[40, 8], [100, 18], [20, -2]]))),
-      cold: Object.assign({ id: 'cold', zh: '持续超卖', en: 'Stays oversold' }, decorate(walk(80000, [[160, -30]]))),
+      hot: Object.assign({ id: 'hot', zh: '涨得猛还在涨', en: 'Strong and still rising' }, decorate(tape(38000, 150, 15, [[24, 0.0002], [18, 0.001], [16, -0.0016], [14, 0.0008], [28, 0.0042], [12, -0.0004], [22, -0.0055], [16, 0.0014]]), 40)),
+      cold: Object.assign({ id: 'cold', zh: '跌得猛还在跌', en: 'Weak and still falling' }, decorate(tape(72000, 150, 3, [[20, 0.0003], [18, -0.0012], [16, 0.001], [70, -0.0036], [26, -0.001]]), 40)),
       bear: Object.assign({ id: 'bear', zh: '顶背离', en: 'Bearish divergence' }, decorate(walk(42000, [[50, 6], [24, 80], [12, -35], [22, 28], [18, -8], [28, 4]]))),
       bull: Object.assign({ id: 'bull', zh: '底背离', en: 'Bullish divergence' }, decorate(walk(70000, [[50, -4], [24, -70], [12, 30], [22, -22], [18, 6], [28, -3]]))),
       fake: Object.assign({ id: 'fake', zh: '假背离', en: 'Fake divergence' }, decorate(walk(43000, [[50, 6], [24, 70], [14, -40], [18, 18], [16, -6], [24, 2], [12, 2]]))),
@@ -1669,7 +1713,7 @@
     var state = {
       scene: 'hot',
       step: 'mark',
-      shown: 28,
+      shown: scenes.hot.bars.length - scenes.hot.visibleFrom,
       cursor: null,
       playing: false,
       period: 14,
@@ -1763,17 +1807,17 @@
         var lower = false;
         var i;
         for (i = index + 1; i < pack.bars.length; i++) if (pack.bars[i].c < pack.bars[index].c) lower = true;
-        if (value < state.os && lower) return { tone: 'is-right', text: zh ? 'RSI 低于 ' + state.os + '，后面的收盘还更低。超卖只说明最近跌得相对多，不是马上抄底。' : 'RSI is under ' + state.os + ', and a later close is lower. Oversold only says the recent fall is relatively large. It is not an order to buy.' };
-        if (value < state.os) return { tone: '', text: zh ? '这根是低于参考线，但后面还没有更低的收盘。把后面的 K 线放出来，或点更早的一根。' : 'This bar is under the line, but no later close is lower yet. Reveal more bars, or pick an earlier one.' };
-        return { tone: '', text: zh ? '这根没有低于超卖参考线 ' + state.os + '。这只是参考阈值。' : 'This bar is not under the oversold line at ' + state.os + '. That number is only a reference.' };
+        if (value < state.os && lower) return { tone: 'is-right', text: zh ? '这根已经跌到 30 下面，后面的价格还更低。跌得猛不是马上抄底。' : 'This bar is already under 30, and a later price is lower. A sharp fall is not an order to buy the dip.' };
+        if (value < state.os) return { tone: '', text: zh ? '这根在 30 下面，但后面还没有更低的收盘。点更早的一根，或继续播放。' : 'This bar is under 30, but no later close is lower yet. Pick an earlier bar, or keep playing.' };
+        return { tone: '', text: zh ? '这根还没跌到 30 下面。' : 'This bar is not under 30 yet.' };
       }
       if (state.scene === 'bear' || state.scene === 'bull' || state.scene === 'fake') return gradeDivergence(pack);
       var higher = false;
       var j;
       for (j = index + 1; j < pack.bars.length; j++) if (pack.bars[j].c > pack.bars[index].c) higher = true;
-      if (value > state.ob && higher) return { tone: 'is-right', text: zh ? 'RSI 高于 ' + state.ob + '，后面的收盘还更高。超买只说明涨得相对强，不是马上卖，也不是做空命令。' : 'RSI is above ' + state.ob + ', and a later close is higher. Overbought only says the rise is relatively strong. It is not an order to sell or short.' };
-      if (value > state.ob) return { tone: '', text: zh ? '这根高于参考线，但后面还没有更高的收盘。请点更早的一根，或继续播放。' : 'This bar is above the line, but no later close is higher yet. Pick an earlier bar, or keep playing.' };
-      return { tone: '', text: zh ? '这根没有高于超买参考线 ' + state.ob + '。' : 'This bar is not above the overbought line at ' + state.ob + '.' };
+      if (value > state.ob && higher) return { tone: 'is-right', text: zh ? '这根已经涨到 70 上面，后面的价格还更高。涨得猛不是马上卖。' : 'This bar is already above 70, and a later price is higher. A strong rise is not an order to sell.' };
+      if (value > state.ob) return { tone: '', text: zh ? '这根在 70 上面，但后面还没有更高的收盘。点更早的一根，或继续播放。' : 'This bar is above 70, but no later close is higher yet. Pick an earlier bar, or keep playing.' };
+      return { tone: 'is-wrong', text: zh ? '这根还没到 70。请点涨得猛、后面还在涨的那根。' : 'This bar is not at 70 yet. Tap one that is rising hard and is still followed by a higher price.' };
     }
     function readout(pack) {
       if (state.cursor == null) return '';
@@ -1792,11 +1836,11 @@
       var from = pack.current.visibleFrom;
       var draw = pack.bars.slice(from);
       var w = 980;
-      var h = 460;
+      var h = 470;
       var padL = 10;
       var padR = 78;
       var top = 16;
-      var priceH = 188;
+      var priceH = 228;
       var vals = [];
       draw.forEach(function (bar) { vals.push(bar.h, bar.l); });
       var min = Math.min.apply(null, vals);
@@ -1807,8 +1851,8 @@
       max += span * 0.08;
       function y(p) { return top + (max - p) / (max - min) * priceH; }
       var slot = (w - padL - padR) / Math.max(draw.length, 1);
-      var rsiTop = 286;
-      var rsiH = 140;
+      var rsiTop = 270;
+      var rsiH = 164;
       function ry(v) { return rsiTop + (100 - v) / 100 * rsiH; }
       var bits = ['<svg viewBox="0 0 ' + w + ' ' + h + '" role="img" aria-label="' + (zh ? '模拟BTC与RSI' : 'Simulated BTC and RSI') + '">'];
       bits.push('<rect width="' + w + '" height="' + h + '" fill="#120e21"></rect>');
@@ -1819,33 +1863,52 @@
         bits.push('<line x1="' + padL + '" y1="' + gy + '" x2="' + (w - padR) + '" y2="' + gy + '" stroke="rgba(230,199,158,.16)"></line>');
         bits.push('<text x="' + (w - 8) + '" y="' + (gy + 4) + '" text-anchor="end" fill="#d4bc9e" font-size="13">' + fmt(price) + '</text>');
       }
-      var volMax = 1;
-      draw.forEach(function (bar) { if (bar.v > volMax) volMax = bar.v; });
       draw.forEach(function (bar, i) {
         var up = bar.c >= bar.o;
         var color = up ? '#1f8a4d' : '#d4534e';
         var x = padL + i * slot;
         var xc = x + slot / 2;
-        var bw = Math.max(2.2, slot * 0.55);
-        bits.push('<line x1="' + xc + '" y1="' + y(bar.h) + '" x2="' + xc + '" y2="' + y(bar.l) + '" stroke="' + color + '" stroke-width="1.2"></line>');
-        bits.push('<rect x="' + (xc - bw / 2) + '" y="' + Math.min(y(bar.o), y(bar.c)) + '" width="' + bw + '" height="' + Math.max(1.3, Math.abs(y(bar.c) - y(bar.o))) + '" fill="' + color + '"></rect>');
-        var vh = Math.max(1, bar.v / volMax * 28);
-        bits.push('<rect x="' + (xc - bw / 2) + '" y="' + (262 - vh) + '" width="' + bw + '" height="' + vh + '" fill="' + color + '" opacity="0.8"></rect>');
-        if (i % 16 === 0) bits.push('<text x="' + xc + '" y="452" fill="#b7aac8" font-size="12">' + (zh ? '第' + (i + 1) + '根' : '#' + (i + 1)) + '</text>');
+        var bw = Math.max(1.6, slot * 0.62);
+        bits.push('<line x1="' + xc + '" y1="' + y(bar.h) + '" x2="' + xc + '" y2="' + y(bar.l) + '" stroke="' + color + '" stroke-width="1.1"></line>');
+        bits.push('<rect x="' + (xc - bw / 2) + '" y="' + Math.min(y(bar.o), y(bar.c)) + '" width="' + bw + '" height="' + Math.max(1.2, Math.abs(y(bar.c) - y(bar.o))) + '" fill="' + color + '"></rect>');
+        if (i % 20 === 0) bits.push('<text x="' + xc + '" y="462" fill="#b7aac8" font-size="12">' + (zh ? '第' + (i + 1) + '根' : '#' + (i + 1)) + '</text>');
       });
       if (state.showRsi) {
-        bits.push('<rect x="' + padL + '" y="' + ry(100) + '" width="' + (w - padL - padR) + '" height="' + (ry(state.ob) - ry(100)) + '" fill="rgba(212,83,78,.12)"></rect>');
-        bits.push('<rect x="' + padL + '" y="' + ry(state.os) + '" width="' + (w - padL - padR) + '" height="' + (ry(0) - ry(state.os)) + '" fill="rgba(31,138,77,.12)"></rect>');
-        [[state.ob, zh ? state.ob + ' 超买' : state.ob + ' overbought', '#d4534e'], [50, '50', '#8eb4ff'], [state.os, zh ? state.os + ' 超卖' : state.os + ' oversold', '#7dcea0']].forEach(function (level) {
+        bits.push('<rect x="' + padL + '" y="' + ry(100) + '" width="' + (w - padL - padR) + '" height="' + (ry(state.ob) - ry(100)) + '" fill="rgba(212,83,78,.18)"></rect>');
+        bits.push('<rect x="' + padL + '" y="' + ry(state.os) + '" width="' + (w - padL - padR) + '" height="' + (ry(0) - ry(state.os)) + '" fill="rgba(31,138,77,.16)"></rect>');
+        [[state.ob, zh ? state.ob + ' 涨得猛' : state.ob + ' strong rise', '#d4534e'], [50, '50', '#8eb4ff'], [state.os, zh ? state.os + ' 跌得猛' : state.os + ' sharp fall', '#7dcea0']].forEach(function (level) {
           bits.push('<line x1="' + padL + '" y1="' + ry(level[0]) + '" x2="' + (w - padR) + '" y2="' + ry(level[0]) + '" stroke="' + level[2] + '" stroke-dasharray="4 3"></line>');
           bits.push('<text x="' + (w - 8) + '" y="' + (ry(level[0]) + 4) + '" text-anchor="end" fill="' + level[2] + '" font-size="13">' + level[1] + '</text>');
         });
-        var pts = [];
+        var run = [];
+        var runColor = '';
+        function flushRun() {
+          if (run.length > 1) bits.push('<polyline points="' + run.join(' ') + '" fill="none" stroke="' + runColor + '" stroke-width="2.4"></polyline>');
+          run = [];
+        }
+        var prevZone = '';
+        var lastMark = -20;
         draw.forEach(function (bar, i) {
           var value = pack.rsi[from + i];
-          if (value != null) pts.push((padL + i * slot + slot / 2).toFixed(1) + ',' + ry(value).toFixed(1));
+          if (value == null) { flushRun(); runColor = ''; return; }
+          var zone = value > state.ob ? 'hot' : (value < state.os ? 'cold' : 'mid');
+          var color = zone === 'hot' ? '#d4534e' : (zone === 'cold' ? '#7dcea0' : '#f4cb82');
+          var pt = (padL + i * slot + slot / 2).toFixed(1) + ',' + ry(value).toFixed(1);
+          if (color !== runColor) {
+            if (run.length) run.push(pt);
+            flushRun();
+            runColor = color;
+            run = [pt];
+          } else run.push(pt);
+          if (zone !== 'mid' && zone !== prevZone && i - lastMark > 12) {
+            lastMark = i;
+            var label = zone === 'hot' ? (zh ? '涨得猛' : 'Strong') : (zh ? '跌得猛' : 'Sharp fall');
+            var ly = zone === 'hot' ? ry(value) - 8 : ry(value) + 14;
+            bits.push('<text x="' + (padL + i * slot + slot / 2) + '" y="' + ly + '" text-anchor="middle" fill="' + color + '" font-size="11">' + label + '</text>');
+          }
+          prevZone = zone;
         });
-        if (pts.length > 1) bits.push('<polyline points="' + pts.join(' ') + '" fill="none" stroke="#f4cb82" stroke-width="2.4"></polyline>');
+        flushRun();
       } else {
         bits.push('<text x="' + (padL + 12) + '" y="' + (rsiTop + 40) + '" fill="#d4bc9e" font-size="16">' + (zh ? 'RSI 先藏着' : 'RSI is hidden') + '</text>');
       }
@@ -1882,7 +1945,7 @@
       draw.forEach(function (bar, i) {
         var abs = from + i;
         var x = padL + i * slot;
-        bits.push('<rect data-bar="' + abs + '" data-pane="price" x="' + x + '" y="' + top + '" width="' + slot + '" height="246" fill="transparent" style="cursor:pointer"></rect>');
+        bits.push('<rect data-bar="' + abs + '" data-pane="price" x="' + x + '" y="' + top + '" width="' + slot + '" height="' + (rsiTop - top - 8) + '" fill="transparent" style="cursor:pointer"></rect>');
         bits.push('<rect data-bar="' + abs + '" data-pane="rsi" x="' + x + '" y="' + rsiTop + '" width="' + slot + '" height="' + rsiH + '" fill="transparent" style="cursor:pointer"></rect>');
       });
       bits.push('</svg>');
@@ -1907,20 +1970,25 @@
       if (state.step === 'exam' && state.examStage === 'strength') {
         exam = '<div class="a1-modes"><button type="button" data-bias="up">' + (zh ? '收盘在抬高' : 'Closes are rising') + '</button><button type="button" data-bias="flat">' + (zh ? '差不多' : 'About flat') + '</button><button type="button" data-bias="down">' + (zh ? '收盘在压低' : 'Closes are falling') + '</button></div>';
       }
-      var note = state.note || readout(pack) || (zh ? '小练习：点出一根 RSI 高于 70、后面收盘还更高的 K 线。' : 'Short practice: tap a bar with RSI above 70 whose later close is still higher.');
+      var note = state.note || readout(pack) || (zh ? '小练习：点出一根线在 70 上面、后面价格还更高的 K 线。' : 'Short practice: tap a candle where the line is above 70 and a later price is higher.');
       root.innerHTML =
         '<div class="a1"><p class="a1-flag">' + (zh ? '模拟行情·非实时' : 'Simulated tape · not live') + '</p>' +
-        '<p>' + (zh ? '上面是 K 线，下面是 RSI(14)，刻度 0 到 100。70 是超买参考，30 是超卖参考，都不是买卖命令。' : 'Candles are on top. RSI(14) is below, on a scale from 0 to 100. 70 is an overbought reference and 30 is an oversold reference. Neither is an order.') + '</p>' +
+        '<p>' + (zh
+          ? '上面是 K 线。<br>下面这条线看最近 14 根涨得多还是跌得多，刻度 0 到 100。<br>70 以上是涨得猛。<br>30 以下是跌得猛。<br>都不是买卖命令。'
+          : 'Candles are on top.<br>The line below looks at whether the last 14 bars rose more or fell more, on a scale from 0 to 100.<br>Above 70, the rise is strong.<br>Below 30, the fall is sharp.<br>Neither is a buy or sell order.') + '</p>' +
         '<div class="rsi-scroll">' + bits.join('') + '</div>' +
-        '<p class="star-key"><span><i style="background:#f4cb82"></i>RSI(14)</span><span><i style="background:#d4534e"></i>70 ' + (zh ? '超买' : 'overbought') + '</span><span><i style="background:#8eb4ff"></i>50</span><span><i style="background:#7dcea0"></i>30 ' + (zh ? '超卖' : 'oversold') + '</span></p>' +
+        '<p class="star-key"><span><i style="background:#f4cb82"></i>' + (zh ? '强弱线' : 'Strength') + '</span><span><i style="background:#d4534e"></i>70 ' + (zh ? '涨得猛' : 'strong rise') + '</span><span><i style="background:#8eb4ff"></i>50</span><span><i style="background:#7dcea0"></i>30 ' + (zh ? '跌得猛' : 'sharp fall') + '</span></p>' +
         '<p>' + (state.scene === 'cold'
-          ? (zh ? '反例：RSI 低于 30 时，价格仍可以继续跌。' : 'Counterexample: while RSI is under 30, price can keep falling.')
-          : (zh ? '小练习：点出一根 RSI 高于 70、后面还在涨的 K 线。超买不是马上卖。' : 'Short practice: tap a bar with RSI above 70 that is still followed by a higher close. Overbought is not a sell order.')) + '</p>' +
+          ? (zh ? '反例：线到 30 下面时，价格仍可以继续跌。' : 'Counterexample: while the line is under 30, price can keep falling.')
+          : (zh ? '小练习：点出一根线在 70 上面、后面还在涨的 K 线。涨得猛不是马上卖。' : 'Short practice: tap a candle above 70 that is still followed by a higher price. A strong rise is not an immediate sell.')) + '</p>' +
         '<div class="a1-modes"><button type="button" data-move="play" aria-pressed="' + state.playing + '">' + (state.playing ? (zh ? '暂停' : 'Pause') : (zh ? '播放' : 'Play')) + '</button>' +
         '<button type="button" data-move="reset">' + (zh ? '重新开始' : 'Start again') + '</button>' +
         '<button type="button" data-more="rsi">' + (zh ? '再看一个反例' : 'See a counterexample') + '</button>' +
         '<span>' + state.shown + ' / ' + maxShown() + '</span></div>' +
-        '<p class="a2-readout ' + state.tone + '">' + note + '</p></div>';
+        '<p class="a2-readout ' + state.tone + '">' + note + '</p>' +
+        '<p class="ema-note">' + (zh
+          ? '想知道怎么算：把最近 14 根的上涨和下跌分开平均，再看成 0 到 100。根数不够时不画，也不假装是 0。'
+          : 'Want the calculation: average the rises and the falls of the last 14 bars separately, then read that as 0 to 100. Before there are enough bars, nothing is drawn, and it is not faked as 0.') + '</p></div>';
     }
     function setShown(next) {
       state.shown = Math.max(1, Math.min(maxShown(), next));
@@ -1962,7 +2030,7 @@
         state.step = 'mark';
         state.note = '';
         state.tone = '';
-        state.shown = 28;
+        state.shown = maxShown();
         paint();
         return;
       }
@@ -1985,6 +2053,7 @@
         var move = el.getAttribute('data-move');
         if (move === 'play') {
           if (state.playing) { stop(); paint(); return; }
+          if (state.shown >= maxShown()) state.shown = 40;
           state.playing = true;
           root._rsiTimer = setInterval(function () {
             if (!root.isConnected) { stop(); return; }
@@ -2004,7 +2073,7 @@
           state.tone = '';
           state.examStage = 'strength';
           if (state.step === 'exam') state.showRsi = false;
-          state.shown = state.step === 'exam' ? 40 : 28;
+          state.shown = state.step === 'exam' ? 40 : 40;
           paint();
           return;
         }
