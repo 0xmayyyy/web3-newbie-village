@@ -161,6 +161,12 @@ body.is-star main:has(.star-hub){padding-bottom:0}
 .ob-row.bid.is-part{background:rgba(244,203,130,.16)}
 .ob-last{text-align:center;font-size:18px;font-weight:700;color:#f4cb82;padding:6px 0}
 .ob-note{margin:10px 0 0;line-height:1.55;color:#f6f1ff}
+.liq{display:flex;flex-direction:column;gap:10px}
+.liq-row{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end}
+.liq-row button{min-width:72px}
+.liq label{display:flex;flex-direction:column;gap:4px;color:#d4bc9e;font-size:12px}
+.liq input{width:6.5em;min-height:40px;border-radius:10px;border:1px solid rgba(230,199,158,.4);background:#241c33;color:#f6f1ff;padding:6px 10px;font:inherit}
+.liq-out{margin:0;line-height:1.6;color:#f6f1ff}
 .fib-scroll{touch-action:none}
 .ema-scroll svg,.macd-scroll svg,.rsi-scroll svg,.div-scroll svg,.fib-scroll svg,.smc-scroll svg{min-width:960px;height:auto;display:block}
 .ema-note{margin:8px 0 0;color:#d4bc9e;font-size:14px;line-height:1.7}

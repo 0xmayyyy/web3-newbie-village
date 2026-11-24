@@ -480,7 +480,7 @@
     }
     function bars() { return source().slice(0, shown); }
     function paint() {
-      var plainStudy = study.kind === 'ema' || study.kind === 'macd' || (study.kind === 'rsi' && study.main === 'rsi') || study.kind === 'spotbook';
+      var plainStudy = study.kind === 'ema' || study.kind === 'macd' || (study.kind === 'rsi' && study.main === 'rsi') || study.kind === 'spotbook' || study.kind === 'liq';
       var html = '<div class="a1">' + (t ? '<p class="a1-flag">' + t('star.sim') + ' · ' + t('star.figure') + ' · ' + t('star.a2.disclaimer') + '</p>' : '') + (plainStudy ? '' : legend(lang));
       html += renderKind(study, bars(), shown, lang, state);
       var max = source().length || 1;
@@ -495,6 +495,7 @@
           paint();
         });
       });
+      if (study.kind === 'liq') bindLiq(root, state, lang);
       root.querySelectorAll('[data-step]').forEach(function (btn) {
         btn.addEventListener('click', function () {
           var maxN = source().length;
@@ -794,8 +795,83 @@
       '<p class="ob-note">' + esc(note) + '</p></div>';
   }
 
+  function liqNum(v) {
+    var n = Number(v);
+    if (!isFinite(n)) return null;
+    return n;
+  }
+  function liqFmt(n) {
+    var s = (Math.round(n * 100) / 100).toFixed(2);
+    return s.replace(/\.00$/, '').replace(/(\.\d)0$/, '$1');
+  }
+  function liqStory(state, lang) {
+    var zh = lang !== 'en';
+    var entry = liqNum(state.entry);
+    var lev = liqNum(state.lev);
+    var qty = liqNum(state.qty);
+    var dir = state.dir === 'short' ? 'short' : 'long';
+    if (!(entry > 0) || !(lev >= 1) || !(qty > 0)) {
+      return zh
+        ? '进场价和数量要大于 0，杠杆至少是 1。改完就能看到粗估强平价。'
+        : 'Entry and quantity need to be above 0, and leverage at least 1. Then the rough liquidation price shows up.';
+    }
+    var margin = qty * entry / lev;
+    var liq = dir === 'short' ? entry * (1 + 0.95 / lev) : entry * (1 - 0.95 / lev);
+    if (liq < 0) liq = 0;
+    var dist = Math.abs(liq - entry);
+    var pct = entry ? dist / entry * 100 : 0;
+    var way = dir === 'short' ? (zh ? '上涨' : 'rise') : (zh ? '下跌' : 'fall');
+    var side = dir === 'short' ? (zh ? '做空' : 'Short') : (zh ? '做多' : 'Long');
+    if (zh) {
+      return side + '。进场价 ' + liqFmt(entry) + '，' + liqFmt(lev) + ' 倍，数量 ' + liqFmt(qty) + '，保证金大约 ' + liqFmt(margin) + '。粗估强平价约 ' + liqFmt(liq) + '。价格大约要' + way + ' ' + liqFmt(dist) + '，大约是进场价的 ' + liqFmt(pct) + '%。这只是教学粗估，不是某一家交易所的真实强平价。';
+    }
+    return side + '. Entry ' + liqFmt(entry) + ', ' + liqFmt(lev) + 'x, quantity ' + liqFmt(qty) + ', margin about ' + liqFmt(margin) + '. The rough liquidation price is about ' + liqFmt(liq) + '. Price has to ' + way + ' about ' + liqFmt(dist) + ', about ' + liqFmt(pct) + '% of the entry. This is only a teaching estimate, not one exchange’s real liquidation price.';
+  }
+  function renderLiq(lang, state) {
+    var zh = lang !== 'en';
+    state.dir = state.dir === 'short' ? 'short' : 'long';
+    if (state.entry == null) state.entry = '100';
+    if (state.lev == null) state.lev = '10';
+    if (state.qty == null) state.qty = '10';
+    function field(key, label) {
+      return '<label>' + label + '<input inputmode="decimal" data-liq="' + key + '" value="' + esc(String(state[key])) + '"></label>';
+    }
+    return '<div class="liq">' +
+      '<div class="liq-row">' +
+      '<button type="button" data-liq-dir="long" aria-pressed="' + (state.dir === 'long' ? 'true' : 'false') + '">' + (zh ? '做多' : 'Long') + '</button>' +
+      '<button type="button" data-liq-dir="short" aria-pressed="' + (state.dir === 'short' ? 'true' : 'false') + '">' + (zh ? '做空' : 'Short') + '</button>' +
+      '</div>' +
+      '<div class="liq-row">' +
+      field('entry', zh ? '进场价' : 'Entry') +
+      field('lev', zh ? '杠杆' : 'Leverage') +
+      field('qty', zh ? '数量' : 'Quantity') +
+      '</div>' +
+      '<p class="liq-out">' + esc(liqStory(state, lang)) + '</p></div>';
+  }
+  function bindLiq(root, state, lang) {
+    function write() {
+      var out = root.querySelector('.liq-out');
+      if (out) out.textContent = liqStory(state, lang);
+      root.querySelectorAll('[data-liq-dir]').forEach(function (btn) {
+        btn.setAttribute('aria-pressed', btn.getAttribute('data-liq-dir') === state.dir ? 'true' : 'false');
+      });
+    }
+    root.querySelectorAll('[data-liq-dir]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        state.dir = btn.getAttribute('data-liq-dir');
+        write();
+      });
+    });
+    root.querySelectorAll('[data-liq]').forEach(function (input) {
+      input.addEventListener('input', function () {
+        state[input.getAttribute('data-liq')] = input.value;
+        write();
+      });
+    });
+  }
   function renderKind(study, bars, shown, lang, state) {
     if (study.kind === 'spotbook') return renderSpotBook(lang, state || {});
+    if (study.kind === 'liq') return renderLiq(lang, state || {});
     var closes = bars.map(function (bar) { return bar.c; });
     var math = M();
     if (study.kind === 'ema') {
