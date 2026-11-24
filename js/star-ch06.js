@@ -5,107 +5,267 @@
     lessons: [
       lesson({
         id: '01', title: bi('区块浏览器：成功不等于到账', 'A block explorer: success is not the same as arrival'),
-        scene: bi('一笔大额刚刚显示成功，价格是不是已经反应完了？', 'A large transfer just shows success. Has price already finished reacting?'),
-        one: bi('转账成功只说明上了链，大额进交易所常常是卖出的前兆，但这一秒通常还没反映到价格上。', 'A successful transfer only means it is on the chain, a large deposit to an exchange is often an early sign of selling, and price usually has not reacted in that second.'),
-        explain: bi('先核对链的名字、代币合约和收款地址。\n同名代币可以是另一份合约。\n确认数变多，只是后面又接上了区块。\n这些都对上了，才是你以为的那笔资产到了那个地址。', 'First check the chain name, the token contract, and the recipient address.\nA token with the same name can be a different contract.\nA higher confirmation count only means more blocks were added after it.\nOnly when those match is it the asset you meant, at the address you meant.'),
+        scene: bi('看到「某巨鲸向交易所转入 X 枚」，价格是不是已经跌完了？', 'When you see “a whale deposited X coins to an exchange,” has price already finished dropping?'),
+        one: bi('转账成功只说明上了链，巨鲸把币转进交易所常常是卖出的前兆，转到他自己的冷钱包则常常是先拿住。', 'A successful transfer only means it is on the chain, a whale moving coins into an exchange is often an early sign of selling, and a move to his own cold wallet is often just holding.'),
+        explain: bi('先核对链的名字、代币合约和收款地址。\n同名代币可以是另一份合约。\n确认数变多，只是后面又接上了区块。\n巨鲸警报里的「转入交易所 X 枚」，是币到了交易所，不是已经卖掉。\n「自己的冷钱包」是巨鲸自己的地址，不是你的钱包。', 'First check the chain name, the token contract, and the recipient address.\nA token with the same name can be a different contract.\nA higher confirmation count only means more blocks were added after it.\nA whale alert that says X coins moved to an exchange means the coins arrived there, not that they were already sold.\n“His own cold wallet” is the whale’s own address, not your wallet.'),
         topic: {
-          title: bi('出现这种情况，行情一般怎么走', 'What price usually does next'),
-          body: bi('大额成功转到交易所地址，后面常常出现卖出，价格偏软。\n转到自己的冷钱包，常常是拿走不卖，短线卖压反而轻。\n转账刚成功的那一刻，通常还没有成交，价格往往还没动。\n链或合约对错了，你看的那个币价通常不会因为这笔而动。\n转到交易所也可以只是充保证金，并不马上卖。\n所以先看转到哪，再看有没有真的卖出，不要把成功两个字当成已经跌完。', 'A large successful transfer into an exchange address is often followed by selling, and price leans soft.\nA move to your own cold wallet is often taking coins away to hold, and near-term selling is lighter.\nIn the second the transfer succeeds there is usually no trade yet, and price often has not moved.\nIf the chain or the contract is the wrong one, the coin price you are watching usually does not move because of it.\nA deposit to an exchange can also be margin, and it is not sold at once.\nSo look at where it went, then whether it was actually sold, and do not read the word success as a drop that already finished.')
+          title: bi('巨鲸转账消息出来时', 'When a whale-transfer post shows up'),
+          body: bi('「某巨鲸向交易所转入 X 枚」，后面常常出现卖出，价格偏软。\n转到巨鲸自己的冷钱包，常常是拿走不卖，短线卖压反而轻。\n消息刚出来的那一刻，通常还没有成交，价格往往还没动。\n链或合约对错了，你看的那个币价通常不会因为这笔而动。\n转入交易所也可以是去做保证金，并不马上卖。\n先看转到哪，再看有没有真的卖出。', '“A whale deposited X coins to an exchange” is often followed by selling, and price leans soft.\nA move to the whale’s own cold wallet is often taking coins away to hold, and near-term selling is lighter.\nIn the moment the post appears there is usually no trade yet, and price often has not moved.\nIf the chain or the contract is the wrong one, the coin price you are watching usually does not move because of it.\nA deposit to an exchange can also be margin, and it is not sold at once.\nFirst see where it went, then whether it was actually sold.')
         },
-        example: bi('教学模拟：DemoChain 上的 DEMO_TX_001，金额 100，确认数 3。\n状态是成功，只说明被打包。\n若收款地址是交易所，后面才要防卖出，不是这一秒已经卖掉。', 'Teaching simulation: DEMO_TX_001 on DemoChain, amount 100, 3 confirmations.\nSuccess only means it was included.\nIf the recipient is an exchange, the selling to watch for comes later, not a sale in that second.'),
-        pitfalls: [bi('只看成功两个字', 'Reading only the word success'), bi('把刚到交易所当成已经卖完', 'Treating a fresh exchange deposit as a sale that already finished')],
-        practice: bi('先看收款地址是交易所还是冷钱包，再判断后面通常偏软还是卖压更轻。', 'First see whether the recipient is an exchange or a cold wallet, then judge whether what follows is usually softer or lighter on selling.'),
+        example: bi('教学模拟：DemoChain 上的 DEMO_TX_001，金额 100，确认数 3。\n状态是成功，只说明被打包。\n若收款地址是交易所，读法就是「向交易所转入」，后面才防卖出。', 'Teaching simulation: DEMO_TX_001 on DemoChain, amount 100, 3 confirmations.\nSuccess only means it was included.\nIf the recipient is an exchange, you read it as a deposit to an exchange, and the selling to watch for comes later.'),
+        pitfalls: [
+          bi('只看成功两个字', 'Reading only the word success'),
+          bi('把巨鲸的冷钱包当成自己的钱包', 'Treating the whale’s cold wallet as your own wallet')
+        ],
+        practice: bi('看到巨鲸警报时，先读是转入交易所，还是转到巨鲸自己的冷钱包。', 'When you see a whale alert, first read whether it is a deposit to an exchange or a move to the whale’s own cold wallet.'),
         check: {
-          ask: bi('一笔大额刚刚成功转到交易所地址，还没有成交记录。后面更常见的是？', 'A large amount just succeeded into an exchange address, and there is no trade record yet. What is more common next?'),
-          options: [opt('A', '价格已经跌完了', 'Price has already finished dropping'), opt('B', '后面常常才出现卖出，现在还没卖', 'Selling often shows up later, and it is not sold yet'), opt('C', '确认数会变成人数', 'The confirmation count becomes a head count'), opt('D', '必须立刻跟着卖', 'You must sell along with it at once')],
+          ask: bi('帖子写「某巨鲸向交易所转入 5000 枚」，还没有成交记录，后面更常见的是？', 'The post says a whale deposited 5000 coins to an exchange, and there is no trade record yet, what is more common next?'),
+          options: [
+            opt('A', '标题出来价格通常已经跌完', 'Once the headline is out, price has usually finished dropping'),
+            opt('B', '后面常常才出现卖出，现在还没卖', 'Selling often shows up later, and it is not sold yet'),
+            opt('C', '转入交易所通常是去抄底', 'A deposit to an exchange is usually for buying the dip'),
+            opt('D', '5000 枚太少，价格通常不动', '5000 coins is too small, so price usually does not move')
+          ],
           answer: 'B',
-          note: bi('刚进交易所还没成交，卖出常常在后面，这一秒通常还没反映到价格上。', 'A fresh exchange deposit with no trade yet often sells later, and price usually has not reacted in that second.'),
-          miss: bi('刚进交易所还没成交，卖出常常在后面，这一秒通常还没反映到价格上。', 'A fresh exchange deposit with no trade yet often sells later, and price usually has not reacted in that second.')
+          note: bi('向交易所转入还没成交，卖出常常在后面，这一刻通常还没反映到价格上。', 'A deposit to an exchange with no trade yet often sells later, and price usually has not reacted in that moment.'),
+          miss: bi('向交易所转入还没成交，卖出常常在后面，这一刻通常还没反映到价格上。', 'A deposit to an exchange with no trade yet often sells later, and price usually has not reacted in that moment.')
         },
         quizzes: [
-          quiz('大额转到自己的冷钱包。短线常常怎样？', 'A large amount moves to your own cold wallet. What is common in the short term?', [opt('A', '必须大跌', 'It must drop hard'), opt('B', '和进交易所完全一样', 'The same as an exchange deposit'), opt('C', '确认数会决定涨跌', 'The confirmation count decides up or down'), opt('D', '卖压常常更轻，因为币离开了可卖的地方', 'Selling is often lighter, because the coins left the place they can be sold')], 'D', {A: ['离开交易所不是卖出。', 'Leaving the exchange is not a sale.'], B: ['冷钱包和交易所是相反的去向。', 'A cold wallet and an exchange are opposite destinations.'], C: ['确认数只说明又接上了区块。', 'The confirmation count only means more blocks were added.'], D: ['币进冷钱包，短线可卖的库存常常变少，卖压更轻。', 'Coins in a cold wallet often mean less inventory available to sell, so near-term selling is lighter.']}),
-          quiz('确认数从 1 变成 3。价格会怎样？', 'Confirmations go from 1 to 3. What happens to price?', [opt('A', '确认数不决定涨跌，它只说明又接上了区块', 'The count does not decide up or down. It only means more blocks were added'), opt('B', '每多一个确认就跌一截', 'Each extra confirmation drops price a notch'), opt('C', '到 3 就证明已经卖掉', 'At 3 it proves the coins were sold'), opt('D', '到 3 就证明收款人是你认识的人', 'At 3 it proves the recipient is the person you know')], 'A', {A: ['确认数变多只是后面又接上了区块，不决定涨跌。', 'More confirmations only mean later blocks were added, and they do not decide up or down.'], B: ['没有“一个确认跌一截”这一条。', 'There is no rule that one confirmation drops price a notch.'], C: ['确认数不是成交记录。', 'A confirmation count is not a trade record.'], D: ['确认数也不证明收款人是谁。', 'The count also does not prove who the recipient is.']}),
-          quiz('同名代币，但是另一条链，状态显示成功。你看的那个币价通常？', 'A same-name token on another chain shows success. What usually happens to the coin price you are watching?', [opt('A', '必须跟着大跌', 'It must drop along with it'), opt('B', '必须跟着大涨', 'It must rise along with it'), opt('C', '通常没有影响，因为不是那一份资产', 'Usually no effect, because it is not that asset'), opt('D', '确认数一到就会补涨', 'It catches up once the confirmations arrive')], 'C', {A: ['错的链不会把卖压带给对的那份币。', 'The wrong chain does not bring selling to the right asset.'], B: ['错的链也不是对的那份币的买盘。', 'The wrong chain is not buying of the right asset either.'], C: ['不是那一条链、那一份合约，你看的价格通常不为它而动。', 'If it is not that chain and that contract, the price you watch usually does not move for it.'], D: ['确认数补不齐一份对不上的资产。', 'Confirmations do not turn a mismatched asset into the right one.']})
+          quiz('同一条警报改成转到巨鲸自己的冷钱包，短线常常怎样？', 'The same alert is changed to a move to the whale’s own cold wallet, what is common in the short term?', [
+            opt('A', '和转入交易所一样，常常偏软', 'The same as an exchange deposit, often soft'),
+            opt('B', '冷钱包是你的地址，要先核对私钥', 'The cold wallet is your address, so check the private key first'),
+            opt('C', '卖压常常更轻，因为币离开了可卖的地方', 'Selling is often lighter, because the coins left the place they can be sold'),
+            opt('D', '一进冷钱包通常就会再转回交易所', 'Once in a cold wallet it usually moves back to an exchange')
+          ], 'C', {
+            A: ['冷钱包和交易所是相反的去向。', 'A cold wallet and an exchange are opposite destinations.'],
+            B: ['自己的冷钱包是巨鲸的地址，不是你的钱包。', 'His own cold wallet is the whale’s address, not your wallet.'],
+            C: ['币离开交易所，短线可卖的库存常常变少，卖压更轻。', 'Coins leave the exchange, so the inventory that can be sold often shrinks, and near-term selling is lighter.'],
+            D: ['进冷钱包不是马上转回交易所的固定走法。', 'Entering a cold wallet is not a fixed path of moving straight back to an exchange.']
+          }),
+          quiz('帖子写转入交易所，你第一眼该读成什么？', 'The post says the coins moved to an exchange, what should the first read be?', [
+            opt('A', '已经在交易所卖掉了', 'They have already been sold on the exchange'),
+            opt('B', '币到了交易所，卖出还要再看', 'The coins arrived at the exchange, and the sale is still to be seen'),
+            opt('C', '这是巨鲸在加保证金做多', 'The whale is adding margin to a long'),
+            opt('D', '数量一写出来，价格就会跟着跳', 'Once the amount is written, price jumps with it')
+          ], 'B', {
+            A: ['转入不是成交，标题里没有卖出记录。', 'A deposit is not a trade, and the headline has no sale record.'],
+            B: ['「向交易所转入 X 枚」只说明币到了，卖不卖要再看。', '“Deposited X coins to an exchange” only says the coins arrived, and whether they sell is still to be seen.'],
+            C: ['可以是保证金，但第一眼不能读成已经在做多。', 'It can be margin, but the first read cannot be that a long is already on.'],
+            D: ['消息刚出来，价格往往还没动。', 'When the post has just appeared, price often has not moved.']
+          }),
+          quiz('警报里的链或合约对不上你看的那个币，这个币价通常？', 'The chain or contract in the alert does not match the coin you watch, what does that coin’s price usually do?', [
+            opt('A', '通常没有影响，因为不是那一份资产', 'Usually no effect, because it is not that asset'),
+            opt('B', '同名就会带着这个币一起动', 'The same name carries this coin along with it'),
+            opt('C', '确认多了就会补上这一跌', 'More confirmations fill in this drop'),
+            opt('D', '先当成转入交易所，方向偏软', 'Read it first as an exchange deposit, so it leans soft')
+          ], 'A', {
+            A: ['不是那一条链、那一份合约，你看的价格通常不为它而动。', 'If it is not that chain and that contract, the price you watch usually does not move for it.'],
+            B: ['同名可以是另一份合约，不会自动带着这个币动。', 'The same name can be another contract, and it does not automatically carry this coin.'],
+            C: ['确认数只说明又接上了区块，补不齐一份对不上的资产。', 'The confirmation count only means more blocks were added, and it does not turn a mismatched asset into the right one.'],
+            D: ['链都对不上，就还不是你这个币的转入交易所。', 'If the chain does not match, it is not an exchange deposit of the coin you watch.']
+          })
         ],
-        study: { kind: 'panel', headers: [bi('字段', 'Field'), bi('模拟值', 'Simulated value')], cells: [[bi('链', 'Chain'), 'DemoChain'], [bi('交易', 'Transaction'), 'DEMO_TX_001'], [bi('区块', 'Block'), '1001'], [bi('金额', 'Amount'), '100 DEMO_USDT'], [bi('确认', 'Confirmations'), '3']], rows: [bi('教学模拟。成功只说明被打包。若地址是交易所，卖出常常在后面，这一秒通常还没反映到价格上。', 'Teaching simulation. Success only means it was included. If the address is an exchange, selling often comes later, and price usually has not reacted in that second.')] }
+        study: { kind: 'panel', headers: [bi('字段', 'Field'), bi('模拟值', 'Simulated value')], cells: [[bi('链', 'Chain'), 'DemoChain'], [bi('交易', 'Transaction'), 'DEMO_TX_001'], [bi('区块', 'Block'), '1001'], [bi('金额', 'Amount'), '100 DEMO_USDT'], [bi('确认', 'Confirmations'), '3']], rows: [
+          bi('教学模拟。成功，金额 100，确认数 3。', 'Teaching simulation. Success, amount 100, 3 confirmations.')
+        ] }
       }),
       lesson({
         id: '02', title: bi('交易所净流入：进交易所不等于卖掉', 'Exchange netflow: coins in do not mean coins sold'),
-        scene: bi('净流入突然很大，后面价格通常怎样？', 'Net inflow suddenly gets large. What does price usually do next?'),
-        one: bi('币大量进交易所时后面常常偏软，大量离开时短线卖压常常减轻，但进了还不等于已经卖掉。', 'When a lot of coins enter exchanges price is often softer afterward, when a lot leave near-term selling is often lighter, and an inflow is still not a sale that already happened.'),
-        explain: bi('净流入是外部转进减去外部转出。\n同一家交易所内部从钱包划到现货，不算新的进出。\n标签不清楚的数量要单独放，不能算进净额。\n净额是库存变化，不是成交单。', 'Net inflow is external deposits minus external withdrawals.\nA move from wallet to spot inside the same exchange is not a new deposit or withdrawal.\nAmounts with unclear labels stay on the side, and they do not go into the net.\nThe net is a change in inventory, not a filled order.'),
+        scene: bi('净流入比平时每天高出一截，后面价格通常怎样？', 'Net inflow is a notch above its usual daily level, what does price usually do next?'),
+        one: bi('币进交易所常常偏空，稳定币进交易所常常偏多，明显变大是比它平时每天的水平高出一截。', 'Coins flowing into exchanges often lean bearish, stablecoins flowing in often lean bullish, and clearly larger means a notch above the usual daily level.'),
+        explain: bi('净流入是外部转进减去外部转出。\n同一家交易所内部从钱包划到现货，不算新的进出。\n标签不清楚的数量要单独放，不能算进净额。\n比平时每天的水平高出一截，才叫明显变大。\n币的净流入看可卖的库存，稳定币的净流入看买盘的弹药。', 'Net inflow is external deposits minus external withdrawals.\nA move from wallet to spot inside the same exchange is not a new deposit or withdrawal.\nAmounts with unclear labels stay on the side, and they do not go into the net.\nA notch above the usual daily level is what counts as clearly larger.\nCoin net inflow is inventory that can be sold, and stablecoin net inflow is ammunition for buying.'),
         topic: {
-          title: bi('出现这种情况，行情一般怎么走', 'What price usually does next'),
-          body: bi('净流入明显变大，交易所里可卖的币变多，后面价格常常偏软。\n净流出明显变大，币离开交易所，短线卖压常常减轻。\n这是常常，不是已经成交。进了还可以躺着不卖。\n流出也可能只是转到另一家交易所，卖压只是换了地方。\n标签把外部转账标成内部，净额就会看反。\n大涨途中也可以一边创新高、一边净流入，强趋势可以盖过这一条。', 'When net inflow gets clearly larger, more coins sit where they can be sold, and price is often softer afterward.\nWhen net outflow gets clearly larger, coins leave the exchange, and near-term selling is often lighter.\nThat is what is common, not a trade that already happened. Coins can sit there and not be sold.\nAn outflow can also be a move to another exchange, so the selling just changed address.\nIf a label marks an external transfer as internal, you read the net backwards.\nA strong rise can also make new highs while net inflow is large, and the trend can override this one line.')
+          title: bi('币和稳定币进出交易所时', 'When coins and stablecoins move in and out of exchanges'),
+          body: bi('比特币这类币净流入明显变大，可卖的库存变多，后面价格常常偏软。\n稳定币净流入明显变大，买盘的弹药变多，后面常常偏多。\n净流出明显变大，币离开交易所，短线卖压常常减轻。\n流出也可能只是转到另一家交易所，卖压只是换了地方。\n标签把外部转账标成内部，净额就会看反。\n大涨途中也可以一边创新高、一边币在净流入，强趋势可以盖过这一条。', 'When net inflow of coins such as bitcoin gets clearly larger, more inventory can be sold, and price is often softer afterward.\nWhen stablecoin net inflow gets clearly larger, there is more ammunition for buying, and it often leans bullish afterward.\nWhen net outflow gets clearly larger, coins leave the exchange, and near-term selling is often lighter.\nAn outflow can also be a move to another exchange, so the selling just changed address.\nIf a label marks an external transfer as internal, you read the net backwards.\nA strong rise can also make new highs while coins are flowing in, and the trend can override this one line.')
         },
-        example: bi('教学模拟：外部流入 1000，流出 700，内部划转 500 排除，净流入是 +300。\n未知 200 另外放着。\n+300 是多出来的库存，不是已经卖掉 300。后面才看会不会真的卖。', 'Teaching simulation: external inflow 1000, outflow 700, internal transfer 500 excluded, net inflow +300.\nUnknown 200 sits on the side.\n+300 is extra inventory, not 300 already sold. Whether it actually sells is what you watch next.'),
-        pitfalls: [bi('把内部划转算进净流入', 'Counting an internal transfer in net inflow'), bi('把净流入当成已经卖出', 'Treating net inflow as coins already sold')],
-        practice: bi('先看是净流入变大还是净流出变大，再判断后面通常偏软还是卖压减轻。', 'First see whether net inflow or net outflow got larger, then judge whether what follows is usually softer or lighter on selling.'),
+        example: bi('教学模拟：外部流入 1000，流出 700，内部划转 500 排除，净流入是 300。\n未知 200 另外放着。\n这 300 若比平时每天高出一截，才按偏空去读。', 'Teaching simulation: external inflow 1000, outflow 700, internal transfer 500 excluded, net inflow 300.\nUnknown 200 sits on the side.\nIf this 300 is a notch above the usual daily level, then you read it as a soft lean.'),
+        pitfalls: [
+          bi('净流入大说明大家在买', 'A large net inflow means people are buying'),
+          bi('把币的流入和稳定币的流入读成同一个方向', 'Reading coin inflow and stablecoin inflow as the same direction')
+        ],
+        practice: bi('先分清流进来的是币还是稳定币，再和它平时每天的水平比。', 'First separate whether what flowed in is coins or stablecoins, then compare it with the usual daily level.'),
         check: {
-          ask: bi('交易所净流入突然很大，同时币价还在高位。后面更常见的是？', 'Exchange net inflow suddenly gets large while the coin is still high. What is more common next?'),
-          options: [opt('A', '库存变多，价格常常偏软', 'Inventory is larger, and price is often softer'), opt('B', '净流入等于已经涨完', 'Net inflow means the rise is already finished'), opt('C', '内部划转也会算进去所以不用管', 'Internal transfers are included, so you can ignore them'), opt('D', '必须把未知标签当成买入', 'You must treat unknown labels as buys')],
-          answer: 'A',
-          note: bi('高位净流入变大，可卖的库存变多，后面价格常常偏软。', 'A larger net inflow at a high means more inventory that can be sold, and price is often softer afterward.'),
-          miss: bi('高位净流入变大，可卖的库存变多，后面价格常常偏软。', 'A larger net inflow at a high means more inventory that can be sold, and price is often softer afterward.')
+          ask: bi('比特币净流入比平时每天的水平高出一截，后面更常见的是？', 'Bitcoin net inflow is a notch above its usual daily level, what is more common next?'),
+          options: [
+            opt('A', '净流入大说明大家在买，常常偏多', 'A large net inflow means people are buying, so it often leans bullish'),
+            opt('B', '和稳定币流入一样，是买盘变多', 'The same as stablecoin inflow, buying ammunition increased'),
+            opt('C', '可卖的币变多，价格常常偏软', 'More coins can be sold, and price is often softer'),
+            opt('D', '比平时高一截通常没方向', 'A notch above usual usually has no direction')
+          ],
+          answer: 'C',
+          note: bi('币的净流入比平时每天高一截，可卖的库存变多，后面常常偏软。', 'Coin net inflow a notch above the usual daily level means more inventory that can be sold, and it is often softer afterward.'),
+          miss: bi('币的净流入比平时每天高一截，可卖的库存变多，后面常常偏软。', 'Coin net inflow a notch above the usual daily level means more inventory that can be sold, and it is often softer afterward.')
         },
         quizzes: [
-          quiz('净流出很大，币离开交易所。短线常常？', 'Net outflow is large and coins leave the exchange. What is common in the short term?', [opt('A', '等于已经涨完', 'It means the rise is already finished'), opt('B', '必须马上大跌', 'It must drop hard at once'), opt('C', '卖压常常减轻，但要防只是转到另一家', 'Selling is often lighter, but watch for a move to another exchange'), opt('D', '内部划转会把流出取消', 'An internal transfer cancels the outflow')], 'C', {A: ['离开交易所不是上涨结束的证明。', 'Leaving the exchange is not proof the rise is over.'], B: ['库存变少通常不是先大跌的理由。', 'Less inventory is usually not a reason for a hard drop first.'], C: ['币离开后短线卖压常常减轻，除非只是换到另一家交易所。', 'After coins leave, near-term selling is often lighter, unless they only moved to another exchange.'], D: ['内部划转本来就不进净额，它取消不了外部流出。', 'Internal transfers never enter the net, and they do not cancel an external outflow.']}),
-          quiz('内部从钱包划到现货 500。净流入该怎么算？', 'An internal move of 500 from wallet to spot. How does net inflow count it?', [opt('A', '加进净流入', 'Add it to net inflow'), opt('B', '不算进去，只用外部进出', 'Leave it out, and use only external deposits and withdrawals'), opt('C', '当成已经卖出 500', 'Treat it as 500 already sold'), opt('D', '和未知标签加在一起', 'Add it together with the unknown label')], 'B', {A: ['内部划转没有新的币从外面进来。', 'An internal transfer does not bring new coins in from outside.'], B: ['净流入只用外部转进减外部转出，500 排除。', 'Net inflow uses external deposits minus external withdrawals, and the 500 stays out.'], C: ['内部划转不是成交。', 'An internal transfer is not a trade.'], D: ['未知标签单独放，不和内部划转加在一起。', 'The unknown label sits on the side, and it is not added to the internal transfer.']}),
-          quiz('大涨中价格创新高，净流入也很大。该怎么看？', 'During a strong rise price makes a new high and net inflow is also large. How should you read it?', [opt('A', '流入一出现涨势就结束', 'The rise ends the moment inflow appears'), opt('B', '创新高说明流入是买盘', 'A new high means the inflow is buying'), opt('C', '必须把流入改成流出', 'You must rewrite the inflow as outflow'), opt('D', '流入常常偏空，但强趋势可以盖过这一条', 'Inflow often leans soft, but a strong trend can override this one line')], 'D', {A: ['强趋势可以在流入很大时还创新高。', 'A strong trend can still make new highs while inflow is large.'], B: ['进交易所是库存，不是已经买进的成交。', 'Entering the exchange is inventory, not a buy that already filled.'], C: ['数字不用改写，读法是趋势可以盖过它。', 'You do not rewrite the number, and the read is that the trend can override it.'], D: ['流入常常让价格偏软，这一段的强趋势仍可以盖过它。', 'Inflow often leans the price soft, and the strong trend of this stretch can still override it.']})
+          quiz('稳定币净流入比平时每天高出一截，这更像什么？', 'Stablecoin net inflow is a notch above its usual daily level, what is this more like?', [
+            opt('A', '和币流入一样，常常偏空', 'The same as coin inflow, often bearish'),
+            opt('B', '稳定币变多通常没人用，价格不动', 'More stablecoins usually go unused, and price stays put'),
+            opt('C', '高出一截太常见，通常忽略', 'A notch above is too common, so it is usually ignored'),
+            opt('D', '买盘弹药变多，常常偏多', 'More ammunition for buying, often bullish')
+          ], 'D', {
+            A: ['币流入偏空，稳定币流入偏多，方向相反。', 'Coin inflow leans bearish, and stablecoin inflow leans bullish, and the directions are opposite.'],
+            B: ['进了交易所的稳定币是买盘弹药，不是通常没人用。', 'Stablecoins that entered an exchange are buying ammunition, not usually unused.'],
+            C: ['比平时每天高出一截就叫明显变大，不是忽略。', 'A notch above the usual daily level is what counts as clearly larger, so it is not ignored.'],
+            D: ['稳定币净流入明显变大，买盘弹药变多，常常偏多。', 'When stablecoin net inflow gets clearly larger, buying ammunition grows, and it often leans bullish.']
+          }),
+          quiz('币的净流出比平时每天高出一截，短线常常？', 'Coin net outflow is a notch above its usual daily level, what is common in the short term?', [
+            opt('A', '卖压常常减轻，但要防只是转到另一家', 'Selling is often lighter, but watch for a move to another exchange'),
+            opt('B', '流出大说明大家在卖，常常偏空', 'A large outflow means people are selling, so it often leans bearish'),
+            opt('C', '和稳定币流出是同一个方向', 'It is the same direction as stablecoin outflow'),
+            opt('D', '高出一截通常还要再观察一周', 'A notch above usually needs another week of watching')
+          ], 'A', {
+            A: ['币离开后短线卖压常常减轻，除非只是换到另一家交易所。', 'After coins leave, near-term selling is often lighter, unless they only moved to another exchange.'],
+            B: ['流出是库存变少，不是大家正在卖。', 'Outflow is less inventory, not people in the middle of selling.'],
+            C: ['这一问是币的流出，不和稳定币混成一个方向。', 'This question is coin outflow, and it is not mixed into one direction with stablecoins.'],
+            D: ['比平时高一截就可以读，不用再等一周。', 'A notch above the usual level can be read, and you do not wait another week.']
+          }),
+          quiz('大涨中价格创新高，币的净流入也比平时高，该怎么看？', 'During a strong rise price makes a new high, and coin net inflow is also above usual, how should you read it?', [
+            opt('A', '流入一出现，这段涨势通常结束', 'The rise usually ends the moment inflow appears'),
+            opt('B', '创新高说明流入是买盘', 'A new high means the inflow is buying'),
+            opt('C', '流入常常偏空，但强趋势可以盖过', 'Inflow often leans soft, but a strong trend can override it'),
+            opt('D', '比平时高就要把多单先平掉', 'Above usual means you close the longs first')
+          ], 'C', {
+            A: ['强趋势可以在流入很大时还创新高。', 'A strong trend can still make new highs while inflow is large.'],
+            B: ['币进交易所是库存，不是已经买进的成交。', 'Coins entering the exchange are inventory, not a buy that already filled.'],
+            C: ['币的流入常常让价格偏软，这一段的强趋势仍可以盖过它。', 'Coin inflow often leans the price soft, and the strong trend of this stretch can still override it.'],
+            D: ['盖得过的时候不用先平多，盖不过再考虑库存。', 'When the trend overrides it you do not close the longs first, and you weigh the inventory when it does not.']
+          })
         ],
-        study: { kind: 'panel', headers: [bi('项目', 'Item'), bi('数量', 'Amount')], cells: [[bi('外部流入', 'External inflow'), '1000'], [bi('外部流出', 'External outflow'), '700'], [bi('内部划转', 'Internal transfer'), bi('500（排除）', '500 (excluded)')], [bi('净流入', 'Net inflow'), '+300'], [bi('未知', 'Unknown'), '200']], rows: [bi('净流入 +300 是多出来的库存，不是已经卖掉。库存变多时，后面价格常常偏软。', 'Net inflow +300 is extra inventory, not coins already sold. When inventory grows, price is often softer afterward.')] }
+        study: { kind: 'panel', headers: [bi('项目', 'Item'), bi('数量', 'Amount')], cells: [[bi('外部流入', 'External inflow'), '1000'], [bi('外部流出', 'External outflow'), '700'], [bi('内部划转', 'Internal transfer'), bi('500，排除', '500, excluded')], [bi('净流入', 'Net inflow'), '300'], [bi('未知', 'Unknown'), '200']], rows: [
+          bi('外部流入 1000，外部流出 700，净流入 300。', 'External inflow 1000, external outflow 700, net inflow 300.')
+        ] }
       }),
       lesson({
         id: '03', title: bi('稳定币增发：Mint 不等于买盘', 'Stablecoin minting: a mint is not buying pressure'),
-        scene: bi('稳定币增发了，比特币是不是已经有人在买？', 'Stablecoins were minted. Is someone already buying bitcoin?'),
-        one: bi('稳定币真的变多并拿去买时风险资产常常更有买盘，只是从一条链搬到另一条链就没有新钱。', 'When stablecoins truly increase and get spent, risk assets often have more buying, and a move from one chain to another adds no new money.'),
-        explain: bi('增发是新的稳定币被造出来。\n销毁是被烧掉。\n一条链上的增发，可能只是另一条链烧掉后搬过来。\n全网有没有变多，要把相关的链放在一起看。', 'A mint is new stablecoins being created.\nA burn is stablecoins being destroyed.\nA mint on one chain can just be a move after a burn on another chain.\nTo see whether the whole network increased, put the relevant chains together.'),
+        scene: bi('看到「Tether 增发 10 亿」，是不是已经有人在买比特币？', 'When you see “Tether minted 1 billion,” is someone already buying bitcoin?'),
+        one: bi('稳定币真的离开金库并进了交易所，风险资产常常更有买盘，只停在金库里或只是换了一条链就没有新钱。', 'When stablecoins really leave the treasury and enter exchanges, risk assets often have more buying, and money that only sits in the treasury or only changes chain is not new money.'),
+        explain: bi('增发是新的稳定币被造出来。\n销毁是被烧掉。\n一条链上的增发，可能只是另一条链烧掉后搬过来。\n全网有没有变多，要把相关的链放在一起看。\n读「增发 10 亿」时，先看这些币有没有离开金库。', 'A mint is new stablecoins being created.\nA burn is stablecoins being destroyed.\nA mint on one chain can just be a move after a burn on another chain.\nTo see whether the whole network increased, put the relevant chains together.\nWhen you read “minted 1 billion,” first see whether those coins left the treasury.'),
         topic: {
-          title: bi('出现这种情况，行情一般怎么走', 'What price usually does next'),
-          body: bi('全网稳定币变多，而且开始进交易所，后面风险资产常常更有买盘。\n只在一条链上变多、另一条链等量变少，合计常常是零，通常没有额外买盘。\n增发了却一直停在金库里没动，价格也可以毫无反应。\n所以增发不等于已经有人买了比特币。\n稳定币变多、但市场当时在躲风险时，新钱也可以先趴着，币价继续跌。\n要看的是新钱有没有真的出来买，不是标题写了增发。', 'When stablecoins increase across the network and start entering exchanges, risk assets often have more buying afterward.\nMore on one chain and the same amount less on another often sums to zero, and there is usually no extra buying.\nA mint that sits in a treasury and never moves can leave price with no reaction at all.\nSo a mint does not mean someone already bought bitcoin.\nWhen stablecoins increase but the market is hiding from risk, the new money can sit, and the coin can keep falling.\nWhat you watch is whether the new money actually comes out to buy, not a headline that says mint.')
+          title: bi('看到稳定币增发时', 'When you see a stablecoin mint'),
+          body: bi('标题写增发 10 亿，先看币有没有离开金库，再看有没有进交易所。\n离开金库并且进了交易所，后面风险资产常常更有买盘。\n只在一条链上变多、另一条链等量变少，合计常常是零，通常没有额外买盘。\n增发了却一直停在金库里，价格也可以毫无反应。\n所以增发标题不等于已经有人买了比特币。\n稳定币变多、但市场当时在躲风险时，新钱也可以先趴着，币价继续跌。', 'When the headline says 1 billion was minted, first see whether the coins left the treasury, then whether they entered exchanges.\nIf they left the treasury and entered exchanges, risk assets often have more buying afterward.\nMore on one chain and the same amount less on another often sums to zero, and there is usually no extra buying.\nA mint that keeps sitting in the treasury can leave price with no reaction.\nSo a mint headline does not mean someone already bought bitcoin.\nWhen stablecoins increase but the market is hiding from risk, the new money can sit first, and the coin can keep falling.')
         },
-        example: bi('教学模拟：链 A 增发 1 亿，链 B 烧掉 1 亿，合计是 0。\n这更像搬家，不是新的买盘。\n若只有增发、没有对等的销毁，才更像多了钱，后面才看它进不进场。', 'Teaching simulation: chain A mints 100 million and chain B burns 100 million, and the sum is 0.\nThat looks more like a move, not new buying.\nA mint with no matching burn looks more like new money, and then you watch whether it actually comes in.'),
-        pitfalls: [bi('单链增发当成总供应上升', 'Reading a single-chain mint as a rise in total supply'), bi('把增发写成已经在买比特币', 'Writing a mint down as bitcoin already being bought')],
-        practice: bi('先看是全网真的变多，还是一条链增、另一条链减，再判断有没有新的买盘。', 'First see whether the whole network truly increased, or one chain minted while another burned, then judge whether there is new buying.'),
+        example: bi('教学模拟：链 A 增发 1 亿，链 B 烧掉 1 亿，两边抵消。\n这更像搬家，不是新的买盘。\n若 10 亿离开了金库并进了交易所，才更像多了能拿去买的钱。', 'Teaching simulation: chain A mints 100 million and chain B burns 100 million, and the two sides offset.\nThat looks more like a move, not new buying.\nIf 1 billion left the treasury and entered exchanges, it looks more like new money that can be spent.'),
+        pitfalls: [
+          bi('看见增发标题就当成有人在买', 'Treating a mint headline as someone already buying'),
+          bi('不看金库里的币走没走', 'Not checking whether the coins left the treasury')
+        ],
+        practice: bi('看到增发 10 亿时，先查这些币在不在金库，再查进没进交易所。', 'When you see a mint of 1 billion, first check whether the coins are still in the treasury, then whether they entered exchanges.'),
         check: {
-          ask: bi('全网稳定币明显变多，而且正在转入交易所。后面更常见的是？', 'Stablecoins are clearly up across the network, and they are moving into exchanges. What is more common next?'),
-          options: [opt('A', '没有任何影响', 'No effect at all'), opt('B', '风险资产常常更有买盘', 'Risk assets often have more buying'), opt('C', '比特币必须马上腰斩', 'Bitcoin must be cut in half at once'), opt('D', '这一定是跨链桥', 'This must be a bridge')],
-          answer: 'B',
-          note: bi('全网变多而且进交易所，后面风险资产常常更有买盘。', 'Up across the network and moving into exchanges, risk assets often have more buying afterward.'),
-          miss: bi('全网变多而且进交易所，后面风险资产常常更有买盘。', 'Up across the network and moving into exchanges, risk assets often have more buying afterward.')
+          ask: bi('「Tether 增发 10 亿」，币已经离开金库，正在进交易所，后面更常见的是？', '“Tether minted 1 billion,” the coins have left the treasury, and they are entering exchanges, what is more common next?'),
+          options: [
+            opt('A', '还在标题阶段，价格通常不动', 'It is still only a headline, so price usually does not move'),
+            opt('B', '进交易所是去换成法币，常常偏空', 'Entering exchanges is to swap into fiat, so it often leans bearish'),
+            opt('C', '增发本身通常已经涨完了', 'The mint itself has usually finished the rise'),
+            opt('D', '买盘弹药变多，风险资产常常更有买盘', 'Buying ammunition increased, so risk assets often have more buying')
+          ],
+          answer: 'D',
+          note: bi('离开金库并且进交易所，后面风险资产常常更有买盘。', 'Once they leave the treasury and enter exchanges, risk assets often have more buying afterward.'),
+          miss: bi('离开金库并且进交易所，后面风险资产常常更有买盘。', 'Once they leave the treasury and enter exchanges, risk assets often have more buying afterward.')
         },
         quizzes: [
-          quiz('一条链增发 1 亿，另一条链烧掉 1 亿。币价通常？', 'One chain mints 100 million and another burns 100 million. What does the coin price usually do?', [opt('A', '必须大涨', 'It must surge'), opt('B', '必须大跌', 'It must drop'), opt('C', '金库会自动拿去买币', 'The treasury automatically spends it on coins'), opt('D', '合计没变多，通常没有新的买盘', 'The sum did not increase, so there is usually no new buying')], 'D', {A: ['合计是零，不是新的买盘。', 'The sum is zero, and that is not new buying.'], B: ['搬家本身也不是卖出比特币。', 'A move by itself is not a sale of bitcoin either.'], C: ['烧掉和对等增发不会自动变成买单。', 'A burn and a matching mint do not automatically become a buy.'], D: ['两边抵消，通常没有额外的买盘。', 'The two sides offset, so there is usually no extra buying.']}),
-          quiz('增发了但钱一直停在金库。该怎么看？', 'It was minted, but the money keeps sitting in the treasury. How should you read it?', [opt('A', '还没进场，价格可以毫无反应', 'It has not come in yet, so price can show no reaction'), opt('B', '停在金库等于已经买完', 'Sitting in the treasury means the buying is finished'), opt('C', '必须在一小时内大涨', 'It must surge within an hour'), opt('D', '这等于另一条链烧掉了', 'This equals a burn on another chain')], 'A', {A: ['钱没出来买，价格可以毫无反应。', 'If the money does not come out to buy, price can show no reaction.'], B: ['停着不是已经成交的买单。', 'Sitting there is not a buy that already filled.'], C: ['没有“一小时内必须涨”这一条。', 'There is no rule that it must rise within an hour.'], D: ['单看金库停着，看不出另一条链有没有销毁。', 'A treasury that sits still does not show whether another chain burned.']}),
-          quiz('稳定币在变多，可是市场当时在躲风险。常怎么走？', 'Stablecoins are increasing, but the market is hiding from risk. What often happens?', [opt('A', '新钱一出现就必须涨', 'New money must rally the moment it appears'), opt('B', '增发会被取消', 'The mint gets cancelled'), opt('C', '新钱可以先趴着，币价仍可能继续跌', 'The new money can sit first, and the coin can keep falling'), opt('D', '躲风险时稳定币会变成比特币', 'While hiding from risk, stablecoins turn into bitcoin')], 'C', {A: ['躲风险时新钱可以不出来买。', 'While hiding from risk, the new money can stay unspent.'], B: ['市场情绪取消不了已经增发的数量。', 'Market mood does not cancel a mint that already happened.'], C: ['新钱先趴着，币价仍可以继续跌。', 'The new money sits first, and the coin can still keep falling.'], D: ['稳定币不会因为躲风险就自动换成比特币。', 'Stablecoins do not automatically turn into bitcoin because people are hiding from risk.']})
+          quiz('增发的 10 亿还停在金库里，该怎么看？', 'The minted 1 billion is still sitting in the treasury, how should you read it?', [
+            opt('A', '停在金库等于已经买完', 'Sitting in the treasury means the buying is finished'),
+            opt('B', '还没进场，价格可以毫无反应', 'It has not come in yet, so price can show no reaction'),
+            opt('C', '金库里的增发通常过一天就进交易所', 'A treasury mint usually enters exchanges after one day'),
+            opt('D', '停着也算全网供应变多，常常偏多', 'Sitting still still counts as more supply, so it often leans bullish')
+          ], 'B', {
+            A: ['停着不是已经成交的买单。', 'Sitting there is not a buy that already filled.'],
+            B: ['币没离开金库，价格可以毫无反应。', 'If the coins have not left the treasury, price can show no reaction.'],
+            C: ['没有过一天就进交易所的固定走法。', 'There is no fixed path of entering exchanges after one day.'],
+            D: ['没进场的供应还不是买盘，常常不是偏多。', 'Supply that has not come in is not buying yet, so it often does not lean bullish.']
+          }),
+          quiz('一条链增发 1 亿，另一条链烧掉 1 亿，币价通常？', 'One chain mints 100 million and another burns 100 million, what does the coin price usually do?', [
+            opt('A', '增发的那条链会单独把币价拉起来', 'The minting chain lifts the coin price on its own'),
+            opt('B', '烧掉的那条链会单独把币价打下去', 'The burning chain pushes the coin price down on its own'),
+            opt('C', '两边金额一样，通常就是新的买盘', 'Matching amounts are usually new buying'),
+            opt('D', '两边抵消，通常没有新的买盘', 'The two sides offset, so there is usually no new buying')
+          ], 'D', {
+            A: ['单链增发看不到另一条链的销毁，不能单独当买盘。', 'A mint on one chain does not show the burn on the other, so it cannot stand alone as buying.'],
+            B: ['对等的销毁更像搬家，不是单独的卖出。', 'A matching burn looks more like a move, not a sale on its own.'],
+            C: ['金额一样仍可能只是换链，不是新钱。', 'Matching amounts can still be only a chain change, not new money.'],
+            D: ['两边抵消，通常没有额外的买盘。', 'The two sides offset, so there is usually no extra buying.']
+          }),
+          quiz('稳定币在变多，市场当时却在躲风险，常怎么走？', 'Stablecoins are increasing, but the market is hiding from risk, what often happens?', [
+            opt('A', '新钱可以先趴着，币价仍可能继续跌', 'The new money can sit first, and the coin can keep falling'),
+            opt('B', '一躲风险，增发通常会马上被买成比特币', 'Once people hide from risk, the mint is usually bought into bitcoin at once'),
+            opt('C', '躲风险时稳定币流入常常先推涨', 'While hiding from risk, stablecoin inflow often pushes price up first'),
+            opt('D', '新钱出来就说明风险已经过去', 'New money coming out means the risk has already passed')
+          ], 'A', {
+            A: ['新钱先趴着，币价仍可以继续跌。', 'The new money sits first, and the coin can still keep falling.'],
+            B: ['躲风险时新钱常常不出来买，不是马上换成比特币。', 'While hiding from risk, the new money often stays unspent, and it is not swapped into bitcoin at once.'],
+            C: ['躲风险时常常不是先推涨。', 'While hiding from risk, it often does not push price up first.'],
+            D: ['钱还趴着，不能说风险已经过去。', 'If the money is still sitting, you cannot say the risk has already passed.']
+          })
         ],
-        study: { kind: 'panel', headers: [bi('链', 'Chain'), bi('变化', 'Change')], cells: [['A', bi('mint 1 亿', 'mint 100 million')], ['B', bi('burn 1 亿', 'burn 100 million')], [bi('合计', 'Total'), '0']], rows: [bi('合计是 0，更像搬家，不是新的买盘。只有全网真的变多并进场，后面才常常更有买盘。', 'The sum is 0, which looks more like a move, not new buying. Only when the whole network truly increases and the money comes in is there often more buying afterward.')] }
+        study: { kind: 'panel', headers: [bi('链', 'Chain'), bi('变化', 'Change')], cells: [['A', bi('增发 1 亿', 'mint 100 million')], ['B', bi('销毁 1 亿', 'burn 100 million')], [bi('合计', 'Total'), '0']], rows: [
+          bi('链 A 增发 1 亿，链 B 销毁 1 亿，合计 0。', 'Chain A mints 100 million, chain B burns 100 million, total 0.')
+        ] }
       }),
       lesson({
-        id: '04', title: bi('TVL 与巨鲸：估值涨不等于流入', 'TVL and large holders: a higher valuation is not an inflow'),
-        scene: bi('巨鲸把币转到交易所，后面价格通常怎样？', 'A large holder moves coins to an exchange. What does price usually do next?'),
-        one: bi('锁仓金额只因价格上涨而变大不是新钱，巨鲸进交易所后面常常有卖压，进冷钱包则常常先拿住。', 'A higher locked value from price alone is not new money, a large holder moving to an exchange often brings selling later, and a move to cold storage is often just holding.'),
-        explain: bi('锁仓金额可以看成数量乘价格。\n数量不变、价格涨了，锁仓金额也会变大。\n活跃地址不是使用的人数。\n巨鲸转账要看从哪里到哪里。', 'Locked value can be read as quantity times price.\nIf quantity is unchanged and price rises, locked value still gets larger.\nActive addresses are not the number of people using it.\nA large-holder transfer is read by where it came from and where it went.'),
+        id: '04', title: bi('TVL：估值涨不等于流入', 'TVL: a higher valuation is not an inflow'),
+        scene: bi('锁仓金额涨了一截，是不是就有新钱进来？', 'Locked value rose a notch, did new money come in?'),
+        one: bi('锁仓金额变大，要先分清是币价抬上去的，还是真的有新钱锁进来。', 'When locked value gets larger, first separate a lift from the coin price from new money actually locked in.'),
+        explain: bi('锁仓金额会跟着币价和锁着的数量一起变。\n数量不变、币价涨了，金额也会变大。\n数量也增加，才更像有新钱锁进来。\n活跃地址不是使用的人数。', 'Locked value moves with both the coin price and the quantity locked.\nIf the quantity is unchanged and the coin price rises, the value still gets larger.\nWhen the quantity rises too, it looks more like new money locked in.\nActive addresses are not the number of people using it.'),
         topic: {
-          title: bi('出现这种情况，行情一般怎么走', 'What price usually does next'),
-          body: bi('数量没变、只是价格把锁仓金额抬高，这段上涨常常更脆，因为没有新钱。\n数量也在增加，才更像有新钱进来，趋势常常更稳。\n巨鲸把币转到交易所，后面常常出现卖出，价格偏软。\n转到自己的冷钱包，短线卖压常常减轻。\n在自己的两个地址之间搬家，价格通常没有反应。\n转入交易所也可以是去做保证金，并不马上卖。锁仓金额下跌也可以只是币价跌，不是大家在撤资。', 'If quantity is unchanged and only price lifts the locked value, the rise is often more fragile, because there is no new money.\nWhen quantity rises too, it looks more like new money coming in, and the trend is often steadier.\nA large holder moving coins to an exchange is often followed by selling, and price leans soft.\nA move to that holder’s own cold wallet often lightens near-term selling.\nA move between two of the holder’s own addresses usually leaves price with no reaction.\nA deposit to an exchange can also be margin, and it is not sold at once. A falling locked value can also be just the coin price falling, not everyone pulling money out.')
+          title: bi('锁仓金额变了，先看数量还是价格', 'When locked value changes, look at quantity or price first'),
+          body: bi('数量没变、只是币价把金额抬高，这段上涨常常更脆，因为没有新钱。\n数量和金额一起增加，才更像有新钱，趋势常常更稳。\n金额掉了、数量差不多，多半是币价掉下来，不一定是大家在撤资。\n只看金额的涨跌，会把币价和资金流混在一起。\n活跃地址变多，也不能当成使用的人变多。\n先把数量和价格拆开，再决定这段是新钱还是计价。', 'If the quantity is unchanged and only the coin price lifts the value, the rise is often more fragile, because there is no new money.\nWhen quantity and value rise together, it looks more like new money, and the trend is often steadier.\nIf the value falls and the quantity is about the same, it is mostly the coin price falling, not necessarily everyone pulling money out.\nWatching only the rise and fall of the value mixes the coin price with the flow of money.\nMore active addresses also cannot be read as more people using it.\nSplit quantity from price first, then decide whether this stretch is new money or just a valuation.')
         },
-        example: bi('教学模拟：100 枚、价格 2000，锁仓金额 200000。\n价格到 2500，数量仍是 100，金额 250000，涨了 25%，没有新钱。\n变成 110 枚、价格 2500，金额 275000，这时数量才变了。', 'Teaching simulation: 100 units at a price of 2000, locked value 200000.\nAt a price of 2500 the quantity is still 100, the value is 250000, up 25%, with no new money.\nAt 110 units and a price of 2500 the value is 275000, and only then did the quantity change.'),
-        pitfalls: [bi('把锁仓金额上涨都当成新钱', 'Treating every rise in locked value as new money'), bi('把巨鲸转账都当成已经卖出', 'Treating every large-holder transfer as a sale that already happened')],
-        practice: bi('先看巨鲸是转到交易所、冷钱包，还是自己的另一个地址，再判断后面通常有没有卖压。', 'First see whether the large holder moved to an exchange, a cold wallet, or another of their own addresses, then judge whether selling usually follows.'),
+        example: bi('教学模拟：100 枚，价格 2000，锁仓金额 200000。\n价格到 2500，数量仍是 100，金额 250000。\n这是涨了两成五，数量没有变。', 'Teaching simulation: 100 units, price 2000, locked value 200000.\nAt a price of 2500 the quantity is still 100, and the value is 250000.\nThat is a rise of one quarter, and the quantity did not change.'),
+        pitfalls: [
+          bi('把锁仓金额上涨都当成新钱', 'Treating every rise in locked value as new money'),
+          bi('把活跃地址变多当成使用的人变多', 'Treating more active addresses as more people using it')
+        ],
+        practice: bi('锁仓金额变动时，先看锁着的数量有没有一起变。', 'When locked value moves, first see whether the locked quantity moved with it.'),
         check: {
-          ask: bi('巨鲸把一大笔转到交易所，还没有卖出记录。后面更常见的是？', 'A large holder moves a large amount to an exchange, and there is no sale record yet. What is more common next?'),
-          options: [opt('A', '必须立刻涨', 'It must rise at once'), opt('B', '后面常常出现卖出，价格偏软', 'Selling often shows up later, and price leans soft'), opt('C', '这等于转到了冷钱包', 'This is the same as a move to cold storage'), opt('D', '锁仓金额会因此翻倍', 'Locked value doubles because of it')],
-          answer: 'B',
-          note: bi('巨鲸进交易所还没卖，后面常常才出现卖出，价格偏软。', 'A large holder entering an exchange has not sold yet, selling often shows up later, and price leans soft.'),
-          miss: bi('巨鲸进交易所还没卖，后面常常才出现卖出，价格偏软。', 'A large holder entering an exchange has not sold yet, selling often shows up later, and price leans soft.')
+          ask: bi('锁仓金额涨了一截，锁着的数量没变，这段上涨该怎么看？', 'Locked value rose a notch, and the locked quantity did not change, how should you read this rise?'),
+          options: [
+            opt('A', '多半是币价抬的，没有新钱，常常更脆', 'Mostly the coin price lifting it, no new money, often more fragile'),
+            opt('B', '金额涨了就是有人在锁，趋势通常更稳', 'A higher value means people are locking, so the trend is usually steadier'),
+            opt('C', '数量没变说明统计坏了，通常别用', 'Unchanged quantity means the count is broken, so usually do not use it'),
+            opt('D', '先看活跃地址，金额可以后看', 'Watch active addresses first, and the value can wait')
+          ],
+          answer: 'A',
+          note: bi('数量不变、只是币价抬高金额，这段上涨常常更脆。', 'Unchanged quantity with only the coin price lifting the value means this rise is often more fragile.'),
+          miss: bi('数量不变、只是币价抬高金额，这段上涨常常更脆。', 'Unchanged quantity with only the coin price lifting the value means this rise is often more fragile.')
         },
         quizzes: [
-          quiz('锁仓金额涨了 25%，数量一点没变。这段上涨该怎么看？', 'Locked value rose 25% and quantity did not change at all. How should you read this rise?', [opt('A', '一定是新钱进来了', 'New money definitely came in'), opt('B', '活跃地址因此等于用户', 'Active addresses therefore equal users'), opt('C', '多半是价格抬上去的，没有新钱，常常更脆', 'It is mostly price lifting it, there is no new money, and the rise is often more fragile'), opt('D', '25% 会在下一天退回去', 'The 25% is given back the next day')], 'C', {A: ['数量没变，就不是新钱进来。', 'Unchanged quantity is not new money coming in.'], B: ['地址数不是人数，也解释不了这 25%。', 'An address count is not a head count, and it does not explain this 25%.'], C: ['只是价格从 2000 到 2500，没有新钱，这种上涨常常更脆。', 'It is only price from 2000 to 2500, with no new money, and this kind of rise is often more fragile.'], D: ['没有“下一天必须退回”这一条。', 'There is no rule that it must be given back the next day.']}),
-          quiz('巨鲸转到自己的冷钱包。短线常常？', 'A large holder moves coins to their own cold wallet. What is common in the short term?', [opt('A', '卖压常常减轻', 'Selling is often lighter'), opt('B', '等于已经砸盘', 'It equals a dump that already happened'), opt('C', '锁仓金额一定归零', 'Locked value must go to zero'), opt('D', '和进交易所一样偏软', 'The same soft lean as an exchange deposit')], 'A', {A: ['币离开可卖的地方，短线卖压常常减轻。', 'Coins leave the place they can be sold, so near-term selling is often lighter.'], B: ['进冷钱包不是卖出成交。', 'A move to cold storage is not a filled sale.'], C: ['搬家不会把锁仓金额变成零。', 'A move does not turn locked value into zero.'], D: ['冷钱包和交易所是相反的去向。', 'A cold wallet and an exchange are opposite destinations.']}),
-          quiz('活跃地址变多。能不能当成使用的人变多、价格该涨？', 'Active addresses increase. Can you read that as more people using it, so price should rise?', [opt('A', '能，地址就是人', 'Yes. An address is a person'), opt('B', '能，变多就一定涨', 'Yes. More addresses must rise'), opt('C', '只能在锁仓金额也涨时', 'Only when locked value rises too'), opt('D', '不能，地址不是人数，不能单凭这个说要涨', 'No. Addresses are not people, so this alone does not say price should rise')], 'D', {A: ['一个控制者可以有很多地址。', 'One controller can use many addresses.'], B: ['地址变多不是上涨命令。', 'More addresses are not an order for price to rise.'], C: ['锁仓金额涨了，仍可能只是价格，不是人数。', 'A higher locked value can still be just price, not a head count.'], D: ['地址不是人数，不能单凭地址变多说价格该涨。', 'Addresses are not people, so more addresses alone do not say price should rise.']})
+          quiz('数量和金额一起升，和只是价格抬上去相比，通常怎样？', 'Quantity and value rise together, compared with price alone lifting it, what is it usually like?', [
+            opt('A', '两种都是新钱，读法一样', 'Both are new money, so the read is the same'),
+            opt('B', '数量一起升常常更脆，因为锁得更多', 'Quantity rising with it is often more fragile, because more is locked'),
+            opt('C', '更像有新钱，趋势常常更稳', 'More like new money, and the trend is often steadier'),
+            opt('D', '金额不该跟数量一起看', 'Value should not be read together with quantity')
+          ], 'C', {
+            A: ['只是价格抬上去没有新钱，两种读法不一样。', 'Price alone lifting it is not new money, so the two reads are different.'],
+            B: ['数量一起增加更像新钱，不是更脆。', 'Quantity rising with it looks more like new money, not more fragile.'],
+            C: ['数量和金额一起升，更像有新钱，趋势常常更稳。', 'When quantity and value rise together, it looks more like new money, and the trend is often steadier.'],
+            D: ['要拆开看，不是不要一起看。', 'You split them apart, and you do not refuse to look at them together.']
+          }),
+          quiz('锁仓金额掉了，数量差不多，币价也在跌，更常见的读法是？', 'Locked value fell, the quantity is about the same, and the coin price is falling too, what is the more common read?', [
+            opt('A', '多半是币价掉下来，不一定是大家在撤资', 'Mostly the coin price falling, not necessarily everyone pulling money out'),
+            opt('B', '金额一掉通常就是资金在逃', 'A falling value usually means money is fleeing'),
+            opt('C', '数量没变，金额不该掉，数据通常错了', 'If quantity is unchanged the value should not fall, so the data is usually wrong'),
+            opt('D', '先看活跃地址少没少，金额是附带的', 'First see whether active addresses fell, and the value is secondary')
+          ], 'A', {
+            A: ['数量差不多、币价在跌，金额掉下来多半是计价，不一定是撤资。', 'With quantity about the same and the coin price falling, a lower value is mostly valuation, not necessarily withdrawals.'],
+            B: ['没有新钱离开的证据时，不能把金额下跌读成资金在逃。', 'Without evidence that money left, a lower value cannot be read as money fleeing.'],
+            C: ['币价跌了，金额可以在数量不变时一起掉。', 'When the coin price falls, the value can fall with it while quantity stays unchanged.'],
+            D: ['这一问先拆价格和数量，活跃地址不是第一步。', 'This question splits price from quantity first, and active addresses are not the first step.']
+          }),
+          quiz('活跃地址变多，能不能当成使用的人变多、所以锁仓更扎实？', 'Active addresses increased, can you read that as more people using it, so the locked value is more solid?', [
+            opt('A', '能，地址多通常就是人多', 'Yes, more addresses usually means more people'),
+            opt('B', '能，地址变多金额就会跟着更稳', 'Yes, more addresses make the value steadier'),
+            opt('C', '不能，地址不是人数，扎实不扎实要看数量', 'No, addresses are not people, and whether it is solid depends on the quantity'),
+            opt('D', '不能，地址变多通常说明有人在撤', 'No, more addresses usually means someone is withdrawing')
+          ], 'C', {
+            A: ['一个控制者可以有很多地址。', 'One controller can use many addresses.'],
+            B: ['地址变多不会让金额自动更稳。', 'More addresses do not automatically make the value steadier.'],
+            C: ['地址不是人数，锁仓扎不扎实要看锁着的数量变没变。', 'Addresses are not people, and whether the lockup is solid depends on whether the locked quantity changed.'],
+            D: ['地址变多不是撤资，撤资要看数量和金额。', 'More addresses are not withdrawals, and withdrawals show up in quantity and value.']
+          })
         ],
-        study: { kind: 'panel', headers: [bi('数量', 'Quantity'), bi('价格', 'Price'), 'TVL'], cells: [['100', '2000', '200000'], ['100', '2500', '250000'], ['110', '2500', '275000']], rows: [bi('第二行涨 25%，数量没变，不是新钱。第三行数量才变了。', 'The second row is up 25% with unchanged quantity, so it is not new money. Only the third row changes quantity.')] }
+        study: { kind: 'panel', headers: [bi('数量', 'Quantity'), bi('价格', 'Price'), bi('金额', 'Value')], cells: [['100', '2000', '200000'], ['100', '2500', '250000'], ['110', '2500', '275000']], rows: [
+          bi('第二行数量仍是 100，价格 2500，金额 250000。', 'The second row is still quantity 100, price 2500, value 250000.')
+        ] }
       })
     ]
   };
