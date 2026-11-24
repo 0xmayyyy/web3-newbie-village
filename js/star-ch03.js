@@ -136,10 +136,10 @@
         ],
         practice: bi('算 500 回到 1000 需要的涨幅，再算 0.99 的五次方。', 'Compute the rise from 500 back to 1000, then compute 0.99 to the 5th power.'),
         check: {
-          ask: bi('从峰值亏 50% 后，要涨多少才回本？', 'After a 50% drop from the peak, how much must it rise to recover?'),
-          options: [opt('A', '100%', '100%'), opt('B', '50%', '50%'), opt('C', '25%', '25%'), opt('D', '75%', '75%')],
+          ask: bi('账户 1000 涨到 1500，再回到 1200。回撤大约是多少？', 'The account goes from 1000 up to 1500, then back to 1200. About how large is the drawdown?'),
+          options: [opt('A', '300，从最高的 1500 算下来', '300, counted down from the high of 1500'), opt('B', '200，只看比起成本还赚着', '200, only that it is still ahead of the cost'), opt('C', '500，把涨上去的一段全算进去', '500, the whole rise from 1000 to 1500'), opt('D', '0，因为还在成本上面', '0, because it is still above the cost')],
           answer: 'A',
-          miss: bi('500×1.5=750，还没回到 1000。500×2=1000。', '500×1.5=750, which is not back to 1000. 500×2=1000.')
+          miss: bi('比起成本还赚着 200，但回撤从最高点 1500 算，下来了 300。', 'It is still 200 ahead of the cost, but the drawdown is 300 counted down from the high of 1500.')
         },
         quizzes: [
           quiz('亏掉一半之后，回本需要上涨多少？', 'After losing half, what rise is needed to recover?', [opt('A', '50%', '50%'), opt('B', '100%', '100%'), opt('C', '200%', '200%'), opt('D', '150%', '150%')], 'B', {A: ['500 上涨 50% 只到 750。', 'A 50% rise from 500 only reaches 750.'], B: ['500×(1+100%)=1000，正好回到峰值。', '500×(1+100%)=1000, exactly back to the peak.'], C: ['200% 会到 1500，超过原来的峰值。', '200% would reach 1500, past the old peak.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
@@ -164,10 +164,10 @@
         ],
         practice: bi('拿出一笔亏钱的单，和一笔没守规矩却赚钱的单，分别标上是看错了，还是没守自己的规矩。', 'Take one losing trade, and one winning trade that broke your rules, and mark each as a wrong call or as a broken rule.'),
         check: {
-          ask: bi('只记录赚钱的单，好不好？', 'Is it good to record only the winning trades?'),
-          options: [opt('A', '好，亏钱的单可以不看', 'Yes, losing trades can be left out'), opt('B', '不好，亏钱的单也要留下，才能分清看错和没守规矩', 'No, losing trades have to stay, or you cannot separate a wrong call from a broken rule'), opt('C', '只在这个月亏钱时才不好', 'It is only bad in a month that loses money'), opt('D', '好，截图留着就等于复盘过了', 'Yes, keeping the screenshot already counts as a review')],
+          ask: bi('一笔没守规矩却赚钱的单，复盘时该怎么标？', 'A trade broke your rules and still made money. How do you mark it in a review?'),
+          options: [opt('A', '赚钱了，就算守住了规矩', 'It made money, so the rules were kept'), opt('B', '标成没守规矩，不能当成以后的方法', 'Mark it as a broken rule, and do not treat it as a method'), opt('C', '不用写进日志', 'Leave it out of the log'), opt('D', '只标成看错了方向', 'Only mark it as a wrong call on direction')],
           answer: 'B',
-          miss: bi('只留赚钱的单，看错和没守规矩都会被藏起来，也就总结不出自己的毛病。', 'If you keep only the winning trades, both wrong calls and broken rules stay hidden, and you cannot sum up your own weaknesses.')
+          miss: bi('结果赚钱不能把没守规矩改成守住了。它也不能当成以后照做的方法。', 'A profit does not rewrite a broken rule as a rule that was kept. It is also not a method to copy later.')
         },
         quizzes: [
           quiz('复盘时，亏钱的单要不要写进日志？', 'When you review, do the losing trades need to go into the log?', [opt('A', '要，不写就看不见自己反复犯的错', 'Yes, leave them out and you cannot see the mistakes you keep making'), opt('B', '不要，看着难受', 'No, they are unpleasant to look at'), opt('C', '只写下跌很猛的那几笔', 'Only the ones that fell very hard'), opt('D', '赚钱的单已经能代表全部', 'The winning trades already stand for all of them')], 'A', {A: ['亏钱的单不留下，就没法分清哪些是看错、哪些是没守规矩。', 'If the losing trades are not written down, you cannot separate a wrong call from a broken rule.'], B: ['难看不是不记的理由，不记下来，毛病会被藏住。', 'Being unpleasant to look at is not a reason to leave them out, and if you leave them out the weaknesses stay hidden.'], C: ['不是只有跌得很猛才值得记，亏掉的每一笔都要能回头看。', 'A hard drop is not the only trade worth writing down, and every losing trade has to be there to look back at.'], D: ['只留赚钱的单，看错和没守规矩都会被藏起来。', 'If you keep only the winning trades, both wrong calls and broken rules stay hidden.']}),

@@ -198,15 +198,15 @@ D: { zh: '这不是这道题要选的。回到题目里的说法再看一次。'
               why: { zh: '上升结构常见更高的高点HH和更高的低点HL。', en: 'An up structure usually shows a higher high (HH) and a higher low (HL).' }
             },
             {
-              q: { zh: '高点 105、112、120，低点 90、96、101，这组结构是？', en: 'Highs at 105, 112, and 120, lows at 90, 96, and 101. Which structure is this?' },
+              q: { zh: '一根红 K 线出现，就等于上涨结构反转了吗？', en: 'One red candle prints. Does that mean the up structure has reversed?' },
               options: [
-{ id: 'A', zh: '下跌', en: 'Down' },
-{ id: 'B', zh: '必然暴涨', en: 'Must surge' },
-{ id: 'C', zh: '横盘', en: 'Sideways' },
-{ id: 'D', zh: '上涨', en: 'Up' }
+{ id: 'A', zh: '等于', en: 'Yes' },
+{ id: 'B', zh: '不等于，一根红 K 线不是反转', en: 'No, one red candle is not a reversal' },
+{ id: 'C', zh: '收盘是绿色才等于', en: 'Yes, if the close is green' },
+{ id: 'D', zh: '高点越多越等于', en: 'Yes, the more highs there are' }
 ],
-              answer: 'D',
-              why: { zh: '上涨结构常见HH+HL。这里高点和低点都在抬高。这只描述已经发生的事实，不表示下一根必然暴涨。', en: 'An up structure often shows HH+HL. Here both the highs and the lows are rising. This only describes what has already happened, and it does not mean the next candle must surge.' }
+              answer: 'B',
+              why: { zh: '一根红 K 线不是反转。结构要看后面的高点和低点还抬不抬。', en: 'One red candle is not a reversal. Structure depends on whether later highs and lows are still rising.' }
             },
             {
               q: { zh: '刚出现一个疑似高点，可以立刻标成 HH 吗？', en: 'A possible high just printed. Can you mark it HH immediately?' },
@@ -376,26 +376,26 @@ D: { zh: '这不是这道题要选的。回到题目里的说法再看一次。'
           lab: { symbol: 'BTCUSDT', interval: '4h', studies: 'none' },
           check: {
             ask: {
-              zh: '最高 113，收盘 108，本课门槛是收盘价大于 111。这根满足收盘突破吗？',
-              en: 'High 113, close 108. This lesson’s line is a close above 111. Does this candle meet that close rule?'
+              zh: '这根刚刺出压力，就能确定它是假突破吗？',
+              en: 'This candle just poked through resistance. Can you already be sure it is a failed breakout?'
             },
             options: [
-{ id: 'A', zh: '满足', en: 'Yes' },
-{ id: 'B', zh: '所以它一定是假突破', en: 'So it must be a failed breakout' },
-{ id: 'C', zh: '不满足', en: 'No' },
-{ id: 'D', zh: '影线过了就算', en: 'A wick past the line is enough' }
+{ id: 'A', zh: '能，影线一出来就知道', en: 'Yes, the wick tells you at once' },
+{ id: 'B', zh: '不能，要等后面走出来', en: 'No, you have to wait and see what follows' },
+{ id: 'C', zh: '收盘是红色就能确定', en: 'Yes, if the close is red' },
+{ id: 'D', zh: '影线越长越能提前确定', en: 'A longer wick lets you know sooner' }
 ],
-            answer: 'C',
+            answer: 'B',
             misses: {
 A: {
-                zh: '答错了。本课用收盘价大于 111 作为收盘突破。收盘是 108，不满足。',
-                en: 'Wrong. This lesson uses a close above 111. The close is 108, so it does not meet that rule.'
+                zh: '答错了。影线刚刺出去的时候，还不知道后面会不会站回去。',
+                en: 'Wrong. When the wick has only just poked through, you do not yet know whether price will hold beyond it.'
               },
-B: {
-                zh: '答错了。收盘没有大于 111，只是影线越过。不能提前把它叫成假突破。',
-                en: 'Wrong. The close is not greater than 111, so only the wick went beyond. You cannot call it a failed breakout ahead of time.'
+C: {
+                zh: '答错了。收盘是红的，也不等于已经能叫它假突破。',
+                en: 'Wrong. A red close does not mean you can already call it a failed breakout.'
               },
-D: { zh: '这不是这道题要选的。回到题目里的说法再看一次。', en: 'That is not the choice this question wants. Look again at what the question says.' }
+D: { zh: '影线长短不能让你提前确定。要等后面的走势出来。', en: 'Wick length does not let you know ahead of time. You wait for what comes next.' }
 }
           },
           quiz: {

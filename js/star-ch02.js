@@ -57,7 +57,7 @@
           quiz('金叉是什么？', 'What is a golden cross?', [opt('A', '快线从上往下穿过慢线', 'The fast line crosses down through the slow line'), opt('B', '快线从下往上穿过慢线', 'The fast line crosses up through the slow line'), opt('C', '绿柱变长', 'The green bars get longer'), opt('D', '价格创了新高', 'Price made a new high')], 'B', {A: ['快线从上往下穿过慢线，那是死叉。', 'The fast line crossing down through the slow line is a death cross.'], B: ['快线从下往上穿过慢线，就是金叉。', 'The fast line crossing up through the slow line is a golden cross.'], C: ['绿柱变长只说明上涨更有劲，不是金叉。', 'Longer green bars only mean the rise has more push. That is not a golden cross.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
           quiz('死叉是什么？', 'What is a death cross?', [opt('A', '快线从下往上穿过慢线', 'The fast line crosses up through the slow line'), opt('B', '价格一定马上跌', 'Price must fall at once'), opt('C', '快线从上往下穿过慢线', 'The fast line crosses down through the slow line'), opt('D', '红柱变短', 'The red bars get shorter')], 'C', {A: ['从下往上穿，那是金叉。', 'A cross from below is a golden cross.'], B: ['死叉只说明两条线换了位置，不保证马上跌。', 'A death cross only says the two lines swapped places. It does not guarantee an immediate drop.'], C: ['快线从上往下穿过慢线，就是死叉。', 'The fast line crossing down through the slow line is a death cross.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
           quiz('教学模拟：红柱从很长变成较短，收盘还在跌。最准确的说法是？', 'Teaching simulation: the red bars go from long to shorter, and the close is still falling. What is the most accurate statement?', [opt('A', '价格已经确认上涨', 'Price has confirmed a rise'), opt('B', '下一根一定会反弹', 'The next bar must bounce'), opt('C', '成交量已经归零', 'Volume has already gone to zero'), opt('D', '两条线在靠近，不能单独证明已经涨回来', 'The two lines are getting closer, which alone does not prove price has turned up')], 'D', {A: ['柱子变短只说明两条线在靠近，不是价格已经上涨。', 'Shorter bars only mean the two lines are closer. It is not proof that price has risen.'], B: ['没有“下一根必须反弹”这条规则。', 'There is no rule that the next bar must bounce.'], C: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.'], D: ['红柱变短，是下跌的力量在减弱。还要看上面的 K 线。', 'Shorter red bars mean the downward push is fading. You still have to look at the candles.']}),
-          quiz('柱子变短是不是价格一定下跌？', 'If the bars get shorter, must price fall?', [opt('A', '不是', 'No'), opt('B', '一定', 'It must'), opt('C', '只在日线一定', 'Only on the daily chart'), opt('D', '绿柱变短才一定', 'Only if the green bars get shorter')], 'A', {A: ['靠近不等于方向已经反过来。', 'Getting closer is not the same as the direction already reversing.'], B: ['柱子变短只说明两条线在靠近，价格仍可以继续涨。', 'Shorter bars only mean the two lines are getting closer. Price can still keep rising.'], C: ['换成日线，也不保证下跌。', 'Switching to the daily chart does not guarantee a fall either.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']})
+          quiz('绿柱变长，是不是必须马上买入？', 'If the green bars get longer, must you buy at once?', [opt('A', '不是，只说明上涨更有劲', 'No, it only says the rise has more push'), opt('B', '是，柱子一变长就要买', 'Yes, longer bars mean you must buy'), opt('C', '只在日线上必须', 'Only on the daily chart'), opt('D', '柱子越长越必须买', 'The longer the bar, the more you must buy')], 'A', {A: ['绿柱变长只说明上涨更有劲，不是买入命令。', 'Longer green bars only say the rise has more push. They are not an order to buy.'], B: ['没有“柱子变长就必须买”这一条。', 'There is no rule that longer bars mean you must buy.'], C: ['换成日线，也不是买入命令。', 'On the daily chart it is still not an order to buy.'], D: ['柱子更长，只是劲更大，不是更必须买。', 'A longer bar only means more push, not a stronger order to buy.']})
         ],
         study: { kind: 'macd', lessonChart: 'macd-full', closes: macdCloses }
       }),
@@ -74,10 +74,10 @@
         ],
         practice: bi('点一根线还在 70 上面、后面价格还在涨的 K 线。\n高位不是马上卖。', 'Tap a candle where the line is still above 70 and a later price is higher.\nA high reading is not an immediate sell.'),
         check: {
-          ask: bi('线到 75，直接表示什么？', 'The line is at 75. What does that say directly?'),
-          options: [opt('A', '最近涨得更猛', 'The recent rise was stronger'), opt('B', '必须马上卖', 'You must sell now'), opt('C', '成交量创新高', 'Volume made a new high'), opt('D', '价格已经见底', 'Price has already bottomed')],
+          ask: bi('这条线还没算出来的时候，要画成 0 吗？', 'When this line cannot be calculated yet, should it be drawn as 0?'),
+          options: [opt('A', '不要，先空着', 'No, leave it blank'), opt('B', '要，空的就当 0', 'Yes, a blank is 0'), opt('C', '画成 50', 'Draw it as 50'), opt('D', '画成 100', 'Draw it as 100')],
           answer: 'A',
-          miss: bi('它看的是涨跌，不是成交量。\n75 也不下卖出命令。', 'It looks at rises and falls, not volume.\n75 is not a sell order either.')
+          miss: bi('样本不够时先空着，不要画成 0。', 'When there are not enough bars, leave it blank. Do not draw it as 0.')
         },
         quizzes: [
           quiz('教学模拟：这条线到了 78。最准确的说法是？', 'Teaching simulation: the line is at 78. What is the most accurate statement?', [opt('A', '一定要立刻做空', 'You must short immediately'), opt('B', '最近涨得猛，还可以停在高位，不能单凭 78 说马上跌', 'The recent rise is strong and can stay high. 78 alone does not mean a drop is imminent'), opt('C', '价格已经确定到顶', 'Price has definitely topped'), opt('D', '这条线算坏了', 'The line is broken')], 'B', {A: ['涨得猛不是做空命令。', 'A strong rise is not an order to short.'], B: ['78 只说明最近涨得猛。很强的上涨里，它可以一直停在 70 上面。', '78 only says the recent rise is strong. A very strong rally can stay above 70.'], C: ['没有“到了 78 就到顶”这条规则。', 'There is no rule that 78 means the top is in.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
@@ -99,10 +99,10 @@
         ],
         practice: bi('点出顶背离的第二个高点。\n价格更高，快线更低。\n这不保证马上跌。', 'Tap the second high of the top divergence.\nPrice is higher and the fast line is lower.\nThat does not guarantee an immediate drop.'),
         check: {
-          ask: bi('价格更高、快线更低，这叫什么？', 'Price is higher and the fast line is lower. What is that called?'),
-          options: [opt('A', '底背离', 'Bottom divergence'), opt('B', '金叉', 'A golden cross'), opt('C', '死叉', 'A death cross'), opt('D', '顶背离', 'Top divergence')],
+          ask: bi('RSI 上出现背离时，看法和 MACD 一样吗？', 'When divergence shows up on RSI, is it read the same way as on MACD?'),
+          options: [opt('A', '不一样，RSI 要反过来看', 'No, RSI is read the other way'), opt('B', '只有 MACD 才算背离', 'Only MACD counts as divergence'), opt('C', 'RSI 背离保证下一根转向', 'RSI divergence guarantees the next bar turns'), opt('D', '一样，都是价格创新高或新低，指标没跟上', 'Yes, price makes a new high or low and the indicator does not keep up')],
           answer: 'D',
-          miss: bi('底背离比的是低点。\n金叉是快线穿过慢线。', 'Bottom divergence compares lows.\nA golden cross is the fast line crossing the slow line.')
+          miss: bi('RSI 也一样：价格创新高或新低，指标没跟上。它也不保证下一根就转向。', 'RSI is the same: price makes a new high or low, and the indicator does not keep up. It still does not guarantee the next bar turns.')
         },
         quizzes: [
           quiz('价格新高、快线没有新高，这是？', 'A new price high, while the fast line does not make a new high. What is that?', [opt('A', '顶背离', 'Top divergence'), opt('B', '底背离', 'Bottom divergence'), opt('C', '没有意义', 'Meaningless'), opt('D', '金叉', 'A golden cross')], 'A', {A: ['价格高点更高，快线的高点更低，这就是顶背离。', 'A higher price high with a lower fast-line high is top divergence.'], B: ['底背离比的是更低的低点。', 'Bottom divergence compares a lower low.'], C: ['它说明两段没走在一起，不是空话，也不保证马上跌。', 'It says two stretches did not move together. That is not empty, and it still does not guarantee an immediate drop.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
@@ -139,10 +139,10 @@
         ],
         practice: bi('从这段低点拖到高点。\n看价格回撤时有没有靠近 0.5 到 0.618。\n靠近也不是必弹。', 'Drag from the low of this swing to the high.\nSee whether the pullback comes near 0.5 to 0.618.\nBeing near it is still not a required bounce.'),
         check: {
-          ask: bi('价格碰到 0.618，是不是一定弹回去？', 'Price touches 0.618. Must it bounce?'),
-          options: [opt('A', '一定弹', 'It must bounce'), opt('B', '只有上涨时一定', 'Only in a rise'), opt('C', '不一定', 'Not necessarily'), opt('D', '只在 0.5 一定弹', 'It must bounce only at 0.5')],
+          ask: bi('下跌的这一段，线要从哪里拖到哪里？', 'For a falling swing, where do you drag the line from and to?'),
+          options: [opt('A', '从低点拖到高点', 'From the low to the high'), opt('B', '从最新收盘拖到 0', 'From the latest close to 0'), opt('C', '从高点拖到低点', 'From the high to the low'), opt('D', '随便两根就行', 'Any two candles will do')],
           answer: 'C',
-          miss: bi('0.618 只是一条参考线。\n价格可以停、可以穿、也可以不碰。', '0.618 is only a reference line.\nPrice can pause, pass through, or never touch it.')
+          miss: bi('下跌时从这段高点拖到低点。随便两根对不上这段行情。', 'In a fall, drag from the high of that swing to the low. Two random candles do not match the swing.')
         },
         quizzes: [
           quiz('画这条线时，先找什么？', 'When you draw this, what do you find first?', [opt('A', '任意两根 K 线', 'Any two candles'), opt('B', '成交量最大的那根', 'The candle with the most volume'), opt('C', '最新一根的收盘价', 'The latest close'), opt('D', '眼前这段最明显的低点和高点', 'The most obvious low and high of the swing in front of you')], 'D', {A: ['随便点两根，画出来的线对不上这段涨跌。', 'Two random candles do not line up with this swing.'], B: ['这条线看的是高低点，不是成交量。', 'These lines look at the high and the low, not volume.'], C: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.'], D: ['从这段的起点拖到终点，线才对得上这段行情。', 'Drag from the start of that swing to the end, and the lines match that move.']}),
