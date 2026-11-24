@@ -383,7 +383,7 @@ D: { zh: '这不是这道题要选的。回到题目里的说法再看一次。'
 { id: 'A', zh: '能，影线一出来就知道', en: 'Yes, the wick tells you at once' },
 { id: 'B', zh: '不能，要等后面走出来', en: 'No, you have to wait and see what follows' },
 { id: 'C', zh: '收盘是红色就能确定', en: 'Yes, if the close is red' },
-{ id: 'D', zh: '影线越长越能提前确定', en: 'A longer wick lets you know sooner' }
+{ id: 'D', zh: '影线越长越能提前确定', en: 'Yes, a longer wick lets you know sooner' }
 ],
             answer: 'B',
             misses: {
@@ -434,7 +434,7 @@ D: { zh: '影线长短不能让你提前确定。要等后面的走势出来。'
 { id: 'A', zh: '之后必涨', en: 'It must rise after that' },
 { id: 'B', zh: '不知道有没有收盘', en: 'There is no close to look at' },
 { id: 'C', zh: '收盘回到了区间', en: 'The close came back into the range' },
-{ id: 'D', zh: '这一根没有收盘', en: 'This candle has no close' }
+{ id: 'D', zh: '这一根没有收盘', en: 'This candle has not closed yet' }
 ],
               answer: 'C',
               why: { zh: '112 大于 111，107 又回到 100–110 里。收盘突破仍可失败。', en: '112 is above 111, and 107 is back inside 100–110. A close beyond the line can still fail.' }
