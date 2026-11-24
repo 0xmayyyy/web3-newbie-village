@@ -480,7 +480,7 @@
     }
     function bars() { return source().slice(0, shown); }
     function paint() {
-      var plainStudy = study.kind === 'ema' || study.kind === 'macd' || (study.kind === 'rsi' && study.main === 'rsi') || study.kind === 'spotbook' || study.kind === 'liq';
+      var plainStudy = study.kind === 'ema' || study.kind === 'macd' || (study.kind === 'rsi' && study.main === 'rsi') || study.kind === 'spotbook' || study.kind === 'liq' || study.kind === 'perpcalc';
       var html = '<div class="a1">' + (t ? '<p class="a1-flag">' + t('star.sim') + ' · ' + t('star.figure') + ' · ' + t('star.a2.disclaimer') + '</p>' : '') + (plainStudy ? '' : legend(lang));
       html += renderKind(study, bars(), shown, lang, state);
       var max = source().length || 1;
@@ -496,6 +496,7 @@
         });
       });
       if (study.kind === 'liq') bindLiq(root, state, lang);
+      if (study.kind === 'perpcalc') bindPerp(root, state, lang);
       root.querySelectorAll('[data-step]').forEach(function (btn) {
         btn.addEventListener('click', function () {
           var maxN = source().length;
@@ -795,6 +796,10 @@
       '<p class="ob-note">' + esc(note) + '</p></div>';
   }
 
+  function roughLiqPrice(entry, lev, dir) {
+    var liq = dir === 'short' ? entry * (1 + 0.95 / lev) : entry * (1 - 0.95 / lev);
+    return liq < 0 ? 0 : liq;
+  }
   function liqNum(v) {
     var n = Number(v);
     if (!isFinite(n)) return null;
@@ -816,7 +821,7 @@
         : 'Entry and quantity need to be above 0, and leverage at least 1. Then the rough liquidation price shows up.';
     }
     var margin = qty * entry / lev;
-    var liq = dir === 'short' ? entry * (1 + 0.95 / lev) : entry * (1 - 0.95 / lev);
+    var liq = roughLiqPrice(entry, lev, dir);
     if (liq < 0) liq = 0;
     var dist = Math.abs(liq - entry);
     var pct = entry ? dist / entry * 100 : 0;
@@ -869,9 +874,179 @@
       });
     });
   }
+  function perpDefaults(state) {
+    state.dir = state.dir === 'short' ? 'short' : 'long';
+    state.tab = state.tab === 'liq' ? 'liq' : 'pnl';
+    state.mode = state.mode === 'cross' ? 'cross' : 'iso';
+    if (state.lev == null) state.lev = '10';
+    if (state.open == null) state.open = '100';
+    if (state.close == null) state.close = '101';
+    if (state.notional == null) state.notional = '1000';
+    if (state.wallet == null) state.wallet = '100';
+  }
+  function perpClampLev(v) {
+    var n = Math.round(Number(v));
+    if (!isFinite(n)) n = 10;
+    if (n < 1) n = 1;
+    if (n > 125) n = 125;
+    return n;
+  }
+  function perpFigures(state) {
+    var open = liqNum(state.open);
+    var close = liqNum(state.close);
+    var notional = liqNum(state.notional);
+    var lev = perpClampLev(state.lev);
+    var wallet = liqNum(state.wallet);
+    var dir = state.dir === 'short' ? 'short' : 'long';
+    if (!(open > 0) || !(notional > 0) || !(lev >= 1)) return null;
+    var margin = notional / lev;
+    var pnl = null;
+    var roe = null;
+    if (close > 0) {
+      pnl = dir === 'short' ? notional * (open - close) / open : notional * (close - open) / open;
+      roe = margin ? pnl / margin * 100 : 0;
+    }
+    var maint = margin * 0.05;
+    var liq = null;
+    if (state.mode === 'cross') {
+      if (wallet > maint) {
+        var frac = (wallet - maint) / notional;
+        liq = dir === 'short' ? open * (1 + frac) : open * (1 - frac);
+        if (liq < 0) liq = 0;
+      }
+    } else {
+      liq = roughLiqPrice(open, lev, dir);
+    }
+    var dist = liq == null ? null : Math.abs(liq - open);
+    var pct = dist == null || !open ? null : dist / open * 100;
+    return { open: open, margin: margin, pnl: pnl, roe: roe, liq: liq, pct: pct, dir: dir, lev: lev };
+  }
+  function perpResult(state, lang) {
+    var zh = lang !== 'en';
+    var fig = perpFigures(state);
+    if (!fig) {
+      return zh
+        ? '<p class="pc-empty">开仓价格和成交数量要大于 0，杠杆在 1 到 125 之间。</p>'
+        : '<p class="pc-empty">Open price and size must be above 0, and leverage between 1 and 125.</p>';
+    }
+    if (state.tab === 'liq') {
+      if (fig.liq == null) {
+        return zh
+          ? '<p class="pc-empty">全仓时，钱包余额要大于这一笔很小的维持保证金，才估得出强平价。</p>'
+          : '<p class="pc-empty">In cross mode, the wallet balance has to be above the small maintenance margin before a liquidation price can be estimated.</p>';
+      }
+      var way = fig.dir === 'short' ? (zh ? '上涨' : 'rise') : (zh ? '下跌' : 'fall');
+      var line = zh
+        ? '价格大约要' + way + ' ' + liqFmt(fig.pct) + '%，才会到这条粗估强平价。'
+        : 'Price has to ' + way + ' about ' + liqFmt(fig.pct) + '% to reach this rough liquidation price.';
+      return '<div class="pc-line"><span>' + (zh ? '强平价格' : 'Liq. price') + '</span><b>' + liqFmt(fig.liq) + '</b></div><p class="pc-note">' + esc(line) + '</p>';
+    }
+    if (fig.pnl == null) {
+      return zh
+        ? '<p class="pc-empty">平仓价格也要大于 0。</p>'
+        : '<p class="pc-empty">Close price also needs to be above 0.</p>';
+    }
+    var sign = fig.pnl > 0 ? ' pc-pos' : (fig.pnl < 0 ? ' pc-neg' : '');
+    var pnlText = (fig.pnl > 0 ? '+' : '') + liqFmt(fig.pnl);
+    var roeText = (fig.roe > 0 ? '+' : '') + liqFmt(fig.roe) + '%';
+    return '<div class="pc-line"><span>' + (zh ? '起始保证金' : 'Initial margin') + '</span><b>' + liqFmt(fig.margin) + ' USDT</b></div>' +
+      '<div class="pc-line"><span>' + (zh ? '盈亏' : 'PnL') + '</span><b class="' + sign.trim() + '">' + pnlText + ' USDT</b></div>' +
+      '<div class="pc-line"><span>' + (zh ? '回报率' : 'Return') + '</span><b class="' + sign.trim() + '">' + roeText + '</b></div>';
+  }
+  function renderPerp(lang, state) {
+    var zh = lang !== 'en';
+    perpDefaults(state);
+    var lev = perpClampLev(state.lev);
+    state.lev = String(lev);
+    function field(key, label, hide) {
+      return '<label class="pc-field' + (hide ? ' is-hide' : '') + '" data-pc-field="' + key + '">' + label +
+        '<input inputmode="decimal" data-pc="' + key + '" value="' + esc(String(state[key])) + '"></label>';
+    }
+    return '<div class="pc">' +
+      '<div class="pc-head"><strong>BTCUSDT</strong><span>' + (zh ? '永续' : 'Perp') + '</span></div>' +
+      '<div class="pc-side">' +
+      '<button type="button" data-pc-dir="long" aria-pressed="' + (state.dir === 'long' ? 'true' : 'false') + '">' + (zh ? '做多' : 'Long') + '</button>' +
+      '<button type="button" data-pc-dir="short" aria-pressed="' + (state.dir === 'short' ? 'true' : 'false') + '">' + (zh ? '做空' : 'Short') + '</button>' +
+      '</div>' +
+      '<div class="pc-lev"><button type="button" data-pc-step="-1" aria-label="-">−</button><b class="pc-lev-n">' + lev + 'x</b><button type="button" data-pc-step="1" aria-label="+">+</button></div>' +
+      '<input class="pc-slider" type="range" min="1" max="125" step="1" data-pc="lev" value="' + lev + '">' +
+      '<div class="pc-tabs">' +
+      '<button type="button" data-pc-tab="pnl" aria-pressed="' + (state.tab === 'pnl' ? 'true' : 'false') + '">' + (zh ? '盈亏' : 'PnL') + '</button>' +
+      '<button type="button" data-pc-tab="liq" aria-pressed="' + (state.tab === 'liq' ? 'true' : 'false') + '">' + (zh ? '强平价格' : 'Liq. price') + '</button>' +
+      '</div>' +
+      '<label class="pc-field' + (state.tab === 'liq' ? '' : ' is-hide') + '" data-pc-field="mode">' + (zh ? '保证金模式' : 'Margin mode') +
+      '<select data-pc="mode"><option value="iso"' + (state.mode === 'iso' ? ' selected' : '') + '>' + (zh ? '逐仓' : 'Isolated') + '</option><option value="cross"' + (state.mode === 'cross' ? ' selected' : '') + '>' + (zh ? '全仓' : 'Cross') + '</option></select></label>' +
+      field('open', zh ? '开仓价格' : 'Open price', false) +
+      field('close', zh ? '平仓价格' : 'Close price', state.tab !== 'pnl') +
+      field('notional', zh ? '成交数量 (USDT)' : 'Size (USDT)', false) +
+      field('wallet', zh ? '钱包余额' : 'Wallet balance', !(state.tab === 'liq' && state.mode === 'cross')) +
+      '<div class="pc-result">' + perpResult(state, lang) + '</div>' +
+      '<button type="button" class="pc-calc" data-pc-calc="1">' + (zh ? '计算' : 'Calculate') + '</button>' +
+      '<p class="pc-foot">' + (zh
+        ? '这是教学粗估，维持保证金只按一个很小的比例。真的交易所算法会略有不同。'
+        : 'This is a teaching estimate, with only a small maintenance margin. A real exchange’s math differs a little.') + '</p></div>';
+  }
+  function bindPerp(root, state, lang) {
+    function showFields() {
+      root.querySelectorAll('[data-pc-field]').forEach(function (el) {
+        var key = el.getAttribute('data-pc-field');
+        var hide = false;
+        if (key === 'close') hide = state.tab !== 'pnl';
+        if (key === 'mode') hide = state.tab !== 'liq';
+        if (key === 'wallet') hide = !(state.tab === 'liq' && state.mode === 'cross');
+        el.classList.toggle('is-hide', hide);
+      });
+      root.querySelectorAll('[data-pc-dir]').forEach(function (btn) {
+        btn.setAttribute('aria-pressed', btn.getAttribute('data-pc-dir') === state.dir ? 'true' : 'false');
+      });
+      root.querySelectorAll('[data-pc-tab]').forEach(function (btn) {
+        btn.setAttribute('aria-pressed', btn.getAttribute('data-pc-tab') === state.tab ? 'true' : 'false');
+      });
+      var levEl = root.querySelector('.pc-lev-n');
+      if (levEl) levEl.textContent = perpClampLev(state.lev) + 'x';
+      var slider = root.querySelector('.pc-slider');
+      if (slider && document.activeElement !== slider) slider.value = String(perpClampLev(state.lev));
+    }
+    function write() {
+      var box = root.querySelector('.pc-result');
+      if (box) box.innerHTML = perpResult(state, lang);
+      showFields();
+    }
+    root.querySelectorAll('[data-pc-dir]').forEach(function (btn) {
+      btn.addEventListener('click', function () { state.dir = btn.getAttribute('data-pc-dir'); write(); });
+    });
+    root.querySelectorAll('[data-pc-tab]').forEach(function (btn) {
+      btn.addEventListener('click', function () { state.tab = btn.getAttribute('data-pc-tab'); write(); });
+    });
+    root.querySelectorAll('[data-pc-step]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        state.lev = String(perpClampLev(Number(state.lev) + Number(btn.getAttribute('data-pc-step'))));
+        write();
+      });
+    });
+    root.querySelectorAll('[data-pc]').forEach(function (input) {
+      input.addEventListener('input', function () {
+        state[input.getAttribute('data-pc')] = input.value;
+        if (input.getAttribute('data-pc') === 'lev') state.lev = String(perpClampLev(input.value));
+        write();
+      });
+      input.addEventListener('change', function () {
+        state[input.getAttribute('data-pc')] = input.value;
+        write();
+      });
+    });
+    var calc = root.querySelector('[data-pc-calc]');
+    if (calc) calc.addEventListener('click', write);
+  }
   function renderKind(study, bars, shown, lang, state) {
     if (study.kind === 'spotbook') return renderSpotBook(lang, state || {});
     if (study.kind === 'liq') return renderLiq(lang, state || {});
+    if (study.kind === 'perpcalc') {
+      var kept = '<div class="a2-readout">' + (study.rows || []).map(function (row) {
+        return '<p>' + esc(text(row, lang)) + '</p>';
+      }).join('') + '</div>';
+      return kept + renderPerp(lang, state || {});
+    }
     var closes = bars.map(function (bar) { return bar.c; });
     var math = M();
     if (study.kind === 'ema') {

@@ -18,7 +18,7 @@
           quiz('永续持仓等于持有这些币吗？', 'Does a perpetual position equal holding those coins?', [opt('A', '等于', 'Yes'), opt('B', '做空时等于', 'Yes when short'), opt('C', '不是', 'No'), opt('D', '只有盈利时等于', 'Only while it is in profit')], 'C', {A: ['永续结算价格差，币并不因此进钱包。', 'A perpetual settles a price difference. The coins do not enter the wallet because of that.'], B: ['做空更不是持有币，方向还是空的。', 'A short is even less “holding the coins.” The direction is short.'], C: ['持仓和持币是两本账。', 'A position and coins held are two different balances.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
           quiz('杠杆保证盈利吗？', 'Does leverage guarantee a profit?', [opt('A', '保证', 'Yes'), opt('B', '10 倍以上才保证', 'Only above 10x'), opt('C', '方向对了就保证', 'Yes, if the direction is right'), opt('D', '否', 'No')], 'D', {A: ['杠杆同时放大亏损。标记价向反方向走，盈亏就是负的。', 'Leverage also magnifies losses. If the mark moves against you, PnL is negative.'], B: ['更高杠杆不会把方向变成保证。', 'Higher leverage does not turn direction into a guarantee.'], C: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.'], D: ['例子里标记价 99，多单就是 −10。', 'In the example, mark 99 makes the long −10.']})
         ],
-        study: { kind: 'panel', rows: [bi('名义金额 10×100=1000。10 倍保证金约 100。', 'Notional 10×100=1000. Margin at 10x is about 100.'), bi('标记价 101，多单 +10。标记价 99，多单 −10。', 'Mark 101, long +10. Mark 99, long −10.')] }
+        study: { kind: 'perpcalc', rows: [bi('名义金额 10×100=1000。10 倍保证金约 100。', 'Notional 10×100=1000. Margin at 10x is about 100.'), bi('标记价 101，多单 +10。标记价 99，多单 −10。', 'Mark 101, long +10. Mark 99, long −10.')] }
       }),
       lesson({
         id: '02',
