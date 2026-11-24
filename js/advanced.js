@@ -1558,7 +1558,9 @@
         });
         var missText = practiceMiss;
         if (!right && lesson.check && lesson.check.misses && lesson.check.misses[pick]) missText = L(lesson.check.misses[pick], lang);
-        paintAnswer(practiceFeedback, right, api.t(right ? 'star.practiceOk' : 'star.quizNo'), right ? '' : missText);
+        var extra = right ? '' : missText;
+        if (lesson.check && lesson.check.note) extra = L(lesson.check.note, lang);
+        paintAnswer(practiceFeedback, right, api.t(right ? 'star.practiceOk' : 'star.quizNo'), extra);
       });
     });
     if (lesson.quizzes) {
