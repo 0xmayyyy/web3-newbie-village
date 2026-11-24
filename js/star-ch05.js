@@ -165,16 +165,16 @@
           miss: bi('美元指数突破近高、十年收益率一起跳，比特币常常更难涨。', 'When the dollar index breaks a recent high and the ten-year yield jumps with it, bitcoin is often harder to lift.')
         },
         quizzes: [
-          quiz('通胀数据偏热，十年收益率跳升，比特币更常见的是？', 'Inflation data runs hot and the ten-year yield jumps, what is more common for bitcoin?', [
-            opt('A', '偏热说明需求旺，币价通常跟着涨', 'Hot data means strong demand, so the coin usually rises with it'),
-            opt('B', '先等美元跌破近低，再看币价', 'Wait for the dollar to break a recent low, then look at the coin'),
-            opt('C', '数据偏热时，币价通常先横住', 'When the data is hot, the coin usually chops first'),
-            opt('D', '收益率跳升，币价常常偏弱', 'The yield jumps, and the coin is often softer')
-          ], 'D', {
-            A: ['偏热时更常见的是币价偏弱，不是跟着涨。', 'When it is hot, a softer coin is more common, not a rise with it.'],
-            B: ['不用等美元跌破近低，才读这一下。', 'You do not wait for a dollar break of a recent low to make this read.'],
-            C: ['偏热时更常见的是偏弱，不是先横住。', 'When it is hot, softer is more common, not a chop first.'],
-            D: ['偏热时收益率跳，币价常常偏弱。', 'When it is hot the yield jumps, and the coin is often softer.']
+          quiz('美元走弱，十年收益率也在回落，比特币更常见的是？', 'The dollar is weak and the ten-year yield is falling too, what is more common for bitcoin?', [
+            opt('A', '收益率回落通常是衰退，币价先跌', 'A falling yield is usually a recession, so the coin drops first'),
+            opt('B', '两条都弱，比特币常常更容易涨', 'With both weak, bitcoin is often easier to lift'),
+            opt('C', '美元走弱是滞后的，通常不用管', 'A weak dollar is late, so it can usually be ignored'),
+            opt('D', '两条都弱时，币价通常先横住', 'When both are weak, the coin usually chops first')
+          ], 'B', {
+            A: ['这一段两条都弱，不是先读成衰退下跌。', 'In this stretch both are weak, so you do not read a recession drop first.'],
+            B: ['美元走弱、收益率回落时，比特币常常更容易涨。', 'When the dollar is weak and the yield falls, bitcoin is often easier to lift.'],
+            C: ['美元走弱和收益率回落要一起看，不是放下不管。', 'A weak dollar and a falling yield are read together, not set aside.'],
+            D: ['两条都弱时更常见的是更容易涨，不是先横住。', 'When both are weak, easier to lift is more common, not a chop first.']
           }),
           quiz('大家担心增长，十年收益率和比特币一起跌，更常见的读法是？', 'People worry about growth, and the ten-year yield and bitcoin fall together, what is the more common read?', [
             opt('A', '增长担心时，它们可以一起跌', 'When growth is the worry, they can fall together'),
@@ -195,7 +195,7 @@
           ], 'C', {
             A: ['别的利好正在推币价，美元没跌不是减仓的理由。', 'Other good news is lifting the coin, and a dollar that has not fallen is not a reason to cut.'],
             B: ['这一段币价在涨，不能说利好通常盖不过美元。', 'The coin is rising in this stretch, so you cannot say good news usually loses to the dollar.'],
-            C: ['一条美元线盖不过正在起作用的利好，就不要硬做空。', 'When one dollar line does not override the good news that is working, do not force the short.'],
+            C: ['别的利好正在推币价，不要只凭美元这一条去做空。', 'Other good news is lifting the coin, so do not short from the dollar line alone.'],
             D: ['不用等美元回到近低，才承认币价在涨。', 'You do not wait for the dollar to return to a recent low before you admit the coin is rising.']
           })
         ],
@@ -334,7 +334,8 @@
         study: { kind: 'panel', rows: [
           bi('CPI 和非农：纽约 8:30，北京夏令时 20:30，冬令时 21:30。', 'CPI and payrolls: 8:30 New York, 20:30 Beijing in summer time, 21:30 in winter.'),
           bi('美联储决议：纽约 14:00，北京夏令时 02:00，冬令时 03:00。', 'Fed decision: 14:00 New York, 02:00 Beijing in summer time, 03:00 in winter.'),
-          bi('虚构：2027-01-15 13:30 UTC。计划要在看见结果之前写好，而不是事后改口。', 'Fictional: 2027-01-15 13:30 UTC. The plan has to be written before you see the result, not rewritten afterward.')
+          bi('虚构事件：2027-01-15 13:30 UTC。', 'Fictional event: 2027-01-15 13:30 UTC.'),
+          bi('CPI 预期 2.8%，模拟实际 3.1%。先写计划再看结果。', 'CPI forecast 2.8%, simulated actual 3.1%. Write the plan before the result.')
         ] }
       })
     ]

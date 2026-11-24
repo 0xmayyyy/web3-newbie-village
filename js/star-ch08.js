@@ -12,7 +12,7 @@
           title: bi('这种心态出现时，价格往往在哪里', 'When this mood shows up, where price often is'),
           body: bi('连续几根大阳线再去追，常常买在这一段的后部。\n资金费率已经很高，多头拥挤，再追常常是接在后面。\n未平仓量冲上去、成交量突然放大，说明这一下人很多，不是刚开始。\n后面常见的是先回一截或横住，而不是立刻再走一根一样陡的线。\n群里都在喊再不买就没了时，往往已经不早了。\n计划若要求回撤或确认，120 可以只是看着，不做。\n强趋势可以继续到 125、130，不追也会错过后面一截。', 'Chasing after several big green candles in a row often buys the late part of that stretch.\nWhen funding is already very high and longs are crowded, another chase often arrives late.\nAn open-interest spike plus a sudden jump in volume means this move already has a crowd, and it is not the start.\nWhat is common next is a pullback first or a chop, not another line just as steep right away.\nWhen the group is shouting that it will be gone if you do not buy, it is often already late.\nIf the plan asks for a pullback or a confirmation, 120 can be something you only watch, and do not trade.\nA strong trend can continue to 125 or 130, and not chasing can also miss a later stretch.')
         },
-        example: bi('教学模拟：聊天里说再不买就没了，这是情绪。\n120 之后可以再到 130，也可以跌到 110 或 95。\n两条都可能，所以不交易也可以是按计划留下的结果。', 'Teaching simulation: a chat line that says it will be gone if you do not buy is emotion.\nAfter 120 it can go on to 130, or fall to 110 or 95.\nBoth are possible, so no trade can also be the result left by following the plan.'),
+        example: bi('教学模拟：聊天里说再不买就没了，这是情绪。\n后面可以继续到 125、130，也可以跌到 110、95。\n两条都可能，所以不交易也可以是按计划留下的结果。', 'Teaching simulation: a chat line that says it will be gone if you do not buy is emotion.\nAfterward it can continue to 125 or 130, and it can also fall to 110 or 95.\nBoth are possible, so no trade can also be the result left by following the plan.'),
         pitfalls: [
           bi('用别人的盈利代替自己的条件', 'Replacing your own conditions with someone else’s profit'),
           bi('费率很高还当成趋势刚开始', 'Treating a very high funding rate as the start of the trend')
@@ -106,24 +106,24 @@
             C: ['风险加大后再亏，掉得比原来的小比例更快。', 'A loss after the risk is raised falls faster than the old small rate.'],
             D: ['价格不因为你想翻本就反向。', 'Price does not reverse just because you want the money back.']
           }),
-          quiz('刚亏完，计划写了今天到此为止，手还想再做一笔翻本，该怎么做？', 'Right after a loss, the plan says stop for the day, and you still want another trade to win it back, what should you do?', [
-            opt('A', '计划可以改成再做一笔小的', 'The plan can be rewritten into one more small trade'),
-            opt('B', '再做一笔通常就能把亏损补上', 'One more trade usually covers the loss'),
-            opt('C', '先停，按计划今天不再做', 'Stop first, and do not trade again today, as the plan says'),
-            opt('D', '停一天等于认输，所以要继续', 'Stopping for a day is giving up, so you continue')
-          ], 'C', {
-            A: ['写了今天到此为止，就不是再改成一笔小的。', 'If the plan says stop for the day, it is not rewritten into one more small trade.'],
-            B: ['再做一笔不是把亏损补上的常见结果。', 'One more trade is not the common way the loss gets covered.'],
-            C: ['计划写了今天到此为止，就先停，今天不再做。', 'If the plan says stop for the day, you stop, and you do not trade again today.'],
-            D: ['停一天是风控，不是认输。', 'Stopping for a day is risk control, not giving up.']
+          quiz('加大仓位后赢了一次，你想一直用这个大仓位，这样对吗？', 'You win once after sizing up, and you want to keep this bigger size, is that right?', [
+            opt('A', '碰巧赢一次，不能因此一直用大仓位', 'One lucky win does not make it right to keep the bigger size'),
+            opt('B', '赢了就说明大仓位是对的，可以一直用', 'A win means the bigger size was right, so you can keep it'),
+            opt('C', '一直用大仓位，通常下一笔还能补上差额', 'Keeping the bigger size usually lets the next trade cover the gap'),
+            opt('D', '赢了一次，仓位会自己回到原来的大小', 'After one win, the size shrinks itself back to the old one')
+          ], 'A', {
+            A: ['碰巧赢一次，不能把大仓位当成以后都该用的。', 'One lucky win does not make the bigger size the one you should keep using.'],
+            B: ['赢一次不能说明大仓位是对的。', 'One win does not mean the bigger size was right.'],
+            C: ['一直用大仓位，不是补差额的方法。', 'Keeping the bigger size is not a way to cover the gap.'],
+            D: ['仓位不会因为赢了一次就自己缩回去。', 'The size does not shrink itself back because you won once.']
           }),
           quiz('加大之后下一笔碰巧赚了，通常接着会怎样？', 'After sizing up, the next trade happens to win, what usually follows?', [
-            opt('A', '赚一次就说明加大是对的，可以固定下来', 'One win means sizing up was right, so you can keep it'),
+            opt('A', '赢了一次，下一笔通常就把仓位缩回去', 'After one win, the next trade usually shrinks the size back'),
             opt('B', '这次赚的通常够补上 1%、2%、4% 那条差额', 'This win usually covers the gap on the 1%, 2%, 4% path'),
             opt('C', '风险会自己缩回原来的 1%', 'The risk shrinks itself back to the old 1%'),
             opt('D', '更容易再加，直到一次大亏把赚回来的吐出去', 'It gets easier to size up again, until one large loss gives back what was earned back')
           ], 'D', {
-            A: ['碰巧赚一次，不能把加大固定下来。', 'One lucky win cannot lock the larger size in place.'],
+            A: ['赢一次不会让下一笔自己把仓位缩回去。', 'One win does not make the next trade shrink the size back by itself.'],
             B: ['一次碰巧的赚，不是用来补 1%、2%、4% 那条差额的方法。', 'One lucky win is not a method for covering the gap on the 1%, 2%, 4% path.'],
             C: ['风险不会因为赚了就自己缩回 1%。', 'The risk does not shrink itself back to 1% because you won.'],
             D: ['碰巧赚了会让人更敢再加，直到一次大亏吐回去。', 'A lucky win makes another increase easier, until one large loss gives it back.']

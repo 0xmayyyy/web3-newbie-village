@@ -45,12 +45,12 @@
           }),
           quiz('消息刚出来，交易所还没有这笔成交，价格通常怎样？', 'The post has just appeared, and the exchange has no trade for it yet, what does price usually do?', [
             opt('A', '还没有成交，价格往往还没动', 'With no trade yet, price often has not moved'),
-            opt('B', '标题一出，通常已经跌完', 'Once the headline is out, the drop is usually finished'),
+            opt('B', '没有成交，价格通常先涨一截', 'With no trade yet, price usually rises a notch first'),
             opt('C', '没有成交，也通常先大跌一截', 'With no trade, it usually drops a large notch first'),
             opt('D', '价格不动，就说明后面不会再卖', 'If price does not move, there will be no sale later')
           ], 'A', {
             A: ['消息刚出来、还没有成交，价格往往还没动。', 'When the post has just appeared and there is no trade yet, price often has not moved.'],
-            B: ['这一刻通常还没跌完，卖出常常在后面。', 'The drop is usually not finished in this moment, and the selling often comes later.'],
+            B: ['没有成交不是先涨的理由，价格往往还没动。', 'No trade yet is not a reason for a rise first, and price often has not moved.'],
             C: ['没有成交时，价格往往还没动，不是先大跌。', 'With no trade yet, price often has not moved, and it does not drop hard first.'],
             D: ['这一刻不动，不表示后面不会卖。', 'No move in this moment does not mean there will be no sale later.']
           }),
@@ -67,7 +67,7 @@
           })
         ],
         study: { kind: 'panel', headers: [bi('字段', 'Field'), bi('模拟值', 'Simulated value')], cells: [[bi('链', 'Chain'), 'DemoChain'], [bi('交易', 'Transaction'), 'DEMO_TX_001'], [bi('区块', 'Block'), '1001'], [bi('金额', 'Amount'), '100 DEMO_BTC'], [bi('确认', 'Confirmations'), '3']], rows: [
-          bi('教学模拟。成功不等于收款地址已经核对。金额 100 DEMO_BTC，确认数 3。', 'Teaching simulation. Success does not mean the recipient address has been checked. Amount 100 DEMO_BTC, 3 confirmations.')
+          bi('教学模拟。成功不等于收款人已被你核对。', 'Teaching simulation. Success does not mean you have checked the recipient.')
         ] }
       }),
       lesson({
@@ -133,6 +133,7 @@
           })
         ],
         study: { kind: 'panel', headers: [bi('项目', 'Item'), bi('数量', 'Amount')], cells: [[bi('外部流入', 'External inflow'), '1000'], [bi('外部流出', 'External outflow'), '700'], [bi('内部划转', 'Internal transfer'), bi('500（排除）', '500 (excluded)')], [bi('净流入', 'Net inflow'), '+300'], [bi('未知', 'Unknown'), '200']], rows: [
+          bi('净流入不是已卖出。', 'Net inflow is not coins already sold.'),
           bi('外部流入 1000，外部流出 700，净流入 +300。+300 不是已经卖掉 300。', 'External inflow 1000, external outflow 700, net inflow +300. +300 is not 300 already sold.')
         ] }
       }),

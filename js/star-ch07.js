@@ -133,12 +133,12 @@
         ],
         study: { kind: 'panel', headers: [bi('项目', 'Item'), bi('数值', 'Value')], cells: [[bi('价格', 'Price'), '2'], [bi('流通', 'Circulating'), bi('1 亿', '100 million')], [bi('最大供应', 'Max supply'), bi('10 亿', '1 billion')], [bi('流通市值', 'Circulating market cap'), bi('2 亿', '200 million')], ['FDV', bi('20 亿', '2 billion')], [bi('解锁后再计流通市值', 'Circulating market cap after the unlock'), bi('3 亿', '300 million')]], rows: [
           bi('解锁 5000 万后，按原价计，流通市值是 3 亿。', 'After unlocking 50 million, at the same price, circulating market cap is 300 million.'),
-          bi('再解锁 5000 万后，流通是 1.5 亿。', 'After another 50 million unlocks, the circulating supply is 150 million.')
+          bi('解锁 5000 万后，流通从 1 亿变成 1.5 亿。', 'After unlocking 50 million, the circulating supply goes from 100 million to 150 million.')
         ] }
       }),
       lesson({
         id: '03', title: bi('市场叙事：热度不是基本面', 'Narratives: attention is not fundamentals'),
-        scene: bi('一个板块的钱正在转到新故事，旧的那一边通常先怎样？', 'Money in a sector is rotating into a new story, what does the old side usually do first?'),
+        scene: bi('板块里冒出新故事时，你先看什么？', 'When a new story shows up in the sector, what do you look at first?'),
         one: bi('叙事很热时价格常常先跑在使用前面，龙头一见顶跟风常常先跌，圈外的人开始谈论这枚币时往往已经不早。', 'When a narrative is hot price often runs ahead of usage, copycats often drop first once the leader tops, and when people outside crypto start talking about the coin it is often already late.'),
         explain: bi('讨论变多，可以是少数账号反复发，不是用户变多。\n同一个板块里，先看龙头，再看跟风。\n大所上币的公告，常常让价格先冲一段。\n圈外的人，比如不看盘的朋友也开始谈这枚币，往往是热度已经传到外面。\n薄盘口时，吃掉前几档会让价格跳一截，随后常常吐回一部分。', 'More discussion can be a few accounts posting again and again, not more users.\nIn one sector, watch the leader first, then the copycats.\nA listing post from a big exchange often makes price run for a stretch first.\nWhen people outside crypto, such as friends who do not watch the book, start talking about the coin, the heat has often already spread outside.\nWhen the order book is thin, taking the first levels makes price jump, and it often gives some of that back afterward.'),
         topic: {
@@ -252,16 +252,16 @@
             C: ['未知被说成利好，追进去买的是故事。', 'When an unknown is told as good news, a chase buys the story.'],
             D: ['这一条没说钥匙失效。', 'This point does not say the key is dead.']
           }),
-          quiz('权限风险已经写出来，价格却已经涨了很久，这时？', 'The permission risk is already written down, but price has already risen for a long time, what then?', [
-            opt('A', '涨很久就说明这个风险作废了', 'A long rise means this risk is void'),
-            opt('B', '可以涨很久，写出来不是马上做空', 'It can rise for a long time, and writing it down is not an immediate short'),
-            opt('C', '写出来就要马上做空', 'Once it is written down you have to short at once'),
-            opt('D', '先把未知补成利好，再继续拿', 'Fill the unknown in as good news first, then keep holding')
-          ], 'B', {
-            A: ['涨很久不能把已经写明的权限风险作废。', 'A long rise cannot void a permission risk that is already written down.'],
-            B: ['有权限风险也可以涨很久，写出来不是马上做空的命令。', 'A permission risk can still rise for a long time, and writing it down is not an order to short at once.'],
-            C: ['写出来要记着，但不是马上做空的命令。', 'Write it down and keep it, but it is not an order to short at once.'],
-            D: ['未知不能补成利好。', 'An unknown cannot be filled in as good news.']
+          quiz('只拿证据 A 去讲，价格先涨了，这时指出证据 C 和收入说法冲突，后面更常见的是？', 'Only evidence A is told and price rises first, then C is pointed out as conflicting with the revenue claim, what is more common next?', [
+            opt('A', '只讲了好消息，这段涨通常更稳', 'Telling only the good news makes this rise steadier'),
+            opt('B', '收入一对上冲突，通常再冲一段', 'Once revenue is in conflict, it usually pushes another stretch'),
+            opt('C', '指出和收入冲突的 C，这段涨常常被打回去', 'Pointing out C, which conflicts with the revenue claim, often knocks that rise back'),
+            opt('D', 'C 还没写成审计，价格通常毫无反应', 'Until C is written into an audit, price usually does not react')
+          ], 'C', {
+            A: ['只讲 A 可以先涨，指出冲突之后这段常常不更稳。', 'Telling only A can rise first, and after the conflict is pointed out the rise is often not steadier.'],
+            B: ['和收入说法冲突不是再冲一段的理由。', 'A conflict with the revenue claim is not a reason for another push.'],
+            C: ['只讲好消息可以先涨，指出和收入冲突的 C 之后，这段涨常常被打回去。', 'Telling only the good news can rise first, and after C is pointed out as conflicting with the revenue claim, that rise is often knocked back.'],
+            D: ['冲突被指出来就可以读，不用等它写进审计。', 'Once the conflict is pointed out it can be read, and you do not wait for it to be written into an audit.']
           })
         ],
         study: { kind: 'panel', headers: [bi('证据', 'Evidence'), bi('作用', 'Role')], cells: [['A', bi('支持产品存在', 'Supports that a product exists')], ['B', bi('管理员可升级', 'Admin can upgrade')], ['C', bi('与收入声称冲突', 'Conflicts with the revenue claim')], ['D', bi('未知', 'Unknown')]], rows: [
