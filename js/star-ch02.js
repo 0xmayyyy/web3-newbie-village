@@ -87,27 +87,62 @@
         study: { kind: 'rsi', main: 'rsi', lessonChart: 'rsi-full', closes: rsi75 }
       }),
       lesson({
-        id: '05',
-        title: bi('背离：价格和下面的线没走在一起', 'Divergence: price and the lower lines did not move together'),
-        scene: bi('价格创新高、下面的线没创新高，是不是已经要跌了？', 'Price made a new high and the line below did not. Does that mean it is about to fall?'),
-        one: bi('顶背离是价格高点更高、快线高点更低，它只说明这两段没走在一起，不保证马上跌。', 'Top divergence is a higher price high with a lower fast-line high, and it only says those two stretches did not move together, so it does not guarantee an immediate drop.'),
-        explain: bi('上面是价格 K 线。\n下面是 MACD。\n黄线是快线，看最近涨跌的速度。\n蓝线是慢线，是快线的平均。\n顶背离：后面的价格高点更高，快线的高点却更低。\n底背离：后面的价格低点更低，快线的低点却更高。\n图上会把这两个点连起来，并标上顶背离或底背离。\n这只是已经走出来的两段对不上。\n它不保证下一根就转向。\nRSI 等其他指标也会出现背离，看法一样：价格创新高或新低，指标却没跟上。', 'The top is the price candles.\nMACD is below.\nThe gold line is the fast line. It shows how fast price has been moving.\nThe blue line is the slow line, the average of the fast line.\nTop divergence: the later price high is higher, but the fast-line high is lower.\nBottom divergence: the later price low is lower, but the fast-line low is higher.\nThe chart connects those two points and labels top divergence or bottom divergence.\nThat only says two stretches that already happened did not match.\nIt does not guarantee the next candle turns.\nRSI and other indicators can diverge the same way: price makes a new high or a new low, and the indicator does not keep up.'),
-        example: bi('教学模拟：价格做出更高的高点时，快线的高点更低。\n价格做出更低的低点时，快线的低点更高。\n反例里，标出顶背离之后价格还在继续涨。\n所以背离不是买卖按钮。', 'Teaching simulation: when price makes a higher high, the fast line makes a lower high.\nWhen price makes a lower low, the fast line makes a higher low.\nIn the counterexample, price keeps rising after the top divergence is marked.\nSo divergence is not a buy or sell button.'),
+        id: '04',
+        title: bi('布林带：收口之后常常有一段大波动', 'Bollinger Bands: a squeeze is often followed by a large move'),
+        scene: bi('带子收到最窄，是不是一定马上涨？', 'The band is at its narrowest. Must price rise right away?'),
+        one: bi('带子收窄通常后面有大波动，贴着上边走则强趋势往往还没结束。', 'A narrow band usually means a large move comes next, and riding the upper edge often means a strong trend is not finished.'),
+        explain: bi('布林带是围着价格的上下两条边，中间是一条均价。\n带子收窄，是最近的价格挤在一起。\n带子张开，是价格开始散开。\n价格贴着上边走，是这段涨得很顺。\n价格冲出上边又回到带子里，是这下冲不动了。', 'Bollinger Bands are two edges around price, with an average line in the middle.\nA narrow band means recent prices are packed together.\nA wide band means price has started to spread out.\nPrice riding the upper edge means this stretch is rising smoothly.\nPrice popping above the upper edge and coming back inside means that push has run out.'),
+        topic: {
+          title: bi('出现这种情况，行情一般怎么走', 'What price usually does next'),
+          body: bi('带子收到最窄时，后面常常来一段比较大的波动，往上往下都有。\n方向要等价格自己走出来，不要在最窄的时候猜。\n价格沿着上边走，强趋势里很常见，往往还会再涨一段。\n一碰上边就做空，容易被趋势拖着走。\n冲出上边又很快回到带子里，后面常是回落或横住。\n沿着下边一直走也一样，不是一碰下边就该抄底。\n横盘里带子也会收窄，结果可能只是再横一会儿。\n高位已经贴着上边，再来利好，常常是利好出尽，冲一下就回。\n利空砸到下边附近，价格守住并回到带子里，常常有一截反弹。\n利空还在加码、价格仍贴着下边往下走时，不要因为跌得多就抄。', 'When the band is at its narrowest, a larger move often follows, and it can go either way.\nWait for price to pick the direction, and do not guess at the narrowest point.\nPrice riding the upper edge is common in a strong trend, and it often rises further.\nShorting at the first touch of the upper edge gets dragged by the trend.\nA pop above the upper edge that quickly comes back inside is often followed by a pullback or a pause.\nRiding the lower edge works the same way, and the first touch is not a reason to buy the dip.\nA sideways market can narrow the band too, and the result may be more sideways time.\nGood news while price is already riding the upper edge is often the good news getting used up, a push and then a fade.\nBad news into the lower edge, if price holds and comes back inside the band, is often followed by a bounce.\nIf the bad news is still getting worse and price keeps riding the lower edge down, do not buy just because it has fallen a lot.')
+        },
+        example: bi('教学模拟：带子先收到很窄，接着价格往上冲，并贴着上边走。\n这时来一条利好，价格再冲出上边，很快又回到带子里。\n后面常见的是回落，不是利好一出就一路涨。\n强趋势的反例是贴着上边走了很多根，中间的利好并没有把价格打下来。', 'Teaching simulation: the band narrows first, then price pushes up and rides the upper edge.\nGood news arrives, price pops above the upper edge, and it quickly comes back inside.\nWhat often follows is a pullback, not a straight rise just because the news was good.\nThe strong-trend counterexample rides the upper edge for many bars, and the good news in the middle does not knock price down.'),
         pitfalls: [
-          bi('把背离当成马上要转向', 'Treating divergence as an immediate turn'),
-          bi('只看线，不看价格有没有真的更高或更低', 'Looking only at the line, without checking whether price really went higher or lower')
+          bi('把收口当成马上要涨', 'Treating a squeeze as an immediate rise'),
+          bi('一碰上边就当成必须做空', 'Treating a touch of the upper edge as an order to short')
         ],
-        practice: bi('点出顶背离的第二个高点。\n价格更高，快线更低。\n这不保证马上跌。', 'Tap the second high of the top divergence.\nPrice is higher and the fast line is lower.\nThat does not guarantee an immediate drop.'),
+        practice: bi('在图上切换收口、沿上边和冲出再回来，看后面价格怎么走。', 'On the chart, switch among the squeeze, riding the upper edge, and the pop back inside, and watch what price does next.'),
         check: {
-          ask: bi('RSI 上出现背离时，看法和 MACD 一样吗？', 'When divergence shows up on RSI, is it read the same way as on MACD?'),
-          options: [opt('A', '不一样，RSI 要反过来看', 'No, RSI is read the other way'), opt('B', '只有 MACD 才算背离', 'Only MACD counts as divergence'), opt('C', 'RSI 背离保证下一根转向', 'RSI divergence guarantees the next bar turns'), opt('D', '一样，都是价格创新高或新低，指标没跟上', 'Yes, price makes a new high or low and the indicator does not keep up')],
-          answer: 'D',
-          miss: bi('RSI 也一样：价格创新高或新低，指标没跟上。它也不保证下一根就转向。', 'RSI is the same: price makes a new high or low, and the indicator does not keep up. It still does not guarantee the next bar turns.')
+          ask: bi('价格已经沿着上边走了很多根。这时最常见的是什么？', 'Price has been riding the upper edge for many bars. What is most common then?'),
+          options: [opt('A', '马上大跌', 'An immediate large drop'), opt('B', '强趋势里往往还会再走一段', 'A strong trend often keeps going for another stretch'), opt('C', '带子会自己消失', 'The band disappears on its own'), opt('D', '必须立刻做空', 'You must short at once')],
+          answer: 'B',
+          note: bi('贴着上边走，强趋势往往还没结束。', 'Riding the upper edge, a strong trend is often not finished.'),
+          miss: bi('贴着上边走，强趋势往往还没结束。', 'Riding the upper edge, a strong trend is often not finished.')
         },
         quizzes: [
-          quiz('价格新高、快线没有新高，这是？', 'A new price high, while the fast line does not make a new high. What is that?', [opt('A', '顶背离', 'Top divergence'), opt('B', '底背离', 'Bottom divergence'), opt('C', '没有意义', 'Meaningless'), opt('D', '金叉', 'A golden cross')], 'A', {A: ['价格高点更高，快线的高点更低，这就是顶背离。', 'A higher price high with a lower fast-line high is top divergence.'], B: ['底背离比的是更低的低点。', 'Bottom divergence compares a lower low.'], C: ['它说明两段没走在一起，不是空话，也不保证马上跌。', 'It says two stretches did not move together. That is not empty, and it still does not guarantee an immediate drop.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
-          quiz('背离是不是一定马上转向？', 'Must divergence turn price right away?', [opt('A', '一定', 'It must'), opt('B', '不一定', 'Not necessarily'), opt('C', '只有上涨时一定', 'Only in a rise'), opt('D', '只有日线一定', 'Only on the daily chart')], 'B', {A: ['背离之后价格仍可以顺着原来的方向再走一段。', 'After divergence, price can still keep going the same way.'], B: ['它只是价格和快线没有一起创新高或创新低。', 'It only says price and the fast line did not make the new extreme together.'], C: ['换成上涨或下跌，也不变成保证。', 'A rise or a fall does not turn it into a guarantee.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
-          quiz('底背离看的是什么？', 'What does bottom divergence look at?', [opt('A', '价格和快线一起创新高', 'Price and the fast line both make a new high'), opt('B', '绿柱变长', 'The green bars get longer'), opt('C', '价格低点更低，快线的低点更高', 'A lower price low and a higher fast-line low'), opt('D', '成交量也创新低', 'Volume also makes a new low')], 'C', {A: ['一起创新高就不是背离。', 'Making a new high together is not divergence.'], B: ['绿柱变长说的是快线和慢线拉得更开。', 'A longer green bar means the fast and slow lines pulled farther apart.'], C: ['后面的价格更低，快线却没再创新低，这是底背离。', 'Later price is lower, but the fast line did not make a new low. That is bottom divergence.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']})
+          quiz('带子收到最窄，后面一般怎样？', 'When the band is at its narrowest, what usually follows?', [opt('A', '一定大涨', 'It must surge'), opt('B', '一定大跌', 'It must drop'), opt('C', '常常有一段大波动，方向还没定', 'A larger move often comes, and the direction is not set yet'), opt('D', '价格会停在原地', 'Price will stay still')], 'C', {A: ['收口不负责告诉你涨。', 'A squeeze does not owe you a rise.'], B: ['收口也不负责告诉你跌。', 'A squeeze does not owe you a drop.'], C: ['收口只说明挤在一起，后面的大波动往上往下都有。', 'A squeeze only means price is packed together. The later move can go either way.'], D: ['最窄的时候反而是在蓄力，很少一直不动。', 'The narrowest point is usually a coil, and price rarely stays frozen.']}),
+          quiz('高位已经贴着上边，又来一条利好。常怎么走？', 'Price is already riding the upper edge, and good news arrives. What often happens?', [opt('A', '常常冲一下就回，像利好出尽', 'It often pushes and fades, like the good news is used up'), opt('B', '利好一出就必须追', 'Good news means you must chase'), opt('C', '利好会把带子取消', 'Good news cancels the band'), opt('D', '价格一定横盘到收盘', 'Price must stay flat into the close')], 'A', {A: ['高位贴边上轨再来利好，常常是冲一下就回。', 'Good news while price rides the upper edge often pushes once and fades.'], B: ['利好不是追涨命令。', 'Good news is not an order to chase.'], C: ['消息不会把带子取消。', 'News does not cancel the band.'], D: ['没有“必须横到收盘”这一条。', 'There is no rule that it must stay flat into the close.']}),
+          quiz('价格冲出上边，下一根又回到带子里。这说明什么？', 'Price pops above the upper edge, and the next bar is back inside. What does that say?', [opt('A', '趋势刚开始，必须加仓', 'The trend just started, so you must add'), opt('B', '这是收口，后面必有大涨', 'This is a squeeze, so a surge must follow'), opt('C', '下边已经被跌破', 'The lower edge is already broken'), opt('D', '这下多半冲完了，要防回落', 'That push is mostly spent, so watch for a pullback')], 'D', {A: ['回到带子里是冲劲用完，不是趋势刚开始。', 'Coming back inside means the push is spent, not that the trend just started.'], B: ['这不是收口，收口是带子变窄。', 'This is not a squeeze. A squeeze is the band getting narrow.'], C: ['回到上边里面，不是跌破下边。', 'Coming back inside the upper edge is not a break of the lower edge.'], D: ['冲出去又回来，这下多半冲完了，后面常是回落或横住。', 'A pop that comes back inside is mostly spent, and a pullback or a pause often follows.']})
+        ],
+        study: { practical: 'boll' }
+      }),
+      lesson({
+        id: '05',
+        title: bi('背离：高位劲变小，要防回落', 'Divergence: fading strength at a high, watch for a pullback'),
+        scene: bi('价格创新高、下面的线没创新高，后面一般怎么走？', 'Price made a new high and the line below did not. What usually happens next?'),
+        one: bi('高位顶背离通常是上涨的劲变小了，要防回落，强趋势里它也会继续涨。', 'Bearish divergence at a high usually means the rise is losing strength, so watch for a pullback, though a strong trend can keep rising.'),
+        explain: bi('顶背离是价格高点更高，下面的线高点却更低。\n底背离是价格低点更低，下面的线低点却更高。\n下面的线可以是 MACD 的快线，也可以是 RSI，看法一样。\n它只说明这两段的劲没跟上价格。', 'Top divergence is a higher price high with a lower high on the line below.\nBottom divergence is a lower price low with a higher low on the line below.\nThe line below can be the MACD fast line or RSI, and you read it the same way.\nIt only says the push of those two stretches did not keep up with price.'),
+        topic: {
+          title: bi('出现这种情况，行情一般怎么走', 'What price usually does next'),
+          body: bi('高位出现顶背离，上涨的劲在变小，后面常常先回落，或横一段时间。\n要看价格有没有跌破前一个小低点，跌破了，回落更像开始了。\n没跌破，可能只是歇一口气，还会再涨。\n低位出现底背离，下跌的劲在变小，后面常常先反弹。\n要看收盘有没有站回前一个小高点。\n强趋势里背离可以连着出现好几次，价格还在创新高或新低。\n这时跟着反向重仓，最容易被趋势拖走。\n高位已经顶背离，再来利好，常常是利好出尽，冲高后回落。\n低位已经底背离，利空落地并且不再加码时，更容易反弹。\n利空还在变重，底背离也可以一直失效。', 'Bearish divergence at a high means the rise is losing strength, and what follows is often a pullback or a pause.\nWatch whether price breaks the previous small low, and if it does, the pullback looks more like it has started.\nIf it does not break, it may only be a rest, and price can rise again.\nBullish divergence at a low means the drop is losing strength, and a bounce often comes first.\nWatch whether the close gets back above the previous small high.\nIn a strong trend, divergence can show up several times while price is still making new highs or new lows.\nFading that with a heavy position the other way is the easiest way to get dragged by the trend.\nGood news on top of bearish divergence at a high is often the good news getting used up, a spike and then a fade.\nWhen bullish divergence is already there at a low, a bounce is more likely once the bad news has landed and is not getting worse.\nIf the bad news is still getting heavier, bullish divergence can keep failing.')
+        },
+        example: bi('教学模拟：价格第二次创新高，快线没有创新高。\n后面先回落了一截。\n反例里同样标出顶背离，价格却继续涨。\n所以看见背离，先当成劲变小，不当成马上反转。', 'Teaching simulation: price makes a second higher high, and the fast line does not.\nWhat follows first is a pullback.\nIn the counterexample the same top divergence is marked, and price keeps rising.\nSo when you see divergence, treat it first as fading strength, not as an immediate reversal.'),
+        pitfalls: [
+          bi('把背离当成马上要转向', 'Treating divergence as an immediate turn'),
+          bi('强趋势里背离了还重仓反向', 'Fading a strong trend with a heavy position just because of divergence')
+        ],
+        practice: bi('点出顶背离的第二个高点，再看后面是回落，还是继续涨。', 'Tap the second high of the top divergence, then see whether price pulls back or keeps rising.'),
+        check: {
+          ask: bi('价格在高位第二次更高，下面的线却更低，同时又来了一条利好。后面更常见的是？', 'Price makes a second higher high, the line below is lower, and good news arrives at the same time. What is more common next?'),
+          options: [opt('A', '利好会取消背离，然后一路涨', 'The news cancels the divergence and price rises straight'), opt('B', '常常冲一下就回', 'It often pushes once and then fades'), opt('C', '必须马上满仓做空', 'You must short with a full position at once'), opt('D', '下面的线会立刻创新高', 'The line below will make a new high immediately')],
+          answer: 'B',
+          note: bi('高位顶背离再来利好，常常是利好出尽，冲一下就回。', 'Good news on bearish divergence at a high is often used up, a push and then a fade.'),
+          miss: bi('高位顶背离再来利好，常常是利好出尽，冲一下就回。', 'Good news on bearish divergence at a high is often used up, a push and then a fade.')
+        },
+        quizzes: [
+          quiz('低位价格创新低，下面的线没有创新低。后面一般先怎样？', 'Price makes a new low, and the line below does not. What usually comes first?', [opt('A', '必须马上涨回前高', 'It must rise straight back to the prior high'), opt('B', '下跌的劲变得更大', 'The drop gets stronger'), opt('C', '这条线作废了', 'The line is void'), opt('D', '常常先反弹，但要看有没有站回前一个小高点', 'A bounce often comes first, but watch whether price gets back above the previous small high')], 'D', {A: ['底背离不是立刻涨回前高的保证。', 'Bullish divergence is not a promise of an immediate return to the prior high.'], B: ['线没创新低，是下跌的劲在变小，不是变得更大。', 'A line that misses the new low means the drop is losing strength, not gaining it.'], C: ['线还在，只是没跟上价格。', 'The line is still there. It just did not keep up with price.'], D: ['低位底背离后面常常先反弹，还要看收盘有没有站回前一个小高点。', 'Bullish divergence at a low is often followed by a bounce first. Still watch whether the close gets back above the previous small high.']}),
+          quiz('顶背离之后价格还在创新高。这说明什么？', 'After bearish divergence, price is still making new highs. What does that say?', [opt('A', '这是背离失效，强趋势可以不理它', 'The divergence failed, and a strong trend can ignore it'), opt('B', '第二个高点一定是顶', 'The second high must be the top'), opt('C', '必须把仓位翻倍做空', 'You must double the short'), opt('D', '底背离已经出现', 'Bullish divergence has appeared')], 'A', {A: ['价格还在创新高，就是这次顶背离没拦住行情。', 'Price still making new highs means this bearish divergence did not stop the move.'], B: ['还在创新高，就还不能说第二个高点是顶。', 'While new highs are still printing, the second high is not yet the top.'], C: ['失效了再加仓反向，最容易被趋势拖走。', 'Adding the other way after it fails is the easiest way to get dragged by the trend.'], D: ['价格在创新高，这不是底背离。', 'Price making new highs is not bullish divergence.']}),
+          quiz('顶背离出现后，先看哪一件事，来判断回落是不是开始了？', 'After bearish divergence, what do you watch first to judge whether the pullback has started?', [opt('A', '成交量是不是归零', 'Whether volume has gone to zero'), opt('B', '有没有人在喊跌', 'Whether someone is calling a drop'), opt('C', '价格有没有跌破前一个小低点', 'Whether price has broken the previous small low'), opt('D', '下面的线有没有正好到一半', 'Whether the line below is exactly at the midpoint')], 'C', {A: ['成交量归不归零，不是回落开始的标志。', 'Volume going to zero is not the sign that the pullback has started.'], B: ['有人喊跌，不是价格已经回落。', 'Someone calling a drop is not price already pulling back.'], C: ['跌破前一个小低点，回落才更像开始了。', 'Once price breaks the previous small low, the pullback looks more like it has started.'], D: ['线到不到一半，不决定回落有没有开始。', 'Whether the line is at the midpoint does not decide whether the pullback has started.']})
         ],
         study: {
           kind: 'rsi',
@@ -120,7 +155,7 @@
             { o: 96, h: 96.6, l: 95.5, c: 96 }, { o: 96, h: 101.6, l: 95.5, c: 101 }, { o: 101, h: 105, l: 100, c: 105 },
             { o: 99, h: 100, l: 96, c: 97 }, { o: 97, h: 97.6, l: 91, c: 91.5 }, { o: 91.5, h: 92.1, l: 91, c: 91.5 },
             { o: 91.5, h: 96.6, l: 91, c: 96 }, { o: 96, h: 102.1, l: 95.5, c: 101.5 }, { o: 101.5, h: 109, l: 101, c: 107 },
-            { o: 107, h: 112, l: 104, c: 106 }, { o: 106, h: 106.6, l: 103.5, c: 104 }, { o: 104, h: 104.6, l: 100.5, c: 101 }
+            { o: 107, h: 112, l: 104, c: 106 }, { o: 106, h: 106.6, l: 103.5, c: 104 },             { o: 104, h: 104.6, l: 100.5, c: 101 }
           ],
           peaks: [{ index: 14, high: 105 }, { index: 21, high: 112 }],
           start: 24
@@ -128,51 +163,61 @@
       }),
       lesson({
         id: '06',
-        title: bi('斐波那契：参考线不是必到的价', 'Fibonacci: a reference line is not a price that must be hit'),
-        scene: bi('价格碰到 0.618 就一定会弹回去吗？', 'Must price bounce when it touches 0.618?'),
-        one: bi('斐波那契是把上一段明显的低点到高点分成几条参考线，价格可以在那里停一停，但不必在那里转身。', 'Fibonacci splits the obvious low-to-high of the last swing into a few reference lines, so price may pause there, but it does not have to turn there.'),
-        explain: bi('先找到眼前这一段最明显的低点和高点。\n从这段的起点拖到终点。\n上涨时从低点拖到高点。\n下跌时从高点拖到低点。\n松开后，0、0.382、0.5、0.618 和 1 会自动画出来。\n0 在这段的终点，1 在起点。\n回调时，大家常看 0.5 到 0.618 这一带。\n价格可能在那里停一停，或弹一下。\n这些线只是参考区。\n它们不保证反弹，也不保证跌破。\n拿来看的时候，止损还是要自己放。', 'First find the most obvious low and high of the swing in front of you.\nDrag from the start of that swing to the end.\nIn a rise, drag from the low to the high.\nIn a drop, drag from the high to the low.\nWhen you let go, 0, 0.382, 0.5, 0.618, and 1 draw themselves.\n0 is at the end of the swing, and 1 is at the start.\nIn a pullback, people often watch the band from 0.5 to 0.618.\nPrice may pause there, or bounce a little.\nThese lines are only reference zones.\nThey do not guarantee a bounce, and they do not guarantee a break.\nIf you use them, you still place the stop yourself.'),
-        example: bi('教学模拟：这一段从大约 60000 涨到 70000，再往回走。\n看示范会把低点到高点的线画出来。\n价格可以碰到 0.618，也可以穿过去。\n碰到不是必弹。', 'Teaching simulation: this swing rises from about 60000 to 70000, then pulls back.\nSee the example draws the lines from that low to that high.\nPrice can touch 0.618, or pass through it.\nA touch is not a required bounce.'),
+        title: bi('斐波那契：回调常在这几条线上停一停', 'Fibonacci: pullbacks often pause on these lines'),
+        scene: bi('上涨回调到这些线，后面一般是续涨还是跌完？', 'A pullback in an uptrend reaches these lines. Does the rise usually resume, or is the swing done?'),
+        one: bi('上涨的回调常常在这段涨幅的半路到六成附近停住，然后顺着原来的方向再走。', 'A pullback in an uptrend often pauses around halfway to sixty percent of that rise, then continues in the original direction.'),
+        explain: bi('先找到眼前这一段最明显的低点和高点。\n上涨从低点量到高点，下跌从高点量到低点。\n常看的位置是这段的 0.382、0.5 和 0.618。\n0.382 是回调得比较浅，0.618 是回调得比较深。\n这些是价格常会看一看的位置，不是必到的价。', 'First find the most obvious low and high of the swing in front of you.\nIn a rise, measure from the low to the high, and in a drop, measure from the high to the low.\nThe levels people usually watch are 0.382, 0.5, and 0.618 of that swing.\n0.382 is a shallow pullback, and 0.618 is a deeper one.\nThese are places price often looks at, not prices it must hit.'),
+        topic: {
+          title: bi('出现这种情况，行情一般怎么走', 'What price usually does next'),
+          body: bi('上涨途中的回调，常常在 0.382 到 0.618 这一带停住，然后顺着原方向再涨。\n停在 0.382 附近，说明回调浅，原来的上涨还比较强。\n停在 0.5 到 0.618，是最常被拿来等趋势恢复的一带。\n收盘跌破 0.618 还继续往下，这段上涨多半走完了，不要死等它弹回来。\n下跌途中的反弹，反过来看，反弹到 0.382 到 0.618 常会停，然后继续跌。\n强趋势可以回调很浅就走，弱的一段可以一路跌破 0.618。\n回调到 0.5 或 0.618 附近时来了利空，常常先砸一下。\n砸完如果守住这一带，后面常有反弹，像利空落地。\n守不住，利空还在加码，这一带就只是路过。\n价格已经离这些线很远、又在高位时，这时的利好更像追高，不是低吸的位置。', 'In an uptrend, a pullback often pauses from 0.382 to 0.618, then rises again in the original direction.\nA pause near 0.382 means the pullback is shallow, and the rise is still fairly strong.\nA pause from 0.5 to 0.618 is the band people most often use to wait for the trend to resume.\nIf the close breaks 0.618 and keeps falling, that rise is mostly done, so do not keep waiting for a bounce.\nA bounce during a drop is the mirror image, and it often pauses from 0.382 to 0.618, then the drop continues.\nA strong trend can resume after a very shallow pullback, and a weak swing can fall straight through 0.618.\nBad news into the area around 0.5 or 0.618 often sells off first.\nIf price holds that band after the selloff, a bounce often follows, like the bad news has landed.\nIf it does not hold, and the bad news is still getting worse, that band was only a pass-through.\nWhen price is already far from these lines and sitting at a high, good news looks more like chasing than a place to buy the dip.')
+        },
+        example: bi('教学模拟：这一段从大约 60000 涨到 70000，再往回走。\n价格在 0.5 到 0.618 慢下来，然后顺着原来的上涨再走一截。\n另一段则直接跌破 0.618，后面没有弹回去。', 'Teaching simulation: this swing rises from about 60000 to 70000, then pulls back.\nPrice slows from 0.5 to 0.618, then continues the original rise for another stretch.\nAnother swing breaks 0.618 outright, and it does not bounce back.'),
         pitfalls: [
           bi('把 0.618 当成必须反弹的价', 'Treating 0.618 as a price that must bounce'),
-          bi('换了一段高低点，还用着旧线', 'Keeping the old lines after the swing high and low changed')
+          bi('跌破了还死等它回到这条线', 'Keeping the wait after price has already broken the line')
         ],
-        practice: bi('从这段低点拖到高点。\n看价格回撤时有没有靠近 0.5 到 0.618。\n靠近也不是必弹。', 'Drag from the low of this swing to the high.\nSee whether the pullback comes near 0.5 to 0.618.\nBeing near it is still not a required bounce.'),
+        practice: bi('从这段低点拖到高点，看回调停在哪一条线，再看后面是续涨还是跌破。', 'Drag from the low of this swing to the high, see which line the pullback pauses on, then see whether the rise resumes or the line breaks.'),
         check: {
-          ask: bi('下跌的这一段，线要从哪里拖到哪里？', 'For a falling swing, where do you drag the line from and to?'),
-          options: [opt('A', '从低点拖到高点', 'From the low to the high'), opt('B', '从最新收盘拖到 0', 'From the latest close to 0'), opt('C', '从高点拖到低点', 'From the high to the low'), opt('D', '随便两根就行', 'Any two candles will do')],
-          answer: 'C',
-          miss: bi('下跌时从这段高点拖到低点。随便两根对不上这段行情。', 'In a fall, drag from the high of that swing to the low. Two random candles do not match the swing.')
+          ask: bi('上涨回调到 0.5 附近，又来了一条利空，价格砸下去仍守住这一带。后面更常见的是？', 'A pullback in an uptrend reaches about 0.5, bad news arrives, and the selloff still holds that band. What is more common next?'),
+          options: [opt('A', '一定跌回起点', 'It must fall back to the start'), opt('B', '守住后常常反弹', 'After it holds, a bounce is common'), opt('C', '利空一来就必须加仓做空', 'Bad news means you must add to a short'), opt('D', '这条线会自己消失', 'The line disappears on its own')],
+          answer: 'B',
+          note: bi('利空砸到回撤区还守住，常常是利空落地后的反弹。', 'Bad news that sells into a pullback zone and still holds is often a bounce after the news has landed.'),
+          miss: bi('利空砸到回撤区还守住，常常是利空落地后的反弹。', 'Bad news that sells into a pullback zone and still holds is often a bounce after the news has landed.')
         },
         quizzes: [
-          quiz('画这条线时，先找什么？', 'When you draw this, what do you find first?', [opt('A', '任意两根 K 线', 'Any two candles'), opt('B', '成交量最大的那根', 'The candle with the most volume'), opt('C', '最新一根的收盘价', 'The latest close'), opt('D', '眼前这段最明显的低点和高点', 'The most obvious low and high of the swing in front of you')], 'D', {A: ['随便点两根，画出来的线对不上这段涨跌。', 'Two random candles do not line up with this swing.'], B: ['这条线看的是高低点，不是成交量。', 'These lines look at the high and the low, not volume.'], C: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.'], D: ['从这段的起点拖到终点，线才对得上这段行情。', 'Drag from the start of that swing to the end, and the lines match that move.']}),
-          quiz('0.5 到 0.618 通常用来看什么？', 'What are 0.5 to 0.618 usually watched for?', [opt('A', '回调时可能停一停的区域', 'A zone where a pullback may pause'), opt('B', '必到的反转价', 'A reversal price that must be hit'), opt('C', '止损必须放在这里', 'The stop must sit here'), opt('D', '必须买进的价格', 'A price you must buy')], 'A', {A: ['回调时价格常在这一带慢下来，但这不是保证。', 'In a pullback, price often slows in this band. That is not a guarantee.'], B: ['没有“必须在这里转身”这一条。', 'There is no rule that price must turn here.'], C: ['止损放哪里，要你自己定。线不替你放。', 'Where the stop goes is yours to choose. The line does not place it.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
-          quiz('这些线保证反弹吗？', 'Do these lines guarantee a bounce?', [opt('A', '保证', 'They do'), opt('B', '不保证', 'They do not'), opt('C', '看示范就保证', 'The example guarantees it'), opt('D', '画得越直越保证', 'A straighter line guarantees it more')], 'B', {A: ['参考区不是到站必停。', 'A reference zone is not a stop that must happen.'], B: ['价格可以碰到、穿过，或根本不来。', 'Price can touch them, pass through, or never arrive.'], C: ['看示范只是把这一段画出来，不是保证。', 'See the example only draws this swing. It is not a guarantee.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']})
+          quiz('回调只到 0.382 就停住，并重新上涨。这通常说明什么？', 'The pullback stops at 0.382 and the rise resumes. What does that usually say?', [opt('A', '这段上涨已经走完', 'That rise is already finished'), opt('B', '必须在这里做空', 'You must short here'), opt('C', '回调浅，原来的上涨还比较强', 'The pullback is shallow, and the original rise is still fairly strong'), opt('D', '0.618 已经失效', '0.618 is already void')], 'C', {A: ['浅回调后继续涨，说明这段还没走完。', 'A shallow pullback that resumes means the swing is not finished.'], B: ['停住再涨，不是做空的位置。', 'A pause and then a rise is not the place to short.'], C: ['只回到 0.382，回调浅，原来的上涨还比较强。', 'Stopping at 0.382 is a shallow pullback, and the original rise is still fairly strong.'], D: ['浅回调说的是趋势还强，不是 0.618 失效。', 'A shallow pullback says the trend is still strong. It does not void 0.618.']}),
+          quiz('收盘已经跌破 0.618，还在往下。这时该怎么看？', 'The close has broken 0.618 and is still falling. How should you read it?', [opt('A', '这段上涨多半走完了，不要死等反弹', 'That rise is mostly done, so do not keep waiting for a bounce'), opt('B', '跌破后一定会马上涨回去', 'After the break it must rise back at once'), opt('C', '这是 0.382 的浅回调', 'This is a shallow 0.382 pullback'), opt('D', '线画错了所以可以忽略', 'The lines were drawn wrong, so you can ignore them')], 'A', {A: ['收盘跌破 0.618 还在走，这段上涨多半走完了。', 'A close through 0.618 that keeps going means that rise is mostly done.'], B: ['跌破不是马上涨回去的保证。', 'A break is not a promise of an immediate rise back.'], C: ['已经到了 0.618 下面，就不是 0.382 的浅回调。', 'Once price is under 0.618, this is not a shallow 0.382 pullback.'], D: ['线还在，跌破是这段可能走完，不是线画错了。', 'The lines are still there. The break means the swing may be done, not that the drawing is wrong.']}),
+          quiz('下跌中的反弹到了 0.618 一带停住。后面一般怎样？', 'A bounce in a downtrend pauses around 0.618. What usually follows?', [opt('A', '原来的下跌已经结束', 'The original drop is over'), opt('B', '必须在这里满仓做多', 'You must go fully long here'), opt('C', '利好一定会马上来', 'Good news must arrive at once'), opt('D', '常常停一下，然后继续原来的下跌', 'It often pauses, then the original drop continues')], 'D', {A: ['反弹停在这里，常常是下跌还没走完。', 'A bounce that pauses here often means the drop is not finished.'], B: ['停住不是满仓做多的命令。', 'A pause is not an order to go fully long.'], C: ['线不会把利好叫来。', 'The line does not summon good news.'], D: ['下跌中的反弹到 0.618 一带，常常停一下再继续跌。', 'A bounce to around 0.618 in a drop often pauses, then the drop continues.']})
         ],
         study: { kind: 'fib', lessonChart: 'fib-full', closes: [100, 108, 116, 124, 132, 140, 136, 128, 120], low: 100, high: 140, start: 6 }
       }),
       lesson({
         id: '07',
-        title: bi('SMC：指标自动标出结构和缺口', 'SMC: the indicator marks structure and gaps for you'),
-        scene: bi('这些 BOS 和 CHoCH，要自己在图上找吗？', 'Do you have to find these BOS and CHoCH marks yourself?'),
-        one: bi('SMC 是现成指标，会自动标出 BOS、CHoCH 和 FVG。', 'SMC is a ready-made indicator, and it marks BOS, CHoCH, and FVG on its own.'),
-        explain: bi('SMC 是现成指标，打开就会标出 BOS、CHoCH 和 FVG。\nBOS 是趋势还在延续：收盘顺着原来的方向，越过前一个高点或低点。\nCHoCH 是第一次往反方向破，趋势可能在转，但不保证已经转完。\n图上这两条都是虚线加标签，从被突破的高低点拉到那根收盘。\nFVG 是三根 K 线留下的缺口：中间一根冲得很猛，往上时第一根高点够不着第三根低点。\n方框从缺口那根往右伸。\n动能和大方向还在时，价格常常会回来补上，但不是每次都有。\n要和其他信号一起看。', 'SMC is a ready-made indicator, and turning it on marks BOS, CHoCH, and FVG.\nBOS means the trend is still continuing: the close passes the previous high or low in the same direction.\nCHoCH is the first break the other way, the trend may be turning, and that does not guarantee the turn is finished.\nOn the chart both are a dashed line plus a label, drawn from the high or low that breaks to the candle that closes through it.\nAn FVG is a gap left by three candles: the middle one is a fast push, and on the way up the first high does not reach the third low.\nThe box runs to the right from the gap candle.\nWhen momentum and the bigger trend are still there, price often comes back to fill it, but not every time.\nLook at it together with other signals.'),
-        example: bi('', ''),
+        title: bi('SMC：延续、转向和回来补缺口', 'SMC: continuation, a turn, and coming back to the gap'),
+        scene: bi('图上标出 BOS、CHoCH 或 FVG，后面价格一般怎么走？', 'The chart marks a BOS, a CHoCH, or an FVG. What does price usually do next?'),
+        one: bi('BOS 多半是趋势还在走，CHoCH 要防转向，缺口价格常常会回来补。', 'BOS usually means the trend is still going, CHoCH means watch for a turn, and price often comes back to fill a gap.'),
+        explain: bi('BOS 是收盘顺着原来的方向，越过前一个高点或低点。\nCHoCH 是收盘第一次往反方向，破掉刚才护着的那个点。\nFVG 是中间一根冲得很快，前后两根的高低对不上，中间留下一块空白。\n图上 BOS 和 CHoCH 是虚线，FVG 是方框。', 'BOS is a close that passes the previous high or low in the original direction.\nCHoCH is the first close the other way, through the point that was holding.\nAn FVG is a fast middle candle whose neighbors do not meet, leaving a blank in between.\nOn the chart, BOS and CHoCH are dashed lines, and an FVG is a box.'),
+        topic: {
+          title: bi('出现这种情况，行情一般怎么走', 'What price usually does next'),
+          body: bi('出现 BOS，趋势多半还在延续，后面常常再走一段。\n更好的延续，是回调之后再次收盘破前高或前低。\n只靠影线刺过去，还不算破。\n出现 CHoCH，原来的趋势可能要转，后面常常先走出一截反向。\n它经常只是回调的开始，不一定已经转完。\n后面如果不再回到原来的方向创新高或新低，转向才更像真的。\nFVG 出现后，价格常常会回来碰这块空白。\n大方向还在时，补完常常再顺着原来的方向走。\n不是每个方框都会被补上，价格直接走远，这个方框就先留着。\n上涨里来了利好，同时出现向下的 CHoCH，常常是冲高回落的开始。\n利空砸进下面的 FVG，价格补到这块并站住，后面常有一截反弹。\n利空砸穿方框还继续新低，就不是反弹，是跌势还在。', 'A BOS usually means the trend is still continuing, and another stretch often follows.\nA cleaner continuation is a later close that breaks the prior high or low again after a pullback.\nA wick through the level does not count as the break.\nA CHoCH means the old trend may be turning, and a stretch the other way often comes first.\nIt is often only the start of a pullback, not a finished reversal.\nThe turn looks more real if price stops making new extremes in the old direction.\nAfter an FVG appears, price often comes back to touch that blank.\nWhen the bigger direction is still there, the fill is often followed by another move the original way.\nNot every box gets filled, and if price runs away, the box just stays there for now.\nGood news during a rise, together with a downward CHoCH, is often the start of a spike and fade.\nBad news into a lower FVG, if price fills the box and holds, is often followed by a bounce.\nIf the bad news smashes through the box and price keeps making new lows, that is not a bounce, the drop is still on.')
+        },
+        example: bi('教学模拟：上涨中收盘越过前高，标的是 BOS，后面又涨了一段。\n随后收盘跌破刚才的低点，标的是 CHoCH，上涨停了下来。\n中间那根大阳线留下的 FVG，价格后来回来碰了一下。', 'Teaching simulation: during a rise the close passes the prior high, the mark is BOS, and price rises another stretch.\nThen the close breaks the low that was holding, the mark is CHoCH, and the rise stops.\nThe FVG left by the large green candle in the middle is touched later when price comes back.'),
         pitfalls: [
           bi('把影线刺过当成收盘已经突破', 'Treating a wick through a level as a close that already broke it'),
           bi('以为每个 FVG 都会补上', 'Assuming every FVG gets filled')
         ],
-        practice: bi('到行情实验室打开 SMC，看它自动标出的 BOS、CHoCH 和 FVG。', 'Open SMC in the market lab and look at the BOS, CHoCH, and FVG it marks on its own.'),
+        practice: bi('在图上先看 BOS 后面有没有再走一段，再看 CHoCH 是不是只走出了回调，最后看 FVG 有没有被价格回来碰到。', 'On the chart, first see whether price kept going after a BOS, then whether the CHoCH was only a pullback, and last whether price came back to the FVG.'),
         check: {
-          ask: bi('往上的缺口方框，是怎么出现的？', 'What makes an upward gap box appear?'),
-          options: [opt('A', '一根影线刺过前高', 'A wick pokes through the prior high'), opt('B', '中间一根冲得猛，第一根高点够不着第三根低点', 'The middle candle is a fast push, and the first high does not reach the third low'), opt('C', '这个价位完全没有成交', 'Nothing traded at that price'), opt('D', '三根收盘价一样', 'The three closes are the same')],
+          ask: bi('利空砸到下面一块还没补上的 FVG，价格进到方框里站住了，没有再创新低。后面更常见的是？', 'Bad news sells into a lower FVG that is not filled yet, price enters the box and holds, and it does not make a new low. What is more common next?'),
+          options: [opt('A', '必须继续崩', 'It must keep collapsing'), opt('B', '常常有一截反弹', 'A bounce is common'), opt('C', '方框一被碰到就保证新高', 'Touching the box guarantees a new high'), opt('D', '这只能当成 BOS', 'This can only be a BOS')],
           answer: 'B',
-          miss: bi('缺口看的是三根 K 线的高低对不上。\n影线刺过，或者没人成交，都不是这个方框的条件。', 'A gap is three candles whose high and low do not meet.\nA wick through a level, or a claim that nobody traded, is not what makes this box.')
+          note: bi('利空进到缺口里站住、不再新低，后面常常有一截反弹。', 'Bad news that enters the gap, holds, and stops making new lows is often followed by a bounce.'),
+          miss: bi('利空进到缺口里站住、不再新低，后面常常有一截反弹。', 'Bad news that enters the gap, holds, and stops making new lows is often followed by a bounce.')
         },
         quizzes: [
-          quiz('原来往上走，收盘又越过前一个高点。指标标什么？', 'Price was rising, and the close passes the previous high again. What does the indicator mark?', [opt('A', 'CHoCH', 'CHoCH'), opt('B', 'FVG', 'FVG'), opt('C', 'BOS', 'BOS'), opt('D', '长上影', 'A long upper wick')], 'C', {A: ['反过来破掉护着的低点，才是 CHoCH。', 'Breaking the low that was holding, the other way, is CHoCH.'], B: ['FVG 是三根 K 线中间的缺口方框，不是这次突破。', 'An FVG is the gap box between three candles, not this break.'], C: ['顺着原来的方向，收盘越过前高，这是结构延续，标 BOS。', 'A close that passes the prior high in the same direction is structure continuing. That mark is BOS.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
-          quiz('原来往上走，收盘反过来跌破刚才护着的低点。这是？', 'Price was rising, and the close breaks the low that was holding, the other way. What is that?', [opt('A', 'CHoCH', 'CHoCH'), opt('B', 'BOS', 'BOS'), opt('C', '一定已经转跌完', 'The drop is already finished'), opt('D', 'FVG', 'FVG')], 'A', {A: ['方向反过来破掉原来护着的点，这是结构转向，标 CHoCH。它不保证已经转完。', 'Breaking the level that was holding, the other way, is a change of structure. The mark is CHoCH. It does not mean the turn is finished.'], B: ['BOS 是顺着原来的方向越过前高或前低。', 'BOS passes the prior high or low in the same direction.'], C: ['标出来只说明可能在变，不是已经转完。', 'The mark only says it may be changing. The turn is not finished.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
-          quiz('资金和动能还在，大方向也顺着。价格对 FVG 常常怎样？', 'The funds and the momentum are still there, and the bigger trend agrees. What does price often do with an FVG?', [opt('A', '方框一出来就必须反向', 'The box must reverse as soon as it appears'), opt('B', '每次都会补满，而且一定继续', 'It fills every time, and it must continue'), opt('C', '方框会自己消失', 'The box disappears by itself'), opt('D', '常常先回来补一波流动性，再继续，但不是每次都有', 'It often comes back to fill some liquidity, then continues, but not every time')], 'D', {A: ['方框不是反向命令。', 'The box is not an order to reverse.'], B: ['回来补一波很常见，但不是每次都有，也不保证接着怎么走。', 'Coming back to fill some is common, but it is not every time, and it does not guarantee what follows.'], C: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.'], D: ['资金和动能还在、大方向也顺着时，价格常常先回来补一波流动性，再继续。要和其他信号一起看。', 'When the funds and the momentum are still there, and the bigger trend agrees, price often comes back to fill some liquidity, then continues. Look at it with other signals.']})
+          quiz('原来往上，收盘又越过前高。后面一般怎样？', 'Price was rising, and the close passes the previous high again. What usually follows?', [opt('A', '这是 BOS，趋势常常还要再走一段', 'This is a BOS, and the trend often goes another stretch'), opt('B', '这是 CHoCH，必须马上反手', 'This is a CHoCH, so you must reverse at once'), opt('C', '这是 FVG，价格必须立刻回来', 'This is an FVG, so price must come back at once'), opt('D', '影线一过就算趋势结束', 'A wick through it means the trend is over')], 'A', {A: ['顺着原来的方向收盘越过前高，是 BOS，后面常常再走一段。', 'A close through the prior high in the same direction is a BOS, and another stretch often follows.'], B: ['这是顺着涨，不是反向的 CHoCH。', 'This is with the rise, not a CHoCH the other way.'], C: ['越过前高不是三根 K 线中间的缺口。', 'Passing the prior high is not the blank between three candles.'], D: ['要看收盘越过，影线刺过还不算。', 'The close has to pass it. A wick through it does not count.']}),
+          quiz('上涨中利好还在，图上却出现向下的 CHoCH。常怎么走？', 'Good news is still coming during a rise, but the chart prints a downward CHoCH. What often happens?', [opt('A', '利好会取消这个 CHoCH', 'The good news cancels the CHoCH'), opt('B', '常常是冲高回落的开始', 'It is often the start of a spike and fade'), opt('C', '必须把杠杆加倍做多', 'You must double the long leverage'), opt('D', '这是 BOS，趋势只是在加速', 'This is a BOS, and the trend is only speeding up')], 'B', {A: ['利好取消不了已经走出来的结构。', 'Good news does not erase a structure that has already printed.'], B: ['上涨里利好碰上向下的 CHoCH，常常是冲高回落的开始。', 'Good news during a rise, with a downward CHoCH, is often the start of a spike and fade.'], C: ['结构已经往下破，不是加倍做多的理由。', 'Structure has broken downward. That is not a reason to double the long.'], D: ['向下破是 CHoCH，不是顺着涨的 BOS。', 'A break downward is a CHoCH, not a BOS with the rise.']}),
+          quiz('原来往上，收盘第一次跌破刚才护着的低点。先把它看成什么？', 'Price was rising, and the close breaks the low that was holding for the first time. What do you read it as first?', [opt('A', '趋势已经完全转完，可以满仓反向', 'The trend has fully reversed, so a full position the other way is fine'), opt('B', '这是 FVG 被补上了', 'This is an FVG getting filled'), opt('C', '这是顺着涨势的 BOS', 'This is a BOS with the rise'), opt('D', '这是 CHoCH，可能要转，但常常只是回调的开始', 'This is a CHoCH, a possible turn, but often only the start of a pullback')], 'D', {A: ['第一次反向破，常常只是回调开始，不是已经转完。', 'The first break the other way is often only the start of a pullback, not a finished turn.'], B: ['跌破护着的低点是结构转向，不是补缺口。', 'Breaking the low that was holding is a change of structure, not filling a gap.'], C: ['BOS 是顺着原来的方向破，这次是反过来。', 'A BOS breaks in the original direction. This break is the other way.'], D: ['第一次反向收盘跌破，是 CHoCH。可能要转，但常常只是回调的开始。', 'The first close the other way through that low is a CHoCH. It may turn, but it is often only the start of a pullback.']})
         ],
         study: {
           kind: 'zone',
@@ -183,7 +228,7 @@
             { o: 108, h: 112, l: 106, c: 111 }
           ],
           zone: { low: 103, high: 106 },
-          caption: bi('BOS、CHoCH 和 FVG 是指标自动标在 K 线上的。', 'BOS, CHoCH, and FVG are marked on the candles by the indicator.'),
+          caption: bi('BOS 多半还会再走一段。CHoCH 要防转向。FVG 价格常常会回来补。', 'A BOS often goes another stretch. A CHoCH means watch for a turn. Price often comes back to fill an FVG.'),
           start: 3
         }
       })
@@ -2485,8 +2530,8 @@
       });
       bits.push('</svg>');
       var note = state.note || (current.id === 'miss'
-        ? (zh ? '反例：顶背离标出来之后，价格还在继续涨。' : 'Counterexample: after the top divergence is marked, price keeps rising.')
-        : (zh ? '小练习：点出顶背离的第二个高点。背离不保证马上跌。' : 'Short practice: tap the second high of the top divergence. Divergence does not guarantee an immediate drop.'));
+        ? (zh ? '反例：同样是顶背离，后面价格还在涨。强趋势里它会失效。' : 'Counterexample: this is still top divergence, and price keeps rising. A strong trend can ignore it.')
+        : (zh ? '顶背离之后，上涨的劲变小，后面常常先回落。点第二个高点，再把后面放出来看。' : 'After top divergence the rise loses strength, and a pullback often comes first. Tap the second high, then reveal what follows.'));
       root.innerHTML =
         '<div class="a1"><p class="a1-flag">' + (zh ? '模拟行情·非实时' : 'Simulated tape · not live') + '</p>' +
         '<p>' + (zh ? '上面是 K 线，下面是 MACD。' : 'Candles are on top, and MACD is below.') + '</p>' +
@@ -2659,10 +2704,10 @@
         var hit = top && Math.abs(index - top[1]) <= 1;
         if (hit && state.scene === 'miss') {
           state.tone = 'is-right';
-          state.note = zh ? '这是顶背离的第二个高点。可是后面价格还在涨，所以它没有拦住行情。' : 'This is the second high of the top divergence. Price kept rising afterward, so it did not stop the move.';
+          state.note = zh ? '这是顶背离的第二个高点。后面价格还在涨，强趋势里背离会失效。' : 'This is the second high of the top divergence. Price kept rising, so a strong trend ignored it.';
         } else if (hit) {
           state.tone = 'is-right';
-          state.note = zh ? '这是顶背离的第二个高点。价格更高，快线更低。这不保证马上跌。' : 'This is the second high of the top divergence. Price is higher, and the fast line is lower. That does not guarantee an immediate drop.';
+          state.note = zh ? '这是顶背离的第二个高点。涨的劲变小了，后面常常先回落，不保证马上大跌。' : 'This is the second high of the top divergence. The rise is losing strength, and a pullback often comes first. It is not a guaranteed drop.';
         } else {
           state.tone = 'is-wrong';
           state.note = zh ? '还不是。请点标着顶背离的那个更高的高点。' : 'Not yet. Tap the higher high labeled top divergence.';
@@ -2870,7 +2915,8 @@
       shownLines.forEach(function (line) {
         var yy = y(line.price);
         bits.push('<line x1="' + padL + '" y1="' + yy + '" x2="' + (w - padR) + '" y2="' + yy + '" stroke="#f0d59a" stroke-width="1.4"></line>');
-        bits.push('<text x="' + (padL + 6) + '" y="' + (yy - 4) + '" fill="#f0d59a" font-size="13">' + line.r + '  ' + Math.round(line.price) + '</text>');
+        var tag = (line.r === 0.5 || line.r === 0.618) ? (zh ? '  常停' : '  pause') : '';
+        bits.push('<text x="' + (padL + 6) + '" y="' + (yy - 4) + '" fill="#f0d59a" font-size="13">' + line.r + '  ' + Math.round(line.price) + tag + '</text>');
       });
       if (state.a && state.b && state.a.price !== state.b.price) {
         var ax = padL + state.a.index * slot + slot / 2;
@@ -2894,7 +2940,7 @@
         ? (state.dir === 'up' ? (zh ? '按住这段低点，拖到高点后松开。也可以先点低点，再点高点。' : 'Press this swing’s low and drag to the high. You can also tap the low, then the high.') : (zh ? '按住这段高点，拖到低点后松开。' : 'Press this swing’s high and drag to the low.'))
         : (state.b == null
           ? (state.dir === 'up' ? (zh ? '再点这一段的高点。' : 'Now tap the high of this swing.') : (zh ? '再点这一段的低点。' : 'Now tap the low of this swing.'))
-          : (zh ? '线已经画好。可以再拖两端。0.5 到 0.618 只是参考。' : 'The lines are locked. You can still drag either end. 0.5 to 0.618 is only a reference.'));
+          : (zh ? '线已经画好。回调常在 0.382、0.5、0.618 停一停再顺着走。跌破 0.618 还继续，这段多半走完了。' : 'The lines are locked. Pullbacks often pause at 0.382, 0.5, and 0.618, then resume. If price breaks 0.618 and keeps going, the swing is mostly done.'));
       var liveHost = state.gesture && root.querySelector('.fib-scroll');
       if (liveHost) {
         liveHost.innerHTML = bits.join('');
@@ -2905,8 +2951,8 @@
       root.innerHTML =
         '<div class="a1"><p class="a1-flag">' + (zh ? '模拟行情·非实时' : 'Simulated tape · not live') + '</p>' +
         '<p>' + (zh
-          ? '找到这段最明显的低点和高点。<br>按住起点拖到终点，线会跟着走，松开就定住。<br>上涨从低点拖到高点，下跌从高点拖到低点。<br>画好后可以再拖两端。0.5 到 0.618 只是参考。'
-          : 'Find the most obvious low and high of this swing.<br>Press the start and drag to the end. The lines follow, and they lock when you let go.<br>In a rise, drag from the low to the high. In a drop, drag from the high to the low.<br>After that, you can drag either end. 0.5 to 0.618 is only a reference.') + '</p>' +
+          ? '找到这段最明显的低点和高点。<br>按住起点拖到终点，线会跟着走，松开就定住。<br>上涨从低点拖到高点，下跌从高点拖到低点。<br>回调常在 0.382 到 0.618 停住再顺着走。跌破 0.618 还继续，这段多半走完了。'
+          : 'Find the most obvious low and high of this swing.<br>Press the start and drag to the end. The lines follow, and they lock when you let go.<br>In a rise, drag from the low to the high. In a drop, drag from the high to the low.<br>Pullbacks often pause from 0.382 to 0.618, then resume. A break of 0.618 that keeps going means the swing is mostly done.') + '</p>' +
         '<div class="fib-scroll" style="touch-action:none">' + bits.join('') + '</div>' +
         '<p>' + hint + '</p>' +
         '<div class="a1-modes"><button type="button" data-move="play">' + (state.playing ? (zh ? '暂停' : 'Pause') : (zh ? '播放' : 'Play')) + '</button>' +
@@ -2917,8 +2963,8 @@
         '<span>' + state.shown + ' / ' + data.bars.length + '</span></div>' +
         '<p class="a2-readout ' + state.tone + '">' + (state.note || hint) + '</p>' +
         '<p class="ema-note">' + (zh
-          ? '这些线只是把这一段高低点分成参考区。价格可以停、可以穿、也可以不来。止损要自己放。'
-          : 'These lines only split this swing into reference zones. Price can pause, pass through, or never arrive. You place the stop yourself.') + '</p></div>';
+          ? '0.382 停住，回调浅，趋势还强。0.5 到 0.618 是最常等趋势恢复的一带。跌破 0.618 还继续，不要死等反弹。'
+          : 'A pause at 0.382 is a shallow pullback, and the trend is still strong. 0.5 to 0.618 is where people most often wait for the trend to resume. If 0.618 breaks and price keeps going, do not keep waiting for a bounce.') + '</p></div>';
     }
     function setShown(next) {
       state.shown = Math.max(8, Math.min(data.bars.length, next));
@@ -2942,7 +2988,7 @@
       if (el.hasAttribute('data-dir')) {
         remember();
         state.dir = el.getAttribute('data-dir');
-        state.note = zh ? '方向改了。同一对锚点会按另一条公式重算。' : 'The direction changed. The same anchors are recalculated with the other formula.';
+        state.note = zh ? '方向改了。同一对点会按反方向重画。' : 'The direction changed. The same two points are drawn the other way.';
         state.tone = '';
         paint();
         return;
@@ -2998,7 +3044,7 @@
           state.shown = data.bars.length;
           state.a = { index: data.lowAt, price: data.bars[data.lowAt].l };
           state.b = { index: data.highAt, price: data.bars[data.highAt].h };
-          state.note = zh ? '示范：从这段低点拖到高点。线只是参考，价格不必在这里弹回去。' : 'Example: drag from this low to this high. The lines are only a reference. Price does not have to bounce here.';
+          state.note = zh ? '示范：从这段低点拖到高点。回调常在 0.5 到 0.618 慢下来再顺着走。穿过去还继续，这段多半走完了。' : 'Example: drag from this low to this high. Pullbacks often slow from 0.5 to 0.618, then resume. If price passes through and keeps going, the swing is mostly done.';
           state.tone = '';
         }
         paint();
@@ -3023,7 +3069,7 @@
         var gap = Math.abs(bar.c - near.price);
         if (bar.l <= near.price && bar.h >= near.price) touch = zh ? ' 这根碰到了 ' + near.r + '（' + near.price + '）。碰到不是必反弹。' : ' This candle touches ' + near.r + ' (' + near.price + '). A touch is not a required bounce.';
         else if (gap / near.price < 0.003) touch = zh ? ' 收盘靠近 ' + near.r + '。靠近不是确认转身。' : ' The close is near ' + near.r + '. Near is not a confirmed turn.';
-        else if ((state.dir === 'up' && bar.c < near.price && near.r === 0.618) || (state.dir === 'down' && bar.c > near.price && near.r === 0.618)) touch = zh ? ' 收盘已经穿过 0.618。穿过也不是反向保证。' : ' The close has crossed 0.618. A cross is not a reversal guarantee.';
+        else if ((state.dir === 'up' && bar.c < near.price && near.r === 0.618) || (state.dir === 'down' && bar.c > near.price && near.r === 0.618)) touch = zh ? ' 收盘已经穿过 0.618。这段多半走完了，不要死等它弹回来。' : ' The close has crossed 0.618. This swing is mostly done, so do not keep waiting for a bounce.';
       }
       state.note = (zh ? '第 ' + (index + 1) + ' 根，收盘 ' + bar.c + '。' : 'Bar ' + (index + 1) + ', close ' + bar.c + '. ') + touch;
       state.tone = touch ? '' : '';
@@ -3384,12 +3430,12 @@
         info.choch.forEach(function (item) { mark(item, 'CHoCH', '#b28b58'); });
       }
       bits.push('</svg>');
-      var note = zh ? '标签跟着已经走出来的 K 线出现。它不保证下一根。' : 'The marks show up on candles that have already printed. They do not promise the next one.';
+      var note = zh ? 'BOS 多半还会再走一段。CHoCH 要防转向，但常常只是回调的开始。FVG 价格常常会回来补，不是每次都补上。' : 'A BOS often goes another stretch. A CHoCH means watch for a turn, but it is often only the start of a pullback. Price often comes back to an FVG, and not every gap gets filled.';
       root.innerHTML =
         '<div class="a1"><p class="a1-flag">' + (zh ? '模拟行情·非实时' : 'Simulated tape · not live') + '</p>' +
         '<p>' + (zh
-          ? '看 BOS 和 CHoCH：虚线从被突破的高低点拉到收盘越过它的那根。<br>FVG 方框从缺口往右伸。价格补上就停，没补就伸到右边。'
-          : 'For BOS and CHoCH, the dashed line runs from the high or low that breaks to the candle whose close passes it.<br>The FVG box runs right from the gap. It stops when price fills it, and it runs to the right edge when price does not.') + '</p>' +
+          ? 'BOS 是趋势还在走，后面常常再走一段。<br>CHoCH 是第一次反向破，要防转向，但常常只是回调的开始。<br>FVG 方框从缺口往右伸。价格常常回来补，补上就停，没补就伸到右边。'
+          : 'BOS means the trend is still going, and another stretch often follows.<br>CHoCH is the first break the other way. Watch for a turn, but it is often only the start of a pullback.<br>The FVG box runs right from the gap. Price often comes back to fill it. The box stops when filled, and it runs to the right edge when it is not.') + '</p>' +
         '<p class="a1-checks"><label><input type="checkbox" data-layer="structure"' + (state.structure ? ' checked' : '') + '> BOS / CHoCH</label> <label><input type="checkbox" data-layer="fvg"' + (state.fvg ? ' checked' : '') + '> FVG</label></p>' +
         '<div class="smc-scroll">' + bits.join('') + '</div>' +
         '<p class="star-key"><span style="color:#748ca8">BOS</span><span style="color:#b28b58">CHoCH</span><span style="color:#8bd5ba">FVG</span></p>' +
