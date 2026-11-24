@@ -7,7 +7,7 @@
         id: '01', title: bi('项目研究：别只看币价', 'Project research: do not look only at the coin price'),
         scene: bi('合作公告、收入帖和推广一起出来，价格先涨，能当成证据吗？', 'A partnership post, a revenue post, and promotion show up together and price rises first, can that count as evidence?'),
         one: bi('合作公告、集中推广和收入帖可以先把价格打上去，核对不上使用证据时常常再跌回去。', 'Partnership posts, concentrated promotion, and revenue posts can push price up first, and it often falls back when the usage evidence does not check out.'),
-        explain: bi('研究时把每句话分成声称、已核对、还不知道。\n虚构项目星桥协议只作教学。\n地址数不是人数。\n代币能不能分到收入，要看规则，不看它涨过没有。\n项目新闻常见三类：合作公告、集中推广、收入帖。', 'In research, mark each sentence as claimed, checked, or still unknown.\nThe fictional project Starbridge Protocol is for teaching only.\nAn address count is not a head count.\nWhether the token receives revenue depends on the rules, not on whether it has risen.\nProject news usually comes in three kinds: partnership posts, concentrated promotion, and revenue posts.'),
+        explain: bi('研究时把每句话分成声称、已核对、还不知道。\n虚构项目星桥协议只作教学。\n地址数不是人数。\n代币能不能分到收入，要看机制，不看它涨过没有。\n项目新闻常见三类：合作公告、集中推广、收入帖。', 'In research, mark each sentence as claimed, checked, or still unknown.\nThe fictional project Starbridge Protocol is for teaching only.\nAn address count is not a head count.\nWhether the token receives revenue depends on the mechanism, not on whether it has risen.\nProject news usually comes in three kinds: partnership posts, concentrated promotion, and revenue posts.'),
         topic: {
           title: bi('项目新闻出来时，价格通常怎么走', 'When project news hits, what price usually does'),
           body: bi('合作公告刚出、证据还没核对时，价格常常先跟着冲一段。\n推广把注意力带过来时，也常常先冲，喊的人常常比使用的人更多。\n收入帖若只有网页上的一句话，涨可以只是热度。\n使用数据对不上说法时，这段冲劲常常回落。\n规则里没有把收入分给持币人，这轮上涨常常只是交易出来的。\n证据不足也可以热很久，不要当成迟早会跌就去做空。', 'When a partnership post is fresh and the evidence is not checked yet, price often runs with it for a stretch first.\nWhen promotion brings the attention, it also often runs first, and the people calling it out often outnumber the users.\nIf a revenue post is only one sentence on a page, the rise can be only attention.\nWhen usage does not match the claims, that push often fades.\nIf the rules do not share revenue with holders, this rise is often just trading.\nThin evidence can also stay hot for a long time, so do not short it as if it will fall sooner or later.')
@@ -65,7 +65,7 @@
             D: ['一篇收入帖补不齐使用证据。', 'One revenue post does not complete the usage evidence.']
           })
         ],
-        study: { kind: 'panel', headers: [bi('说法', 'Statement'), bi('状态', 'Status')], cells: [[bi('用户 10 万', '100,000 users'), bi('声称，不能当成人数', 'Claimed, not a head count')], [bi('收入很高', 'Revenue is high'), bi('未知，待核对', 'Unknown, still to check')], [bi('代币分享收入', 'The token shares revenue'), bi('要看规则', 'Depends on the rules')]], rows: [
+        study: { kind: 'panel', headers: [bi('说法', 'Statement'), bi('状态', 'Status')], cells: [[bi('用户 10 万', '100,000 users'), bi('声称，不能当成人数', 'Claimed, not a head count')], [bi('收入很高', 'Revenue is high'), bi('未知，待核对', 'Unknown, still to check')], [bi('代币分享收入', 'The token shares revenue'), bi('要看机制', 'Depends on the mechanism')]], rows: [
           bi('虚构项目：星桥协议。', 'Fictional project: Starbridge Protocol.')
         ] }
       }),
@@ -132,14 +132,15 @@
           })
         ],
         study: { kind: 'panel', headers: [bi('项目', 'Item'), bi('数值', 'Value')], cells: [[bi('价格', 'Price'), '2'], [bi('流通', 'Circulating'), bi('1 亿', '100 million')], [bi('最大供应', 'Max supply'), bi('10 亿', '1 billion')], [bi('流通市值', 'Circulating market cap'), bi('2 亿', '200 million')], ['FDV', bi('20 亿', '2 billion')], [bi('解锁后再计流通市值', 'Circulating market cap after the unlock'), bi('3 亿', '300 million')]], rows: [
+          bi('解锁 5000 万后，按原价计，流通市值是 3 亿。', 'After unlocking 50 million, at the same price, circulating market cap is 300 million.'),
           bi('再解锁 5000 万后，流通是 1.5 亿。', 'After another 50 million unlocks, the circulating supply is 150 million.')
         ] }
       }),
       lesson({
         id: '03', title: bi('市场叙事：热度不是基本面', 'Narratives: attention is not fundamentals'),
-        scene: bi('卖盘只有三档，有人把前两档吃掉，价格通常怎样？', 'There are only three ask levels, and someone takes the first two, what does price usually do?'),
+        scene: bi('一个板块的钱正在转到新故事，旧的那一边通常先怎样？', 'Money in a sector is rotating into a new story, what does the old side usually do first?'),
         one: bi('叙事很热时价格常常先跑在使用前面，龙头一见顶跟风常常先跌，圈外的人开始谈论这枚币时往往已经不早。', 'When a narrative is hot price often runs ahead of usage, copycats often drop first once the leader tops, and when people outside crypto start talking about the coin it is often already late.'),
-        explain: bi('讨论变多，可以是少数账号反复发，不是用户变多。\n同一个板块里，先看龙头，再看跟风。\n大所上币的公告，常常让价格先冲一段。\n圈外的人，比如不看盘的朋友也开始谈这枚币，往往是热度已经传到外面。\n卖盘很薄时，吃掉前几档会让价格跳一截，随后常常吐回一部分。', 'More discussion can be a few accounts posting again and again, not more users.\nIn one sector, watch the leader first, then the copycats.\nA listing post from a big exchange often makes price run for a stretch first.\nWhen people outside crypto, such as friends who do not watch the book, start talking about the coin, the heat has often already spread outside.\nWhen the book is thin, taking the first levels makes price jump, and it often gives some of that back afterward.'),
+        explain: bi('讨论变多，可以是少数账号反复发，不是用户变多。\n同一个板块里，先看龙头，再看跟风。\n大所上币的公告，常常让价格先冲一段。\n圈外的人，比如不看盘的朋友也开始谈这枚币，往往是热度已经传到外面。\n薄盘口时，吃掉前几档会让价格跳一截，随后常常吐回一部分。', 'More discussion can be a few accounts posting again and again, not more users.\nIn one sector, watch the leader first, then the copycats.\nA listing post from a big exchange often makes price run for a stretch first.\nWhen people outside crypto, such as friends who do not watch the book, start talking about the coin, the heat has often already spread outside.\nWhen the order book is thin, taking the first levels makes price jump, and it often gives some of that back afterward.'),
         topic: {
           title: bi('叙事换挡时，谁先跌', 'When the narrative rotates, who drops first'),
           body: bi('一个叙事刚热起来，相关的币常常一起涨，而且涨在使用数据前面。\n钱从旧故事转到新故事时，旧的那一边即使产品没变，价格也常常退。\n龙头见顶之后，同板块的跟风币常常先跌。\n大所上币的消息可以再冲一段，上完若没有新增使用，常常再吐回去。\n圈外的人开始谈论，常常说明这一段已经不早。\n真的有使用在增加的叙事，退潮会慢一些。', 'When a narrative first gets hot, the related coins often rise together, and they rise ahead of the usage data.\nWhen money rotates from an old story to a new one, the old side often fades even if the product did not change.\nAfter the leader tops, the copycats in the same sector often drop first.\nA big-exchange listing can push another stretch, and if usage does not grow after it, the move often gets given back.\nWhen people outside crypto start talking, it often means this stretch is already late.\nA narrative that really has rising usage fades more slowly.')
@@ -198,7 +199,7 @@
           })
         ],
         study: { kind: 'book', headers: [bi('卖价', 'Ask'), bi('数量', 'Size')], cells: [['2', '100'], ['2.1', '100'], ['2.3', '100']], rows: [
-          bi('卖盘三档，每档 100 个。薄簿会让价格跳一截，随后常常吐回一部分。', 'Three ask levels, 100 on each. A thin book makes price jump, and it often gives some of that back afterward.')
+          bi('买 300：花费 640，均价 2.1333333333。', 'Buy 300: cost 640, average 2.1333333333.')
         ] }
       }),
       lesson({
@@ -208,21 +209,21 @@
         explain: bi('每条证据写下出处，并允许以后被推翻。\n只留利好，反证就被藏起来了。\n管理员能改合约，这本身就是风险，要写明能改什么。\n还不知道的标成未知，不要补成肯定句。\n新闻里要看的是审计有没有写明一把钥匙就能改合约。', 'Write a source for each piece of evidence, and leave it open to being overturned later.\nKeeping only the bullish points hides the counter-evidence.\nAn admin who can change the contract is a risk by itself, so write what that power can change.\nMark what you still do not know as unknown, and do not fill it in as a certainty.\nIn the news, watch whether the audit writes down that one key can change the contract.'),
         topic: {
           title: bi('反证被揭出来时', 'When the counter-evidence is exposed'),
-          body: bi('故事很满、反证被忽略时，价格常常先冲一段。\n审计报告指出合约能被管理员改掉，价格常常快速回落。\n审计公布一把钥匙就能改合约时，价格常常回落。\n群里说还没用过所以没事，这是把没发生读成没有风险。\n未知被说成利好时，追进去的人常常买在故事上。\n有权限风险的项目也可以涨很久，写出来不是马上做空的命令。', 'When the story is full and the counter-evidence is ignored, price often runs a stretch first.\nWhen an audit says the admin can change the contract, price often falls back quickly.\nWhen an audit publishes that one key can change the contract, price often falls.\nA group chat that says it has not been used so it is fine is reading “has not happened” as “there is no risk”.\nWhen an unknown is told as good news, the people who chase are often buying the story.\nA project with a permission risk can also rise for a long time, so writing the risk down is not an order to short at once.')
+          body: bi('故事很满、反证被忽略时，价格常常先冲一段。\n审计报告指出合约能被管理员改掉，价格常常快速回落。\n群里说还没用过所以没事，这是把没发生读成没有风险。\n未知被说成利好时，追进去的人常常买在故事上。\n有权限风险的项目也可以涨很久，写出来不是马上做空的命令。', 'When the story is full and the counter-evidence is ignored, price often runs a stretch first.\nWhen an audit says the admin can change the contract, price often falls back quickly.\nA group chat that says it has not been used so it is fine is reading “has not happened” as “there is no risk”.\nWhen an unknown is told as good news, the people who chase are often buying the story.\nA project with a permission risk can also rise for a long time, so writing the risk down is not an order to short at once.')
         },
         example: bi('教学模拟：证据 A 支持产品存在，B 是管理员能改合约，C 和收入说法冲突，D 还未知。\n只拿 A 去讲，价格可以先涨。\n审计把 B 写出来，常常把这段涨势打回去。', 'Teaching simulation: evidence A supports that a product exists, B is an admin who can change the contract, C conflicts with the revenue claim, and D is still unknown.\nTelling only A, price can rise first.\nWhen an audit writes B down, it often knocks that rise back.'),
         pitfalls: [
           bi('只收集看涨证据', 'Collecting only bullish evidence'),
           bi('钥匙没被用过就当成没有风险', 'Treating an unused key as no risk')
         ],
-        practice: bi('看到审计或曝光帖时，先写它指出的权限能做什么，再看价格有没有已经涨过。', 'When you see an audit or an exposure post, first write what power it points out, then see whether price has already risen.'),
+        practice: bi('看到审计或披露时，先写它指出的权限能做什么，再看价格有没有已经涨过。', 'When you see an audit or a disclosure, first write what power it points out, then see whether price has already risen.'),
         check: {
           ask: bi('审计刚指出合约能被管理员改掉，价格在这之前已经涨过，后面更常见的是？', 'An audit has just said the admin can change the contract, and price had already risen, what is more common next?'),
           options: [
             opt('A', '审计通常滞后，价格还会再冲', 'Audits are usually late, so price pushes again'),
             opt('B', '反证被看见，常常快速回落', 'Once the counter-evidence is seen, it often falls back quickly'),
             opt('C', '没改过合约就可以当没看见', 'If the contract has not been changed you can pretend not to see it'),
-            opt('D', '钥匙没曝光，审计就可以先放着', 'If the key is not exposed, the audit can wait')
+            opt('D', '钥匙没披露，审计就可以先放着', 'If the key has not been disclosed, the audit can wait')
           ],
           answer: 'B',
           note: bi('审计把能改合约写出来之后，先涨过的价格常常快速回落。', 'Once an audit writes down that the contract can be changed, the price that already rose often falls back quickly.'),
@@ -251,16 +252,16 @@
             C: ['未知被说成利好，追进去买的是故事。', 'When an unknown is told as good news, a chase buys the story.'],
             D: ['这一条没说钥匙失效。', 'This point does not say the key is dead.']
           }),
-          quiz('只写下看涨的证据，反证先不写，价格正在涨，更常见的是？', 'You write only the bullish evidence and leave the counter-evidence out, and price is rising, what is more common?', [
-            opt('A', '藏起反证时常常先冲，被写出来就容易回落', 'Hiding the counter-evidence often lets it run first, and publishing it makes a pullback easier'),
-            opt('B', '反证以后再写，通常不影响这一段', 'Writing the counter-evidence later usually does not affect this stretch'),
-            opt('C', '只写利好时，这段冲常常更稳', 'Writing only the bullish points makes this push steadier'),
-            opt('D', '价格在涨，说明反证已经被核对掉', 'Price is rising, so the counter-evidence has already been checked away')
-          ], 'A', {
-            A: ['藏起反证时常常先冲，审计把它写出来就容易把涨势打回去。', 'Hiding the counter-evidence often lets price run first, and an audit that writes it down often knocks the rise back.'],
-            B: ['反证被写出来时，先涨过的价格常常回落。', 'When the counter-evidence is written down, the price that already rose often falls back.'],
-            C: ['只留利好会把反证藏起来，冲劲常常不更稳。', 'Keeping only the bullish points hides the counter-evidence, and the push is often not steadier.'],
-            D: ['价格在涨，不能说明反证已经被核对掉。', 'A rising price does not mean the counter-evidence has been checked away.']
+          quiz('权限风险已经写出来，价格却已经涨了很久，这时？', 'The permission risk is already written down, but price has already risen for a long time, what then?', [
+            opt('A', '涨很久就说明这个风险作废了', 'A long rise means this risk is void'),
+            opt('B', '可以涨很久，写出来不是马上做空', 'It can rise for a long time, and writing it down is not an immediate short'),
+            opt('C', '写出来就要马上做空', 'Once it is written down you have to short at once'),
+            opt('D', '先把未知补成利好，再继续拿', 'Fill the unknown in as good news first, then keep holding')
+          ], 'B', {
+            A: ['涨很久不能把已经写明的权限风险作废。', 'A long rise cannot void a permission risk that is already written down.'],
+            B: ['有权限风险也可以涨很久，写出来不是马上做空的命令。', 'A permission risk can still rise for a long time, and writing it down is not an order to short at once.'],
+            C: ['写出来要记着，但不是马上做空的命令。', 'Write it down and keep it, but it is not an order to short at once.'],
+            D: ['未知不能补成利好。', 'An unknown cannot be filled in as good news.']
           })
         ],
         study: { kind: 'panel', headers: [bi('证据', 'Evidence'), bi('作用', 'Role')], cells: [['A', bi('支持产品存在', 'Supports that a product exists')], ['B', bi('管理员可升级', 'Admin can upgrade')], ['C', bi('与收入声称冲突', 'Conflicts with the revenue claim')], ['D', bi('未知', 'Unknown')]], rows: [

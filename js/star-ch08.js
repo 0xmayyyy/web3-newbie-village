@@ -65,7 +65,7 @@
             D: ['走出 100 到 120，不是必须补上这一笔。', 'Having gone from 100 to 120 is not a requirement to add this trade.']
           })
         ],
-        study: { kind: 'levels', closes: [100, 105, 112, 120], levels: [{ price: 120, label: '120' }], caption: bi('已走出 100、105、112、120。', 'Already printed: 100, 105, 112, 120.'), start: 4 }
+        study: { kind: 'levels', closes: [100, 105, 112, 120], levels: [{ price: 120, label: '120' }], caption: bi('已发生：100 → 105 → 112 → 120。后面分支未展示。', 'Already printed: 100 → 105 → 112 → 120. Later branches are not shown.'), start: 4 }
       }),
       lesson({
         id: '02', title: bi('亏损厌恶与报复性交易', 'Loss aversion and revenge trading'),
@@ -106,20 +106,20 @@
             C: ['风险加大后再亏，掉得比原来的小比例更快。', 'A loss after the risk is raised falls faster than the old small rate.'],
             D: ['价格不因为你想翻本就反向。', 'Price does not reverse just because you want the money back.']
           }),
-          quiz('加大之后下一笔又亏了，你还想再加一次把差额补上，更常见的是？', 'After sizing up the next trade loses too, and you want to size up once more to cover the gap, what is more common?', [
-            opt('A', '再亏时掉得更快，差额常常更大', 'The next loss falls faster, and the gap often gets larger'),
-            opt('B', '价格这时通常会反向，把加大的部分送回来', 'Price usually reverses then, and sends the extra size back'),
-            opt('C', '再加一次通常就把差额补上', 'Sizing up once more usually covers the gap'),
-            opt('D', '补上差额以后，风险会自己缩回去', 'After the gap is covered, the risk shrinks itself back')
-          ], 'A', {
-            A: ['风险再加大后又亏，掉得更快，差额常常更大。', 'A loss after the risk is raised again falls faster, and the gap often gets larger.'],
-            B: ['价格不因为你想补差额就反向。', 'Price does not reverse because you want to cover the gap.'],
-            C: ['再加一次不是把差额补上的常见结果。', 'Sizing up once more is not the common way the gap gets covered.'],
-            D: ['风险不会在补上差额以后自己缩回去。', 'The risk does not shrink itself back after the gap is covered.']
+          quiz('刚亏完，计划写了今天到此为止，手还想再做一笔翻本，该怎么做？', 'Right after a loss, the plan says stop for the day, and you still want another trade to win it back, what should you do?', [
+            opt('A', '计划可以改成再做一笔小的', 'The plan can be rewritten into one more small trade'),
+            opt('B', '再做一笔通常就能把亏损补上', 'One more trade usually covers the loss'),
+            opt('C', '先停，按计划今天不再做', 'Stop first, and do not trade again today, as the plan says'),
+            opt('D', '停一天等于认输，所以要继续', 'Stopping for a day is giving up, so you continue')
+          ], 'C', {
+            A: ['写了今天到此为止，就不是再改成一笔小的。', 'If the plan says stop for the day, it is not rewritten into one more small trade.'],
+            B: ['再做一笔不是把亏损补上的常见结果。', 'One more trade is not the common way the loss gets covered.'],
+            C: ['计划写了今天到此为止，就先停，今天不再做。', 'If the plan says stop for the day, you stop, and you do not trade again today.'],
+            D: ['停一天是风控，不是认输。', 'Stopping for a day is risk control, not giving up.']
           }),
           quiz('加大之后下一笔碰巧赚了，通常接着会怎样？', 'After sizing up, the next trade happens to win, what usually follows?', [
             opt('A', '赚一次就说明加大是对的，可以固定下来', 'One win means sizing up was right, so you can keep it'),
-            opt('B', '这次赚的通常够覆盖 1%、2%、4% 的差额', 'This win usually covers the gap between 1% and 1%, 2%, 4%'),
+            opt('B', '这次赚的通常够补上 1%、2%、4% 那条差额', 'This win usually covers the gap on the 1%, 2%, 4% path'),
             opt('C', '风险会自己缩回原来的 1%', 'The risk shrinks itself back to the old 1%'),
             opt('D', '更容易再加，直到一次大亏把赚回来的吐出去', 'It gets easier to size up again, until one large loss gives back what was earned back')
           ], 'D', {
@@ -143,7 +143,7 @@
           title: bi('复盘时，先标没守规矩，再看有没有可学的', 'In a review, mark the broken rule first, then see if anything is worth learning'),
           body: bi('违规却赚钱，先标成没守规矩。\n只因为赚了就放过，后面常常再犯一次。\n恐慌把仓位砸在一段急跌的低点附近，价格常常先反弹一截。\n怕错过追在一段急涨的高点，价格常常先回一截。\n按计划做了但亏了，做法可以是对的，不要为了翻本改做法。\n恐慌的低点也可以继续跌，追高的位置也可以再涨。\n十笔样本只能看你自己的毛病，不能写成以后也会五五开。', 'A win that broke the rule is marked as a broken rule first.\nLetting it pass only because it made money often leads to doing it again.\nPanic selling near the low of a fast drop is often followed by a bounce first.\nChasing the high of a fast rise from fear of missing out is often followed by a pullback first.\nA loss that followed the plan can still be the right way to do it, so do not change the way to win the money back.\nThe panic low can also keep falling, and the chase high can also keep rising.\nTen trades can only show your own weaknesses, and they cannot be written as a future that also splits half and half.')
         },
-        example: bi('教学模拟：十笔合计赚 50，胜率 50%，其中 4 笔没按计划。\n没按计划却赚钱的那几笔，先标成没守规矩。\n标完再看，而不是因为赚了就放过。', 'Teaching simulation: ten trades made 50 in total, the win rate is 50%, and 4 did not follow the plan.\nThe ones that made money without following the plan are marked as a broken rule first.\nAfter the mark, look again, instead of letting them pass because they made money.'),
+        example: bi('教学模拟：十笔合计赚 50，胜率 50%，其中 4 笔没按计划。\n没按计划却赚钱的那几笔，先标成没守规矩。\n标完再看这笔，而不是因为赚了就放过。', 'Teaching simulation: ten trades made 50 in total, the win rate is 50%, and 4 did not follow the plan.\nThe ones that made money without following the plan are marked as a broken rule first.\nAfter the mark, look at this trade again, instead of letting it pass because it made money.'),
         pitfalls: [
           bi('用盈利把没守规矩的单放过', 'Letting a broken rule pass because it made money'),
           bi('按计划亏了就改做法去翻本', 'Changing the way you trade after a loss that followed the plan, just to win it back')

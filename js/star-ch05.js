@@ -12,7 +12,7 @@
           title: bi('数据公布后，头几分钟先看什么', 'After the release, what to watch in the first minutes'),
           body: bi('实际比预期高一截，美元和两年美债收益率常常先上，比特币常常先跌一截。\n实际比预期低一截，比如低 0.2，第一下常常先涨。\n和预期差不多，公布前的那一冲常常很快回去。\n比预期好但大家早就在等，常常是利好出尽，冲一下就回。\n非农比预期差时有两种走法。\n市场正想着降息，差的非农会被当成离降息更近，比特币可以先涨。\n市场正怕衰退，差的非农会被当成经济坏了，比特币常常先跌。\n头几分钟盯美元指数和两年期收益率，它们比标题更快告诉你市场选了哪一种。\n如果大家更关心下一次议息，第一下也可以在几十分钟里反过来。', 'When the actual is a notch above the forecast, the dollar and the two-year yield often rise first, and bitcoin often drops a notch first.\nWhen the actual is a notch below the forecast, for example by 0.2, the first move is often up.\nWhen it matches the forecast, the push from before the release often fades quickly.\nBetter than expected, but long awaited, is often the good news getting used up, a push and then a fade.\nA weak payrolls print has two paths.\nIf the market wants rate cuts, weak payrolls get read as cuts coming closer, and bitcoin can rise first.\nIf the market fears a recession, weak payrolls get read as a bad economy, and bitcoin often drops first.\nIn the first minutes watch the dollar index and the two-year yield, because they tell you which path the market picked faster than the headline.\nIf people care more about the next rate meeting, the first move can also reverse within a few tens of minutes.')
         },
-        example: bi('教学模拟：预期 2.8%，实际 3.1%，意外是高出 0.3 个百分点，不是 0.3 倍。\n指数从 100 到 103.1，同比是 3.1%。\n这种偏热，第一下常常是风险资产回落，但结果不是唯一的。', 'Teaching simulation: forecast 2.8%, actual 3.1%, and the surprise is 0.3 percentage points higher, not 0.3 times.\nThe index goes from 100 to 103.1, and the year-over-year change is 3.1%.\nA hot print like this often starts with risk assets pulling back, but the outcome is not unique.'),
+        example: bi('教学模拟：预期 2.8%，实际 3.1%，意外是高出 0.3 个百分点。\n指数从 100 到 103.1，同比是 3.1%。\n这种偏热，第一下常常是风险资产回落，但可以有不止一种结果。', 'Teaching simulation: forecast 2.8%, actual 3.1%, and the surprise is 0.3 percentage points higher.\nThe index goes from 100 to 103.1, and the year-over-year change is 3.1%.\nA hot print like this often starts with risk assets pulling back, but there is more than one possible outcome.'),
         pitfalls: [
           bi('把同比和环比当成同一个数', 'Treating year-over-year and month-over-month as the same number'),
           bi('把差的非农只读成必须跌', 'Reading weak payrolls as a drop that must happen')
@@ -165,27 +165,27 @@
           miss: bi('美元指数突破近高、十年收益率一起跳，比特币常常更难涨。', 'When the dollar index breaks a recent high and the ten-year yield jumps with it, bitcoin is often harder to lift.')
         },
         quizzes: [
-          quiz('偏热的 CPI 把十年收益率打上去，美元指数却在跌，比特币更可能怎样？', 'A hot CPI lifts the ten-year yield, but the dollar index is falling, what is more likely for bitcoin?', [
-            opt('A', '收益率升了，比特币常常先偏软', 'The yield rose, so bitcoin often leans soft first'),
-            opt('B', '美元在跌，比特币常常好过一些', 'The dollar is falling, so bitcoin is often easier'),
-            opt('C', '两条相反，通常先横住看下一根', 'The two disagree, so it usually chops until the next candle'),
-            opt('D', 'CPI 偏热就一定先跌，美元可以不看', 'A hot CPI must drop first, and the dollar can be ignored')
-          ], 'B', {
-            A: ['收益率在升，但美元在跌，不能只拿收益率说偏软。', 'The yield is rising, but the dollar is falling, so the yield alone does not make it soft.'],
-            B: ['美元在跌时，比特币常常好过一些，即便收益率被 CPI 打上去。', 'When the dollar is falling, bitcoin is often easier, even if CPI pushed the yield up.'],
-            C: ['两条相反时仍要选一边看，不是规定先横住。', 'When the two disagree you still pick a side to watch, and there is no rule to chop first.'],
-            D: ['偏热的 CPI 常常先压币价，但美元在跌时这一条会松。', 'A hot CPI often leans the coin soft first, but a falling dollar loosens that read.']
+          quiz('通胀数据偏热，十年收益率跳升，比特币更常见的是？', 'Inflation data runs hot and the ten-year yield jumps, what is more common for bitcoin?', [
+            opt('A', '偏热说明需求旺，币价通常跟着涨', 'Hot data means strong demand, so the coin usually rises with it'),
+            opt('B', '先等美元跌破近低，再看币价', 'Wait for the dollar to break a recent low, then look at the coin'),
+            opt('C', '数据偏热时，币价通常先横住', 'When the data is hot, the coin usually chops first'),
+            opt('D', '收益率跳升，币价常常偏弱', 'The yield jumps, and the coin is often softer')
+          ], 'D', {
+            A: ['偏热时更常见的是币价偏弱，不是跟着涨。', 'When it is hot, a softer coin is more common, not a rise with it.'],
+            B: ['不用等美元跌破近低，才读这一下。', 'You do not wait for a dollar break of a recent low to make this read.'],
+            C: ['偏热时更常见的是偏弱，不是先横住。', 'When it is hot, softer is more common, not a chop first.'],
+            D: ['偏热时收益率跳，币价常常偏弱。', 'When it is hot the yield jumps, and the coin is often softer.']
           }),
-          quiz('数据后美元指数突破近高，十年收益率却在回落，这时更稳的读法是？', 'After the data the dollar index breaks a recent high, but the ten-year yield is falling, what is the steadier read?', [
-            opt('A', '美元破近高，币价常常先偏弱', 'The dollar broke a recent high, so the coin often leans soft first'),
-            opt('B', '收益率回落就是利多，通常直接追', 'A falling yield is bullish, so you usually chase'),
-            opt('C', '两条相反就当作没有行情', 'When the two disagree, treat it as no move'),
-            opt('D', '先满仓做空，收益率以后再看', 'Short with a full position first, and look at the yield later')
+          quiz('大家担心增长，十年收益率和比特币一起跌，更常见的读法是？', 'People worry about growth, and the ten-year yield and bitcoin fall together, what is the more common read?', [
+            opt('A', '增长担心时，它们可以一起跌', 'When growth is the worry, they can fall together'),
+            opt('B', '币价一跌，就说明美元一定在涨', 'Once the coin falls, the dollar must be rising'),
+            opt('C', '收益率跌了，比特币通常不跟', 'When the yield falls, bitcoin usually does not follow'),
+            opt('D', '一起跌，就是美元在指挥币价', 'Falling together means the dollar is giving the coin orders')
           ], 'A', {
-            A: ['美元刚破近高时，比特币常常先偏弱，收益率回落先别单独当成追多。', 'When the dollar has just broken a recent high, bitcoin often leans soft first, and a falling yield is not by itself a chase.'],
-            B: ['收益率在回落，但美元破了近高，不能直接追。', 'The yield is falling, but the dollar broke a recent high, so you do not chase straight away.'],
-            C: ['两条相反仍有方向可看，不是没有行情。', 'When the two disagree there is still a direction to watch, and it is not no move.'],
-            D: ['破近高常常只是先偏弱，不是满仓做空的命令。', 'A break of a recent high often only leans soft first, and it is not an order to short with a full position.']
+            A: ['增长担心时，收益率和币价可以一起跌。', 'When growth is the worry, the yield and the coin can fall together.'],
+            B: ['一起跌不是美元一定在涨的证明。', 'Falling together is not proof the dollar must be rising.'],
+            C: ['这一题里币价正跟着收益率一起跌。', 'In this question the coin is falling together with the yield.'],
+            D: ['一起跌只是同向，不是谁在指挥谁。', 'Falling together is the same direction, not one giving orders.']
           }),
           quiz('美元在涨，币价却因为别的利好继续涨，该怎么做？', 'The dollar is rising, but the coin keeps rising on other good news, what should you do?', [
             opt('A', '美元没跌就先减仓观望', 'If the dollar has not fallen, cut the position and wait'),
@@ -207,7 +207,7 @@
         id: '04', title: bi('BTC 减半：减的是新币补贴', 'The BTC halving: what is cut is the new-coin subsidy'),
         scene: bi('减半当天新闻都说利好，价格是不是还要再涨？', 'Halving-day headlines are all bullish, so does price still have to rise again?'),
         one: bi('减半减的是新挖出来的补贴，钱包里的币不会少，高点常常不在减半当天。', 'The halving cuts the new mining subsidy, coins already in wallets stay put, and the high is often not on the halving day.'),
-        explain: bi('减半是新区块的奖励变少。\n奖励按区块高度从 50、25、12.5、6.25 到 3.125。\n时间看区块高度，不是每年同一天。\n你原来的 1 枚还是 1 枚。\n已有余额不受这次补贴规则改写。\n过去减半后的价格路径不能外推成下一次必须重复。\n读减半新闻时，先看价格在消息铺开前涨过没有。', 'The halving makes the reward of a new block smaller.\nThe reward steps down by block height, from 50, to 25, to 12.5, to 6.25, to 3.125.\nThe timing follows block height, not the same calendar day each year.\nThe 1 coin you already had is still 1 coin.\nExisting balances are not rewritten by this subsidy rule.\nThe price path after a past halving cannot be extrapolated into the next one having to repeat.\nWhen you read halving news, first see whether price already rose before the headlines spread.'),
+        explain: bi('减半是新区块的奖励变少。\n奖励按区块高度从 50、25、12.5、6.25 到 3.125。\n时间看区块高度，不是每年同一天。\n你原来的 1 枚还是 1 枚。\n过去减半后的价格路径不能用来预测下一次。\n读减半新闻时，先看价格在消息铺开前涨过没有。', 'The halving makes the reward of a new block smaller.\nThe reward steps down by block height, from 50, to 25, to 12.5, to 6.25, to 3.125.\nThe timing follows block height, not the same calendar day each year.\nThe 1 coin you already had is still 1 coin.\nThe price path after a past halving cannot be used to predict the next one.\nWhen you read halving news, first see whether price already rose before the headlines spread.'),
         topic: {
           title: bi('减半前后，价格通常什么时候涨', 'Around a halving, when price usually rises'),
           body: bi('减半前几个月故事很热时，价格常常先涨一截。\n减半当天若新闻才铺满，而价格已经涨过，常常横住或先回落，像利好出尽。\n过去几轮的周期高点，大约在减半后 12 到 18 个月。\n2024 年 3 月比特币第一次在减半前就创了新高，但这一轮的高点仍在减半后约 18 个月，也就是 2025 年 10 月。\n每次路径都不一样，不能用上一次的涨幅预订下一次。\n减半前后也可以一直横着，故事很热也不涨。', 'When the story is hot in the months before the halving, price often rises a notch first.\nIf the headlines only fill the halving day and price already rose, it often chops or pulls back first, like the good news is used up.\nCycle highs in past rounds came about 12 to 18 months after the halving.\nIn March 2024 bitcoin made a new high before a halving for the first time, but this cycle’s high was still about 18 months after the halving, in October 2025.\nEach path is different, so you cannot book the next rally from the last one’s gain.\nPrice can also chop straight through the halving and not rise even while the story is hot.')
@@ -276,7 +276,7 @@
         explain: bi('CPI 和非农是纽约时间 8:30。\n北京时间夏令时是 20:30，冬令时是 21:30。\n美联储决议是纽约时间 14:00。\n北京时间夏令时是第二天 02:00，冬令时是 03:00。\n同一个时刻，各地钟点不一样，写错时区就会看错那一根。\n计划写成这次不做，也是一种做法。', 'CPI and payrolls are 8:30 New York time.\nThat is 20:30 Beijing time in summer time, and 21:30 in winter.\nThe Fed decision is 14:00 New York time.\nThat is 02:00 the next day Beijing time in summer time, and 03:00 in winter.\nThe same instant is not the same clock time everywhere, and the wrong timezone makes you watch the wrong candle.\nWriting no trade this time is also a way to act.'),
         topic: {
           title: bi('公布日历上，先写什么再看什么', 'On the release calendar, what you write before you look'),
-          body: bi('公布前一段时间，价格常常来回刺，方向不可靠。\n钟点写错，就会把别的小时当成公布那一根。\n计划若写了这次不做，波动大也不是临时改计划的理由。\n只盯一个数字，忽略当时的流动性，解释不了价格。\n虚构的日历可以先写好，看见结果之后再改口就晚了。', 'In the stretch before the release, price often pokes back and forth, and the direction is unreliable.\nThe wrong clock time makes you treat another hour as the release candle.\nIf the plan says no trade this time, a large move is not a reason to rewrite it on the spot.\nWatching only one number, and ignoring the liquidity at the time, does not explain the price.\nA fictional calendar entry can be written first, and rewriting it after you see the result is already late.')
+          body: bi('公布前一段时间，价格常常来回刺，方向不可靠。\n钟点写错，就会把别的小时当成公布那一根。\n计划若写了这次不做，波动大也不是临时改计划的理由。\n数字和预期差不多，但买卖盘很薄时，第一下可以冲得更远，然后常常回去。\n日历上的时间和做不做，要在数字出来之前写好。', 'In the stretch before the release, price often pokes back and forth, and the direction is unreliable.\nThe wrong clock time makes you treat another hour as the release candle.\nIf the plan says no trade this time, a large move is not a reason to rewrite it on the spot.\nWhen the number matches the forecast but the book is thin, the first move can run farther, and then it often comes back.\nWrite the time and whether you trade on the calendar before the number comes out.')
         },
         example: bi('教学模拟：日历写着 CPI，纽约时间 8:30。\n夏令时应写成北京时间 20:30，不是 21:30。\n钟点没写对之前，来回刺的方向都先不要跟。', 'Teaching simulation: the calendar says CPI, 8:30 New York time.\nIn summer time that should be written as 20:30 Beijing time, not 21:30.\nBefore the clock time is right, do not follow the direction of the pokes.'),
         pitfalls: [
@@ -285,16 +285,16 @@
         ],
         practice: bi('先在日历上写出纽约时间和对应的北京时间，再写这次做还是不做。', 'On the calendar, write the New York time and the matching Beijing time before you write whether you trade this time.'),
         check: {
-          ask: bi('公布前价格来回刺，第一下通常能拿来追吗？', 'Before the release price is poking back and forth, can you usually chase that first poke?'),
+          ask: bi('数字和预期差不多，但当时买卖盘很薄，第一下更常见的是？', 'The number matches the forecast, but the book is thin, what is more common for the first move?'),
           options: [
-            opt('A', '能，刺得越狠通常越是方向', 'Yes, the sharper the poke, the more it is usually the direction'),
-            opt('B', '能，来回刺说明两边都在进场', 'Yes, poking back and forth means both sides are entering'),
-            opt('C', '不能，但收盘前那一刺通常能追', 'No, but the last poke before the close can usually be chased'),
-            opt('D', '不能，这种刺常常马上回去', 'No, this kind of poke often comes back at once')
+            opt('A', '和预期差不多，薄盘口也通常不动', 'A match usually does not move, even on a thin book'),
+            opt('B', '薄盘口会让这一下冲得更远，然后常常回去', 'A thin book lets this move run farther, and then it often comes back'),
+            opt('C', '预期对上了，通常一路涨到收盘', 'Once it matches, it usually rises straight into the close'),
+            opt('D', '盘口一薄就改成追第一下', 'A thin book means you switch to chasing the first move')
           ],
-          answer: 'D',
-          note: bi('公布前的来回刺方向不可靠，第一下常常马上回去。', 'The pokes before the release have an unreliable direction, and the first one often comes back at once.'),
-          miss: bi('公布前的来回刺方向不可靠，第一下常常马上回去。', 'The pokes before the release have an unreliable direction, and the first one often comes back at once.')
+          answer: 'B',
+          note: bi('数字和预期差不多、买卖盘很薄时，第一下可以冲得更远，然后常常回去。', 'When the number matches the forecast and the book is thin, the first move can run farther, and then it often comes back.'),
+          miss: bi('数字和预期差不多、买卖盘很薄时，第一下可以冲得更远，然后常常回去。', 'When the number matches the forecast and the book is thin, the first move can run farther, and then it often comes back.')
         },
         quizzes: [
           quiz('公布前价格来回刺，计划还没写做不做，这时更稳的是？', 'Before the release price is poking back and forth, and the plan does not yet say whether you trade, what is the steadier choice?', [
