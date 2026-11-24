@@ -167,8 +167,8 @@
           ask: bi('一笔没守规矩却赚钱的单，复盘时该怎么标？', 'A trade broke your rules and still made money. How do you mark it in a review?'),
           options: [opt('A', '赚钱了，就算守住了规矩', 'It made money, so the rules were kept'), opt('B', '标成没守规矩，再看看有没有值得参考的地方', 'Mark it as a broken rule, then see if anything in it is worth learning from'), opt('C', '不用写进日志', 'Leave it out of the log'), opt('D', '只标成看错了方向', 'Only mark it as a wrong call on direction')],
           answer: 'B',
-          note: bi('先标成没守规矩，再看看里面有没有值得参考、可以用来改规矩的地方，不是说以后绝对不能再做。', 'Mark it as a broken rule first, then see if anything in it is worth learning from and could refine your rules, not that it can never be done again.'),
-          miss: bi('先标成没守规矩，再看看里面有没有值得参考、可以用来改规矩的地方，不是说以后绝对不能再做。', 'Mark it as a broken rule first, then see if anything in it is worth learning from and could refine your rules, not that it can never be done again.')
+          note: bi('先标成没守规矩，再看看里面有没有值得参考的地方。', 'Mark it as a broken rule first, then see if anything in it is worth learning from.'),
+          miss: bi('先标成没守规矩，再看看里面有没有值得参考的地方。', 'Mark it as a broken rule first, then see if anything in it is worth learning from.')
         },
         quizzes: [
           quiz('复盘时，亏钱的单要不要写进日志？', 'When you review, do the losing trades need to go into the log?', [opt('A', '要，不写就看不见自己反复犯的错', 'Yes, leave them out and you cannot see the mistakes you keep making'), opt('B', '不要，看着难受', 'No, they are unpleasant to look at'), opt('C', '只写下跌很猛的那几笔', 'Only the ones that fell very hard'), opt('D', '赚钱的单已经能代表全部', 'The winning trades already stand for all of them')], 'A', {A: ['亏钱的单不留下，就没法分清哪些是看错、哪些是没守规矩。', 'If the losing trades are not written down, you cannot separate a wrong call from a broken rule.'], B: ['难看不是不记的理由，不记下来，毛病会被藏住。', 'Being unpleasant to look at is not a reason to leave them out, and if you leave them out the weaknesses stay hidden.'], C: ['不是只有跌得很猛才值得记，亏掉的每一笔都要能回头看。', 'A hard drop is not the only trade worth writing down, and every losing trade has to be there to look back at.'], D: ['只留赚钱的单，看错和没守规矩都会被藏起来。', 'If you keep only the winning trades, both wrong calls and broken rules stay hidden.']}),
