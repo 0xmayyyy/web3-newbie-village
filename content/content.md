@@ -66,7 +66,7 @@
 买币只是其中一种参与方式。
 你也可以先学知识、观察项目、体验测试网络，不投入真实资金。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。币圈是市场和社区。买币只是其中一种参与方式。" data-bad="答错了。买币不是唯一方式。学习和观察项目、试用测试网，也可以先参与，而且不必投入真实资金。"><h3>想一想</h3><p>买币是不是参与币圈的唯一方式？</p><button type="button" class="option" data-answer="a">A. 不是，学习和观察也是参与</button><button type="button" class="option" data-answer="b">B. 是，不买就不算参与</button><button type="button" class="option" data-answer="c">C. 只有自己开发应用才算参与</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 不用学，看到就买</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。币圈是市场和社区。买币只是其中一种参与方式。" data-bad="答错了。买币不是唯一方式。学习和观察项目、试用测试网，也可以先参与，而且不必投入真实资金。"><h3>想一想</h3><p>买币是不是参与币圈的唯一方式？</p><button type="button" class="option" data-answer="a">A. 不是，学习和观察也是参与</button><button type="button" class="option" data-answer="b">B. 是，不买就不算参与</button><button type="button" class="option" data-answer="c">C. 只有自己开发应用才算参与</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只有充值了才算参与</button><div class="feedback"></div></div>
 
 ## 区块链是什么？
 
@@ -80,7 +80,7 @@
 
 「记录防篡改」也不等于输入的信息、项目宣传和交易对象一定真实。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。记录很难被改，只说明确认后的记录不易被某个人偷偷改掉。写进去的内容仍可能不真实。" data-bad="答错了。防篡改不等于内容真实。项目宣传和交易对象，仍要单独核对。"><h3>想一想</h3><p>记录很难被偷偷改，是不是就说明写进去的内容一定是真的？</p><button type="button" class="option" data-answer="a">A. 是，记进区块链就等于真实</button><button type="button" class="option" data-answer="b">B. 不是，防篡改不等于内容真实</button><button type="button" class="option" data-answer="c">C. 只有一家公司记账才可能真实</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 不用学，看到就买</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。记录很难被改，只说明确认后的记录不易被某个人偷偷改掉。写进去的内容仍可能不真实。" data-bad="答错了。防篡改不等于内容真实。项目宣传和交易对象，仍要单独核对。"><h3>想一想</h3><p>记录很难被偷偷改，是不是就说明写进去的内容一定是真的？</p><button type="button" class="option" data-answer="a">A. 是，记进区块链就等于真实</button><button type="button" class="option" data-answer="b">B. 不是，防篡改不等于内容真实</button><button type="button" class="option" data-answer="c">C. 只有一家公司记账才可能真实</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 确认数够多就一定真</button><div class="feedback"></div></div>
 
 ## 加密货币是什么？
 
@@ -93,7 +93,7 @@ BTC 是比特币网络的原生资产。
 ETH 是以太坊网络的原生资产，可以用于支付网络费用等。
 很多代币则通过已有链上的合约发行。
 
-<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。BTC 是比特币网络的原生资产。很多代币是在已有链上用合约发行的，不能因为都叫币就当成同一种。" data-bad="答错了。都叫币，不代表发行方式和风险相同。BTC 属于比特币网络本身。很多代币由已有链上的合约发行。"><h3>想一想</h3><p>BTC 和通过合约发行的代币，是同一种东西吗？</p><button type="button" class="option" data-answer="a">A. 是，名字里都有币就一样</button><button type="button" class="option" data-answer="b">B. 只有价格一样，才是同一种</button><button type="button" class="option" data-answer="c">C. 不是。BTC 是比特币网络的原生资产，很多代币由合约发行</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只看名字就够了</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。BTC 是比特币网络的原生资产。很多代币是在已有链上用合约发行的，不能因为都叫币就当成同一种。" data-bad="答错了。都叫币，不代表发行方式和风险相同。BTC 属于比特币网络本身。很多代币由已有链上的合约发行。"><h3>想一想</h3><p>BTC 和通过合约发行的代币，是同一种东西吗？</p><button type="button" class="option" data-answer="a">A. 是，名字里都有币就一样</button><button type="button" class="option" data-answer="b">B. 只有价格一样，才是同一种</button><button type="button" class="option" data-answer="c">C. 不是。BTC 是比特币网络的原生资产，很多代币由合约发行</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 都能用同一个地址收就一样</button><div class="feedback"></div></div>
 
 ## BTC 的起源：币圈从哪里开始？
 
@@ -119,7 +119,7 @@ ETH 是以太坊网络的原生资产，可以用于支付网络费用等。
 - 英文原文 PDF：https://bitcoin.org/bitcoin.pdf
 - 多语言版本：https://bitcoin.org/en/bitcoin-paper
 
-<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。按现行共识规则，上限约为 2,100 万枚。这是发行规则，不保证价格只涨不跌。" data-bad="答错了。BTC 不由某家公司按需加印。上限约为 2,100 万枚，而且稀缺不等于价格只涨。"><h3>想一想</h3><p>按现行规则，BTC 大约最多发行多少？</p><button type="button" class="option" data-answer="a">A. 由某家公司看着需求加印</button><button type="button" class="option" data-answer="b">B. 没有上限，可以无限增发</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 私聊里说可以，就可以做</button><button type="button" class="option" data-answer="d">D. 约 2,100 万枚，而且不保证价格只涨</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。按现行共识规则，上限约为 2,100 万枚。这是发行规则，不保证价格只涨不跌。" data-bad="答错了。BTC 不由某家公司按需加印。上限约为 2,100 万枚，而且稀缺不等于价格只涨。"><h3>想一想</h3><p>按现行规则，BTC 大约最多发行多少？</p><button type="button" class="option" data-answer="a">A. 由某家公司看着需求加印</button><button type="button" class="option" data-answer="b">B. 没有上限，可以无限增发</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 正好 100 万枚</button><button type="button" class="option" data-answer="d">D. 约 2,100 万枚，而且不保证价格只涨</button><div class="feedback"></div></div>
 
 ## 币与代币有什么区别？
 
@@ -132,7 +132,7 @@ ETH 是以太坊网络的原生资产，可以用于支付网络费用等。
 日常交流里，大家经常统称它们为「币」。
 称呼相同，也不表示发行方式相同。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。ETH 属于以太坊网络本身。ERC-20 代币是在这条已有网络上发行的。" data-bad="答错了。统称「币」只是口头说法。ETH 是原生币。ERC-20 代币不是这条链本身。"><h3>想一想</h3><p>ETH 和以太坊上的 ERC-20 代币，主要差别是什么？</p><button type="button" class="option" data-answer="a">A. ETH 属于这条网络本身，ERC-20 代币是在已有网络上发行的</button><button type="button" class="option" data-answer="b">B. 没有差别，都在以太坊上就一样</button><button type="button" class="option" data-answer="c">C. ERC-20 才是以太坊的原生币</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 不用学，看到就买</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。ETH 属于以太坊网络本身。ERC-20 代币是在这条已有网络上发行的。" data-bad="答错了。统称「币」只是口头说法。ETH 是原生币。ERC-20 代币不是这条链本身。"><h3>想一想</h3><p>ETH 和以太坊上的 ERC-20 代币，主要差别是什么？</p><button type="button" class="option" data-answer="a">A. ETH 属于这条网络本身，ERC-20 代币是在已有网络上发行的</button><button type="button" class="option" data-answer="b">B. 没有差别，都在以太坊上就一样</button><button type="button" class="option" data-answer="c">C. ERC-20 才是以太坊的原生币</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只是小数位数不同</button><div class="feedback"></div></div>
 
 ## 公链是什么？
 
@@ -145,7 +145,7 @@ ETH 是以太坊网络的原生资产，可以用于支付网络费用等。
 地址长得一样，也不代表目的地与资产兼容。
 转账需要收款方明确支持相应网络。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。地址像，也不代表网络和资产兼容。要收款方明确支持相应网络。" data-bad="答错了。不能因为地址看起来像，或两边都叫公链，就直接转。先确认收款方支持的网络。"><h3>想一想</h3><p>地址看起来一样，能不能直接转到另一条链？</p><button type="button" class="option" data-answer="a">A. 能，地址像就能转</button><button type="button" class="option" data-answer="b">B. 不能默认，要收款方明确支持相应网络</button><button type="button" class="option" data-answer="c">C. 只要都叫公链，就可以互转</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只看名字就够了</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。地址像，也不代表网络和资产兼容。要收款方明确支持相应网络。" data-bad="答错了。不能因为地址看起来像，或两边都叫公链，就直接转。先确认收款方支持的网络。"><h3>想一想</h3><p>地址看起来一样，能不能直接转到另一条链？</p><button type="button" class="option" data-answer="a">A. 能，地址像就能转</button><button type="button" class="option" data-answer="b">B. 不能默认，要收款方明确支持相应网络</button><button type="button" class="option" data-answer="c">C. 只要都叫公链，就可以互转</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. Gas 付够了就可以</button><div class="feedback"></div></div>
 
 ## Web3 是什么？
 
@@ -157,7 +157,7 @@ Web3 常被用来描述利用区块链、钱包和智能合约构建的互联网
 但「Web3」标签不保证项目真的去中心化。
 它也不保证好用或安全。
 
-<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。Web3 只是一种叫法。它不保证去中心化，也不保证好用或安全。" data-bad="答错了。贴了 Web3，或用了钱包登录，都不能单独证明安全或已经去中心化。"><h3>想一想</h3><p>一个应用贴了 Web3，能不能说明它已经去中心化并且安全？</p><button type="button" class="option" data-answer="a">A. 能，标签就是证明</button><button type="button" class="option" data-answer="b">B. 只要能用钱包登录，就一定安全</button><button type="button" class="option" data-answer="c">C. 不能。标签不保证去中心化、好用或安全</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只看名字就够了</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。Web3 只是一种叫法。它不保证去中心化，也不保证好用或安全。" data-bad="答错了。贴了 Web3，或用了钱包登录，都不能单独证明安全或已经去中心化。"><h3>想一想</h3><p>一个应用贴了 Web3，能不能说明它已经去中心化并且安全？</p><button type="button" class="option" data-answer="a">A. 能，标签就是证明</button><button type="button" class="option" data-answer="b">B. 只要能用钱包登录，就一定安全</button><button type="button" class="option" data-answer="c">C. 不能。标签不保证去中心化、好用或安全</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 开源了就一定安全</button><div class="feedback"></div></div>
 
 ## 智能合约是什么？
 
@@ -169,7 +169,7 @@ Web3 常被用来描述利用区块链、钱包和智能合约构建的互联网
 代码会有漏洞，也会被设置管理员权限。
 不能因为叫「智能」就默认可靠。
 
-<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。它是按代码执行的程序。代码会有漏洞，也可能设有管理员权限。" data-bad="答错了。叫「智能」不表示不会出错。兑换合约和其他合约都可能有漏洞或管理员权限。"><h3>想一想</h3><p>智能合约可以默认当成不会出错吗？</p><button type="button" class="option" data-answer="a">A. 可以，因为它叫智能</button><button type="button" class="option" data-answer="b">B. 只有兑换合约才可能出错</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 私聊里说可以，就可以做</button><button type="button" class="option" data-answer="d">D. 不可以。代码会有漏洞，也可能设有管理员权限</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。它是按代码执行的程序。代码会有漏洞，也可能设有管理员权限。" data-bad="答错了。叫「智能」不表示不会出错。兑换合约和其他合约都可能有漏洞或管理员权限。"><h3>想一想</h3><p>智能合约可以默认当成不会出错吗？</p><button type="button" class="option" data-answer="a">A. 可以，因为它叫智能</button><button type="button" class="option" data-answer="b">B. 只有兑换合约才可能出错</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 审计过一次就不会</button><button type="button" class="option" data-answer="d">D. 不可以。代码会有漏洞，也可能设有管理员权限</button><div class="feedback"></div></div>
 
 ## 稳定币是什么？
 
@@ -182,7 +182,7 @@ Web3 常被用来描述利用区块链、钱包和智能合约构建的互联网
 但它不是银行存款，也不保证始终能按 1 美元兑换。
 需要了解储备、赎回条件、冻结权限和脱锚风险。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。它想跟踪参考价值，例如 1 美元。它不是银行存款，也可能脱锚。" data-bad="答错了。名字里有 USD，也不表示它是银行存款，或一定始终等于 1 美元。"><h3>想一想</h3><p>稳定币是银行存款，并且一定始终等于 1 美元吗？</p><button type="button" class="option" data-answer="a">A. 不是。它想跟踪参考价值，但不是银行存款，也可能脱锚</button><button type="button" class="option" data-answer="b">B. 是，所以可以当成存款</button><button type="button" class="option" data-answer="c">C. 只要名字里有 USD，就一定始终等于 1 美元</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 不用学，看到就买</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。它想跟踪参考价值，例如 1 美元。它不是银行存款，也可能脱锚。" data-bad="答错了。名字里有 USD，也不表示它是银行存款，或一定始终等于 1 美元。"><h3>想一想</h3><p>稳定币是银行存款，并且一定始终等于 1 美元吗？</p><button type="button" class="option" data-answer="a">A. 不是。它想跟踪参考价值，但不是银行存款，也可能脱锚</button><button type="button" class="option" data-answer="b">B. 是，所以可以当成存款</button><button type="button" class="option" data-answer="c">C. 只要名字里有 USD，就一定始终等于 1 美元</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 发行方是银行就一定是</button><div class="feedback"></div></div>
 
 ## 一张关系表
 
@@ -199,7 +199,7 @@ Web3 常被用来描述利用区块链、钱包和智能合约构建的互联网
 钱包管理的是账户和签署。
 它不代替区块链记账，也不保证交易所上的价格。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。钱包主要管理账户，并用来签署操作。" data-bad="答错了。记账是区块链网络的事。交易所价格也不是钱包保证的。钱包管的是账户和签署。"><h3>想一想</h3><p>钱包主要管什么？</p><button type="button" class="option" data-answer="a">A. 代替区块链把账记下来</button><button type="button" class="option" data-answer="b">B. 管理账户，并签署操作</button><button type="button" class="option" data-answer="c">C. 保证交易所上的价格不会变</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只看名字就够了</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。钱包主要管理账户，并用来签署操作。" data-bad="答错了。记账是区块链网络的事。交易所价格也不是钱包保证的。钱包管的是账户和签署。"><h3>想一想</h3><p>钱包主要管什么？</p><button type="button" class="option" data-answer="a">A. 代替区块链把账记下来</button><button type="button" class="option" data-answer="b">B. 管理账户，并签署操作</button><button type="button" class="option" data-answer="c">C. 保证交易所上的价格不会变</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 替你自动止损</button><div class="feedback"></div></div>
 
 ## 价格为什么会涨跌？
 
@@ -213,7 +213,7 @@ Web3 常被用来描述利用区块链、钱包和智能合约构建的互联网
 
 小提醒：先看它是什么、为什么存在，再考虑是否参与。
 
-<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。价格由买卖形成。上涨不等于项目更有价值，下跌也不自动等于便宜。" data-bad="答错了。价格涨跌本身不能单独证明项目更有价值，或已经便宜。"><h3>想一想</h3><p>价格涨了，是不是就说明这个项目更有价值？</p><button type="button" class="option" data-answer="a">A. 是，涨了就更有价值</button><button type="button" class="option" data-answer="b">B. 只有跌了，才能说明没有价值</button><button type="button" class="option" data-answer="c">C. 不一定。价格由买卖形成，上涨不等于项目更有价值</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 私聊里说可以，就可以做</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。价格由买卖形成。上涨不等于项目更有价值，下跌也不自动等于便宜。" data-bad="答错了。价格涨跌本身不能单独证明项目更有价值，或已经便宜。"><h3>想一想</h3><p>价格涨了，是不是就说明这个项目更有价值？</p><button type="button" class="option" data-answer="a">A. 是，涨了就更有价值</button><button type="button" class="option" data-answer="b">B. 只有跌了，才能说明没有价值</button><button type="button" class="option" data-answer="c">C. 不一定。价格由买卖形成，上涨不等于项目更有价值</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 成交量一起涨才算</button><div class="feedback"></div></div>
 
 # 02｜一级市场与二级市场 🌱
 
@@ -232,7 +232,7 @@ Web3 常被用来描述利用区块链、钱包和智能合约构建的互联网
 早期参与可能有更长锁仓、更少公开信息与更难退出的问题。
 「早」只表示时间靠前，不表示更容易赚钱。
 
-<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。早只表示时间靠前。它还可能意味着锁仓更长、信息更少、更难退出。" data-bad="答错了。早不等于更容易赚钱。私募也不因为更早就更赚。"><h3>想一想</h3><p>「早」是不是表示更容易赚钱？</p><button type="button" class="option" data-answer="a">A. 是，越早越容易赚</button><button type="button" class="option" data-answer="b">B. 只有私募才因为更早而更容易赚钱</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 私聊里说可以，就可以做</button><button type="button" class="option" data-answer="d">D. 不是。早只表示时间靠前，还可能更难退出</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。早只表示时间靠前。它还可能意味着锁仓更长、信息更少、更难退出。" data-bad="答错了。早不等于更容易赚钱。私募也不因为更早就更赚。"><h3>想一想</h3><p>「早」是不是表示更容易赚钱？</p><button type="button" class="option" data-answer="a">A. 是，越早越容易赚</button><button type="button" class="option" data-answer="b">B. 只有私募才因为更早而更容易赚钱</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 锁得越久越容易赚</button><button type="button" class="option" data-answer="d">D. 不是。早只表示时间靠前，还可能更难退出</button><div class="feedback"></div></div>
 
 ## 二级市场：买卖已发行资产
 
@@ -245,7 +245,7 @@ Web3 常被用来描述利用区块链、钱包和智能合约构建的互联网
 CEX / DEX 描述的是交易场所与机制。
 它们不是同一组分类。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。买别人已经持有的 BTC，一般是二级交易。它不因为发生在 CEX 就变成一级发行。" data-bad="答错了。一级是发行环节。在交易所买已发行的 BTC，一般是二级交易。CEX 说的是场所，不是一级或二级。"><h3>想一想</h3><p>在交易所买别人卖出的 BTC，一般属于哪一类？</p><button type="button" class="option" data-answer="a">A. 二级交易</button><button type="button" class="option" data-answer="b">B. 一级发行</button><button type="button" class="option" data-answer="c">C. 和一级、二级无关，只看是不是 CEX</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 不用学，看到就买</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。买别人已经持有的 BTC，一般是二级交易。它不因为发生在 CEX 就变成一级发行。" data-bad="答错了。一级是发行环节。在交易所买已发行的 BTC，一般是二级交易。CEX 说的是场所，不是一级或二级。"><h3>想一想</h3><p>在交易所买别人卖出的 BTC，一般属于哪一类？</p><button type="button" class="option" data-answer="a">A. 二级交易</button><button type="button" class="option" data-answer="b">B. 一级发行</button><button type="button" class="option" data-answer="c">C. 和一级、二级无关，只看是不是 CEX</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 私募认购</button><div class="feedback"></div></div>
 
 ## 常见早期参与方式
 
@@ -264,7 +264,7 @@ CEX / DEX 描述的是交易场所与机制。
 空投、积分与测试网并不天然等于一级投资。
 它们也不保证未来发币或给奖励。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。测试网用来体验产品。测试资产通常不等于真实资产。" data-bad="答错了。测试资产通常不能当成真资产。积分高，也不表示测试资产已经变成真资产。"><h3>想一想</h3><p>测试网里的测试资产，通常等于真实资产吗？</p><button type="button" class="option" data-answer="a">A. 等于，测试通过就能当真资产用</button><button type="button" class="option" data-answer="b">B. 通常不等于</button><button type="button" class="option" data-answer="c">C. 只要积分够高，就等于真实资产</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只看名字就够了</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。测试网用来体验产品。测试资产通常不等于真实资产。" data-bad="答错了。测试资产通常不能当成真资产。积分高，也不表示测试资产已经变成真资产。"><h3>想一想</h3><p>测试网里的测试资产，通常等于真实资产吗？</p><button type="button" class="option" data-answer="a">A. 等于，测试通过就能当真资产用</button><button type="button" class="option" data-answer="b">B. 通常不等于</button><button type="button" class="option" data-answer="c">C. 只要积分够高，就等于真实资产</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 转到主网地址就等于</button><div class="feedback"></div></div>
 
 ## 什么是锁仓与解锁？
 
@@ -278,7 +278,7 @@ CEX / DEX 描述的是交易场所与机制。
 但实际价格影响还取决于持有人行为、需求和市场流动性。
 解锁不等于价格一定上涨。
 
-<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。锁仓期间可能暂时不能转让。认购完成，也不等于马上能卖。" data-bad="答错了。认购完成不一定能立刻卖。解锁会增加可卖的数量，但不保证价格上涨。"><h3>想一想</h3><p>认购完成，是不是就能立刻卖掉？</p><button type="button" class="option" data-answer="a">A. 是，付完就能卖</button><button type="button" class="option" data-answer="b">B. 解锁之后价格一定上涨</button><button type="button" class="option" data-answer="c">C. 不一定。锁仓期间可能暂时不能转让</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 私聊里说可以，就可以做</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。锁仓期间可能暂时不能转让。认购完成，也不等于马上能卖。" data-bad="答错了。认购完成不一定能立刻卖。解锁会增加可卖的数量，但不保证价格上涨。"><h3>想一想</h3><p>认购完成，是不是就能立刻卖掉？</p><button type="button" class="option" data-answer="a">A. 是，付完就能卖</button><button type="button" class="option" data-answer="b">B. 解锁之后价格一定上涨</button><button type="button" class="option" data-answer="c">C. 不一定。锁仓期间可能暂时不能转让</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 上了交易所就一定能卖</button><div class="feedback"></div></div>
 
 ## CEX 与 DEX
 
@@ -289,7 +289,7 @@ CEX 和 DEX 是交易场所的分类，和一级 / 二级市场不是一回事�
 
 小提醒：先说清楚「我买的是谁发行的什么资产」，再谈一级或二级。
 
-<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。CEX 和 DEX 区分的是交易场所与机制。一级和二级区分的是发行与流转。" data-bad="答错了。CEX / DEX 不是一级和二级，也不是币和代币的区分。它们说的是在哪里、用什么机制交易。"><h3>想一想</h3><p>CEX 和 DEX 这组词，主要在区分什么？</p><button type="button" class="option" data-answer="a">A. 一级市场和二级市场</button><button type="button" class="option" data-answer="b">B. 原生币和代币</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 不用学，看到就买</button><button type="button" class="option" data-answer="d">D. 交易场所和机制</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。CEX 和 DEX 区分的是交易场所与机制。一级和二级区分的是发行与流转。" data-bad="答错了。CEX / DEX 不是一级和二级，也不是币和代币的区分。它们说的是在哪里、用什么机制交易。"><h3>想一想</h3><p>CEX 和 DEX 这组词，主要在区分什么？</p><button type="button" class="option" data-answer="a">A. 一级市场和二级市场</button><button type="button" class="option" data-answer="b">B. 原生币和代币</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 币的价格高低</button><button type="button" class="option" data-answer="d">D. 交易场所和机制</button><div class="feedback"></div></div>
 
 # 03｜买币前的必修知识 📚
 
@@ -333,7 +333,7 @@ USDT 是稳定币，不是银行账户里的美元。
 <button type="button" class="lab-reset" data-reset>重置</button>
 </div>
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。ETH/BTC 里，买入 ETH 通常花的是右边的 BTC。" data-bad="答错了。看交易对右边的报价资产。"><h3>想一想</h3><p>ETH/BTC 交易对里，买入 ETH 通常花什么？</p><button type="button" class="option" data-answer="a">A. BTC</button><button type="button" class="option" data-answer="b" data-note="答错了。看右侧报价资产。ETH/BTC 的报价资产是 BTC，不是 USDT。">B. USDT</button><button type="button" class="option" data-answer="c" data-note="答错了。ETH 是你买到的资产，不是你花出去的报价资产。">C. ETH</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 不用学，看到就买</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。ETH/BTC 里，买入 ETH 通常花的是右边的 BTC。" data-bad="答错了。看交易对右边的报价资产。"><h3>想一想</h3><p>ETH/BTC 交易对里，买入 ETH 通常花什么？</p><button type="button" class="option" data-answer="a">A. BTC</button><button type="button" class="option" data-answer="b" data-note="答错了。看右侧报价资产。ETH/BTC 的报价资产是 BTC，不是 USDT。">B. USDT</button><button type="button" class="option" data-answer="c" data-note="答错了。ETH 是你买到的资产，不是你花出去的报价资产。">C. ETH</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 法币</button><div class="feedback"></div></div>
 
 ## 币价、市值和 FDV
 
@@ -376,7 +376,7 @@ FDV 也不是未来一定会达到的价格或规模。
 <button type="button" class="lab-reset" data-reset>重置</button>
 </div>
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。单价变低，不等于被低估。还要看供应、用途和风险。" data-bad="答错了。不能只看单价，也不能只看 FDV。"><h3>想一想</h3><p>一个币单价跌到 0.001 美元，就一定被低估了吗？</p><button type="button" class="option" data-answer="a" data-note="答错了。这是把价格当成了估值。">A. 是</button><button type="button" class="option" data-answer="b">B. 不一定，还要看供应、用途和风险</button><button type="button" class="option" data-answer="c" data-note="答错了。只看 FDV，会忽略需求和实际流通。">C. 只看 FDV 就够</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只看名字就够了</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。单价变低，不等于被低估。还要看供应、用途和风险。" data-bad="答错了。不能只看单价，也不能只看 FDV。"><h3>想一想</h3><p>一个币单价跌到 0.001 美元，就一定被低估了吗？</p><button type="button" class="option" data-answer="a" data-note="答错了。这是把价格当成了估值。">A. 是</button><button type="button" class="option" data-answer="b">B. 不一定，还要看供应、用途和风险</button><button type="button" class="option" data-answer="c" data-note="答错了。只看 FDV，会忽略需求和实际流通。">C. 只看 FDV 就够</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 发行量小就一定是</button><div class="feedback"></div></div>
 
 ## 供应量
 
@@ -417,7 +417,7 @@ FDV 也不是未来一定会达到的价格或规模。
 <button type="button" class="lab-reset" data-reset>重置</button>
 </div>
 
-<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。解锁可以只改变流通状态，已发行总量不一定增加。" data-bad="答错了。解锁不等于新发行，也不保证价格下跌。"><h3>想一想</h3><p>500 万枚锁仓币解锁后，已发行总量必然增加 500 万吗？</p><button type="button" class="option" data-answer="a" data-note="答错了。这是把发行和解锁混成了一件事。">A. 必然</button><button type="button" class="option" data-answer="b" data-note="答错了。供应变化不是价格保证。">B. 币价必然跌</button><button type="button" class="option" data-answer="c">C. 不必然，可能只是流通状态改变</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 私聊里说可以，就可以做</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。解锁可以只改变流通状态，已发行总量不一定增加。" data-bad="答错了。解锁不等于新发行，也不保证价格下跌。"><h3>想一想</h3><p>500 万枚锁仓币解锁后，已发行总量必然增加 500 万吗？</p><button type="button" class="option" data-answer="a" data-note="答错了。这是把发行和解锁混成了一件事。">A. 必然</button><button type="button" class="option" data-answer="b" data-note="答错了。供应变化不是价格保证。">B. 币价必然跌</button><button type="button" class="option" data-answer="c">C. 不必然，可能只是流通状态改变</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 市值必然增加 500 万</button><div class="feedback"></div></div>
 
 ## 流动性与成交量
 
@@ -453,7 +453,7 @@ FDV 也不是未来一定会达到的价格或规模。
 <button type="button" class="lab-reset" data-reset>重置</button>
 </div>
 
-<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。大额能不能成交，要看当前盘口深度和可承接数量。" data-bad="答错了。涨幅和粉丝数都不能代替现在的买卖深度。"><h3>想一想</h3><p>判断大额订单是否容易成交，最该看什么？</p><button type="button" class="option" data-answer="a" data-note="答错了。昨天的涨幅不能代替现在的买卖深度。">A. 昨天的涨幅</button><button type="button" class="option" data-answer="b" data-note="答错了。粉丝数不能代替现在的买卖深度。">B. 项目粉丝数</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 不用学，看到就买</button><button type="button" class="option" data-answer="d">D. 当前盘口深度与可承接数量</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。大额能不能成交，要看当前盘口深度和可承接数量。" data-bad="答错了。涨幅和粉丝数都不能代替现在的买卖深度。"><h3>想一想</h3><p>判断大额订单是否容易成交，最该看什么？</p><button type="button" class="option" data-answer="a" data-note="答错了。昨天的涨幅不能代替现在的买卖深度。">A. 昨天的涨幅</button><button type="button" class="option" data-answer="b" data-note="答错了。粉丝数不能代替现在的买卖深度。">B. 项目粉丝数</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 过去一年的最高价</button><button type="button" class="option" data-answer="d">D. 当前盘口深度与可承接数量</button><div class="feedback"></div></div>
 
 ## 买卖价差、价格影响与滑点
 
@@ -489,7 +489,7 @@ FDV 也不是未来一定会达到的价格或规模。
 <button type="button" class="lab-reset" data-reset>重置</button>
 </div>
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。限价买单有最高价。深度不够时，可能只成交一部分，或暂时等不到。" data-bad="答错了。限价不能保证立刻买满，也不会自动把价格提到 1.05。"><h3>想一想</h3><p>限价买单设置最高 1.00 美元，能保证立刻买到 150 枚吗？</p><button type="button" class="option" data-answer="a">A. 不能，可能只成交部分或等不到</button><button type="button" class="option" data-answer="b" data-note="答错了。这忽略了盘口深度。">B. 能保证</button><button type="button" class="option" data-answer="c" data-note="答错了。限价买单不会自动把价格提到 1.05，那会违反你设的最高价。">C. 可以自动把价格提到 1.05</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只看名字就够了</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。限价买单有最高价。深度不够时，可能只成交一部分，或暂时等不到。" data-bad="答错了。限价不能保证立刻买满，也不会自动把价格提到 1.05。"><h3>想一想</h3><p>限价买单设置最高 1.00 美元，能保证立刻买到 150 枚吗？</p><button type="button" class="option" data-answer="a">A. 不能，可能只成交部分或等不到</button><button type="button" class="option" data-answer="b" data-note="答错了。这忽略了盘口深度。">B. 能保证</button><button type="button" class="option" data-answer="c" data-note="答错了。限价买单不会自动把价格提到 1.05，那会违反你设的最高价。">C. 可以自动把价格提到 1.05</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 把数量改成整数就能</button><div class="feedback"></div></div>
 
 ## 手续费与网络费
 
@@ -532,7 +532,7 @@ FDV 也不是未来一定会达到的价格或规模。
 <button type="button" class="lab-reset" data-reset>重置</button>
 </div>
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。同一平台里的账户划转，通常是内部记账，不是链上转账。" data-bad="答错了。内部划转通常不是链上转账，也不是跨链。"><h3>想一想</h3><p>在交易所内部把资金账户划转到现货账户，必然要支付区块链网络费吗？</p><button type="button" class="option" data-answer="a" data-note="答错了。内部划转和链上转账不是一回事。">A. 必然</button><button type="button" class="option" data-answer="b">B. 不必然，通常属于平台内部记账</button><button type="button" class="option" data-answer="c" data-note="答错了。同一平台的账户划转，通常也不是跨链。">C. 必然产生跨链费</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只看名字就够了</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。同一平台里的账户划转，通常是内部记账，不是链上转账。" data-bad="答错了。内部划转通常不是链上转账，也不是跨链。"><h3>想一想</h3><p>在交易所内部把资金账户划转到现货账户，必然要支付区块链网络费吗？</p><button type="button" class="option" data-answer="a" data-note="答错了。内部划转和链上转账不是一回事。">A. 必然</button><button type="button" class="option" data-answer="b">B. 不必然，通常属于平台内部记账</button><button type="button" class="option" data-answer="c" data-note="答错了。同一平台的账户划转，通常也不是跨链。">C. 必然产生跨链费</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只有划到现货才付</button><div class="feedback"></div></div>
 
 ## 盈亏怎么算？
 
@@ -568,7 +568,7 @@ FDV 也不是未来一定会达到的价格或规模。
 <button type="button" class="lab-reset" data-reset>重置</button>
 </div>
 
-<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。教学虚构：从 20 回到 100，要涨 80，80÷20 = 400%。" data-bad="答错了。回本涨幅要用剩下的 20 当基数，不是把原来的跌幅直接拿来用。"><h3>想一想</h3><p>教学虚构：100 跌到 20，要回到 100 需要涨多少？</p><button type="button" class="option" data-answer="a" data-note="答错了。80% 是把原来的跌幅直接当成了回本涨幅。">A. 80%</button><button type="button" class="option" data-answer="b" data-note="答错了。100% 没有按剩下的 20 当基数。">B. 100%</button><button type="button" class="option" data-answer="c">C. 400%</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 私聊里说可以，就可以做</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。教学虚构：从 20 回到 100，要涨 80，80÷20 = 400%。" data-bad="答错了。回本涨幅要用剩下的 20 当基数，不是把原来的跌幅直接拿来用。"><h3>想一想</h3><p>教学虚构：100 跌到 20，要回到 100 需要涨多少？</p><button type="button" class="option" data-answer="a" data-note="答错了。80% 是把原来的跌幅直接当成了回本涨幅。">A. 80%</button><button type="button" class="option" data-answer="b" data-note="答错了。100% 没有按剩下的 20 当基数。">B. 100%</button><button type="button" class="option" data-answer="c">C. 400%</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 500%</button><div class="feedback"></div></div>
 
 ## 学交易之前，至少能回答
 
@@ -612,7 +612,7 @@ FDV 也不是未来一定会达到的价格或规模。
 <button type="button" class="lab-reset" data-reset>重置</button>
 </div>
 
-<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。先回答能不能退出，再决定买不买。" data-bad="答错了。暴涨和 K 线都没有回答能不能退出。"><h3>想一想</h3><p>某币正在暴涨，但交易所暂停提现、盘口很浅。最稳妥的下一步？</p><button type="button" class="option" data-answer="a" data-note="答错了。还没回答能不能退出。">A. 先满仓</button><button type="button" class="option" data-answer="b" data-note="答错了。K 线突破没有回答能不能退出。">B. 只看 K 线突破</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 不用学，看到就买</button><button type="button" class="option" data-answer="d">D. 查明退出限制和流动性再决定</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。先回答能不能退出，再决定买不买。" data-bad="答错了。暴涨和 K 线都没有回答能不能退出。"><h3>想一想</h3><p>某币正在暴涨，但交易所暂停提现、盘口很浅。最稳妥的下一步？</p><button type="button" class="option" data-answer="a" data-note="答错了。还没回答能不能退出。">A. 先满仓</button><button type="button" class="option" data-answer="b" data-note="答错了。K 线突破没有回答能不能退出。">B. 只看 K 线突破</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 先把杠杆开到最高</button><button type="button" class="option" data-answer="d">D. 查明退出限制和流动性再决定</button><div class="feedback"></div></div>
 
 # 04｜第一次买币与出入金 🛒
 
@@ -666,7 +666,7 @@ FDV 也不是未来一定会达到的价格或规模。
 <button type="button" class="lab-reset" data-reset>重置</button>
 </div>
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。想收到银行里的法币，要走所在地支持的法币兑换和出金渠道。" data-bad="答错了。USDT 不会自动变成法币，也不能直接转到银行账号。"><h3>想一想</h3><p>你卖出 BTC 后得到 USDT，下一步想收到银行里的法币，应该？</p><button type="button" class="option" data-answer="a">A. 使用所在地支持的法币兑换及出金渠道</button><button type="button" class="option" data-answer="b" data-note="答错了。USDT 不会自动变成法币。">B. 等待 USDT 自动变法币</button><button type="button" class="option" data-answer="c" data-note="答错了。银行账号通常不是链上收款地址。">C. 直接把 USDT 转到银行账号</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只看名字就够了</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。想收到银行里的法币，要走所在地支持的法币兑换和出金渠道。" data-bad="答错了。USDT 不会自动变成法币，也不能直接转到银行账号。"><h3>想一想</h3><p>你卖出 BTC 后得到 USDT，下一步想收到银行里的法币，应该？</p><button type="button" class="option" data-answer="a">A. 使用所在地支持的法币兑换及出金渠道</button><button type="button" class="option" data-answer="b" data-note="答错了。USDT 不会自动变成法币。">B. 等待 USDT 自动变法币</button><button type="button" class="option" data-answer="c" data-note="答错了。银行账号通常不是链上收款地址。">C. 直接把 USDT 转到银行账号</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 把 USDT 提到冷钱包就行</button><div class="feedback"></div></div>
 
 ## 第一步：确认平台与地区
 
@@ -701,7 +701,7 @@ FDV 也不是未来一定会达到的价格或规模。
 <button type="button" class="lab-reset" data-reset>重置</button>
 </div>
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。UID 只在对应平台里有意义。数字相同，也不能断定是同一个人。" data-bad="答错了。相同数字和相同品牌，都不能当成跨系统的身份凭证。"><h3>想一想</h3><p>两个不同地区的交易所应用都显示 UID 123456，能断定是同一人吗？</p><button type="button" class="option" data-answer="a" data-note="答错了。相同数字不能当成跨系统的身份凭证。">A. 能</button><button type="button" class="option" data-answer="b">B. 不能，须核对平台主体与收款身份</button><button type="button" class="option" data-answer="c" data-note="答错了。品牌相同也不代表账户系统互通。">C. 只要品牌相同就能</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 私聊里说可以，就可以做</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。UID 只在对应平台里有意义。数字相同，也不能断定是同一个人。" data-bad="答错了。相同数字和相同品牌，都不能当成跨系统的身份凭证。"><h3>想一想</h3><p>两个不同地区的交易所应用都显示 UID 123456，能断定是同一人吗？</p><button type="button" class="option" data-answer="a" data-note="答错了。相同数字不能当成跨系统的身份凭证。">A. 能</button><button type="button" class="option" data-answer="b">B. 不能，须核对平台主体与收款身份</button><button type="button" class="option" data-answer="c" data-note="答错了。品牌相同也不代表账户系统互通。">C. 只要品牌相同就能</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 注册时间一样就能</button><div class="feedback"></div></div>
 
 ## 第二步：注册与安全设置
 
@@ -741,7 +741,7 @@ FDV 也不是未来一定会达到的价格或规模。
 <button type="button" class="lab-reset" data-reset>重置</button>
 </div>
 
-<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。验证码不要交出去。自己打开核对过的官方 App 看通知。" data-bad="答错了。验证码不能交给对方，转币也不能证明对方是客服。"><h3>想一想</h3><p>有人自称客服要求你发送登录验证码以「解除风控」，应该？</p><button type="button" class="option" data-answer="a" data-note="答错了。验证码本身就可能被用来接管账户。">A. 发给对方但不发密码</button><button type="button" class="option" data-answer="b" data-note="答错了。转币不能证明对方是客服。">B. 先转少量币验证</button><button type="button" class="option" data-answer="c">C. 拒绝，改从官方 App 内核实</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 私聊里说可以，就可以做</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。验证码不要交出去。自己打开核对过的官方 App 看通知。" data-bad="答错了。验证码不能交给对方，转币也不能证明对方是客服。"><h3>想一想</h3><p>有人自称客服要求你发送登录验证码以「解除风控」，应该？</p><button type="button" class="option" data-answer="a" data-note="答错了。验证码本身就可能被用来接管账户。">A. 发给对方但不发密码</button><button type="button" class="option" data-answer="b" data-note="答错了。转币不能证明对方是客服。">B. 先转少量币验证</button><button type="button" class="option" data-answer="c">C. 拒绝，改从官方 App 内核实</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 改个新密码再发给他</button><div class="feedback"></div></div>
 
 ## 第三步：选择入金方式
 
@@ -776,7 +776,7 @@ FDV 也不是未来一定会达到的价格或规模。
 <p class="lab-result" aria-live="polite"></p>
 </div>
 
-<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。要看你一共付多少、最后拿到多少，以及限制和风险。" data-bad="答错了。0 手续费和到账快，都不能单独决定哪个更划算。"><h3>想一想</h3><p>两个渠道一个写 0 手续费，一个写有手续费，怎样比较更合理？</p><button type="button" class="option" data-answer="a" data-note="答错了。0 手续费可能藏着更差的报价。">A. 只选 0 手续费</button><button type="button" class="option" data-answer="b" data-note="答错了。快不代表成本低，也不代表你能用。">B. 只选最快的</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 不用学，看到就买</button><button type="button" class="option" data-answer="d">D. 核对总支付、实际到账、限制和风险</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。要看你一共付多少、最后拿到多少，以及限制和风险。" data-bad="答错了。0 手续费和到账快，都不能单独决定哪个更划算。"><h3>想一想</h3><p>两个渠道一个写 0 手续费，一个写有手续费，怎样比较更合理？</p><button type="button" class="option" data-answer="a" data-note="答错了。0 手续费可能藏着更差的报价。">A. 只选 0 手续费</button><button type="button" class="option" data-answer="b" data-note="答错了。快不代表成本低，也不代表你能用。">B. 只选最快的</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 只看页面上的广告</button><button type="button" class="option" data-answer="d">D. 核对总支付、实际到账、限制和风险</button><div class="feedback"></div></div>
 
 ## P2P 特别注意
 
@@ -834,7 +834,7 @@ P2P 常见场景是：你和另一位用户交易，平台按规则提供订单�
 <button type="button" class="lab-reset" data-reset>重置</button>
 </div>
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。银行还没看到款，就不要放币。在订单里核实。" data-bad="答错了。截图不能证明付款，离开订单也会丢掉平台里的记录。"><h3>想一想</h3><p>买家发来付款截图，但你银行账户没看到款，应该？</p><button type="button" class="option" data-answer="a">A. 不放币，核实并按订单规则处理</button><button type="button" class="option" data-answer="b" data-note="答错了。截图不能证明钱已经到账。">B. 先放币表示信任</button><button type="button" class="option" data-answer="c" data-note="答错了。离开订单会丢掉平台里的记录和保护。">C. 去站外聊天确认</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只看名字就够了</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。银行还没看到款，就不要放币。在订单里核实。" data-bad="答错了。截图不能证明付款，离开订单也会丢掉平台里的记录。"><h3>想一想</h3><p>买家发来付款截图，但你银行账户没看到款，应该？</p><button type="button" class="option" data-answer="a">A. 不放币，核实并按订单规则处理</button><button type="button" class="option" data-answer="b" data-note="答错了。截图不能证明钱已经到账。">B. 先放币表示信任</button><button type="button" class="option" data-answer="c" data-note="答错了。离开订单会丢掉平台里的记录和保护。">C. 去站外聊天确认</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 让对方再发一张更清晰的</button><div class="feedback"></div></div>
 
 ## 第四步：小额买入现货
 
@@ -875,7 +875,7 @@ P2P 常见场景是：你和另一位用户交易，平台按规则提供订单�
 <button type="button" class="lab-reset" data-reset>重置</button>
 </div>
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。未成交通常是还在等对手盘，不是已经买到，也不等于钱丢了。" data-bad="答错了。未成交不等于钱丢了，也不等于已经买到。"><h3>想一想</h3><p>你提交限价买单，页面显示「未成交」，最合理的理解是？</p><button type="button" class="option" data-answer="a" data-note="答错了。未成交不等于资产消失。限价单可能还挂着。">A. 钱一定丢了</button><button type="button" class="option" data-answer="b">B. 订单可能仍在等待匹配</button><button type="button" class="option" data-answer="c" data-note="答错了。未成交就是还没买到。">C. 已经买到币只是没显示</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 私聊里说可以，就可以做</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。未成交通常是还在等对手盘，不是已经买到，也不等于钱丢了。" data-bad="答错了。未成交不等于钱丢了，也不等于已经买到。"><h3>想一想</h3><p>你提交限价买单，页面显示「未成交」，最合理的理解是？</p><button type="button" class="option" data-answer="a" data-note="答错了。未成交不等于资产消失。限价单可能还挂着。">A. 钱一定丢了</button><button type="button" class="option" data-answer="b">B. 订单可能仍在等待匹配</button><button type="button" class="option" data-answer="c" data-note="答错了。未成交就是还没买到。">C. 已经买到币只是没显示</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 币已经到账，只是名字变了</button><div class="feedback"></div></div>
 
 ## 第五步：理解卖出与提现
 
@@ -933,7 +933,7 @@ P2P 常见场景是：你和另一位用户交易，平台按规则提供订单�
 <button type="button" class="lab-reset" data-reset>重置</button>
 </div>
 
-<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。USDT 还在交易所。要收到银行法币，还得走支持的兑换和出金。" data-bad="答错了。交易所里的 USDT 不是银行存款，币价也不能把它变成银行存款。"><h3>想一想</h3><p>卖出 BTC 得到 USDT 后，USDT 自动变成银行存款了吗？</p><button type="button" class="option" data-answer="a" data-note="答错了。交易所里的 USDT 不是银行里的存款。">A. 是</button><button type="button" class="option" data-answer="b" data-note="答错了。币价不能把交易所资产变成银行存款。">B. 取决于币价</button><button type="button" class="option" data-answer="c">C. 没有，还需完成支持的法币兑换及出金流程</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 不用学，看到就买</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。USDT 还在交易所。要收到银行法币，还得走支持的兑换和出金。" data-bad="答错了。交易所里的 USDT 不是银行存款，币价也不能把它变成银行存款。"><h3>想一想</h3><p>卖出 BTC 得到 USDT 后，USDT 自动变成银行存款了吗？</p><button type="button" class="option" data-answer="a" data-note="答错了。交易所里的 USDT 不是银行里的存款。">A. 是</button><button type="button" class="option" data-answer="b" data-note="答错了。币价不能把交易所资产变成银行存款。">B. 取决于币价</button><button type="button" class="option" data-answer="c">C. 没有，还需完成支持的法币兑换及出金流程</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 过了 24 小时就会</button><div class="feedback"></div></div>
 
 ## 交易所里的几个账户
 
@@ -983,7 +983,7 @@ P2P 常见场景是：你和另一位用户交易，平台按规则提供订单�
 <p class="lab-result" aria-live="polite"></p>
 </div>
 
-<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。先看是不是还在资金账户，再决定要不要在平台内部划转。" data-bad="答错了。先核对账户。不要重复充值，也不要把币发给客服。"><h3>想一想</h3><p>交易所现货页显示 0 USDT，但资金账户有 100 USDT，第一步应该？</p><button type="button" class="option" data-answer="a" data-note="答错了。可能只是放在另一个账户，再充会重复入金。">A. 再充值 100</button><button type="button" class="option" data-answer="b" data-note="答错了。不要把币发给客服。那是把资产交出去。">B. 把币发给客服 UID</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 不用学，看到就买</button><button type="button" class="option" data-answer="d">D. 核对账户类型和是否需要内部划转</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。先看是不是还在资金账户，再决定要不要在平台内部划转。" data-bad="答错了。先核对账户。不要重复充值，也不要把币发给客服。"><h3>想一想</h3><p>交易所现货页显示 0 USDT，但资金账户有 100 USDT，第一步应该？</p><button type="button" class="option" data-answer="a" data-note="答错了。可能只是放在另一个账户，再充会重复入金。">A. 再充值 100</button><button type="button" class="option" data-answer="b" data-note="答错了。不要把币发给客服。那是把资产交出去。">B. 把币发给客服 UID</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 先把账户注销重开</button><button type="button" class="option" data-answer="d">D. 核对账户类型和是否需要内部划转</button><div class="feedback"></div></div>
 
 # 05｜CEX 交易所导航 🏦
 
@@ -997,7 +997,7 @@ CEX 通常提供账户、充提币与交易服务，部分平台还有法币渠�
 平台账户余额通常是平台内部记录。
 你需要依赖运营方保管资产和处理提现，不能把它当成自己控制私钥的钱包。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。CEX余额通常谁保管资产：平台。" data-bad="答错了。CEX余额通常谁保管资产：平台。"><h3>想一想</h3><p>CEX余额通常谁保管资产？</p><button type="button" class="option" data-answer="a">A. 平台</button><button type="button" class="option" data-answer="b">B. 用户独立私钥</button><button type="button" class="option" data-answer="c">C. 矿工</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只看名字就够了</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。CEX余额通常谁保管资产：平台。" data-bad="答错了。CEX余额通常谁保管资产：平台。"><h3>想一想</h3><p>CEX余额通常谁保管资产？</p><button type="button" class="option" data-answer="a">A. 平台</button><button type="button" class="option" data-answer="b">B. 用户独立私钥</button><button type="button" class="option" data-answer="c">C. 矿工</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 智能合约</button><div class="feedback"></div></div>
 
 ## CEX 与 DEX 有什么不同？
 
@@ -1012,7 +1012,7 @@ DEX 是去中心化交易协议或场所。
 DEX 也有中心化环节。
 前端、管理员、预言机和其他组件同样会带来风险。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。DEX可能存在合约风险吗：可能。" data-bad="答错了。DEX可能存在合约风险吗：可能。"><h3>想一想</h3><p>DEX可能存在合约风险吗？</p><button type="button" class="option" data-answer="a">A. 绝不可能</button><button type="button" class="option" data-answer="b">B. 可能</button><button type="button" class="option" data-answer="c">C. 没有权限风险</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 私聊里说可以，就可以做</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。DEX可能存在合约风险吗：可能。" data-bad="答错了。DEX可能存在合约风险吗：可能。"><h3>想一想</h3><p>DEX可能存在合约风险吗？</p><button type="button" class="option" data-answer="a">A. 绝不可能</button><button type="button" class="option" data-answer="b">B. 可能</button><button type="button" class="option" data-answer="c">C. 没有权限风险</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只有新币才可能</button><div class="feedback"></div></div>
 
 ## 邀请注册导航
 
@@ -1022,7 +1022,7 @@ DEX 也有中心化环节。
 排序不代表安全性或推荐程度。<br>
 使用前确认所在地是否支持注册及相关服务。
 
-<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。推广链接是安全担保吗：不是。" data-bad="答错了。推广链接是安全担保吗：不是。"><h3>想一想</h3><p>推广链接是安全担保吗？</p><button type="button" class="option" data-answer="a">A. 是</button><button type="button" class="option" data-answer="b">B. 免核对</button><button type="button" class="option" data-answer="c">C. 不是</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 不用学，看到就买</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。推广链接是安全担保吗：不是。" data-bad="答错了。推广链接是安全担保吗：不是。"><h3>想一想</h3><p>推广链接是安全担保吗？</p><button type="button" class="option" data-answer="a">A. 是</button><button type="button" class="option" data-answer="b">B. 免核对</button><button type="button" class="option" data-answer="c">C. 不是</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 返佣高就是</button><div class="feedback"></div></div>
 
 | 平台 | 邀请注册链接 |
 |---|---|
@@ -1044,7 +1044,7 @@ DeBot 和币安 Web3 钱包用来买卖已经发行的代币，不是一级认�
 DeBot 与币安 Web3 钱包都用于在链上买卖已经发行的代币（二级市场），不是一级市场认购。<br>
 链上新币风险很高，先读第 09 章再动手。
 
-<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。DEX买已发行代币属于什么：一般是二级交易。" data-bad="答错了。DEX买已发行代币属于什么：一般是二级交易。"><h3>想一想</h3><p>DEX买已发行代币属于什么？</p><button type="button" class="option" data-answer="a">A. 一定私募</button><button type="button" class="option" data-answer="b">B. 银行存款</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 只看名字就够了</button><button type="button" class="option" data-answer="d">D. 一般是二级交易</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。DEX买已发行代币属于什么：一般是二级交易。" data-bad="答错了。DEX买已发行代币属于什么：一般是二级交易。"><h3>想一想</h3><p>DEX买已发行代币属于什么？</p><button type="button" class="option" data-answer="a">A. 一定私募</button><button type="button" class="option" data-answer="b">B. 银行存款</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 一级发行</button><button type="button" class="option" data-answer="d">D. 一般是二级交易</button><div class="feedback"></div></div>
 
 ## 怎么选择？
 
@@ -1053,7 +1053,7 @@ DeBot 与币安 Web3 钱包都用于在链上买卖已经发行的代币（二�
 先检查所在地能否使用，再看交易需求、入金方式、相关市场深度、费用、安全设置、提现规则和客服渠道。
 不要仅因为注册奖励或某个 KOL 推荐就决定。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。选平台先看什么：地区可用和提现。" data-bad="答错了。选平台先看什么：地区可用和提现。"><h3>想一想</h3><p>选平台先看什么？</p><button type="button" class="option" data-answer="a">A. 地区可用和提现</button><button type="button" class="option" data-answer="b">B. 返佣口号</button><button type="button" class="option" data-answer="c">C. KOL排名</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只看名字就够了</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。选平台先看什么：地区可用和提现。" data-bad="答错了。选平台先看什么：地区可用和提现。"><h3>想一想</h3><p>选平台先看什么？</p><button type="button" class="option" data-answer="a">A. 地区可用和提现</button><button type="button" class="option" data-answer="b">B. 返佣口号</button><button type="button" class="option" data-answer="c">C. KOL排名</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 界面好不好看</button><div class="feedback"></div></div>
 
 ## 储备证明代表什么？
 
@@ -1068,7 +1068,7 @@ DeBot 与币安 Web3 钱包都用于在链上买卖已经发行的代币（二�
 
 小提醒：点击之前看域名，开户之前看规则，存钱之前想清楚平台风险。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。储备证明保证随时提现吗：不能保证。" data-bad="答错了。储备证明保证随时提现吗：不能保证。"><h3>想一想</h3><p>储备证明保证随时提现吗？</p><button type="button" class="option" data-answer="a">A. 一定保证</button><button type="button" class="option" data-answer="b">B. 不能保证</button><button type="button" class="option" data-answer="c">C. 等于存款保险</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 私聊里说可以，就可以做</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。储备证明保证随时提现吗：不能保证。" data-bad="答错了。储备证明保证随时提现吗：不能保证。"><h3>想一想</h3><p>储备证明保证随时提现吗？</p><button type="button" class="option" data-answer="a">A. 一定保证</button><button type="button" class="option" data-answer="b">B. 不能保证</button><button type="button" class="option" data-answer="c">C. 等于存款保险</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 审计所越大就越保证</button><div class="feedback"></div></div>
 
 # 06｜现货下单入门 🧾
 
@@ -1081,7 +1081,7 @@ DeBot 与币安 Web3 钱包都用于在链上买卖已经发行的代币（二�
 
 想了解杠杆和合约，见[第 07 章「进阶：杠杆与风险管理」](#/c/07)。
 
-<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。无杠杆现货会因跌价自动强平吗：通常不会。" data-bad="答错了。无杠杆现货会因跌价自动强平吗：通常不会。"><h3>想一想</h3><p>无杠杆现货会因跌价自动强平吗？</p><button type="button" class="option" data-answer="a">A. 一定会</button><button type="button" class="option" data-answer="b">B. 没有亏损</button><button type="button" class="option" data-answer="c">C. 通常不会</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 不用学，看到就买</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。无杠杆现货会因跌价自动强平吗：通常不会。" data-bad="答错了。无杠杆现货会因跌价自动强平吗：通常不会。"><h3>想一想</h3><p>无杠杆现货会因跌价自动强平吗？</p><button type="button" class="option" data-answer="a">A. 一定会</button><button type="button" class="option" data-answer="b">B. 没有亏损</button><button type="button" class="option" data-answer="c">C. 通常不会</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 跌过 10% 就会</button><div class="feedback"></div></div>
 
 ## 订单类型
 
@@ -1099,7 +1099,7 @@ DeBot 与币安 Web3 钱包都用于在链上买卖已经发行的代币（二�
 
 **教学虚构：** 市价单扫盘口、限价单等待成交两条时间线。
 
-<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。限价单一定成交吗：不一定。" data-bad="答错了。限价单一定成交吗：不一定。"><h3>想一想</h3><p>限价单一定成交吗？</p><button type="button" class="option" data-answer="a">A. 一定</button><button type="button" class="option" data-answer="b">B. 无需对手盘</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 只看名字就够了</button><button type="button" class="option" data-answer="d">D. 不一定</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。限价单一定成交吗：不一定。" data-bad="答错了。限价单一定成交吗：不一定。"><h3>想一想</h3><p>限价单一定成交吗？</p><button type="button" class="option" data-answer="a">A. 一定</button><button type="button" class="option" data-answer="b">B. 无需对手盘</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 价格到达就一定全成</button><button type="button" class="option" data-answer="d">D. 不一定</button><div class="feedback"></div></div>
 
 ## K 线基础
 
@@ -1113,7 +1113,7 @@ DeBot 与币安 Web3 钱包都用于在链上买卖已经发行的代币（二�
 
 **教学虚构：** OHLC四个标注的K线，切换1分钟和日线。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。K线四价是什么：开高低收。" data-bad="答错了。K线四价是什么：开高低收。"><h3>想一想</h3><p>K线四价是什么？</p><button type="button" class="option" data-answer="a">A. 开高低收</button><button type="button" class="option" data-answer="b">B. 资金费率</button><button type="button" class="option" data-answer="c">C. 合约杠杆</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 私聊里说可以，就可以做</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。K线四价是什么：开高低收。" data-bad="答错了。K线四价是什么：开高低收。"><h3>想一想</h3><p>K线四价是什么？</p><button type="button" class="option" data-answer="a">A. 开高低收</button><button type="button" class="option" data-answer="b">B. 资金费率</button><button type="button" class="option" data-answer="c">C. 合约杠杆</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 买卖盘和最新价</button><div class="feedback"></div></div>
 
 ## 交易日志
 
@@ -1125,7 +1125,7 @@ DeBot 与币安 Web3 钱包都用于在链上买卖已经发行的代币（二�
 先用模拟交易练习。
 模拟收益也不能直接代表真实交易表现，真实资金有情绪、深度与执行成本。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。交易日志要记录什么：计划和执行偏差。" data-bad="答错了。交易日志要记录什么：计划和执行偏差。"><h3>想一想</h3><p>交易日志要记录什么？</p><button type="button" class="option" data-answer="a">A. 只记盈利</button><button type="button" class="option" data-answer="b">B. 计划和执行偏差</button><button type="button" class="option" data-answer="c">C. 只记币名</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 私聊里说可以，就可以做</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。交易日志要记录什么：计划和执行偏差。" data-bad="答错了。交易日志要记录什么：计划和执行偏差。"><h3>想一想</h3><p>交易日志要记录什么？</p><button type="button" class="option" data-answer="a">A. 只记盈利</button><button type="button" class="option" data-answer="b">B. 计划和执行偏差</button><button type="button" class="option" data-answer="c">C. 只记币名</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只记进场价</button><div class="feedback"></div></div>
 
 ## 三种容易上头的时刻
 
@@ -1137,7 +1137,7 @@ DeBot 与币安 Web3 钱包都用于在链上买卖已经发行的代币（二�
 
 遇到这些状态，暂停交易、复查计划，比多找一个指标更有帮助。
 
-<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。亏损后急着加仓有什么风险：放大损失。" data-bad="答错了。亏损后急着加仓有什么风险：放大损失。"><h3>想一想</h3><p>亏损后急着加仓有什么风险？</p><button type="button" class="option" data-answer="a">A. 保证回本</button><button type="button" class="option" data-answer="b">B. 没有风险</button><button type="button" class="option" data-answer="c">C. 放大损失</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 不用学，看到就买</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。亏损后急着加仓有什么风险：放大损失。" data-bad="答错了。亏损后急着加仓有什么风险：放大损失。"><h3>想一想</h3><p>亏损后急着加仓有什么风险？</p><button type="button" class="option" data-answer="a">A. 保证回本</button><button type="button" class="option" data-answer="b">B. 没有风险</button><button type="button" class="option" data-answer="c">C. 放大损失</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只是多付一点手续费</button><div class="feedback"></div></div>
 
 # 07｜进阶：杠杆与风险管理 ⚖️
 
@@ -1153,7 +1153,7 @@ DeBot 与币安 Web3 钱包都用于在链上买卖已经发行的代币（二�
 
 **教学虚构：** 同样1000 USDT名义仓位，1倍与10倍保证金占用对照。
 
-<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。杠杆放大什么：相对保证金的盈亏。" data-bad="答错了。杠杆放大什么：相对保证金的盈亏。"><h3>想一想</h3><p>杠杆放大什么？</p><button type="button" class="option" data-answer="a">A. 胜率</button><button type="button" class="option" data-answer="b">B. 币价本身</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 只看名字就够了</button><button type="button" class="option" data-answer="d">D. 相对保证金的盈亏</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。杠杆放大什么：相对保证金的盈亏。" data-bad="答错了。杠杆放大什么：相对保证金的盈亏。"><h3>想一想</h3><p>杠杆放大什么？</p><button type="button" class="option" data-answer="a">A. 胜率</button><button type="button" class="option" data-answer="b">B. 币价本身</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 判断对错的次数</button><button type="button" class="option" data-answer="d">D. 相对保证金的盈亏</button><div class="feedback"></div></div>
 
 ## 做多与做空
 
@@ -1163,7 +1163,7 @@ DeBot 与币安 Web3 钱包都用于在链上买卖已经发行的代币（二�
 做空是希望价格下跌获利。
 做空不是把自己已有的现货卖掉这么简单，往往涉及借贷或衍生品机制。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。做空可能涉及什么：借贷或强平。" data-bad="答错了。做空可能涉及什么：借贷或强平。"><h3>想一想</h3><p>做空可能涉及什么？</p><button type="button" class="option" data-answer="a">A. 借贷或强平</button><button type="button" class="option" data-answer="b">B. 永不亏损</button><button type="button" class="option" data-answer="c">C. 没有费用</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 私聊里说可以，就可以做</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。做空可能涉及什么：借贷或强平。" data-bad="答错了。做空可能涉及什么：借贷或强平。"><h3>想一想</h3><p>做空可能涉及什么？</p><button type="button" class="option" data-answer="a">A. 借贷或强平</button><button type="button" class="option" data-answer="b">B. 永不亏损</button><button type="button" class="option" data-answer="c">C. 没有费用</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只能在现货里做</button><div class="feedback"></div></div>
 
 ## 保证金、全仓与逐仓
 
@@ -1179,7 +1179,7 @@ DeBot 与币安 Web3 钱包都用于在链上买卖已经发行的代币（二�
 
 **教学虚构：** 逐仓保证金单盒与全仓账户共享盒，标出风险边界。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。全仓可能影响什么：更多账户资金。" data-bad="答错了。全仓可能影响什么：更多账户资金。"><h3>想一想</h3><p>全仓可能影响什么？</p><button type="button" class="option" data-answer="a">A. 只有单笔固定额</button><button type="button" class="option" data-answer="b">B. 更多账户资金</button><button type="button" class="option" data-answer="c">C. 零风险</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 不用学，看到就买</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。全仓可能影响什么：更多账户资金。" data-bad="答错了。全仓可能影响什么：更多账户资金。"><h3>想一想</h3><p>全仓可能影响什么？</p><button type="button" class="option" data-answer="a">A. 只有单笔固定额</button><button type="button" class="option" data-answer="b">B. 更多账户资金</button><button type="button" class="option" data-answer="c">C. 零风险</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只影响未实现盈利</button><div class="feedback"></div></div>
 
 ## 强平与爆仓
 
@@ -1196,7 +1196,7 @@ DeBot 与币安 Web3 钱包都用于在链上买卖已经发行的代币（二�
 
 **教学虚构：** 标记价格、维持保证金、手续费共同影响强平线。
 
-<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。强平只看杠杆倍数吗：不是。" data-bad="答错了。强平只看杠杆倍数吗：不是。"><h3>想一想</h3><p>强平只看杠杆倍数吗？</p><button type="button" class="option" data-answer="a">A. 是</button><button type="button" class="option" data-answer="b">B. 只看K线颜色</button><button type="button" class="option" data-answer="c">C. 不是</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 不用学，看到就买</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。强平只看杠杆倍数吗：不是。" data-bad="答错了。强平只看杠杆倍数吗：不是。"><h3>想一想</h3><p>强平只看杠杆倍数吗？</p><button type="button" class="option" data-answer="a">A. 是</button><button type="button" class="option" data-answer="b">B. 只看K线颜色</button><button type="button" class="option" data-answer="c">C. 不是</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只看资金费率</button><div class="feedback"></div></div>
 
 ## 资金费率
 
@@ -1209,7 +1209,7 @@ DeBot 与币安 Web3 钱包都用于在链上买卖已经发行的代币（二�
 方向、间隔与规则依平台而异。
 长期持仓时，这笔费用会明显影响结果。
 
-<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。资金费支付方向固定吗：不固定。" data-bad="答错了。资金费支付方向固定吗：不固定。"><h3>想一想</h3><p>资金费支付方向固定吗？</p><button type="button" class="option" data-answer="a">A. 永远多付空</button><button type="button" class="option" data-answer="b">B. 平台总付用户</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 只看名字就够了</button><button type="button" class="option" data-answer="d">D. 不固定</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。资金费支付方向固定吗：不固定。" data-bad="答错了。资金费支付方向固定吗：不固定。"><h3>想一想</h3><p>资金费支付方向固定吗？</p><button type="button" class="option" data-answer="a">A. 永远多付空</button><button type="button" class="option" data-answer="b">B. 平台总付用户</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 永远空头付给多头</button><button type="button" class="option" data-answer="d">D. 不固定</button><div class="feedback"></div></div>
 
 ## 仓位与风险预算
 
@@ -1260,7 +1260,7 @@ DeBot 与币安 Web3 钱包都用于在链上买卖已经发行的代币（二�
 **教学虚构：** 10000×1%=100；
 60000入、59000止，仓位0.1 BTC。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。示例仓位是多少：0.1 BTC。" data-bad="答错了。示例仓位是多少：0.1 BTC。"><h3>想一想</h3><p>示例仓位是多少？</p><button type="button" class="option" data-answer="a">A. 0.1 BTC</button><button type="button" class="option" data-answer="b">B. 1 BTC</button><button type="button" class="option" data-answer="c">C. 10 BTC</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 私聊里说可以，就可以做</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。示例仓位是多少：0.1 BTC。" data-bad="答错了。示例仓位是多少：0.1 BTC。"><h3>想一想</h3><p>示例仓位是多少？</p><button type="button" class="option" data-answer="a">A. 0.1 BTC</button><button type="button" class="option" data-answer="b">B. 1 BTC</button><button type="button" class="option" data-answer="c">C. 10 BTC</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 0.01 BTC</button><div class="feedback"></div></div>
 
 ## 技术指标
 
@@ -1276,7 +1276,7 @@ RSI：相对强弱指标，观察一段时期价格变化的相对强度。
 MACD：通过均线关系等观察趋势与动量变化。
 Stoch RSI：对 RSI 再做随机指标处理，通常更敏感。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。RSI高就必然马上下跌吗：不一定。" data-bad="答错了。RSI高就必然马上下跌吗：不一定。"><h3>想一想</h3><p>RSI高就必然马上下跌吗？</p><button type="button" class="option" data-answer="a">A. 一定</button><button type="button" class="option" data-answer="b">B. 不一定</button><button type="button" class="option" data-answer="c">C. 无法显示历史</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 不用学，看到就买</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。RSI高就必然马上下跌吗：不一定。" data-bad="答错了。RSI高就必然马上下跌吗：不一定。"><h3>想一想</h3><p>RSI高就必然马上下跌吗？</p><button type="button" class="option" data-answer="a">A. 一定</button><button type="button" class="option" data-answer="b">B. 不一定</button><button type="button" class="option" data-answer="c">C. 无法显示历史</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只在 4 小时图一定</button><div class="feedback"></div></div>
 
 # 08｜钱包、冷钱包与 CEX 👛
 
@@ -1291,7 +1291,7 @@ Stoch RSI：对 RSI 再做随机指标处理，通常更敏感。
 
 **教学虚构：** 链上账本与手机钱包分离，箭头标读取余额/签名。
 
-<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。删除 App 不等于删掉链上资产。但如果没备份私钥，就无法找回。" data-bad="答错了。删除 App 不等于删掉链上资产。没备份私钥时，资产也找不回来。"><h3>想一想</h3><p>删除App就等于删除链上资产吗？</p><button type="button" class="option" data-answer="a">A. 是</button><button type="button" class="option" data-answer="b">B. 一定归零</button><button type="button" class="option" data-answer="c">C. 不是，但如果没备份私钥就无法找回</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只看名字就够了</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。删除 App 不等于删掉链上资产。但如果没备份私钥，就无法找回。" data-bad="答错了。删除 App 不等于删掉链上资产。没备份私钥时，资产也找不回来。"><h3>想一想</h3><p>删除App就等于删除链上资产吗？</p><button type="button" class="option" data-answer="a">A. 是</button><button type="button" class="option" data-answer="b">B. 一定归零</button><button type="button" class="option" data-answer="c">C. 不是，但如果没备份私钥就无法找回</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 换个手机就等于删掉</button><div class="feedback"></div></div>
 
 ## 地址、私钥、助记词
 
@@ -1307,7 +1307,7 @@ Stoch RSI：对 RSI 再做随机指标处理，通常更敏感。
 
 **教学虚构：** 公开地址、秘密私钥、助记词恢复、App密码四层。
 
-<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。改App密码能使泄露助记词失效吗：不能。" data-bad="答错了。改App密码能使泄露助记词失效吗：不能。"><h3>想一想</h3><p>改App密码能使泄露助记词失效吗？</p><button type="button" class="option" data-answer="a">A. 能</button><button type="button" class="option" data-answer="b">B. 卸载即可</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 只看名字就够了</button><button type="button" class="option" data-answer="d">D. 不能</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。改App密码能使泄露助记词失效吗：不能。" data-bad="答错了。改App密码能使泄露助记词失效吗：不能。"><h3>想一想</h3><p>改App密码能使泄露助记词失效吗？</p><button type="button" class="option" data-answer="a">A. 能</button><button type="button" class="option" data-answer="b">B. 卸载即可</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 把 App 更新到最新就能</button><button type="button" class="option" data-answer="d">D. 不能</button><div class="feedback"></div></div>
 
 ## 两组不同的分类
 
@@ -1321,7 +1321,7 @@ Stoch RSI：对 RSI 再做随机指标处理，通常更敏感。
 
 **教学虚构：** 托管/自托管横轴、热/冷纵轴，硬件单独标签。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。冷热主要按什么区分：密钥联网环境。" data-bad="答错了。冷热主要按什么区分：密钥联网环境。"><h3>想一想</h3><p>冷热主要按什么区分？</p><button type="button" class="option" data-answer="a">A. 密钥联网环境</button><button type="button" class="option" data-answer="b">B. 币价</button><button type="button" class="option" data-answer="c">C. 平台大小</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 私聊里说可以，就可以做</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。冷热主要按什么区分：密钥联网环境。" data-bad="答错了。冷热主要按什么区分：密钥联网环境。"><h3>想一想</h3><p>冷热主要按什么区分？</p><button type="button" class="option" data-answer="a">A. 密钥联网环境</button><button type="button" class="option" data-answer="b">B. 币价</button><button type="button" class="option" data-answer="c">C. 平台大小</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 设备贵不贵</button><div class="feedback"></div></div>
 
 ## CEX、软件钱包与硬件钱包对比
 
@@ -1335,7 +1335,7 @@ Stoch RSI：对 RSI 再做随机指标处理，通常更敏感。
 | 主要风险 | 平台、账户、提现限制等 | 恶意软件、钓鱼、备份与误签 | 供应链、备份、误签与设备操作 |
 | 需要承担的责任 | 账户安全与平台选择 | 密钥、备份、交互安全 | 密钥、备份、设备与交互安全 |
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。硬件钱包能杜绝恶意签名吗：不能。" data-bad="答错了。硬件钱包能杜绝恶意签名吗：不能。"><h3>想一想</h3><p>硬件钱包能杜绝恶意签名吗？</p><button type="button" class="option" data-answer="a">A. 能</button><button type="button" class="option" data-answer="b">B. 不能</button><button type="button" class="option" data-answer="c">C. 无需备份</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 不用学，看到就买</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。硬件钱包能杜绝恶意签名吗：不能。" data-bad="答错了。硬件钱包能杜绝恶意签名吗：不能。"><h3>想一想</h3><p>硬件钱包能杜绝恶意签名吗？</p><button type="button" class="option" data-answer="a">A. 能</button><button type="button" class="option" data-answer="b">B. 不能</button><button type="button" class="option" data-answer="c">C. 无需备份</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 屏幕确认一次就能</button><div class="feedback"></div></div>
 
 ## 无私钥钱包：新手也能轻松开始 🧸
 
@@ -1373,7 +1373,7 @@ Stoch RSI：对 RSI 再做随机指标处理，通常更敏感。
 
 按钮：注册币安 / 币安钱包
 
-<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。MPC钱包还需要确认什么：恢复条件。" data-bad="答错了。MPC钱包还需要确认什么：恢复条件。"><h3>想一想</h3><p>MPC钱包还需要确认什么？</p><button type="button" class="option" data-answer="a">A. K线颜色</button><button type="button" class="option" data-answer="b">B. 收益保证</button><button type="button" class="option" data-answer="c">C. 恢复条件</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只看名字就够了</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。MPC钱包还需要确认什么：恢复条件。" data-bad="答错了。MPC钱包还需要确认什么：恢复条件。"><h3>想一想</h3><p>MPC钱包还需要确认什么？</p><button type="button" class="option" data-answer="a">A. K线颜色</button><button type="button" class="option" data-answer="b">B. 收益保证</button><button type="button" class="option" data-answer="c">C. 恢复条件</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 群里的推荐语</button><div class="feedback"></div></div>
 
 ## 有没有必要买硬件钱包？
 
@@ -1390,7 +1390,7 @@ Stoch RSI：对 RSI 再做随机指标处理，通常更敏感。
 硬件钱包可以减少某些密钥接触联网环境的风险，但不是万能保险箱。
 备份泄露、设备被替换或主动签署恶意操作，仍可能损失资产。
 
-<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。硬件钱包要按统一金额门槛选吗：不必。" data-bad="答错了。硬件钱包要按统一金额门槛选吗：不必。"><h3>想一想</h3><p>硬件钱包要按统一金额门槛选吗？</p><button type="button" class="option" data-answer="a">A. 必须</button><button type="button" class="option" data-answer="b">B. 只看热度</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 私聊里说可以，就可以做</button><button type="button" class="option" data-answer="d">D. 不必</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。硬件钱包要按统一金额门槛选吗：不必。" data-bad="答错了。硬件钱包要按统一金额门槛选吗：不必。"><h3>想一想</h3><p>硬件钱包要按统一金额门槛选吗？</p><button type="button" class="option" data-answer="a">A. 必须</button><button type="button" class="option" data-answer="b">B. 只看热度</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 超过 1 万就必须换</button><button type="button" class="option" data-answer="d">D. 不必</button><div class="feedback"></div></div>
 
 ## 如何分开管理？
 
@@ -1403,7 +1403,7 @@ Stoch RSI：对 RSI 再做随机指标处理，通常更敏感。
 同一助记词下创建多个账户，不能隔离助记词泄露风险。
 为了分隔这类风险，需要独立的密钥 / 恢复方案。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。同助记词多账户隔离泄露风险吗：不能。" data-bad="答错了。同助记词多账户隔离泄露风险吗：不能。"><h3>想一想</h3><p>同助记词多账户隔离泄露风险吗？</p><button type="button" class="option" data-answer="a">A. 不能</button><button type="button" class="option" data-answer="b">B. 能</button><button type="button" class="option" data-answer="c">C. 改名即可</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 私聊里说可以，就可以做</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。同助记词多账户隔离泄露风险吗：不能。" data-bad="答错了。同助记词多账户隔离泄露风险吗：不能。"><h3>想一想</h3><p>同助记词多账户隔离泄露风险吗？</p><button type="button" class="option" data-answer="a">A. 不能</button><button type="button" class="option" data-answer="b">B. 能</button><button type="button" class="option" data-answer="c">C. 改名即可</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 分成不同 App 就能</button><div class="feedback"></div></div>
 
 ## 设备丢失怎么办？
 
@@ -1413,7 +1413,7 @@ Stoch RSI：对 RSI 再做随机指标处理，通常更敏感。
 按官方说明在可信环境中恢复；
 怀疑设备或备份已被他人获取时，考虑把剩余资产转到使用全新密钥的账户。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。丢设备能否恢复取决于什么：备份与钱包方案。" data-bad="答错了。丢设备能否恢复取决于什么：备份与钱包方案。"><h3>想一想</h3><p>丢设备能否恢复取决于什么？</p><button type="button" class="option" data-answer="a">A. 币价</button><button type="button" class="option" data-answer="b">B. 备份与钱包方案</button><button type="button" class="option" data-answer="c">C. 手机品牌</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 不用学，看到就买</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。丢设备能否恢复取决于什么：备份与钱包方案。" data-bad="答错了。丢设备能否恢复取决于什么：备份与钱包方案。"><h3>想一想</h3><p>丢设备能否恢复取决于什么？</p><button type="button" class="option" data-answer="a">A. 币价</button><button type="button" class="option" data-answer="b">B. 备份与钱包方案</button><button type="button" class="option" data-answer="c">C. 手机品牌</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 客服能不能查到</button><div class="feedback"></div></div>
 
 # 09｜安全与防骗指南 🛡️
 
@@ -1431,7 +1431,7 @@ Stoch RSI：对 RSI 再做随机指标处理，通常更敏感。
 正规客服不需要助记词来帮你查交易。
 任何人索要它，就停下来，不要再继续沟通。
 
-<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。正规客服不需要助记词。谁要，就停止沟通。" data-bad="答错了。助记词不能交给客服，也不能先拍照上传再转发。谁要，就停下来。"><h3>想一想</h3><p>有人自称客服，说必须拿到助记词才能帮你查交易。该不该给？</p><button type="button" class="option" data-answer="a">A. 给，不然对方查不了</button><button type="button" class="option" data-answer="b">B. 先拍照传到网盘，再发给对方</button><button type="button" class="option" data-answer="c">C. 不给。正规客服不需要助记词</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只看名字就够了</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。正规客服不需要助记词。谁要，就停止沟通。" data-bad="答错了。助记词不能交给客服，也不能先拍照上传再转发。谁要，就停下来。"><h3>想一想</h3><p>有人自称客服，说必须拿到助记词才能帮你查交易。该不该给？</p><button type="button" class="option" data-answer="a">A. 给，不然对方查不了</button><button type="button" class="option" data-answer="b">B. 先拍照传到网盘，再发给对方</button><button type="button" class="option" data-answer="c">C. 不给。正规客服不需要助记词</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只发前六个词</button><div class="feedback"></div></div>
 
 ## 假官网与假 App
 
@@ -1446,7 +1446,7 @@ Stoch RSI：对 RSI 再做随机指标处理，通常更敏感。
 硬件钱包从官方或可以核验的渠道购买。
 不要使用别人预先设置好的助记词。
 
-<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。广告和搜索名次不能证明是官方。要核对域名、开发者，并用已经核验的入口。" data-bad="答错了。排第一或私人发来的安装包，都不能当成官方。先核对完整域名和开发者。"><h3>想一想</h3><p>搜索广告里排在前面的「官方下载」，能不能直接安装？</p><button type="button" class="option" data-answer="a">A. 能，排第一就是官方</button><button type="button" class="option" data-answer="b">B. 陌生人私发的安装包更安全</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 私聊里说可以，就可以做</button><button type="button" class="option" data-answer="d">D. 不能。先核对完整域名和开发者，只用已核验的入口</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。广告和搜索名次不能证明是官方。要核对域名、开发者，并用已经核验的入口。" data-bad="答错了。排第一或私人发来的安装包，都不能当成官方。先核对完整域名和开发者。"><h3>想一想</h3><p>搜索广告里排在前面的「官方下载」，能不能直接安装？</p><button type="button" class="option" data-answer="a">A. 能，排第一就是官方</button><button type="button" class="option" data-answer="b">B. 陌生人私发的安装包更安全</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 评论里有人说是官方就可以</button><button type="button" class="option" data-answer="d">D. 不能。先核对完整域名和开发者，只用已核验的入口</button><div class="feedback"></div></div>
 
 ## 连接、签名与授权不是一回事
 
@@ -1474,7 +1474,7 @@ Stoch RSI：对 RSI 再做随机指标处理，通常更敏感。
 >
 > **教训：「不收 Gas」的签名也能把币转走，看不懂就别签。**
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。不收 Gas 不等于没有风险。看不懂请求，就不要确认。" data-bad="答错了。不收 Gas，或标题写着登录，都不能证明安全。看不懂就不要签。"><h3>想一想</h3><p>一个签名不收 Gas，是不是就可以当成安全？</p><button type="button" class="option" data-answer="a">A. 不是。有些链下签名也能授权把资产转走</button><button type="button" class="option" data-answer="b">B. 是，不收 Gas 就不会动到币</button><button type="button" class="option" data-answer="c">C. 只要页面标题写着登录，就一定只是登录</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 不用学，看到就买</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。不收 Gas 不等于没有风险。看不懂请求，就不要确认。" data-bad="答错了。不收 Gas，或标题写着登录，都不能证明安全。看不懂就不要签。"><h3>想一想</h3><p>一个签名不收 Gas，是不是就可以当成安全？</p><button type="button" class="option" data-answer="a">A. 不是。有些链下签名也能授权把资产转走</button><button type="button" class="option" data-answer="b">B. 是，不收 Gas 就不会动到币</button><button type="button" class="option" data-answer="c">C. 只要页面标题写着登录，就一定只是登录</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 金额显示是 0 就安全</button><div class="feedback"></div></div>
 
 ## 用什么工具辅助检查签名？
 
@@ -1497,7 +1497,7 @@ GoPlus 可以帮助检查代币、授权，以及一部分链上风险。
 仍要核对交易对象、资产变化和授权范围。
 任何检查都不需要把助记词交给工具。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。没有警告只是辅助信息。仍要自己核对对象、资产变化和授权范围。" data-bad="答错了。没警告不等于安全。助记词也不要交给检查工具。"><h3>想一想</h3><p>检查插件没有弹出警告，这笔签名是不是就一定安全？</p><button type="button" class="option" data-answer="a">A. 是，没警告就可以签</button><button type="button" class="option" data-answer="b">B. 不是。工具只是辅助，没有警告也不代表一定安全</button><button type="button" class="option" data-answer="c">C. 把助记词交给插件，才能彻底检查</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 不用学，看到就买</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。没有警告只是辅助信息。仍要自己核对对象、资产变化和授权范围。" data-bad="答错了。没警告不等于安全。助记词也不要交给检查工具。"><h3>想一想</h3><p>检查插件没有弹出警告，这笔签名是不是就一定安全？</p><button type="button" class="option" data-answer="a">A. 是，没警告就可以签</button><button type="button" class="option" data-answer="b">B. 不是。工具只是辅助，没有警告也不代表一定安全</button><button type="button" class="option" data-answer="c">C. 把助记词交给插件，才能彻底检查</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 用了硬件钱包就不用看</button><div class="feedback"></div></div>
 
 ## 断开连接不等于撤销授权
 
@@ -1511,7 +1511,7 @@ GoPlus 可以帮助检查代币、授权，以及一部分链上风险。
 它也不能保证把已经转走的资产追回来。
 如果助记词或私钥已经泄露，只撤销授权解决不了问题。
 
-<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。断开连接不会取消链上授权。授权要单独撤销。私钥泄露时，只撤销也不够。" data-bad="答错了。断开连接不等于撤销授权。私钥泄露后，只撤销授权也解决不了。"><h3>想一想</h3><p>在钱包里断开某个网站之后，以前的授权还在吗？</p><button type="button" class="option" data-answer="a">A. 不在，断开就等于撤销</button><button type="button" class="option" data-answer="b">B. 私钥已经泄露时，撤销授权就够了</button><button type="button" class="option" data-answer="c">C. 还在。授权要按对应的链和钱包单独撤销</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只看名字就够了</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。断开连接不会取消链上授权。授权要单独撤销。私钥泄露时，只撤销也不够。" data-bad="答错了。断开连接不等于撤销授权。私钥泄露后，只撤销授权也解决不了。"><h3>想一想</h3><p>在钱包里断开某个网站之后，以前的授权还在吗？</p><button type="button" class="option" data-answer="a">A. 不在，断开就等于撤销</button><button type="button" class="option" data-answer="b">B. 私钥已经泄露时，撤销授权就够了</button><button type="button" class="option" data-answer="c">C. 还在。授权要按对应的链和钱包单独撤销</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 换个浏览器就不在了</button><div class="feedback"></div></div>
 
 ## 无限授权
 
@@ -1521,7 +1521,7 @@ GoPlus 可以帮助检查代币、授权，以及一部分链上风险。
 它更省事，也会把合约漏洞或恶意权限的损失放大。
 先看清权限范围，再按自己需要的数量授权。
 
-<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。方便的代价是额度很大。对方或有漏洞的合约，可能用掉远超这一次的数量。" data-bad="答错了。无限授权不是没有风险，也不会自动撤销。它允许对方使用很大的额度。"><h3>想一想</h3><p>无限授权和每次按数量批准，主要差别是什么？</p><button type="button" class="option" data-answer="a">A. 只是少点一次，没有额外风险</button><button type="button" class="option" data-answer="b">B. 无限授权会在当天自动撤销</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 私聊里说可以，就可以做</button><button type="button" class="option" data-answer="d">D. 少一次批准，但对方可能用掉很大的额度</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。方便的代价是额度很大。对方或有漏洞的合约，可能用掉远超这一次的数量。" data-bad="答错了。无限授权不是没有风险，也不会自动撤销。它允许对方使用很大的额度。"><h3>想一想</h3><p>无限授权和每次按数量批准，主要差别是什么？</p><button type="button" class="option" data-answer="a">A. 只是少点一次，没有额外风险</button><button type="button" class="option" data-answer="b">B. 无限授权会在当天自动撤销</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 无限授权只能用一次</button><button type="button" class="option" data-answer="d">D. 少一次批准，但对方可能用掉很大的额度</button><div class="feedback"></div></div>
 
 ## 常见骗局
 
@@ -1540,7 +1540,7 @@ GoPlus 可以帮助检查代币、授权，以及一部分链上风险。
 陌生资产出现在钱包里，不等于你必须处理它。
 不要因为页面显示「价值很高」，就去打开里面的链接。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。陌生资产可以先放着。显示价值高，也不能当成打开链接的理由。" data-bad="答错了。不要打开备注里的链接，也不要为了看余额去授权。陌生资产可以先不处理。"><h3>想一想</h3><p>钱包里突然多了一枚显示「价值很高」的陌生币，并附了领取链接。该怎么办？</p><button type="button" class="option" data-answer="a">A. 先不要处理，也不要因为显示价值高就打开链接</button><button type="button" class="option" data-answer="b">B. 打开链接，把币领出来</button><button type="button" class="option" data-answer="c">C. 立刻给这个币做无限授权，才能看到真余额</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 不用学，看到就买</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。陌生资产可以先放着。显示价值高，也不能当成打开链接的理由。" data-bad="答错了。不要打开备注里的链接，也不要为了看余额去授权。陌生资产可以先不处理。"><h3>想一想</h3><p>钱包里突然多了一枚显示「价值很高」的陌生币，并附了领取链接。该怎么办？</p><button type="button" class="option" data-answer="a">A. 先不要处理，也不要因为显示价值高就打开链接</button><button type="button" class="option" data-answer="b">B. 打开链接，把币领出来</button><button type="button" class="option" data-answer="c">C. 立刻给这个币做无限授权，才能看到真余额</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 先小额授权再点链接</button><div class="feedback"></div></div>
 
 ## 币圈最常见的三个坑
 
@@ -1565,7 +1565,7 @@ P2P 买卖时，如果收到来源不干净的钱，银行卡可能被冻结，�
 帮人跑分、出借银行卡收 U，可能构成帮信罪。
 情节严重的，还可能构成掩饰、隐瞒犯罪所得罪。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。高价收 U 并出借银行卡收款，不是正常交易。可能构成帮信罪，严重时还可能涉及掩饰、隐瞒犯罪所得。" data-bad="答错了。这不是认证商家的正常 P2P，也不是没有风险的帮忙。出借账户收款可能违法。"><h3>想一想</h3><p>有人出高价收 U，还让你把银行卡借给他收款。这更接近哪一种情况？</p><button type="button" class="option" data-answer="a">A. 平台认证商家的正常 P2P</button><button type="button" class="option" data-answer="b">B. 跑分风险。出借账户收款，可能牵涉帮信等相关犯罪</button><button type="button" class="option" data-answer="c">C. 只是帮朋友的忙，没有法律风险</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只看名字就够了</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。高价收 U 并出借银行卡收款，不是正常交易。可能构成帮信罪，严重时还可能涉及掩饰、隐瞒犯罪所得。" data-bad="答错了。这不是认证商家的正常 P2P，也不是没有风险的帮忙。出借账户收款可能违法。"><h3>想一想</h3><p>有人出高价收 U，还让你把银行卡借给他收款。这更接近哪一种情况？</p><button type="button" class="option" data-answer="a">A. 平台认证商家的正常 P2P</button><button type="button" class="option" data-answer="b">B. 跑分风险。出借账户收款，可能牵涉帮信等相关犯罪</button><button type="button" class="option" data-answer="c">C. 只是帮朋友的忙，没有法律风险</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 平台返佣的正常活动</button><div class="feedback"></div></div>
 
 ## 防止剪贴板泄露
 
@@ -1587,7 +1587,7 @@ P2P 买卖时，如果收到来源不干净的钱，银行卡可能被冻结，�
 
 地址被替换怎么防，见第 10 章「转币前四项检查」。
 
-<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。清空剪贴板不能收回已经读走的内容。助记词泄露要按第 15 章处理。" data-bad="答错了。清空不能撤回已经泄露的内容。助记词也不要再粘贴到聊天或网页里。"><h3>想一想</h3><p>助记词已经被人从剪贴板读走了。现在把剪贴板清空，能把泄露撤回吗？</p><button type="button" class="option" data-answer="a">A. 能，清空就等于没泄露</button><button type="button" class="option" data-answer="b">B. 把助记词再粘贴到聊天里核对一遍更安全</button><button type="button" class="option" data-answer="c">C. 不能。清空只能减少以后再被读取</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只看名字就够了</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。清空剪贴板不能收回已经读走的内容。助记词泄露要按第 15 章处理。" data-bad="答错了。清空不能撤回已经泄露的内容。助记词也不要再粘贴到聊天或网页里。"><h3>想一想</h3><p>助记词已经被人从剪贴板读走了。现在把剪贴板清空，能把泄露撤回吗？</p><button type="button" class="option" data-answer="a">A. 能，清空就等于没泄露</button><button type="button" class="option" data-answer="b">B. 把助记词再粘贴到聊天里核对一遍更安全</button><button type="button" class="option" data-answer="c">C. 不能。清空只能减少以后再被读取</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 重启手机就可以撤回</button><div class="feedback"></div></div>
 
 ## 账户与设备保护
 
@@ -1605,7 +1605,7 @@ API 密钥也是秘密。
 交易机器人通常不需要提现权限。
 不要把密钥发给陌生机器人，也不要公开到代码仓库。
 
-<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。交易机器人通常不需要提现权限。密钥不要交给陌生机器人，也不要公开到仓库。" data-bad="答错了。不要为了省事打开提现权限，也不要把密钥公开或交给陌生机器人。"><h3>想一想</h3><p>给交易机器人使用的 API 密钥，通常需要打开提现权限吗？</p><button type="button" class="option" data-answer="a">A. 需要，不然机器人不能用</button><button type="button" class="option" data-answer="b">B. 把密钥公开到代码仓库，方便自己备份</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 私聊里说可以，就可以做</button><button type="button" class="option" data-answer="d">D. 通常不需要。用最小权限，也不要把密钥发给陌生机器人</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。交易机器人通常不需要提现权限。密钥不要交给陌生机器人，也不要公开到仓库。" data-bad="答错了。不要为了省事打开提现权限，也不要把密钥公开或交给陌生机器人。"><h3>想一想</h3><p>给交易机器人使用的 API 密钥，通常需要打开提现权限吗？</p><button type="button" class="option" data-answer="a">A. 需要，不然机器人不能用</button><button type="button" class="option" data-answer="b">B. 把密钥公开到代码仓库，方便自己备份</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 只打开提现、关掉交易就行</button><button type="button" class="option" data-answer="d">D. 通常不需要。用最小权限，也不要把密钥发给陌生机器人</button><div class="feedback"></div></div>
 
 ## 隐私也需要保护
 
@@ -1617,7 +1617,7 @@ API 密钥也是秘密。
 
 小提醒：安全不只是一只冷钱包，而是一套长期的操作习惯。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。没显示实名，不代表链上记录是私密的。公开地址仍可能连到行为和身份。" data-bad="答错了。公链上的很多记录可以公开查询。钱包不显示实名，也不等于无法追踪。"><h3>想一想</h3><p>钱包没有显示真实姓名，链上转账是不是就不会被追踪？</p><button type="button" class="option" data-answer="a">A. 不是。交易记录可以公开查询，地址仍可能被关联到人</button><button type="button" class="option" data-answer="b">B. 是，没实名就查不到</button><button type="button" class="option" data-answer="c">C. 只有交易所账户的记录才能被别人看到</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 不用学，看到就买</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。没显示实名，不代表链上记录是私密的。公开地址仍可能连到行为和身份。" data-bad="答错了。公链上的很多记录可以公开查询。钱包不显示实名，也不等于无法追踪。"><h3>想一想</h3><p>钱包没有显示真实姓名，链上转账是不是就不会被追踪？</p><button type="button" class="option" data-answer="a">A. 不是。交易记录可以公开查询，地址仍可能被关联到人</button><button type="button" class="option" data-answer="b">B. 是，没实名就查不到</button><button type="button" class="option" data-answer="c">C. 只有交易所账户的记录才能被别人看到</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 换成新地址就完全查不到</button><div class="feedback"></div></div>
 # 10｜第一次链上操作 🔗
 
 ## 收币
@@ -1631,7 +1631,7 @@ API 密钥也是秘密。
 不要为了收款向任何人提供助记词。
 收币通常只需要公开收款信息。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。收币要给助记词吗：不要。" data-bad="答错了。收币要给助记词吗：不要。"><h3>想一想</h3><p>收币要给助记词吗？</p><button type="button" class="option" data-answer="a">A. 要</button><button type="button" class="option" data-answer="b">B. 不要</button><button type="button" class="option" data-answer="c">C. 看转账金额</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只看名字就够了</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。收币要给助记词吗：不要。" data-bad="答错了。收币要给助记词吗：不要。"><h3>想一想</h3><p>收币要给助记词吗？</p><button type="button" class="option" data-answer="a">A. 要</button><button type="button" class="option" data-answer="b">B. 不要</button><button type="button" class="option" data-answer="c">C. 看转账金额</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 第一次收款要给</button><div class="feedback"></div></div>
 
 ## 转币前四项检查
 
@@ -1654,7 +1654,7 @@ API 密钥也是秘密。
 同时检查最低充值额、费用、网络暂停与确认要求。
 小额试转需高于相关最低要求，到账后再处理剩余金额。
 
-<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。只核对地址前后几位够吗：不够。" data-bad="答错了。只核对地址前后几位够吗：不够。"><h3>想一想</h3><p>只核对地址前后几位够吗？</p><button type="button" class="option" data-answer="a">A. 够</button><button type="button" class="option" data-answer="b">B. 不用核对</button><button type="button" class="option" data-answer="c">C. 不够</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 私聊里说可以，就可以做</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。只核对地址前后几位够吗：不够。" data-bad="答错了。只核对地址前后几位够吗：不够。"><h3>想一想</h3><p>只核对地址前后几位够吗？</p><button type="button" class="option" data-answer="a">A. 够</button><button type="button" class="option" data-answer="b">B. 不用核对</button><button type="button" class="option" data-answer="c">C. 不够</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 核对中间四位就够</button><div class="feedback"></div></div>
 
 ## 同一种币为什么有不同网络？
 
@@ -1671,7 +1671,7 @@ API 密钥也是秘密。
 
 **教学虚构：** TRC20/ERC20两条独立网络，收款方支持清单。
 
-<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。选转账网络主要看什么：收款方支持。" data-bad="答错了。选转账网络主要看什么：收款方支持。"><h3>想一想</h3><p>选转账网络主要看什么？</p><button type="button" class="option" data-answer="a">A. 哪条便宜</button><button type="button" class="option" data-answer="b">B. 朋友说都一样</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 私聊里说可以，就可以做</button><button type="button" class="option" data-answer="d">D. 收款方支持</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。选转账网络主要看什么：收款方支持。" data-bad="答错了。选转账网络主要看什么：收款方支持。"><h3>想一想</h3><p>选转账网络主要看什么？</p><button type="button" class="option" data-answer="a">A. 哪条便宜</button><button type="button" class="option" data-answer="b">B. 朋友说都一样</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 哪条确认最快</button><button type="button" class="option" data-answer="d">D. 收款方支持</button><div class="feedback"></div></div>
 
 ## 地址与合约地址
 
@@ -1681,7 +1681,7 @@ API 密钥也是秘密。
 合约地址用于识别某个代币或合约。
 购买代币时可能用到合约地址核验身份，但普通转账不能直接把代币合约地址当成自己的收款地址。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。合约地址等于用户收款地址吗：不等于。" data-bad="答错了。合约地址等于用户收款地址吗：不等于。"><h3>想一想</h3><p>合约地址等于用户收款地址吗？</p><button type="button" class="option" data-answer="a">A. 不等于</button><button type="button" class="option" data-answer="b">B. 等于</button><button type="button" class="option" data-answer="c">C. 完全通用</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 不用学，看到就买</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。合约地址等于用户收款地址吗：不等于。" data-bad="答错了。合约地址等于用户收款地址吗：不等于。"><h3>想一想</h3><p>合约地址等于用户收款地址吗？</p><button type="button" class="option" data-answer="a">A. 不等于</button><button type="button" class="option" data-answer="b">B. 等于</button><button type="button" class="option" data-answer="c">C. 完全通用</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 同名代币就可以</button><div class="feedback"></div></div>
 
 ## Gas 与网络资源
 
@@ -1699,7 +1699,7 @@ API 密钥也是秘密。
 **教学虚构：** 以太坊转USDT需要ETH网络费或受支持的代付；
 TRON另有资源模型。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。以太坊转USDT通常用什么付网络费：ETH或受支持代付。" data-bad="答错了。以太坊转USDT通常用什么付网络费：ETH或受支持代付。"><h3>想一想</h3><p>以太坊转USDT通常用什么付网络费？</p><button type="button" class="option" data-answer="a">A. 一定只用USDT</button><button type="button" class="option" data-answer="b">B. ETH或受支持代付</button><button type="button" class="option" data-answer="c">C. BTC</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只看名字就够了</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。以太坊转USDT通常用什么付网络费：ETH或受支持代付。" data-bad="答错了。以太坊转USDT通常用什么付网络费：ETH或受支持代付。"><h3>想一想</h3><p>以太坊转USDT通常用什么付网络费？</p><button type="button" class="option" data-answer="a">A. 一定只用USDT</button><button type="button" class="option" data-answer="b">B. ETH或受支持代付</button><button type="button" class="option" data-answer="c">C. BTC</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 对方手里的币</button><div class="feedback"></div></div>
 
 ## 如何看交易状态？
 
@@ -1713,7 +1713,7 @@ TRON另有资源模型。
 
 **教学虚构：** TxID→链上确认→交易所平台确认数→入账，两个状态独立。
 
-<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。链上成功等于平台即时入账吗：不等于。" data-bad="答错了。链上成功等于平台即时入账吗：不等于。"><h3>想一想</h3><p>链上成功等于平台即时入账吗？</p><button type="button" class="option" data-answer="a">A. 等于</button><button type="button" class="option" data-answer="b">B. 不用TxID</button><button type="button" class="option" data-answer="c">C. 不等于</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 私聊里说可以，就可以做</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。链上成功等于平台即时入账吗：不等于。" data-bad="答错了。链上成功等于平台即时入账吗：不等于。"><h3>想一想</h3><p>链上成功等于平台即时入账吗？</p><button type="button" class="option" data-answer="a">A. 等于</button><button type="button" class="option" data-answer="b">B. 不用TxID</button><button type="button" class="option" data-answer="c">C. 不等于</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 确认一次就等于</button><div class="feedback"></div></div>
 
 ## Swap：链上兑换
 
@@ -1728,7 +1728,7 @@ Swap 是把一种资产换成另一种。
 
 **教学虚构：** 授权与兑换两个步骤、预计收到量、滑点、费用。
 
-<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。授权成功等于Swap完成吗：不等于。" data-bad="答错了。授权成功等于Swap完成吗：不等于。"><h3>想一想</h3><p>授权成功等于Swap完成吗？</p><button type="button" class="option" data-answer="a">A. 等于</button><button type="button" class="option" data-answer="b">B. 没有网络费</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 不用学，看到就买</button><button type="button" class="option" data-answer="d">D. 不等于</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。授权成功等于Swap完成吗：不等于。" data-bad="答错了。授权成功等于Swap完成吗：不等于。"><h3>想一想</h3><p>授权成功等于Swap完成吗？</p><button type="button" class="option" data-answer="a">A. 等于</button><button type="button" class="option" data-answer="b">B. 没有网络费</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 滑点设成 0 就等于</button><button type="button" class="option" data-answer="d">D. 不等于</button><div class="feedback"></div></div>
 
 ## 跨链桥
 
@@ -1744,7 +1744,7 @@ Swap 是把一种资产换成另一种。
 
 **教学虚构：** 源链→桥协议→目标链，封装版本与赎回风险。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。跨链资产权利必然完全一样吗：不一定。" data-bad="答错了。跨链资产权利必然完全一样吗：不一定。"><h3>想一想</h3><p>跨链资产权利必然完全一样吗？</p><button type="button" class="option" data-answer="a">A. 不一定</button><button type="button" class="option" data-answer="b">B. 一定</button><button type="button" class="option" data-answer="c">C. 不用检查</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 不用学，看到就买</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。跨链资产权利必然完全一样吗：不一定。" data-bad="答错了。跨链资产权利必然完全一样吗：不一定。"><h3>想一想</h3><p>跨链资产权利必然完全一样吗？</p><button type="button" class="option" data-answer="a">A. 不一定</button><button type="button" class="option" data-answer="b">B. 一定</button><button type="button" class="option" data-answer="c">C. 不用检查</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 名字一样就一定</button><div class="feedback"></div></div>
 
 # 11｜如何研究一个项目？🔍
 
@@ -2000,7 +2000,7 @@ DePIN 常指通过网络与激励组织现实基础设施，如算力、通信�
 | MPC 钱包 | 多方计算钱包，把密钥分成多个分片分开保存，创建时通常不用抄写传统助记词（例如币安钱包（无私钥））；仍要完成备份并确认恢复方式 |
 | WAGMI | 「我们都会成功」的社区口号，不是回报保证 |
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。DYOR 是自己研究和核验。别人的意见不能直接当成结论。" data-bad="答错了。DYOR 不是「别人看好就可以买」，也不是看见 FOMO 就行动。它是自己去核对。"><h3>想一想</h3><p>DYOR 是在说什么？</p><button type="button" class="option" data-answer="a">A. 别人看好，就可以当成结论</button><button type="button" class="option" data-answer="b">B. 自己研究和核验，不把别人的意见当成结论</button><button type="button" class="option" data-answer="c">C. 看见 FOMO，就要马上买</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只看名字就够了</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。DYOR 是自己研究和核验。别人的意见不能直接当成结论。" data-bad="答错了。DYOR 不是「别人看好就可以买」，也不是看见 FOMO 就行动。它是自己去核对。"><h3>想一想</h3><p>DYOR 是在说什么？</p><button type="button" class="option" data-answer="a">A. 别人看好，就可以当成结论</button><button type="button" class="option" data-answer="b">B. 自己研究和核验，不把别人的意见当成结论</button><button type="button" class="option" data-answer="c">C. 看见 FOMO，就要马上买</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 跟着排名第一的人买</button><div class="feedback"></div></div>
 
 ## 社区玩梗翻译
 
@@ -2029,7 +2029,7 @@ DePIN 常指通过网络与激励组织现实基础设施，如算力、通信�
 | 报单 / 喊单 | 有人告诉你买什么，涨了是他眼光好，亏了算你的 |
 | 接盘 | 买下别人卖出的资产，常用于调侃买在高位 |
 
-<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。「健康回调」在这张对照里是把下跌说得好听。它不是还会涨的证明，也不是价格保证。" data-bad="答错了。这是调侃。它没有证明价格还会涨，也不是官方保证。"><h3>想一想</h3><p>「健康回调」在这张对照里，更接近哪种意思？</p><button type="button" class="option" data-answer="a">A. 已经证明后面还会涨</button><button type="button" class="option" data-answer="b">B. 官方给出的价格保证</button><button type="button" class="option" data-answer="c">C. 跌了，但说得比较好听</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 私聊里说可以，就可以做</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。「健康回调」在这张对照里是把下跌说得好听。它不是还会涨的证明，也不是价格保证。" data-bad="答错了。这是调侃。它没有证明价格还会涨，也不是官方保证。"><h3>想一想</h3><p>「健康回调」在这张对照里，更接近哪种意思？</p><button type="button" class="option" data-answer="a">A. 已经证明后面还会涨</button><button type="button" class="option" data-answer="b">B. 官方给出的价格保证</button><button type="button" class="option" data-answer="c">C. 跌了，但说得比较好听</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 成交量创新高</button><div class="feedback"></div></div>
 
 按钮：查一个词。切换：正经解释 / 社区玩梗。
 
@@ -2144,7 +2144,7 @@ Ethereum 安全资料：https://ethereum.org/security/
 资料都对仍没到账，就拿 TxID 和订单记录，联系收款平台的官方客服。
 链上成功和平台入账是两件事，不能保证一定到账。
 
-<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。链上成功还不等于平台入账。先核对网络、Memo 和确认数，再按官方渠道提交 TxID。" data-bad="答错了。再转一次可能扩大损失。把助记词发给客服会交出钱包控制权。"><h3>想一想</h3><p>教学虚构：TxID 已显示成功，但交易所余额仍是 0。这时该怎么做？</p><button type="button" class="option" data-answer="a">A. 继续往同一个地址再转一笔</button><button type="button" class="option" data-answer="b">B. 把助记词发给客服，让对方查余额</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 不用学，看到就买</button><button type="button" class="option" data-answer="d">D. 核对网络、Memo 和平台要求的确认数</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。链上成功还不等于平台入账。先核对网络、Memo 和确认数，再按官方渠道提交 TxID。" data-bad="答错了。再转一次可能扩大损失。把助记词发给客服会交出钱包控制权。"><h3>想一想</h3><p>教学虚构：TxID 已显示成功，但交易所余额仍是 0。这时该怎么做？</p><button type="button" class="option" data-answer="a">A. 继续往同一个地址再转一笔</button><button type="button" class="option" data-answer="b">B. 把助记词发给客服，让对方查余额</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 把同一笔再加速一次</button><button type="button" class="option" data-answer="d">D. 核对网络、Memo 和平台要求的确认数</button><div class="feedback"></div></div>
 
 ## 提现一直处理中
 
@@ -2158,7 +2158,7 @@ Ethereum 安全资料：https://ethereum.org/security/
 有 TxID，就到对应网络的浏览器核对确认状态。
 不要因为有人私信说能加速提现，就向对方转所谓手续费。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。没有 TxID 时，先看平台订单和公告，再走官方入口。不要向私信支付加速费。" data-bad="答错了。没有 TxID 就还不能确认已经上链。猜哈希或付加速费都不能代替官方订单。"><h3>想一想</h3><p>教学虚构：订单显示处理中，而且没有 TxID。下一步更稳妥的是哪一个？</p><button type="button" class="option" data-answer="a">A. 查看平台订单和公告，并联系官方支持</button><button type="button" class="option" data-answer="b">B. 到区块浏览器里猜一个哈希去查</button><button type="button" class="option" data-answer="c">C. 给私信里的客服付一笔加速费</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只看名字就够了</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。没有 TxID 时，先看平台订单和公告，再走官方入口。不要向私信支付加速费。" data-bad="答错了。没有 TxID 就还不能确认已经上链。猜哈希或付加速费都不能代替官方订单。"><h3>想一想</h3><p>教学虚构：订单显示处理中，而且没有 TxID。下一步更稳妥的是哪一个？</p><button type="button" class="option" data-answer="a">A. 查看平台订单和公告，并联系官方支持</button><button type="button" class="option" data-answer="b">B. 到区块浏览器里猜一个哈希去查</button><button type="button" class="option" data-answer="c">C. 给私信里的客服付一笔加速费</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 换一条链再充一笔</button><div class="feedback"></div></div>
 
 ## 转错地址或网络
 
@@ -2175,7 +2175,7 @@ Ethereum 安全资料：https://ethereum.org/security/
 别随便把私钥导入陌生工具。
 任何情形都不能保证找回。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。网络不被支持时，把 TxID 交给收款平台的官方渠道，询问能否恢复。不能保证找回。" data-bad="答错了。再转一次不能改正上一笔。助记词不要交给陌生网站。"><h3>想一想</h3><p>教学虚构：TxID 显示成功，但收款交易所不支持你选的网络。这时该怎么做？</p><button type="button" class="option" data-answer="a">A. 再转一次，换一条更便宜的网络</button><button type="button" class="option" data-answer="b">B. 向官方提供 TxID，询问是否有恢复服务</button><button type="button" class="option" data-answer="c">C. 把助记词输入陌生的恢复网站</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只看名字就够了</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。网络不被支持时，把 TxID 交给收款平台的官方渠道，询问能否恢复。不能保证找回。" data-bad="答错了。再转一次不能改正上一笔。助记词不要交给陌生网站。"><h3>想一想</h3><p>教学虚构：TxID 显示成功，但收款交易所不支持你选的网络。这时该怎么做？</p><button type="button" class="option" data-answer="a">A. 再转一次，换一条更便宜的网络</button><button type="button" class="option" data-answer="b">B. 向官方提供 TxID，询问是否有恢复服务</button><button type="button" class="option" data-answer="c">C. 把助记词输入陌生的恢复网站</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 在区块浏览器里把网络改掉</button><div class="feedback"></div></div>
 
 ## 忘填 Memo / Tag
 
@@ -2188,7 +2188,7 @@ Ethereum 安全资料：https://ethereum.org/security/
 再通过平台官方的漏填 Memo / Tag 流程申请处理。
 是否支持找回、要多久、是否收费，都看平台规则，不能保证。
 
-<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。漏填 Memo 要留下 TxID 和订单，走平台官方流程。能否找回按平台规则，不能保证。" data-bad="答错了。再充一笔不能补上上一笔的 Memo。区块浏览器上的记录也不能由你改掉。"><h3>想一想</h3><p>教学虚构：充值地址正确，但 Memo 留空，链上已经成功。接下来该怎么做？</p><button type="button" class="option" data-answer="a">A. 立刻再充一笔，把 Memo 补在下一笔里</button><button type="button" class="option" data-answer="b">B. 去区块浏览器里把记录改掉</button><button type="button" class="option" data-answer="c">C. 整理 TxID 和订单，按官方的漏填流程提交</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 私聊里说可以，就可以做</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。漏填 Memo 要留下 TxID 和订单，走平台官方流程。能否找回按平台规则，不能保证。" data-bad="答错了。再充一笔不能补上上一笔的 Memo。区块浏览器上的记录也不能由你改掉。"><h3>想一想</h3><p>教学虚构：充值地址正确，但 Memo 留空，链上已经成功。接下来该怎么做？</p><button type="button" class="option" data-answer="a">A. 立刻再充一笔，把 Memo 补在下一笔里</button><button type="button" class="option" data-answer="b">B. 去区块浏览器里把记录改掉</button><button type="button" class="option" data-answer="c">C. 整理 TxID 和订单，按官方的漏填流程提交</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 等 24 小时它会自己补上</button><div class="feedback"></div></div>
 
 ## 钱包里看不到资产
 
@@ -2203,7 +2203,7 @@ Ethereum 安全资料：https://ethereum.org/security/
 如果链上记录显示资产已经转出，就按可疑交易处理。
 任何人说「输入助记词才能同步余额」，都不要信。
 
-<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。链上还有余额时，先核对账户、网络和代币显示。助记词不能用来「同步余额」。" data-bad="答错了。界面显示 0，不代表链上一定没有。不要上传助记词，也不要只凭界面就断定被盗。"><h3>想一想</h3><p>教学虚构：区块浏览器显示这个地址有 100 USDT，钱包 App 显示 0。更可能先做哪一步？</p><button type="button" class="option" data-answer="a">A. 把助记词上传，让网站同步余额</button><button type="button" class="option" data-answer="b">B. 立刻断定资产已经被盗</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 不用学，看到就买</button><button type="button" class="option" data-answer="d">D. 核对账户、网络，以及这枚代币有没有被显示出来</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。链上还有余额时，先核对账户、网络和代币显示。助记词不能用来「同步余额」。" data-bad="答错了。界面显示 0，不代表链上一定没有。不要上传助记词，也不要只凭界面就断定被盗。"><h3>想一想</h3><p>教学虚构：区块浏览器显示这个地址有 100 USDT，钱包 App 显示 0。更可能先做哪一步？</p><button type="button" class="option" data-answer="a">A. 把助记词上传，让网站同步余额</button><button type="button" class="option" data-answer="b">B. 立刻断定资产已经被盗</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 把这个代币转给自己一次</button><button type="button" class="option" data-answer="d">D. 核对账户、网络，以及这枚代币有没有被显示出来</button><div class="feedback"></div></div>
 
 ## 交易失败或卡住
 
@@ -2217,7 +2217,7 @@ Ethereum 安全资料：https://ethereum.org/security/
 不要连续点很多次提交。
 先看交易记录和官方说明，再决定要不要重试。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。失败的交易仍可能已经消耗网络费。先看原因和官方说明，不要盲目连点。" data-bad="答错了。失败不等于网络费会退回。连续提交也不能保证下一笔成功。"><h3>想一想</h3><p>教学虚构：浏览器显示这笔交易失败，网络费已经扣了。这时该怎么做？</p><button type="button" class="option" data-answer="a">A. 先查失败原因，再决定要不要重试</button><button type="button" class="option" data-answer="b">B. 失败了就一定会把网络费退回来</button><button type="button" class="option" data-answer="c">C. 连续提交，直到有一笔成功</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只看名字就够了</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。失败的交易仍可能已经消耗网络费。先看原因和官方说明，不要盲目连点。" data-bad="答错了。失败不等于网络费会退回。连续提交也不能保证下一笔成功。"><h3>想一想</h3><p>教学虚构：浏览器显示这笔交易失败，网络费已经扣了。这时该怎么做？</p><button type="button" class="option" data-answer="a">A. 先查失败原因，再决定要不要重试</button><button type="button" class="option" data-answer="b">B. 失败了就一定会把网络费退回来</button><button type="button" class="option" data-answer="c">C. 连续提交，直到有一笔成功</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 卸载钱包再装回来</button><div class="feedback"></div></div>
 
 ## 怀疑恶意授权或签名
 
@@ -2232,7 +2232,7 @@ Ethereum 安全资料：https://ethereum.org/security/
 这时可能需要把剩余资产转到一个全新的安全钱包。
 不要把「断开网站连接」当成风险已经解除。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。断开连接不会取消已经给出的授权。要检查并撤销，并判断是否还要转移剩余资产。" data-bad="答错了。断开连接不等于撤销。也不要回到那个网站继续签名。"><h3>想一想</h3><p>教学虚构：你给一个陌生合约授了无限额度。只断开网站连接够不够？</p><button type="button" class="option" data-answer="a">A. 够了，断开连接就等于撤销授权</button><button type="button" class="option" data-answer="b">B. 不够。要检查并撤销相关授权，再评估剩下的风险</button><button type="button" class="option" data-answer="c">C. 再签一次，用来验证刚才那笔没有问题</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 私聊里说可以，就可以做</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。断开连接不会取消已经给出的授权。要检查并撤销，并判断是否还要转移剩余资产。" data-bad="答错了。断开连接不等于撤销。也不要回到那个网站继续签名。"><h3>想一想</h3><p>教学虚构：你给一个陌生合约授了无限额度。只断开网站连接够不够？</p><button type="button" class="option" data-answer="a">A. 够了，断开连接就等于撤销授权</button><button type="button" class="option" data-answer="b">B. 不够。要检查并撤销相关授权，再评估剩下的风险</button><button type="button" class="option" data-answer="c">C. 再签一次，用来验证刚才那笔没有问题</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 清掉浏览器缓存就够</button><div class="feedback"></div></div>
 
 ## 助记词 / 私钥泄露
 
@@ -2248,7 +2248,7 @@ Ethereum 安全资料：https://ethereum.org/security/
 也可能马上被转走。<br>
 这种情况下，先寻求可信的专业协助。</p>
 
-<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。泄露的私钥不会因为改密码或重装而失效。先用新密钥，再考虑怎样转移剩余资产。" data-bad="答错了。改密码和卸载都不能让旧私钥失效。不要再把这个地址当成安全钱包。"><h3>想一想</h3><p>教学虚构：助记词已经发给假客服。旧地址还能不能继续当安全钱包用？</p><button type="button" class="option" data-answer="a">A. 能。改掉登录密码就可以继续用</button><button type="button" class="option" data-answer="b">B. 卸载重装之后，旧私钥就失效了</button><button type="button" class="option" data-answer="c">C. 不能。要创建全新钱包，再评估怎样安全转移剩余资产</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 私聊里说可以，就可以做</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。泄露的私钥不会因为改密码或重装而失效。先用新密钥，再考虑怎样转移剩余资产。" data-bad="答错了。改密码和卸载都不能让旧私钥失效。不要再把这个地址当成安全钱包。"><h3>想一想</h3><p>教学虚构：助记词已经发给假客服。旧地址还能不能继续当安全钱包用？</p><button type="button" class="option" data-answer="a">A. 能。改掉登录密码就可以继续用</button><button type="button" class="option" data-answer="b">B. 卸载重装之后，旧私钥就失效了</button><button type="button" class="option" data-answer="c">C. 不能。要创建全新钱包，再评估怎样安全转移剩余资产</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 把余额转去子账户就安全</button><div class="feedback"></div></div>
 
 ## 交易所账号疑似被盗
 
@@ -2264,7 +2264,7 @@ Ethereum 安全资料：https://ethereum.org/security/
 再按所在地的正规渠道报案。
 处理顺序以先拦住继续损失为先。
 
-<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。先从官方入口限制账户，保护邮箱，再检查 API、设备和提现设置。" data-bad="答错了。只改交易密码拦不住未知 API。验证码和登录信息不要交给私信里的人。"><h3>想一想</h3><p>教学虚构：邮箱提示异地登录，账户里还出现了你没创建过的 API。第一步该做什么？</p><button type="button" class="option" data-answer="a">A. 只改交易密码，其他先不用管</button><button type="button" class="option" data-answer="b">B. 回复发来提示的陌生客服，把验证码交给对方</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 不用学，看到就买</button><button type="button" class="option" data-answer="d">D. 从官方入口限制账户，并排查邮箱和 API</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。先从官方入口限制账户，保护邮箱，再检查 API、设备和提现设置。" data-bad="答错了。只改交易密码拦不住未知 API。验证码和登录信息不要交给私信里的人。"><h3>想一想</h3><p>教学虚构：邮箱提示异地登录，账户里还出现了你没创建过的 API。第一步该做什么？</p><button type="button" class="option" data-answer="a">A. 只改交易密码，其他先不用管</button><button type="button" class="option" data-answer="b">B. 回复发来提示的陌生客服，把验证码交给对方</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 先把 API 密钥发到群里核对</button><button type="button" class="option" data-answer="d">D. 从官方入口限制账户，并排查邮箱和 API</button><div class="feedback"></div></div>
 
 ## 防止二次诈骗
 
@@ -2277,7 +2277,7 @@ Ethereum 安全资料：https://ethereum.org/security/
 真正的官方客服也不该要求你交出助记词。
 不要因为想快点找回钱，再把剩余资产交给陌生人。
 
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。先收费、要助记词或要远程控制，都不是可靠的追回方式。只走官方渠道。" data-bad="答错了。不要先付款，也不要把私钥交给私信里的人。想快点找回，也不能把剩余资产再交出去。"><h3>想一想</h3><p>教学虚构：有人私信说，先付 50 USDT 就能把丢失的币追回。该怎么做？</p><button type="button" class="option" data-answer="a">A. 拒绝付款，并只通过官方渠道核对</button><button type="button" class="option" data-answer="b">B. 先付款，免得错过追回窗口</button><button type="button" class="option" data-answer="c">C. 把私钥发给对方，用来证明这是你的地址</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只看名字就够了</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。先收费、要助记词或要远程控制，都不是可靠的追回方式。只走官方渠道。" data-bad="答错了。不要先付款，也不要把私钥交给私信里的人。想快点找回，也不能把剩余资产再交出去。"><h3>想一想</h3><p>教学虚构：有人私信说，先付 50 USDT 就能把丢失的币追回。该怎么做？</p><button type="button" class="option" data-answer="a">A. 拒绝付款，并只通过官方渠道核对</button><button type="button" class="option" data-answer="b">B. 先付款，免得错过追回窗口</button><button type="button" class="option" data-answer="c">C. 把私钥发给对方，用来证明这是你的地址</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 先付一半，到账再付一半</button><div class="feedback"></div></div>
 
 ## 求助时准备什么？
 
@@ -2292,7 +2292,7 @@ Ethereum 安全资料：https://ethereum.org/security/
 如果事情发生在平台账户里，使用官方工单。
 不要在公开群里晒出完整的个人资料。
 
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。TxID 和订单号可以帮助官方核对。助记词和私钥不能出现在求助材料里。" data-bad="答错了。助记词不能提供，也不要在公开群里晒完整资料。TxID 和订单号走官方工单即可。"><h3>想一想</h3><p>客服同时要 TxID、订单号和助记词。哪一种做法是对的？</p><button type="button" class="option" data-answer="a">A. 三样都发到公开群里，让大家一起看</button><button type="button" class="option" data-answer="b">B. TxID 和订单号可以按官方流程提供，助记词绝不提供</button><button type="button" class="option" data-answer="c">C. 只把助记词发给对方，订单号不用留</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 私聊里说可以，就可以做</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。TxID 和订单号可以帮助官方核对。助记词和私钥不能出现在求助材料里。" data-bad="答错了。助记词不能提供，也不要在公开群里晒完整资料。TxID 和订单号走官方工单即可。"><h3>想一想</h3><p>客服同时要 TxID、订单号和助记词。哪一种做法是对的？</p><button type="button" class="option" data-answer="a">A. 三样都发到公开群里，让大家一起看</button><button type="button" class="option" data-answer="b">B. TxID 和订单号可以按官方流程提供，助记词绝不提供</button><button type="button" class="option" data-answer="c">C. 只把助记词发给对方，订单号不用留</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 助记词打码后可以发</button><div class="feedback"></div></div>
 
 # 16｜新手常见问题与练习 ✅
 
@@ -2446,7 +2446,7 @@ Ethereum 安全资料：https://ethereum.org/security/
 </div><p class="diagram-caption">示意编号仅用于解释账户隔离，不代表真实用户 UID 或具体交易结果。</p></div>
 <div class="steps"><div class="step"><span class="num">01 / PLATFORM</span><b>先看平台</b><p>发送方和接收方是不是同一套系统？</p></div><div class="step"><span class="num">02 / IDENTITY</span><b>再看收款人</b><p>UID、用户名和头像是否符合预期？</p></div><div class="step"><span class="num">03 / ROUTE</span><b>最后看路径</b><p>平台是否明确支持该种转账方式？</p></div></div>
 <div class="key"><strong>核心：</strong>UID 对了，只能说明你核对了一个编号，不能证明转账路径正确。</div>
-<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。UID 数字一致，只说明编号对上了。还要确认两边是不是同一套系统，以及平台是否支持这种收款方式。" data-bad="答错了。数字一致，或头像看起来像，都不能代替确认平台和官方支持的收款方式。"><h3>你会怎么判断？</h3><p>收款 UID 与对方发来的数字一致，但你不确定两边 App 是否互通。</p><button type="button" class="option" data-answer="a">A. 直接转，数字没错</button><button type="button" class="option" data-answer="b">B. 只看头像像不像</button><button type="button" class="option" data-answer="c">C. 停下来确认平台及支持的收款方式</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 不用学，看到就买</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="c" data-ok="答对了。UID 数字一致，只说明编号对上了。还要确认两边是不是同一套系统，以及平台是否支持这种收款方式。" data-bad="答错了。数字一致，或头像看起来像，都不能代替确认平台和官方支持的收款方式。"><h3>你会怎么判断？</h3><p>收款 UID 与对方发来的数字一致，但你不确定两边 App 是否互通。</p><button type="button" class="option" data-answer="a">A. 直接转，数字没错</button><button type="button" class="option" data-answer="b">B. 只看头像像不像</button><button type="button" class="option" data-answer="c">C. 停下来确认平台及支持的收款方式</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 让对方改一个更好记的 UID</button><div class="feedback"></div></div>
 
 ## 转账前，养成三步自检习惯
 
@@ -2489,7 +2489,7 @@ Ethereum 安全资料：https://ethereum.org/security/
 
 <div class="checklist"><label class="checkrow"><input type="checkbox"><span><b>确认平台</b><small>不只看品牌 Logo；核对平台名称及是否支持该转账方式。</small></span></label><label class="checkrow"><input type="checkbox"><span><b>确认收款信息与网络</b><small>站内核对 UID、用户名、头像等；链上核对地址、币种和网络。头像只是辅助信息。</small></span></label><label class="checkrow"><input type="checkbox"><span><b>先做小额测试</b><small>首次转账先用小额试转，确认真实到账，再考虑剩余资金。</small></span></label></div>
 <p class="teach-status" data-tpl="自检 {n} / {m} 项 · 情景题{quiz}" data-yes="已答对" data-no="待通过">自检 0 / 3 项 · 情景题待通过</p>
-<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。UID、用户名和头像都核对过，仍要先确认两个 App 是否支持直接互转。不确定就先暂停。" data-bad="答错了。不要先转一大笔试水，也不要只看头像。不确定是否互通，就先停下来核对官方支持的方式。"><h3>通关验证 · 情景题</h3><p>你已核对 UID、用户名和头像，不确定两个 App 是否支持直接互转。这时应该？</p><button type="button" class="option" data-answer="a">A. 先转一大笔，看看是否到账</button><button type="button" class="option" data-answer="b">B. 只要头像一致就可以转</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 不用学，看到就买</button><button type="button" class="option" data-answer="d">D. 暂停转账，先核对官方支持的转账方式</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="d" data-ok="答对了。UID、用户名和头像都核对过，仍要先确认两个 App 是否支持直接互转。不确定就先暂停。" data-bad="答错了。不要先转一大笔试水，也不要只看头像。不确定是否互通，就先停下来核对官方支持的方式。"><h3>通关验证 · 情景题</h3><p>你已核对 UID、用户名和头像，不确定两个 App 是否支持直接互转。这时应该？</p><button type="button" class="option" data-answer="a">A. 先转一大笔，看看是否到账</button><button type="button" class="option" data-answer="b">B. 只要头像一致就可以转</button><button type="button" class="option" data-answer="c" data-note="这不是这道题要选的。回到题目里的说法再看一次。">C. 让对方发一张收款码截图</button><button type="button" class="option" data-answer="d">D. 暂停转账，先核对官方支持的转账方式</button><div class="feedback"></div></div>
 <div class="key"><strong>注意：</strong>小额测试不能代替核对平台和收款人，也不能保证后续交易绝对安全。</div>
 
 ## 如果已经转错了怎么办？
