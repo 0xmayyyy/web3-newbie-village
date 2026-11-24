@@ -170,7 +170,8 @@ body.is-star main:has(.star-hub){padding-bottom:0}
 .pc{margin-top:12px;background:#120e21;border:1px solid rgba(230,199,158,.22);border-radius:14px;padding:12px;color:#f6f1ff}
 .pc-head{display:flex;justify-content:space-between;align-items:center;font-size:16px;margin-bottom:10px}
 .pc-head span{color:#d4bc9e;font-size:12px}
-.pc-side,.pc-tabs,.pc-lev{display:flex;gap:8px}
+.pc-side,.pc-tabs,.pc-lev,.pc-modes{display:flex;gap:8px}
+.pc-modes .pc-field{flex:1;min-width:0}
 .pc-side{margin-bottom:10px}
 .pc-side button,.pc-tabs button,.pc-lev button,.pc-calc{font:inherit;min-height:40px;border-radius:10px;border:1px solid rgba(230,199,158,.28);background:#1b1528;color:#f6f1ff}
 .pc-side button{flex:1}
