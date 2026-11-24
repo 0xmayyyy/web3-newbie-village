@@ -163,7 +163,7 @@ window.ADVANCED_STAR = {
 { id: 'A', zh: '下跌结构', en: 'A down structure' },
 { id: 'B', zh: '还不明确', en: 'Still unclear' },
 { id: 'C', zh: '上涨结构', en: 'An up structure' },
-{ id: 'D', zh: '不用学，看到就买', en: 'Skip the lesson and buy as soon as you see it.' }
+{ id: 'D', zh: '横盘', en: 'Sideways' }
 ],
             answer: 'C',
             misses: {
@@ -198,15 +198,15 @@ D: { zh: '这不是这道题要选的。回到题目里的说法再看一次。'
               why: { zh: '上升结构常见更高的高点HH和更高的低点HL。', en: 'An up structure usually shows a higher high (HH) and a higher low (HL).' }
             },
             {
-              q: { zh: '高点 105、112、120，低点 90、96、101，这组结构是？', en: 'Highs at 105, 112, and 120, lows at 90, 96, and 101. Which structure is this?' },
+              q: { zh: '一根红 K 线出现，就等于上涨结构反转了吗？', en: 'One red candle prints. Does that mean the up structure has reversed?' },
               options: [
-{ id: 'A', zh: '下跌', en: 'Down' },
-{ id: 'B', zh: '必然暴涨', en: 'Must surge' },
-{ id: 'C', zh: '只看名字就够了', en: 'The name alone is enough.' },
-{ id: 'D', zh: '上涨', en: 'Up' }
+{ id: 'A', zh: '等于', en: 'Yes' },
+{ id: 'B', zh: '不等于，一根红 K 线不是反转', en: 'No, one red candle is not a reversal' },
+{ id: 'C', zh: '收盘是绿色才等于', en: 'Yes, if the close is green' },
+{ id: 'D', zh: '高点越多越等于', en: 'Yes, the more highs there are' }
 ],
-              answer: 'D',
-              why: { zh: '上涨结构常见HH+HL。这里高点和低点都在抬高。这只描述已经发生的事实，不表示下一根必然暴涨。', en: 'An up structure often shows HH+HL. Here both the highs and the lows are rising. This only describes what has already happened, and it does not mean the next candle must surge.' }
+              answer: 'B',
+              why: { zh: '一根红 K 线不是反转。结构要看后面的高点和低点还抬不抬。', en: 'One red candle is not a reversal. Structure depends on whether later highs and lows are still rising.' }
             },
             {
               q: { zh: '刚出现一个疑似高点，可以立刻标成 HH 吗？', en: 'A possible high just printed. Can you mark it HH immediately?' },
@@ -214,7 +214,7 @@ D: { zh: '这不是这道题要选的。回到题目里的说法再看一次。'
 { id: 'A', zh: '可以', en: 'Yes' },
 { id: 'B', zh: '收盘是绿色就可以', en: 'Yes, if it closes green' },
 { id: 'C', zh: '要等右侧两根 K 线', en: 'Wait for two bars on the right' },
-{ id: 'D', zh: '只看名字就够了', en: 'The name alone is enough.' }
+{ id: 'D', zh: '影线够长就可以', en: 'Yes, if the wick is long enough' }
 ],
               answer: 'C',
               why: { zh: '摆动点要左右各 2 根都满足，右侧两根出现之后才确认。不能因为这一根是绿色就确认。', en: 'A swing point needs two bars on each side, and it is confirmed only after the two bars on the right appear. You cannot confirm it just because this candle is green.' }
@@ -224,7 +224,7 @@ D: { zh: '这不是这道题要选的。回到题目里的说法再看一次。'
               options: [
 { id: 'A', zh: '数据一定错了', en: 'The data must be wrong' },
 { id: 'B', zh: '日线接下来必跌', en: 'The daily chart must then fall' },
-{ id: 'C', zh: '私聊里说可以，就可以做', en: 'If a private chat says yes, you can do it.' },
+{ id: 'C', zh: '两个周期必须一样', en: 'The two timeframes must match' },
 { id: 'D', zh: '不同周期可以方向不同', en: 'Different timeframes can point different ways' }
 ],
               answer: 'D',
@@ -273,7 +273,7 @@ D: { zh: '这不是这道题要选的。回到题目里的说法再看一次。'
 { id: 'A', zh: '绝对底部', en: 'An absolute bottom' },
 { id: 'B', zh: '候选支撑区', en: 'A candidate support zone' },
 { id: 'C', zh: '下一根必涨', en: 'The next candle must rise' },
-{ id: 'D', zh: '不用学，看到就买', en: 'Skip the lesson and buy as soon as you see it.' }
+{ id: 'D', zh: '已经失效的压力', en: 'Resistance that has already failed' }
 ],
             answer: 'B',
             misses: {
@@ -322,7 +322,7 @@ D: { zh: '这不是这道题要选的。回到题目里的说法再看一次。'
 { id: 'A', zh: '必反弹', en: 'It must bounce' },
 { id: 'B', zh: '必跌破', en: 'It must break' },
 { id: 'C', zh: '仍需观察', en: 'It still has to be watched' },
-{ id: 'D', zh: '只看名字就够了', en: 'The name alone is enough.' }
+{ id: 'D', zh: '这次一定是最后一次', en: 'This must be the last test' }
 ],
               answer: 'C',
               why: { zh: '过去有效不等于未来有效。多次测试不等于永不跌破。', en: 'What worked before is not the same as what must work next. Several tests do not mean the zone can never break.' }
@@ -332,7 +332,7 @@ D: { zh: '这不是这道题要选的。回到题目里的说法再看一次。'
               options: [
 { id: 'A', zh: '立刻宣布那里永远变成支撑', en: 'Immediately call it permanent support' },
 { id: 'B', zh: '把历史反应删掉', en: 'Erase the earlier reactions' },
-{ id: 'C', zh: '不用学，看到就买', en: 'Skip the lesson and buy as soon as you see it.' },
+{ id: 'C', zh: '把旧区域改成买入价', en: 'Turn the old zone into a buy price' },
 { id: 'D', zh: '观察后续', en: 'Watch what happens next' }
 ],
               answer: 'D',
@@ -376,26 +376,26 @@ D: { zh: '这不是这道题要选的。回到题目里的说法再看一次。'
           lab: { symbol: 'BTCUSDT', interval: '4h', studies: 'none' },
           check: {
             ask: {
-              zh: '最高 113，收盘 108，本课门槛是收盘价大于 111。这根满足收盘突破吗？',
-              en: 'High 113, close 108. This lesson’s line is a close above 111. Does this candle meet that close rule?'
+              zh: '这根刚刺出压力，就能确定它是假突破吗？',
+              en: 'This candle just poked through resistance. Can you already be sure it is a failed breakout?'
             },
             options: [
-{ id: 'A', zh: '满足', en: 'Yes' },
-{ id: 'B', zh: '所以它一定是假突破', en: 'So it must be a failed breakout' },
-{ id: 'C', zh: '不满足', en: 'No' },
-{ id: 'D', zh: '私聊里说可以，就可以做', en: 'If a private chat says yes, you can do it.' }
+{ id: 'A', zh: '能，影线一出来就知道', en: 'Yes, the wick tells you at once' },
+{ id: 'B', zh: '不能，要等后面走出来', en: 'No, you have to wait and see what follows' },
+{ id: 'C', zh: '收盘是红色就能确定', en: 'Yes, if the close is red' },
+{ id: 'D', zh: '影线越长越能提前确定', en: 'A longer wick lets you know sooner' }
 ],
-            answer: 'C',
+            answer: 'B',
             misses: {
 A: {
-                zh: '答错了。本课用收盘价大于 111 作为收盘突破。收盘是 108，不满足。',
-                en: 'Wrong. This lesson uses a close above 111. The close is 108, so it does not meet that rule.'
+                zh: '答错了。影线刚刺出去的时候，还不知道后面会不会站回去。',
+                en: 'Wrong. When the wick has only just poked through, you do not yet know whether price will hold beyond it.'
               },
-B: {
-                zh: '答错了。收盘没有大于 111，只是影线越过。不能提前把它叫成假突破。',
-                en: 'Wrong. The close is not greater than 111, so only the wick went beyond. You cannot call it a failed breakout ahead of time.'
+C: {
+                zh: '答错了。收盘是红的，也不等于已经能叫它假突破。',
+                en: 'Wrong. A red close does not mean you can already call it a failed breakout.'
               },
-D: { zh: '这不是这道题要选的。回到题目里的说法再看一次。', en: 'That is not the choice this question wants. Look again at what the question says.' }
+D: { zh: '影线长短不能让你提前确定。要等后面的走势出来。', en: 'Wick length does not let you know ahead of time. You wait for what comes next.' }
 }
           },
           quiz: {
@@ -422,7 +422,7 @@ D: { zh: '这不是这道题要选的。回到题目里的说法再看一次。'
               options: [
 { id: 'A', zh: '满足收盘突破', en: 'It meets the close rule' },
 { id: 'B', zh: '一定是假突破', en: 'It must be a failed breakout' },
-{ id: 'C', zh: '不用学，看到就买', en: 'Skip the lesson and buy as soon as you see it.' },
+{ id: 'C', zh: '最高价过了就算', en: 'A high above the line is enough' },
 { id: 'D', zh: '不满足收盘突破', en: 'It does not meet the close rule' }
 ],
               answer: 'D',
@@ -434,7 +434,7 @@ D: { zh: '这不是这道题要选的。回到题目里的说法再看一次。'
 { id: 'A', zh: '之后必涨', en: 'It must rise after that' },
 { id: 'B', zh: '不知道有没有收盘', en: 'There is no close to look at' },
 { id: 'C', zh: '收盘回到了区间', en: 'The close came back into the range' },
-{ id: 'D', zh: '只看名字就够了', en: 'The name alone is enough.' }
+{ id: 'D', zh: '这一根没有收盘', en: 'This candle has no close' }
 ],
               answer: 'C',
               why: { zh: '112 大于 111，107 又回到 100–110 里。收盘突破仍可失败。', en: '112 is above 111, and 107 is back inside 100–110. A close beyond the line can still fail.' }
@@ -444,7 +444,7 @@ D: { zh: '这不是这道题要选的。回到题目里的说法再看一次。'
               options: [
 { id: 'A', zh: '回踩必成功', en: 'A retest must succeed' },
 { id: 'B', zh: '回踩必反转', en: 'A retest must reverse' },
-{ id: 'C', zh: '私聊里说可以，就可以做', en: 'If a private chat says yes, you can do it.' },
+{ id: 'C', zh: '每次突破都会回踩', en: 'Every breakout gets a retest' },
 { id: 'D', zh: '价格返回测试边界，但结果不定', en: 'Price comes back to test the boundary, and the result is not settled' }
 ],
               answer: 'D',
@@ -494,7 +494,7 @@ D: { zh: '这不是这道题要选的。回到题目里的说法再看一次。'
 { id: 'A', zh: '放量上涨', en: 'A rise on more volume' },
 { id: 'B', zh: '缩量上涨', en: 'A rise on less volume' },
 { id: 'C', zh: '下一根必跌', en: 'The next candle must fall' },
-{ id: 'D', zh: '只看名字就够了', en: 'The name alone is enough.' }
+{ id: 'D', zh: '放量下跌', en: 'A drop on more volume' }
 ],
             answer: 'B',
             misses: {
@@ -534,7 +534,7 @@ D: { zh: '这不是这道题要选的。回到题目里的说法再看一次。'
 { id: 'A', zh: '缩量上涨', en: 'A rise on less volume' },
 { id: 'B', zh: '缩量下跌', en: 'A drop on less volume' },
 { id: 'C', zh: '放量下跌', en: 'A drop on more volume' },
-{ id: 'D', zh: '不用学，看到就买', en: 'Skip the lesson and buy as soon as you see it.' }
+{ id: 'D', zh: '放量上涨', en: 'A rise on more volume' }
 ],
               answer: 'C',
               why: { zh: '收盘 107 低于开盘 111，成交量 210 高于前一根 75。本课把这叫放量下跌。', en: 'The close 107 is below the open 111, and 210 BTC is above the previous 75. This lesson calls that a drop on more volume.' }
@@ -544,7 +544,7 @@ D: { zh: '这不是这道题要选的。回到题目里的说法再看一次。'
               options: [
 { id: 'A', zh: '只有买入', en: 'Buying only' },
 { id: 'B', zh: '买入减去卖出', en: 'Buying minus selling' },
-{ id: 'C', zh: '只看名字就够了', en: 'The name alone is enough.' },
+{ id: 'C', zh: '下一根会往哪边走', en: 'Which way the next candle goes' },
 { id: 'D', zh: '指定时段的成交数量', en: 'The amount traded in that period' }
 ],
               answer: 'D',
@@ -556,7 +556,7 @@ D: { zh: '这不是这道题要选的。回到题目里的说法再看一次。'
 { id: 'A', zh: '下一根必跌', en: 'The next candle must fall' },
 { id: 'B', zh: '一定被操纵', en: 'It must be manipulation' },
 { id: 'C', zh: '量低于比较基准，但后面还不确定', en: 'Volume is below the comparison, and what follows is not settled' },
-{ id: 'D', zh: '私聊里说可以，就可以做', en: 'If a private chat says yes, you can do it.' }
+{ id: 'D', zh: '这一根没有成交', en: 'This candle had no trades' }
 ],
               answer: 'C',
               why: { zh: '本课的量增减只和上一根比。缩量上涨不一定会下跌。不能把缩量上涨写成必跌。', en: 'In this lesson, more or less volume is compared only with the previous candle. A rise on less volume will not necessarily fall. Do not write a rise on less volume as a certain drop.' }
