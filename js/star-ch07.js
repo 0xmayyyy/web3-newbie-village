@@ -254,7 +254,7 @@
           }),
           quiz('只拿证据 A 去讲，价格先涨了，这时指出证据 C 和收入说法冲突，后面更常见的是？', 'Only evidence A is told and price rises first, then C is pointed out as conflicting with the revenue claim, what is more common next?', [
             opt('A', '只讲了好消息，这段涨通常更稳', 'Telling only the good news makes this rise steadier'),
-            opt('B', '收入一对上冲突，通常再冲一段', 'Once revenue is in conflict, it usually pushes another stretch'),
+            opt('B', '和收入说法冲突，通常再冲一段', 'A conflict with the revenue claim usually pushes another stretch'),
             opt('C', '指出和收入冲突的 C，这段涨常常被打回去', 'Pointing out C, which conflicts with the revenue claim, often knocks that rise back'),
             opt('D', 'C 还没写成审计，价格通常毫无反应', 'Until C is written into an audit, price usually does not react')
           ], 'C', {

@@ -106,24 +106,24 @@
             C: ['风险加大后再亏，掉得比原来的小比例更快。', 'A loss after the risk is raised falls faster than the old small rate.'],
             D: ['价格不因为你想翻本就反向。', 'Price does not reverse just because you want the money back.']
           }),
-          quiz('加大仓位后赢了一次，你想一直用这个大仓位，这样对吗？', 'You win once after sizing up, and you want to keep this bigger size, is that right?', [
-            opt('A', '碰巧赢一次，不能因此一直用大仓位', 'One lucky win does not make it right to keep the bigger size'),
-            opt('B', '赢了就说明大仓位是对的，可以一直用', 'A win means the bigger size was right, so you can keep it'),
-            opt('C', '一直用大仓位，通常下一笔还能补上差额', 'Keeping the bigger size usually lets the next trade cover the gap'),
-            opt('D', '赢了一次，仓位会自己回到原来的大小', 'After one win, the size shrinks itself back to the old one')
+          quiz('亏完一笔后把风险缩回每次 1%，三笔都亏，账户通常？', 'After a loss you shrink the risk back to 1% each time, and all three lose, what does the account usually do?', [
+            opt('A', '掉得更慢，大约剩 970，比 1%、2%、4% 那条剩的 931 多', 'It falls more slowly, about 970 is left, more than the 931 left on the 1%, 2%, 4% path'),
+            opt('B', '缩回 1% 以后，三次通常能把亏损赚回来', 'After shrinking back to 1%, three trades usually earn the loss back'),
+            opt('C', '每次 1% 和 1%、2%、4% 剩下的一样多', '1% each time and 1%, 2%, 4% leave the same amount'),
+            opt('D', '缩得越小掉得越快，大约只剩 931', 'The smaller the size, the faster it falls, and about 931 is left')
           ], 'A', {
-            A: ['碰巧赢一次，不能把大仓位当成以后都该用的。', 'One lucky win does not make the bigger size the one you should keep using.'],
-            B: ['赢一次不能说明大仓位是对的。', 'One win does not mean the bigger size was right.'],
-            C: ['一直用大仓位，不是补差额的方法。', 'Keeping the bigger size is not a way to cover the gap.'],
-            D: ['仓位不会因为赢了一次就自己缩回去。', 'The size does not shrink itself back because you won once.']
+            A: ['每次只亏 1%，大约剩 970，比 1%、2%、4% 剩的 931 多。', 'Losing only 1% each time leaves about 970, more than the 931 left by 1%, 2%, 4%.'],
+            B: ['三次都亏，不是把亏损赚回来。', 'Three losses do not earn the loss back.'],
+            C: ['1%、2%、4% 掉得更多，剩下的不一样。', '1%, 2%, 4% falls more, so what is left is not the same.'],
+            D: ['缩回 1% 掉得更慢，不是只剩 931。', 'Shrinking back to 1% falls more slowly, and it is not only 931 left.']
           }),
           quiz('加大之后下一笔碰巧赚了，通常接着会怎样？', 'After sizing up, the next trade happens to win, what usually follows?', [
-            opt('A', '赢了一次，下一笔通常就把仓位缩回去', 'After one win, the next trade usually shrinks the size back'),
+            opt('A', '赢了一次通常就收手，不再加大', 'One win usually means you stop, and you do not size up again'),
             opt('B', '这次赚的通常够补上 1%、2%、4% 那条差额', 'This win usually covers the gap on the 1%, 2%, 4% path'),
             opt('C', '风险会自己缩回原来的 1%', 'The risk shrinks itself back to the old 1%'),
             opt('D', '更容易再加，直到一次大亏把赚回来的吐出去', 'It gets easier to size up again, until one large loss gives back what was earned back')
           ], 'D', {
-            A: ['赢一次不会让下一笔自己把仓位缩回去。', 'One win does not make the next trade shrink the size back by itself.'],
+            A: ['碰巧赚了常常让人更敢再加，不是收手。', 'A lucky win often makes another increase easier, and it is not a stop.'],
             B: ['一次碰巧的赚，不是用来补 1%、2%、4% 那条差额的方法。', 'One lucky win is not a method for covering the gap on the 1%, 2%, 4% path.'],
             C: ['风险不会因为赚了就自己缩回 1%。', 'The risk does not shrink itself back to 1% because you won.'],
             D: ['碰巧赚了会让人更敢再加，直到一次大亏吐回去。', 'A lucky win makes another increase easier, until one large loss gives it back.']
