@@ -8,7 +8,7 @@ window.ADVANCED_STAR = {
   },
   modules: [
     { id: '01', status: 'open', title: { zh: 'K 线与价格行为', en: 'Candlesticks and price action' }, blurb: { zh: '看懂蜡烛图、趋势、支撑压力与市场结构', en: 'Candles, trend, support, resistance, and market structure' } },
-    { id: '02', status: 'soon', title: { zh: '技术指标与信号', en: 'Indicators and signals' }, blurb: { zh: 'EMA、MACD、RSI、背离、斐波那契与 SMC', en: 'EMA, MACD, RSI, divergence, Fibonacci, and SMC' } },
+    { id: '02', status: 'soon', title: { zh: '技术指标与信号', en: 'Indicators and signals' }, blurb: { zh: 'EMA、MACD、RSI、布林带、背离、斐波那契与 SMC', en: 'EMA, MACD, RSI, Bollinger Bands, divergence, Fibonacci, and SMC' } },
     { id: '03', status: 'soon', title: { zh: '交易系统与风险管理', en: 'Trading systems and risk' }, blurb: { zh: '交易计划、仓位和胜率', en: 'A trading plan, position size, and win rate' } },
     { id: '04', status: 'soon', title: { zh: '合约与市场微观结构', en: 'Contracts and market microstructure' }, blurb: { zh: '杠杆、资金费率、持仓量与流动性', en: 'Leverage, funding, open interest, and liquidity' } },
     { id: '05', status: 'soon', title: { zh: '宏观经济与市场周期', en: 'Macroeconomics and market cycles' }, blurb: { zh: '利率、通胀、美元、BTC 周期与 ETF 影响', en: 'Rates, inflation, the dollar, the BTC cycle, and ETFs' } },

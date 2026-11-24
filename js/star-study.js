@@ -238,7 +238,7 @@
       { id: 'fail', zh: '零轴下金叉失败', en: 'Golden cross below zero fails', closes: seqCloses(70000, [[40, -80], [12, 90], [40, -70]]) },
       { id: 'shrink', zh: '负柱缩短仍在跌', en: 'Negative bars shrink while price falls', closes: seqCloses(80000, [[20, 80], [18, -180], [40, -20]]) }
     ] : kind === 'boll' ? [
-      { id: 'squeeze', zh: '收口', en: 'Squeeze', closes: (function () {
+        { id: 'squeeze', zh: '收口后常有大波动', en: 'Squeeze, then a larger move', closes: (function () {
         var price = 100;
         var out = [];
         var i;
@@ -246,15 +246,22 @@
         for (i = 0; i < 24; i++) { price += i % 2 ? -2.4 : 2.6; out.push(Math.round(price * 100) / 100); }
         return out;
       })() },
-      { id: 'wide', zh: '扩张', en: 'Expansion', closes: seqCloses(100, [[24, 0.05], [20, 1.8]]) },
-      { id: 'ride', zh: '沿上轨', en: 'Riding the upper band', closes: seqCloses(100, [[50, 0.8]]) },
-      { id: 'fake', zh: '带外再回来', en: 'Outside, then back', closes: seqCloses(100, [[30, 0.15], [1, 6], [12, -0.35]]) }
+      { id: 'wide', zh: '带子拉开', en: 'Band opens up', closes: seqCloses(100, [[24, 0.05], [20, 1.8]]) },
+      { id: 'ride', zh: '贴着上边还能走', en: 'Riding the upper edge', closes: seqCloses(100, [[50, 0.8]]) },
+      { id: 'fake', zh: '冲出再回来', en: 'Pop, then back inside', closes: seqCloses(100, [[30, 0.15], [1, 6], [12, -0.35]]) }
     ] : [
       { id: 'hot', zh: '超买仍上涨', en: 'Overbought and still rising', closes: seqCloses(100, [[40, 3]]) },
       { id: 'cold', zh: '超卖仍下跌', en: 'Oversold and still falling', closes: seqCloses(200, [[40, -3]]) },
       { id: 'fake', zh: '看起来像背离', en: 'Looks like divergence', closes: seqCloses(100, [[18, 2], [8, -0.4], [8, 1.2]]) }
     ];
-    var state = { scene: scenes[0].id, shown: Math.min(48, scenes[0].closes.length), cursor: null, fast: true, slow: true, note: '', tone: '' };
+    function sceneStart(scene) {
+      if (kind !== 'boll') return Math.min(48, scene.closes.length);
+      if (scene.id === 'squeeze') return 36;
+      if (scene.id === 'wide') return 24;
+      if (scene.id === 'fake') return 31;
+      return scene.closes.length;
+    }
+    var state = { scene: scenes[0].id, shown: sceneStart(scenes[0]), cursor: null, fast: true, slow: true, note: '', tone: '' };
     function current() {
       var scene = scenes.filter(function (item) { return item.id === state.scene; })[0];
       var closes = scene.closes.slice(0, state.shown);
@@ -304,19 +311,19 @@
           var narrow = 0;
           var bi;
           for (bi = 1; bi < pack.band.length; bi++) if (pack.band[bi] && pack.band[narrow] && pack.band[bi].width < pack.band[narrow].width) narrow = bi;
-          if (Math.abs(index - narrow) <= 2) return { tone: 'is-right', text: head + nums + (zh ? '这里最窄，只说明波动收缩，不预测向上或向下。' : 'This is the narrow stretch. It only says variation shrank. It does not predict up or down.') };
+          if (Math.abs(index - narrow) <= 2) return { tone: 'is-right', text: head + nums + (zh ? '这里最窄。后面常常有一段大波动，往上往下都有，先别猜方向。' : 'This is the narrow stretch. A larger move often follows, either way, so do not guess the direction yet.') };
         }
         if (state.scene === 'wide') {
           var wide = 0;
           var wj;
           for (wj = 1; wj < pack.band.length; wj++) if (pack.band[wj] && pack.band[wide] && pack.band[wj].width > pack.band[wide].width) wide = wj;
-          if (Math.abs(index - wide) <= 2) return { tone: 'is-right', text: head + nums + (zh ? '带宽变大，是这组收盘更分散，不是方向已经确定。' : 'A wider band means these closes are more spread out, not that direction is decided.') };
+          if (Math.abs(index - wide) <= 2) return { tone: 'is-right', text: head + nums + (zh ? '带子拉开，说明这段已经在走。方向看价格站在中间那条线的哪一边。' : 'The band has opened, so this stretch is already moving. The direction is which side of the middle line price is on.') };
         }
         if (state.scene === 'ride' && bar.c >= band.mid + (band.upper - band.mid) * 0.65) {
-          return { tone: 'is-bad', text: head + nums + where + (zh ? '沿上轨运行仍可能继续。触上轨不是做空命令。' : 'Price can keep riding the upper band. A touch is not an order to short.') };
+          return { tone: 'is-bad', text: head + nums + where + (zh ? '贴着上边走。强趋势里常常还会再走一段，不是一碰上边就要跌。' : 'Price is riding the upper edge. A strong trend often keeps going, and the first touch is not a drop.') };
         }
         if (state.scene === 'fake' && bar.c > band.upper) {
-          return { tone: 'is-bad', text: head + nums + (zh ? '这是带外收盘。回到带内才叫回轨。带外收盘不是方向保证。' : 'This close is outside the band. A return inside is a different event. An outside close is not a direction.') };
+          return { tone: 'is-bad', text: head + nums + (zh ? '这根冲出了上边。再往后放，如果很快回到带子里，这下多半冲完了。' : 'This bar popped outside the upper edge. Play forward. If it comes back inside quickly, that push is mostly spent.') };
         }
         return { tone: '', text: head + nums + where };
       }
@@ -404,7 +411,7 @@
       }
       bits.push('</svg>');
       var keys = kind === 'boll'
-        ? [{ color: '#8eb4ff', label: zh ? '上轨 SMA20+2σ' : 'Upper SMA20+2σ' }, { color: '#f4cb82', label: zh ? '中轨 SMA20' : 'Middle SMA20' }, { color: '#d7b4ff', label: zh ? '下轨 SMA20−2σ' : 'Lower SMA20−2σ' }]
+        ? [{ color: '#8eb4ff', label: zh ? '上边' : 'Upper edge' }, { color: '#f4cb82', label: zh ? '中间的均价' : 'Middle average' }, { color: '#d7b4ff', label: zh ? '下边' : 'Lower edge' }]
         : kind === 'ema'
         ? [{ color: '#1f8a4d', label: zh ? '绿色 K 线（涨）' : 'Green candle, up' }, { color: '#d4534e', label: zh ? '红色 K 线（跌）' : 'Red candle, down' }, { color: '#f4cb82', label: zh ? 'EMA20（快线，实线）' : 'EMA20 (fast, solid)' }, { color: '#8eb4ff', label: zh ? 'EMA50（慢线，虚线）' : 'EMA50 (slow, dashed)' }]
         : kind === 'macd'
@@ -415,21 +422,33 @@
       }).join('');
       root.innerHTML = '<div class="a1"><p class="a1-flag">' + (zh ? '模拟行情·非实时' : 'Simulated tape · not live') + '</p>' +
         (kind === 'boll'
-          ? '<p>' + (zh ? '中轨是 20 根收盘的简单平均。上下轨是中轨加减 2 倍总体标准差。缩口不指明方向。' : 'The middle line is the simple average of 20 closes. The outer bands are the middle plus or minus 2 population standard deviations. A squeeze does not name a direction.') + '</p>'
+          ? '<p>' + (zh ? '先看四种走法：收口后面常常有大波动，方向不固定。贴着上边走，强趋势往往还没结束。冲出去又回来，这下多半冲完了。' : 'Watch four paths. After a squeeze a larger move often follows, and the direction is not fixed. Riding the upper edge, a strong trend is often not finished. A pop that comes back inside is mostly spent.') + '</p>'
           : '') +
-        (kind === 'boll' ? '' : '<div class="a1-modes">' + buttons + '</div>') +
+        '<div class="a1-modes">' + buttons + '</div>' +
         '<div class="a1-modes"><button type="button" data-move="1">' + (zh ? '播放一根' : 'One bar') + '</button><button type="button" data-move="reset">' + (zh ? '重新开始' : 'Start again') + '</button>' +
         (kind === 'boll' ? '<button type="button" data-more="boll">' + (zh ? '再看一个反例' : 'See a counterexample') + '</button>' : '') +
         '<span>' + state.shown + ' / ' + view.full + '</span></div>' +
         bits.join('') + keyRow(keys) +
-        (kind === 'boll' ? '<p>' + (zh ? '小练习：点一根 K 线，看收盘在带内、贴着上轨，还是跑到带外。' : 'Short practice: tap a candle and see whether the close is inside the band, riding the upper band, or outside it.') + '</p>' : '') +
+        (kind === 'boll' ? '<p>' + (zh ? '点最窄的地方、贴着上边的地方，或冲出上边的那根，再按播放一根看后面怎么走。' : 'Tap the narrowest stretch, a bar riding the upper edge, or the bar that pops outside, then play one bar to see what follows.') + '</p>' : '') +
         '<p class="a2-readout' + (state.tone ? ' ' + state.tone : '') + '">' + esc(state.note || (zh ? '点一根 K 线，读收盘和轨道。' : 'Tap a candle to read the close and the bands.')) + '</p></div>';
+      if (kind === 'boll') {
+        root.querySelectorAll('[data-scene]').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            state.scene = btn.getAttribute('data-scene');
+            state.shown = sceneStart(scenes.filter(function (item) { return item.id === state.scene; })[0]);
+            state.cursor = null;
+            state.note = '';
+            state.tone = '';
+            paint();
+          });
+        });
+      }
       root.querySelectorAll('[data-more]').forEach(function (btn) {
         btn.addEventListener('click', function () {
           var order = scenes.map(function (item) { return item.id; });
           var at = order.indexOf(state.scene);
           state.scene = order[(at + 1) % order.length];
-          state.shown = Math.min(48, current().full);
+          state.shown = sceneStart(scenes.filter(function (item) { return item.id === state.scene; })[0]);
           state.cursor = null;
           state.note = '';
           state.tone = '';
@@ -440,7 +459,7 @@
         btn.addEventListener('click', function () {
           var move = btn.getAttribute('data-move');
           var full = current().full;
-          if (move === 'reset') state.shown = Math.min(48, full);
+          if (move === 'reset') state.shown = kind === 'boll' ? sceneStart(scenes.filter(function (item) { return item.id === state.scene; })[0]) : Math.min(48, full);
           else if (move === 'all') state.shown = full;
           else state.shown = Math.max(8, Math.min(full, state.shown + Number(move)));
           if (state.cursor != null && state.cursor >= state.shown) state.cursor = state.shown - 1;
