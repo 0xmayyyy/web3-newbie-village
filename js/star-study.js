@@ -816,7 +816,7 @@
     if (state.open == null) state.open = '100';
     if (state.close == null) state.close = '101';
     if (state.notional == null) state.notional = '1000';
-    if (state.wallet == null) state.wallet = '100';
+    if (state.wallet == null) state.wallet = '500';
   }
   function perpClampLev(v) {
     var n = Math.round(Number(v));
@@ -842,7 +842,8 @@
     }
     var maint = margin * 0.05;
     var liq = null;
-    if (state.mode === 'cross') {
+    var cross = state.only === 'liq' && state.mode === 'cross';
+    if (cross) {
       if (wallet > maint) {
         var frac = (wallet - maint) / notional;
         liq = dir === 'short' ? open * (1 + frac) : open * (1 - frac);
@@ -873,7 +874,10 @@
       var line = zh
         ? '价格大约要' + way + ' ' + liqFmt(fig.pct) + '%，才会到这条粗估强平价。'
         : 'Price has to ' + way + ' about ' + liqFmt(fig.pct) + '% to reach this rough liquidation price.';
-      return '<div class="pc-line"><span>' + (zh ? '强平价格' : 'Liq. price') + '</span><b>' + liqFmt(fig.liq) + '</b></div><p class="pc-note">' + esc(line) + '</p>';
+      var diff = zh
+        ? '逐仓最多亏这笔保证金；全仓会动用整个账户的钱，爆了会一起亏掉。'
+        : 'Isolated margin can lose at most this position’s margin; cross margin uses the whole account’s money, and a liquidation loses that together.';
+      return '<div class="pc-line"><span>' + (zh ? '强平价格' : 'Liq. price') + '</span><b>' + liqFmt(fig.liq) + '</b></div><p class="pc-note">' + esc(line) + '</p><p class="pc-note">' + esc(diff) + '</p>';
     }
     if (fig.pnl == null) {
       return zh
@@ -894,7 +898,7 @@
     state.lev = String(lev);
     function field(key, label, hide) {
       return '<label class="pc-field' + (hide ? ' is-hide' : '') + '" data-pc-field="' + key + '">' + label +
-        '<input inputmode="decimal" data-pc="' + key + '" value="' + esc(String(state[key])) + '"></label>';
+        '<input inputmode="decimal" data-pc="' + key + '" value="' + esc(String(state[key])) + '"' + (hide ? ' disabled' : '') + '></label>';
     }
     var liqOnly = state.only === 'liq';
     state.tab = liqOnly ? 'liq' : 'pnl';
@@ -934,6 +938,8 @@
         if (key === 'mode' || key === 'pos') hide = !liqOnly;
         if (key === 'wallet') hide = !(liqOnly && state.mode === 'cross');
         el.classList.toggle('is-hide', hide);
+        var box = el.querySelector('input');
+        if (box) box.disabled = hide;
       });
       root.querySelectorAll('[data-pc-dir]').forEach(function (btn) {
         btn.setAttribute('aria-pressed', btn.getAttribute('data-pc-dir') === state.dir ? 'true' : 'false');
