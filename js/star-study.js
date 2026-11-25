@@ -876,7 +876,7 @@
         : 'Price has to ' + way + ' about ' + liqFmt(fig.pct) + '% to reach this rough liquidation price.';
       var diff = zh
         ? '逐仓最多亏这笔保证金；全仓会动用整个账户的钱，爆了会一起亏掉。'
-        : 'Isolated margin can lose at most this position’s margin; cross margin uses the whole account’s money, and a liquidation loses that together.';
+        : 'Isolated margin can lose at most this position’s margin. Cross margin uses the money in the whole account, so a liquidation can take all of it.';
       return '<div class="pc-line"><span>' + (zh ? '强平价格' : 'Liq. price') + '</span><b>' + liqFmt(fig.liq) + '</b></div><p class="pc-note">' + esc(line) + '</p><p class="pc-note">' + esc(diff) + '</p>';
     }
     if (fig.pnl == null) {
@@ -910,7 +910,7 @@
       : '';
     var foot = liqOnly
       ? (zh ? '这是教学粗估，维持保证金只按一个很小的比例。真的交易所算法会略有不同。' : 'This is a teaching estimate, with only a small maintenance margin. A real exchange’s math differs a little.')
-      : (zh ? '这是教学粗估，没有算手续费。真的交易所算法会略有不同。' : 'This is a teaching estimate, and fees are not included. A real exchange’s math differs a little.');
+      : '';
     return '<div class="pc">' +
       '<div class="pc-head"><strong>BTCUSDT</strong><span>' + (zh ? '永续' : 'Perp') + '</span></div>' +
       modes +
@@ -926,7 +926,7 @@
       field('wallet', zh ? '钱包余额' : 'Wallet balance', !(liqOnly && state.mode === 'cross')) +
       '<div class="pc-result">' + perpResult(state, lang) + '</div>' +
       '<button type="button" class="pc-calc" data-pc-calc="1">' + (zh ? '计算' : 'Calculate') + '</button>' +
-      '<p class="pc-foot">' + foot + '</p></div>';
+      (foot ? '<p class="pc-foot">' + foot + '</p>' : '') + '</div>';
   }
   function bindPerp(root, state, lang) {
     function showFields() {
