@@ -91,7 +91,7 @@ body.is-lb main { max-width: none; margin: 0; padding: 0; }
 .lb-root table { width: 100%; border-collapse: collapse; background: #171622; color: #f0eef7; font-size: 15px; }
 .lb-root th,
 .lb-root td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
-.lb-root .quiz h3 { margin: 0 0 8px; font-size: 13px; letter-spacing: .08em; color: var(--gold); font-weight: 600; }
+.lb-root .quiz h3 { margin: 0; font-size: inherit; letter-spacing: 0; color: inherit; font-weight: inherit; }
 .lb-root .option { appearance: none; -webkit-appearance: none; cursor: pointer; }
 .lb-root .feedback { display: none; margin-top: 14px; padding: 12px 14px; border-radius: 8px; font-size: 16px; line-height: 1.7; }
 .lb-root .quiz[data-verified] .feedback { display: block; background: #1f8a4d; color: #fff; border: 1px solid #1f8a4d; }
@@ -128,7 +128,8 @@ body.is-lb main { max-width: none; margin: 0; padding: 0; }
 .lb-root[data-mode=day] .footer-status strong { color: #2c2438; }
 .lb-root[data-mode=day] .site-note,
 .lb-root[data-mode=day] .sidebar-note,
-.lb-root[data-mode=day] .sidebar-note p { color: #3d3248; font-size: 14px; }
+.lb-root[data-mode=day] .sidebar-note p,
+.lb-root[data-mode=day] .detail-example { color: #3d3248; font-size: 15px; }
 .lb-root[data-mode=day] .next-button { color: #fff; }
 .lb-root[data-mode=day] .next-button:disabled { color: #3d3248; }
 @media (max-width: 560px) {

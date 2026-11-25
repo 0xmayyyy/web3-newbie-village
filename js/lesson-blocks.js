@@ -52,6 +52,134 @@
     });
   }
 
+  function splitSentences(text, lang) {
+    var flat = String(text || '').replace(/\s+/g, ' ').trim();
+    var parts = [];
+    var buf = '';
+    var i;
+    for (i = 0; i < flat.length; i++) {
+      buf += flat[i];
+      var ch = flat[i];
+      var end = false;
+      if ('。！？'.indexOf(ch) >= 0) end = true;
+      else if (lang === 'en' && (ch === '.' || ch === '!' || ch === '?')) {
+        var prev = flat[i - 1] || '';
+        var next = flat[i + 1] || '';
+        if (ch === '.' && /\d/.test(prev) && /\d/.test(next)) end = false;
+        else if (next && /[A-Za-z0-9]/.test(next)) end = false;
+        else end = true;
+      }
+      if (end) {
+        if (buf.trim()) parts.push(buf.trim());
+        buf = '';
+      }
+    }
+    if (buf.trim()) parts.push(buf.trim());
+    return parts;
+  }
+
+  function blockIsRich(block) {
+    var tag = String(block.tag || '').toUpperCase();
+    var cls = String(block.className || '');
+    if (tag === 'UL' || tag === 'OL' || tag === 'TABLE') return true;
+    if (cls.indexOf('table-wrap') >= 0) return true;
+    if (block.el && block.el.querySelector && block.el.querySelector('a, table, ul, ol, img')) return true;
+    if (/<a\b|<table\b|<ul\b|<ol\b/i.test(block.raw || '')) return true;
+    return false;
+  }
+
+  function isExampleSentence(sentence) {
+    return /^(例如|比如|for example\b|e\.g\.)/i.test(String(sentence || '').trim());
+  }
+
+  function splitClaim(sentence, lang) {
+    var s = String(sentence || '').trim();
+    if (lang !== 'en') {
+      var at = s.indexOf('，');
+      if (at > 1 && at < s.length - 1) return { title: s.slice(0, at + 1), body: s.slice(at + 1).trim() };
+      return { title: '', body: s };
+    }
+    var i;
+    for (i = 0; i < s.length; i++) {
+      if (s.charAt(i) !== ',') continue;
+      var prev = s.charAt(i - 1);
+      var after = s.slice(i + 1);
+      if (/\d/.test(prev) && /^\s*\d/.test(after)) continue;
+      if (i > 1 && i < s.length - 2) return { title: s.slice(0, i + 1).trim(), body: after.trim() };
+    }
+    return { title: '', body: s };
+  }
+
+  function shortLabel(sentence, fallback) {
+    var s = String(sentence || '').replace(/[「」"'“”]/g, '').replace(/^[📄\s]+/, '').trim();
+    var cut = s.split(/[，,、：:。！？!?]/)[0].trim();
+    var max = /[A-Za-z]/.test(cut) ? 24 : 8;
+    if (cut.length > max) cut = cut.slice(0, max).trim();
+    if (cut.length < 2) return fallback;
+    return cut;
+  }
+
+  /* One role card per sentence, in the demo's order: heading, explanation, example line.
+     A risk paragraph is the takeaway. An 例如 sentence hangs on the previous card. */
+  function cardsFromBlocks(blocks, lang) {
+    var where = plan(blocks);
+    var cards = [];
+    var tip = null;
+    blocks.forEach(function (block, index) {
+      var slot = where[index];
+      if (slot === 'hero' || slot === 'quiz') return;
+      var kind = kindOf(block.tag, block.className, block.text);
+      if (slot === 'takeaway') {
+        tip = { index: index, kind: 'risk', text: block.text || '' };
+        return;
+      }
+      if (blockIsRich(block)) {
+        cards.push({ index: index, kind: kind, rich: true, heading: '', body: '', example: '', tabFrom: block.text || '' });
+        return;
+      }
+      splitSentences(block.text, lang).forEach(function (sentence) {
+        if (isExampleSentence(sentence) && cards.length && !cards[cards.length - 1].rich && !cards[cards.length - 1].example) {
+          cards[cards.length - 1].example = sentence;
+          cards[cards.length - 1].exampleIndex = index;
+          return;
+        }
+        var claim = splitClaim(sentence, lang);
+        cards.push({
+          index: index,
+          kind: kind,
+          rich: false,
+          heading: claim.title,
+          body: claim.body,
+          example: '',
+          tabFrom: sentence
+        });
+      });
+    });
+    return { cards: cards, tip: tip };
+  }
+
+  function layoutPieces(blocks, lang) {
+    var built = cardsFromBlocks(blocks, lang);
+    var where = plan(blocks);
+    var pieces = [];
+    blocks.forEach(function (block, index) {
+      if (where[index] === 'hero' || where[index] === 'quiz') {
+        pieces.push({ index: index, slot: where[index], role: where[index], text: block.text || '' });
+      }
+    });
+    if (built.tip) pieces.push({ index: built.tip.index, slot: 'takeaway', role: 'tip', text: built.tip.text });
+    built.cards.forEach(function (card) {
+      if (card.rich) {
+        pieces.push({ index: card.index, slot: 'tab', role: 'body', text: blocks[card.index].text || '' });
+        return;
+      }
+      if (card.heading) pieces.push({ index: card.index, slot: 'tab', role: 'title', text: card.heading });
+      if (card.body) pieces.push({ index: card.index, slot: 'tab', role: 'text', text: card.body });
+      if (card.example) pieces.push({ index: card.exampleIndex != null ? card.exampleIndex : card.index, slot: 'tab', role: 'example', text: card.example });
+    });
+    return pieces;
+  }
+
   function uiPack(lang) {
     var en = lang === 'en';
     return {
@@ -210,7 +338,17 @@
   function dressQuiz(quiz, pack, esc) {
     var header = document.createElement('div');
     header.className = 'quiz-header';
-    header.innerHTML = '<div class="quiz-heading">' + icon('check') + esc(label('quiz', quiz.lang || 'zh')) + '</div><span class="quiz-badge">' + esc(pack.quizBadge) + '</span>';
+    var heading = document.createElement('div');
+    heading.className = 'quiz-heading';
+    heading.innerHTML = icon('check');
+    var h3 = quiz.querySelector('h3');
+    if (h3) heading.appendChild(h3);
+    else heading.appendChild(document.createTextNode(label('quiz', quiz.lang || 'zh')));
+    var badge = document.createElement('span');
+    badge.className = 'quiz-badge';
+    badge.textContent = pack.quizBadge;
+    header.appendChild(heading);
+    header.appendChild(badge);
     quiz.insertBefore(header, quiz.firstChild);
     var q = quiz.querySelector('p');
     if (q) q.classList.add('question');
@@ -237,21 +375,20 @@
       return { tag: el.tagName, className: typeof el.className === 'string' ? el.className : '', text: el.textContent || '', el: el };
     });
     var where = plan(described);
+    var built = cardsFromBlocks(described, lang);
     var lead = null;
-    var tabs = [];
-    var risks = [];
     var quiz = null;
     described.forEach(function (block, index) {
-      var slot = where[index];
-      if (slot === 'hero') lead = block.el;
-      else if (slot === 'quiz') quiz = block.el;
-      else if (slot === 'takeaway') risks.push(block);
-      else tabs.push(block);
+      if (where[index] === 'hero') lead = block.el;
+      else if (where[index] === 'quiz') quiz = block.el;
     });
+    var cards = built.cards;
+    var tip = built.tip;
     var day = mode() === 'day';
     var artType = ['planet', 'chain', 'wallet'][ctx.index % 3];
     var lessonNo = ('0' + (ctx.pos + 1)).slice(-2);
-    var sectionKind = tabs.length && kindOf(tabs[0].tag, tabs[0].className, tabs[0].text) === 'diagram' ? 'diagram' : 'intro';
+    var sectionKind = 'intro';
+    cards.forEach(function (card) { if (card.kind === 'diagram') sectionKind = 'diagram'; });
     var savedOn = readBooks().indexOf(bookKey(ctx.index)) >= 0;
     var listen = (ctx.listen || '听这节').replace(/^🔊\s*/, '');
     var rows = ctx.sections.map(function (item) {
@@ -299,8 +436,8 @@
       '<span class="listen-live" id="listen-live" hidden><button type="button" class="pill" id="listen-stop">' + esc(ctx.stopLabel || '停止') + '</button></span>' +
       '<button type="button" class="pill" id="lb-save" aria-pressed="' + (savedOn ? 'true' : 'false') + '">' + icon('bookmark') + '<span>' + esc(savedOn ? pack.saved : pack.save) + '</span></button></div></div>' +
       '<div class="hero-art" aria-hidden="true">' + art(artType) + '</div></section>' +
-      (tabs.length ? '<section class="section" aria-labelledby="lb-section"><div class="section-heading"><span class="marker"></span><h2 id="lb-section">' + esc(label(sectionKind, lang)) + '</h2></div><p class="section-caption">' + esc(pack.caption) + '</p><div class="role-tabs" id="lb-tabs" role="tablist" style="--tab-count:' + Math.min(4, tabs.length) + '"></div><div id="lb-panels"></div></section>' : '') +
-      (risks.length ? '<aside class="takeaway" id="lb-takeaway">' + icon('bulb', 'takeaway-icon') + '<div><b>' + esc(label('risk', lang)) + '</b><div id="lb-takeaway-body"></div></div></aside>' : '') +
+      (cards.length ? '<section class="section" aria-labelledby="lb-section"><div class="section-heading"><span class="marker"></span><h2 id="lb-section">' + esc(label(sectionKind, lang)) + '</h2></div><p class="section-caption">' + esc(pack.caption) + '</p><div class="role-tabs" id="lb-tabs" role="tablist"></div><div id="lb-panels"></div></section>' : '') +
+      (tip ? '<aside class="takeaway" id="lb-takeaway">' + icon('bulb', 'takeaway-icon') + '<div><b>' + esc(label('risk', lang)) + '</b><div id="lb-takeaway-body"></div></div></aside>' : '') +
       '<div id="lb-quiz-slot"></div>' +
       '<div class="lesson-footer"><div class="footer-status"><button type="button" class="lb-prev" id="reader-prev"' + (ctx.atStart ? ' disabled' : '') + '>' + esc(ctx.prevLabel || '') + '</button><strong id="lb-status">' + esc(ctx.passed(ctx.index) ? ctx.nextLabel : ctx.lockedLabel) + '</strong></div>' +
       '<button type="button" class="next-button" id="reader-next"' + (ctx.ended ? ' disabled' : '') + '>' + esc(ctx.passed(ctx.index) ? ctx.nextLabel : ctx.lockedLabel) + '</button></div>' +
@@ -322,8 +459,11 @@
     var tabsHost = root.querySelector('#lb-tabs');
     var panelsHost = root.querySelector('#lb-panels');
     if (tabsHost && panelsHost) {
-      tabs.forEach(function (block, index) {
-        var kind = kindOf(block.tag, block.className, block.text);
+      var roleIcons = ['book', 'code', 'chart', 'cube'];
+      cards.forEach(function (card, index) {
+        var kind = card.kind || 'intro';
+        var headingText = card.heading || label(kind, lang);
+        var tabText = shortLabel(card.heading || card.tabFrom || card.body, label(kind, lang));
         var btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'role-tab';
@@ -332,15 +472,30 @@
         btn.setAttribute('aria-selected', index === 0 ? 'true' : 'false');
         btn.setAttribute('aria-controls', 'lb-panel-' + index);
         btn.tabIndex = index === 0 ? 0 : -1;
-        btn.innerHTML = icon(kind === 'diagram' ? 'chart' : kind === 'example' ? 'cube' : ICONS[index % ICONS.length]) + esc(label(kind, lang));
+        btn.innerHTML = icon(kind === 'diagram' ? 'chart' : kind === 'example' ? 'cube' : roleIcons[index % roleIcons.length]) + esc(tabText);
         tabsHost.appendChild(btn);
         var panel = document.createElement('div');
         panel.className = 'role-detail' + (index === 0 ? '' : ' hidden');
         panel.id = 'lb-panel-' + index;
         panel.setAttribute('role', 'tabpanel');
         panel.setAttribute('aria-labelledby', btn.id);
-        panel.innerHTML = '<div><div class="detail-label">' + esc(eye(kind)) + '</div><h3>' + esc(label(kind, lang)) + '</h3></div><div class="role-copy"></div>';
-        panel.querySelector('.role-copy').appendChild(block.el);
+        var copy = document.createElement('div');
+        copy.className = 'role-copy';
+        if (card.rich) {
+          copy.appendChild(described[card.index].el);
+        } else {
+          var para = document.createElement('p');
+          if (card.body) para.appendChild(document.createTextNode(card.body));
+          if (card.example) {
+            var ex = document.createElement('span');
+            ex.className = 'detail-example';
+            ex.textContent = card.example;
+            para.appendChild(ex);
+          }
+          if (para.childNodes.length) copy.appendChild(para);
+        }
+        panel.innerHTML = '<div><div class="detail-label">' + esc(eye(kind)) + '</div><h3>' + esc(headingText) + '</h3></div>';
+        panel.appendChild(copy);
         panelsHost.appendChild(panel);
       });
       function show(index, focus) {
@@ -374,7 +529,11 @@
     }
 
     var takeBody = root.querySelector('#lb-takeaway-body');
-    if (takeBody) risks.forEach(function (block) { takeBody.appendChild(block.el); });
+    if (takeBody && tip) {
+      var tipPara = document.createElement('p');
+      tipPara.textContent = String(tip.text || '').replace(/\s+/g, ' ').trim();
+      takeBody.appendChild(tipPara);
+    }
     if (quiz) {
       quiz.lang = lang;
       dressQuiz(quiz, pack, esc);
@@ -433,6 +592,7 @@
     kindOf: kindOf,
     label: label,
     plan: plan,
+    layoutPieces: layoutPieces,
     render: render,
     sync: sync,
     LABELS: LABELS

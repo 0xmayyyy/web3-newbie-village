@@ -10,6 +10,7 @@ vm.runInNewContext(fs.readFileSync(path.join(root, 'js/data-en.js'), 'utf8'), { 
 const kindOf = window.LESSON_BLOCKS.kindOf;
 const label = window.LESSON_BLOCKS.label;
 const plan = window.LESSON_BLOCKS.plan;
+const layoutPieces = window.LESSON_BLOCKS.layoutPieces;
 
 function decode(s) {
   return s.replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"');
@@ -73,7 +74,7 @@ lines.push('# Chapter 01 block layout: content comparison');
 lines.push('');
 lines.push('Planet chapter `01｜什么是币圈？` (`#/c/01/0` through `#/c/01/10`). The lesson page uses the demo shell: top bar, sidebar, hero, tab row, takeaway, quiz.');
 lines.push('');
-lines.push('Where each original block goes: the first paragraph is the hero lead (once). Later paragraphs, lists, and the table are tabs. A risk paragraph is the takeaway and is not also a tab. The quiz, including its question, options, and feedback attributes, stays in the quiz. Module titles (介绍 / 图解 / 例子 / 风险提醒 / 小测, and the English equivalents) and shell labels are the only added words and are excluded from the text set.');
+lines.push('Each lesson uses the demo modules in this order: hero, tabbed section (a card per sentence: heading, explanation, example line), takeaway when the lesson has a risk paragraph, then the quiz. An 例如 / for example sentence hangs on the previous card. A comma splits a sentence into the card heading and the explanation. Module titles are added only when a card has no clause to use as its heading. No original sentence is rewritten or dropped.');
 lines.push('');
 lines.push('The chapter tip is the sidebar note on every lesson. It is chapter-level text, not part of a section, so it is not in the section text set.');
 lines.push('');
@@ -88,38 +89,57 @@ langs.forEach(function (pair) {
   lines.push('');
   chapter.sections.forEach(function (section, index) {
     const blocks = topBlocks(section.html);
-    const slots = plan(blocks);
+    const pieces = layoutPieces(blocks, lang);
+    const by = {};
+    pieces.forEach(function (piece) {
+      if (!by[piece.index]) by[piece.index] = [];
+      by[piece.index].push(piece);
+    });
     const placed = [];
-    const original = [];
+    let splitOk = true;
     blocks.forEach(function (block, index) {
-      const kind = kindOf(block.tag, block.className, block.text);
-      const slot = slots[index];
+      const group = by[index] || [];
+      const joined = norm(group.map(function (piece) { return piece.text; }).join(''));
+      if (joined !== norm(block.text)) splitOk = false;
+      group.forEach(function (piece) {
+        if (piece.text) placed.push(piece);
+      });
       segments(block).forEach(function (part) {
-        original.push(norm(part));
-        placed.push({ kind: kind, slot: slot, text: part });
+        if (part && part !== block.text && norm(part) !== norm(block.text)) placed.push({ slot: 'quiz', role: 'note', text: part });
       });
     });
-    const rebuilt = placed.map(function (item) { return norm(item.text); });
-    const missing = original.filter(function (item) { return rebuilt.indexOf(item) < 0; });
-    const extra = rebuilt.filter(function (item) { return original.indexOf(item) < 0; });
     const covered = norm(blocks.map(function (block) { return block.text; }).join(''));
     const whole = norm(textOf(section.html));
     const coveredOk = covered === whole;
-    const ok = missing.length === 0 && extra.length === 0 && original.length === rebuilt.length && coveredOk;
+    const ok = splitOk && coveredOk && pieces.length > 0;
     if (!ok) failed++;
     lines.push('### ' + (index) + '. ' + section.title + (ok ? ' — match' : ' — DIFF'));
     lines.push('');
     lines.push('Route: `#/c/01/' + index + '`');
     lines.push('');
     placed.forEach(function (item) {
-      const where = (item.slot === 'hero' ? (lang === 'en' ? 'Hero lead' : '标题下导语') : item.slot === 'tab' ? (lang === 'en' ? 'Tab · ' : '标签 · ') + label(item.kind, lang) : item.slot === 'takeaway' ? (lang === 'en' ? 'Takeaway · ' : '提醒条 · ') + label(item.kind, lang) : (lang === 'en' ? 'Quiz' : '小测'));
+      const roleName = {
+        hero: lang === 'en' ? 'Hero lead' : '标题下导语',
+        quiz: lang === 'en' ? 'Quiz' : '小测',
+        title: lang === 'en' ? 'Card heading' : '卡片标题',
+        text: lang === 'en' ? 'Card text' : '卡片正文',
+        example: lang === 'en' ? 'Example line' : '例子一行',
+        body: lang === 'en' ? 'Card body' : '卡片正文',
+        tip: lang === 'en' ? 'Takeaway' : '提醒条',
+        note: lang === 'en' ? 'Quiz note' : '测验说明',
+        takeaway: lang === 'en' ? 'Takeaway' : '提醒条'
+      };
+      const where = roleName[item.role] || roleName[item.slot] || item.slot;
       const clip = item.text.length > 180 ? item.text.slice(0, 180) + '…' : item.text;
       lines.push('- **' + where + ':** ' + clip.replace(/\|/g, '\\|'));
     });
     if (!ok) {
       lines.push('');
-      lines.push('Missing: ' + missing.join(' || '));
-      lines.push('Extra: ' + extra.join(' || '));
+      blocks.forEach(function (block, bi) {
+        const group = by[bi] || [];
+        const joined = norm(group.map(function (piece) { return piece.text; }).join(''));
+        if (joined !== norm(block.text)) lines.push('Split mismatch at block ' + bi);
+      });
       lines.push('Coverage: ' + (coveredOk ? 'full' : 'parser dropped text'));
     }
     lines.push('');
