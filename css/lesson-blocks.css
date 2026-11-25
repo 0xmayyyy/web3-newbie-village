@@ -97,8 +97,10 @@ body.is-lb main { max-width: none; margin: 0; padding: 0; }
 .lb-root .quiz[data-verified] .feedback { display: block; background: #1f8a4d; color: #fff; border: 1px solid #1f8a4d; }
 .lb-root .feedback.wrong,
 .lb-root .quiz[data-verified="false"] .feedback { display: block; background: #6e2c32 !important; color: #fff !important; border-color: #6e2c32 !important; }
-.lb-root .option.selected.correct { background: #1f8a4d !important; color: #fff !important; border-color: #1f8a4d !important; }
-.lb-root .option.selected.wrong { background: #6e2c32 !important; color: #fff !important; border-color: #6e2c32 !important; }
+.lb-root .option.selected.correct,
+.lb-root .option.selected.correct span { background: #1f8a4d !important; color: #fff !important; border-color: #1f8a4d !important; }
+.lb-root .option.selected.wrong,
+.lb-root .option.selected.wrong span { background: #6e2c32 !important; color: #fff !important; border-color: #6e2c32 !important; }
 .lb-root .lb-prev { background: transparent; border: 0; color: var(--muted); padding: 0; font-size: 13px; }
 .lb-root .lb-prev:disabled { opacity: .4; }
 .lb-root .lesson-link svg.lock { width: 14px; height: 14px; margin-left: auto; flex: 0 0 auto; }

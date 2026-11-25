@@ -72,13 +72,17 @@ const langs = [
 const lines = [];
 lines.push('# Chapter 01 block layout: content comparison');
 lines.push('');
-lines.push('Planet chapter `01｜什么是币圈？` (`#/c/01/0` through `#/c/01/10`). The lesson page uses the demo shell: top bar, sidebar, hero, tab row, takeaway, quiz.');
+lines.push('Planet chapter `01｜什么是币圈？` (`#/c/01/0` through `#/c/01/10`).');
 lines.push('');
-lines.push('Each lesson uses the demo modules in this order: hero, tabbed section (a card per sentence: heading, explanation, example line), takeaway when the lesson has a risk paragraph, then the quiz. An 例如 / for example sentence hangs on the previous card. A comma splits a sentence into the card heading and the explanation. Module titles are added only when a card has no clause to use as its heading. No original sentence is rewritten or dropped.');
+lines.push('Three lessons now use the wording and modules from demo-b.html (demo-a.html is the same lesson in day mode):');
 lines.push('');
-lines.push('The chapter tip is the sidebar note on every lesson. It is chapter-level text, not part of a section, so it is not in the section text set.');
+lines.push('- `#/c/01/0` 币圈是什么？');
+lines.push('- `#/c/01/1` 区块链是什么？');
+lines.push('- `#/c/01/9` 钱包是什么？ This replaced the old section 一张关系表, the chapter 01 lesson about wallets.');
 lines.push('');
-lines.push('Plain (non-card) layout: none. Every original block is placed in the hero, a tab, the takeaway, or the quiz.');
+lines.push('Every other chapter 01 lesson keeps its original text, in the same tab layout. Those lessons are `#/c/01/2`, `#/c/01/3`, `#/c/01/4`, `#/c/01/5`, `#/c/01/6`, `#/c/01/7`, `#/c/01/8`, and `#/c/01/10`.');
+lines.push('');
+lines.push('For a kept lesson, each sentence is a card: a comma splits the heading from the explanation, an 例如 / for example sentence hangs on the previous card, and a risk paragraph is the takeaway. The joined text matches the original. Demo lessons are listed from the demo payload instead.');
 lines.push('');
 let failed = 0;
 langs.forEach(function (pair) {
@@ -88,6 +92,30 @@ langs.forEach(function (pair) {
   lines.push('## ' + (lang === 'zh' ? '中文' : 'English'));
   lines.push('');
   chapter.sections.forEach(function (section, index) {
+    if (section.html.indexOf('class="lb-demo"') >= 0) {
+      const raw = (section.html.match(/<script type="application\/json" class="lb-demo">([\s\S]*?)<\/script>/) || [])[1] || '';
+      let demo = null;
+      try { demo = JSON.parse(raw); } catch (e) { demo = null; }
+      const ok = !!(demo && demo.title && demo.roles && demo.roles.length === 4 && demo.question && demo.tip);
+      if (!ok) failed++;
+      lines.push('### ' + index + '. ' + section.title + (ok ? ' — demo' : ' — DIFF'));
+      lines.push('');
+      lines.push('Route: `#/c/01/' + index + '`');
+      lines.push('');
+      lines.push('Source: demo-b.html. The page uses this lesson’s titles, hero, four tabs, examples, risk note, and quiz.');
+      if (demo) {
+        lines.push('');
+        lines.push('- **Hero:** ' + demo.headline.replace(/<[^>]+>/g, '') + ' / ' + demo.intro);
+        lines.push('- **Section:** ' + demo.diagram + ' — ' + demo.caption);
+        demo.roles.forEach(function (role) {
+          lines.push('- **Tab ' + role.label + ':** ' + role.title + ' ' + role.text + ' ' + role.example);
+        });
+        lines.push('- **Takeaway:** ' + demo.tip);
+        lines.push('- **Quiz:** ' + demo.question + ' → ' + demo.answers[demo.correct]);
+      }
+      lines.push('');
+      return;
+    }
     const blocks = topBlocks(section.html);
     const pieces = layoutPieces(blocks, lang);
     const by = {};

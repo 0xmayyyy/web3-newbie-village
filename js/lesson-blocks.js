@@ -346,7 +346,7 @@
     else heading.appendChild(document.createTextNode(label('quiz', quiz.lang || 'zh')));
     var badge = document.createElement('span');
     badge.className = 'quiz-badge';
-    badge.textContent = pack.quizBadge;
+    badge.textContent = quiz.getAttribute('data-badge') || pack.quizBadge;
     header.appendChild(heading);
     header.appendChild(badge);
     quiz.insertBefore(header, quiz.firstChild);
@@ -358,6 +358,13 @@
     var feedback = quiz.querySelector('.feedback');
     quiz.querySelectorAll('.option').forEach(function (btn) {
       btn.classList.add('answer');
+      var letter = (btn.getAttribute('data-answer') || '').toUpperCase();
+      var raw = (btn.textContent || '').trim();
+      if (letter && raw.indexOf(letter + '.') !== 0 && raw.indexOf(letter + ' ') !== 0 && !btn.querySelector('span')) {
+        var mark = document.createElement('span');
+        mark.textContent = letter;
+        btn.insertBefore(mark, btn.firstChild);
+      }
       answers.appendChild(btn);
     });
     if (feedback) quiz.insertBefore(answers, feedback);
@@ -370,7 +377,15 @@
     var pack = uiPack(lang);
     var parsed = new DOMParser().parseFromString('<div id="lb-src">' + (ctx.html || '') + '</div>', 'text/html');
     var src = parsed.getElementById('lb-src');
-    var nodes = Array.prototype.filter.call(src.children, function (el) { return el.nodeType === 1; });
+    var demoEl = src.querySelector('script.lb-demo');
+    var packDemo = null;
+    if (demoEl) {
+      try {
+        var demoAll = JSON.parse(demoEl.textContent);
+        packDemo = demoAll.roles ? demoAll : (demoAll[lang] || demoAll.zh || null);
+      } catch (eDemo) { packDemo = null; }
+    }
+    var nodes = Array.prototype.filter.call(src.children, function (el) { return el.nodeType === 1 && el.tagName !== 'SCRIPT'; });
     var described = nodes.map(function (el) {
       return { tag: el.tagName, className: typeof el.className === 'string' ? el.className : '', text: el.textContent || '', el: el };
     });
@@ -389,6 +404,36 @@
     var lessonNo = ('0' + (ctx.pos + 1)).slice(-2);
     var sectionKind = 'intro';
     cards.forEach(function (card) { if (card.kind === 'diagram') sectionKind = 'diagram'; });
+    var headlineHtml = '';
+    var sectionHeading = label(sectionKind, lang);
+    var sectionCaption = pack.caption;
+    var crumbText = ctx.title || '';
+    var shownMinutes = pack.minutes(minutesOf(src.textContent, lang));
+    var tipLabel = label('risk', lang);
+    if (packDemo) {
+      headlineHtml = packDemo.headline || '';
+      sectionHeading = packDemo.diagram || sectionHeading;
+      sectionCaption = packDemo.caption || sectionCaption;
+      crumbText = packDemo.crumb || crumbText;
+      if (packDemo.time) shownMinutes = pack.minutes(packDemo.time);
+      if (packDemo.art) artType = packDemo.art;
+      tipLabel = packDemo.tipLabel || tipLabel;
+      if (packDemo.intro) lead = { textContent: packDemo.intro };
+      cards = (packDemo.roles || []).map(function (role) {
+        return {
+          kind: 'intro',
+          rich: false,
+          heading: role.title,
+          body: role.text,
+          example: role.example,
+          tabLabel: role.label,
+          eyeText: role.tag,
+          iconName: role.icon
+        };
+      });
+      tip = packDemo.tip ? { text: packDemo.tip } : null;
+      if (quiz && packDemo.quizBadge) quiz.setAttribute('data-badge', packDemo.quizBadge);
+    }
     var savedOn = readBooks().indexOf(bookKey(ctx.index)) >= 0;
     var listen = (ctx.listen || '听这节').replace(/^🔊\s*/, '');
     var rows = ctx.sections.map(function (item) {
@@ -428,16 +473,16 @@
       '<ol class="lesson-list">' + rows + '</ol>' +
       '<div class="sidebar-bottom"><div class="sidebar-note"><p>' + esc(ctx.tip || '') + '</p></div></div></aside>' +
       '<main class="content-wrap"><div class="content reading" id="reader-prose">' +
-      '<div class="breadcrumb"><a href="#/">' + esc(pack.universe) + '</a><i>/</i><span>' + esc(ctx.planetName || '') + '</span><i>/</i><span>' + esc(ctx.title || '') + '</span></div>' +
-      '<div class="lesson-meta"><span class="eyebrow">' + esc(pack.eyebrow(lessonNo)) + '</span><span class="duration">' + icon('clock') + '<span>' + esc(pack.minutes(minutesOf(src.textContent, lang))) + '</span></span></div>' +
-      '<section class="hero" aria-labelledby="lb-title"><div class="hero-copy"><h1 id="lb-title">' + headline(ctx.title || '', esc) + '</h1>' +
+      '<div class="breadcrumb"><a href="#/">' + esc(pack.universe) + '</a><i>/</i><span>' + esc(ctx.planetName || '') + '</span><i>/</i><span>' + esc(crumbText) + '</span></div>' +
+      '<div class="lesson-meta"><span class="eyebrow">' + esc(pack.eyebrow(lessonNo)) + '</span><span class="duration">' + icon('clock') + '<span>' + esc(shownMinutes) + '</span></span></div>' +
+      '<section class="hero" aria-labelledby="lb-title"><div class="hero-copy"><h1 id="lb-title">' + (headlineHtml || headline(ctx.title || '', esc)) + '</h1>' +
       '<p>' + esc(lead ? lead.textContent.replace(/\s+/g, ' ').trim() : '') + '</p>' +
       '<div class="hero-tools"><button type="button" class="pill" id="listen-toggle" aria-pressed="false">' + icon('sound') + '<span>' + esc(listen) + '</span></button>' +
       '<span class="listen-live" id="listen-live" hidden><button type="button" class="pill" id="listen-stop">' + esc(ctx.stopLabel || '停止') + '</button></span>' +
       '<button type="button" class="pill" id="lb-save" aria-pressed="' + (savedOn ? 'true' : 'false') + '">' + icon('bookmark') + '<span>' + esc(savedOn ? pack.saved : pack.save) + '</span></button></div></div>' +
       '<div class="hero-art" aria-hidden="true">' + art(artType) + '</div></section>' +
-      (cards.length ? '<section class="section" aria-labelledby="lb-section"><div class="section-heading"><span class="marker"></span><h2 id="lb-section">' + esc(label(sectionKind, lang)) + '</h2></div><p class="section-caption">' + esc(pack.caption) + '</p><div class="role-tabs" id="lb-tabs" role="tablist"></div><div id="lb-panels"></div></section>' : '') +
-      (tip ? '<aside class="takeaway" id="lb-takeaway">' + icon('bulb', 'takeaway-icon') + '<div><b>' + esc(label('risk', lang)) + '</b><div id="lb-takeaway-body"></div></div></aside>' : '') +
+      (cards.length ? '<section class="section" aria-labelledby="lb-section"><div class="section-heading"><span class="marker"></span><h2 id="lb-section">' + esc(sectionHeading) + '</h2></div><p class="section-caption">' + esc(sectionCaption) + '</p><div class="role-tabs" id="lb-tabs" role="tablist"></div><div id="lb-panels"></div></section>' : '') +
+      (tip ? '<aside class="takeaway" id="lb-takeaway">' + icon('bulb', 'takeaway-icon') + '<div><b>' + esc(tipLabel) + '</b><div id="lb-takeaway-body"></div></div></aside>' : '') +
       '<div id="lb-quiz-slot"></div>' +
       '<div class="lesson-footer"><div class="footer-status"><button type="button" class="lb-prev" id="reader-prev"' + (ctx.atStart ? ' disabled' : '') + '>' + esc(ctx.prevLabel || '') + '</button><strong id="lb-status">' + esc(ctx.passed(ctx.index) ? ctx.nextLabel : ctx.lockedLabel) + '</strong></div>' +
       '<button type="button" class="next-button" id="reader-next"' + (ctx.ended ? ' disabled' : '') + '>' + esc(ctx.passed(ctx.index) ? ctx.nextLabel : ctx.lockedLabel) + '</button></div>' +
@@ -463,7 +508,7 @@
       cards.forEach(function (card, index) {
         var kind = card.kind || 'intro';
         var headingText = card.heading || label(kind, lang);
-        var tabText = shortLabel(card.heading || card.tabFrom || card.body, label(kind, lang));
+        var tabText = card.tabLabel || shortLabel(card.heading || card.tabFrom || card.body, label(kind, lang));
         var btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'role-tab';
@@ -472,7 +517,7 @@
         btn.setAttribute('aria-selected', index === 0 ? 'true' : 'false');
         btn.setAttribute('aria-controls', 'lb-panel-' + index);
         btn.tabIndex = index === 0 ? 0 : -1;
-        btn.innerHTML = icon(kind === 'diagram' ? 'chart' : kind === 'example' ? 'cube' : roleIcons[index % roleIcons.length]) + esc(tabText);
+        btn.innerHTML = icon(card.iconName || (kind === 'diagram' ? 'chart' : kind === 'example' ? 'cube' : roleIcons[index % roleIcons.length])) + esc(tabText);
         tabsHost.appendChild(btn);
         var panel = document.createElement('div');
         panel.className = 'role-detail' + (index === 0 ? '' : ' hidden');
@@ -494,7 +539,7 @@
           }
           if (para.childNodes.length) copy.appendChild(para);
         }
-        panel.innerHTML = '<div><div class="detail-label">' + esc(eye(kind)) + '</div><h3>' + esc(headingText) + '</h3></div>';
+        panel.innerHTML = '<div><div class="detail-label">' + esc(card.eyeText || eye(kind)) + '</div><h3>' + esc(headingText) + '</h3></div>';
         panel.appendChild(copy);
         panelsHost.appendChild(panel);
       });

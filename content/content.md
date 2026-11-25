@@ -58,29 +58,15 @@
 
 ## 币圈是什么？
 
-**币圈就是围绕加密货币的市场和圈子，买币只是参与方式之一。**
+<script type="application/json" class="lb-demo">{"title":"币圈是什么？","crumb":"初识币圈","headline":"币圈，<br>比<em>买币</em>更大。","intro":"从认识这个世界开始。买币只是其中一种参与方式，你还有很多种探索的可能。","time":3,"diagram":"一眼看懂，四种参与方式","caption":"点击下面的图标，看看你可以从哪里开始。","art":"planet","tipLabel":"表姐提醒","tip":"你不需要先投入真金白银，才有资格进入币圈。先学会辨别风险，也是参与这个世界的重要一步。","quizTitle":"学会了吗？试一题","quizBadge":"30 秒 · 即时解析","question":"买币，是参与币圈的唯一方式吗？","answers":["不是，学习、开发和使用应用也是参与","是，只有买币才算参与","只有开发者才能参与","不用理解，跟着别人买就好"],"correct":0,"explanation":"对。币圈包含市场、技术、应用和社区。学习、观察和建设，都是参与方式。","wrong":"再想一想：前面的四种参与方式里，只有一种涉及交易。买币并不是唯一入口。","roles":[{"icon":"book","label":"学习研究","tag":"START WITH CURIOSITY","title":"先理解，再做决定。","text":"读懂基本概念，观察项目在解决什么问题。即使不买币，你也已经开始参与了。","example":"例如：学习区块链、阅读项目介绍。"},{"icon":"code","label":"开发建设","tag":"BUILD SOMETHING USEFUL","title":"把想法，变成应用。","text":"开发者编写智能合约、搭建工具和应用；设计、内容和社区工作也在帮助生态成长。","example":"例如：做一个链上数据工具。"},{"icon":"chart","label":"交易投资","tag":"UNDERSTAND THE RISK","title":"参与市场，也承担风险。","text":"人们通过交易所或链上市场买卖加密资产。价格波动很大，理解风险比追涨更重要。","example":"例如：研究资产后，小额买入现货。"},{"icon":"cube","label":"使用应用","tag":"EXPLORE THE EXPERIENCE","title":"亲自用一次，更好理解。","text":"钱包、支付、游戏和数字收藏品，都是链上应用的例子。可以先从不需要真实资金的演示或测试网开始。","example":"例如：体验测试网转账。"}]}</script>
 
-「币圈」是一个口语说法，泛指围绕加密货币、区块链及相关应用形成的市场与社区。
-有人做交易，有人开发应用，也有人研究技术、支付、游戏、数字收藏品和链上金融。
-
-买币只是其中一种参与方式。
-你也可以先学知识、观察项目、体验测试网络，不投入真实资金。
-
-<div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。币圈是市场和社区。买币只是其中一种参与方式。" data-bad="答错了。买币不是唯一方式。学习和观察项目、试用测试网，也可以先参与，而且不必投入真实资金。"><h3>想一想</h3><p>买币是不是参与币圈的唯一方式？</p><button type="button" class="option" data-answer="a">A. 不是，学习和观察也是参与</button><button type="button" class="option" data-answer="b">B. 是，不买就不算参与</button><button type="button" class="option" data-answer="c">C. 只有自己开发应用才算参与</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 只有充值了才算参与</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="a" data-ok="对。币圈包含市场、技术、应用和社区。学习、观察和建设，都是参与方式。" data-bad="再想一想：前面的四种参与方式里，只有一种涉及交易。买币并不是唯一入口。"><h3>学会了吗？试一题</h3><p>买币，是参与币圈的唯一方式吗？</p><button type="button" class="option" data-answer="a">不是，学习、开发和使用应用也是参与</button><button type="button" class="option" data-answer="b">是，只有买币才算参与</button><button type="button" class="option" data-answer="c">只有开发者才能参与</button><button type="button" class="option" data-answer="d">不用理解，跟着别人买就好</button><div class="feedback"></div></div>
 
 ## 区块链是什么？
 
-**区块链是一本大家一起记、很难偷偷改的公共账本。**
+<script type="application/json" class="lb-demo">{"title":"区块链是什么？","crumb":"认识区块链","headline":"一本大家<br>共同核对的<em>账本。</em>","intro":"把交易记录装进区块，再按规则连接起来。先理解记账方式，复杂的术语可以慢慢学。","time":4,"diagram":"一笔记录，怎样留在链上？","caption":"依次点击四个步骤，看懂区块链的基本过程。","art":"chain","tipLabel":"表姐提醒","tip":"区块链能帮助核对记录，但不会自动保证项目靠谱、代币有价值。有人把内容写进账本，不代表内容本身就值得相信。","quizTitle":"学会了吗？试一题","quizBadge":"30 秒 · 即时解析","question":"区块链上的记录可以公开核对，是否代表链上的项目都安全？","answers":["是，上链就代表官方认证","不是，记账机制不等于项目信用","是，代币价格不会下跌","只有名字带 Web3 的项目才安全"],"correct":1,"explanation":"答对了。链上记录可核对，不代表项目没有骗局、代码没有漏洞，或资产价格不会下跌。","wrong":"账本能帮助核对记录，但不会替你审查项目。请选择能区分“记账方式”和“项目信用”的答案。","roles":[{"icon":"book","label":"发起记录","tag":"MAKE A REQUEST","title":"有人提出一笔交易。","text":"比如，小明想给小红转一笔资产。钱包生成交易并用私钥签名，再把交易广播到网络。","example":"签名用于证明交易得到相应密钥持有者的授权。"},{"icon":"check","label":"按规则验证","tag":"VERIFY THE RECORD","title":"网络检查它是否合规。","text":"节点依据协议检查交易格式、签名和可用余额等条件。验证者或矿工按网络规则参与生成区块。","example":"不同区块链采用不同的共识机制。"},{"icon":"cube","label":"组成区块","tag":"CONNECT THE BLOCKS","title":"记录打包，并连接前后。","text":"有效交易被整理进区块。区块引用前一个区块的哈希，形成有先后顺序的链式结构。","example":"哈希可以理解成根据数据计算出的摘要。"},{"icon":"grid","label":"同步账本","tag":"KEEP COPIES IN SYNC","title":"多个节点，保存和核对。","text":"区块传播后，其他节点独立验证并更新自己的记录。你可以通过区块浏览器查看公开链上的交易。","example":"交易确认不等于绝对不可逆，最终性因网络而异。"}]}</script>
 
-可以把区块链理解为一套由多方共同维护的记录系统。
-交易按规则被确认并写入记录，参与者通过共识机制对记录达成一致。
-
-区块链的一个重要特点是「防篡改」。
-在网络正常运行，并且共识与安全假设成立的条件下，已经充分确认的记录不能由某个人随意修改。
-
-「记录防篡改」也不等于输入的信息、项目宣传和交易对象一定真实。
-
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。记录很难被改，只说明确认后的记录不易被某个人偷偷改掉。写进去的内容仍可能不真实。" data-bad="答错了。防篡改不等于内容真实。项目宣传和交易对象，仍要单独核对。"><h3>想一想</h3><p>记录很难被偷偷改，是不是就说明写进去的内容一定是真的？</p><button type="button" class="option" data-answer="a">A. 是，记进区块链就等于真实</button><button type="button" class="option" data-answer="b">B. 不是，防篡改不等于内容真实</button><button type="button" class="option" data-answer="c">C. 只有一家公司记账才可能真实</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 确认数够多就一定真</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。链上记录可核对，不代表项目没有骗局、代码没有漏洞，或资产价格不会下跌。" data-bad="账本能帮助核对记录，但不会替你审查项目。请选择能区分“记账方式”和“项目信用”的答案。"><h3>学会了吗？试一题</h3><p>区块链上的记录可以公开核对，是否代表链上的项目都安全？</p><button type="button" class="option" data-answer="a">是，上链就代表官方认证</button><button type="button" class="option" data-answer="b">不是，记账机制不等于项目信用</button><button type="button" class="option" data-answer="c">是，代币价格不会下跌</button><button type="button" class="option" data-answer="d">只有名字带 Web3 的项目才安全</button><div class="feedback"></div></div>
 
 ## 加密货币是什么？
 
@@ -184,22 +170,11 @@ Web3 常被用来描述利用区块链、钱包和智能合约构建的互联网
 
 <div class="quiz" data-tone="box" data-correct="a" data-ok="答对了。它想跟踪参考价值，例如 1 美元。它不是银行存款，也可能脱锚。" data-bad="答错了。名字里有 USD，也不表示它是银行存款，或一定始终等于 1 美元。"><h3>想一想</h3><p>稳定币是银行存款，并且一定始终等于 1 美元吗？</p><button type="button" class="option" data-answer="a">A. 不是。它想跟踪参考价值，但不是银行存款，也可能脱锚</button><button type="button" class="option" data-answer="b">B. 是，所以可以当成存款</button><button type="button" class="option" data-answer="c">C. 只要名字里有 USD，就一定始终等于 1 美元</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 发行方是银行就一定是</button><div class="feedback"></div></div>
 
-## 一张关系表
+## 钱包是什么？
 
-**一张表记住：链、币、钱包、交易所和应用各管什么。**
+<script type="application/json" class="lb-demo">{"title":"钱包是什么？","crumb":"理解钱包","headline":"钱包，管理的是<br>你的<em>链上权限。</em>","intro":"资产记录在区块链上。钱包帮你管理密钥、查看资产，并签署你授权的操作。","time":4,"diagram":"认识钱包，先分清这四件事","caption":"点击查看它们的作用，尤其要分清地址与私钥。","art":"wallet","tipLabel":"表姐提醒","tip":"这是一节安全教学示范。页面不会连接钱包，也不会验证真实转账。请始终在真实操作中独立核对地址、网络和授权内容。","quizTitle":"学会了吗？试一题","quizBadge":"30 秒 · 即时解析","question":"有人自称客服，要你发助记词来“修复钱包”。你应该怎么做？","answers":["只发一半，应该没事","对方有头像，就可以相信","拒绝提供，通过官方渠道核实","把助记词截图发给对方"],"correct":2,"explanation":"正确。不要向任何人提供助记词或私钥，也不要输入陌生网站。先停止操作，再通过独立核实的官方渠道确认。","wrong":"助记词不能当作普通账号信息分享。无论对方如何自称，都应该拒绝提供并独立核实。","roles":[{"icon":"grid","label":"钱包地址","tag":"YOUR PUBLIC ADDRESS","title":"收款时使用的公开标识。","text":"地址通常可以公开给转账的人。但必须核对网络和资产是否支持，不能因为地址长得一样就直接转账。","example":"在转账前，核对收款方要求的网络与地址。"},{"icon":"lock","label":"私钥","tag":"KEEP IT PRIVATE","title":"控制相应资产的重要凭证。","text":"私钥用于签名。谁能使用私钥，通常就能控制对应地址的资产。不要把它发给所谓客服或陌生网站。","example":"正规客服不会要求你提供私钥。"},{"icon":"book","label":"助记词","tag":"BACK UP WITH CARE","title":"某些钱包的密钥恢复方式。","text":"传统助记词钱包使用一组词来恢复密钥。并非所有钱包都采用助记词，但只要有，就必须妥善离线保管。","example":"不要截图、发聊天记录或填写到陌生网页。"},{"icon":"check","label":"交易签名","tag":"READ BEFORE SIGNING","title":"点确认，就是在授予权限。","text":"签名可能授权转账、交易或合约操作。看清请求内容、目标与权限，无法理解的请求不要急着确认。","example":"连接钱包与授权代币，是不同的操作。"}]}</script>
 
-| 名词 | 主要作用 | 简单例子 |
-|---|---|---|
-| 区块链 | 记录与执行网络活动 | Ethereum、TRON |
-| 币 / 代币 | 网络内的数字资产 | BTC、ETH、USDT |
-| 钱包 | 管理账户与签署操作 | 软件钱包、硬件钱包 |
-| 交易所 | 买卖或兑换资产 | CEX、DEX |
-| DApp | 区块链应用 | 兑换、借贷、游戏应用 |
-
-钱包管理的是账户和签署。
-它不代替区块链记账，也不保证交易所上的价格。
-
-<div class="quiz" data-tone="box" data-correct="b" data-ok="答对了。钱包主要管理账户，并用来签署操作。" data-bad="答错了。记账是区块链网络的事。交易所价格也不是钱包保证的。钱包管的是账户和签署。"><h3>想一想</h3><p>钱包主要管什么？</p><button type="button" class="option" data-answer="a">A. 代替区块链把账记下来</button><button type="button" class="option" data-answer="b">B. 管理账户，并签署操作</button><button type="button" class="option" data-answer="c">C. 保证交易所上的价格不会变</button><button type="button" class="option" data-answer="d" data-note="这不是这道题要选的。回到题目里的说法再看一次。">D. 替你自动止损</button><div class="feedback"></div></div>
+<div class="quiz" data-tone="box" data-correct="c" data-ok="正确。不要向任何人提供助记词或私钥，也不要输入陌生网站。先停止操作，再通过独立核实的官方渠道确认。" data-bad="助记词不能当作普通账号信息分享。无论对方如何自称，都应该拒绝提供并独立核实。"><h3>学会了吗？试一题</h3><p>有人自称客服，要你发助记词来“修复钱包”。你应该怎么做？</p><button type="button" class="option" data-answer="a">只发一半，应该没事</button><button type="button" class="option" data-answer="b">对方有头像，就可以相信</button><button type="button" class="option" data-answer="c">拒绝提供，通过官方渠道核实</button><button type="button" class="option" data-answer="d">把助记词截图发给对方</button><div class="feedback"></div></div>
 
 ## 价格为什么会涨跌？
 

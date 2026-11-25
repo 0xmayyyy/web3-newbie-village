@@ -1,48 +1,48 @@
 # Chapter 01 block layout: content comparison
 
-Planet chapter `01｜什么是币圈？` (`#/c/01/0` through `#/c/01/10`). The lesson page uses the demo shell: top bar, sidebar, hero, tab row, takeaway, quiz.
+Planet chapter `01｜什么是币圈？` (`#/c/01/0` through `#/c/01/10`).
 
-Each lesson uses the demo modules in this order: hero, tabbed section (a card per sentence: heading, explanation, example line), takeaway when the lesson has a risk paragraph, then the quiz. An 例如 / for example sentence hangs on the previous card. A comma splits a sentence into the card heading and the explanation. Module titles are added only when a card has no clause to use as its heading. No original sentence is rewritten or dropped.
+Three lessons now use the wording and modules from demo-b.html (demo-a.html is the same lesson in day mode):
 
-The chapter tip is the sidebar note on every lesson. It is chapter-level text, not part of a section, so it is not in the section text set.
+- `#/c/01/0` 币圈是什么？
+- `#/c/01/1` 区块链是什么？
+- `#/c/01/9` 钱包是什么？ This replaced the old section 一张关系表, the chapter 01 lesson about wallets.
 
-Plain (non-card) layout: none. Every original block is placed in the hero, a tab, the takeaway, or the quiz.
+Every other chapter 01 lesson keeps its original text, in the same tab layout. Those lessons are `#/c/01/2`, `#/c/01/3`, `#/c/01/4`, `#/c/01/5`, `#/c/01/6`, `#/c/01/7`, `#/c/01/8`, and `#/c/01/10`.
+
+For a kept lesson, each sentence is a card: a comma splits the heading from the explanation, an 例如 / for example sentence hangs on the previous card, and a risk paragraph is the takeaway. The joined text matches the original. Demo lessons are listed from the demo payload instead.
 
 ## 中文
 
-### 0. 币圈是什么？ — match
+### 0. 币圈是什么？ — demo
 
 Route: `#/c/01/0`
 
-- **标题下导语:** 币圈就是围绕加密货币的市场和圈子，买币只是参与方式之一。
-- **卡片标题:** 「币圈」是一个口语说法，
-- **卡片正文:** 泛指围绕加密货币、区块链及相关应用形成的市场与社区。
-- **卡片标题:** 有人做交易，
-- **卡片正文:** 有人开发应用，也有人研究技术、支付、游戏、数字收藏品和链上金融。
-- **卡片正文:** 买币只是其中一种参与方式。
-- **卡片标题:** 你也可以先学知识、观察项目、体验测试网络，
-- **卡片正文:** 不投入真实资金。
-- **小测:** 想一想 买币是不是参与币圈的唯一方式？ A. 不是，学习和观察也是参与 B. 是，不买就不算参与 C. 只有自己开发应用才算参与 D. 只有充值了才算参与
-- **测验说明:** 答对了。币圈是市场和社区。买币只是其中一种参与方式。
-- **测验说明:** 答错了。买币不是唯一方式。学习和观察项目、试用测试网，也可以先参与，而且不必投入真实资金。
-- **测验说明:** 这不是这道题要选的。回到题目里的说法再看一次。
+Source: demo-b.html. The page uses this lesson’s titles, hero, four tabs, examples, risk note, and quiz.
 
-### 1. 区块链是什么？ — match
+- **Hero:** 币圈，比买币更大。 / 从认识这个世界开始。买币只是其中一种参与方式，你还有很多种探索的可能。
+- **Section:** 一眼看懂，四种参与方式 — 点击下面的图标，看看你可以从哪里开始。
+- **Tab 学习研究:** 先理解，再做决定。 读懂基本概念，观察项目在解决什么问题。即使不买币，你也已经开始参与了。 例如：学习区块链、阅读项目介绍。
+- **Tab 开发建设:** 把想法，变成应用。 开发者编写智能合约、搭建工具和应用；设计、内容和社区工作也在帮助生态成长。 例如：做一个链上数据工具。
+- **Tab 交易投资:** 参与市场，也承担风险。 人们通过交易所或链上市场买卖加密资产。价格波动很大，理解风险比追涨更重要。 例如：研究资产后，小额买入现货。
+- **Tab 使用应用:** 亲自用一次，更好理解。 钱包、支付、游戏和数字收藏品，都是链上应用的例子。可以先从不需要真实资金的演示或测试网开始。 例如：体验测试网转账。
+- **Takeaway:** 你不需要先投入真金白银，才有资格进入币圈。先学会辨别风险，也是参与这个世界的重要一步。
+- **Quiz:** 买币，是参与币圈的唯一方式吗？ → 不是，学习、开发和使用应用也是参与
+
+### 1. 区块链是什么？ — demo
 
 Route: `#/c/01/1`
 
-- **标题下导语:** 区块链是一本大家一起记、很难偷偷改的公共账本。
-- **卡片正文:** 可以把区块链理解为一套由多方共同维护的记录系统。
-- **卡片标题:** 交易按规则被确认并写入记录，
-- **卡片正文:** 参与者通过共识机制对记录达成一致。
-- **卡片正文:** 区块链的一个重要特点是「防篡改」。
-- **卡片标题:** 在网络正常运行，
-- **卡片正文:** 并且共识与安全假设成立的条件下，已经充分确认的记录不能由某个人随意修改。
-- **提醒条:** 「记录防篡改」也不等于输入的信息、项目宣传和交易对象一定真实。
-- **小测:** 想一想 记录很难被偷偷改，是不是就说明写进去的内容一定是真的？ A. 是，记进区块链就等于真实 B. 不是，防篡改不等于内容真实 C. 只有一家公司记账才可能真实 D. 确认数够多就一定真
-- **测验说明:** 答对了。记录很难被改，只说明确认后的记录不易被某个人偷偷改掉。写进去的内容仍可能不真实。
-- **测验说明:** 答错了。防篡改不等于内容真实。项目宣传和交易对象，仍要单独核对。
-- **测验说明:** 这不是这道题要选的。回到题目里的说法再看一次。
+Source: demo-b.html. The page uses this lesson’s titles, hero, four tabs, examples, risk note, and quiz.
+
+- **Hero:** 一本大家共同核对的账本。 / 把交易记录装进区块，再按规则连接起来。先理解记账方式，复杂的术语可以慢慢学。
+- **Section:** 一笔记录，怎样留在链上？ — 依次点击四个步骤，看懂区块链的基本过程。
+- **Tab 发起记录:** 有人提出一笔交易。 比如，小明想给小红转一笔资产。钱包生成交易并用私钥签名，再把交易广播到网络。 签名用于证明交易得到相应密钥持有者的授权。
+- **Tab 按规则验证:** 网络检查它是否合规。 节点依据协议检查交易格式、签名和可用余额等条件。验证者或矿工按网络规则参与生成区块。 不同区块链采用不同的共识机制。
+- **Tab 组成区块:** 记录打包，并连接前后。 有效交易被整理进区块。区块引用前一个区块的哈希，形成有先后顺序的链式结构。 哈希可以理解成根据数据计算出的摘要。
+- **Tab 同步账本:** 多个节点，保存和核对。 区块传播后，其他节点独立验证并更新自己的记录。你可以通过区块浏览器查看公开链上的交易。 交易确认不等于绝对不可逆，最终性因网络而异。
+- **Takeaway:** 区块链能帮助核对记录，但不会自动保证项目靠谱、代币有价值。有人把内容写进账本，不代表内容本身就值得相信。
+- **Quiz:** 区块链上的记录可以公开核对，是否代表链上的项目都安全？ → 不是，记账机制不等于项目信用
 
 ### 2. 加密货币是什么？ — match
 
@@ -165,19 +165,20 @@ Route: `#/c/01/8`
 - **测验说明:** 答错了。名字里有 USD，也不表示它是银行存款，或一定始终等于 1 美元。
 - **测验说明:** 这不是这道题要选的。回到题目里的说法再看一次。
 
-### 9. 一张关系表 — match
+### 9. 钱包是什么？ — demo
 
 Route: `#/c/01/9`
 
-- **标题下导语:** 一张表记住：链、币、钱包、交易所和应用各管什么。
-- **卡片正文:** 名词 主要作用 简单例子 区块链 记录与执行网络活动 Ethereum、TRON 币 / 代币 网络内的数字资产 BTC、ETH、USDT 钱包 管理账户与签署操作 软件钱包、硬件钱包 交易所 买卖或兑换资产 CEX、DEX DApp 区块链应用 兑换、借贷、游戏应用
-- **卡片正文:** 钱包管理的是账户和签署。
-- **卡片标题:** 它不代替区块链记账，
-- **卡片正文:** 也不保证交易所上的价格。
-- **小测:** 想一想 钱包主要管什么？ A. 代替区块链把账记下来 B. 管理账户，并签署操作 C. 保证交易所上的价格不会变 D. 替你自动止损
-- **测验说明:** 答对了。钱包主要管理账户，并用来签署操作。
-- **测验说明:** 答错了。记账是区块链网络的事。交易所价格也不是钱包保证的。钱包管的是账户和签署。
-- **测验说明:** 这不是这道题要选的。回到题目里的说法再看一次。
+Source: demo-b.html. The page uses this lesson’s titles, hero, four tabs, examples, risk note, and quiz.
+
+- **Hero:** 钱包，管理的是你的链上权限。 / 资产记录在区块链上。钱包帮你管理密钥、查看资产，并签署你授权的操作。
+- **Section:** 认识钱包，先分清这四件事 — 点击查看它们的作用，尤其要分清地址与私钥。
+- **Tab 钱包地址:** 收款时使用的公开标识。 地址通常可以公开给转账的人。但必须核对网络和资产是否支持，不能因为地址长得一样就直接转账。 在转账前，核对收款方要求的网络与地址。
+- **Tab 私钥:** 控制相应资产的重要凭证。 私钥用于签名。谁能使用私钥，通常就能控制对应地址的资产。不要把它发给所谓客服或陌生网站。 正规客服不会要求你提供私钥。
+- **Tab 助记词:** 某些钱包的密钥恢复方式。 传统助记词钱包使用一组词来恢复密钥。并非所有钱包都采用助记词，但只要有，就必须妥善离线保管。 不要截图、发聊天记录或填写到陌生网页。
+- **Tab 交易签名:** 点确认，就是在授予权限。 签名可能授权转账、交易或合约操作。看清请求内容、目标与权限，无法理解的请求不要急着确认。 连接钱包与授权代币，是不同的操作。
+- **Takeaway:** 这是一节安全教学示范。页面不会连接钱包，也不会验证真实转账。请始终在真实操作中独立核对地址、网络和授权内容。
+- **Quiz:** 有人自称客服，要你发助记词来“修复钱包”。你应该怎么做？ → 拒绝提供，通过官方渠道核实
 
 ### 10. 价格为什么会涨跌？ — match
 
@@ -194,39 +195,35 @@ Route: `#/c/01/10`
 
 ## English
 
-### 0. What is the crypto scene? — match
+### 0. What is the crypto scene? — demo
 
 Route: `#/c/01/0`
 
-- **Hero lead:** The crypto scene is the market and community around cryptocurrency, and buying coins is only one way to take part.
-- **Card heading:** "Crypto scene" is an everyday way of talking about the market and community around cryptocurrency,
-- **Card text:** blockchains, and related apps.
-- **Card heading:** Some people trade,
-- **Card text:** some build apps, and some study the technology, payments, games, digital collectibles, and on-chain finance.
-- **Card text:** Buying coins is only one way to take part.
-- **Card heading:** You can also study first,
-- **Card text:** watch projects, and try a test network, without putting in real money.
-- **Quiz:** Think it through Is buying coins the only way to take part in the crypto scene? A. No. Learning and watching also count as taking part B. Yes. If you do not buy, you are not taking…
-- **Quiz note:** Correct. The crypto scene is a market and a community. Buying coins is only one way to take part.
-- **Quiz note:** Not quite. Buying is not the only way. You can also learn, watch projects, and try a testnet before you put in real money.
-- **Quiz note:** That is not the choice this question wants. Look again at what the question says.
+Source: demo-b.html. The page uses this lesson’s titles, hero, four tabs, examples, risk note, and quiz.
 
-### 1. What is a blockchain? — match
+- **Hero:** The crypto sceneis bigger than buying coins. / Start by getting to know this world. Buying coins is only one way to take part, and you still have many ways to explore.
+- **Section:** See it in one look: four ways to take part — Click an icon below, and see where you can start.
+- **Tab Study and research:** Understand first, then decide. Learn the basic ideas, and watch what problem a project is trying to solve. Even if you do not buy coins, you have already started taking part. For example: study blockchains, and read a project introduction.
+- **Tab Build:** Turn an idea into an app. Developers write smart contracts and build tools and apps. Design, content, and community work also help the ecosystem grow. For example: make an on-chain data tool.
+- **Tab Trade and invest:** Take part in the market, and also take on the risk. People buy and sell crypto assets through exchanges or on-chain markets. Prices swing a lot, and understanding the risk matters more than chasing a rise. For example: after studying an asset, buy a small amount of spot.
+- **Tab Use an app:** Use it once yourself, and you will understand it better. Wallets, payments, games, and digital collectibles are all examples of on-chain apps. You can start with a demo or a testnet that does not need real money. For example: try a testnet transfer.
+- **Takeaway:** You do not need to put in real money before you are allowed into the crypto scene. Learning to tell the risks apart is also an important step in taking part in this world.
+- **Quiz:** Is buying coins the only way to take part in the crypto scene? → No. Studying, building, and using apps are also ways to take part
+
+### 1. What is a blockchain? — demo
 
 Route: `#/c/01/1`
 
-- **Hero lead:** A blockchain is a public ledger that many people keep together, and that is hard for one person to quietly change.
-- **Card text:** You can think of a blockchain as a record system maintained by more than one party.
-- **Card text:** Transactions are confirmed by the rules and written into the record.
-- **Card text:** Participants agree on the record through a consensus mechanism.
-- **Card text:** One important property is that it resists tampering.
-- **Card heading:** When the network is running normally,
-- **Card text:** and its consensus and security assumptions hold, a record that is already well confirmed cannot be changed on a whim by one person.
-- **Takeaway:** A record that resists tampering does not mean the information that was entered, a project's marketing, or the other side of a trade is true.
-- **Quiz:** Think it through If a record is hard to change in secret, does that mean what was written is definitely true? A. Yes. Once it is on a blockchain, it is true B. No. Resisting tamper…
-- **Quiz note:** Correct. A record that is hard to change only means a confirmed record is hard for one person to quietly rewrite. What was written can still be untrue.
-- **Quiz note:** Not quite. Resisting tampering is not the same as the content being true. A project's marketing and the other side of a trade still have to be checked on their own.
-- **Quiz note:** That is not the choice this question wants. Look again at what the question says.
+Source: demo-b.html. The page uses this lesson’s titles, hero, four tabs, examples, risk note, and quiz.
+
+- **Hero:** A ledgerthat everyone checks together. / Put transaction records into blocks, then link them by the rules. Understand the way of keeping the books first. The harder terms can wait.
+- **Section:** How does one record stay on the chain? — Click the four steps in order, and see the basic process of a blockchain.
+- **Tab Start a record:** Someone proposes a transaction. For example, Xiao Ming wants to send Xiao Hong some assets. The wallet creates the transaction, signs it with the private key, and broadcasts the transaction to the network. The signature is used to prove that the holder of the matching key authorized the transaction.
+- **Tab Check it by the rules:** The network checks whether it follows the rules. Nodes use the protocol to check the transaction format, the signature, the available balance, and other conditions. Validators or miners take part in making a block under the network’s rules. Different blockchains use different consensus mechanisms.
+- **Tab Make a block:** The records are packed, and linked to what came before and after. Valid transactions are gathered into a block. The block refers to the previous block’s hash, and that forms a chain with an order. A hash can be understood as a digest calculated from the data.
+- **Tab Sync the ledger:** Many nodes save it and check it. After a block spreads, other nodes verify it on their own and update their own records. You can look up a transaction on a public chain in a block explorer. A confirmation is not the same as absolutely irreversible. Finality differs by network.
+- **Takeaway:** A blockchain can help check records, but it does not automatically make a project sound or a token valuable. Someone writing something into the ledger does not mean the content itself is worth believing.
+- **Quiz:** A record on a blockchain can be checked in public. Does that mean every project on the chain is safe? → No. The way of keeping the books is not the same as a project’s trustworthiness
 
 ### 2. What is a cryptocurrency? — match
 
@@ -354,19 +351,20 @@ Route: `#/c/01/8`
 - **Quiz note:** Not quite. USD in the name does not mean it is a bank deposit, or that it will always equal 1 dollar.
 - **Quiz note:** That is not the choice this question wants. Look again at what the question says.
 
-### 9. One table of how the pieces fit — match
+### 9. What is a wallet? — demo
 
 Route: `#/c/01/9`
 
-- **Hero lead:** One table: what the chain, the coin, the wallet, the exchange, and the app each do.
-- **Card body:** Name Main job Simple example Blockchain Records and carries out network activity Ethereum, TRON Coin / token A digital asset inside a network BTC, ETH, USDT Wallet Manages the acco…
-- **Card text:** A wallet manages the account and the signing.
-- **Card heading:** It does not keep the blockchain's books,
-- **Card text:** and it does not guarantee the price on an exchange.
-- **Quiz:** Think it through What does a wallet mainly do? A. Keep the books in place of the blockchain B. Manage the account, and sign actions C. Guarantee that the price on an exchange will …
-- **Quiz note:** Correct. A wallet mainly manages the account, and it is what you use to sign actions.
-- **Quiz note:** Not quite. Keeping the books is the blockchain network's job. An exchange price is not guaranteed by the wallet. The wallet manages the account and the signing.
-- **Quiz note:** That is not the choice this question wants. Look again at what the question says.
+Source: demo-b.html. The page uses this lesson’s titles, hero, four tabs, examples, risk note, and quiz.
+
+- **Hero:** A wallet managesyour on-chain authority. / The assets are recorded on the blockchain. A wallet helps you manage keys, see assets, and sign the actions you authorize.
+- **Section:** To know a wallet, first separate these four things — Click to see what each one does, and especially keep the address separate from the private key.
+- **Tab Wallet address:** The public identifier you use when receiving. You can usually show an address to the person sending the transfer. But you must check that the network and the asset are supported. Do not transfer just because the address looks the same. Before a transfer, check the network and the address the recipient asks for.
+- **Tab Private key:** An important credential that controls the matching assets. A private key is used to sign. Whoever can use the private key can usually control the assets at the matching address. Do not send it to someone who claims to be support, or to a site you do not know. Real support will not ask you for your private key.
+- **Tab Seed phrase:** The way some wallets recover a key. A traditional seed-phrase wallet uses a set of words to recover the key. Not every wallet uses a seed phrase, but if it has one, you must keep it offline and safe. Do not screenshot it, send it in a chat, or type it into a page you do not know.
+- **Tab Transaction signature:** When you tap confirm, you are granting authority. A signature may authorize a transfer, a trade, or a contract action. Read the request, the target, and the permission. Do not rush to confirm a request you cannot understand. Connecting a wallet and approving a token are different actions.
+- **Takeaway:** This is a safety lesson. The page will not connect a wallet, and it will not check a real transfer. In a real action, always check the address, the network, and what you are authorizing, on your own.
+- **Quiz:** Someone claims to be support and asks you to send your seed phrase to “fix the wallet”. What should you do? → Refuse to give it, and check through an official channel
 
 ### 10. Why do prices move? — match
 
