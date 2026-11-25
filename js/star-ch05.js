@@ -5,83 +5,338 @@
     lessons: [
       lesson({
         id: '01', title: bi('CPI/PPI：市场看的是预期差', 'CPI/PPI: the market looks at the surprise'),
-        scene: bi('CPI 公布得比预期高，比特币就一定跌吗？', 'CPI prints above expectations. Must bitcoin fall?'),
-        one: bi('同比和环比不是同一个口径。市场往往交易的是实际值相对预期的差，而不是数字本身的高低。', 'Year-over-year and month-over-month are not the same measure. Markets often trade the gap between the actual print and the forecast, not whether the number looks high by itself.'),
-        explain: bi('同比是相对去年同期。\n环比是相对上一期。\n预期 2.8%，实际 3.1%，意外是 +0.3 个百分点，不是 0.3 倍。\n指数从 100 到 103.1，同比是 3.1%。\n同一条意外可以对应不止一种价格反应，所以高 CPI 不保证 BTC 下跌。', 'Year-over-year is versus the same period last year.\nMonth-over-month is versus the previous period.\nForecast 2.8% and actual 3.1% is a surprise of +0.3 percentage points, not 0.3 times.\nAn index from 100 to 103.1 is a 3.1% year-over-year change.\nThe same surprise can be followed by more than one price reaction, so a high CPI does not guarantee BTC falls.'),
-        example: bi('3.1−2.8=0.3 个百分点。\n100 到 103.1 的同比就是 3.1%。\n图上准备了两种模拟反应，用来说明结果不是唯一的。', '3.1−2.8=0.3 percentage points.\nFrom 100 to 103.1, the year-over-year change is 3.1%.\nThe chart prepares two simulated reactions, to show the outcome is not unique.'),
-        pitfalls: [bi('把同比和环比当成同一个数', 'Treating year-over-year and month-over-month as the same number'), bi('把一次高于预期当成 BTC 必跌', 'Treating one above-forecast print as BTC must fall')],
-        practice: bi('用 3.1 和 2.8 算出意外是 0.3 个百分点。', 'Use 3.1 and 2.8 to get a surprise of 0.3 percentage points.'),
-        check: { ask: bi('指数从 100 到 103.1，同比大约是多少？', 'An index goes from 100 to 103.1. About what is the year-over-year change?'), options: [opt('A', '3.1%', '3.1%'), opt('B', '0.3%', '0.3%'), opt('C', '103.1%', '103.1%'), opt('D', '31%', '31%')], answer: 'A', miss: bi('从 100 到 103.1，同比是 3.1%。0.3 是另一道题里实际比预期高出的那一截。', 'From 100 to 103.1, the year-over-year change is 3.1%. 0.3 is the gap of actual over forecast in the other example.') },
-        quizzes: [
-          quiz('预期 2.8%、实际 3.1%，意外是？', 'Forecast 2.8%, actual 3.1%. What is the surprise?', [opt('A', '0.3%', '0.3% of the index'), opt('B', '0.3 个百分点', '0.3 percentage points'), opt('C', '3.1 倍', '3.1 times'), opt('D', '5.9 个百分点', '5.9 percentage points')], 'B', {A: ['0.3% 会让人以为是指数再乘 0.3%，口径不同。', '0.3% can be read as multiplying the index by 0.3% again. That is a different measure.'], B: ['3.1−2.8=0.3，单位是百分点。', '3.1−2.8=0.3, and the unit is percentage points.'], C: ['3.1 是实际同比，不是倍数。', '3.1 is the actual year-over-year print, not a multiple.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
-          quiz('同比等于环比吗？', 'Does year-over-year equal month-over-month?', [opt('A', '等于', 'Yes'), opt('B', '只有 CPI 等于', 'Only for CPI'), opt('C', '否', 'No'), opt('D', '看的是同一段时间', 'They cover the same stretch of time')], 'C', {A: ['一个对照去年，一个对照上一期。', 'One compares with last year, the other with the previous period.'], B: ['PPI 也同样要分口径。', 'PPI has to separate the two measures as well.'], C: ['对照期不同，数值就可以不同。', 'Different reference periods can produce different numbers.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
-          quiz('CPI 偏高是否比特币一定下跌？', 'If CPI is high, must bitcoin fall?', [opt('A', '一定', 'It must'), opt('B', '只在美国交易时段一定', 'Only during US hours'), opt('C', '实际值一公布就一定', 'Yes, as soon as the print comes out'), opt('D', '不一定', 'Not necessarily')], 'D', {A: ['价格反应至少可以有两种模拟路径。', 'The price reaction can take at least two simulated paths.'], B: ['时段不能把一种可能变成必然。', 'The session cannot turn one possibility into a necessity.'], C: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.'], D: ['意外差不是一条“必须下跌”的规则。', 'A surprise is not a rule that price must fall.']})
+        scene: bi('CPI 比预期低 0.2，比特币就一定涨吗？', 'If CPI is 0.2 below the forecast, must bitcoin rise?'),
+        one: bi('先看实际比预期高还是低，再看头几分钟的美元和两年美债，差的非农不是只有跌这一个方向。', 'First see whether the actual is above or below the forecast, then watch the dollar and the two-year yield in the first minutes, because a weak payrolls print is not only a drop.'),
+        explain: bi('CPI 看物价，PPI 看出厂价格。\n同比是和去年比，环比是和上一期比，两个口径不是同一个数。\n市场往往交易的是实际相对预期的差，而不是数字本身的高低。\n同一条意外可以对应不止一种价格反应，所以偏高的 CPI 不保证比特币下跌。\n还要分核心和整体，油价和食品可以一下子把整体带偏。\n公布时间在美国夏令时是北京时间 20:30，冬令时是 21:30。', 'CPI looks at consumer prices, and PPI looks at factory prices.\nYear-over-year compares with last year, and month-over-month compares with the previous period, and the two measures are not the same number.\nThe market often trades the gap between the actual and the forecast, not whether the number itself looks high.\nThe same surprise can be followed by more than one price reaction, so a high CPI does not guarantee bitcoin falls.\nAlso separate core from headline, because oil and food can yank the headline in one move.\nThe release is 20:30 Beijing time in US summer time, and 21:30 Beijing time in winter.'),
+        topic: {
+          title: bi('数据公布后，头几分钟先看什么', 'After the release, what to watch in the first minutes'),
+          body: bi('看 CPI、PPI，先比较实际值和预期值，再看核心数据，别只盯着一个数字。\n通胀明显高于预期，市场可能减少降息押注，甚至提高加息预期。\n美元和两年期美债收益率往往承压上行，比特币容易受到压制。\n通胀明显低于预期，则可能增强宽松预期，对比特币形成支撑。\n但如果整体数据降温、核心数据却偏热，行情也可能反复。\n比如预期上涨 0.3%，实际上涨 0.1%，应说低于预期 0.2 个百分点。\n同比和环比要分开比较。\nPPI 还要留意用于计算 PCE 的分项，不能只凭总数判断利好利空。\n数据符合预期，不代表一定回落。\n数据利好，也不代表一定上涨。\n还要看此前行情消化了多少预期。\n非农弱于预期时，也可能有两种解读。\n市场更关注降息，可能把它理解为宽松更近，比特币获得支撑。\n市场更担心衰退，则可能把它理解为经济走弱，比特币跟随风险资产下跌。\n头几分钟可以结合美元指数和两年期美债收益率，观察市场如何解读数据。\n但它们也不是涨跌指令。\n公布后头一两分钟，比特币第一波的方向，可能随着分项和修正值被消化而反转。', 'When you read CPI and PPI, first compare the actual with the forecast, then look at the core data, and do not stare at only one number.\nWhen inflation is clearly above the forecast, the market may cut its bets on rate cuts, or even raise its expectation of a hike.\nThe dollar and the two-year Treasury yield are often pushed up, and bitcoin is easily held down.\nWhen inflation is clearly below the forecast, that can strengthen the expectation of easier policy, and it can support bitcoin.\nBut if the headline cools while the core data runs hot, the move can also chop back and forth.\nFor example, if the forecast rise is 0.3% and the actual rise is 0.1%, you should say it is 0.2 percentage points below the forecast.\nYear-over-year and month-over-month have to be compared separately.\nFor PPI, also watch the components used to calculate PCE, and do not judge good or bad news from the total alone.\nA print that matches the forecast does not mean it must fall back.\nGood data also does not mean it must rise.\nYou also look at how much of the expectation the earlier move already digested.\nWhen payrolls are weaker than expected, there can also be two readings.\nIf the market cares more about rate cuts, it may read that as easier policy coming closer, and bitcoin gets support.\nIf the market worries more about a recession, it may read that as a weaker economy, and bitcoin falls with other risk assets.\nIn the first minutes you can read the dollar index together with the two-year Treasury yield, and see how the market is reading the data.\nBut they are not orders to rise or fall.\nIn the first minute or two after the release, the direction of bitcoin’s first wave can reverse as the components and the revisions get digested.')
+        },
+        example: bi('教学模拟：预期 2.8%，实际 3.1%，意外是高出 0.3 个百分点。\n指数从 100 到 103.1，同比是 3.1%。\n这种偏热，公布后头一两分钟，比特币的第一波反应常常是受到压制，但可以有不止一种结果。', 'Teaching simulation: forecast 2.8%, actual 3.1%, and the surprise is 0.3 percentage points higher.\nThe index goes from 100 to 103.1, and the year-over-year change is 3.1%.\nFor a hot print like this, bitcoin’s first reaction in the first minute or two after the release is often being held down, but there is more than one possible outcome.'),
+        pitfalls: [
+          bi('把同比和环比当成同一个数', 'Treating year-over-year and month-over-month as the same number'),
+          bi('把差的非农只读成必须跌', 'Reading weak payrolls as a drop that must happen')
         ],
-        study: { kind: 'panel', rows: [bi('预期 2.8%，实际 3.1%，意外 +0.3 个百分点。', 'Forecast 2.8%, actual 3.1%, surprise +0.3 percentage points.'), bi('指数 100 → 103.1，同比 3.1%。', 'Index 100 → 103.1, year-over-year 3.1%.')] }
+        practice: bi('先看实际比预期高还是低，再看头几分钟美元指数和两年美债往哪边。', 'First see whether the actual is above or below the forecast, then see which way the dollar index and the two-year yield go in the first minutes.'),
+        check: {
+          ask: bi('CPI 实际比预期低 0.2 个百分点，公布后头一两分钟，比特币的第一波反应更常见的是？', 'When CPI prints 0.2 percentage points below the forecast, what is more common for bitcoin’s first reaction in the first minute or two after the release?'),
+          options: [
+            opt('A', '通常先横住，0.2 太小不值得动', 'Usually chops first, because 0.2 is too small to move'),
+            opt('B', '常常先跌，因为低了就是衰退', 'Often drops first, because lower means a recession'),
+            opt('C', '常常先得到支撑，因为低于预期', 'It often gets support first, because it is below the forecast'),
+            opt('D', '先等非农，CPI 本身没有方向', 'Wait for payrolls, because CPI itself has no direction')
+          ],
+          answer: 'C',
+          note: bi('低于预期 0.2 个百分点时，头一两分钟常常先得到支撑，但整体降温而核心偏热时也可能反复。', 'When it is 0.2 percentage points below the forecast, the first minute or two often gets support first, but it can also chop when the headline cools and the core runs hot.'),
+          miss: bi('低于预期 0.2 个百分点时，头一两分钟常常先得到支撑，但整体降温而核心偏热时也可能反复。', 'When it is 0.2 percentage points below the forecast, the first minute or two often gets support first, but it can also chop when the headline cools and the core runs hot.')
+        },
+        quizzes: [
+          quiz('CPI 或 PPI 的主要公布值与预期基本一致，能否据此判断比特币头一两分钟的涨跌？', 'When the main CPI or PPI print basically matches the forecast, can you judge bitcoin’s rise or fall in the first minute or two from that?', [
+            opt('A', '不能，还要结合分项数据、此前走势和市场预期判断。', 'No, you still have to judge it together with the component data, the earlier path, and market expectations.'),
+            opt('B', '能，符合预期说明没有意外，头一两分钟通常横盘', 'Yes, a match means there is no surprise, so the first minute or two usually chop'),
+            opt('C', '能，只要主要公布值符合预期，头一两分钟就先看涨', 'Yes, as long as the main print matches, the first minute or two lean up first'),
+            opt('D', '能，顺着公布前的方向，就能判断头一两分钟', 'Yes, following the direction from before the release is enough to judge the first minute or two')
+          ], 'A', {
+            A: ['符合预期，不代表一定上涨、回落或横盘。主要公布值之外，核心数据和其他分项仍可能带来意外，第一波走势也可能随后反转。', 'Matching the forecast does not mean it must rise, fall back, or chop. Outside the main print, the core data and other components can still bring a surprise, and the first wave can also reverse afterward.'],
+            B: ['符合预期时，头一两分钟仍可能涨或跌，横盘要另看分项和此前走势。', 'When it matches, the first minute or two can still rise or fall, and a chop depends on the components and the earlier path.'],
+            C: ['主要公布值对上之后，核心和其他分项仍可能带来意外。', 'After the main print matches, the core and other components can still bring a surprise.'],
+            D: ['公布前的方向还要对照此前走势和市场预期，单凭它判断不了头一两分钟。', 'The direction from before the release still has to be read against the earlier path and market expectations, and it alone cannot judge the first minute or two.']
+          }),
+          quiz('大家已经在等一个很好的 CPI，结果也确实好，常怎么走？', 'Everyone already waited for a good CPI, and it is good, what often happens?', [
+            opt('A', '好于预期就通常一路涨到收盘', 'Better than expected usually rises straight into the close'),
+            opt('B', '好数字出来通常还要再涨一段', 'A good number usually keeps rising for another stretch'),
+            opt('C', '等了很久的好消息，常常先横住', 'Long-awaited good news often chops first'),
+            opt('D', '常常是利好出尽，冲一下就回', 'Often the good news is used up, a push and then a fade')
+          ], 'D', {
+            A: ['等了很久的好数字，常常是冲一下就回，不是一路涨到收盘。', 'Good news that was long awaited often pushes and fades, and it does not rise straight into the close.'],
+            B: ['早就料到的好，通常没有再涨一段的后劲。', 'Expected good news usually does not have the fuel for another stretch.'],
+            C: ['它常常不是先横住，而是冲一下再回去。', 'It often does not chop first, and it pushes and then comes back.'],
+            D: ['此前已经在等，利好不代表一定上涨，常常是冲一下就回。', 'It was already waited for, good news does not mean it must rise, and it is often a push and then a fade.']
+          }),
+          quiz('非农比预期差，市场又在怕衰退，公布后头一两分钟，比特币的第一波反应更常见的是？', 'Payrolls are weaker than expected, and the market fears a recession. In the first minute or two after the release, what is more common for bitcoin’s first reaction?', [
+            opt('A', '会被当成降息更近，比特币先得到支撑', 'It gets read as rate cuts coming closer, and bitcoin gets support first'),
+            opt('B', '会被当成经济走弱，跟随风险资产下跌', 'It gets read as a weaker economy, and bitcoin falls with other risk assets'),
+            opt('C', '差得不多就常常先横住', 'A small miss often chops first'),
+            opt('D', '就业差通常只砸美股，币价不动', 'Weak jobs usually hit only stocks, and the coin stays put')
+          ], 'B', {
+            A: ['更关注降息时才会这样读，这一题的市场在怕衰退。', 'You read it that way only when rate cuts are the focus, and this question’s market fears a recession.'],
+            B: ['市场更担心衰退时，弱于预期的非农会被当成经济走弱，比特币跟随风险资产下跌。', 'When the market worries more about a recession, weaker-than-expected payrolls get read as a weaker economy, and bitcoin falls with other risk assets.'],
+            C: ['怕衰退时，头一两分钟的第一波常常是跌，不是横住。', 'When recession is the fear, the first wave in the first minute or two is often a drop, not a chop.'],
+            D: ['怕衰退时，比特币常常跟随风险资产下跌，不是只砸美股。', 'When recession is the fear, bitcoin often falls with other risk assets, and it is not only stocks that get hit.']
+          })
+        ],
+        study: { kind: 'panel', rows: [
+          bi('预期 2.8%，实际 3.1%，意外高出 0.3 个百分点。', 'Forecast 2.8%, actual 3.1%, surprise 0.3 percentage points higher.'),
+          bi('指数从 100 到 103.1，同比 3.1%。', 'The index goes from 100 to 103.1, and the year-over-year change is 3.1%.')
+        ] }
       }),
       lesson({
         id: '02', title: bi('利率：降息不是上涨按钮', 'Rates: a cut is not an up button'),
-        scene: bi('降了 25 个基点，币价是不是应该涨？', 'Rates were cut 25 basis points. Should the coin rise?'),
-        one: bi('25 个基点等于 0.25 个百分点。降息可以被提前计价，所以公布本身不保证上涨。', '25 basis points equal 0.25 percentage points. A cut can be priced in beforehand, so the announcement itself does not guarantee a rise.'),
-        explain: bi('1 个基点=0.01 个百分点。\n25 个基点=0.25 个百分点。\n从 5.00% 到 4.75%，变化就是 25 个基点。\n若市场早已按这次降息定价，公布时价格可以不涨，甚至反向。', '1 basis point=0.01 percentage point.\n25 basis points=0.25 percentage points.\nFrom 5.00% to 4.75%, the change is 25 basis points.\nIf the market already priced this cut, price need not rise on the announcement. It can even move the other way.'),
-        example: bi('5.00%→4.75%=0.25 个百分点=25bp。\n一条路径是“符合预期所以没什么反应”。\n另一条路径才是意外降息后的重定价。', '5.00%→4.75%=0.25 percentage points=25bp.\nOne path is “as expected, so little reaction.”\nThe other path is a repricing after a surprise cut.'),
-        pitfalls: [bi('把基点和百分点算成同一个单位', 'Counting basis points and percentage points as the same unit'), bi('把降息公布当成必须上涨', 'Treating a cut announcement as a required rally')],
-        practice: bi('把 25bp 换成 0.25 个百分点。', 'Convert 25bp into 0.25 percentage points.'),
-        check: { ask: bi('1 个基点是多少个百分点？', 'How many percentage points is 1 basis point?'), options: [opt('A', '1 个百分点', '1 percentage point'), opt('B', '0.25 个百分点', '0.25 percentage points'), opt('C', '0.1 个百分点', '0.1 percentage point'), opt('D', '0.01 个百分点', '0.01 percentage point')], answer: 'D', miss: bi('1 个基点是 0.01 个百分点。0.25 是 25 个基点。', '1 basis point is 0.01 percentage point. 0.25 is 25 basis points.') },
-        quizzes: [
-          quiz('25 个基点是多少个百分点？', 'How many percentage points are 25 basis points?', [opt('A', '0.25 个百分点', '0.25 percentage points'), opt('B', '2.5 个百分点', '2.5 percentage points'), opt('C', '25 个百分点', '25 percentage points'), opt('D', '0.025 个百分点', '0.025 percentage points')], 'A', {A: ['1 个基点是 0.01 个百分点，25 个就是 0.25。', '1 basis point is 0.01 percentage point, so 25 of them are 0.25.'], B: ['2.5 个百分点会是 250 个基点。', '2.5 percentage points would be 250 basis points.'], C: ['25 个百分点是利率本身的量级，不是这次的变化。', '25 percentage points is the scale of a rate level, not this change.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
-          quiz('降息是否保证比特币上涨？', 'Does a rate cut guarantee bitcoin rises?', [opt('A', '保证', 'It guarantees it'), opt('B', '不保证', 'It does not'), opt('C', '只在首次降息保证', 'Only the first cut'), opt('D', '降得越多越保证', 'A bigger cut guarantees it more')], 'B', {A: ['降息可以被提前计价，公布时不必再涨。', 'A cut can be priced in early, so the announcement need not rally.'], B: ['符合预期和意外是两条不同的路径。', '“As expected” and “a surprise” are two different paths.'], C: ['第一次降息同样可以被提前交易。', 'The first cut can also be traded ahead of time.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
-          quiz('预期可能提前反映在价格里吗？', 'Can expectations already be in the price?', [opt('A', '不可能', 'No'), opt('B', '只反映在美股', 'Only in US stocks'), opt('C', '可能', 'Yes'), opt('D', '只反映在公布之后', 'Only after the release')], 'C', {A: ['若完全不提前反映，符合预期和意外就没有区别。', 'If nothing were priced early, an expected print and a surprise would be the same.'], B: ['加密价格也可以提前反映宏观预期。', 'Crypto prices can also reflect macro expectations early.'], C: ['市场可以在公布前按预期降息重定价。', 'The market can reprice an expected cut before the announcement.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']})
+        scene: bi('降息公布了，币价是不是应该直接追多？', 'The cut is announced, so should you chase the long?'),
+        one: bi('降息或加息若早就被料到，公布时常没后劲，发布会和点阵图偏紧时，降息也可以不涨反跌。', 'If a cut or a hike was already expected, the announcement often has little follow-through, and when the press conference and the dot plot are tight, a cut can fall instead of rise.'),
+        explain: bi('利率，可以理解为借钱的价格。\n降息，意味着政策利率下调，通常有助于降低借钱成本；\n加息则相反。\n1 个基点＝0.01 个百分点。\n25 个基点＝0.25 个百分点。\n比如利率从 5% 降到 4.75%，就是降息 25 个基点。\n想知道市场提前押注了什么，可以参考 CME FedWatch，查看降息、维持不变或加息的概率。\n它反映市场预期，不代表最终结果。\n除了本次利率决定，还要看声明、发布会，以及有更新时的点阵图，判断未来政策会比预期更宽松，还是更紧。', 'The interest rate can be understood as the price of borrowing.\nA cut means the policy rate is lowered, and it usually helps lower the cost of borrowing;\na hike is the opposite.\n1 basis point ＝ 0.01 percentage point.\n25 basis points ＝ 0.25 percentage points.\nFor example, a rate drop from 5% to 4.75% is a cut of 25 basis points.\nTo see what the market bet on beforehand, you can check CME FedWatch for the odds of a cut, no change, or a hike.\nIt reflects market expectations, and it does not represent the final result.\nBesides this rate decision, also read the statement, the press conference, and the dot plot when it is updated, and judge whether future policy will be easier or tighter than expected.'),
+        topic: {
+          title: bi('利率决议出来，市场主要看什么', 'When the rate decision comes out, what the market mainly watches'),
+          body: bi('关键是：实际决定和未来政策信号，与市场原先的预期差多少。\n如果降息符合预期，相关利好可能已被提前消化，公布后能否继续涨，还要看有没有新的宽松信号。\n如果降息幅度大于预期，可能支撑比特币等风险资产；\n但如果市场认为这是经济明显恶化的信号，也可能下跌。\n如果加息幅度大于预期，或暗示未来利率会更高、维持高位更久，通常会给风险资产带来压力。\n即使本次降息，若同时暗示未来降息次数少于市场预期，也可能被理解为「鹰派降息」，价格仍可能下跌。\n即使本次加息，若幅度小于市场预期，或释放接近停止加息的信号，也可能带来反弹。\n公布决定和随后约 30 分钟的发布会，可能带来不同方向的反应。\n决定公布后头几分钟，比特币的第一波涨跌，不一定就是后续方向。', 'The key is how far the actual decision and the future-policy signal sit from what the market expected beforehand.\nIf the cut matches expectations, the related good news may already have been digested, and whether it can keep rising after the release still depends on whether there is a new easing signal.\nIf the cut is larger than expected, it may support risk assets such as bitcoin;\nbut if the market reads it as a sign that the economy has clearly worsened, it can also fall.\nIf the hike is larger than expected, or it hints that future rates will be higher or stay high for longer, it usually puts pressure on risk assets.\nEven if this meeting cuts, if it also hints at fewer future cuts than the market expected, it can be read as a hawkish cut, and price can still fall.\nEven if this meeting hikes, if the size is smaller than the market expected, or it signals that hikes are close to stopping, it can also bring a bounce.\nThe decision release and the press conference about 30 minutes later can bring reactions in different directions.\nIn the first minutes after the decision is released, bitcoin’s first wave of rise or fall is not necessarily the later direction.')
+        },
+        example: bi('教学模拟：利率从 5% 降到 4.75%，就是降息 25 个基点。\n若这 25 个基点符合预期，公布后能否继续涨，还要看有没有新的宽松信号。\n若约 30 分钟后的发布会偏紧，决定公布后头几分钟的第一波，不一定就是后面的方向。', 'Teaching simulation: a rate drop from 5% to 4.75% is a cut of 25 basis points.\nIf these 25 basis points match expectations, whether it can keep rising after the release still depends on whether there is a new easing signal.\nIf the press conference about 30 minutes later is tight, the first wave in the first minutes after the decision is not necessarily the later direction.'),
+        pitfalls: [
+          bi('把基点和百分点当成同一个单位', 'Counting basis points and percentage points as the same unit'),
+          bi('不看发布会和点阵图', 'Ignoring the press conference and the dot plot')
         ],
-        study: { kind: 'panel', rows: [bi('5.00% → 4.75% = 25bp = 0.25 个百分点。', '5.00% → 4.75% = 25bp = 0.25 percentage points.'), bi('已计价的降息，公布时不必上涨。', 'A cut that was already priced need not rally when it is announced.')] }
+        practice: bi('先看 CME FedWatch 里降息、维持不变或加息的概率，再看声明、发布会和点阵图比预期更松还是更紧。', 'First check the CME FedWatch odds of a cut, no change, or a hike, then see whether the statement, the press conference, and the dot plot are easier or tighter than expected.'),
+        check: {
+          ask: bi('利率从 5% 降到 4.75%，市场原先就押注这 25 个基点，发布会却暗示以后降息更少。决定公布后头几分钟，更可能怎样？', 'The rate drops from 5% to 4.75%, the market had already bet on these 25 basis points, and the press conference hints at fewer cuts later. In the first minutes after the decision, what is more likely?'),
+          options: [
+            opt('A', '25 个基点已在预期里，更少的后续降息仍可能让价格下跌', 'The 25 basis points were already expected, and fewer later cuts can still make price fall'),
+            opt('B', '只要降了 25 个基点，头几分钟通常继续涨', 'As long as it cut 25 basis points, the first minutes usually keep rising'),
+            opt('C', '发布会要等下次会议，头几分钟只看这次降了多少', 'The press conference waits for the next meeting, so the first minutes only look at the size of this cut'),
+            opt('D', '符合预期就说明没有波动，头几分钟通常不动', 'A match means there is no move, so the first minutes usually stay still')
+          ],
+          answer: 'A',
+          note: bi('符合预期的 25 个基点可能已被消化，暗示以后降息更少时，价格仍可能下跌。', 'The expected 25 basis points may already have been digested, and when fewer later cuts are hinted, price can still fall.'),
+          miss: bi('符合预期的 25 个基点可能已被消化，暗示以后降息更少时，价格仍可能下跌。', 'The expected 25 basis points may already have been digested, and when fewer later cuts are hinted, price can still fall.')
+        },
+        quizzes: [
+          quiz('降息幅度大于预期，但市场把它读成经济明显恶化。决定公布后头几分钟，更常见的是？', 'The cut is larger than expected, but the market reads it as the economy having clearly worsened. In the first minutes after the decision, what is more common?', [
+            opt('A', '大于预期的降息，头几分钟通常继续得到支撑', 'A larger-than-expected cut usually keeps getting support in the first minutes'),
+            opt('B', '经济恶化只影响股市，比特币头几分钟通常不动', 'A worsening economy hits only stocks, so bitcoin usually stays still in the first minutes'),
+            opt('C', '恶化的信号盖过宽松，头几分钟也可能下跌', 'The worsening signal outweighs the easing, so the first minutes can also fall'),
+            opt('D', '头几分钟先不看原因，等 30 分钟后的发布会', 'Ignore the reason in the first minutes, and wait for the press conference 30 minutes later')
+          ], 'C', {
+            A: ['大于预期可以支撑风险资产，但恶化的信号也可以让它下跌。', 'Larger than expected can support risk assets, but the worsening signal can also make them fall.'],
+            B: ['比特币等风险资产也会跟着这个恶化信号走。', 'Risk assets such as bitcoin also follow this worsening signal.'],
+            C: ['市场若读成经济明显恶化，大于预期的降息也可能下跌。', 'If the market reads it as the economy having clearly worsened, a larger-than-expected cut can also fall.'],
+            D: ['决定公布后头几分钟就可以有第一波，不必空等发布会。', 'The first minutes after the decision can already have a first wave, so you do not wait out the press conference.']
+          }),
+          quiz('决定公布后头几分钟比特币先涨，约 30 分钟后的发布会却更紧。该怎么看？', 'Bitcoin rises in the first minutes after the decision, but the press conference about 30 minutes later is tighter. How should you read it?', [
+            opt('A', '头几分钟已经涨了，后面通常顺着这个方向', 'It already rose in the first minutes, so later usually follows that direction'),
+            opt('B', '发布会只是重复决定，方向通常一样', 'The press conference only repeats the decision, so the direction is usually the same'),
+            opt('C', '更紧的发布会要等下次会议才反映到价格', 'A tighter press conference shows up in price only at the next meeting'),
+            opt('D', '发布会可以走出另一个方向，头几分钟的第一波不一定是后面的方向', 'The press conference can go the other way, and the first wave in the first minutes is not necessarily the later direction')
+          ], 'D', {
+            A: ['决定公布后头几分钟的第一波，不一定就是后续方向。', 'The first wave in the first minutes after the decision is not necessarily the later direction.'],
+            B: ['发布会可以带来和决定不同方向的反应。', 'The press conference can bring a reaction in a different direction from the decision.'],
+            C: ['发布会就在这次决议之后约 30 分钟，不必等到下次会议。', 'The press conference is about 30 minutes after this decision, so you do not wait for the next meeting.'],
+            D: ['公布决定和约 30 分钟后的发布会，可以是不同方向。', 'The decision release and the press conference about 30 minutes later can point different ways.']
+          }),
+          quiz('本次加息，但幅度小于市场预期，并释放接近停止加息的信号。决定公布后头几分钟，更常见的是？', 'This meeting hikes, but by less than the market expected, and it signals that hikes are close to stopping. In the first minutes after the decision, what is more common?', [
+            opt('A', '只要加了息，头几分钟通常给风险资产压力', 'As long as it hiked, the first minutes usually pressure risk assets'),
+            opt('B', '也可能带来反弹', 'It can also bring a bounce'),
+            opt('C', '小于预期说明下次还会补加，头几分钟先观望', 'Smaller than expected means another hike is still owed, so the first minutes wait'),
+            opt('D', '点阵图会把这个较小的幅度抵消，头几分钟通常不动', 'The dot plot cancels this smaller size, so the first minutes usually stay still')
+          ], 'B', {
+            A: ['幅度小于预期、又接近停止加息时，也可以反弹。', 'When the size is smaller than expected and hikes are close to stopping, it can also bounce.'],
+            B: ['幅度小于预期，或接近停止加息，也可能带来反弹。', 'A smaller-than-expected hike, or a signal that hikes are close to stopping, can also bring a bounce.'],
+            C: ['小于预期是这次没那么紧，不是还欠一次加息。', 'Smaller than expected means this time is less tight, not that another hike is still owed.'],
+            D: ['接近停止加息的信号本身就可以带来反弹。', 'The signal that hikes are close to stopping can itself bring a bounce.']
+          })
+        ],
+        study: { kind: 'panel', rows: [
+          bi('从 5.00% 降到 4.75%，就是降 25 个基点。', 'A drop from 5.00% to 4.75% is a cut of 25 basis points.'),
+          bi('已经提前计价的降息，公布时不必上涨。', 'A cut that was already priced need not rally when it is announced.')
+        ] }
       }),
       lesson({
         id: '03', title: bi('DXY 与美债：相关不是因果', 'DXY and Treasuries: correlation is not causation'),
-        scene: bi('美债收益率上升的时候，比特币必须下跌吗？', 'When Treasury yields rise, must bitcoin fall?'),
-        one: bi('相关系数描述两列数一起变动的程度。它不是因果关系，方差为 0 时还无法计算。', 'Correlation describes how two series move together. It is not causation, and if variance is 0 it cannot be calculated.'),
-        explain: bi('皮尔逊相关系数 r 用两列数对各自平均数的偏离来算。\n完全反向的 1 到 5 和 5 到 1，r=−1。\n某一列完全不变时，分母为 0，本课标成不可计算。\n窗口一换，r 可以变号。所以收益率上升不保证 BTC 下跌。', 'Pearson r uses each series’ deviations from its own average.\nThe perfect reverse of 1 through 5 against 5 through 1 has r=−1.\nIf one series never changes, the denominator is 0. This lesson marks that as not computable.\nChange the window and r can change sign. So rising yields do not guarantee BTC falls.'),
-        example: bi('X=1,2,3,4,5，Y=5,4,3,2,1，r=−1。\nX=1,1,1 时，r 不可计算。\n相关很强，仍然可以没有因果关系。', 'X=1,2,3,4,5 and Y=5,4,3,2,1, r=−1.\nWhen X=1,1,1, r cannot be calculated.\nA strong correlation can still have no causal link.'),
-        pitfalls: [bi('把相关系数说成原因', 'Calling a correlation a cause'), bi('在一条横线的数据上硬算 r', 'Forcing r on a flat series')],
-        practice: bi('说明为什么全是同一个数时 r 不能算。', 'Explain why r cannot be computed when every value is the same number.'),
-        check: { ask: bi('换成另一段时间，相关的正负会不会变？', 'If you switch to another time window, can the sign of the correlation change?'), options: [opt('A', '不会，符号永远不变', 'No, the sign never changes'), opt('B', '只有算不出来才会变', 'Only when it cannot be calculated'), opt('C', '会，换一段窗口就可以变号', 'Yes, a different window can flip the sign'), opt('D', '只有比特币才会变', 'Only bitcoin’s correlation can change')], answer: 'C', miss: bi('窗口一换，相关就可以从正变成负，或反过来。它不是永远同一个号。', 'Change the window and the correlation can go from positive to negative, or the other way. The sign is not permanent.') },
-        quizzes: [
-          quiz('相关是不是因果？', 'Is correlation causation?', [opt('A', '是', 'Yes'), opt('B', '|r| 大于 0.8 就是', 'Yes when |r| is above 0.8'), opt('C', '连续三个月就是', 'Yes, after three months in a row'), opt('D', '不是', 'No')], 'D', {A: ['一起涨跌不等于一个造成另一个。', 'Rising and falling together does not mean one caused the other.'], B: ['更接近 ±1 只是更同步，仍然不是因果证明。', 'Closer to ±1 only means more synchronized. It is still not proof of cause.'], C: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.'], D: ['r 没有包含因果方向。', 'r does not contain a causal direction.']}),
-          quiz('收益率上升，比特币必须下跌吗？', 'If yields rise, must bitcoin fall?', [opt('A', '不必须', 'It need not'), opt('B', '必须', 'It must'), opt('C', '只在 r 为负的那天必须', 'Only on days when r is negative'), opt('D', '只在美股开盘必须', 'Only when US stocks are open')], 'A', {A: ['一个历史窗口的 r 管不到下一根 K 线。', 'r from one historical window does not govern the next candle.'], B: ['换一个窗口，相关就可以变号。', 'Change the window and the correlation can change sign.'], C: ['当天的 r 本身也不是交易指令。', 'That day’s r is not a trade instruction either.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
-          quiz('某一列完全不变时，r 应该？', 'When one series is completely flat, r should be?', [opt('A', '0', '0'), opt('B', '不可计算', 'Not computable'), opt('C', '1', '1'), opt('D', '−1', '−1')], 'B', {A: ['0 表示没有线性相关，但分母已经是 0，公式不能算。', '0 would mean no linear correlation, but the denominator is already 0, so the formula cannot be computed.'], B: ['方差为 0，本课标成不可计算。', 'Variance is 0, so this lesson marks it not computable.'], C: ['1 表示完全同向，横线并不是同向变动。', '1 means a perfect match in direction. A flat line is not that.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']})
+        scene: bi('美元指数突破近高，比特币通常怎样？', 'When the dollar index breaks a recent high, what does bitcoin usually do?'),
+        one: bi('美元和十年美债收益率一起走强时比特币常常偏弱，一起走弱时常常好过一些，但这不是谁在指挥谁。', 'When the dollar and the ten-year yield rise together bitcoin is often softer, and when they fall together it is often easier, but neither one is giving orders to the other.'),
+        explain: bi('美元指数看美元相对一篮子货币的强弱。\n十年美债收益率高，借美元更贵。\n要盯的画面是美元指数突破近一段的高点，或数据后十年收益率突然跳升。\n两条一起走，只说明这一段同向，不说明谁造成了谁。', 'The dollar index looks at the dollar against a basket of currencies.\nA high ten-year yield means borrowing dollars is more expensive.\nThe picture to watch is the dollar index breaking a recent high, or the ten-year yield jumping after data.\nMoving together only says they pointed the same way in this stretch, and it does not say which one caused the other.'),
+        topic: {
+          title: bi('美元和美债一起动的时候', 'When the dollar and yields move together'),
+          body: bi('美元指数突破近高，十年收益率也在跳，比特币常常更难涨。\n美元走弱、十年收益率回落，比特币常常好过一些。\n通胀数据偏热时，收益率跳升、币价偏弱更常见。\n增长担心时，收益率和币价也可以一起跌。\n美元在涨、币价却因为别的利好继续涨时，不要用美元一条线硬做空。\n换一段日子，这个关系可以反过来。', 'When the dollar index breaks a recent high and the ten-year yield is jumping too, bitcoin is often harder to lift.\nWhen the dollar is weak and the ten-year yield is falling, bitcoin is often easier.\nWhen inflation data runs hot, a jumping yield with a softer coin is more common.\nWhen growth is the worry, yields and the coin can fall together.\nWhen the dollar is rising and the coin keeps rising on other good news, do not force a short from the dollar line alone.\nSwitch the stretch of time and this relationship can flip.')
+        },
+        example: bi('教学模拟：数据公布后，十年美债收益率跳升，美元指数突破近一段的高点。\n这种时候比特币常常更难涨。\n若下一次数据让两条都回落，币价又常常好过一些。', 'Teaching simulation: after the release, the ten-year yield jumps, and the dollar index breaks a recent high.\nAt a time like this bitcoin is often harder to lift.\nIf the next release pulls both lines back down, the coin is often easier again.'),
+        pitfalls: [
+          bi('美元一突破近高就满仓做空', 'Going full short the moment the dollar breaks a recent high'),
+          bi('把一起走说成谁造成了谁', 'Calling a move together a case of one causing the other')
         ],
-        study: { kind: 'panel', headers: ['X', 'Y'], cells: [['1', '5'], ['2', '4'], ['3', '3'], ['4', '2'], ['5', '1']], rows: [bi('这一组 r=−1。常数序列不可计算。', 'This pair has r=−1. A constant series cannot be computed.')] }
+        practice: bi('看到美元指数或十年收益率跳动时，先看它们是一起走强还是一起走弱。', 'When the dollar index or the ten-year yield jumps, first see whether they are rising together or falling together.'),
+        check: {
+          ask: bi('数据出来后十年收益率跳升，美元指数也突破了近高，比特币更常见的是？', 'After the data the ten-year yield jumps, and the dollar index also breaks a recent high, what is more common for bitcoin?'),
+          options: [
+            opt('A', '收益率升说明经济好，币价通常跟着涨', 'A rising yield means a good economy, so the coin usually rises with it'),
+            opt('B', '美元突破近高是滞后的，通常不用管', 'A dollar break of a recent high is late, so it can usually be ignored'),
+            opt('C', '只看收益率就够，美元指数和币价无关', 'The yield is enough, and the dollar index has nothing to do with the coin'),
+            opt('D', '两边一起走强，比特币常常更难涨', 'With both rising together, bitcoin is often harder to lift')
+          ],
+          answer: 'D',
+          note: bi('美元指数突破近高、十年收益率一起跳，比特币常常更难涨。', 'When the dollar index breaks a recent high and the ten-year yield jumps with it, bitcoin is often harder to lift.'),
+          miss: bi('美元指数突破近高、十年收益率一起跳，比特币常常更难涨。', 'When the dollar index breaks a recent high and the ten-year yield jumps with it, bitcoin is often harder to lift.')
+        },
+        quizzes: [
+          quiz('美元走弱，十年收益率也在回落，比特币更常见的是？', 'The dollar is weak and the ten-year yield is falling too, what is more common for bitcoin?', [
+            opt('A', '收益率回落通常是衰退，币价先跌', 'A falling yield is usually a recession, so the coin drops first'),
+            opt('B', '两条都弱，比特币常常更容易涨', 'With both weak, bitcoin is often easier to lift'),
+            opt('C', '美元走弱是滞后的，通常不用管', 'A weak dollar is late, so it can usually be ignored'),
+            opt('D', '两条都弱时，币价通常先横住', 'When both are weak, the coin usually chops first')
+          ], 'B', {
+            A: ['这一段两条都弱，不是先读成衰退下跌。', 'In this stretch both are weak, so you do not read a recession drop first.'],
+            B: ['美元走弱、收益率回落时，比特币常常更容易涨。', 'When the dollar is weak and the yield falls, bitcoin is often easier to lift.'],
+            C: ['美元走弱和收益率回落要一起看，不是放下不管。', 'A weak dollar and a falling yield are read together, not set aside.'],
+            D: ['两条都弱时更常见的是更容易涨，不是先横住。', 'When both are weak, easier to lift is more common, not a chop first.']
+          }),
+          quiz('大家担心增长，十年收益率和比特币一起跌，更常见的读法是？', 'People worry about growth, and the ten-year yield and bitcoin fall together, what is the more common read?', [
+            opt('A', '增长担心时，它们可以一起跌', 'When growth is the worry, they can fall together'),
+            opt('B', '币价一跌，就说明美元一定在涨', 'Once the coin falls, the dollar must be rising'),
+            opt('C', '收益率跌了，比特币通常不跟', 'When the yield falls, bitcoin usually does not follow'),
+            opt('D', '一起跌，就是美元在指挥币价', 'Falling together means the dollar is giving the coin orders')
+          ], 'A', {
+            A: ['增长担心时，收益率和币价可以一起跌。', 'When growth is the worry, the yield and the coin can fall together.'],
+            B: ['一起跌不是美元一定在涨的证明。', 'Falling together is not proof the dollar must be rising.'],
+            C: ['这一题里币价正跟着收益率一起跌。', 'In this question the coin is falling together with the yield.'],
+            D: ['一起跌只是同向，不是谁在指挥谁。', 'Falling together is the same direction, not one giving orders.']
+          }),
+          quiz('美元在涨，币价却因为别的利好继续涨，该怎么做？', 'The dollar is rising, but the coin keeps rising on other good news, what should you do?', [
+            opt('A', '美元没跌就先减仓观望', 'If the dollar has not fallen, cut the position and wait'),
+            opt('B', '利好通常盖不过美元，还是偏空', 'Good news usually cannot beat the dollar, so it still leans short'),
+            opt('C', '不要用美元一条线硬做空', 'Do not force a short from the dollar line alone'),
+            opt('D', '等美元回到近低再承认这段涨', 'Wait until the dollar is back at a recent low before you admit this rise')
+          ], 'C', {
+            A: ['别的利好正在推币价，美元没跌不是减仓的理由。', 'Other good news is lifting the coin, and a dollar that has not fallen is not a reason to cut.'],
+            B: ['这一段币价在涨，不能说利好通常盖不过美元。', 'The coin is rising in this stretch, so you cannot say good news usually loses to the dollar.'],
+            C: ['别的利好正在推币价，不要只凭美元这一条去做空。', 'Other good news is lifting the coin, so do not short from the dollar line alone.'],
+            D: ['不用等美元回到近低，才承认币价在涨。', 'You do not wait for the dollar to return to a recent low before you admit the coin is rising.']
+          })
+        ],
+        study: { kind: 'panel', headers: ['X', 'Y'], cells: [['1', '5'], ['2', '4'], ['3', '3'], ['4', '2'], ['5', '1']], rows: [
+          bi('这两列数完全反向。某一列若完全不变，这段就没有一起变动可看。', 'These two series move in opposite directions. If one series never changes, this stretch has no co-movement to read.')
+        ] }
       }),
       lesson({
         id: '04', title: bi('BTC 减半：减的是新币补贴', 'The BTC halving: what is cut is the new-coin subsidy'),
-        scene: bi('减半之后，你钱包里的币会不会也少一半？', 'After the halving, do the coins in your wallet also get cut in half?'),
-        one: bi('减半减少的是新挖出的区块补贴。已经在钱包里的余额不会被砍半。历史也不保证下一次的价格路径。', 'The halving cuts the new block subsidy. Balances already in wallets are not cut in half. History also does not guarantee the next price path.'),
-        explain: bi('补贴按区块高度从 50、25、12.5、6.25 到 3.125 这样减。\n时间不是一张固定日历，要看区块高度。\n已有余额不受这次补贴规则改写。\n过去减半后的价格路径不能外推成下一次必须重复。', 'The subsidy steps down by block height: 50, 25, 12.5, 6.25, then 3.125.\nIt is not a fixed calendar date. It follows block height.\nExisting balances are not rewritten by this subsidy rule.\nThe price path after a past halving cannot be extrapolated into “the next one must repeat.”'),
-        example: bi('补贴 50 减到 25，减的是新发行。\n你原来的 1 枚 BTC 还是 1 枚。\n累积供应曲线变缓，不是余额减半。', 'A subsidy cut from 50 to 25 cuts new issuance.\nThe 1 BTC you already had is still 1 BTC.\nThe cumulative supply curve slows. Balances are not halved.'),
-        pitfalls: [bi('以为钱包余额会被协议砍半', 'Thinking the protocol cuts wallet balances in half'), bi('用过去的涨幅预订下一次', 'Booking the next rally from a past gain')],
-        practice: bi('指出减半改变的是区块补贴，不是余额。', 'Point out that the halving changes the block subsidy, not balances.'),
-        check: { ask: bi('减半的时间是一张固定日历吗？', 'Is the halving date a fixed calendar?'), options: [opt('A', '是，每年同一天', 'Yes, the same day each year'), opt('B', '不是，要看区块高度', 'No, it follows the block height'), opt('C', '由交易所指定日期', 'The exchange sets the date'), opt('D', '只看减半那个月', 'Only the month of the halving matters')], answer: 'B', miss: bi('减半看的是区块高度，不是每年同一天，也不是交易所指定的日子。', 'The halving follows block height. It is not the same calendar day each year, and an exchange does not set it.') },
-        quizzes: [
-          quiz('减半影响的是什么？', 'What does the halving affect?', [opt('A', '所有人的余额', 'Everyone’s balance'), opt('B', '已确认交易', 'Confirmed transactions'), opt('C', '区块补贴', 'The block subsidy'), opt('D', '已经挖出的币', 'Coins already mined')], 'C', {A: ['已有余额不被改写。', 'Existing balances are not rewritten.'], B: ['已经确认的交易不会因为减半被撤销。', 'A confirmed transaction is not undone by the halving.'], C: ['新区块的补贴按高度减半。', 'The subsidy of a new block is halved by height.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
-          quiz('已有余额会被减半吗？', 'Are existing balances halved?', [opt('A', '会', 'Yes'), opt('B', '只减零头', 'Only the dust'), opt('C', '锁仓的那部分会', 'Yes, for the locked part'), opt('D', '否', 'No')], 'D', {A: ['减的是新发行补贴，不是账本上的余额。', 'What is cut is the new issuance subsidy, not balances on the ledger.'], B: ['没有“只减零头”这条规则。', 'There is no rule that only dust is cut.'], C: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.'], D: ['1 枚还是 1 枚。', '1 coin is still 1 coin.']}),
-          quiz('历史路径保证下一次吗？', 'Does the historical path guarantee the next time?', [opt('A', '不保证', 'It does not'), opt('B', '保证', 'It does'), opt('C', '只保证减半当月', 'Only the halving month'), opt('D', '每次都走出同一段涨幅', 'Each time it rises by the same amount')], 'A', {A: ['补贴规则可以重复，价格路径不必重复。', 'The subsidy rule can repeat. The price path need not.'], B: ['过去的价格不是协议规则。', 'Past prices are not a protocol rule.'], C: ['当月同样没有价格保证。', 'The month of the halving has no price guarantee either.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']})
+        scene: bi('减半当天新闻都说利好，价格是不是还要再涨？', 'Halving-day headlines are all bullish, so does price still have to rise again?'),
+        one: bi('减半减的是新挖出来的补贴，钱包里的币不会少，高点常常不在减半当天。', 'The halving cuts the new mining subsidy, coins already in wallets stay put, and the high is often not on the halving day.'),
+        explain: bi('减半是新区块的奖励变少。\n奖励按区块高度从 50、25、12.5、6.25 到 3.125。\n时间看区块高度，不是每年同一天。\n你原来的 1 枚还是 1 枚。\n过去减半后的价格路径不能用来预测下一次。\n读减半新闻时，先看价格在消息铺开前涨过没有。', 'The halving makes the reward of a new block smaller.\nThe reward steps down by block height, from 50, to 25, to 12.5, to 6.25, to 3.125.\nThe timing follows block height, not the same calendar day each year.\nThe 1 coin you already had is still 1 coin.\nThe price path after a past halving cannot be used to predict the next one.\nWhen you read halving news, first see whether price already rose before the headlines spread.'),
+        topic: {
+          title: bi('减半前后，价格通常什么时候涨', 'Around a halving, when price usually rises'),
+          body: bi('减半前几个月故事很热时，价格常常先涨一截。\n减半当天若新闻才铺满，而价格已经涨过，常常横住或先回落，像利好出尽。\n过去几轮的周期高点，大约在减半后 12 到 18 个月。\n2024 年 3 月比特币第一次在减半前就创了新高，但这一轮的高点仍在减半后约 18 个月，也就是 2025 年 10 月。\n每次路径都不一样，不能用上一次的涨幅预订下一次。\n减半前后也可以一直横着，故事很热也不涨。', 'When the story is hot in the months before the halving, price often rises a notch first.\nIf the headlines only fill the halving day and price already rose, it often chops or pulls back first, like the good news is used up.\nCycle highs in past rounds came about 12 to 18 months after the halving.\nIn March 2024 bitcoin made a new high before a halving for the first time, but this cycle’s high was still about 18 months after the halving, in October 2025.\nEach path is different, so you cannot book the next rally from the last one’s gain.\nPrice can also chop straight through the halving and not rise even while the story is hot.')
+        },
+        example: bi('教学模拟：补贴从 50 减到 25，减的是新发行。\n你原来的 1 枚还是 1 枚。\n累积供应曲线变缓，不是余额减半。\n新闻在当天铺满、价格却早已涨过时，常常是故事已经走完。', 'Teaching simulation: a subsidy cut from 50 to 25 cuts new issuance.\nThe 1 coin you already had is still 1 coin.\nThe cumulative supply curve slows, and balances are not halved.\nWhen headlines fill the day but price rose long before, the story is often already finished.'),
+        pitfalls: [
+          bi('减半减供给，当天必涨', 'A halving cuts supply, so the day must rise'),
+          bi('用 12 到 18 个月当成下一次的闹钟', 'Using 12 to 18 months as an alarm clock for the next time')
         ],
-        study: { kind: 'panel', headers: [bi('阶段', 'Stage'), bi('补贴', 'Subsidy')], cells: [['1', '50'], ['2', '25'], ['3', '12.5'], ['4', '6.25'], ['5', '3.125']], rows: [bi('按区块高度递减。已有余额不减。', 'It steps down by block height. Existing balances are not reduced.')] }
+        practice: bi('读一条减半新闻时，先看它是提前几个月就在讲，还是当天才铺满。', 'When you read a halving headline, first see whether it was already the story for months, or whether it only filled the day.'),
+        check: {
+          ask: bi('减半当天新闻都在说利好，价格在这之前已经涨过一截，当天更常见的是？', 'On the halving day every headline is bullish, and price already rose a notch before it, what is more common that day?'),
+          options: [
+            opt('A', '减半减供给，当天通常还要大涨', 'A halving cuts supply, so the day usually surges again'),
+            opt('B', '常常横住或先回落，故事已经走完', 'Often chops or pulls back first, because the story is already finished'),
+            opt('C', '减半只影响矿工，价格通常不动', 'The halving only affects miners, so price usually does not move'),
+            opt('D', '当天新闻越多，通常越要追', 'The more headlines that day, the more you usually chase')
+          ],
+          answer: 'B',
+          note: bi('新闻当天才铺满、价格已经涨过，常常是利好出尽，横住或先回落。', 'When headlines only fill the day and price already rose, it is often used-up good news, a chop or a pullback first.'),
+          miss: bi('新闻当天才铺满、价格已经涨过，常常是利好出尽，横住或先回落。', 'When headlines only fill the day and price already rose, it is often used-up good news, a chop or a pullback first.')
+        },
+        quizzes: [
+          quiz('2024 年 3 月减半前就有过新高，这一轮高点仍在减半后约 18 个月，这说明什么？', 'March 2024 already had a new high before the halving, and this cycle’s high was still about 18 months after, what does that say?', [
+            opt('A', '3 月那个新高就是这一轮的顶', 'The March new high was this cycle’s top'),
+            opt('B', '高点在减半后，3 月那个就不算新高', 'If the high is after the halving, the March print does not count as a new high'),
+            opt('C', '减半前可以先创新高，整轮高点仍可以在减半之后', 'A new high can come before the halving, and the cycle high can still come after it'),
+            opt('D', '18 个月一到，价格通常必须见顶', 'Once 18 months arrive, price usually has to top')
+          ], 'C', {
+            A: ['3 月是减半前的第一次新高，不是这一轮最后的高点。', 'March was the first new high before the halving, not this cycle’s final high.'],
+            B: ['减半前的新高仍然是新高，只是还不是整轮的高点。', 'The pre-halving new high is still a new high, and it is just not yet the cycle high.'],
+            C: ['减半前可以先创新高，这一轮的高点仍在减半后约 18 个月。', 'A new high can print before the halving, and this cycle’s high was still about 18 months after it.'],
+            D: ['18 个月是这一轮大约的位置，不是必须见顶的闹钟。', '18 months is about where this cycle peaked, not an alarm that price must top.']
+          }),
+          quiz('用上一次减半后的涨幅去预订下一次，这样读对吗？', 'Using the gain after the last halving to book the next one, is that a good read?', [
+            opt('A', '对，供给每次少一半，涨幅也差不多', 'Yes, supply halves each time, so the gain is about the same'),
+            opt('B', '对，12 到 18 个月后会重复同一段', 'Yes, the same stretch repeats 12 to 18 months later'),
+            opt('C', '只对矿工成本涨的那一段', 'Only for the stretch where miner costs rise'),
+            opt('D', '不对，每次路径可以完全不一样', 'No, each path can be completely different')
+          ], 'D', {
+            A: ['新币变少的比例不是价格涨幅。', 'The proportion of new coins cut is not the price gain.'],
+            B: ['12 到 18 个月是过去高点大约的距离，不是同一段涨幅。', '12 to 18 months is about how far past highs sat, not the same gain.'],
+            C: ['矿工成本不是把上一次涨幅搬到下一次的理由。', 'Miner costs are not a reason to carry the last gain into the next time.'],
+            D: ['奖励规则可以重复，价格路径不必重复。', 'The reward rule can repeat, and the price path need not.']
+          }),
+          quiz('一条「减半利好」的新闻，先看哪一件事？', 'A headline that says the halving is bullish, what do you look at first?', [
+            opt('A', '先看价格在新闻铺开前涨过没有', 'First see whether price already rose before the headline spread'),
+            opt('B', '先看钱包余额会不会少', 'First see whether wallet balances will shrink'),
+            opt('C', '先看矿工有没有关停', 'First see whether miners have shut off'),
+            opt('D', '先看新闻是不是写着供给减半所以必涨', 'First see whether the headline says supply is cut so it must rise')
+          ], 'A', {
+            A: ['价格在消息铺开前已经涨过，这条利好常常已经走完。', 'If price already rose before the headline spread, this good news is often already finished.'],
+            B: ['钱包余额不会因为减半变少，也不是读新闻的第一步。', 'Wallet balances do not shrink because of the halving, and that is not the first step in reading the headline.'],
+            C: ['矿工关不停，不决定这条新闻是不是已经走完。', 'Whether miners shut off does not decide whether this headline is already finished.'],
+            D: ['供给变少不是当天必涨，读新闻先看价格涨过没有。', 'Less new supply is not a rise that must happen that day, so when you read the headline first see whether price already rose.']
+          })
+        ],
+        study: { kind: 'panel', headers: [bi('阶段', 'Stage'), bi('补贴', 'Subsidy')], cells: [['1', '50'], ['2', '25'], ['3', '12.5'], ['4', '6.25'], ['5', '3.125']], rows: [
+          bi('按区块高度递减。已有余额不减。', 'It steps down by block height. Existing balances are not reduced.')
+        ] }
       }),
       lesson({
         id: '05', title: bi('宏观事件日历：先计划再看结果', 'A macro calendar: plan before the result'),
-        scene: bi('数据公布前，计划里可以写“不交易”吗？', 'Before the release, can the plan say “no trade”?'),
-        one: bi('先写时间、时区和你允许的动作，再看结果。一个变量不够解释价格，不交易也可以是计划。', 'Write the time, the timezone, and the actions you allow before you see the result. One variable is not enough to explain price, and no-trade can be the plan.'),
-        explain: bi('同一时刻在不同时区不是同一个钟点。\n公布前写下：看哪个数据、预期是多少、触发后做什么、不触发做什么。\n只盯一个数字，忽略当时的仓位和流动性，解释不了价格。\n计划可以明确写成这次不交易。', 'The same instant is not the same clock time in every timezone.\nBefore the release, write which data you watch, what the forecast is, what you do if it triggers, and what you do if it does not.\nWatching one number while ignoring positions and liquidity does not explain price.\nThe plan can explicitly say this event is a no-trade.'),
-        example: bi('虚构事件：2027-01-15 13:30 UTC。\nCPI 预期 2.8%，模拟实际值 3.1%。\n在看见 3.1% 之前，计划已经写好，而不是事后改口。', 'Fictional event: 2027-01-15 13:30 UTC.\nCPI forecast 2.8%, simulated actual 3.1%.\nThe plan is written before 3.1% is seen, not rewritten afterward.'),
-        pitfalls: [bi('不看时区就对钟点', 'Matching the clock time without checking the timezone'), bi('用一个宏观数字解释全部涨跌', 'Explaining the whole move with one macro number')],
-        practice: bi('先写下“不交易”或具体触发条件，再看模拟实际值。', 'Write “no trade” or a specific trigger before you look at the simulated actual.'),
-        check: { ask: bi('模拟实际值公布之前，计划应该怎样？', 'Before the simulated actual is released, what should the plan be like?'), options: [opt('A', '先写好看哪个数据，以及做还是不做', 'Write which data you watch, and whether you trade or not, first'), opt('B', '看见数字再决定做不做', 'Decide whether to trade after you see the number'), opt('C', '等本地新闻标题出来再写', 'Wait for the local headline, then write it'), opt('D', '只记一个钟点，不用写动作', 'Write only a clock time, and no action')], answer: 'A', miss: bi('计划要在看见结果之前写好。只记钟点，还是不知道到点做什么。', 'The plan is written before the result is seen. A clock time alone does not say what you do when it arrives.') },
-        quizzes: [
-          quiz('公布前要核对时区吗？', 'Check the timezone before the release?', [opt('A', '不用', 'No'), opt('B', '要', 'Yes'), opt('C', '看完结果再核', 'Check after the result'), opt('D', '只对北京时间就行', 'Beijing time is enough')], 'B', {A: ['不核对就会把别的钟点当成公布时刻。', 'Without checking, you treat a different clock time as the release.'], B: ['同一个 UTC 时刻，本地显示可以差几个小时。', 'The same UTC instant can be several hours different on a local clock.'], C: ['事后再核，计划已经来不及按原时钟执行。', 'Checking afterward is too late to follow the original clock.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
-          quiz('只看一个变量够解释价格吗？', 'Is one variable enough to explain price?', [opt('A', '够', 'Yes'), opt('B', '实际值高于预期就够', 'Yes if the actual beats the forecast'), opt('C', '不够', 'No'), opt('D', '两个标题一样就够', 'Two matching headlines are enough')], 'C', {A: ['仓位、流动性和当时的定价都会一起作用。', 'Positions, liquidity, and what was already priced all act together.'], B: ['高于预期仍然只是一个输入。', 'Beating the forecast is still only one input.'], C: ['一个 CPI 数字不是价格的全部原因。', 'One CPI number is not the whole cause of price.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
-          quiz('计划可以是这次不交易吗？', 'Can the plan be “no trade” this time?', [opt('A', '不可以', 'No'), opt('B', '只有亏钱后可以', 'Only after a loss'), opt('C', '只有行情不动时可以', 'Only when the market is not moving'), opt('D', '可以', 'Yes')], 'D', {A: ['没有规则要求每次宏观数据都必须下单。', 'No rule says every macro print must be traded.'], B: ['不需要等亏了才允许观望。', 'You do not need a loss before standing aside is allowed.'], C: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.'], D: ['不交易是一个明确动作，可以写在公布之前。', 'No-trade is an explicit action. It can be written before the release.']})
+        scene: bi('日历上的钟点还没核对，能先写做还是不做吗？', 'Before the clock time on the calendar is checked, can you already write whether you trade?'),
+        one: bi('先把公布时间、时区和做还是不做写好，再看数字，公布前后的来回刺常常不可靠。', 'Write the release time, the timezone, and whether you trade before you see the number, because the pokes around the release are often unreliable.'),
+        explain: bi('CPI 和非农是纽约时间 8:30。\n北京时间夏令时是 20:30，冬令时是 21:30。\n美联储决议是纽约时间 14:00。\n北京时间夏令时是第二天 02:00，冬令时是 03:00。\n同一个时刻，各地钟点不一样，写错时区就会看错那一根。\n计划写成这次不做，也是一种做法。', 'CPI and payrolls are 8:30 New York time.\nThat is 20:30 Beijing time in summer time, and 21:30 in winter.\nThe Fed decision is 14:00 New York time.\nThat is 02:00 the next day Beijing time in summer time, and 03:00 in winter.\nThe same instant is not the same clock time everywhere, and the wrong timezone makes you watch the wrong candle.\nWriting no trade this time is also a way to act.'),
+        topic: {
+          title: bi('公布日历上，先写什么再看什么', 'On the release calendar, what you write before you look'),
+          body: bi('公布前一段时间，价格常常来回刺，方向不可靠。\n钟点写错，就会把别的小时当成公布那一根。\n计划若写了这次不做，波动大也不是临时改计划的理由。\n数字和预期差不多，但买卖盘很薄时，第一下可以冲得更远，然后常常回去。\n日历上的时间和做不做，要在数字出来之前写好。', 'In the stretch before the release, price often pokes back and forth, and the direction is unreliable.\nThe wrong clock time makes you treat another hour as the release candle.\nIf the plan says no trade this time, a large move is not a reason to rewrite it on the spot.\nWhen the number matches the forecast but the book is thin, the first move can run farther, and then it often comes back.\nWrite the time and whether you trade on the calendar before the number comes out.')
+        },
+        example: bi('教学模拟：日历写着 CPI，纽约时间 8:30。\n夏令时应写成北京时间 20:30，不是 21:30。\n钟点没写对之前，来回刺的方向都先不要跟。', 'Teaching simulation: the calendar says CPI, 8:30 New York time.\nIn summer time that should be written as 20:30 Beijing time, not 21:30.\nBefore the clock time is right, do not follow the direction of the pokes.'),
+        pitfalls: [
+          bi('夏令时和冬令时用同一个北京时间', 'Using the same Beijing time for summer time and winter'),
+          bi('来回刺的时候临时改做不做', 'Changing trade or no-trade while price is poking back and forth')
         ],
-        study: { kind: 'panel', rows: [bi('虚构：2027-01-15 13:30 UTC。', 'Fictional: 2027-01-15 13:30 UTC.'), bi('CPI 预期 2.8%，模拟实际 3.1%。先写计划再看结果。', 'CPI forecast 2.8%, simulated actual 3.1%. Write the plan before the result.')] }
+        practice: bi('先在日历上写出纽约时间和对应的北京时间，再写这次做还是不做。', 'On the calendar, write the New York time and the matching Beijing time before you write whether you trade this time.'),
+        check: {
+          ask: bi('数字和预期差不多，但当时买卖盘很薄，第一下更常见的是？', 'The number matches the forecast, but the book is thin, what is more common for the first move?'),
+          options: [
+            opt('A', '和预期差不多，薄盘口也通常不动', 'A match usually does not move, even on a thin book'),
+            opt('B', '薄盘口会让这一下冲得更远，然后常常回去', 'A thin book lets this move run farther, and then it often comes back'),
+            opt('C', '预期对上了，通常一路涨到收盘', 'Once it matches, it usually rises straight into the close'),
+            opt('D', '盘口一薄就改成追第一下', 'A thin book means you switch to chasing the first move')
+          ],
+          answer: 'B',
+          note: bi('数字和预期差不多、买卖盘很薄时，第一下可以冲得更远，然后常常回去。', 'When the number matches the forecast and the book is thin, the first move can run farther, and then it often comes back.'),
+          miss: bi('数字和预期差不多、买卖盘很薄时，第一下可以冲得更远，然后常常回去。', 'When the number matches the forecast and the book is thin, the first move can run farther, and then it often comes back.')
+        },
+        quizzes: [
+          quiz('公布前价格来回刺，计划还没写做不做，这时更稳的是？', 'Before the release price is poking back and forth, and the plan does not yet say whether you trade, what is the steadier choice?', [
+            opt('A', '先写好做不做，不跟每一刺', 'Write trade or no-trade first, and do not follow every poke'),
+            opt('B', '刺破前高就先做，回来再改计划', 'Trade the poke through the prior high, and rewrite the plan if it comes back'),
+            opt('C', '等标题出来再决定追不追', 'Wait for the headline, then decide whether to chase'),
+            opt('D', '来回刺通常是方向，跟着最狠的一刺', 'The pokes are usually the direction, so follow the sharpest one')
+          ], 'A', {
+            A: ['来回刺方向不可靠，先把做不做写好。', 'The pokes have an unreliable direction, so write trade or no-trade first.'],
+            B: ['刺出去再回来很常见，不是先做再改计划。', 'A poke that comes back is common, so do not trade first and rewrite the plan after.'],
+            C: ['标题出来再追，最容易追在回头的那一段。', 'Chasing after the headline is the easiest way to chase the part that fades.'],
+            D: ['来回刺不是方向，最狠的一刺也可以马上回去。', 'The pokes are not the direction, and the sharpest one can come back at once.']
+          }),
+          quiz('美联储决议是纽约时间 14:00，冬令时的北京时间该记成几点？', 'The Fed decision is 14:00 New York time, what Beijing time should you write in winter?', [
+            opt('A', '20:30，和 CPI 同一个点', '20:30, the same slot as CPI'),
+            opt('B', '14:00，纽约时间不用换', '14:00, with no need to convert New York time'),
+            opt('C', '03:00，冬令时比夏令时晚一小时', '03:00, because winter is one hour later than summer time'),
+            opt('D', '02:00，冬令时和夏令时一样', '02:00, the same in winter and in summer time')
+          ], 'C', {
+            A: ['20:30 是夏令时的 CPI，不是决议。', '20:30 is CPI in summer time, not the decision.'],
+            B: ['不换时区，就会看错那一根。', 'Without converting the timezone, you watch the wrong candle.'],
+            C: ['冬令时决议是北京时间 03:00，夏令时是 02:00。', 'In winter the decision is 03:00 Beijing time, and in summer time it is 02:00.'],
+            D: ['夏令时的决议是北京时间 02:00，冬令时不是同一个点。', 'The decision in summer time is 02:00 Beijing time, and winter is not the same slot.']
+          }),
+          quiz('计划写了这次不交易，公布后波动却很大，该怎么做？', 'The plan says no trade this time, but the move after the release is large, what should you do?', [
+            opt('A', '波动大就改成追第一下', 'A large move means you switch to chasing the first spike'),
+            opt('B', '仍然按不交易做', 'Still follow the no-trade'),
+            opt('C', '等它回去再按波动加大', 'Wait for it to come back, then size up with the move'),
+            opt('D', '只在夏令时才坚持不做', 'Keep the no-trade only in summer time')
+          ], 'B', {
+            A: ['波动大不是临时改成追的理由。', 'A large move is not a reason to switch to a chase on the spot.'],
+            B: ['写了不做，就仍然不做。', 'If you wrote no trade, you still do not trade.'],
+            C: ['不交易也包括不在回去时加大。', 'No-trade also means not sizing up on the way back.'],
+            D: ['做不做跟夏令时冬令时无关，跟你事先写的有关。', 'Trade or no-trade does not depend on summer time or winter, and it depends on what you wrote beforehand.']
+          })
+        ],
+        study: { kind: 'panel', rows: [
+          bi('CPI 和非农：纽约 8:30，北京夏令时 20:30，冬令时 21:30。', 'CPI and payrolls: 8:30 New York, 20:30 Beijing in summer time, 21:30 in winter.'),
+          bi('美联储决议：纽约 14:00，北京夏令时 02:00，冬令时 03:00。', 'Fed decision: 14:00 New York, 02:00 Beijing in summer time, 03:00 in winter.'),
+          bi('虚构事件：2027-01-15 13:30 UTC。', 'Fictional event: 2027-01-15 13:30 UTC.'),
+          bi('CPI 预期 2.8%，模拟实际 3.1%。先写计划再看结果。', 'CPI forecast 2.8%, simulated actual 3.1%. Write the plan before the result.')
+        ] }
       })
     ]
   };

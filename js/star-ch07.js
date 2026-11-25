@@ -5,67 +5,268 @@
     lessons: [
       lesson({
         id: '01', title: bi('项目研究：别只看币价', 'Project research: do not look only at the coin price'),
-        scene: bi('地址数到了 10 万，是不是就有 10 万人在用？', 'The address count reached 100,000. Does that mean 100,000 people are using it?'),
-        one: bi('研究项目要分开“项目声称”和“你核对过的证据”。地址数不是人数，网页上的收入也要核对来源。', 'Research separates what the project claims from evidence you have checked. An address count is not a head count, and revenue on a website still needs a source.'),
-        explain: bi('虚构项目“星桥协议”只作教学。\n每个说法标成：声称、已核对、未知。\n10 万个地址可以是程序或同一控制者。\n代币是否捕获价值，要看机制，而不是看价格涨过。', 'The fictional project “Starbridge Protocol” is for teaching only.\nMark each statement as claimed, checked, or unknown.\n100,000 addresses can be programs or one controller.\nWhether the token captures value depends on the mechanism, not on whether the price has risen.'),
-        example: bi('官网写着很高的收入，在核对来源之前只能标成声称。\n地址数 100000 不能写成 100000 人。\n没有机制说明，就不能说持币一定分享收入。', 'A high revenue figure on the website is only “claimed” until the source is checked.\nAn address count of 100000 cannot be written as 100000 people.\nWithout a mechanism, you cannot say holders necessarily share the revenue.'),
-        pitfalls: [bi('把地址数写成用户人数', 'Writing an address count as a user count'), bi('把官网数字写成已核对事实', 'Writing a website number as a checked fact')],
-        practice: bi('把“收入很高”这一条标成声称或未知，而不是已核对。', 'Mark “revenue is high” as claimed or unknown, not as checked.'),
-        check: { ask: bi('网页上的说法还没核对时，该标成什么？', 'A claim on the page has not been checked yet. What label does it get?'), options: [opt('A', '已核对', 'Checked'), opt('B', '声称', 'Claimed'), opt('C', '一定真实', 'Certainly true'), opt('D', '不用标', 'No label is needed')], answer: 'B', miss: bi('没核对之前标成声称。已核对和一定真实都还不到。', 'Before it is checked, label it as claimed. Checked and certainly true both go too far.') },
-        quizzes: [
-          quiz('10 万个地址等于 10 万人吗？', 'Do 100,000 addresses equal 100,000 people?', [opt('A', '不等于', 'No'), opt('B', '等于', 'Yes'), opt('C', '官网这么写就等于', 'Yes if the website says so'), opt('D', '空投名单上就等于', 'Yes, if they are on an airdrop list')], 'A', {A: ['地址不是人头。', 'An address is not a person.'], B: ['一个控制者可以控制很多地址。', 'One controller can control many addresses.'], C: ['官网的句子仍然可能只是声称。', 'A sentence on the website can still be only a claim.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
-          quiz('网页上写着收入很高，你应该？', 'The page says revenue is high. What should you do?', [opt('A', '直接引用为事实', 'Cite it as fact'), opt('B', '忽略所有收入', 'Ignore all revenue'), opt('C', '核对证据来源', 'Check the evidence'), opt('D', '只看数字大小', 'Only look at how big the number is')], 'C', {A: ['没看来源，就不能从声称跳到事实。', 'Without a source, a claim cannot jump to a fact.'], B: ['收入可能重要，但要核对，不是一概忽略。', 'Revenue may matter, but it needs a check. It is not ignored automatically.'], C: ['标成已核对之前，要看到能复核的来源。', 'Before marking it checked, you need a source you can re-check.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
-          quiz('代币会不会捕获价值，要研究什么？', 'To know whether the token captures value, what do you study?', [opt('A', '只看价格新高', 'Only the price high'), opt('B', '只看地址数', 'Only the address count'), opt('C', '只看社群人数', 'Only the size of the community'), opt('D', '机制', 'The mechanism')], 'D', {A: ['价格新高不说明持币人分享了收入。', 'A price high does not show that holders shared the revenue.'], B: ['地址数不是价值捕获。', 'An address count is not value capture.'], C: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.'], D: ['费用、回购、分配或没有任何路径，都写在机制里。', 'Fees, buybacks, distributions, or no path at all are written in the mechanism.']})
+        scene: bi('合作公告、收入帖和推广一起出来，价格先涨，能当成证据吗？', 'A partnership post, a revenue post, and promotion show up together and price rises first, can that count as evidence?'),
+        one: bi('合作公告、集中推广和收入帖可以先把价格打上去，核对不上使用证据时常常再跌回去。', 'Partnership posts, concentrated promotion, and revenue posts can push price up first, and it often falls back when the usage evidence does not check out.'),
+        explain: bi('研究时把每句话分成声称、已核对、还不知道。\n虚构项目星桥协议只作教学。\n地址数不是人数。\n代币能不能分到收入，要看机制，不看它涨过没有。\n项目新闻常见三类：合作公告、集中推广、收入帖。', 'In research, mark each sentence as claimed, checked, or still unknown.\nThe fictional project Starbridge Protocol is for teaching only.\nAn address count is not a head count.\nWhether the token receives revenue depends on the mechanism, not on whether it has risen.\nProject news usually comes in three kinds: partnership posts, concentrated promotion, and revenue posts.'),
+        topic: {
+          title: bi('项目新闻出来时，价格通常怎么走', 'When project news hits, what price usually does'),
+          body: bi('合作公告刚出、证据还没核对时，价格常常先跟着冲一段。\n推广把注意力带过来时，也常常先冲，喊的人常常比使用的人更多。\n收入帖若只有网页上的一句话，涨可以只是热度。\n使用数据对不上说法时，这段冲劲常常回落。\n规则里没有把收入分给持币人，这轮上涨常常只是交易出来的。\n证据不足也可以热很久，不要当成迟早会跌就去做空。', 'When a partnership post is fresh and the evidence is not checked yet, price often runs with it for a stretch first.\nWhen promotion brings the attention, it also often runs first, and the people calling it out often outnumber the users.\nIf a revenue post is only one sentence on a page, the rise can be only attention.\nWhen usage does not match the claims, that push often fades.\nIf the rules do not share revenue with holders, this rise is often just trading.\nThin evidence can also stay hot for a long time, so do not short it as if it will fall sooner or later.')
+        },
+        example: bi('教学模拟：网页写收入很高，核对前只能标成声称。\n地址 10 万不能写成 10 万个用户。\n这种帖子先热起来时，价格可以先涨，证据迟迟没有，常常再跌回去。', 'Teaching simulation: a page that says revenue is high can only be marked claimed until you check it.\n100,000 addresses cannot be written as 100,000 users.\nWhen this kind of post heats up first, price can rise first, and if the evidence stays missing it often falls back.'),
+        pitfalls: [
+          bi('把地址数写成用户人数', 'Writing an address count as a user count'),
+          bi('把没核对的公告当成上涨的理由', 'Treating an unchecked post as a reason for the rise')
         ],
-        study: { kind: 'panel', headers: [bi('说法', 'Statement'), bi('状态', 'Status')], cells: [[bi('用户 10 万', '100,000 addresses'), bi('声称，不能当成人数', 'Claimed, not a head count')], [bi('收入很高', 'Revenue is high'), bi('未知，待核对', 'Unknown, still to check')], [bi('代币分享收入', 'The token shares revenue'), bi('要看机制', 'Depends on the mechanism')]], rows: [bi('虚构项目：星桥协议。', 'Fictional project: Starbridge Protocol.')] }
+        practice: bi('看到合作公告或收入帖时，先标成声称，再找能不能复核的使用数据。', 'When you see a partnership post or a revenue post, mark it claimed first, then look for usage data you can re-check.'),
+        check: {
+          ask: bi('合作公告刚出，使用证据对不上，价格已经先涨过一截，后面更常见的是？', 'A partnership post is fresh, the usage evidence does not match, and price already rose a notch, what is more common next?'),
+          options: [
+            opt('A', '公告出来通常还要再涨一段', 'Once the post is out it usually rises for another stretch'),
+            opt('B', '推广一多，证据就会补上', 'Once promotion picks up, the evidence gets filled in'),
+            opt('C', '冲劲常常回落', 'The push often fades'),
+            opt('D', '收入帖比合作公告更硬，可以当已核对', 'A revenue post is harder than a partnership, so it can count as checked')
+          ],
+          answer: 'C',
+          note: bi('公告对不上使用证据，先涨过的那一截常常回落。', 'When the post does not match the usage evidence, the stretch that already rose often fades.'),
+          miss: bi('公告对不上使用证据，先涨过的那一截常常回落。', 'When the post does not match the usage evidence, the stretch that already rose often fades.')
+        },
+        quizzes: [
+          quiz('网页写收入很高，你还没看到来源，价格正在涨，该怎么看？', 'The page says revenue is high, you have not seen a source, and price is rising, how should you read it?', [
+            opt('A', '价格在涨，收入多半是真的', 'Price is rising, so the revenue is mostly real'),
+            opt('B', '收入帖通常比公告更接近已核对', 'A revenue post is usually closer to checked than an announcement'),
+            opt('C', '先看有没有人在推广，来源可以后补', 'First see whether anyone is promoting it, and the source can be added later'),
+            opt('D', '这仍是声称，涨可以只是热度', 'It is still a claim, and the rise can be only attention')
+          ], 'D', {
+            A: ['价格涨过，证明不了收入。', 'A rise in price does not prove the revenue.'],
+            B: ['收入帖在核对前同样只是声称。', 'A revenue post is also only a claim before it is checked.'],
+            C: ['推广带来的是关注，不是来源，来源不能后补成已核对。', 'Promotion brings attention, not a source, and a source cannot be added later and counted as checked.'],
+            D: ['没看到来源就还是声称，这轮涨可以只是热度。', 'Without a source it is still a claim, and this rise can be only attention.']
+          }),
+          quiz('规则里没有把收入分给持币人，币价却在涨，通常说明什么？', 'The rules do not share revenue with holders, but the coin is rising, what does that usually say?', [
+            opt('A', '涨了规则通常会补上分成', 'Once it rises the rules usually add a share'),
+            opt('B', '这轮上涨常常只是交易出来的', 'This rise is often just trading'),
+            opt('C', '这种上涨常常更扎实', 'This kind of rise is often more solid'),
+            opt('D', '持币人已经在分，只是没写进规则', 'Holders are already sharing, it is just not written in the rules')
+          ], 'B', {
+            A: ['上涨不会把分成写进规则。', 'A rising price does not write a share into the rules.'],
+            B: ['没有分收入的规则时，上涨常常只是交易出来的。', 'Without a rule that shares revenue, the rise is often just trading.'],
+            C: ['没有分成的上涨，常常不是更扎实。', 'A rise with no share is often not more solid.'],
+            D: ['规则里没有这条路径，就还没在分。', 'If the rules have no such path, the sharing is not happening.']
+          }),
+          quiz('证据不足，但推广已经持续很久，价格还在涨，这时？', 'The evidence is thin, but the promotion has gone on for a long time and price is still rising, what then?', [
+            opt('A', '热可以持续，不要当成迟早会跌', 'Heat can last, so do not treat it as a drop that will come sooner or later'),
+            opt('B', '推得久通常就等于证据齐了', 'A long promotion usually means the evidence is complete'),
+            opt('C', '推得越久越该做空', 'The longer the promotion, the more you should short'),
+            opt('D', '收入帖一出就能把证据补齐', 'One revenue post can complete the evidence')
+          ], 'A', {
+            A: ['证据不足也可以热很久，不要当成迟早会跌。', 'Thin evidence can stay hot for a long time, so do not treat it as a drop that will come sooner or later.'],
+            B: ['推得久仍是关注，不是证据。', 'A long promotion is still attention, not evidence.'],
+            C: ['推得久不是做空的理由。', 'A long promotion is not a reason to short.'],
+            D: ['一篇收入帖补不齐使用证据。', 'One revenue post does not complete the usage evidence.']
+          })
+        ],
+        study: { kind: 'panel', headers: [bi('说法', 'Statement'), bi('状态', 'Status')], cells: [[bi('用户 10 万', '100,000 users'), bi('声称，不能当成人数', 'Claimed, not a head count')], [bi('收入很高', 'Revenue is high'), bi('未知，待核对', 'Unknown, still to check')], [bi('代币分享收入', 'The token shares revenue'), bi('要看机制', 'Depends on the mechanism')]], rows: [
+          bi('虚构项目：星桥协议。', 'Fictional project: Starbridge Protocol.')
+        ] }
       }),
       lesson({
         id: '02', title: bi('Tokenomics：供应与解锁', 'Tokenomics: supply and unlocks'),
-        scene: bi('FDV 有 20 亿，是不是已经有人买了 20 亿？', 'FDV is 2 billion. Has someone already bought 2 billion?'),
-        one: bi('流通市值=价格×流通量。FDV=价格×最大供应。解锁增加的是流通量，不是自动出现的买盘。', 'Circulating market cap=price×circulating supply. FDV=price×max supply. An unlock increases circulating supply, and it does not automatically create buying.'),
-        explain: bi('价格不变时，流通量上升，流通市值上升。\nFDV 用的是最大供应，不是已经成交的金额。\n解锁 5000 万枚，若价格仍按原价计算，流通市值增加的是价格乘以这 5000 万。\n这不等于市场上出现了同等金额的卖压证明。', 'If price is unchanged and circulating supply rises, circulating market cap rises.\nFDV uses max supply. It is not cash that has already traded.\nIf 50 million unlock and you still use the old price, circulating market cap rises by price times those 50 million.\nThat is not proof of the same amount of selling pressure.'),
-        example: bi('价格 2，流通 1 亿，最大供应 10 亿。\n流通市值=2 亿。\nFDV=20 亿。\n再解锁 5000 万，流通变为 1.5 亿，按价格 2 计算，流通市值=3 亿。', 'Price 2, circulating supply 100 million, max supply 1 billion.\nCirculating market cap=200 million.\nFDV=2 billion.\nUnlock another 50 million and circulating supply is 150 million. At price 2, circulating market cap=300 million.'),
-        pitfalls: [bi('把 FDV 当成已经买入的金额', 'Treating FDV as cash already spent to buy'), bi('把解锁数量直接写成砸盘金额', 'Writing the unlocked quantity directly as a dump in cash')],
-        practice: bi('用价格 2 和流通 1 亿算出市值 2 亿。', 'Use price 2 and circulating supply 100 million to get a market cap of 200 million.'),
-        check: { ask: bi('价格不变，流通量变多。流通市值会怎样？', 'Price stays the same and the circulating supply rises. What happens to circulating market cap?'), options: [opt('A', '下降', 'It falls'), opt('B', '不变，因为价格没动', 'It stays the same, because price did not move'), opt('C', '变成最大供应', 'It becomes the max supply'), opt('D', '上升', 'It rises')], answer: 'D', miss: bi('价格不动、流通量变多，流通市值会上升。它不会因为价格没动就停住。', 'If price is unchanged and circulating supply rises, circulating market cap rises. It does not freeze just because price did not move.') },
-        quizzes: [
-          quiz('流通市值是什么？', 'What is circulating market cap?', [opt('A', '价格×流通量', 'Price×circulating supply'), opt('B', '价格×最大供应', 'Price×max supply'), opt('C', '成交量×价格', 'Volume×price'), opt('D', '价格×持币地址数', 'Price times the number of holding addresses')], 'A', {A: ['例子：2×1 亿=2 亿。', 'Example: 2×100 million=200 million.'], B: ['那是 FDV。2×10 亿=20 亿。', 'That is FDV. 2×1 billion=2 billion.'], C: ['成交量不是流通供应。', 'Volume is not circulating supply.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
-          quiz('FDV 20 亿表示已经有人买了 20 亿吗？', 'Does an FDV of 2 billion mean someone bought 2 billion?', [opt('A', '表示', 'Yes'), opt('B', '不是', 'No'), opt('C', '解锁前表示', 'Yes before unlocks'), opt('D', '流通量这么大才表示', 'Yes, if the float is that large')], 'B', {A: ['FDV 是价格乘以最大供应，不是成交额。', 'FDV is price times max supply, not traded cash.'], B: ['很多代币可能还没进入流通，更没有被买成 20 亿成交。', 'Many tokens may not be circulating, and they were not bought as 2 billion of trades.'], C: ['解锁前 FDV 的定义仍然不是成交额。', 'Before unlocks, FDV is still not traded cash.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
-          quiz('解锁 5000 万是否一定砸盘？', 'Does unlocking 50 million necessarily dump the price?', [opt('A', '一定', 'Yes'), opt('B', '一定不跌', 'It certainly does not fall'), opt('C', '不一定', 'Not necessarily'), opt('D', '解锁当天一定涨', 'It must rise on the unlock day')], 'C', {A: ['解锁增加的是可流通数量，不是一张已经成交的卖单。', 'An unlock increases the quantity that can circulate. It is not a sell order that has already traded.'], B: ['也不能保证不跌。卖出与否还没发生。', 'It also does not guarantee no drop. Whether anyone sells has not happened yet.'], C: ['价格 2 不变时，流通市值从 2 亿记到 3 亿，这只是计价，不是卖压证明。', 'If price stays 2, circulating market cap is marked from 200 million to 300 million. That is a valuation, not proof of selling pressure.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']})
+        scene: bi('大额解锁临近，价格通常先怎样？', 'A large unlock is near, what does price usually do first?'),
+        one: bi('解开的量超过流通量几个百分点就算大，临近时价格常常先软，解锁后持有者不动、不转交易所，又常常跌完再弹。', 'An unlock larger than a few percent of the circulating supply counts as large, price is often soft as it nears, and if holders do not move the coins to an exchange afterward it often bounces after the drop.'),
+        explain: bi('流通市值是用现在的价格去记能交易的那些币。\nFDV 是用现在的价格去记最大供应，不是已经有人买过的金额。\n教学模拟里，价格是 2，流通是 1 亿。\n悬崖式是一天解开一大笔，线性是按天慢慢放。\n解锁日历上看日期、数量，以及是谁的币。', 'Circulating market cap uses today’s price to mark the coins that can trade.\nFDV uses today’s price to mark the max supply, and it is not cash someone already spent to buy.\nIn the teaching simulation the price is 2, and the circulating supply is 100 million.\nA cliff unlock releases a large chunk on one day, and a gradual unlock releases it slowly by the day.\nOn an unlock calendar you read the date, the amount, and whose coins they are.'),
+        topic: {
+          title: bi('解锁临近时，价格通常怎么走', 'As an unlock nears, what price usually does'),
+          body: bi('解开的数量超过流通量的几个百分点，就算大。\n大额、又是团队或早期持有者、又是悬崖式，价格常常提前变软。\n币解开后被转到交易所，后面常常真的有卖压。\n解锁后持有者不动、不转交易所，常常是利空出尽，跌完再弹。\n线性解锁每天只有一小截，压力常常比悬崖式轻。\n流通很少、FDV 很大的币，容易先被拉得很凶，大额解锁一到就更重。', 'An amount above a few percent of the circulating supply counts as large.\nA large cliff unlock that belongs to the team or early holders often softens price ahead of time.\nCoins that are unlocked and then moved to an exchange often bring real selling afterward.\nIf after the unlock the holders do not move the coins to an exchange, it is often used-up bad news, a drop and then a bounce.\nA gradual unlock is only a small slice each day, and the pressure is often lighter than a cliff.\nA coin with a small float and a large FDV is easy to run up hard, and it gets heavier once a large unlock arrives.')
+        },
+        example: bi('教学模拟：再解锁 5000 万，流通从 1 亿变成 1.5 亿。\n这是流通量的一半，远超几个百分点。\n真正的压力，要看这些币会不会进交易所。', 'Teaching simulation: another 50 million unlocks, and the circulating supply goes from 100 million to 150 million.\nThat is half of the circulating supply, far beyond a few percent.\nThe real pressure is whether these coins enter an exchange.'),
+        pitfalls: [
+          bi('把 FDV 当成已经买入的金额', 'Treating FDV as cash already spent to buy'),
+          bi('把线性解锁也读成悬崖式的一天砸盘', 'Reading a gradual unlock as a one-day cliff dump')
         ],
-        study: { kind: 'panel', headers: [bi('项目', 'Item'), bi('数值', 'Value')], cells: [[bi('价格', 'Price'), '2'], [bi('流通', 'Circulating'), bi('1 亿', '100 million')], [bi('最大供应', 'Max supply'), bi('10 亿', '1 billion')], [bi('流通市值', 'Circulating market cap'), bi('2 亿', '200 million')], ['FDV', bi('20 亿', '2 billion')], [bi('解锁后再计流通市值', 'Circulating market cap after the unlock'), bi('3 亿', '300 million')]], rows: [bi('解锁 5000 万后，按原价计，流通市值是 3 亿。', 'After unlocking 50 million, at the same price, circulating market cap is 300 million.')] }
+        practice: bi('在解锁日历上先看数量占流通量的多少，再看是悬崖式还是线性。', 'On the unlock calendar, first see how much of the circulating supply the amount is, then see whether it is a cliff or gradual.'),
+        check: {
+          ask: bi('解锁日前价格已经软了一截，当天持有者不动、也不转交易所，后面更常见的是？', 'Price already softened a notch before the unlock day, and that day the holders do not move the coins to an exchange, what is more common next?'),
+          options: [
+            opt('A', '常常跌完再弹', 'Often bounces after the drop'),
+            opt('B', '不转交易所也等于已经在卖', 'Not moving to an exchange still counts as already selling'),
+            opt('C', '悬崖式没来就通常还要再软', 'If the cliff has not arrived it usually stays soft'),
+            opt('D', '线性解锁也会在当天集中砸完', 'A gradual unlock also dumps in one pile that day')
+          ],
+          answer: 'A',
+          note: bi('跌已经走在前面，解锁后持有者不动、不转交易所，常常跌完再弹。', 'When the drop already ran ahead, and holders do not move the coins to an exchange after the unlock, it often bounces after the drop.'),
+          miss: bi('跌已经走在前面，解锁后持有者不动、不转交易所，常常跌完再弹。', 'When the drop already ran ahead, and holders do not move the coins to an exchange after the unlock, it often bounces after the drop.')
+        },
+        quizzes: [
+          quiz('团队的悬崖式解锁正在转入交易所，后面常常？', 'The team’s cliff unlock is moving into an exchange, what often follows?', [
+            opt('A', '进交易所通常是锁得更久', 'Entering an exchange usually means locking for longer'),
+            opt('B', '线性的那一截常常更大', 'The gradual slice is often larger'),
+            opt('C', '卖压上来，价格偏软', 'Selling comes in, and price leans soft'),
+            opt('D', '占流通量很小也可以先忽略', 'A small share of the float can be ignored first')
+          ], 'C', {
+            A: ['进交易所是可卖的库存变多，不是锁得更久。', 'Entering an exchange means more inventory that can be sold, not a longer lock.'],
+            B: ['悬崖式是一天一大笔，不是线性的那一截更大。', 'A cliff is a large chunk on one day, not a gradual slice that is larger.'],
+            C: ['解开的币进交易所，后面常常有卖压，价格偏软。', 'Unlocked coins entering an exchange often bring selling, and price leans soft.'],
+            D: ['超过流通量几个百分点就算大，不能先忽略。', 'Above a few percent of the circulating supply counts as large, so it is not ignored first.']
+          }),
+          quiz('每天只放开一小截的线性解锁，和悬崖式相比，压力常常？', 'A gradual unlock that releases only a small slice each day, compared with a cliff, the pressure is often?', [
+            opt('A', '常常更重，因为天天都有', 'Often heavier, because it happens every day'),
+            opt('B', '常常更轻', 'Often lighter'),
+            opt('C', '两种日历读法一样', 'The two calendar reads are the same'),
+            opt('D', '线性的更该在第一天做空', 'The gradual one is the better short on day one')
+          ], 'B', {
+            A: ['每天一小截，通常没有悬崖式那一天重。', 'A small slice each day is usually not as heavy as the cliff day.'],
+            B: ['线性解锁的压力常常比悬崖式轻。', 'The pressure of a gradual unlock is often lighter than a cliff.'],
+            C: ['悬崖式和线性不是同一种日历。', 'A cliff and a gradual unlock are not the same calendar.'],
+            D: ['更轻的那一种，不是更该在第一天做空。', 'The lighter kind is not the better short on day one.']
+          }),
+          quiz('解开的量超过流通量几个百分点，又是悬崖式，临近该防什么？', 'The unlock is more than a few percent of the circulating supply, and it is a cliff, what do you watch for as it nears?', [
+            opt('A', '防钱包余额被砍掉一截', 'Watch for wallet balances being cut'),
+            opt('B', '防 FDV 变成已经成交的钱', 'Watch for FDV turning into cash that already traded'),
+            opt('C', '防线性的那一截被提前算进今天', 'Watch for the gradual slice being counted into today early'),
+            opt('D', '防价格提前变软，当天还可能更重', 'Watch for price softening ahead of time, and for the day itself getting heavier')
+          ], 'D', {
+            A: ['解锁不会把已有余额砍掉。', 'An unlock does not cut existing balances.'],
+            B: ['FDV 本来就不是成交额。', 'FDV was never traded cash.'],
+            C: ['这是悬崖式，不是把线性的一截算进今天。', 'This is a cliff, not a gradual slice counted into today.'],
+            D: ['大额悬崖式临近，价格常常提前变软，币若进交易所还会更重。', 'As a large cliff nears, price often softens ahead of time, and it gets heavier if the coins enter an exchange.']
+          })
+        ],
+        study: { kind: 'panel', headers: [bi('项目', 'Item'), bi('数值', 'Value')], cells: [[bi('价格', 'Price'), '2'], [bi('流通', 'Circulating'), bi('1 亿', '100 million')], [bi('最大供应', 'Max supply'), bi('10 亿', '1 billion')], [bi('流通市值', 'Circulating market cap'), bi('2 亿', '200 million')], ['FDV', bi('20 亿', '2 billion')], [bi('解锁后再计流通市值', 'Circulating market cap after the unlock'), bi('3 亿', '300 million')]], rows: [
+          bi('解锁 5000 万后，按原价计，流通市值是 3 亿。', 'After unlocking 50 million, at the same price, circulating market cap is 300 million.'),
+          bi('解锁 5000 万后，流通从 1 亿变成 1.5 亿。', 'After unlocking 50 million, the circulating supply goes from 100 million to 150 million.')
+        ] }
       }),
       lesson({
         id: '03', title: bi('市场叙事：热度不是基本面', 'Narratives: attention is not fundamentals'),
-        scene: bi('讨论量翻了 100 倍，用户是不是也翻了 100 倍？', 'Posts grew 100 times. Did users also grow 100 times?'),
-        one: bi('帖子变多不是用户变多。盘口薄时，同样的买单会滑得更远。还要回到真实产品和证据。', 'More posts are not more users. In a thin book, the same buy slips further. You still return to the real product and the evidence.'),
-        explain: bi('讨论量可以来自少数账号重复发送。\n薄盘口意味着每一档数量很小。\n市价买入会一路吃到更差的价格。\n热度之后仍要核对产品是否存在、证据是否可复核。', 'Post volume can come from a few accounts posting repeatedly.\nA thin book means each level has small size.\nA market buy lifts worse prices as it goes.\nAfter the attention, you still check whether the product exists and whether the evidence can be re-checked.'),
-        example: bi('卖盘：100 个在 2，100 个在 2.1，100 个在 2.3。\n买入 300 个，花费=2×100+2.1×100+2.3×100=640。\n均价=640/300=2.1333333333。\n讨论量从 100 到 10000，不能写成用户也是 100 倍。', 'Asks: 100 at 2, 100 at 2.1, and 100 at 2.3.\nBuying 300 costs 2×100+2.1×100+2.3×100=640.\nAverage=640/300=2.1333333333.\nPosts from 100 to 10000 cannot be written as 100 times the users.'),
-        pitfalls: [bi('把帖子数当成用户数', 'Treating post counts as user counts'), bi('忽略薄盘口的滑点', 'Ignoring slippage in a thin book')],
-        practice: bi('算买入 300 个的花费 640。', 'Compute the cost 640 of buying 300.'),
-        check: { ask: bi('讨论量变多，只能来自不同的真人吗？', 'When the discussion grows, can it only come from different real people?'), options: [opt('A', '只能来自不同的真人', 'Only from different real people'), opt('B', '帖子数就等于用户数', 'The post count equals the user count'), opt('C', '也可以是少数账号重复发', 'It can also be a few accounts posting again and again'), opt('D', '只来自官方公告', 'Only from an official announcement')], answer: 'C', miss: bi('讨论量可以是少数账号反复发。帖子变多，不等于用户变多。', 'Discussion can be a few accounts posting again and again. More posts do not mean more users.') },
-        quizzes: [
-          quiz('帖子变成 100 倍，用户也是 100 倍吗？', 'If posts become 100 times, are users 100 times too?', [opt('A', '是', 'Yes'), opt('B', '转发不算的话就是', 'Yes if reposts are excluded'), opt('C', '评论特别多就是', 'Yes, if there are lots of comments'), opt('D', '不是', 'No')], 'D', {A: ['讨论量不是去重后的用户数。', 'Post volume is not a de-duplicated user count.'], B: ['就算去掉转发，帖子仍不是人数。', 'Even without reposts, a post is still not a person.'], C: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.'], D: ['少数账号可以制造很多帖子。', 'A few accounts can produce many posts.']}),
-          quiz('盘口薄时，滑点通常怎样？', 'When the book is thin, slippage is usually?', [opt('A', '更明显', 'More visible'), opt('B', '消失', 'Gone'), opt('C', '只影响卖出', 'Only sells'), opt('D', '买卖两边都变小', 'Both buys and sells get smaller')], 'A', {A: ['300 个要吃到 2.3，均价高于第一档的 2。', '300 units reach 2.3, so the average is above the first level at 2.'], B: ['档位数量小，滑点不会消失。', 'Small size at each level does not remove slippage.'], C: ['买入一样会往上吃价。', 'A buy also lifts prices upward.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
-          quiz('热度之外还要看什么？', 'Besides attention, what else do you check?', [opt('A', '只看帖子排名', 'Only the post ranking'), opt('B', '真实产品和证据', 'The real product and the evidence'), opt('C', '只看均价', 'Only the average price'), opt('D', '只看涨了多少', 'Only how much it has risen')], 'B', {A: ['排名仍是热度。', 'A ranking is still attention.'], B: ['产品是否存在、证据能否复核，热度回答不了。', 'Whether the product exists and whether evidence can be re-checked is not answered by attention.'], C: ['均价只描述这笔成交，不描述项目。', 'The average only describes this fill. It does not describe the project.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']})
+        scene: bi('板块里冒出新故事时，你先看什么？', 'When a new story shows up in the sector, what do you look at first?'),
+        one: bi('叙事很热时价格常常先跑在使用前面，龙头一见顶跟风常常先跌，圈外的人开始谈论这枚币时往往已经不早。', 'When a narrative is hot price often runs ahead of usage, copycats often drop first once the leader tops, and when people outside crypto start talking about the coin it is often already late.'),
+        explain: bi('讨论变多，可以是少数账号反复发，不是用户变多。\n同一个板块里，先看龙头，再看跟风。\n大所上币的公告，常常让价格先冲一段。\n圈外的人，比如不看盘的朋友也开始谈这枚币，往往是热度已经传到外面。\n薄盘口时，吃掉前几档会让价格跳一截，随后常常吐回一部分。', 'More discussion can be a few accounts posting again and again, not more users.\nIn one sector, watch the leader first, then the copycats.\nA listing post from a big exchange often makes price run for a stretch first.\nWhen people outside crypto, such as friends who do not watch the book, start talking about the coin, the heat has often already spread outside.\nWhen the order book is thin, taking the first levels makes price jump, and it often gives some of that back afterward.'),
+        topic: {
+          title: bi('叙事换挡时，谁先跌', 'When the narrative rotates, who drops first'),
+          body: bi('一个叙事刚热起来，相关的币常常一起涨，而且涨在使用数据前面。\n钱从旧故事转到新故事时，旧的那一边即使产品没变，价格也常常退。\n龙头见顶之后，同板块的跟风币常常先跌。\n大所上币的消息可以再冲一段，上完若没有新增使用，常常再吐回去。\n圈外的人开始谈论，常常说明这一段已经不早。\n真的有使用在增加的叙事，退潮会慢一些。', 'When a narrative first gets hot, the related coins often rise together, and they rise ahead of the usage data.\nWhen money rotates from an old story to a new one, the old side often fades even if the product did not change.\nAfter the leader tops, the copycats in the same sector often drop first.\nA big-exchange listing can push another stretch, and if usage does not grow after it, the move often gets given back.\nWhen people outside crypto start talking, it often means this stretch is already late.\nA narrative that really has rising usage fades more slowly.')
+        },
+        example: bi('教学模拟：龙头还在高位，跟风币先掉了下来。\n这常常是板块在退，不是跟风自己出了坏消息。\n若这时大所又发了上币公告，跟风仍可能再冲一下，然后更容易吐回去。', 'Teaching simulation: the leader is still high, and the copycats fall first.\nThat is often the sector fading, not the copycat releasing its own bad news.\nIf a big exchange then posts a listing, the copycat can still push once more, and it is easier for that push to be given back.'),
+        pitfalls: [
+          bi('龙头见顶还去追跟风', 'Chasing copycats after the leader has topped'),
+          bi('把圈外的谈论当成刚开始', 'Treating talk from outside crypto as the start')
         ],
-        study: { kind: 'book', headers: [bi('卖价', 'Ask'), bi('数量', 'Size')], cells: [['2', '100'], ['2.1', '100'], ['2.3', '100']], rows: [bi('买 300：花费 640，均价 2.1333333333。', 'Buy 300: cost 640, average 2.1333333333.')] }
+        practice: bi('先找这个板块的龙头，再看跟风是不是已经先跌。', 'First find the leader of this sector, then see whether the copycats have already dropped first.'),
+        check: {
+          ask: bi('龙头还没跌，跟风币已经先掉下来，这更常见的读法是？', 'The leader has not fallen, and the copycats have already dropped, what is the more common read?'),
+          options: [
+            opt('A', '跟风先跌通常是自己的坏消息', 'Copycats dropping first is usually their own bad news'),
+            opt('B', '板块在退，跟风常常先跌', 'The sector is fading, and copycats often drop first'),
+            opt('C', '圈外的人还没谈，所以还早', 'People outside crypto have not talked yet, so it is still early'),
+            opt('D', '龙头还在就应该抄跟风', 'While the leader is still up you should buy the copycats')
+          ],
+          answer: 'B',
+          note: bi('龙头见顶前后，跟风常常先跌，这是板块在退。', 'Around the time the leader tops, copycats often drop first, and that is the sector fading.'),
+          miss: bi('龙头见顶前后，跟风常常先跌，这是板块在退。', 'Around the time the leader tops, copycats often drop first, and that is the sector fading.')
+        },
+        quizzes: [
+          quiz('大所刚发上币公告，使用数据没有新增，后面常常？', 'A big exchange just posted a listing, and usage data did not grow, what often follows?', [
+            opt('A', '先冲一段，没有使用就常常吐回去', 'It pushes for a stretch first, and without usage it often gets given back'),
+            opt('B', '上币通常是趋势的起点', 'A listing is usually the start of the trend'),
+            opt('C', '公告一出跟风会比龙头更稳', 'Once the post is out the copycat is steadier than the leader'),
+            opt('D', '圈外的人还没谈，通常不会冲', 'People outside crypto have not talked yet, so it usually does not push')
+          ], 'A', {
+            A: ['大所上币可以再冲一段，没有新增使用就常常吐回去。', 'A big-exchange listing can push another stretch, and without new usage it often gets given back.'],
+            B: ['上币可以先冲，但没有使用时常常不是趋势起点。', 'A listing can push first, but without usage it is often not the start of the trend.'],
+            C: ['跟风不会因为一条上币公告就比龙头更稳。', 'A copycat does not become steadier than the leader because of one listing post.'],
+            D: ['圈外的人还没谈，公告本身仍可以先冲。', 'Even if people outside crypto have not talked, the post itself can still push first.']
+          }),
+          quiz('钱从旧故事转到新故事，旧的那一边产品没变，价格通常怎样？', 'Money rotates from an old story to a new one, and the old side’s product did not change, what does price usually do?', [
+            opt('A', '产品没变，价格通常也横住', 'If the product did not change, price usually chops'),
+            opt('B', '要等圈外的人开始谈，才会退', 'It fades only after people outside crypto start talking'),
+            opt('C', '旧故事通常再当一次龙头', 'The old story usually becomes the leader once more'),
+            opt('D', '常常退，产品没变也挡不住', 'It often fades, and an unchanged product does not stop that')
+          ], 'D', {
+            A: ['钱转走时，产品没变挡不住价格退。', 'When money rotates away, an unchanged product does not stop the fade.'],
+            B: ['退潮可以发生在圈外谈论之前。', 'The fade can happen before people outside crypto start talking.'],
+            C: ['钱已经转走，旧故事通常不是下一任龙头。', 'Once the money has rotated, the old story is usually not the next leader.'],
+            D: ['旧的那一边常常退，哪怕产品没有变。', 'The old side often fades, even when the product did not change.']
+          }),
+          quiz('不看盘的朋友也开始谈这枚币，这时更常见的位置是？', 'Friends who do not watch the book also start talking about this coin, where are you more often standing?', [
+            opt('A', '谈论刚出圈，通常还早', 'The talk just left the circle, so it is usually still early'),
+            opt('B', '这是使用数据开始增加的信号', 'This is the sign that usage data is starting to grow'),
+            opt('C', '热度已经传到外面，这一段常常不早', 'The heat has spread outside, and this stretch is often already late'),
+            opt('D', '龙头还在就可以继续追跟风', 'While the leader is still up you can keep chasing copycats')
+          ], 'C', {
+            A: ['传到圈外常常是晚，不是刚开始。', 'Spreading outside crypto is often late, not the start.'],
+            B: ['圈外的谈论不是使用数据。', 'Talk from outside crypto is not usage data.'],
+            C: ['圈外的人开始谈论，常常说明这一段已经不早。', 'When people outside crypto start talking, it often means this stretch is already late.'],
+            D: ['外面都在谈的时候，追跟风常常更晚。', 'When people outside crypto are talking, chasing copycats is often even later.']
+          })
+        ],
+        study: { kind: 'book', headers: [bi('卖价', 'Ask'), bi('数量', 'Size')], cells: [['2', '100'], ['2.1', '100'], ['2.3', '100']], rows: [
+          bi('买 300：花费 640，均价 2.1333333333。', 'Buy 300: cost 640, average 2.1333333333.')
+        ] }
       }),
       lesson({
         id: '04', title: bi('项目尽调：写出可以被推翻的结论', 'Diligence: write a conclusion that can be overturned'),
-        scene: bi('只收集利好证据，这份尽调完整吗？', 'If you collect only bullish evidence, is the diligence complete?'),
-        one: bi('结论要写清证据、反证和未知。可升级的管理员权限是风险，不是可以跳过的细节。', 'A conclusion states the evidence, the counter-evidence, and the unknowns. Upgradeable admin power is a risk, not a detail you skip.'),
-        explain: bi('每条证据注明来源，并允许后面被新证据推翻。\n只留利好，会把反证藏起来。\n合约如果能被管理员升级，就要写明权限能做什么。\n不知道的信息标成未知，而不是补成肯定句。', 'Each piece of evidence names a source and can be overturned by later evidence.\nKeeping only bullish points hides the counter-evidence.\nIf an admin can upgrade the contract, write what that power can do.\nUnknown information is marked unknown. It is not filled in as a certainty.'),
-        example: bi('证据 A 支持产品存在，证据 B 显示权限可升级，证据 C 与收入声称冲突，证据 D 仍未知。\n结论必须同时放得下 B 和 C。\n输出只是尽调记录，不是买卖建议。', 'Evidence A supports that a product exists, B shows the admin can upgrade, C conflicts with the revenue claim, and D is still unknown.\nThe conclusion has to be able to hold B and C at the same time.\nThe output is a diligence note, not a buy or sell recommendation.'),
-        pitfalls: [bi('只收集看涨证据', 'Collecting only bullish evidence'), bi('把未知写成已经证实', 'Writing an unknown as if it were confirmed')],
-        practice: bi('给一条反证和一条未知各留一个位置，再写结论。', 'Leave a slot for one counter-point and one unknown before you write the conclusion.'),
-        check: { ask: bi('结论写下来之后，还能被新证据推翻吗？', 'After a conclusion is written down, can new evidence still overturn it?'), options: [opt('A', '不能，写了就定死', 'No, once written it is fixed'), opt('B', '能，后面的新证据可以推翻它', 'Yes, later evidence can overturn it'), opt('C', '只有利好才能推翻', 'Only bullish evidence can overturn it'), opt('D', '等管理员升级才行', 'Only after an admin upgrade')], answer: 'B', miss: bi('结论要允许被新证据推翻。写下来不是把它定死。', 'A conclusion has to stay open to new evidence. Writing it down does not freeze it.') },
-        quizzes: [
-          quiz('只收集看涨证据，可以吗？', 'Is it acceptable to collect only bullish evidence?', [opt('A', '可以', 'Yes'), opt('B', '最后再补也行', 'It is fine to add the rest at the end'), opt('C', '不可以', 'No'), opt('D', '写进报告里就可以', 'Yes, if it goes into the report')], 'C', {A: ['反证被丢掉以后，结论只剩一种方向。', 'Once counter-evidence is dropped, the conclusion has only one direction.'], B: ['事后再补，很容易只补不伤结论的句子。', 'Adding them afterward makes it easy to add only sentences that do not hurt the conclusion.'], C: ['尽调要同时留下支持、反对和未知。', 'Diligence keeps support, opposition, and unknowns together.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']}),
-          quiz('管理员可以升级合约时，你应该？', 'If an admin can upgrade the contract, you should?', [opt('A', '忽略，因为还没升级', 'Ignore it because it has not been upgraded'), opt('B', '当成已经去中心化', 'Treat it as already decentralized'), opt('C', '等升级完再看', 'Wait until after an upgrade'), opt('D', '评估权限能做什么', 'Assess what the power can do')], 'D', {A: ['还没使用，不表示以后不能使用。', 'Not having used it does not mean it cannot be used later.'], B: ['可升级的管理员权限与“已经去中心化”相反。', 'An upgradeable admin is the opposite of “already decentralized.”'], C: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.'], D: ['权限本身就是风险：它能改什么，要写出来。', 'The power is the risk. Write down what it can change.']}),
-          quiz('还不知道的信息怎么写？', 'How do you write information you still do not know?', [opt('A', '标成未知并继续核实', 'Mark it unknown and keep checking'), opt('B', '写成有利', 'Write it as favorable'), opt('C', '写成不利', 'Write it as unfavorable'), opt('D', '先空着，结论里不提', 'Leave it out of the conclusion')], 'A', {A: ['标成未知，结论才留着被以后的证据推翻或补上。', 'Mark it unknown so later evidence can overturn or fill the conclusion.'], B: ['未知不是利好。', 'Unknown is not bullish.'], C: ['未知也不是自动的利空。', 'Unknown is not automatically bearish either.'], D: ['这不是这道题要选的。回到题目里的说法再看一次。', 'That is not the choice this question wants. Look again at what the question says.']})
+        scene: bi('审计指出管理员能改合约，价格通常怎么走？', 'An audit says the admin can change the contract, what does price usually do?'),
+        one: bi('藏起反证的故事常常先冲，审计公布一把管理员钥匙就能改合约时，价格常常回落。', 'A story that hides the counter-evidence often runs first, and when an audit publishes that one admin key can change the contract, price often falls.'),
+        explain: bi('每条证据写下出处，并允许以后被推翻。\n只留利好，反证就被藏起来了。\n管理员能改合约，这本身就是风险，要写明能改什么。\n还不知道的标成未知，不要补成肯定句。\n新闻里要看的是审计有没有写明一把钥匙就能改合约。', 'Write a source for each piece of evidence, and leave it open to being overturned later.\nKeeping only the bullish points hides the counter-evidence.\nAn admin who can change the contract is a risk by itself, so write what that power can change.\nMark what you still do not know as unknown, and do not fill it in as a certainty.\nIn the news, watch whether the audit writes down that one key can change the contract.'),
+        topic: {
+          title: bi('反证被揭出来时', 'When the counter-evidence is exposed'),
+          body: bi('故事很满、反证被忽略时，价格常常先冲一段。\n审计报告指出合约能被管理员改掉，价格常常快速回落。\n群里说还没用过所以没事，这是把没发生读成没有风险。\n未知被说成利好时，追进去的人常常买在故事上。\n有权限风险的项目也可以涨很久，写出来不是马上做空的命令。', 'When the story is full and the counter-evidence is ignored, price often runs a stretch first.\nWhen an audit says the admin can change the contract, price often falls back quickly.\nA group chat that says it has not been used so it is fine is reading “has not happened” as “there is no risk”.\nWhen an unknown is told as good news, the people who chase are often buying the story.\nA project with a permission risk can also rise for a long time, so writing the risk down is not an order to short at once.')
+        },
+        example: bi('教学模拟：证据 A 支持产品存在，B 是管理员能改合约，C 和收入说法冲突，D 还未知。\n只拿 A 去讲，价格可以先涨。\n审计把 B 写出来，常常把这段涨势打回去。', 'Teaching simulation: evidence A supports that a product exists, B is an admin who can change the contract, C conflicts with the revenue claim, and D is still unknown.\nTelling only A, price can rise first.\nWhen an audit writes B down, it often knocks that rise back.'),
+        pitfalls: [
+          bi('只收集看涨证据', 'Collecting only bullish evidence'),
+          bi('钥匙没被用过就当成没有风险', 'Treating an unused key as no risk')
         ],
-        study: { kind: 'panel', headers: [bi('证据', 'Evidence'), bi('作用', 'Role')], cells: [['A', bi('支持产品存在', 'Supports that a product exists')], ['B', bi('管理员可升级', 'Admin can upgrade')], ['C', bi('与收入声称冲突', 'Conflicts with the revenue claim')], ['D', bi('未知', 'Unknown')]], rows: [bi('结论要容得下反证。这不是买卖建议。', 'The conclusion has to fit the counter-evidence. This is not a buy or sell recommendation.')] }
+        practice: bi('看到审计或披露时，先写它指出的权限能做什么，再看价格有没有已经涨过。', 'When you see an audit or a disclosure, first write what power it points out, then see whether price has already risen.'),
+        check: {
+          ask: bi('审计刚指出合约能被管理员改掉，价格在这之前已经涨过，后面更常见的是？', 'An audit has just said the admin can change the contract, and price had already risen, what is more common next?'),
+          options: [
+            opt('A', '审计通常滞后，价格还会再冲', 'Audits are usually late, so price pushes again'),
+            opt('B', '反证被看见，常常快速回落', 'Once the counter-evidence is seen, it often falls back quickly'),
+            opt('C', '没改过合约就可以当没看见', 'If the contract has not been changed you can pretend not to see it'),
+            opt('D', '钥匙没披露，审计就可以先放着', 'If the key has not been disclosed, the audit can wait')
+          ],
+          answer: 'B',
+          note: bi('审计把能改合约写出来之后，先涨过的价格常常快速回落。', 'Once an audit writes down that the contract can be changed, the price that already rose often falls back quickly.'),
+          miss: bi('审计把能改合约写出来之后，先涨过的价格常常快速回落。', 'Once an audit writes down that the contract can be changed, the price that already rose often falls back quickly.')
+        },
+        quizzes: [
+          quiz('管理员可以改合约，但还没用过，价格正在涨，该怎么看？', 'An admin can change the contract, but has not used it, and price is rising, how should you read it?', [
+            opt('A', '没用过就等于没有这个权限', 'Unused means the power does not exist'),
+            opt('B', '正在涨就说明风险已经被定价', 'A rising price means the risk is already priced'),
+            opt('C', '等用了一次再承认风险', 'Admit the risk only after it is used once'),
+            opt('D', '权限还在，涨可以继续，但风险不能当没看见', 'The power is still there, the rise can continue, but the risk is not something you pretend not to see')
+          ], 'D', {
+            A: ['还没使用，不表示以后不能使用。', 'Not having used it does not mean it cannot be used later.'],
+            B: ['价格在涨，不能说明风险已经被定价。', 'A rising price does not mean the risk is already priced.'],
+            C: ['风险在权限还在的时候就在，不用等它被用一次。', 'The risk is there while the power is there, and you do not wait for one use.'],
+            D: ['涨可以继续，但能改合约仍是风险，不能当没看见。', 'The rise can continue, but the power to change the contract is still a risk you do not pretend not to see.']
+          }),
+          quiz('还不知道的一条被说成利好，追进去通常是在买什么？', 'Something still unknown is being told as good news, what are you usually buying if you chase it?', [
+            opt('A', '未知被喊成利好，通常很快会核对上', 'An unknown told as good news usually checks out soon'),
+            opt('B', '在买审计已经放过的那一条', 'You are buying the point the audit already cleared'),
+            opt('C', '在买故事，不是在买已经核对的证据', 'You are buying the story, not evidence that has been checked'),
+            opt('D', '在买钥匙已经失效的项目', 'You are buying a project whose key is already dead')
+          ], 'C', {
+            A: ['说成利好不会让未知很快核对上。', 'Telling it as good news does not make an unknown check out soon.'],
+            B: ['还没核对，就不是审计已经放过的证据。', 'If it is not checked, it is not evidence an audit already cleared.'],
+            C: ['未知被说成利好，追进去买的是故事。', 'When an unknown is told as good news, a chase buys the story.'],
+            D: ['这一条没说钥匙失效。', 'This point does not say the key is dead.']
+          }),
+          quiz('只拿证据 A 去讲，价格先涨了，这时指出证据 C 和收入说法冲突，后面更常见的是？', 'Only evidence A is told and price rises first, then C is pointed out as conflicting with the revenue claim, what is more common next?', [
+            opt('A', '只讲了好消息，这段涨通常更稳', 'Telling only the good news makes this rise steadier'),
+            opt('B', '和收入说法冲突，通常再冲一段', 'A conflict with the revenue claim usually pushes another stretch'),
+            opt('C', '指出和收入冲突的 C，这段涨常常被打回去', 'Pointing out C, which conflicts with the revenue claim, often knocks that rise back'),
+            opt('D', 'C 还没写成审计，价格通常毫无反应', 'Until C is written into an audit, price usually does not react')
+          ], 'C', {
+            A: ['只讲 A 可以先涨，指出冲突之后这段常常不更稳。', 'Telling only A can rise first, and after the conflict is pointed out the rise is often not steadier.'],
+            B: ['和收入说法冲突不是再冲一段的理由。', 'A conflict with the revenue claim is not a reason for another push.'],
+            C: ['只讲好消息可以先涨，指出和收入冲突的 C 之后，这段涨常常被打回去。', 'Telling only the good news can rise first, and after C is pointed out as conflicting with the revenue claim, that rise is often knocked back.'],
+            D: ['冲突被指出来就可以读，不用等它写进审计。', 'Once the conflict is pointed out it can be read, and you do not wait for it to be written into an audit.']
+          })
+        ],
+        study: { kind: 'panel', headers: [bi('证据', 'Evidence'), bi('作用', 'Role')], cells: [['A', bi('支持产品存在', 'Supports that a product exists')], ['B', bi('管理员可升级', 'Admin can upgrade')], ['C', bi('与收入声称冲突', 'Conflicts with the revenue claim')], ['D', bi('未知', 'Unknown')]], rows: [
+          bi('结论要容得下反证。这不是买卖建议。', 'The conclusion has to leave room for counter-evidence. This is not a buy or sell recommendation.')
+        ] }
       })
     ]
   };
