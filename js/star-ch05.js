@@ -10,37 +10,37 @@
         explain: bi('CPI 看物价，PPI 看出厂价格。\n同比是和去年比，环比是和上一期比，两个口径不是同一个数。\n市场往往交易的是实际相对预期的差，而不是数字本身的高低。\n同一条意外可以对应不止一种价格反应，所以偏高的 CPI 不保证比特币下跌。\n还要分核心和整体，油价和食品可以一下子把整体带偏。\n公布时间在美国夏令时是北京时间 20:30，冬令时是 21:30。', 'CPI looks at consumer prices, and PPI looks at factory prices.\nYear-over-year compares with last year, and month-over-month compares with the previous period, and the two measures are not the same number.\nThe market often trades the gap between the actual and the forecast, not whether the number itself looks high.\nThe same surprise can be followed by more than one price reaction, so a high CPI does not guarantee bitcoin falls.\nAlso separate core from headline, because oil and food can yank the headline in one move.\nThe release is 20:30 Beijing time in US summer time, and 21:30 Beijing time in winter.'),
         topic: {
           title: bi('数据公布后，头几分钟先看什么', 'After the release, what to watch in the first minutes'),
-          body: bi('实际比预期高一截，美元和两年美债收益率常常先上，比特币常常先跌一截。\n实际比预期低一截，比如低 0.2，第一下常常先涨。\n和预期差不多，公布前的那一冲常常很快回去。\n比预期好但大家早就在等，常常是利好出尽，冲一下就回。\n非农比预期差时有两种走法。\n市场正想着降息，差的非农会被当成离降息更近，比特币可以先涨。\n市场正怕衰退，差的非农会被当成经济坏了，比特币常常先跌。\n头几分钟盯美元指数和两年期收益率，它们比标题更快告诉你市场选了哪一种。\n如果大家更关心下一次议息，第一下也可以在几十分钟里反过来。', 'When the actual is a notch above the forecast, the dollar and the two-year yield often rise first, and bitcoin often drops a notch first.\nWhen the actual is a notch below the forecast, for example by 0.2, the first move is often up.\nWhen it matches the forecast, the push from before the release often fades quickly.\nBetter than expected, but long awaited, is often the good news getting used up, a push and then a fade.\nA weak payrolls print has two paths.\nIf the market wants rate cuts, weak payrolls get read as cuts coming closer, and bitcoin can rise first.\nIf the market fears a recession, weak payrolls get read as a bad economy, and bitcoin often drops first.\nIn the first minutes watch the dollar index and the two-year yield, because they tell you which path the market picked faster than the headline.\nIf people care more about the next rate meeting, the first move can also reverse within a few tens of minutes.')
+          body: bi('看 CPI、PPI，先比较实际值和预期值，再看核心数据，别只盯着一个数字。\n通胀明显高于预期，市场可能减少降息押注，甚至提高加息预期。\n美元和两年期美债收益率往往承压上行，比特币容易受到压制。\n通胀明显低于预期，则可能增强宽松预期，对比特币形成支撑。\n但如果整体数据降温、核心数据却偏热，行情也可能反复。\n比如预期上涨 0.3%，实际上涨 0.1%，应说低于预期 0.2 个百分点。\n同比和环比要分开比较。\nPPI 还要留意用于计算 PCE 的分项，不能只凭总数判断利好利空。\n数据符合预期，不代表一定回落。\n数据利好，也不代表一定上涨。\n还要看此前行情消化了多少预期。\n非农弱于预期时，也可能有两种解读。\n市场更关注降息，可能把它理解为宽松更近，比特币获得支撑。\n市场更担心衰退，则可能把它理解为经济走弱，比特币跟随风险资产下跌。\n头几分钟可以结合美元指数和两年期美债收益率，观察市场如何解读数据。\n但它们也不是涨跌指令。\n公布后头一两分钟，比特币第一波的方向，可能随着分项和修正值被消化而反转。', 'When you read CPI and PPI, first compare the actual with the forecast, then look at the core data, and do not stare at only one number.\nWhen inflation is clearly above the forecast, the market may cut its bets on rate cuts, or even raise its expectation of a hike.\nThe dollar and the two-year Treasury yield are often pushed up, and bitcoin is easily held down.\nWhen inflation is clearly below the forecast, that can strengthen the expectation of easier policy, and it can support bitcoin.\nBut if the headline cools while the core data runs hot, the move can also chop back and forth.\nFor example, if the forecast rise is 0.3% and the actual rise is 0.1%, you should say it is 0.2 percentage points below the forecast.\nYear-over-year and month-over-month have to be compared separately.\nFor PPI, also watch the components used to calculate PCE, and do not judge good or bad news from the total alone.\nA print that matches the forecast does not mean it must fall back.\nGood data also does not mean it must rise.\nYou also look at how much of the expectation the earlier move already digested.\nWhen payrolls are weaker than expected, there can also be two readings.\nIf the market cares more about rate cuts, it may read that as easier policy coming closer, and bitcoin gets support.\nIf the market worries more about a recession, it may read that as a weaker economy, and bitcoin falls with other risk assets.\nIn the first minutes you can read the dollar index together with the two-year Treasury yield, and see how the market is reading the data.\nBut they are not orders to rise or fall.\nIn the first minute or two after the release, the direction of bitcoin’s first wave can reverse as the components and the revisions get digested.')
         },
-        example: bi('教学模拟：预期 2.8%，实际 3.1%，意外是高出 0.3 个百分点。\n指数从 100 到 103.1，同比是 3.1%。\n这种偏热，第一下常常是风险资产回落，但可以有不止一种结果。', 'Teaching simulation: forecast 2.8%, actual 3.1%, and the surprise is 0.3 percentage points higher.\nThe index goes from 100 to 103.1, and the year-over-year change is 3.1%.\nA hot print like this often starts with risk assets pulling back, but there is more than one possible outcome.'),
+        example: bi('教学模拟：预期 2.8%，实际 3.1%，意外是高出 0.3 个百分点。\n指数从 100 到 103.1，同比是 3.1%。\n这种偏热，公布后头一两分钟，比特币的第一波反应常常是受到压制，但可以有不止一种结果。', 'Teaching simulation: forecast 2.8%, actual 3.1%, and the surprise is 0.3 percentage points higher.\nThe index goes from 100 to 103.1, and the year-over-year change is 3.1%.\nFor a hot print like this, bitcoin’s first reaction in the first minute or two after the release is often being held down, but there is more than one possible outcome.'),
         pitfalls: [
           bi('把同比和环比当成同一个数', 'Treating year-over-year and month-over-month as the same number'),
           bi('把差的非农只读成必须跌', 'Reading weak payrolls as a drop that must happen')
         ],
         practice: bi('先看实际比预期高还是低，再看头几分钟美元指数和两年美债往哪边。', 'First see whether the actual is above or below the forecast, then see which way the dollar index and the two-year yield go in the first minutes.'),
         check: {
-          ask: bi('CPI 实际比预期低 0.2 个百分点，第一下更常见的是？', 'When CPI prints 0.2 percentage points below the forecast, what is the more common first move?'),
+          ask: bi('CPI 实际比预期低 0.2 个百分点，公布后头一两分钟，比特币的第一波反应更常见的是？', 'When CPI prints 0.2 percentage points below the forecast, what is more common for bitcoin’s first reaction in the first minute or two after the release?'),
           options: [
             opt('A', '通常先横住，0.2 太小不值得动', 'Usually chops first, because 0.2 is too small to move'),
             opt('B', '常常先跌，因为低了就是衰退', 'Often drops first, because lower means a recession'),
-            opt('C', '常常先涨一截，因为比预期凉', 'Often rises a notch first, because it is cooler than expected'),
+            opt('C', '常常先得到支撑，因为低于预期', 'It often gets support first, because it is below the forecast'),
             opt('D', '先等非农，CPI 本身没有方向', 'Wait for payrolls, because CPI itself has no direction')
           ],
           answer: 'C',
-          note: bi('比预期低 0.2，第一下常常先涨，除非当时更怕衰退。', '0.2 below the forecast, the first move is often up, unless recession fear is the bigger worry.'),
-          miss: bi('比预期低 0.2，第一下常常先涨，除非当时更怕衰退。', '0.2 below the forecast, the first move is often up, unless recession fear is the bigger worry.')
+          note: bi('低于预期 0.2 个百分点时，头一两分钟常常先得到支撑，但整体降温而核心偏热时也可能反复。', 'When it is 0.2 percentage points below the forecast, the first minute or two often gets support first, but it can also chop when the headline cools and the core runs hot.'),
+          miss: bi('低于预期 0.2 个百分点时，头一两分钟常常先得到支撑，但整体降温而核心偏热时也可能反复。', 'When it is 0.2 percentage points below the forecast, the first minute or two often gets support first, but it can also chop when the headline cools and the core runs hot.')
         },
         quizzes: [
-          quiz('实际和预期几乎一样，公布后第一下常常怎样？', 'The actual almost matches the forecast, what does the first move often do?', [
-            opt('A', '常常很快回去，因为已经提前计价', 'Often fades quickly, because it was already priced in'),
+          quiz('实际和预期几乎一样，公布后头一两分钟，比特币的第一波反应常常怎样？', 'The actual almost matches the forecast. In the first minute or two after the release, what does bitcoin’s first reaction often do?', [
+            opt('A', '不一定回落，要看此前消化了多少预期', 'It does not have to fall back, and you look at how much of the expectation was already digested'),
             opt('B', '数字一对上，趋势通常就确认了', 'Once the number matches, the trend is usually confirmed'),
-            opt('C', '顺着公布前的方向追下去', 'Chase further along the pre-release direction'),
-            opt('D', '符合预期通常连第一下都不会有', 'A match usually means there is not even a first move')
+            opt('C', '符合预期就一定回落', 'A match means it must fall back'),
+            opt('D', '符合预期就一定上涨', 'A match means it must rise')
           ], 'A', {
-            A: ['大家早就按这个数字交易过，第一下常常很快回去。', 'People already traded this number, so the first move often fades quickly.'],
-            B: ['对上预期只说明没有新意外，不是趋势确认。', 'Matching the forecast only says there is no new surprise, not that the trend is confirmed.'],
-            C: ['公布前那一冲，在符合预期时常常吐回去，不是接着追。', 'The pre-release push often gets given back when the print matches, so it is not a chase.'],
-            D: ['符合预期时常常仍有第一下，只是这下很快回去，不是完全没有。', 'When it matches there is often still a first move, and that move fades quickly, so it is not that nothing happens.']
+            A: ['符合预期不代表一定回落，还要看此前行情消化了多少预期。', 'A match does not mean it must fall back, and you also look at how much of the expectation the earlier move already digested.'],
+            B: ['对上预期只说明没有新的意外，不是趋势确认。', 'Matching the forecast only says there is no new surprise, and it is not a confirmed trend.'],
+            C: ['符合预期不代表一定回落。', 'A match does not mean it must fall back.'],
+            D: ['数据利好也不代表一定上涨，符合预期更不是一定涨。', 'Good data also does not mean it must rise, and a match is even less a rise that must happen.']
           }),
           quiz('大家已经在等一个很好的 CPI，结果也确实好，常怎么走？', 'Everyone already waited for a good CPI, and it is good, what often happens?', [
             opt('A', '好于预期就通常一路涨到收盘', 'Better than expected usually rises straight into the close'),
@@ -51,18 +51,18 @@
             A: ['等了很久的好数字，常常是冲一下就回，不是一路涨到收盘。', 'Good news that was long awaited often pushes and fades, and it does not rise straight into the close.'],
             B: ['早就料到的好，通常没有再涨一段的后劲。', 'Expected good news usually does not have the fuel for another stretch.'],
             C: ['它常常不是先横住，而是冲一下再回去。', 'It often does not chop first, and it pushes and then comes back.'],
-            D: ['好消息被等了很久，公布时常是冲一下就回。', 'Good news that was long awaited often pushes and fades on the release.']
+            D: ['此前已经在等，利好不代表一定上涨，常常是冲一下就回。', 'It was already waited for, good news does not mean it must rise, and it is often a push and then a fade.']
           }),
-          quiz('非农比预期差，市场又在怕衰退，第一下更常见的是？', 'Payrolls are weaker than expected, and the market fears a recession, what is the more common first move?', [
-            opt('A', '想降息的交易会先把币价拉起来', 'The cut trade lifts the coin first'),
-            opt('B', '怕衰退时常常先跌一截', 'When recession is the fear, it often drops a notch first'),
+          quiz('非农比预期差，市场又在怕衰退，公布后头一两分钟，比特币的第一波反应更常见的是？', 'Payrolls are weaker than expected, and the market fears a recession. In the first minute or two after the release, what is more common for bitcoin’s first reaction?', [
+            opt('A', '更关注降息时才会得到支撑，这一题不是', 'It gets support only when cuts are the focus, and this question is not that'),
+            opt('B', '会被当成经济走弱，跟随风险资产下跌', 'It gets read as a weaker economy, and bitcoin falls with other risk assets'),
             opt('C', '差得不多就常常先横住', 'A small miss often chops first'),
             opt('D', '就业差通常只砸美股，币价不动', 'Weak jobs usually hit only stocks, and the coin stays put')
           ], 'B', {
-            A: ['想降息时差的非农可以先涨，但这一题的市场是在怕衰退。', 'When the market wants cuts, weak payrolls can rise first, but this question’s market fears a recession.'],
-            B: ['市场正怕衰退，差的非农会被当成经济坏了，常常先跌。', 'If the market fears a recession, weak payrolls get read as a bad economy, and it often drops first.'],
-            C: ['怕衰退时的差非农，第一下常常是跌，不是横住。', 'Weak payrolls under recession fear often drop first, not chop.'],
-            D: ['怕衰退时，比特币常常跟着风险资产一起先跌。', 'When recession is the fear, bitcoin often drops with other risk assets.']
+            A: ['更关注降息时，弱于预期可以获得支撑，但这一题的市场是在怕衰退。', 'When rate cuts are the focus, a weaker print can get support, but this question’s market fears a recession.'],
+            B: ['市场更担心衰退时，弱于预期的非农会被当成经济走弱，比特币跟随风险资产下跌。', 'When the market worries more about a recession, weaker-than-expected payrolls get read as a weaker economy, and bitcoin falls with other risk assets.'],
+            C: ['怕衰退时，头一两分钟的第一波常常是跌，不是横住。', 'When recession is the fear, the first wave in the first minute or two is often a drop, not a chop.'],
+            D: ['怕衰退时，比特币常常跟随风险资产下跌，不是只砸美股。', 'When recession is the fear, bitcoin often falls with other risk assets, and it is not only stocks that get hit.']
           })
         ],
         study: { kind: 'panel', rows: [
