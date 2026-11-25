@@ -1178,13 +1178,17 @@
     var btn = $('#listen-toggle');
     var live = $('#listen-live');
     if (!btn) return;
+    var listenLabel = !speechJob ? t('reader.listen') : (speechJob.paused ? t('reader.listen.resume') : t('reader.listen.pause'));
+    if (btn.closest('.lb-root')) {
+      var slot = btn.querySelector('span');
+      if (slot) slot.textContent = listenLabel.replace(/^🔊\s*/, '');
+      else btn.textContent = listenLabel;
+    } else btn.textContent = listenLabel;
     if (!speechJob) {
-      btn.textContent = t('reader.listen');
       btn.setAttribute('aria-pressed', 'false');
       if (live) live.hidden = true;
       return;
     }
-    btn.textContent = speechJob.paused ? t('reader.listen.resume') : t('reader.listen.pause');
     btn.setAttribute('aria-pressed', 'true');
     if (live) live.hidden = false;
   }
@@ -1246,7 +1250,7 @@
     }, 10000);
   }
   function startLessonSpeech() {
-    var article = $('.course-reader .reading');
+    var article = $('.lb-root .reading') || $('.course-reader .reading');
     if (!article || !speechSupported()) return;
     try { window.speechSynthesis.getVoices(); } catch (e) {}
     var blocks = collectSpeechBlocks(article);
@@ -1338,25 +1342,55 @@
       if (!keep) window.scrollTo(0, 0);
       return;
     }
-    main.innerHTML =
-      '<div class="course-reader star-page' + (blockLesson ? ' lesson-blocks' : '') + '">' + lessonCrumb(planet, planetIndex, c) +
-      '<article class="reading"><div class="meta"><span>CHAPTER ' + c.id + ' / LESSON ' + ('0' + (pos + 1)).slice(-2) + '</span><span>' + (pos + 1) + ' / ' + visible.length + '</span></div>' +
-      listenBarHtml() +
-      '<h2>' + esc(cur.s.title) + '</h2>' + (highlight ? '<div class="summary">' + esc(highlight) + '</div>' : '') +
-      '<div class="prose" id="reader-prose"' + (c.id === '01' || c.id === '02' || c.id === '13' ? ' data-keep-sentences="1"' : '') + '>' + cur.s.html + '</div>' +
-      '<div class="reading-footer"><button type="button" class="navbtn" id="reader-prev"' + (pos === 0 && ids.indexOf(id) <= 0 ? ' disabled' : '') + '>' + esc(t('reader.prev')) + '</button>' +
-      (blockLesson ? '' : '<button type="button" class="done-link" id="done-btn" aria-pressed="' + isDone(c.id) + '">' + esc(isDone(c.id) ? t('ch.done') : t('ch.done.set')) + '</button>') +
-      '<button type="button" class="navbtn primary" id="reader-next"' + (pos === visible.length - 1 && ids.indexOf(id) === ids.length - 1 ? ' disabled' : '') + '>' + esc(t('reader.next')) + '</button></div></article></div>';
+    document.body.classList.toggle('is-lb', !!(blockLesson && window.LESSON_BLOCKS));
+    if (blockLesson && window.LESSON_BLOCKS) {
+      var lines = disclaimerParts();
+      LESSON_BLOCKS.render(main, {
+        lang: LANG,
+        esc: esc,
+        title: cur.s.title,
+        html: cur.s.html,
+        index: cur.i,
+        pos: pos,
+        total: visible.length,
+        sections: visible.map(function (item) { return { i: item.i, title: item.s.title }; }),
+        chapterTitle: c.title,
+        planetName: t('atlas.entry.name'),
+        planetSub: t('atlas.entry.sub'),
+        tip: c.tip || '',
+        privacy: t('privacy'),
+        disclaimer: (lines.a + ' ' + lines.b).trim(),
+        brand: t('brand'),
+        listen: t('reader.listen'),
+        stopLabel: t('reader.listen.stop'),
+        prevLabel: t('reader.prev'),
+        nextLabel: t('reader.next'),
+        lockedLabel: t('reader.locked'),
+        ended: pos === visible.length - 1 && ids.indexOf(id) === ids.length - 1,
+        atStart: pos === 0 && ids.indexOf(id) <= 0,
+        canEnter: function (si) { return teachCanEnter(id, si); },
+        passed: function (si) { return !!(window.TEACH && TEACH.isPassed(id, si)); }
+      });
+    } else {
+      main.innerHTML =
+        '<div class="course-reader star-page">' + lessonCrumb(planet, planetIndex, c) +
+        '<article class="reading"><div class="meta"><span>CHAPTER ' + c.id + ' / LESSON ' + ('0' + (pos + 1)).slice(-2) + '</span><span>' + (pos + 1) + ' / ' + visible.length + '</span></div>' +
+        listenBarHtml() +
+        '<h2>' + esc(cur.s.title) + '</h2>' + (highlight ? '<div class="summary">' + esc(highlight) + '</div>' : '') +
+        '<div class="prose" id="reader-prose"' + (c.id === '01' || c.id === '02' || c.id === '13' ? ' data-keep-sentences="1"' : '') + '>' + cur.s.html + '</div>' +
+        '<div class="reading-footer"><button type="button" class="navbtn" id="reader-prev"' + (pos === 0 && ids.indexOf(id) <= 0 ? ' disabled' : '') + '>' + esc(t('reader.prev')) + '</button>' +
+        '<button type="button" class="done-link" id="done-btn" aria-pressed="' + isDone(c.id) + '">' + esc(isDone(c.id) ? t('ch.done') : t('ch.done.set')) + '</button>' +
+        '<button type="button" class="navbtn primary" id="reader-next"' + (pos === visible.length - 1 && ids.indexOf(id) === ids.length - 1 ? ' disabled' : '') + '>' + esc(t('reader.next')) + '</button></div></article></div>';
+    }
     var prose = $('#reader-prose');
-    if (highlight && prose) {
+    if (!blockLesson && highlight && prose) {
       var opening = prose.querySelector('p');
       if (opening) {
         var norm = function (s) { return s.replace(/\s+/g, '').replace(/[。.!！?？]+$/, ''); };
         if (norm(opening.textContent) === norm(highlight)) opening.remove();
       }
     }
-    if (blockLesson && window.LESSON_BLOCKS) LESSON_BLOCKS.organize(prose, LANG);
-    balanceProse(prose);
+    if (!blockLesson) balanceProse(prose);
     function goHash(nextId, nextSec) { location.hash = '#/c/' + nextId + (nextSec != null ? '/' + nextSec : ''); }
     $$('.course-reader [data-planet]').forEach(function (b) {
       b.addEventListener('click', function () {
@@ -1414,6 +1448,7 @@
       if (select) Array.prototype.forEach.call(select.options, function (opt) {
         opt.disabled = !teachCanEnter(id, +opt.value);
       });
+      if (window.LESSON_BLOCKS && LESSON_BLOCKS.sync) LESSON_BLOCKS.sync();
     }
     if (nextBtn && nextBtn.disabled) nextBtn.setAttribute('data-end', '1');
     if (sectionHasQuiz(id, cur.i) && window.TEACH && !TEACH.isPassed(id, cur.i) && nextBtn) {
@@ -2222,6 +2257,7 @@
   /* ---------- 路由 ---------- */
   function route(keep) {
     stopLessonSpeech();
+    document.body.classList.remove('is-lb', 'is-lb-day');
     var h = location.hash, m = h.match(/^#\/c\/(\d\d)(?:\/(\d+))?/);
     $$('.topbar .search-results').forEach(function (b) { b.hidden = true; });
     var rm = h.match(/^#\/r\/(\w+)(?:\/(\d+))?/), cx = /^#\/cex/.test(h), py = /^#\/punycode/.test(h), lab = /^#\/lab(?:$|[/?#])/.test(h);

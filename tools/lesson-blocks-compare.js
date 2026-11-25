@@ -9,6 +9,7 @@ vm.runInNewContext(fs.readFileSync(path.join(root, 'js/data.js'), 'utf8'), { win
 vm.runInNewContext(fs.readFileSync(path.join(root, 'js/data-en.js'), 'utf8'), { window });
 const kindOf = window.LESSON_BLOCKS.kindOf;
 const label = window.LESSON_BLOCKS.label;
+const plan = window.LESSON_BLOCKS.plan;
 
 function decode(s) {
   return s.replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"');
@@ -70,9 +71,13 @@ const langs = [
 const lines = [];
 lines.push('# Chapter 01 block layout: content comparison');
 lines.push('');
-lines.push('Planet chapter `01｜什么是币圈？` (`#/c/01/0` through `#/c/01/10`). Module titles (介绍 / 图解 / 例子 / 风险提醒 / 小测, and the English equivalents) are the only added words and are excluded from the text set.');
+lines.push('Planet chapter `01｜什么是币圈？` (`#/c/01/0` through `#/c/01/10`). The lesson page uses the demo shell: top bar, sidebar, hero, tab row, takeaway, quiz.');
 lines.push('');
-lines.push('Plain (non-card) layout: none. Every original block is placed in one of those cards. A card is omitted only when that lesson has no block of that kind.');
+lines.push('Where each original block goes: the first paragraph is the hero lead (once). Later paragraphs, lists, and the table are tabs. A risk paragraph is the takeaway and is not also a tab. The quiz, including its question, options, and feedback attributes, stays in the quiz. Module titles (介绍 / 图解 / 例子 / 风险提醒 / 小测, and the English equivalents) and shell labels are the only added words and are excluded from the text set.');
+lines.push('');
+lines.push('The chapter tip is the sidebar note on every lesson. It is chapter-level text, not part of a section, so it is not in the section text set.');
+lines.push('');
+lines.push('Plain (non-card) layout: none. Every original block is placed in the hero, a tab, the takeaway, or the quiz.');
 lines.push('');
 let failed = 0;
 langs.forEach(function (pair) {
@@ -83,13 +88,15 @@ langs.forEach(function (pair) {
   lines.push('');
   chapter.sections.forEach(function (section, index) {
     const blocks = topBlocks(section.html);
+    const slots = plan(blocks);
     const placed = [];
     const original = [];
-    blocks.forEach(function (block) {
+    blocks.forEach(function (block, index) {
       const kind = kindOf(block.tag, block.className, block.text);
+      const slot = slots[index];
       segments(block).forEach(function (part) {
         original.push(norm(part));
-        placed.push({ kind: kind, text: part });
+        placed.push({ kind: kind, slot: slot, text: part });
       });
     });
     const rebuilt = placed.map(function (item) { return norm(item.text); });
@@ -105,7 +112,7 @@ langs.forEach(function (pair) {
     lines.push('Route: `#/c/01/' + index + '`');
     lines.push('');
     placed.forEach(function (item) {
-      const where = label(item.kind, lang);
+      const where = (item.slot === 'hero' ? (lang === 'en' ? 'Hero lead' : '标题下导语') : item.slot === 'tab' ? (lang === 'en' ? 'Tab · ' : '标签 · ') + label(item.kind, lang) : item.slot === 'takeaway' ? (lang === 'en' ? 'Takeaway · ' : '提醒条 · ') + label(item.kind, lang) : (lang === 'en' ? 'Quiz' : '小测'));
       const clip = item.text.length > 180 ? item.text.slice(0, 180) + '…' : item.text;
       lines.push('- **' + where + ':** ' + clip.replace(/\|/g, '\\|'));
     });

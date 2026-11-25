@@ -106,9 +106,11 @@
             quiz.querySelectorAll('.option').forEach(function (b) {
               b.style.background = '';
               b.style.color = '';
+              b.classList.remove('correct', 'wrong');
             });
             btn.style.background = good ? '#1f8a4d' : '#6e2c32';
             btn.style.color = '#fff';
+            btn.classList.add(good ? 'correct' : 'wrong');
           }
           var feedback = quiz.querySelector('.feedback');
           if (feedback) {
