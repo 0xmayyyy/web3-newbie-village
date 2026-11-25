@@ -31,16 +31,16 @@
           miss: bi('低于预期 0.2 个百分点时，头一两分钟常常先得到支撑，但整体降温而核心偏热时也可能反复。', 'When it is 0.2 percentage points below the forecast, the first minute or two often gets support first, but it can also chop when the headline cools and the core runs hot.')
         },
         quizzes: [
-          quiz('实际和预期几乎一样，公布后头一两分钟，比特币的第一波反应常常怎样？', 'The actual almost matches the forecast. In the first minute or two after the release, what does bitcoin’s first reaction often do?', [
-            opt('A', '不一定回落，要看此前消化了多少预期', 'It does not have to fall back, and you look at how much of the expectation was already digested'),
-            opt('B', '数字一对上，趋势通常就确认了', 'Once the number matches, the trend is usually confirmed'),
-            opt('C', '顺着公布前的方向继续追下去', 'Keep chasing along the direction from before the release'),
-            opt('D', '没有意外，头一两分钟通常一点不动', 'With no surprise, the first minute or two usually do not move at all')
+          quiz('CPI 或 PPI 的主要公布值与预期基本一致，能否据此判断比特币头一两分钟的涨跌？', 'When the main CPI or PPI print basically matches the forecast, can you judge bitcoin’s rise or fall in the first minute or two from that?', [
+            opt('A', '不能，还要结合分项数据、此前走势和市场预期判断。', 'No, you still have to judge it together with the component data, the earlier path, and market expectations.'),
+            opt('B', '能，符合预期说明没有意外，头一两分钟通常横盘', 'Yes, a match means there is no surprise, so the first minute or two usually chop'),
+            opt('C', '能，只要主要公布值符合预期，头一两分钟就先看涨', 'Yes, as long as the main print matches, the first minute or two lean up first'),
+            opt('D', '能，顺着公布前的方向，就能判断头一两分钟', 'Yes, following the direction from before the release is enough to judge the first minute or two')
           ], 'A', {
-            A: ['符合预期不代表一定回落，还要看此前行情消化了多少预期。', 'A match does not mean it must fall back, and you also look at how much of the expectation the earlier move already digested.'],
-            B: ['对上预期只说明没有新的意外，不是趋势确认。', 'Matching the forecast only says there is no new surprise, and it is not a confirmed trend.'],
-            C: ['公布前的方向可能已经被消化，头一两分钟不宜接着追。', 'The pre-release direction may already have been digested, so the first minute or two are a poor time to keep chasing.'],
-            D: ['没有意外时，头一两分钟仍会有第一波，方向要看消化了多少。', 'With no surprise, the first minute or two still have a first wave, and the direction depends on how much was already digested.']
+            A: ['符合预期，不代表一定上涨、回落或横盘。主要公布值之外，核心数据和其他分项仍可能带来意外，第一波走势也可能随后反转。', 'Matching the forecast does not mean it must rise, fall back, or chop. Outside the main print, the core data and other components can still bring a surprise, and the first wave can also reverse afterward.'],
+            B: ['符合预期时，头一两分钟仍可能涨或跌，横盘要另看分项和此前走势。', 'When it matches, the first minute or two can still rise or fall, and a chop depends on the components and the earlier path.'],
+            C: ['主要公布值对上之后，核心和其他分项仍可能带来意外。', 'After the main print matches, the core and other components can still bring a surprise.'],
+            D: ['公布前的方向还要对照此前走势和市场预期，单凭它判断不了头一两分钟。', 'The direction from before the release still has to be read against the earlier path and market expectations, and it alone cannot judge the first minute or two.']
           }),
           quiz('大家已经在等一个很好的 CPI，结果也确实好，常怎么走？', 'Everyone already waited for a good CPI, and it is good, what often happens?', [
             opt('A', '好于预期就通常一路涨到收盘', 'Better than expected usually rises straight into the close'),
