@@ -34,13 +34,13 @@
           quiz('实际和预期几乎一样，公布后头一两分钟，比特币的第一波反应常常怎样？', 'The actual almost matches the forecast. In the first minute or two after the release, what does bitcoin’s first reaction often do?', [
             opt('A', '不一定回落，要看此前消化了多少预期', 'It does not have to fall back, and you look at how much of the expectation was already digested'),
             opt('B', '数字一对上，趋势通常就确认了', 'Once the number matches, the trend is usually confirmed'),
-            opt('C', '符合预期就一定回落', 'A match means it must fall back'),
-            opt('D', '符合预期就一定上涨', 'A match means it must rise')
+            opt('C', '顺着公布前的方向继续追下去', 'Keep chasing along the direction from before the release'),
+            opt('D', '没有意外，头一两分钟通常一点不动', 'With no surprise, the first minute or two usually do not move at all')
           ], 'A', {
             A: ['符合预期不代表一定回落，还要看此前行情消化了多少预期。', 'A match does not mean it must fall back, and you also look at how much of the expectation the earlier move already digested.'],
             B: ['对上预期只说明没有新的意外，不是趋势确认。', 'Matching the forecast only says there is no new surprise, and it is not a confirmed trend.'],
-            C: ['符合预期不代表一定回落。', 'A match does not mean it must fall back.'],
-            D: ['数据利好也不代表一定上涨，符合预期更不是一定涨。', 'Good data also does not mean it must rise, and a match is even less a rise that must happen.']
+            C: ['公布前的方向可能已经被消化，头一两分钟不宜接着追。', 'The pre-release direction may already have been digested, so the first minute or two are a poor time to keep chasing.'],
+            D: ['没有意外时，头一两分钟仍会有第一波，方向要看消化了多少。', 'With no surprise, the first minute or two still have a first wave, and the direction depends on how much was already digested.']
           }),
           quiz('大家已经在等一个很好的 CPI，结果也确实好，常怎么走？', 'Everyone already waited for a good CPI, and it is good, what often happens?', [
             opt('A', '好于预期就通常一路涨到收盘', 'Better than expected usually rises straight into the close'),
@@ -54,12 +54,12 @@
             D: ['此前已经在等，利好不代表一定上涨，常常是冲一下就回。', 'It was already waited for, good news does not mean it must rise, and it is often a push and then a fade.']
           }),
           quiz('非农比预期差，市场又在怕衰退，公布后头一两分钟，比特币的第一波反应更常见的是？', 'Payrolls are weaker than expected, and the market fears a recession. In the first minute or two after the release, what is more common for bitcoin’s first reaction?', [
-            opt('A', '更关注降息时才会得到支撑，这一题不是', 'It gets support only when cuts are the focus, and this question is not that'),
+            opt('A', '会被当成降息更近，比特币先得到支撑', 'It gets read as rate cuts coming closer, and bitcoin gets support first'),
             opt('B', '会被当成经济走弱，跟随风险资产下跌', 'It gets read as a weaker economy, and bitcoin falls with other risk assets'),
             opt('C', '差得不多就常常先横住', 'A small miss often chops first'),
             opt('D', '就业差通常只砸美股，币价不动', 'Weak jobs usually hit only stocks, and the coin stays put')
           ], 'B', {
-            A: ['更关注降息时，弱于预期可以获得支撑，但这一题的市场是在怕衰退。', 'When rate cuts are the focus, a weaker print can get support, but this question’s market fears a recession.'],
+            A: ['更关注降息时才会这样读，这一题的市场在怕衰退。', 'You read it that way only when rate cuts are the focus, and this question’s market fears a recession.'],
             B: ['市场更担心衰退时，弱于预期的非农会被当成经济走弱，比特币跟随风险资产下跌。', 'When the market worries more about a recession, weaker-than-expected payrolls get read as a weaker economy, and bitcoin falls with other risk assets.'],
             C: ['怕衰退时，头一两分钟的第一波常常是跌，不是横住。', 'When recession is the fear, the first wave in the first minute or two is often a drop, not a chop.'],
             D: ['怕衰退时，比特币常常跟随风险资产下跌，不是只砸美股。', 'When recession is the fear, bitcoin often falls with other risk assets, and it is not only stocks that get hit.']
