@@ -102,6 +102,14 @@
           quiz.querySelectorAll('.option').forEach(function (b) { b.classList.toggle('selected', b === btn); });
           var good = btn.getAttribute('data-answer') === quiz.getAttribute('data-correct');
           quiz.setAttribute('data-verified', good ? 'true' : 'false');
+          if (quiz.closest('.lesson-blocks')) {
+            quiz.querySelectorAll('.option').forEach(function (b) {
+              b.style.background = '';
+              b.style.color = '';
+            });
+            btn.style.background = good ? '#1f8a4d' : '#6e2c32';
+            btn.style.color = '#fff';
+          }
           var feedback = quiz.querySelector('.feedback');
           if (feedback) {
             feedback.style.display = 'block';

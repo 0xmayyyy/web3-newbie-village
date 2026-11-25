@@ -1328,7 +1328,8 @@
     var cur = visible[pos];
     var ids = readerChapterIds(planetIndex, id);
     var glossary = id === '13' && sec == null;
-    var highlight = glossary ? '' : firstExcerpt(cur.s.text || '');
+    var blockLesson = id === '01';
+    var highlight = glossary || blockLesson ? '' : firstExcerpt(cur.s.text || '');
     document.title = t('title.ch', { id: c.id, title: c.title });
     if (glossary) {
       main.innerHTML = '<div class="course-reader star-page is-glossary">' + lessonCrumb(planet, planetIndex, c) + '<div class="center"></div></div>';
@@ -1338,13 +1339,13 @@
       return;
     }
     main.innerHTML =
-      '<div class="course-reader star-page">' + lessonCrumb(planet, planetIndex, c) +
+      '<div class="course-reader star-page' + (blockLesson ? ' lesson-blocks' : '') + '">' + lessonCrumb(planet, planetIndex, c) +
       '<article class="reading"><div class="meta"><span>CHAPTER ' + c.id + ' / LESSON ' + ('0' + (pos + 1)).slice(-2) + '</span><span>' + (pos + 1) + ' / ' + visible.length + '</span></div>' +
       listenBarHtml() +
       '<h2>' + esc(cur.s.title) + '</h2>' + (highlight ? '<div class="summary">' + esc(highlight) + '</div>' : '') +
       '<div class="prose" id="reader-prose"' + (c.id === '01' || c.id === '02' || c.id === '13' ? ' data-keep-sentences="1"' : '') + '>' + cur.s.html + '</div>' +
       '<div class="reading-footer"><button type="button" class="navbtn" id="reader-prev"' + (pos === 0 && ids.indexOf(id) <= 0 ? ' disabled' : '') + '>' + esc(t('reader.prev')) + '</button>' +
-      '<button type="button" class="done-link" id="done-btn" aria-pressed="' + isDone(c.id) + '">' + esc(isDone(c.id) ? t('ch.done') : t('ch.done.set')) + '</button>' +
+      (blockLesson ? '' : '<button type="button" class="done-link" id="done-btn" aria-pressed="' + isDone(c.id) + '">' + esc(isDone(c.id) ? t('ch.done') : t('ch.done.set')) + '</button>') +
       '<button type="button" class="navbtn primary" id="reader-next"' + (pos === visible.length - 1 && ids.indexOf(id) === ids.length - 1 ? ' disabled' : '') + '>' + esc(t('reader.next')) + '</button></div></article></div>';
     var prose = $('#reader-prose');
     if (highlight && prose) {
@@ -1354,6 +1355,7 @@
         if (norm(opening.textContent) === norm(highlight)) opening.remove();
       }
     }
+    if (blockLesson && window.LESSON_BLOCKS) LESSON_BLOCKS.organize(prose, LANG);
     balanceProse(prose);
     function goHash(nextId, nextSec) { location.hash = '#/c/' + nextId + (nextSec != null ? '/' + nextSec : ''); }
     $$('.course-reader [data-planet]').forEach(function (b) {

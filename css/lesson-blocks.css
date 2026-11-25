@@ -1,0 +1,118 @@
+/* Day-mode block layout for planet chapter 01 only. Scoped so other courses stay as they are. */
+.course-reader.lesson-blocks{
+  --bg:#f3f1f6;--panel:#fff;--ink:#2c2438;--muted:#3f364c;--gold:#8a6233;--line:#d9cfe3;
+  --accent:#5c4578;color:#2c2438;color-scheme:light;
+  font-size:17px;
+}
+.course-reader.lesson-blocks .shell{background:transparent}
+.course-reader.lesson-blocks .crumb,
+.course-reader.lesson-blocks .crumb a,
+.course-reader.lesson-blocks .planet-return label,
+.course-reader.lesson-blocks .planet-return select{
+  color:#3f364c;background:transparent;
+}
+.course-reader.lesson-blocks .planet-return select{background:#fff;border-color:#cfc4dc}
+.course-reader.lesson-blocks .hero{
+  background:#fff;border-color:#e4dcec;box-shadow:none;
+  background-image:none;
+}
+.course-reader.lesson-blocks .hero:after{display:none}
+.course-reader.lesson-blocks .eyebrow,
+.course-reader.lesson-blocks .meta,
+.course-reader.lesson-blocks .duration{color:#8a6233}
+.course-reader.lesson-blocks h1,
+.course-reader.lesson-blocks .reading h2,
+.course-reader.lesson-blocks .course-head h2{color:#2c2438}
+.course-reader.lesson-blocks .hero p{color:#3f364c;font-size:17px}
+.course-reader.lesson-blocks .layout{align-items:start}
+.course-reader.lesson-blocks .side,
+.course-reader.lesson-blocks .toc{
+  background:#fff;border-color:#e4dcec;color:#2c2438;
+}
+.course-reader.lesson-blocks .side h2,
+.course-reader.lesson-blocks .toc h2{color:#5c4578;font-size:15px}
+.course-reader.lesson-blocks .toc-btn,
+.course-reader.lesson-blocks .planet-btn,
+.course-reader.lesson-blocks .chapter{
+  color:#2c2438;background:#fff;font-size:16px;
+}
+.course-reader.lesson-blocks .toc-btn .idx,
+.course-reader.lesson-blocks .chapter small,
+.course-reader.lesson-blocks .progress-label,
+.course-reader.lesson-blocks .side-note{color:#3f364c;font-size:15px}
+.course-reader.lesson-blocks .toc-btn.active,
+.course-reader.lesson-blocks .planet-btn.active,
+.course-reader.lesson-blocks .chapter.active{
+  color:#2c2438;background:#f4eef8;border-color:#c9b6dc;
+}
+.course-reader.lesson-blocks .reading{
+  background:#fbf9fd;border-color:#e4dcec;color:#2c2438;
+  box-shadow:none;
+}
+.course-reader.lesson-blocks .prose{
+  color:#2c2438;font-size:17px;line-height:1.85;
+}
+.course-reader.lesson-blocks .prose p,
+.course-reader.lesson-blocks .prose li,
+.course-reader.lesson-blocks .prose td,
+.course-reader.lesson-blocks .prose th{color:#2c2438;font-size:17px}
+.course-reader.lesson-blocks .prose strong{color:#2c2438}
+.course-reader.lesson-blocks .prose a{color:#5a3d86}
+.course-reader.lesson-blocks .lb-card{
+  background:#fff;border:1px solid #e4dcec;border-radius:16px;
+  padding:16px 18px 6px;margin:0 0 16px;
+}
+.course-reader.lesson-blocks .lb-label{
+  display:flex;align-items:center;gap:10px;margin:0 0 10px;
+  font-size:18px;font-weight:650;color:#3d3150;
+}
+.course-reader.lesson-blocks .lb-label:before{
+  content:"";width:4px;height:16px;border-radius:3px;background:#8660ac;flex:none;
+}
+.course-reader.lesson-blocks .lb-risk{
+  background:#fff8f2;border-color:#ead8c4;
+}
+.course-reader.lesson-blocks .lb-risk .lb-label:before{background:#8a6233}
+.course-reader.lesson-blocks .table-wrap,
+.course-reader.lesson-blocks table,
+.course-reader.lesson-blocks td,
+.course-reader.lesson-blocks th{
+  background:#fff;color:#2c2438;border-color:#e4dcec;
+}
+.course-reader.lesson-blocks th{background:#f6f1fa;color:#2c2438}
+.course-reader.lesson-blocks .quiz{
+  background:#fff;border-color:#e4dcec;box-shadow:none;color:#2c2438;
+}
+.course-reader.lesson-blocks .quiz h3,
+.course-reader.lesson-blocks .quiz p{color:#2c2438;font-size:17px}
+.course-reader.lesson-blocks .option{
+  appearance:none;background:#fff;color:#2c2438;border-color:#d5cbe0;font-size:16px;
+}
+.course-reader.lesson-blocks .option:hover,
+.course-reader.lesson-blocks .option:focus-visible{border-color:#8660ac;color:#2c2438}
+.course-reader.lesson-blocks .quiz[data-verified="true"] .option.selected{
+  background:#1f8a4d !important;border-color:#1f8a4d;color:#fff;box-shadow:none;
+}
+.course-reader.lesson-blocks .quiz[data-verified="false"] .option.selected{
+  background:#6e2c32 !important;border-color:#6e2c32;color:#fff;box-shadow:none;
+}
+.course-reader.lesson-blocks .feedback{
+  display:none;background:#1f8a4d;color:#fff;font-size:16px;
+}
+.course-reader.lesson-blocks .feedback.wrong{background:#6e2c32;color:#fff}
+.course-reader.lesson-blocks .listen-pill{
+  background:#fff;color:#2c2438;border-color:#cfc4dc;font-size:16px;
+}
+.course-reader.lesson-blocks .listen-speed,
+.course-reader.lesson-blocks .listen-speed select{color:#2c2438;background:#fff}
+.course-reader.lesson-blocks .navbtn{
+  color:#2c2438;border-color:#cfc4dc;background:#fff;font-size:16px;
+}
+.course-reader.lesson-blocks .navbtn.primary{background:#3d3154;color:#fff;border-color:#3d3154}
+.course-reader.lesson-blocks .navbtn.is-locked,
+.course-reader.lesson-blocks .navbtn:disabled{color:#3f364c;background:#f3eef6}
+.course-reader.lesson-blocks .mobile-toc select{background:#fff;color:#2c2438;border-color:#cfc4dc;font-size:16px}
+@media(max-width:700px){
+  .course-reader.lesson-blocks .prose,
+  .course-reader.lesson-blocks .prose p{font-size:16px}
+}
