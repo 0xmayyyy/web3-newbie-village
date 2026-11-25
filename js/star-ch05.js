@@ -74,62 +74,62 @@
         id: '02', title: bi('利率：降息不是上涨按钮', 'Rates: a cut is not an up button'),
         scene: bi('降息公布了，币价是不是应该直接追多？', 'The cut is announced, so should you chase the long?'),
         one: bi('降息或加息若早就被料到，公布时常没后劲，发布会和点阵图偏紧时，降息也可以不涨反跌。', 'If a cut or a hike was already expected, the announcement often has little follow-through, and when the press conference and the dot plot are tight, a cut can fall instead of rise.'),
-        explain: bi('利率是借钱的价钱。\n降息是价钱变低，加息是价钱变高。\n1 个基点是 0.01 个百分点。\n25 个基点，也就是 0.25 个百分点。\n大家事先怎么定价，可以看市场上的降息概率，比如 CME FedWatch。\n真正的意外常常出在发布会的说法和点阵图，不只在降息这两个字。', 'The interest rate is the price of borrowing.\nA cut makes that price lower, and a hike makes it higher.\n1 basis point is 0.01 percentage point.\n25 basis points are 0.25 percentage points.\nHow people priced it beforehand shows up in market odds of a cut, for example CME FedWatch.\nThe real surprise often comes from the press conference and the dot plot, not only from the word cut.'),
+        explain: bi('利率，可以理解为借钱的价格。\n降息，意味着政策利率下调，通常有助于降低借钱成本；\n加息则相反。\n1 个基点＝0.01 个百分点。\n25 个基点＝0.25 个百分点。\n比如利率从 5% 降到 4.75%，就是降息 25 个基点。\n想知道市场提前押注了什么，可以参考 CME FedWatch，查看降息、维持不变或加息的概率。\n它反映市场预期，不代表最终结果。\n除了本次利率决定，还要看声明、发布会，以及有更新时的点阵图，判断未来政策会比预期更宽松，还是更紧。', 'The interest rate can be understood as the price of borrowing.\nA cut means the policy rate is lowered, and it usually helps lower the cost of borrowing;\na hike is the opposite.\n1 basis point ＝ 0.01 percentage point.\n25 basis points ＝ 0.25 percentage points.\nFor example, a rate drop from 5% to 4.75% is a cut of 25 basis points.\nTo see what the market bet on beforehand, you can check CME FedWatch for the odds of a cut, no change, or a hike.\nIt reflects market expectations, and it does not represent the final result.\nBesides this rate decision, also read the statement, the press conference, and the dot plot when it is updated, and judge whether future policy will be easier or tighter than expected.'),
         topic: {
-          title: bi('利率决议出来，价格通常跟谁', 'When the rate decision lands, what price usually follows'),
-          body: bi('符合预期的降息，公布时常常不涨，甚至冲一下就回。\n意外的降息，风险资产常常先涨一截。\n意外的加息，或者说法比预期更紧，比特币常常先跌一截。\n降息但发布会偏紧、点阵图还上移，这是鹰派降息，价格常常不涨反跌。\n加息比大家怕的要小，常常被当成没那么紧，先涨一截。\n若降息是因为经济已经很差，价格也可以跌。\n仓位已经挤在一边时，第一下过一会儿仍可能反过来。', 'A cut that matches expectations often does not rally on the announcement, and it can even push and fade.\nA surprise cut often lifts risk assets a notch first.\nA surprise hike, or language tighter than expected, often drops bitcoin a notch first.\nA cut with a tight press conference and a higher dot plot is a hawkish cut, and price often falls instead of rises.\nA hike smaller than people feared is often read as less tight, and price rises a notch first.\nIf the cut is because the economy is already weak, price can also fall.\nWhen positioning is already crowded on one side, the first move can still reverse a little later.')
+          title: bi('利率决议出来，市场主要看什么', 'When the rate decision comes out, what the market mainly watches'),
+          body: bi('关键是：实际决定和未来政策信号，与市场原先的预期差多少。\n如果降息符合预期，相关利好可能已被提前消化，公布后能否继续涨，还要看有没有新的宽松信号。\n如果降息幅度大于预期，可能支撑比特币等风险资产；\n但如果市场认为这是经济明显恶化的信号，也可能下跌。\n如果加息幅度大于预期，或暗示未来利率会更高、维持高位更久，通常会给风险资产带来压力。\n即使本次降息，若同时暗示未来降息次数少于市场预期，也可能被理解为「鹰派降息」，价格仍可能下跌。\n即使本次加息，若幅度小于市场预期，或释放接近停止加息的信号，也可能带来反弹。\n公布决定和随后约 30 分钟的发布会，可能带来不同方向的反应。\n决定公布后头几分钟，比特币的第一波涨跌，不一定就是后续方向。', 'The key is how far the actual decision and the future-policy signal sit from what the market expected beforehand.\nIf the cut matches expectations, the related good news may already have been digested, and whether it can keep rising after the release still depends on whether there is a new easing signal.\nIf the cut is larger than expected, it may support risk assets such as bitcoin;\nbut if the market reads it as a sign that the economy has clearly worsened, it can also fall.\nIf the hike is larger than expected, or it hints that future rates will be higher or stay high for longer, it usually puts pressure on risk assets.\nEven if this meeting cuts, if it also hints at fewer future cuts than the market expected, it can be read as a hawkish cut, and price can still fall.\nEven if this meeting hikes, if the size is smaller than the market expected, or it signals that hikes are close to stopping, it can also bring a bounce.\nThe decision release and the press conference about 30 minutes later can bring reactions in different directions.\nIn the first minutes after the decision is released, bitcoin’s first wave of rise or fall is not necessarily the later direction.')
         },
-        example: bi('教学模拟：从 5.00% 降到 4.75%，就是大家已经料到的 25 个基点。\n若发布会偏紧，价格可以几乎不涨。\n若一下子降得更多，才更像意外宽松，第一下常常先涨。', 'Teaching simulation: a drop from 5.00% to 4.75% is the 25 basis points people already expected.\nIf the press conference is tight, price can barely rise.\nA larger cut all at once looks more like surprise easing, and the first move is often up.'),
+        example: bi('教学模拟：利率从 5% 降到 4.75%，就是降息 25 个基点。\n若这 25 个基点符合预期，公布后能否继续涨，还要看有没有新的宽松信号。\n若约 30 分钟后的发布会偏紧，决定公布后头几分钟的第一波，不一定就是后面的方向。', 'Teaching simulation: a rate drop from 5% to 4.75% is a cut of 25 basis points.\nIf these 25 basis points match expectations, whether it can keep rising after the release still depends on whether there is a new easing signal.\nIf the press conference about 30 minutes later is tight, the first wave in the first minutes after the decision is not necessarily the later direction.'),
         pitfalls: [
           bi('把基点和百分点当成同一个单位', 'Counting basis points and percentage points as the same unit'),
           bi('不看发布会和点阵图', 'Ignoring the press conference and the dot plot')
         ],
-        practice: bi('先看降息概率里这次有没有被料到，再听发布会和点阵图偏松还是偏紧。', 'First see whether the cut odds already priced this move, then listen for whether the press conference and the dot plot are easy or tight.'),
+        practice: bi('先看 CME FedWatch 里降息、维持不变或加息的概率，再看声明、发布会和点阵图比预期更松还是更紧。', 'First check the CME FedWatch odds of a cut, no change, or a hike, then see whether the statement, the press conference, and the dot plot are easier or tighter than expected.'),
         check: {
-          ask: bi('降息符合预期，发布会却偏紧，点阵图也上移，价格通常跟谁？', 'The cut matches expectations, the press conference is tight, and the dot plot moves up, what does price usually follow?'),
+          ask: bi('利率从 5% 降到 4.75%，市场原先就押注这 25 个基点，发布会却暗示以后降息更少。决定公布后头几分钟，更可能怎样？', 'The rate drops from 5% to 4.75%, the market had already bet on these 25 basis points, and the press conference hints at fewer cuts later. In the first minutes after the decision, what is more likely?'),
           options: [
-            opt('A', '跟发布会和点阵图，不跟降息两个字', 'Follow the press conference and the dot plot, not the word cut'),
-            opt('B', '降息就是放水，直接追多', 'A cut is easy money, so chase the long'),
-            opt('C', '点阵图只是预测，通常可以忽略', 'The dot plot is only a forecast, so it can usually be ignored'),
-            opt('D', '符合预期的降息，当天通常大涨', 'An expected cut usually surges on the day')
+            opt('A', '25 个基点已在预期里，更少的后续降息仍可能让价格下跌', 'The 25 basis points were already expected, and fewer later cuts can still make price fall'),
+            opt('B', '只要降了 25 个基点，头几分钟通常继续涨', 'As long as it cut 25 basis points, the first minutes usually keep rising'),
+            opt('C', '发布会要等下次会议，头几分钟只看这次降了多少', 'The press conference waits for the next meeting, so the first minutes only look at the size of this cut'),
+            opt('D', '符合预期就说明没有波动，头几分钟通常不动', 'A match means there is no move, so the first minutes usually stay still')
           ],
           answer: 'A',
-          note: bi('鹰派降息时，价格跟发布会和点阵图，常常不涨反跌。', 'On a hawkish cut, price follows the press conference and the dot plot, and often falls instead of rises.'),
-          miss: bi('鹰派降息时，价格跟发布会和点阵图，常常不涨反跌。', 'On a hawkish cut, price follows the press conference and the dot plot, and often falls instead of rises.')
+          note: bi('符合预期的 25 个基点可能已被消化，暗示以后降息更少时，价格仍可能下跌。', 'The expected 25 basis points may already have been digested, and when fewer later cuts are hinted, price can still fall.'),
+          miss: bi('符合预期的 25 个基点可能已被消化，暗示以后降息更少时，价格仍可能下跌。', 'The expected 25 basis points may already have been digested, and when fewer later cuts are hinted, price can still fall.')
         },
         quizzes: [
-          quiz('决议比预期更紧，第一下更常见的是？', 'The decision is tighter than expected, what is the more common first move?', [
-            opt('A', '更紧通常还要等发布会才跌', 'Tighter usually waits for the press conference before it drops'),
-            opt('B', '更紧会被当成利空出尽，先涨', 'Tighter gets read as used-up bad news, and rises first'),
-            opt('C', '符合预期的降息也是这个走法', 'An expected cut walks the same path'),
-            opt('D', '比特币常常先跌一截', 'Bitcoin often drops a notch first')
-          ], 'D', {
-            A: ['更紧本身就是意外，第一下常常已经先跌。', 'Tighter is itself the surprise, and the first move has often already dropped.'],
-            B: ['更紧不是利空出尽，利空出尽是坏消息被等了很久。', 'Tighter is not used-up bad news, and used-up bad news is bad news that was long awaited.'],
-            C: ['符合预期的降息常常没后劲，更紧是先跌。', 'An expected cut often has no follow-through, and tighter drops first.'],
-            D: ['比预期更紧，比特币第一下常常先跌。', 'Tighter than expected, bitcoin often drops first.']
-          }),
-          quiz('降息是因为经济已经很差，这时该怎么看？', 'The cut is because the economy is already weak, how should you read it?', [
-            opt('A', '经济差配降息，通常是追多的时候', 'A weak economy plus a cut is usually the time to chase longs'),
-            opt('B', '这种降息常常先横一天再涨', 'This kind of cut often chops for a day and then rises'),
-            opt('C', '价格也可以不涨反跌', 'Price can fall instead of rise'),
-            opt('D', '先看点阵图就行，原因不用管', 'Watch only the dot plot, and ignore the reason')
+          quiz('降息幅度大于预期，但市场把它读成经济明显恶化。决定公布后头几分钟，更常见的是？', 'The cut is larger than expected, but the market reads it as the economy having clearly worsened. In the first minutes after the decision, what is more common?', [
+            opt('A', '大于预期的降息，头几分钟通常继续得到支撑', 'A larger-than-expected cut usually keeps getting support in the first minutes'),
+            opt('B', '经济恶化只影响股市，比特币头几分钟通常不动', 'A worsening economy hits only stocks, so bitcoin usually stays still in the first minutes'),
+            opt('C', '恶化的信号盖过宽松，头几分钟也可能下跌', 'The worsening signal outweighs the easing, so the first minutes can also fall'),
+            opt('D', '头几分钟先不看原因，等 30 分钟后的发布会', 'Ignore the reason in the first minutes, and wait for the press conference 30 minutes later')
           ], 'C', {
-            A: ['因为经济差而降息，常常是害怕，不是追多。', 'A cut because the economy is weak is often fear, not a chase of longs.'],
-            B: ['它没有先横一天的固定走法，可以当时就跌。', 'It has no fixed path of chopping for a day, and it can fall at the time.'],
-            C: ['坏的降息可以让价格下跌。', 'A cut for bad reasons can come with a falling price.'],
-            D: ['原因就是这次偏空的来源，不能丢掉。', 'The reason is the source of the soft lean this time, so do not drop it.']
+            A: ['大于预期可以支撑风险资产，但恶化的信号也可以让它下跌。', 'Larger than expected can support risk assets, but the worsening signal can also make them fall.'],
+            B: ['比特币等风险资产也会跟着这个恶化信号走。', 'Risk assets such as bitcoin also follow this worsening signal.'],
+            C: ['市场若读成经济明显恶化，大于预期的降息也可能下跌。', 'If the market reads it as the economy having clearly worsened, a larger-than-expected cut can also fall.'],
+            D: ['决定公布后头几分钟就可以有第一波，不必空等发布会。', 'The first minutes after the decision can already have a first wave, so you do not wait out the press conference.']
           }),
-          quiz('加息比大家怕的要小，常怎么走？', 'The hike is smaller than people feared, what often happens?', [
-            opt('A', '小幅加息通常还是先跌', 'A small hike usually still drops first'),
-            opt('B', '常常被当成没那么紧，先涨一截', 'Often read as less tight, and price rises a notch first'),
-            opt('C', '比怕的小就要等下次补加', 'Smaller than feared means you wait for the rest next time'),
-            opt('D', '点阵图会把这一小步抵消', 'The dot plot cancels this small step')
+          quiz('决定公布后头几分钟比特币先涨，约 30 分钟后的发布会却更紧。该怎么看？', 'Bitcoin rises in the first minutes after the decision, but the press conference about 30 minutes later is tighter. How should you read it?', [
+            opt('A', '头几分钟已经涨了，后面通常顺着这个方向', 'It already rose in the first minutes, so later usually follows that direction'),
+            opt('B', '发布会只是重复决定，方向通常一样', 'The press conference only repeats the decision, so the direction is usually the same'),
+            opt('C', '更紧的发布会要等下次会议才反映到价格', 'A tighter press conference shows up in price only at the next meeting'),
+            opt('D', '发布会可以走出另一个方向，头几分钟的第一波不一定是后面的方向', 'The press conference can go the other way, and the first wave in the first minutes is not necessarily the later direction')
+          ], 'D', {
+            A: ['决定公布后头几分钟的第一波，不一定就是后续方向。', 'The first wave in the first minutes after the decision is not necessarily the later direction.'],
+            B: ['发布会可以带来和决定不同方向的反应。', 'The press conference can bring a reaction in a different direction from the decision.'],
+            C: ['发布会就在这次决议之后约 30 分钟，不必等到下次会议。', 'The press conference is about 30 minutes after this decision, so you do not wait for the next meeting.'],
+            D: ['公布决定和约 30 分钟后的发布会，可以是不同方向。', 'The decision release and the press conference about 30 minutes later can point different ways.']
+          }),
+          quiz('本次加息，但幅度小于市场预期，并释放接近停止加息的信号。决定公布后头几分钟，更常见的是？', 'This meeting hikes, but by less than the market expected, and it signals that hikes are close to stopping. In the first minutes after the decision, what is more common?', [
+            opt('A', '只要加了息，头几分钟通常给风险资产压力', 'As long as it hiked, the first minutes usually pressure risk assets'),
+            opt('B', '也可能带来反弹', 'It can also bring a bounce'),
+            opt('C', '小于预期说明下次还会补加，头几分钟先观望', 'Smaller than expected means another hike is still owed, so the first minutes wait'),
+            opt('D', '点阵图会把这个较小的幅度抵消，头几分钟通常不动', 'The dot plot cancels this smaller size, so the first minutes usually stay still')
           ], 'B', {
-            A: ['比怕的小不是意外加息，通常不是先跌。', 'Smaller than feared is not a surprise hike, so it usually does not drop first.'],
-            B: ['没大家怕的那么紧，第一下常常先涨。', 'Less tight than feared, the first move is often up.'],
-            C: ['比怕的小就是这次没那么紧，不是还欠一次加息。', 'Smaller than feared means this time is less tight, not that another hike is still owed.'],
-            D: ['点阵图可以另说方向，但这一小步本身常常先涨。', 'The dot plot can point elsewhere, but this smaller step itself often rises first.']
+            A: ['幅度小于预期、又接近停止加息时，也可以反弹。', 'When the size is smaller than expected and hikes are close to stopping, it can also bounce.'],
+            B: ['幅度小于预期，或接近停止加息，也可能带来反弹。', 'A smaller-than-expected hike, or a signal that hikes are close to stopping, can also bring a bounce.'],
+            C: ['小于预期是这次没那么紧，不是还欠一次加息。', 'Smaller than expected means this time is less tight, not that another hike is still owed.'],
+            D: ['接近停止加息的信号本身就可以带来反弹。', 'The signal that hikes are close to stopping can itself bring a bounce.']
           })
         ],
         study: { kind: 'panel', rows: [
