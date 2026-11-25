@@ -1,7 +1,6 @@
 /* 进阶知识星 lesson data. Lesson 01 Chinese text follows the textbook.
    English is a draft for the owner to review before it is treated as final. */
 window.ADVANCED_STAR = {
-  enReview: true,
   tagline: {
     zh: '从看懂市场，到建立自己的交易系统',
     en: 'From reading the market to building your own process'
@@ -101,10 +100,6 @@ window.ADVANCED_STAR = {
             miss: {
               zh: '答错了。日线收涨不代表其中每个5分钟都涨。',
               en: 'Wrong. A rising daily close does not mean every 5-minute candle rose.'
-            },
-            why: {
-              zh: '价格从早上100到晚上105，日线收涨；下午从108跌到103的两小时，短周期却可能是下降结构。',
-              en: 'Price goes from 100 in the morning to 105 in the evening, so the daily candle closes up; during the two afternoon hours from 108 down to 103, the shorter timeframe can be a down structure.'
             }
           },
           quiz: {
@@ -177,15 +172,6 @@ B: {
               },
 D: { zh: '这不是这道题要选的。回到题目里的说法再看一次。', en: 'That is not the choice this question wants. Look again at what the question says.' }
 }
-          },
-          quiz: {
-            q: { zh: '高点与低点持续上移通常属于？', en: 'Highs and lows that keep stepping up usually belong to which structure?' },
-            options: [
-{ id: 'A', zh: '下降', en: 'Down' },
-{ id: 'B', zh: '上升', en: 'Up' }
-],
-            answer: 'B',
-            why: { zh: '上升结构常见更高的高点HH和更高的低点HL。', en: 'An up structure usually shows a higher high (HH) and a higher low (HL).' }
           },
           quizzes: [
             {
@@ -288,15 +274,6 @@ C: {
 D: { zh: '这不是这道题要选的。回到题目里的说法再看一次。', en: 'That is not the choice this question wants. Look again at what the question says.' }
 }
           },
-          quiz: {
-            q: { zh: '支撑是？', en: 'Support is?' },
-            options: [
-{ id: 'A', zh: '历史反应区域', en: 'A zone of past reactions' },
-{ id: 'B', zh: '必涨价位', en: 'A price that must rise' }
-],
-            answer: 'A',
-            why: { zh: '支撑压力是价格过去出现明显反应的区域，不是保证有效的精准价位。', en: 'Support and resistance are zones where price reacted before, not exact prices that are guaranteed to hold.' }
-          },
           quizzes: [
             {
               q: { zh: '支撑是？', en: 'Support is?' },
@@ -397,15 +374,6 @@ C: {
               },
 D: { zh: '影线长短不能让你提前确定。要等后面的走势出来。', en: 'Wick length does not let you know ahead of time. You wait for what comes next.' }
 }
-          },
-          quiz: {
-            q: { zh: '瞬间高于压力就一定成功突破？', en: 'Does a brief move above resistance mean the breakout has succeeded?' },
-            options: [
-{ id: 'A', zh: '是', en: 'Yes' },
-{ id: 'B', zh: '否', en: 'No' }
-],
-            answer: 'B',
-            why: { zh: '价格越过区间边界叫突破，但是否站稳要看后续表现。', en: 'Price crossing a range boundary is called a breakout, but whether it holds depends on what happens next.' }
           },
           quizzes: [
             {
@@ -508,15 +476,6 @@ C: {
               },
 D: { zh: '这不是这道题要选的。回到题目里的说法再看一次。', en: 'That is not the choice this question wants. Look again at what the question says.' }
 }
-          },
-          quiz: {
-            q: { zh: '缩量下跌必然即将反弹？', en: 'Must a drop on less volume bounce soon?' },
-            options: [
-{ id: 'A', zh: '否', en: 'No' },
-{ id: 'B', zh: '是', en: 'Yes' }
-],
-            answer: 'A',
-            why: { zh: '成交量不能单独预测未来涨跌。放量下跌也不一定会反弹。', en: 'Volume cannot by itself predict a future rise or fall. A drop on more volume will not necessarily bounce either.' }
           },
           quizzes: [
             {
