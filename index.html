@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Web3 新手村 🧸｜币圈入门导航</title>
 <meta name="description" content="用大白话解释币圈与 Web3 基础知识，提供官方导航、操作指引、安全提醒和币圈话术翻译。">
+<link rel="canonical" href="https://0xmay.space/">
 <meta name="theme-color" content="#fff8ef">
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -21,7 +22,8 @@
 <script>
 (function () {
   var h = location.hash;
-  var home = !h || h === '#' || h === '#/';
+  var parts = location.pathname.replace(/\/index\.html$/, '').split('/').filter(Boolean);
+  var home = !parts.length && (!h || h === '#' || h === '#/');
   if (!home) return;
   document.documentElement.classList.add('boot-home');
   var m = document.querySelector('meta[name="theme-color"]');
@@ -93,7 +95,7 @@
 <script src="js/lab.js?v=20261110260000"></script>
 <script src="js/lab-draw-math.js?v=20261110580000"></script>
 <script src="js/lab-draw.js?v=20261110710000"></script>
-<script src="js/app.js?v=20261111310000"></script>
+<script src="js/app.js?v=20261127120000"></script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "12f50d684faf4e4287f9cb7f1a503e34"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

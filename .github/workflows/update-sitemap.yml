@@ -1,0 +1,61 @@
+# Regenerates crawlable course pages and sitemap.xml when course data changes.
+# GITHUB_TOKEN pushes do not start a new workflow run, the actor guard below
+# skips the bot anyway, and this workflow does not watch the generated paths,
+# so a commit of sitemap output cannot retrigger it.
+
+name: Update sitemap
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'js/data.js'
+      - 'js/data-en.js'
+      - 'js/data-advanced.js'
+      - 'js/star-*.js'
+      - 'js/i18n.js'
+      - 'js/app.js'
+      - 'js/lab.js'
+      - 'js/punycode.js'
+      - 'index.html'
+      - 'CNAME'
+      - 'tools/generate-sitemap.js'
+      - '.github/workflows/update-sitemap.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-sitemap
+  cancel-in-progress: true
+
+jobs:
+  generate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Regenerate course URLs and sitemap
+        run: node tools/generate-sitemap.js
+
+      - name: Commit generated files when they changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- sitemap.xml robots.txt index.html c p star lab cex punycode r
+          if git diff --cached --quiet; then
+            echo "Sitemap already matches the course data."
+            exit 0
+          fi
+          git commit -m "chore: regenerate sitemap and course URLs"
+          git push
