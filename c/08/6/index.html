@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN" data-path-route="1">
+<head>
+<meta charset="utf-8">
+<base href="/">
+<link rel="canonical" href="https://0xmay.space/c/08/6/">
+<!-- w3nv-course-entry -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>08｜如何分开管理？ - Web3 新手村</title>
+<meta name="description" content="练手、交易、长期存放分成不同钱包，别放一起。 学习 / 交互钱包：放可承受损失的小额资金，体验应用。 日常交易资金：按需要放在交易场所，理解托管风险。 长期储蓄钱包：减少不必要交互，使用适合自己的保管方案。 同一助记词下创建多个账户，不能隔离助记词泄露风险。 为了分隔这类风险，需要独立的密钥 / 恢复方案。" data-desc-zh="练手、交易、长期存放分成不同钱包，别放一起。 学习 / 交互钱包：放可承受损失的小额资金，体验应用。 日常交易资金：按需要放在交易场所，理解托管风险。 长期储蓄钱包：减少不必要交互，使用适合自己的保管方案。 同一助记词下创建多个账户，不能隔离助记词泄露风险。 为了分隔这类风险，需要独立的密钥 / 恢复方案。" data-desc-en="Funds for practice, for trading, and for long-term storage belong in different wallets, so do not keep them together. Learning / interaction wallet: a small…">
+<meta name="theme-color" content="#fff8ef">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="icon" href="assets/img/nav-compass.svg?v=20261107120000" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css?v=20261110200000">
+<link rel="stylesheet" href="css/atlas.css?v=20261110260000">
+<link rel="stylesheet" href="css/mobile-home.css?v=20261110260000">
+<link rel="stylesheet" href="css/reader.css?v=20261111180000">
+<link rel="stylesheet" href="css/advanced.css?v=20261124510000">
+<link rel="stylesheet" href="css/teach.css?v=20261108180000">
+<link rel="stylesheet" href="css/lab.css?v=20261110240000">
+<link rel="stylesheet" href="css/lab-draw.css?v=20261110710000">
+<script>
+(function () {
+  var h = location.hash;
+  var parts = location.pathname.replace(/\/index\.html$/, '').split('/').filter(Boolean);
+  var home = !parts.length && (!h || h === '#' || h === '#/');
+  if (!home) return;
+  document.documentElement.classList.add('boot-home');
+  var m = document.querySelector('meta[name="theme-color"]');
+  if (m) m.setAttribute('content', '#0D1022');
+})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">跳到正文</a>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="logo" href="#/" data-nav="explore" data-i18n-aria="logo.aria" aria-label="Web3 新手村 首页"><img src="assets/img/nav-compass.svg?v=20261107120000" alt="" width="36" height="36"><span data-i18n="brand">Web3 新手村</span></a>
+    <nav class="topnav" id="site-nav" data-i18n-aria="nav.aria" aria-label="主导航">
+      <a href="#/" data-nav="explore" data-i18n="nav.explore">探索</a>
+      <a href="#/" data-nav="courses" data-scroll="h-toc" data-i18n="nav.courses">课程</a>
+      <button type="button" id="nav-ex" class="nav-ex" data-nav="ex" data-i18n="nav.ex" aria-haspopup="dialog" aria-expanded="false" aria-controls="ex-shortcuts">交易所</button>
+      <a href="#/c/14" data-nav="tools" data-i18n="nav.tools">工具</a>
+      <a href="#/lab" data-nav="lab" data-i18n="nav.lab">星际行情实验室</a>
+      <div class="nav-more">
+        <button type="button" class="nav-more-btn" id="nav-more" aria-expanded="false" aria-controls="more-menu" aria-haspopup="true" data-i18n="nav.more">其他</button>
+        <div class="nav-overflow" id="more-menu">
+          <p class="nav-overflow-label" data-i18n="nav.more">其他</p>
+          <a href="#/cex" data-nav="cex" data-i18n="nav.cex">CEX 排行</a>
+          <a href="#/c/13" data-nav="slang" data-i18n="nav.slang">话术翻译</a>
+          <a href="#/punycode" data-nav="puny" data-i18n="nav.puny">Punycode 转换器</a>
+        </div>
+      </div>
+      <button type="button" id="donate-btn" class="nav-donate" data-i18n="nav.donate">打赏</button>
+    </nav>
+    <div class="search mini" role="search">
+      <label class="sr" for="q-top" data-i18n="search.label">搜索</label>
+      <input id="q-top" type="search" data-i18n-ph="search.ph" placeholder="搜索…" autocomplete="off" enterkeyhint="search">
+      <div class="search-results" hidden></div>
+    </div>
+    <div class="lang-switch" role="group" aria-label="界面语言">
+      <button type="button" id="lang-zh" aria-pressed="true" aria-label="中文">中</button>
+      <button type="button" id="lang-en" aria-pressed="false" aria-label="English">EN</button>
+    </div>
+    <button type="button" class="nav-menu" id="nav-menu" aria-expanded="false" aria-controls="site-nav"><span class="nav-menu-ico" aria-hidden="true">☰</span><span class="sr" id="nav-menu-label" data-i18n="nav.menu">菜单</span></button>
+  </div>
+</header>
+<main id="main" tabindex="-1"></main>
+<footer class="footer" id="footer"></footer>
+<noscript><p style="padding:1rem">本站需要启用 JavaScript 才能显示目录与章节内容。 This site needs JavaScript to show the contents and chapters.</p></noscript>
+<script src="js/config.js?v=20261107660000"></script>
+<script src="js/data.js?v=20261124410000"></script>
+<script src="js/data-en.js?v=20261124580000"></script>
+<script src="js/i18n.js?v=20261123320000"></script>
+<script src="js/punycode.js?v=20261107730000"></script>
+<script src="js/teach.js?v=20261111160000"></script>
+<script src="js/data-advanced.js?v=20261125080000"></script>
+<script src="js/star-math.js?v=20261110900000"></script>
+<script src="js/star-study.js?v=20261124580000"></script>
+<script src="js/star-pack.js?v=20261110900000"></script>
+<script src="js/star-ch02.js?v=20261124580000"></script>
+<script src="js/star-ch03.js?v=20261124580000"></script>
+<script src="js/star-ch04.js?v=20261124580000"></script>
+<script src="js/star-ch05.js?v=20261125075000"></script>
+<script src="js/star-ch06.js?v=20261124740000"></script>
+<script src="js/star-ch07.js?v=20261124750000"></script>
+<script src="js/star-ch08.js?v=20261124750000"></script>
+<script src="js/star-chapters-bind.js?v=20261110900000"></script>
+<script src="js/star-a2-data.js?v=20261110310000"></script>
+<script src="js/star-a3-data.js?v=20261110340000"></script>
+<script src="js/star-a4-data.js?v=20261110350000"></script>
+<script src="js/star-a5-data.js?v=20261110360000"></script>
+<script src="js/star-a6-data.js?v=20261110370000"></script>
+<script src="js/advanced.js?v=20261124530000"></script>
+<script src="js/lab.js?v=20261110260000"></script>
+<script src="js/lab-draw-math.js?v=20261110580000"></script>
+<script src="js/lab-draw.js?v=20261110710000"></script>
+<script src="js/app.js?v=20261127120000"></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "12f50d684faf4e4287f9cb7f1a503e34"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

@@ -5,6 +5,11 @@
 ## 本地预览
     python3 -m http.server 8765   # 在本目录运行，然后打开 http://localhost:8765/
 
+## 课程 URL 与 sitemap
+- 每节课、每个章节和主要页面都有不带 `#` 的真实地址，例如 `https://0xmay.space/c/01/0/`、`https://0xmay.space/star/01/01/`。原来的 `#/c/01/0` 仍然可用。
+- `sitemap.xml`、`robots.txt` 和这些入口页由 `node tools/generate-sitemap.js` 读取课程数据后生成。
+- 课程数据在 `main` 上变更后，`.github/workflows/update-sitemap.yml` 会重新生成并提交。该工作流用仓库自带的 `GITHUB_TOKEN` 推送，不会再次触发自己。
+
 ## 目录
 - index.html            页面骨架
 - css/style.css         样式（手机优先，含减少动画、焦点样式）
